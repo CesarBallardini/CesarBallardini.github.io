@@ -1,24 +1,26 @@
-title:            Site Title
-description:      Describe your website here.
+title:            katra
+description:      el espíritu y la tecnología de la información
 disqus_shortname: 
 reading_time:     true
 words_per_minute: 200
 # Your site's domain goes here (eg: https://mmistakes.github.io, http://yourdomain.com, etc)
 # When testing locally leave blank or use http://localhost:4000
+#url: http://ballardini.com.ar/blog
+#url: http://CesarBallardini.github.io
 url:
 
 # Owner/author information
 owner:
-  name:           Your Name
-  avatar:         avatar.jpg
-  bio:            "Your bio goes here. It shouldn't be super long but a good sentence or two should suffice."
-  email:          you@email.com
+  name:           César Ballardini
+  avatar:         cesarballardini.jpg
+  bio:            "Soy un programador de alma inquieta. Las computadoras te incitan a programar, y una vez que empiezas, no se puede detener."
+  email:          cesar@ballardini.com.ar
   # Social networking links used in footer. Update and remove as you like.
-  twitter:        
+  twitter:        CesarBallardini
   facebook:       
-  github:         
+  github:         CesarBallardini
   stackexchange:  
-  linkedin:       
+  linkedin:       CesarBallardini
   instagram:      
   flickr:         
   tumblr:         
@@ -35,7 +37,7 @@ google_verify:
 bing_verify:         
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-timezone:    America/New_York
+timezone:    America/Buenos_Aires
 future:      true
 highlighter: rouge
 markdown:    kramdown
