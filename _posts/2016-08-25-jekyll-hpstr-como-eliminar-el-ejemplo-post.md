@@ -22,7 +22,7 @@ Mantenemos los directorios siguientes:
 * `assets/` (traducir _back_ en `js/plugins/jquery.dlmenu.js`, y en `js/sripts/.min.js`)
 * `images/` (dejo sólo las imágenes `apple-touch-icon-114x114-precomposed.png`, `apple-touch-icon-144x144-precomposed.png`, `apple-touch-icon-72x72-precomposed.png`, `apple-touch-icon-precomposed.png`, `twitter-card-summary-large-image.jpg`; agrego `cesarballardini.jpg`)
 * `_data/` (comento los enlaces en `_navigation.yml`)
-* `_includes/` (`navigation.html` traducir mensajes, `read-more.html` arreglar fechas)
+* `_includes/` (`navigation.html` traducir mensajes, `read-more.html` arreglar fechas, traducir tiempo de lectura en `read-time-index.html` y `read-time.html`)
 * `_layouts/` (`post.html` arreglar fechas)
 * `_posts/` (elimino los archivos con los posts de ejemplo)
 * `_sass/` (atribución de entradas pasar a castellano en `_page.scss`)
