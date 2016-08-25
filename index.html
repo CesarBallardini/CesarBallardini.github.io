@@ -21,7 +21,6 @@ comments: false
     <div class="entry-meta">
       <span class="entry-date date published updated"><time datetime="{{ post.date | date_to_xmlschema }}"><a href="{{ site.url }}{{ post.url }}">
 {% assign m = post.date | date: "%-m" %}
-{{
 {{ post.date | date: "%-d" }}
 {% case m %}
   {% when '1' %}enero
@@ -38,7 +37,7 @@ comments: false
   {% when '12' %}diciembre
 {% endcase %}
 {{ post.date | date: "%Y" }}
-}}</a></time></span><span class="author vcard"><span class="fn"><a href="{{ site.url }}/acerca-de-mi/" title="Acerca de {{ site.owner.name }}">{{ site.owner.name }}</a></span></span>
+</a></time></span><span class="author vcard"><span class="fn"><a href="{{ site.url }}/acerca-de-mi/" title="Acerca de {{ site.owner.name }}">{{ site.owner.name }}</a></span></span>
       {% if site.reading_time %}
       <span class="entry-reading-time">
         <i class="fa fa-clock-o"></i>
