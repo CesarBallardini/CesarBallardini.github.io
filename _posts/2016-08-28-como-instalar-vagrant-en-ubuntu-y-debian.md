@@ -313,6 +313,8 @@ instalo_vagrant_plugins
 
 ## Obtener el código fuente desde Github
 
+Se creó un repo en Github: [https://github.com/CesarBallardini/instala-virtualbox-vagrant](https://github.com/CesarBallardini/instala-virtualbox-vagrant)
+
 Para obtener este código fuente, debes clonar el repositorio mediante SSH o HTTPS:
 
 ```bash
