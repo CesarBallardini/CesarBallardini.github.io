@@ -9,7 +9,6 @@ words_per_minute: 200
 #url: http://CesarBallardini.github.io
 url:
 
-plugins: [jekyll-paginate]
 
 
 # Owner/author information
@@ -44,7 +43,7 @@ timezone:    America/Buenos_Aires
 future:      true
 highlighter: rouge
 markdown:    kramdown
-gems:
+plugins:
   - jekyll-sitemap
   - jekyll-paginate
   - jekyll-gist
