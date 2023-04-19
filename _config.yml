@@ -9,6 +9,9 @@ words_per_minute: 200
 #url: http://CesarBallardini.github.io
 url:
 
+plugins: [jekyll-paginate]
+
+
 # Owner/author information
 owner:
   name:           César Ballardini
