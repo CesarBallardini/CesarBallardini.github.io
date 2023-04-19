@@ -1,7 +1,7 @@
 {
   "name": "hpstr-theme",
   "author": "Michael Rose <michael@mademistakes.com>",
-  "homepage": "http://mmistakes.github.io/hpstr-jekyll-theme/",
+  "homepage": "http://mmistakes.github.io/jekyll-theme-hpstr/",
   "repository": {
     "type": "git",
     "url": "git://github.com/mmistakes/hpstr-jekyll-theme.git"
@@ -13,7 +13,7 @@
     "node": ">= 0.10.0"
   },
   "devDependencies": {
-    "grunt": "~0.4.1",
+    "grunt": ">=1.5.3",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-jshint": "~0.6.3",
     "grunt-contrib-uglify": "~0.2.2",
