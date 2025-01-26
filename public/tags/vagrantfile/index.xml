@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vagrantfile on katra</title>
+    <link>https://katra.ballardini.com.ar/tags/vagrantfile/</link>
+    <description>Recent content in Vagrantfile on katra</description>
+    <generator>Hugo</generator>
+    <language>es-AR</language>
+    <copyright>César Ballardini</copyright>
+    <lastBuildDate>Tue, 23 Aug 2016 00:00:00 -0300</lastBuildDate>
+    <atom:link href="https://katra.ballardini.com.ar/tags/vagrantfile/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Jekyll: una VM Vagrant para hacerlo funcionar</title>
+      <link>https://katra.ballardini.com.ar/posts/jekyll-una-vm-vagrant-para-hacerlo-funcionar/</link>
+      <pubDate>Tue, 23 Aug 2016 00:00:00 -0300</pubDate>
+      <guid>https://katra.ballardini.com.ar/posts/jekyll-una-vm-vagrant-para-hacerlo-funcionar/</guid>
+      <description>&lt;p&gt;Vamos a usar Vagrant para instalar Jekyll 3.x en una máquina virtual con Virtualbox, para editar y generar nuestro sitio, sin interferir con el sistema de escritorio que usemos para nuestro trabajo cotidiano.&lt;/p&gt;&#xA;&lt;p&gt;Si no tienes instalado el combo vagrant + virtualbox, te recomiendo que lo hagas de acuerdo a las instrucciones en FIXME.&lt;/p&gt;&#xA;&lt;p&gt;El &lt;code&gt;Vagrantfile&lt;/code&gt; nos permite crear una VM liviana con Ubuntu 14.04 Trusty de 32 bits, con poca memoria, más que suficiente para nuestras necesidades.  El aprovisionamiento se hace en dos etapas: 1. los paquetes esenciales del sistema operativo; 2. Ansible.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
