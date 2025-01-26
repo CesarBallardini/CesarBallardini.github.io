@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Jekyll HPSTR: Cómo eliminar el ejemplo y poner tu propio contenido | katra</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Cómo vamos a escribir contenido en nuestro blog.">
+    <meta name="generator" content="Hugo 0.142.0">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+      <meta name="author" content = "César Ballardini">
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.8ea42c4c5025337ca923faf1dc6e64b4dab13894d8f3f6908ee774c5b1502fec.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://katra.ballardini.com.ar/posts/jekyll-hpstr-como-eliminar-el-ejemplo/">
+    
+
+    <meta property="og:url" content="https://katra.ballardini.com.ar/posts/jekyll-hpstr-como-eliminar-el-ejemplo/">
+  <meta property="og:site_name" content="katra">
+  <meta property="og:title" content="Jekyll HPSTR: Cómo eliminar el ejemplo y poner tu propio contenido">
+  <meta property="og:description" content="Cómo vamos a escribir contenido en nuestro blog.">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2016-08-25T00:00:00-03:00">
+    <meta property="article:modified_time" content="2016-08-25T00:00:00-03:00">
+    <meta property="article:tag" content="Blog">
+    <meta property="article:tag" content="Jekyll">
+    <meta property="article:tag" content="Theme">
+    <meta property="article:tag" content="Tema">
+    <meta property="article:tag" content="Hpstr">
+    <meta property="article:tag" content="Github">
+
+  <meta itemprop="name" content="Jekyll HPSTR: Cómo eliminar el ejemplo y poner tu propio contenido">
+  <meta itemprop="description" content="Cómo vamos a escribir contenido en nuestro blog.">
+  <meta itemprop="datePublished" content="2016-08-25T00:00:00-03:00">
+  <meta itemprop="dateModified" content="2016-08-25T00:00:00-03:00">
+  <meta itemprop="wordCount" content="382">
+  <meta itemprop="keywords" content="Blog,Jekyll,Theme,Tema,Hpstr,Github">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Jekyll HPSTR: Cómo eliminar el ejemplo y poner tu propio contenido">
+  <meta name="twitter:description" content="Cómo vamos a escribir contenido en nuestro blog.">
+
+      
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        katra
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/posts/" title="Entradas pagina">
+              Entradas
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="http://linkedin.com/in/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a><a href="https://x.com/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition x-twitter link dib z-999 pt3 pt0-l mr1"
+        title="follow on X - Opens in a new window"
+        aria-label="follow on X - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+            
+          </span></a><a href="https://github.com/Cesar.Ballardini/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+            
+          </span></a></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Entradas
+      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fjekyll-hpstr-como-eliminar-el-ejemplo%2F&amp;subject=Jekyll&#43;HPSTR%3A&#43;C%C3%B3mo&#43;eliminar&#43;el&#43;ejemplo&#43;y&#43;poner&#43;tu&#43;propio&#43;contenido"
+        class="ananke-social-link email no-underline"
+        title="Share on Email" aria-label="Share on Email"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
+                
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fjekyll-hpstr-como-eliminar-el-ejemplo%2F&amp;summary=Nuevamente&#43;comenzamos&#43;revisando&#43;las&#43;instrucciones&#43;del&#43;tema&#43;HPSTR&#43;en%0AEntonces%2C&#43;dentro&#43;de&#43;la&#43;VM%3A%0Acd&#43;%2Fvagrant%2Fwww%2FCesarBallardini.github.io%2F&#43;Eliminamos&#43;los&#43;directorios%3A%0Atheme-setup%2F&#43;about%2F&#43;Mantenemos&#43;los&#43;directorios&#43;siguientes%3A%0Aassets%2F&#43;%28traducir&#43;back&#43;en&#43;js%2Fplugins%2Fjquery.dlmenu.js%2C&#43;y&#43;en&#43;js%2Fscripts%2F.min.js%29&#43;images%2F&#43;%28dejo&#43;s%C3%B3lo&#43;las&#43;im%C3%A1genes&#43;apple-touch-icon-114x114-precomposed.png%2C&#43;apple-touch-icon-144x144-precomposed.png%2C&#43;apple-touch-icon-72x72-precomposed.png%2C&#43;apple-touch-icon-precomposed.png%2C&#43;twitter-card-summary-large-image.jpg%3B&#43;agrego&#43;cesarballardini.jpg%29&#43;_data%2F&#43;%28comento&#43;los&#43;enlaces&#43;en&#43;_navigation.yml%29&#43;_includes%2F&#43;%28navigation.html&#43;traducir&#43;mensajes%2C&#43;read-more.html&#43;arreglar&#43;fechas%2C&#43;traducir&#43;tiempo&#43;de&#43;lectura&#43;en&#43;read-time-index.html&#43;y&#43;read-time.html%29&#43;_layouts%2F&#43;%28post.html&#43;arreglar&#43;fechas%29&#43;_posts%2F&#43;%28elimino&#43;los&#43;archivos&#43;con&#43;los&#43;posts&#43;de&#43;ejemplo%29&#43;_sass%2F&#43;%28atribuci%C3%B3n&#43;de&#43;entradas&#43;pasar&#43;a&#43;castellano&#43;en&#43;_page.scss%29&#43;Los&#43;siguientes%2C&#43;los&#43;mantenemos&#43;pero&#43;hay&#43;que&#43;personalizarlos%3A%0A&amp;title=Jekyll&#43;HPSTR%3A&#43;C%C3%B3mo&#43;eliminar&#43;el&#43;ejemplo&#43;y&#43;poner&#43;tu&#43;propio&#43;contenido&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fjekyll-hpstr-como-eliminar-el-ejemplo%2F"
+        class="ananke-social-link linkedin no-underline"
+        title="Share on LinkedIn" aria-label="Share on LinkedIn"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+                
+              </span></a><a href="https://twitter.com/intent/tweet/?&amp;text=Nuevamente&#43;comenzamos&#43;revisando&#43;las&#43;instrucciones&#43;del&#43;tema&#43;HPSTR&#43;en%0AEntonces%2C&#43;dentro&#43;de&#43;la&#43;VM%3A%0Acd&#43;%2Fvagrant%2Fwww%2FCesarBallardini.github.io%2F&#43;Eliminamos&#43;los&#43;directorios%3A%0Atheme-setup%2F&#43;about%2F&#43;Mantenemos&#43;los&#43;directorios&#43;siguientes%3A%0Aassets%2F&#43;%28traducir&#43;back&#43;en&#43;js%2Fplugins%2Fjquery.dlmenu.js%2C&#43;y&#43;en&#43;js%2Fscripts%2F.min.js%29&#43;images%2F&#43;%28dejo&#43;s%C3%B3lo&#43;las&#43;im%C3%A1genes&#43;apple-touch-icon-114x114-precomposed.png%2C&#43;apple-touch-icon-144x144-precomposed.png%2C&#43;apple-touch-icon-72x72-precomposed.png%2C&#43;apple-touch-icon-precomposed.png%2C&#43;twitter-card-summary-large-image.jpg%3B&#43;agrego&#43;cesarballardini.jpg%29&#43;_data%2F&#43;%28comento&#43;los&#43;enlaces&#43;en&#43;_navigation.yml%29&#43;_includes%2F&#43;%28navigation.html&#43;traducir&#43;mensajes%2C&#43;read-more.html&#43;arreglar&#43;fechas%2C&#43;traducir&#43;tiempo&#43;de&#43;lectura&#43;en&#43;read-time-index.html&#43;y&#43;read-time.html%29&#43;_layouts%2F&#43;%28post.html&#43;arreglar&#43;fechas%29&#43;_posts%2F&#43;%28elimino&#43;los&#43;archivos&#43;con&#43;los&#43;posts&#43;de&#43;ejemplo%29&#43;_sass%2F&#43;%28atribuci%C3%B3n&#43;de&#43;entradas&#43;pasar&#43;a&#43;castellano&#43;en&#43;_page.scss%29&#43;Los&#43;siguientes%2C&#43;los&#43;mantenemos&#43;pero&#43;hay&#43;que&#43;personalizarlos%3A%0A&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fjekyll-hpstr-como-eliminar-el-ejemplo%2F"
+        class="ananke-social-link x-twitter no-underline"
+        title="Share on X" aria-label="Share on X"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+                
+              </span></a><a href="%25!s%28%3cnil%3e%29?"
+        class="ananke-social-link github no-underline"
+        title="Share on GitHub" aria-label="Share on GitHub"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+                
+              </span></a></div>
+<h1 class="f1 athelas mt3 mb1">Jekyll HPSTR: Cómo eliminar el ejemplo y poner tu propio contenido</h1>
+      
+      <p class="tracked">
+        Por <strong>César Ballardini</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2016-08-25T00:00:00-03:00">25 de agosto de 2016</time>
+      
+
+      
+      
+        <span class="f6 mv4 dib tracked"> - Lectura en 2 minutos </span>
+        <span class="f6 mv4 dib tracked"> - 382 palabras </span>
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Nuevamente comenzamos revisando las <a href="https://mmistakes.github.io/hpstr-jekyll-theme/theme-setup/">instrucciones</a> del tema HPSTR en</p>
+<p>Entonces, dentro de la VM:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /vagrant/www/CesarBallardini.github.io/
+</span></span></code></pre></div><p>Eliminamos los directorios:</p>
+<ul>
+<li><code>theme-setup/</code></li>
+<li><code>about/</code></li>
+</ul>
+<p>Mantenemos los directorios siguientes:</p>
+<ul>
+<li><code>assets/</code> (traducir <em>back</em> en <code>js/plugins/jquery.dlmenu.js</code>, y en <code>js/scripts/.min.js</code>)</li>
+<li><code>images/</code> (dejo sólo las imágenes <code>apple-touch-icon-114x114-precomposed.png</code>, <code>apple-touch-icon-144x144-precomposed.png</code>, <code>apple-touch-icon-72x72-precomposed.png</code>, <code>apple-touch-icon-precomposed.png</code>, <code>twitter-card-summary-large-image.jpg</code>; agrego <code>cesarballardini.jpg</code>)</li>
+<li><code>_data/</code> (comento los enlaces en <code>_navigation.yml</code>)</li>
+<li><code>_includes/</code> (<code>navigation.html</code> traducir mensajes, <code>read-more.html</code> arreglar fechas, traducir tiempo de lectura en <code>read-time-index.html</code> y <code>read-time.html</code>)</li>
+<li><code>_layouts/</code> (<code>post.html</code> arreglar fechas)</li>
+<li><code>_posts/</code> (elimino los archivos con los posts de ejemplo)</li>
+<li><code>_sass/</code> (atribución de entradas pasar a castellano en <code>_page.scss</code>)</li>
+</ul>
+<p>Los siguientes, los mantenemos pero hay que personalizarlos:</p>
+<ul>
+<li><code>about/</code> (elimino el directorio, lo voy a transformar en <code>acerca-de-mi/index.md</code>)</li>
+<li><code>posts/</code> (traducir title y description en <code>index.html</code>)</li>
+<li><code>tags/</code>   (traducir title y description en <code>index.html</code>)</li>
+<li><code>feed.xml</code></li>
+<li><code>index.html</code> (elimino la referencia a la imagen de fondo; corrijo el link hacia <em>About</em> y arreglo fechas)</li>
+</ul>
+<p>Edito el archivo de configuración global <code>_config.yml</code> y queda:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">title</span>:            <span style="color:#ae81ff">katra</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">description</span>:      <span style="color:#ae81ff">el espíritu y la tecnología de la información</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">disqus_shortname</span>:
+</span></span><span style="display:flex;"><span><span style="color:#f92672">reading_time</span>:     <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">words_per_minute</span>: <span style="color:#ae81ff">200</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Your site&#39;s domain goes here (eg: https://mmistakes.github.io, http://yourdomain.com, etc)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># When testing locally leave blank or use http://localhost:4000</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#url: http://ballardini.com.ar/blog</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#url: http://CesarBallardini.github.io</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">url</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Owner/author information</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">owner</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>:           <span style="color:#ae81ff">César Ballardini</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">avatar</span>:         <span style="color:#ae81ff">cesarballardini.jpg</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">bio</span>:            <span style="color:#e6db74">&#34;Soy un programador de alma inquieta. Las computadoras te incitan a programar, y una vez que empiezas, no se puede detener.&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">email</span>:          <span style="color:#ae81ff">cesar@ballardini.com.ar</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Social networking links used in footer. Update and remove as you like.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">twitter</span>:        <span style="color:#ae81ff">CesarBallardini</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">facebook</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">github</span>:         <span style="color:#ae81ff">CesarBallardini</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">stackexchange</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">linkedin</span>:       <span style="color:#ae81ff">CesarBallardini</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">instagram</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">flickr</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">tumblr</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># google plus id, include the &#39;+&#39;, eg +mmistakes</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">google_plus</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Background image to be tiled on all pages</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">background</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Analytics and webmaster tools stuff goes here</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">google_analytics</span>:
+</span></span><span style="display:flex;"><span><span style="color:#f92672">google_verify</span>:
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">bing_verify</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># http://en.wikipedia.org/wiki/List_of_tz_database_time_zones</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">timezone</span>:    <span style="color:#ae81ff">America/Buenos_Aires</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">future</span>:      <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">highlighter</span>: <span style="color:#ae81ff">rouge</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">markdown</span>:    <span style="color:#ae81ff">kramdown</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">gems</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">jekyll-sitemap</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">jekyll-paginate</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">jekyll-gist</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">jekyll-feed</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">sass</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">sass_dir</span>: <span style="color:#ae81ff">_sass</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">style</span>: <span style="color:#ae81ff">compressed</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://github.com/mojombo/jekyll/wiki/Permalinks</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">permalink</span>:   <span style="color:#ae81ff">/:categories/:title/</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Amount of post to show on home page</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">paginate</span>: <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kramdown</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">input</span>: <span style="color:#ae81ff">GFM</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">auto_ids</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">footnote_nr</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">entity_output</span>: <span style="color:#ae81ff">as_char</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">toc_levels</span>: <span style="color:#ae81ff">1</span><span style="color:#ae81ff">..6</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">enable_coderay</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">include</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">.htaccess</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">exclude</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#e6db74">&#34;*.less&#34;</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#e6db74">&#34;*.sublime-project&#34;</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#e6db74">&#34;*.sublime-workspace&#34;</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">.asset-cache</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">.bundle</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">.jekyll-assets-cache</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">.sass-cache</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">CHANGELOG</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">Capfile</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">Gemfile</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">Gruntfile.js</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">LICENSE</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">README</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">Rakefile</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">config</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">gulpfile.js</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">lib</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">log</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">node_modules</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">package.json</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">spec</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">tmp</span>
+</span></span></code></pre></div><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/blog/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Blog</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/jekyll/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Jekyll</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/theme/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Theme</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/tema/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Tema</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/hpstr/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Hpstr</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/github/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Github</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Relacionado</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/posts/jekyll-el-tema-hpstr/">Jekyll: El tema HPSTR</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/jekyll-una-vm-vagrant-para-hacerlo-funcionar/">Jekyll: una VM Vagrant para hacerlo funcionar</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/mi-nuevo-blog-con-jekyll/">Mi nuevo blog con Jekyll</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://katra.ballardini.com.ar/" >
+    &copy;  César Ballardini 2025 
+  </a>
+    <div><div class="ananke-socials"><a href="http://linkedin.com/in/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a><a href="https://x.com/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition x-twitter link dib z-999 pt3 pt0-l mr1"
+        title="follow on X - Opens in a new window"
+        aria-label="follow on X - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+            
+          </span></a><a href="https://github.com/Cesar.Ballardini/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+            
+          </span></a></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

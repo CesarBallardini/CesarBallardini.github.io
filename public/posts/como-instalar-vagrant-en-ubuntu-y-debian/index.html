@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Cómo instalar Vagrant en Ubuntu y Debian | katra</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Instalación de Vagrant, Virtualbox, plugins, y entorno sobre variantes GNU/Linux Debian y Ubuntu">
+    <meta name="generator" content="Hugo 0.142.0">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+      <meta name="author" content = "César Ballardini">
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.8ea42c4c5025337ca923faf1dc6e64b4dab13894d8f3f6908ee774c5b1502fec.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://katra.ballardini.com.ar/posts/como-instalar-vagrant-en-ubuntu-y-debian/">
+    
+
+    <meta property="og:url" content="https://katra.ballardini.com.ar/posts/como-instalar-vagrant-en-ubuntu-y-debian/">
+  <meta property="og:site_name" content="katra">
+  <meta property="og:title" content="Cómo instalar Vagrant en Ubuntu y Debian">
+  <meta property="og:description" content="Instalación de Vagrant, Virtualbox, plugins, y entorno sobre variantes GNU/Linux Debian y Ubuntu">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2016-08-28T00:00:00-03:00">
+    <meta property="article:modified_time" content="2016-08-28T00:00:00-03:00">
+    <meta property="article:tag" content="Vagrant">
+    <meta property="article:tag" content="Virtualbox">
+    <meta property="article:tag" content="Debian">
+    <meta property="article:tag" content="Ubuntu">
+    <meta property="article:tag" content="Instalación">
+
+  <meta itemprop="name" content="Cómo instalar Vagrant en Ubuntu y Debian">
+  <meta itemprop="description" content="Instalación de Vagrant, Virtualbox, plugins, y entorno sobre variantes GNU/Linux Debian y Ubuntu">
+  <meta itemprop="datePublished" content="2016-08-28T00:00:00-03:00">
+  <meta itemprop="dateModified" content="2016-08-28T00:00:00-03:00">
+  <meta itemprop="wordCount" content="1764">
+  <meta itemprop="keywords" content="Vagrant,Virtualbox,Debian,Ubuntu,Instalación">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Cómo instalar Vagrant en Ubuntu y Debian">
+  <meta name="twitter:description" content="Instalación de Vagrant, Virtualbox, plugins, y entorno sobre variantes GNU/Linux Debian y Ubuntu">
+
+      
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        katra
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/posts/" title="Entradas pagina">
+              Entradas
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="http://linkedin.com/in/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a><a href="https://x.com/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition x-twitter link dib z-999 pt3 pt0-l mr1"
+        title="follow on X - Opens in a new window"
+        aria-label="follow on X - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+            
+          </span></a><a href="https://github.com/Cesar.Ballardini/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+            
+          </span></a></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Entradas
+      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fcomo-instalar-vagrant-en-ubuntu-y-debian%2F&amp;subject=C%C3%B3mo&#43;instalar&#43;Vagrant&#43;en&#43;Ubuntu&#43;y&#43;Debian"
+        class="ananke-social-link email no-underline"
+        title="Share on Email" aria-label="Share on Email"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
+                
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fcomo-instalar-vagrant-en-ubuntu-y-debian%2F&amp;summary=Vagrant&#43;es&#43;un&#43;programa&#43;que&#43;aprovecha&#43;una&#43;plataforma&#43;de&#43;virtualizaci%C3%B3n&#43;para&#43;proporcionar&#43;un&#43;workflow&#43;simple&#43;de&#43;gesti%C3%B3n&#43;del&#43;ciclo&#43;de&#43;vida&#43;de&#43;las&#43;m%C3%A1quinas&#43;virtuales.%0AComo&#43;sistema&#43;de&#43;virtualizaci%C3%B3n&#43;utilizaremos&#43;Virtualbox.&#43;Su&#43;principal&#43;ventaja&#43;es&#43;que&#43;es&#43;muy&#43;sencillo&#43;de&#43;poner&#43;en&#43;funcionamiento&#43;y&#43;adem%C3%A1s&#43;corre&#43;en&#43;diferentes&#43;sistemas&#43;operativos&#43;anfitri%C3%B3n%2C&#43;como&#43;Mac&#43;OS&#43;X%2C&#43;GNU%2FLinux&#43;y&#43;Ms&#43;Windows.%0ALa&#43;instalaci%C3%B3n&#43;se&#43;puede&#43;hacer&#43;de&#43;diversas&#43;maneras%3A&#43;con&#43;paquetes&#43;del&#43;sistema&#43;operativo&#43;anfitri%C3%B3n&#43;%28en&#43;caso&#43;que&#43;existan&#43;como&#43;en&#43;GNU%2FLinux%29%2C&#43;tambi%C3%A9n&#43;se&#43;puede&#43;instalar&#43;a&#43;partir&#43;de&#43;los&#43;fuentes&#43;de&#43;cada&#43;proyecto%2C&#43;pues&#43;se&#43;trata&#43;de&#43;sistemas&#43;de&#43;software&#43;libre.&#43;En&#43;la&#43;primer&#43;manera&#43;tenemos&#43;el&#43;problema&#43;de&#43;que&#43;la&#43;versi%C3%B3n&#43;que&#43;est%C3%A1&#43;empaquetada&#43;no&#43;siempre&#43;es&#43;la&#43;%C3%BAltima&#43;estable.&#43;En&#43;el&#43;segundo&#43;caso%2C&#43;es&#43;muy&#43;engorroso&#43;instalar&#43;toda&#43;la&#43;cadena&#43;de&#43;compilador&#43;y&#43;entorno&#43;de&#43;desarrollo%2C&#43;luego&#43;clonar&#43;los&#43;repositorios&#43;fuentes%2C&#43;y&#43;compilar&#43;e&#43;instalar&#43;manualmente%3B&#43;incluso&#43;aunque&#43;de&#43;esta&#43;manera&#43;tengamos&#43;la&#43;versi%C3%B3n&#43;del&#43;%C2%AB%C3%BAltimo&#43;grito&#43;de&#43;la&#43;moda%C2%BB%2C&#43;cuando&#43;salga&#43;una&#43;nueva%2C&#43;vamos&#43;a&#43;tener&#43;que&#43;rehacer&#43;todo&#43;el&#43;procedimiento.%0A&amp;title=C%C3%B3mo&#43;instalar&#43;Vagrant&#43;en&#43;Ubuntu&#43;y&#43;Debian&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fcomo-instalar-vagrant-en-ubuntu-y-debian%2F"
+        class="ananke-social-link linkedin no-underline"
+        title="Share on LinkedIn" aria-label="Share on LinkedIn"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+                
+              </span></a><a href="https://twitter.com/intent/tweet/?&amp;text=Vagrant&#43;es&#43;un&#43;programa&#43;que&#43;aprovecha&#43;una&#43;plataforma&#43;de&#43;virtualizaci%C3%B3n&#43;para&#43;proporcionar&#43;un&#43;workflow&#43;simple&#43;de&#43;gesti%C3%B3n&#43;del&#43;ciclo&#43;de&#43;vida&#43;de&#43;las&#43;m%C3%A1quinas&#43;virtuales.%0AComo&#43;sistema&#43;de&#43;virtualizaci%C3%B3n&#43;utilizaremos&#43;Virtualbox.&#43;Su&#43;principal&#43;ventaja&#43;es&#43;que&#43;es&#43;muy&#43;sencillo&#43;de&#43;poner&#43;en&#43;funcionamiento&#43;y&#43;adem%C3%A1s&#43;corre&#43;en&#43;diferentes&#43;sistemas&#43;operativos&#43;anfitri%C3%B3n%2C&#43;como&#43;Mac&#43;OS&#43;X%2C&#43;GNU%2FLinux&#43;y&#43;Ms&#43;Windows.%0ALa&#43;instalaci%C3%B3n&#43;se&#43;puede&#43;hacer&#43;de&#43;diversas&#43;maneras%3A&#43;con&#43;paquetes&#43;del&#43;sistema&#43;operativo&#43;anfitri%C3%B3n&#43;%28en&#43;caso&#43;que&#43;existan&#43;como&#43;en&#43;GNU%2FLinux%29%2C&#43;tambi%C3%A9n&#43;se&#43;puede&#43;instalar&#43;a&#43;partir&#43;de&#43;los&#43;fuentes&#43;de&#43;cada&#43;proyecto%2C&#43;pues&#43;se&#43;trata&#43;de&#43;sistemas&#43;de&#43;software&#43;libre.&#43;En&#43;la&#43;primer&#43;manera&#43;tenemos&#43;el&#43;problema&#43;de&#43;que&#43;la&#43;versi%C3%B3n&#43;que&#43;est%C3%A1&#43;empaquetada&#43;no&#43;siempre&#43;es&#43;la&#43;%C3%BAltima&#43;estable.&#43;En&#43;el&#43;segundo&#43;caso%2C&#43;es&#43;muy&#43;engorroso&#43;instalar&#43;toda&#43;la&#43;cadena&#43;de&#43;compilador&#43;y&#43;entorno&#43;de&#43;desarrollo%2C&#43;luego&#43;clonar&#43;los&#43;repositorios&#43;fuentes%2C&#43;y&#43;compilar&#43;e&#43;instalar&#43;manualmente%3B&#43;incluso&#43;aunque&#43;de&#43;esta&#43;manera&#43;tengamos&#43;la&#43;versi%C3%B3n&#43;del&#43;%C2%AB%C3%BAltimo&#43;grito&#43;de&#43;la&#43;moda%C2%BB%2C&#43;cuando&#43;salga&#43;una&#43;nueva%2C&#43;vamos&#43;a&#43;tener&#43;que&#43;rehacer&#43;todo&#43;el&#43;procedimiento.%0A&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fcomo-instalar-vagrant-en-ubuntu-y-debian%2F"
+        class="ananke-social-link x-twitter no-underline"
+        title="Share on X" aria-label="Share on X"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+                
+              </span></a><a href="%25!s%28%3cnil%3e%29?"
+        class="ananke-social-link github no-underline"
+        title="Share on GitHub" aria-label="Share on GitHub"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+                
+              </span></a></div>
+<h1 class="f1 athelas mt3 mb1">Cómo instalar Vagrant en Ubuntu y Debian</h1>
+      
+      <p class="tracked">
+        Por <strong>César Ballardini</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2016-08-28T00:00:00-03:00">28 de agosto de 2016</time>
+      
+
+      
+      
+        <span class="f6 mv4 dib tracked"> - Lectura en 9 minutos </span>
+        <span class="f6 mv4 dib tracked"> - 1764 palabras </span>
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Vagrant es un programa que aprovecha una plataforma de virtualización para proporcionar un <em>workflow</em> simple de gestión del
+ciclo de vida de las máquinas virtuales.</p>
+<p>Como sistema de virtualización utilizaremos Virtualbox.  Su principal ventaja es que es muy sencillo de poner en funcionamiento
+y además corre en diferentes sistemas operativos anfitrión, como Mac OS X, GNU/Linux y Ms Windows.</p>
+<p>La instalación se puede hacer de diversas maneras: con paquetes del sistema operativo anfitrión (en caso que existan como en GNU/Linux),
+también se puede instalar a partir de los fuentes de cada proyecto, pues se trata de sistemas de software libre.  En la primer manera tenemos el
+problema de que la versión que está empaquetada no siempre es la última estable.  En el segundo caso, es muy engorroso instalar toda
+la cadena de compilador y entorno de desarrollo, luego clonar los repositorios fuentes, y compilar e instalar manualmente; incluso aunque de
+esta manera tengamos la versión del «último grito de la moda», cuando salga una nueva, vamos a tener que rehacer todo el procedimiento.</p>
+<p>Aquí vamos a dar las instrucciones para realizar la instalación utilizando los paquetes binarios disponibles para la descarga en cada proyecto.  El motivo es que
+de esta manera podemos instalar la última versión estable provista por el dueño del proyecto, y será simple su actualización futura.  El único inconveniente
+de este proceder puede ser si el dueño del proyecto no proporciona versiones binarias para las versiones de sistema operativo que necesitamos usar, y ése no es el caso con Debian y Ubuntu.</p>
+<p>La opción de usar la instalación mediante el sistema de gestión de paquetes de tu sistema operativo GNU/Linux es buena.  En particular es muy simple, por ejemplo en Debian o Ubuntu
+simplemente uno escribe:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  apt-get install virtualbox dkms vagrant
+</span></span></code></pre></div><p>Si las versiones que consigues de esa manera alcanzan en tu trabajo, por favor, no sigas leyendo este artículo.  Si necesitas las versiones actuales
+de cada paquete, entonces la instalación desde el gestor de paquetes tal vez no alcance, sigue leyendo.</p>
+<p>Vamos a instalar entonces primero Virtualbox, luego Vagrant y a continuación algunos plugins muy útiles de Vagrant.</p>
+<h2 id="instalación-de-virtualbox">Instalación de Virtualbox</h2>
+<p>Debemos buscar paquete apropiado a arquitectura y cpu en <a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a></p>
+<p>Son dos:</p>
+<ol>
+<li>VirtualBox platform package</li>
+<li>Oracle VM VirtualBox Extension Pack</li>
+</ol>
+<p>Al momento de escribir esto la versión estable es la 5.1.4, pero la versión de Vagrant no la admite, así que vamos a instalar la versión 5.0.26, tomada desde
+<a href="https://www.virtualbox.org/wiki/Download_Old_Builds_5_0">https://www.virtualbox.org/wiki/Download_Old_Builds_5_0</a></p>
+<p>La instalación en sistemas GNU/Linux está documentada en <a href="https://www.virtualbox.org/wiki/Linux_Downloads">https://www.virtualbox.org/wiki/Linux_Downloads</a></p>
+<p>La instalación para sistemas MS Windows es un programa ejecutable que se debe descargar y hacer funcionar en el sistema anfitrión.</p>
+<p>Los pasos a seguir para instalar Virtualbox son:</p>
+<ol>
+<li>Agregar una fuente de paquetes .deb en APT.</li>
+<li>Instalar la clave pública de Oracle con la cual están firmados digitalmente los paquetes de ese repositorio del punto anterior.</li>
+<li>Actualizar la lista de paquetes conocida por APT.</li>
+<li>Instalar el paquete .deb de virtualbox.</li>
+<li>Instalar el paquete <code>dkms</code> en Debian y Ubuntu para que cuando se actualiza de manera rutinaria el núcleo del sistema operativo, se hagan las compilaciones de módulos de Virtualbox necesarias, de manera automática.</li>
+</ol>
+<p>Luego procedemos a instalar el Oracle VM VirtualBox Extension Pack.</p>
+<ol>
+<li>Descargamos el archivo del Extension Pack.</li>
+<li>Usamos <code>VBoxManage</code> para instalar el pack dentro del Virtualbox.</li>
+</ol>
+<p>Para evitar errores y acciones manuales, escribí un <em>script</em> en Bash que automatiza todas estas tareas.  Sólo hace falta proporcionarle el valor de las versiones que se buscan, y lo demás se realiza sin tropiezos.  Las variables de marras son:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>VB_MayorVersion<span style="color:#f92672">=</span>5.0
+</span></span><span style="display:flex;"><span>VB_MinorVersion<span style="color:#f92672">=</span><span style="color:#ae81ff">26</span>
+</span></span><span style="display:flex;"><span>VB_EXTPACK_ReleaseNumber<span style="color:#f92672">=</span><span style="color:#ae81ff">108824</span>
+</span></span></code></pre></div><p>y sus valores se obtienen de la página <a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a> antes mencionada. Por ejemplo, el enlace de descarga de las extensiones apunta a un archivo de nombre <code>Oracle_VM_VirtualBox_Extension_Pack-5.0.26-108824.vbox-extpack</code> y de allí se obtiene el <code>108824</code> mencionado en la variable <code>VB_EXTPACK_ReleaseNumber</code>.</p>
+<h2 id="instalación-de-vagrant">Instalación de Vagrant</h2>
+<p>De igual manera que en el caso de Virtualbox, accedemos a la página de descargas de Vagrant en
+<a href="https://www.vagrantup.com/downloads.html">https://www.vagrantup.com/downloads.html</a>  y buscamos el paquete apropiado a la arquitectura y cpu.</p>
+<p>Al momento de escribir esto, la última versión estable es la 1.8.1.</p>
+<p>A diferencia de Virtualbox, no vamos a instalar una fuente de paquetes de APT, sino solamente descargar el archivo del paquete .deb de vagrant y luego
+lo instalaremos con <code>dpkg -i</code>.</p>
+<p>Al igual que en el caso de Virtualbox, a los fines de evitar errores, en el <em>script</em> hay una sección que hace estas tareas, y sólo hay que proporcionarle
+la versión de vagrant en una variable, como se muestra a continuación:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>VAG_Version<span style="color:#f92672">=</span>1.8.1
+</span></span></code></pre></div><h2 id="instalación-de-plugins-en-vagrant">Instalación de plugins en Vagrant</h2>
+<p>Los plugins son mecanismos de extensión que posee Vagrant para incorporar comportamiento adicional.</p>
+<p>Una lista de los actualmente disponibles se puede encontrar en <a href="https://github.com/mitchellh/vagrant/wiki/Available-Vagrant-Plugins">https://github.com/mitchellh/vagrant/wiki/Available-Vagrant-Plugins</a>.</p>
+<p>Los dos plugins que vamos a instalar son:</p>
+<ul>
+<li>vagrant-vbguest actualiza las <em>guest additions</em> de VirtualBox si es necesario</li>
+<li>vagrant-proxyconf configura la VM para que use las variables de entorno de proxy del anfitrión. Esto es fundamental si tu acceso a Internet es mediante un proxy corporativo.</li>
+</ul>
+<p>La forma de instalar plugins es muy simple, en nuestro caso:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  vagrant plugin install vagrant-vbguest vagrant-proxyconf
+</span></span></code></pre></div><p>En el caso de <code>vagrant-proxyconf</code> vamos a agregar a la configuración global de la cuenta de usuario que utilizamos lo siguiente en <code>~/.vagrant.d/Vagrantfile</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#66d9ef">Vagrant</span><span style="color:#f92672">.</span>configure(<span style="color:#e6db74">&#34;2&#34;</span>) <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>config<span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>  puts <span style="color:#e6db74">&#34;proxyconf...&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">Vagrant</span><span style="color:#f92672">.</span>has_plugin?(<span style="color:#e6db74">&#34;vagrant-proxyconf&#34;</span>)
+</span></span><span style="display:flex;"><span>    puts <span style="color:#e6db74">&#34;find proxyconf plugin !&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">ENV</span><span style="color:#f92672">[</span><span style="color:#e6db74">&#34;http_proxy&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>      puts <span style="color:#e6db74">&#34;http_proxy: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">ENV</span><span style="color:#f92672">[</span><span style="color:#e6db74">&#34;http_proxy&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>      config<span style="color:#f92672">.</span>proxy<span style="color:#f92672">.</span>http     <span style="color:#f92672">=</span> <span style="color:#66d9ef">ENV</span><span style="color:#f92672">[</span><span style="color:#e6db74">&#34;http_proxy&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">ENV</span><span style="color:#f92672">[</span><span style="color:#e6db74">&#34;https_proxy&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>      puts <span style="color:#e6db74">&#34;https_proxy: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">ENV</span><span style="color:#f92672">[</span><span style="color:#e6db74">&#34;https_proxy&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>      config<span style="color:#f92672">.</span>proxy<span style="color:#f92672">.</span>https    <span style="color:#f92672">=</span> <span style="color:#66d9ef">ENV</span><span style="color:#f92672">[</span><span style="color:#e6db74">&#34;https_proxy&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">ENV</span><span style="color:#f92672">[</span><span style="color:#e6db74">&#34;no_proxy&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>      config<span style="color:#f92672">.</span>proxy<span style="color:#f92672">.</span>no_proxy <span style="color:#f92672">=</span> <span style="color:#66d9ef">ENV</span><span style="color:#f92672">[</span><span style="color:#e6db74">&#34;no_proxy&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>
+</span></span></code></pre></div><h2 id="el-script-completo-de-instalación">El script completo de instalación</h2>
+<p>Para lograr un entorno de Vagrant + Virtualbox repetible en diferentes estaciones de trabajo donde nos
+toque desempeñarnos, resulta más adecuado si en lugar de correr los mandatos manualmente, los englobamos
+en un pequeño programa en Bash.</p>
+<p>Se puede ver en el código que se intentó realizar un control de errores
+en las acciones, informando cuando alguna no se puede llevar a cabo.</p>
+<p>Además hay un rudimento de idempotencia, pues antes de realizar una acción (descargar un archivo, instalar un paquetes)
+se trata de verificar si ya fue realizada con anterioridad, para evitar repetirla innecesariamente.</p>
+<p>El control de errores y la idempotencia agrega «ruido» a las simples instrucciones de instalación, lo cual hace que
+ya no sean tan fáciles de leer.  En otra oportunidad veremos cómo usar una herramienta más apropiada a las instalaciones,
+llamada Ansible, la cual incorpora de fábrica estas importantes características.</p>
+<p>A continuación, toma un momento para revisar el programa y si necesitas virtualización hecha simple, hazlo correr.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># buscar paquete apropiado a arquitectura y cpu en https://www.vagrantup.com/downloads.html</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span>VAG_Version<span style="color:#f92672">=</span>1.8.1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># buscar paquete apropiado a arquitectura+cpu y que sea admitido por Vagrant en https://www.virtualbox.org/wiki/Downloads</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># son dos:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#    1. VirtualBox platform package</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#    2. VirtualBox Oracle VM VirtualBox Extension Pack</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">##</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># info de la version del Virtualbox</span>
+</span></span><span style="display:flex;"><span>VB_MayorVersion<span style="color:#f92672">=</span>5.0
+</span></span><span style="display:flex;"><span>VB_MinorVersion<span style="color:#f92672">=</span><span style="color:#ae81ff">26</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">##</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># release number del Oracle Virtualbox Extension Pack</span>
+</span></span><span style="display:flex;"><span>VB_EXTPACK_ReleaseNumber<span style="color:#f92672">=</span><span style="color:#ae81ff">108824</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#######################################</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">##</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># no hay mas cambios desde esta linea hacia abajo</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">##</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># la distro donde se van a instalar los paquetes Virtualbox y Vagrant:</span>
+</span></span><span style="display:flex;"><span>distro<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>lsb_release -d | awk <span style="color:#e6db74">&#39;{print $2}&#39;</span><span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>release<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>lsb_release -d | awk <span style="color:#e6db74">&#39;{print $3}&#39;</span><span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>codename<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>lsb_release -c | awk <span style="color:#e6db74">&#39;{print $2}&#39;</span><span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>arch<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>arch<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>error<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  echo $* &gt;&amp;<span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>  exit <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>oracle_pubkey<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $codename <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;trusty&#34;</span> -o $codename <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;wheezy&#34;</span> <span style="color:#f92672">]</span> ; <span style="color:#66d9ef">then</span> echo oracle_vbox.asc      ; <span style="color:#66d9ef">return</span> 0; <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $codename <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;xenial&#34;</span> -o $codename <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;jessie&#34;</span> <span style="color:#f92672">]</span> ; <span style="color:#66d9ef">then</span> echo oracle_vbox_2016.asc ; <span style="color:#66d9ef">return</span> 0; <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  error <span style="color:#e6db74">&#34;no se puede determinar cual es la clave de APT de Oracle para distro:&#34;</span><span style="color:#e6db74">${</span>distro<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34; y codename: &#34;</span><span style="color:#e6db74">${</span>codename<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>instalo_virtualbox<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># verifico si no esta ya instalado</span>
+</span></span><span style="display:flex;"><span>  dpkg -l  virtualbox-<span style="color:#e6db74">${</span>VB_MayorVersion<span style="color:#e6db74">}</span> &gt;/dev/null ; VB_INSTALADO<span style="color:#f92672">=</span>$?
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#ae81ff">0</span> -ne <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>VB_INSTALADO<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span> ; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    Oracle_pubkey_filename<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>oracle_pubkey<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># fuente de paquetes de Oracle para Virtualbox</span>
+</span></span><span style="display:flex;"><span>    sudo bash -c <span style="color:#e6db74">&#34;echo &#39;deb http://download.virtualbox.org/virtualbox/debian &#39;</span><span style="color:#e6db74">${</span>codename<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39; contrib&#39; &gt; /etc/apt/sources.list.d/virtualbox.list&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># The Oracle public key for apt-secure:</span>
+</span></span><span style="display:flex;"><span>    wget -q https://www.virtualbox.org/download/<span style="color:#e6db74">${</span>Oracle_pubkey_filename<span style="color:#e6db74">}</span> -O- | sudo apt-key add -
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># actualizo lista de paquetes</span>
+</span></span><span style="display:flex;"><span>    sudo apt-get update
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># instalo Virtualbox y dkms to ensure that the VirtualBox host kernel modules (vboxdrv, vboxnetflt and vboxnetadp) are properly updated if the Linux kernel version changes during the next apt-get upgrade.</span>
+</span></span><span style="display:flex;"><span>    sudo apt-get install -y --force-yes virtualbox-<span style="color:#e6db74">${</span>VB_MayorVersion<span style="color:#e6db74">}</span> dkms ; ret<span style="color:#f92672">=</span>$?
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">[</span> <span style="color:#ae81ff">0</span> -eq <span style="color:#e6db74">&#34;</span>$ret<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span> <span style="color:#f92672">||</span> error <span style="color:#e6db74">&#34;no se pudo instalar dkms y &#34;</span>virtualbox-<span style="color:#e6db74">${</span>VB_MayorVersion<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>instalo_oracle_extension_pack<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  VB_BASE_URL<span style="color:#f92672">=</span>http://download.virtualbox.org/virtualbox/<span style="color:#e6db74">${</span>VB_MayorVersion<span style="color:#e6db74">}</span>.<span style="color:#e6db74">${</span>VB_MinorVersion<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>  VB_EXTPACK_FILENAME<span style="color:#f92672">=</span>Oracle_VM_VirtualBox_Extension_Pack-<span style="color:#e6db74">${</span>VB_MayorVersion<span style="color:#e6db74">}</span>.<span style="color:#e6db74">${</span>VB_MinorVersion<span style="color:#e6db74">}</span>-<span style="color:#e6db74">${</span>VB_EXTPACK_ReleaseNumber<span style="color:#e6db74">}</span>.vbox-extpack
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># verifico si no esta ya instalado</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#ae81ff">0</span> -eq <span style="color:#e6db74">`</span>sudo VBoxManage list extpacks | awk <span style="color:#e6db74">&#39;/Extension Packs:/ {print $3} &#39;</span><span style="color:#e6db74">`</span> <span style="color:#f92672">]</span> ; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">[</span> -r <span style="color:#e6db74">${</span>VB_EXTPACK_FILENAME<span style="color:#e6db74">}</span> <span style="color:#f92672">]</span> <span style="color:#f92672">||</span> wget -q <span style="color:#e6db74">${</span>VB_BASE_URL<span style="color:#e6db74">}</span>/<span style="color:#e6db74">${</span>VB_EXTPACK_FILENAME<span style="color:#e6db74">}</span> ; ret<span style="color:#f92672">=</span>$?
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">[</span> <span style="color:#ae81ff">0</span> -eq <span style="color:#e6db74">&#34;</span>$ret<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span> <span style="color:#f92672">||</span> error <span style="color:#e6db74">&#34;no se pudo descargar el extension pack: &#34;</span><span style="color:#e6db74">${</span>VB_BASE_URL<span style="color:#e6db74">}</span>/<span style="color:#e6db74">${</span>VB_EXTPACK_FILENAME<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># instalo el Extension Pack</span>
+</span></span><span style="display:flex;"><span>    sudo VBoxManage extpack install <span style="color:#e6db74">${</span>VB_EXTPACK_FILENAME<span style="color:#e6db74">}</span> 2&gt;/dev/null ; ret<span style="color:#f92672">=</span>$?
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">[</span> <span style="color:#ae81ff">0</span> -eq <span style="color:#e6db74">&#34;</span>$ret<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span> <span style="color:#f92672">||</span> error <span style="color:#e6db74">&#34;no se pudo instalar el extension pack: &#34;</span><span style="color:#e6db74">${</span>VB_EXTPACK_FILENAME<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#sudo VBoxManage list extpacks</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#sudo VBoxManage extpack uninstall &#34;Oracle VM VirtualBox Extension Pack&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>instalo_vagrant<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  VAG_BASE_URL<span style="color:#f92672">=</span>https://releases.hashicorp.com/vagrant/<span style="color:#e6db74">${</span>VAG_Version<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>  VAG_PKG_NAME<span style="color:#f92672">=</span>vagrant_<span style="color:#e6db74">${</span>VAG_Version<span style="color:#e6db74">}</span>_<span style="color:#e6db74">${</span>arch<span style="color:#e6db74">}</span>.deb
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># verifico si no esta ya instalado</span>
+</span></span><span style="display:flex;"><span>  dpkg -l vagrant &gt;/dev/null ; VAG_INSTALADO<span style="color:#f92672">=</span>$?
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#ae81ff">0</span> -ne <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>VAG_INSTALADO<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span> ; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">[</span> -r <span style="color:#e6db74">${</span>VAG_PKG_NAME<span style="color:#e6db74">}</span> <span style="color:#f92672">]</span> <span style="color:#f92672">||</span> wget -q <span style="color:#e6db74">${</span>VAG_BASE_URL<span style="color:#e6db74">}</span>/<span style="color:#e6db74">${</span>VAG_PKG_NAME<span style="color:#e6db74">}</span> ; ret<span style="color:#f92672">=</span>$?
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">[</span> <span style="color:#ae81ff">0</span> -eq <span style="color:#e6db74">&#34;</span>$ret<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span> <span style="color:#f92672">||</span> error <span style="color:#e6db74">&#34;no se pudo descargar vagrant: &#34;</span><span style="color:#e6db74">${</span>VAG_BASE_URL<span style="color:#e6db74">}</span>/<span style="color:#e6db74">${</span>VAG_PKG_NAME<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    sudo dpkg -i <span style="color:#e6db74">${</span>VAG_PKG_NAME<span style="color:#e6db74">}</span> ; ret<span style="color:#f92672">=</span>$?
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">[</span> <span style="color:#ae81ff">0</span> -eq <span style="color:#e6db74">&#34;</span>$ret<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span> <span style="color:#f92672">||</span> error <span style="color:#e6db74">&#34;no se pudo instalar &#34;</span><span style="color:#e6db74">${</span>VAG_PKG_NAME<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>instalo_vagrant_proxyconf<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  vagrant plugin install vagrant-proxyconf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  cat &gt; ~/.vagrant.d/Vagrantfile &lt;&lt; !EOF
+</span></span><span style="display:flex;"><span>Vagrant.configure<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;2&#34;</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">do</span> |config|
+</span></span><span style="display:flex;"><span>  puts <span style="color:#e6db74">&#34;proxyconf...&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> Vagrant.has_plugin?<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;vagrant-proxyconf&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    puts <span style="color:#e6db74">&#34;find proxyconf plugin !&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> ENV<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;http_proxy&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>      puts <span style="color:#e6db74">&#34;http_proxy: &#34;</span> + ENV<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;http_proxy&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>      config.proxy.http     <span style="color:#f92672">=</span> ENV<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;http_proxy&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    end
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> ENV<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;https_proxy&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>      puts <span style="color:#e6db74">&#34;https_proxy: &#34;</span> + ENV<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;https_proxy&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>      config.proxy.https    <span style="color:#f92672">=</span> ENV<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;https_proxy&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    end
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> ENV<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;no_proxy&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>      config.proxy.no_proxy <span style="color:#f92672">=</span> ENV<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;no_proxy&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    end
+</span></span><span style="display:flex;"><span>  end
+</span></span><span style="display:flex;"><span>end
+</span></span><span style="display:flex;"><span>!EOF
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>instalo_vagrant_plugins<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  mkdir -p ~/.vagrant.d/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  instalo_vagrant_proxyconf
+</span></span><span style="display:flex;"><span>  vagrant plugin install vagrant-share
+</span></span><span style="display:flex;"><span>  vagrant plugin install vagrant-vbguest
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">##</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># main</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span>instalo_virtualbox
+</span></span><span style="display:flex;"><span>instalo_oracle_extension_pack
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>instalo_vagrant
+</span></span><span style="display:flex;"><span>instalo_vagrant_plugins
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">##</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># luego se puede verificar la instalación con:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># vagrant init ubuntu/trusty32; vagrant up # para crear una VM de prueba</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># vagrant ssh     # para conectarte a la VM recién creada</span>
+</span></span></code></pre></div><h2 id="obtener-el-código-fuente-desde-github">Obtener el código fuente desde Github</h2>
+<p>Se creó un repo en Github: <a href="https://github.com/CesarBallardini/instala-virtualbox-vagrant">https://github.com/CesarBallardini/instala-virtualbox-vagrant</a></p>
+<p>Para obtener este código fuente, debes clonar el repositorio mediante SSH o HTTPS:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  git clone git@github.com:CesarBallardini/instala-virtualbox-vagrant.git     <span style="color:#75715e"># SSH</span>
+</span></span><span style="display:flex;"><span>  git clone https://github.com/CesarBallardini/instala-virtualbox-vagrant.git <span style="color:#75715e"># HTTPS</span>
+</span></span></code></pre></div><h2 id="para-crear-inicialmente-este-proyecto">Para crear inicialmente este proyecto</h2>
+<p>Para subir el código de este proyecto, simplemente hay que hacer:</p>
+<ul>
+<li>editar el <code>.gitignore</code> para evitar el directorio privado y el de vagrant:</li>
+</ul>
+<pre tabindex="0"><code>provision/private/
+.vagrant
+</code></pre><ul>
+<li>inicializar el repo git, agregar los cambios relevantes, crear el commit inicial:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  git init
+</span></span><span style="display:flex;"><span>  git add .
+</span></span><span style="display:flex;"><span>  git commit -m <span style="color:#e6db74">&#34;instrucciones de instalacion y Vagrantfile para probarlas&#34;</span>
+</span></span></code></pre></div><ul>
+<li>crear un repo en Github, ene ste caso se creó el <code>instala-virtualbox-vagrant</code></li>
+<li>poner el repo de github como origin y subir los cambios:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  git remote add origin https://github.com/CesarBallardini/instala-virtualbox-vagrant.git
+</span></span><span style="display:flex;"><span>  git push -u origin master
+</span></span></code></pre></div><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/vagrant/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Vagrant</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/virtualbox/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Virtualbox</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/debian/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Debian</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/ubuntu/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Ubuntu</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/instalaci%C3%B3n/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Instalación</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Relacionado</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/posts/vagrant-que-es-eso/">Vagrant: ¿Qué es eso?</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://katra.ballardini.com.ar/" >
+    &copy;  César Ballardini 2025 
+  </a>
+    <div><div class="ananke-socials"><a href="http://linkedin.com/in/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a><a href="https://x.com/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition x-twitter link dib z-999 pt3 pt0-l mr1"
+        title="follow on X - Opens in a new window"
+        aria-label="follow on X - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+            
+          </span></a><a href="https://github.com/Cesar.Ballardini/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+            
+          </span></a></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

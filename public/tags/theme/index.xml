@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Theme on katra</title>
+    <link>https://katra.ballardini.com.ar/tags/theme/</link>
+    <description>Recent content in Theme on katra</description>
+    <generator>Hugo</generator>
+    <language>es-AR</language>
+    <copyright>César Ballardini</copyright>
+    <lastBuildDate>Thu, 25 Aug 2016 00:00:00 -0300</lastBuildDate>
+    <atom:link href="https://katra.ballardini.com.ar/tags/theme/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Jekyll HPSTR: Cómo eliminar el ejemplo y poner tu propio contenido</title>
+      <link>https://katra.ballardini.com.ar/posts/jekyll-hpstr-como-eliminar-el-ejemplo/</link>
+      <pubDate>Thu, 25 Aug 2016 00:00:00 -0300</pubDate>
+      <guid>https://katra.ballardini.com.ar/posts/jekyll-hpstr-como-eliminar-el-ejemplo/</guid>
+      <description>&lt;p&gt;Nuevamente comenzamos revisando las &lt;a href=&#34;https://mmistakes.github.io/hpstr-jekyll-theme/theme-setup/&#34;&gt;instrucciones&lt;/a&gt; del tema HPSTR en&lt;/p&gt;&#xA;&lt;p&gt;Entonces, dentro de la VM:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd /vagrant/www/CesarBallardini.github.io/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Eliminamos los directorios:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;theme-setup/&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;about/&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Mantenemos los directorios siguientes:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;assets/&lt;/code&gt; (traducir &lt;em&gt;back&lt;/em&gt; en &lt;code&gt;js/plugins/jquery.dlmenu.js&lt;/code&gt;, y en &lt;code&gt;js/scripts/.min.js&lt;/code&gt;)&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;images/&lt;/code&gt; (dejo sólo las imágenes &lt;code&gt;apple-touch-icon-114x114-precomposed.png&lt;/code&gt;, &lt;code&gt;apple-touch-icon-144x144-precomposed.png&lt;/code&gt;, &lt;code&gt;apple-touch-icon-72x72-precomposed.png&lt;/code&gt;, &lt;code&gt;apple-touch-icon-precomposed.png&lt;/code&gt;, &lt;code&gt;twitter-card-summary-large-image.jpg&lt;/code&gt;; agrego &lt;code&gt;cesarballardini.jpg&lt;/code&gt;)&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;_data/&lt;/code&gt; (comento los enlaces en &lt;code&gt;_navigation.yml&lt;/code&gt;)&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;_includes/&lt;/code&gt; (&lt;code&gt;navigation.html&lt;/code&gt; traducir mensajes, &lt;code&gt;read-more.html&lt;/code&gt; arreglar fechas, traducir tiempo de lectura en &lt;code&gt;read-time-index.html&lt;/code&gt; y &lt;code&gt;read-time.html&lt;/code&gt;)&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;_layouts/&lt;/code&gt; (&lt;code&gt;post.html&lt;/code&gt; arreglar fechas)&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;_posts/&lt;/code&gt; (elimino los archivos con los posts de ejemplo)&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;_sass/&lt;/code&gt; (atribución de entradas pasar a castellano en &lt;code&gt;_page.scss&lt;/code&gt;)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Los siguientes, los mantenemos pero hay que personalizarlos:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Jekyll: El tema HPSTR</title>
+      <link>https://katra.ballardini.com.ar/posts/jekyll-el-tema-hpstr/</link>
+      <pubDate>Wed, 24 Aug 2016 00:00:00 -0300</pubDate>
+      <guid>https://katra.ballardini.com.ar/posts/jekyll-el-tema-hpstr/</guid>
+      <description>&lt;p&gt;HPSTR es un tema de Jekyll que usa SCSS y requiere Jekyll 3.x.&lt;/p&gt;&#xA;&lt;p&gt;Los pasos de instalación están descritos en &lt;a href=&#34;https://mmistakes.github.io/hpstr-jekyll-theme/theme-setup/&#34;&gt;las instrucciones de instalación de este tema&lt;/a&gt; y los voy a adaptar al entorno de VM que hemos construido antes.&lt;/p&gt;&#xA;&lt;p&gt;Luego de levantar nuestra VM con Jekyll instalado, nos conectamos a nuestra cuenta en Github y hacemos un fork del &lt;a href=&#34;https://github.com/mmistakes/hpstr-jekyll-theme/&#34;&gt;repo del tema&lt;/a&gt; en Github.&lt;/p&gt;&#xA;&lt;p&gt;Para crear un sitio Web en Github, las instrucciones están muy claras en el tutorial de &lt;a href=&#34;http://jmcglone.com/guides/github-pages/&#34;&gt;github-pages&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Migración on katra</title>
+    <link>https://katra.ballardini.com.ar/tags/migraci%C3%B3n/</link>
+    <description>Recent content in Migración on katra</description>
+    <generator>Hugo</generator>
+    <language>es-AR</language>
+    <copyright>César Ballardini</copyright>
+    <lastBuildDate>Mon, 20 Jan 2025 00:00:00 -0300</lastBuildDate>
+    <atom:link href="https://katra.ballardini.com.ar/tags/migraci%C3%B3n/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cómo mover los posts Jekyll hacia el blog Hugo</title>
+      <link>https://katra.ballardini.com.ar/posts/como-mover-los-posts-jekyll-hacia-hugo/</link>
+      <pubDate>Mon, 20 Jan 2025 00:00:00 -0300</pubDate>
+      <guid>https://katra.ballardini.com.ar/posts/como-mover-los-posts-jekyll-hacia-hugo/</guid>
+      <description>&lt;p&gt;En el viejo blog Jekyll las entradas (posts) residen en el directorio: &lt;code&gt;_posts&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;Simplemente necesitamos copiar lo archivos del viejo blog hacia la nueva ubicación.&#xA;Nos movemos al directorio donde reside el nuevo blog:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Obtenemos una copia del viejo blog en Jekyll&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone https://github.com/CesarBallardini/CesarBallardini.github.io&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;&#xA;&lt;li&gt;copiamos los archivos:&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cp CesarBallardini.github.io/_posts/* content/es/posts&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Y con eso es suficiente.  Ahora cuando accedemos al blog Hugo están disponibles las antiguas entradas.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

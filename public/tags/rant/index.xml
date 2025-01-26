@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rant on katra</title>
+    <link>https://katra.ballardini.com.ar/tags/rant/</link>
+    <description>Recent content in Rant on katra</description>
+    <generator>Hugo</generator>
+    <language>es-AR</language>
+    <copyright>César Ballardini</copyright>
+    <lastBuildDate>Mon, 22 Aug 2016 00:00:00 -0300</lastBuildDate>
+    <atom:link href="https://katra.ballardini.com.ar/tags/rant/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mi nuevo blog con Jekyll</title>
+      <link>https://katra.ballardini.com.ar/posts/mi-nuevo-blog-con-jekyll/</link>
+      <pubDate>Mon, 22 Aug 2016 00:00:00 -0300</pubDate>
+      <guid>https://katra.ballardini.com.ar/posts/mi-nuevo-blog-con-jekyll/</guid>
+      <description>&lt;p&gt;Un día cualquiera te das cuenta que ya no querés mantener tu blog con Wordpress alojado en tu propio VPS. Hay una nueva versión de Wordpress, no todos los plugins que usas son compatibles.  Tenés que hacer backups de la base de datos y de la instalación. Uno se sincera: no me gusta escribir, soy de las personas que disfrutan una buena charla.&lt;/p&gt;&#xA;&lt;p&gt;¿Para qué escribo? Para olvidar sin pena. ¿Para quién escribo? Para quien quiera recordar.  Cuando olvidamos suficientemente profundo es como si no conociéramos más, salvo las cicatrices que deja ese conocimiento.  Cuando otra persona o yo mismo encuentro lo que escribí hace tiempo, aprendemos.  La escritura es nuestra oportunidad de hacer persistir lo que pensamos, lo que valoramos en cierto momento. Aprendemos que era valioso en aquel momento, como para haberle dedicado el trabajo de escribirlo.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
