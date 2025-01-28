@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Instalación on katra</title>
-    <link>https://katra.ballardini.com.ar/tags/instalaci%C3%B3n/</link>
-    <description>Recent content in Instalación on katra</description>
+    <title>Instalacion on katra</title>
+    <link>https://katra.ballardini.com.ar/tags/instalacion/</link>
+    <description>Recent content in Instalacion on katra</description>
     <generator>Hugo</generator>
     <language>es-AR</language>
     <copyright>César Ballardini</copyright>
     <lastBuildDate>Sun, 19 Jan 2025 00:00:00 -0300</lastBuildDate>
-    <atom:link href="https://katra.ballardini.com.ar/tags/instalaci%C3%B3n/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://katra.ballardini.com.ar/tags/instalacion/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cómo instalar Hugo en mi laptop</title>
       <link>https://katra.ballardini.com.ar/posts/como-instalar-hugo-en-mi-laptop/</link>

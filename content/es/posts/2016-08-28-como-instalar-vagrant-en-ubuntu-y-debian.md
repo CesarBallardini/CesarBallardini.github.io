@@ -2,7 +2,7 @@
 layout: post
 title: 'Cómo instalar Vagrant en Ubuntu y Debian'
 description: "Instalación de Vagrant, Virtualbox, plugins, y entorno sobre variantes GNU/Linux Debian y Ubuntu"
-tags: [vagrant, virtualbox, Debian, Ubuntu, instalación]
+tags: [vagrant, virtualbox, Debian, Ubuntu, instalacion]
 ---
 
 Vagrant es un programa que aprovecha una plataforma de virtualización para proporcionar un _workflow_ simple de gestión del

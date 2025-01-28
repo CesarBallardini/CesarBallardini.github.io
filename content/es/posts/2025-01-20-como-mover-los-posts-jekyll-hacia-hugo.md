@@ -2,7 +2,7 @@
 layout: post
 title: 'Cómo mover los posts Jekyll hacia el blog Hugo'
 description: "Migración de posts Jekyll a posts Hugo"
-tags: [Github Pages, Hugo, Jekyll, migración]
+tags: [Github Pages, Hugo, Jekyll, migracion]
 ---
 
 

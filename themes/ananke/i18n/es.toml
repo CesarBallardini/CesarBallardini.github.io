@@ -2,7 +2,7 @@
 other = "Más"
 
 [allTitle]
-other = "Todos los {{.Title }}"
+other = "Todas las {{.Title }}"
 
 [recentTitle]
 other = "{{.Title }} recientes"

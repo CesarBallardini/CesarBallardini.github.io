@@ -2,7 +2,7 @@
 layout: post
 title: 'Cómo instalar Hugo en mi laptop'
 description: "Instalación de Hugo en una laptop con MS Windows 11"
-tags: [MS Windows 11, Hugo, Jekyll, instalación]
+tags: [MS Windows 11, Hugo, Jekyll, instalacion]
 ---
 
 ## 1. Instalamos Hugo

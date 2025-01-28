@@ -49,7 +49,7 @@ tags: []
 * ver videos paradigmas y escribir posts con las cosas extras
 * video de 1968 del inventor del raton, alan kay tambien lo cita
 * teoria de programacion imperativa
-* haskell libro y clases del meier o algo asi que tenia camisetas de colores
+* haskell libro y clases del meier o algo asi que tenia camisetas de colores erik meijer
 * scheme papers
 * guy steele growing a language, pdf, video
 * citas interesantes
