@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://katra.ballardini.com.ar/</loc>
-    <lastmod>2025-01-24T00:00:00-03:00</lastmod>
+    <lastmod>2025-01-20T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -17,12 +17,12 @@
                 href="https://katra.ballardini.com.ar/"
                 />
   </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/</loc>
-    <lastmod>2025-01-24T00:00:00-03:00</lastmod>
+    <loc>https://katra.ballardini.com.ar/posts/como-mover-los-posts-jekyll-hacia-hugo/</loc>
+    <lastmod>2025-01-20T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/como-mover-los-posts-jekyll-hacia-hugo/</loc>
+    <loc>https://katra.ballardini.com.ar/posts/</loc>
     <lastmod>2025-01-20T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -184,98 +184,6 @@
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/rant/</loc>
     <lastmod>2016-08-22T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/drafts/draft-clip/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/drafts/draft-como-llegue-al-software-libre/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/drafts/draft-como-uso-un-sistema-de-registro-de-incidencias/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/drafts/draft-diametro-de-los-cohetes-trasbordador/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/drafts/draft-dvd-boot-paradigmas/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/drafts/draft-estructuras-de-datos-funcionales/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/drafts/draft-infrastructura-deterministica/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/drafts/draft-listas-infinitas/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/drafts/draft-lugli/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/drafts/draft-merlinux/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/drafts/draft-migracion-sistema-cobol/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/drafts/draft-mind-forth/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/drafts/draft-motores-a-reaccion-combustible-liquido/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/drafts/draft-programma-101/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/drafts/draft-python-dev-environment/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/drafts/draft-rest/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/drafts/draft-rm-cobol-en-gnu-linux/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/drafts/draft-sco-foxbase-en-gnu-linux/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/drafts/draft-sibrom-despliegues-diarios/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/drafts/draft-thinstation/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/drafts/draft-tidy-first/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/drafts/draft-udpcast/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/drafts/draft/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>

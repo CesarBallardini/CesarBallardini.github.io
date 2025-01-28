@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>katra</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Mirar primero:
+https://puppet.com/presentations/designing-puppet-rolesprofiles-pattern
+Mirarlo de vuelta :)
+Cómo se puede pensar en Ansible:
+https://softwareengineering.stackexchange.com/questions/324705/what-is-the-equivalent-of-puppets-roles-profiles-pattern-in-ansible
+Ansible has the concepts of roles and dependencies which can be used in conjunction to create a roles/profiles/components pattern as you do in Puppet. You could design your role as a component, as a profile or as a role. Probably you would need a naming convention structure to not get confused about the difference between them. If you want to build a webserver role (puppet pattern) you could have 5 roles (ansible roles), component-apache, component-mysql, profile-database, profile-webserver, role-webserver. The first 2 will be roles that installs and configure a generic apache/mysql software (you should find it at ansible-galaxy). The 2 profiles will add these 2 components as dependencies (in meta/) and specify what exactly your implementation is via vars or tasks (should I support virtualhost? My mysql profile will work as cluster?). In the end, you create the last role (ansible) which will work as a role (puppet pattern). It will add as dependencies your 2 profiles (profile-database, profile-webserver).">
+    <meta name="generator" content="Hugo 0.142.0">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+      <meta name="author" content = "César Ballardini">
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.8ea42c4c5025337ca923faf1dc6e64b4dab13894d8f3f6908ee774c5b1502fec.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://katra.ballardini.com.ar/just-ideas-for-future-posts/sysadmin/draft-componets-roles-profiles-usando-ansible/">
+    
+
+    <meta property="og:url" content="https://katra.ballardini.com.ar/just-ideas-for-future-posts/sysadmin/draft-componets-roles-profiles-usando-ansible/">
+  <meta property="og:site_name" content="katra">
+  <meta property="og:title" content="katra">
+  <meta property="og:description" content="Mirar primero:
+https://puppet.com/presentations/designing-puppet-rolesprofiles-pattern
+Mirarlo de vuelta :)
+Cómo se puede pensar en Ansible: https://softwareengineering.stackexchange.com/questions/324705/what-is-the-equivalent-of-puppets-roles-profiles-pattern-in-ansible
+Ansible has the concepts of roles and dependencies which can be used in conjunction to create a roles/profiles/components pattern as you do in Puppet. You could design your role as a component, as a profile or as a role. Probably you would need a naming convention structure to not get confused about the difference between them. If you want to build a webserver role (puppet pattern) you could have 5 roles (ansible roles), component-apache, component-mysql, profile-database, profile-webserver, role-webserver. The first 2 will be roles that installs and configure a generic apache/mysql software (you should find it at ansible-galaxy). The 2 profiles will add these 2 components as dependencies (in meta/) and specify what exactly your implementation is via vars or tasks (should I support virtualhost? My mysql profile will work as cluster?). In the end, you create the last role (ansible) which will work as a role (puppet pattern). It will add as dependencies your 2 profiles (profile-database, profile-webserver).">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="just-ideas-for-future-posts">
+
+  <meta itemprop="name" content="katra">
+  <meta itemprop="description" content="Mirar primero:
+https://puppet.com/presentations/designing-puppet-rolesprofiles-pattern
+Mirarlo de vuelta :)
+Cómo se puede pensar en Ansible: https://softwareengineering.stackexchange.com/questions/324705/what-is-the-equivalent-of-puppets-roles-profiles-pattern-in-ansible
+Ansible has the concepts of roles and dependencies which can be used in conjunction to create a roles/profiles/components pattern as you do in Puppet. You could design your role as a component, as a profile or as a role. Probably you would need a naming convention structure to not get confused about the difference between them. If you want to build a webserver role (puppet pattern) you could have 5 roles (ansible roles), component-apache, component-mysql, profile-database, profile-webserver, role-webserver. The first 2 will be roles that installs and configure a generic apache/mysql software (you should find it at ansible-galaxy). The 2 profiles will add these 2 components as dependencies (in meta/) and specify what exactly your implementation is via vars or tasks (should I support virtualhost? My mysql profile will work as cluster?). In the end, you create the last role (ansible) which will work as a role (puppet pattern). It will add as dependencies your 2 profiles (profile-database, profile-webserver).">
+  <meta itemprop="wordCount" content="2389">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="katra">
+  <meta name="twitter:description" content="Mirar primero:
+https://puppet.com/presentations/designing-puppet-rolesprofiles-pattern
+Mirarlo de vuelta :)
+Cómo se puede pensar en Ansible: https://softwareengineering.stackexchange.com/questions/324705/what-is-the-equivalent-of-puppets-roles-profiles-pattern-in-ansible
+Ansible has the concepts of roles and dependencies which can be used in conjunction to create a roles/profiles/components pattern as you do in Puppet. You could design your role as a component, as a profile or as a role. Probably you would need a naming convention structure to not get confused about the difference between them. If you want to build a webserver role (puppet pattern) you could have 5 roles (ansible roles), component-apache, component-mysql, profile-database, profile-webserver, role-webserver. The first 2 will be roles that installs and configure a generic apache/mysql software (you should find it at ansible-galaxy). The 2 profiles will add these 2 components as dependencies (in meta/) and specify what exactly your implementation is via vars or tasks (should I support virtualhost? My mysql profile will work as cluster?). In the end, you create the last role (ansible) which will work as a role (puppet pattern). It will add as dependencies your 2 profiles (profile-database, profile-webserver).">
+
+      
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        katra
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/posts/" title="Entradas pagina">
+              Entradas
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/just-ideas-for-future-posts/" title="Just-Ideas-for-Future-Posts pagina">
+              Just-Ideas-for-Future-Posts
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="http://linkedin.com/in/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a><a href="https://x.com/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition x-twitter link dib z-999 pt3 pt0-l mr1"
+        title="follow on X - Opens in a new window"
+        aria-label="follow on X - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+            
+          </span></a><a href="https://github.com/CesarBallardini/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+            
+          </span></a></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Just-Ideas-for-Future-Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=https%3A%2F%2Fkatra.ballardini.com.ar%2Fjust-ideas-for-future-posts%2Fsysadmin%2Fdraft-componets-roles-profiles-usando-ansible%2F&amp;subject="
+        class="ananke-social-link email no-underline"
+        title="Share on Email" aria-label="Share on Email"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
+                
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=https%3A%2F%2Fkatra.ballardini.com.ar%2Fjust-ideas-for-future-posts%2Fsysadmin%2Fdraft-componets-roles-profiles-usando-ansible%2F&amp;summary=Mirar&#43;primero%3A%0Ahttps%3A%2F%2Fpuppet.com%2Fpresentations%2Fdesigning-puppet-rolesprofiles-pattern%0AMirarlo&#43;de&#43;vuelta&#43;%3A%29%0AC%C3%B3mo&#43;se&#43;puede&#43;pensar&#43;en&#43;Ansible%3A&#43;https%3A%2F%2Fsoftwareengineering.stackexchange.com%2Fquestions%2F324705%2Fwhat-is-the-equivalent-of-puppets-roles-profiles-pattern-in-ansible%0AAnsible&#43;has&#43;the&#43;concepts&#43;of&#43;roles&#43;and&#43;dependencies&#43;which&#43;can&#43;be&#43;used&#43;in&#43;conjunction&#43;to&#43;create&#43;a&#43;roles%2Fprofiles%2Fcomponents&#43;pattern&#43;as&#43;you&#43;do&#43;in&#43;Puppet.&#43;You&#43;could&#43;design&#43;your&#43;role&#43;as&#43;a&#43;component%2C&#43;as&#43;a&#43;profile&#43;or&#43;as&#43;a&#43;role.&#43;Probably&#43;you&#43;would&#43;need&#43;a&#43;naming&#43;convention&#43;structure&#43;to&#43;not&#43;get&#43;confused&#43;about&#43;the&#43;difference&#43;between&#43;them.&#43;If&#43;you&#43;want&#43;to&#43;build&#43;a&#43;webserver&#43;role&#43;%28puppet&#43;pattern%29&#43;you&#43;could&#43;have&#43;5&#43;roles&#43;%28ansible&#43;roles%29%2C&#43;component-apache%2C&#43;component-mysql%2C&#43;profile-database%2C&#43;profile-webserver%2C&#43;role-webserver.&#43;The&#43;first&#43;2&#43;will&#43;be&#43;roles&#43;that&#43;installs&#43;and&#43;configure&#43;a&#43;generic&#43;apache%2Fmysql&#43;software&#43;%28you&#43;should&#43;find&#43;it&#43;at&#43;ansible-galaxy%29.&#43;The&#43;2&#43;profiles&#43;will&#43;add&#43;these&#43;2&#43;components&#43;as&#43;dependencies&#43;%28in&#43;meta%2F%29&#43;and&#43;specify&#43;what&#43;exactly&#43;your&#43;implementation&#43;is&#43;via&#43;vars&#43;or&#43;tasks&#43;%28should&#43;I&#43;support&#43;virtualhost%3F&#43;My&#43;mysql&#43;profile&#43;will&#43;work&#43;as&#43;cluster%3F%29.&#43;In&#43;the&#43;end%2C&#43;you&#43;create&#43;the&#43;last&#43;role&#43;%28ansible%29&#43;which&#43;will&#43;work&#43;as&#43;a&#43;role&#43;%28puppet&#43;pattern%29.&#43;It&#43;will&#43;add&#43;as&#43;dependencies&#43;your&#43;2&#43;profiles&#43;%28profile-database%2C&#43;profile-webserver%29.%0A&amp;title=&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fjust-ideas-for-future-posts%2Fsysadmin%2Fdraft-componets-roles-profiles-usando-ansible%2F"
+        class="ananke-social-link linkedin no-underline"
+        title="Share on LinkedIn" aria-label="Share on LinkedIn"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+                
+              </span></a><a href="https://twitter.com/intent/tweet/?&amp;text=Mirar&#43;primero%3A%0Ahttps%3A%2F%2Fpuppet.com%2Fpresentations%2Fdesigning-puppet-rolesprofiles-pattern%0AMirarlo&#43;de&#43;vuelta&#43;%3A%29%0AC%C3%B3mo&#43;se&#43;puede&#43;pensar&#43;en&#43;Ansible%3A&#43;https%3A%2F%2Fsoftwareengineering.stackexchange.com%2Fquestions%2F324705%2Fwhat-is-the-equivalent-of-puppets-roles-profiles-pattern-in-ansible%0AAnsible&#43;has&#43;the&#43;concepts&#43;of&#43;roles&#43;and&#43;dependencies&#43;which&#43;can&#43;be&#43;used&#43;in&#43;conjunction&#43;to&#43;create&#43;a&#43;roles%2Fprofiles%2Fcomponents&#43;pattern&#43;as&#43;you&#43;do&#43;in&#43;Puppet.&#43;You&#43;could&#43;design&#43;your&#43;role&#43;as&#43;a&#43;component%2C&#43;as&#43;a&#43;profile&#43;or&#43;as&#43;a&#43;role.&#43;Probably&#43;you&#43;would&#43;need&#43;a&#43;naming&#43;convention&#43;structure&#43;to&#43;not&#43;get&#43;confused&#43;about&#43;the&#43;difference&#43;between&#43;them.&#43;If&#43;you&#43;want&#43;to&#43;build&#43;a&#43;webserver&#43;role&#43;%28puppet&#43;pattern%29&#43;you&#43;could&#43;have&#43;5&#43;roles&#43;%28ansible&#43;roles%29%2C&#43;component-apache%2C&#43;component-mysql%2C&#43;profile-database%2C&#43;profile-webserver%2C&#43;role-webserver.&#43;The&#43;first&#43;2&#43;will&#43;be&#43;roles&#43;that&#43;installs&#43;and&#43;configure&#43;a&#43;generic&#43;apache%2Fmysql&#43;software&#43;%28you&#43;should&#43;find&#43;it&#43;at&#43;ansible-galaxy%29.&#43;The&#43;2&#43;profiles&#43;will&#43;add&#43;these&#43;2&#43;components&#43;as&#43;dependencies&#43;%28in&#43;meta%2F%29&#43;and&#43;specify&#43;what&#43;exactly&#43;your&#43;implementation&#43;is&#43;via&#43;vars&#43;or&#43;tasks&#43;%28should&#43;I&#43;support&#43;virtualhost%3F&#43;My&#43;mysql&#43;profile&#43;will&#43;work&#43;as&#43;cluster%3F%29.&#43;In&#43;the&#43;end%2C&#43;you&#43;create&#43;the&#43;last&#43;role&#43;%28ansible%29&#43;which&#43;will&#43;work&#43;as&#43;a&#43;role&#43;%28puppet&#43;pattern%29.&#43;It&#43;will&#43;add&#43;as&#43;dependencies&#43;your&#43;2&#43;profiles&#43;%28profile-database%2C&#43;profile-webserver%29.%0A&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fjust-ideas-for-future-posts%2Fsysadmin%2Fdraft-componets-roles-profiles-usando-ansible%2F"
+        class="ananke-social-link x-twitter no-underline"
+        title="Share on X" aria-label="Share on X"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+                
+              </span></a><a href="%25!s%28%3cnil%3e%29?"
+        class="ananke-social-link github no-underline"
+        title="Share on GitHub" aria-label="Share on GitHub"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+                
+              </span></a></div>
+<h1 class="f1 athelas mt3 mb1"></h1>
+      
+      <p class="tracked">
+        Por <strong>César Ballardini</strong>
+      </p>
+      
+      
+      
+
+      
+      
+        <span class="f6 mv4 dib tracked"> - Lectura en 12 minutos </span>
+        <span class="f6 mv4 dib tracked"> - 2389 palabras </span>
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Mirar primero:</p>
+<p><a href="https://puppet.com/presentations/designing-puppet-rolesprofiles-pattern">https://puppet.com/presentations/designing-puppet-rolesprofiles-pattern</a></p>
+<p>Mirarlo de vuelta :)</p>
+<p>Cómo se puede pensar en Ansible:
+<a href="https://softwareengineering.stackexchange.com/questions/324705/what-is-the-equivalent-of-puppets-roles-profiles-pattern-in-ansible">https://softwareengineering.stackexchange.com/questions/324705/what-is-the-equivalent-of-puppets-roles-profiles-pattern-in-ansible</a></p>
+<p>Ansible has the concepts of roles and dependencies which can be used in conjunction to create a roles/profiles/components pattern as you do in Puppet. You could design your role as a component, as a profile or as a role. Probably you would need a naming convention structure to not get confused about the difference between them. If you want to build a webserver role (puppet pattern) you could have 5 roles (ansible roles), component-apache, component-mysql, profile-database, profile-webserver, role-webserver. The first 2 will be roles that installs and configure a generic apache/mysql software (you should find it at ansible-galaxy). The 2 profiles will add these 2 components as dependencies (in meta/) and specify what exactly your implementation is via vars or tasks (should I support virtualhost? My mysql profile will work as cluster?). In the end, you create the last role (ansible) which will work as a role (puppet pattern). It will add as dependencies your 2 profiles (profile-database, profile-webserver).</p>
+<p>In the end, on your playbook, you just apply the role-webserver to the nodes specified.</p>
+<p>el post que inició todo ese tema:
+<a href="https://www.craigdunn.org/2012/05/239/">https://www.craigdunn.org/2012/05/239/</a></p>
+<p>de ahi saqué: <a href="https://www.slideshare.net/PuppetLabs/roles-talk">https://www.slideshare.net/PuppetLabs/roles-talk</a> diapos</p>
+<p>y video: <a href="https://www.youtube.com/watch?v=ZpHtOnlSGNY">https://www.youtube.com/watch?v=ZpHtOnlSGNY</a> (pero no lo puedo ver en la oficina, no se porque:  &ldquo;400. That’s an error. Your client has issued a malformed or illegal request. That’s all we know.&rdquo; )</p>
+<p>Me resultó bastante mas esclarecedora la breve explicación sobre Ansible que la charla de Puppet, aunque es cierto que necesitás verla para saber de qué estamos hablando. Me quedan igualmente algunas dudas, tiro las primeras:</p>
+<p>A nivel de componente: ¿los roles instanciarían variables, solamente las dejaría por default para garantizar una instalación funcional? Si quedan sin instanciar, la especificación vendría en el nivel de Perfil o del Rol?</p>
+<p>A nivel de perfil: según el ejemplo en el nivel perfil tendrías algo como profile-database o profile-webserver, pero en esos caso podrían querer construirse desde distintos componentes. El ejemplo más claro profile-database, si hablamos de una base oracle, va a tener el componente principal y probablemente todas las variables distintas a un mysql ¿En ese caso el patrón sugiere un solo profile-database con toda la lógica para poder instanciarlo como uno u otro o habría en cambio un Perfil para cada uno?</p>
+<p>Si en nuestro modelo tenemos aplicaciones de tal forma que tenemos un vínculo de n aplicaciones a m servidores. Pienso que habría un componente aplicacion-php que crearía usuarios necesarios, directorios, permisos, etc ¿se podría modelar así? Y las configuraciones de virtual-host o propiedades de php específicas dónde irían, en un Perfil? ¿qué Perfil?</p>
+<p>César,</p>
+<p>Me resultó bastante mas esclarecedora la breve explicación sobre Ansible que la charla de Puppet, aunque es cierto que necesitás verla para saber de qué estamos hablando. Me quedan igualmente algunas dudas, tiro las primeras:</p>
+<p>A nivel de componente: ¿los roles instanciarían variables, solamente las dejaría por default para garantizar una instalación funcional?</p>
+<p>Yo creo que algo así: en default/main.yml los parámetros (ej: ruta del binario o nombre del paquete) y en vars/main.yml los valores para dejar el componente en estado funcional.</p>
+<p>Si quedan sin instanciar, la especificación vendría en el nivel de Perfil o del Rol?</p>
+<p>No debería quedar nada sin instanciar (o está en default/ o en vars/ )</p>
+<p>A nivel de perfil: según el ejemplo en el nivel perfil tendrías algo como profile-database o profile-webserver, pero en esos caso podrían querer construirse desde distintos componentes. El ejemplo más claro profile-database, si hablamos de una base oracle, va a tener el componente principal y probablemente todas las variables distintas a un mysql ¿En ese caso el patrón sugiere un solo profile-database con toda la lógica para poder instanciarlo como uno u otro o habría en cambio un Perfil para cada uno?</p>
+<p>Esta respuesta te la debo, pero&hellip;</p>
+<p>Bienvenido al proyecto DebOps (DevOps en Debian)</p>
+<p><a href="https://docs.debops.org/en/master/">https://docs.debops.org/en/master/</a> docs
+<a href="https://github.com/debops/debops">https://github.com/debops/debops</a> código</p>
+<p>La historia comienza aquí: <a href="https://github.com/debops/debops/blob/master/ansible/playbooks/site.yml">https://github.com/debops/debops/blob/master/ansible/playbooks/site.yml</a></p>
+<p>por ejemplo incluye a <a href="https://github.com/debops/debops/blob/master/ansible/playbooks/srv.yml">https://github.com/debops/debops/blob/master/ansible/playbooks/srv.yml</a>
+el cual meramente dice:</p>
+<ul>
+<li>import_playbook: srv/all.yml</li>
+</ul>
+<p>y ese srv/all.yml es <a href="https://github.com/debops/debops/blob/master/ansible/playbooks/srv/all.yml">https://github.com/debops/debops/blob/master/ansible/playbooks/srv/all.yml</a>
+y allí se incluyen mysql, mariadb, postgresql, postfix, y todo lo que se te ocurra que sea un servicio que ofrece el nodo.</p>
+<p>por ejemplo, <a href="https://github.com/debops/debops/blob/master/ansible/playbooks/srv/postgresql_server.yml">https://github.com/debops/debops/blob/master/ansible/playbooks/srv/postgresql_server.yml</a> es un link sombólico a ../service/postgresql_server.yml
+el cual es <a href="https://github.com/debops/debops/blob/master/ansible/playbooks/service/postgresql_server.yml">https://github.com/debops/debops/blob/master/ansible/playbooks/service/postgresql_server.yml</a></p>
+<p>el comienza con:</p>
+<ul>
+<li>
+<p>name: Manage PostgreSQL server
+hosts: [ &lsquo;debops_service_postgresql_server&rsquo;, &lsquo;debops_postgresql_server&rsquo; ]
+become: True</p>
+<p>environment: &lsquo;{{ inventory__environment | d({})
+| combine(inventory__group_environment | d({}))
+| combine(inventory__host_environment  | d({})) }}&rsquo;</p>
+</li>
+</ul>
+<p>O sea, los hosts de esos grupos son los únicos que se van a configurar con un servidor postgresql</p>
+<p>La magia del combine se hace para mezclar las variables de diferentes variables:
+<a href="https://github.com/debops/debops-playbooks/blob/master/docs/custom-environment.rst">https://github.com/debops/debops-playbooks/blob/master/docs/custom-environment.rst</a> donde usa justo el ejemplo del proxy Web para el sistema</p>
+<p>inventory__{|group_|host_}environment</p>
+<p>La docs de PostgreSQL server es: <a href="http://debops.readthedocs.io/en/latest/ansible/roles/debops.postgresql_server/getting-started.html">http://debops.readthedocs.io/en/latest/ansible/roles/debops.postgresql_server/getting-started.html</a></p>
+<p>Si un servidor postgres te parece medio alejado de lo que hacen normalmente en ASI, proba con <a href="http://debops.readthedocs.io/en/latest/ansible/roles/debops.gitlab/index.html">http://debops.readthedocs.io/en/latest/ansible/roles/debops.gitlab/index.html</a></p>
+<p>O más cercanos a lo que ahora estamos haciendo para entrega continua: <a href="http://debops.readthedocs.io/en/latest/ansible/roles/debops.php/index.html">http://debops.readthedocs.io/en/latest/ansible/roles/debops.php/index.html</a>
+O también: <a href="http://debops.readthedocs.io/en/latest/ansible/roles/debops.apache/index.html">http://debops.readthedocs.io/en/latest/ansible/roles/debops.apache/index.html</a></p>
+<p>Si en nuestro modelo tenemos aplicaciones de tal forma que tenemos un vínculo de n aplicaciones a m servidores. Pienso que habría un componente aplicacion-php que crearía usuarios necesarios, directorios, permisos, etc ¿se podría modelar así? Y las configuraciones de virtual-host o propiedades de php específicas dónde irían, en un Perfil? ¿qué Perfil?</p>
+<p>Ahora puedo empezar a responder la pregunta que dejé colgada antes, y de paso esta que mencionás:</p>
+<p>En Puppet con componente/perfil/rol la instalación se hace en cada nodo, el cual se clasifica con un ENC.</p>
+<p>En Ansible lo que se instala es un site a través de un playbook, el site.yml
+El playbook incluye todos los playbooks que hagan falta para crear la infraestructura completa.
+Cada vez que agregas un nodo nuevo con características propias (esto va a pasar a menudo mientras booteamos toda la infra paso a paso incrementalmente), lo que se hace es clasificarlo en el inventario antes que nada, donde lo asignás a aeificios (red, gateway, proxy, mirror etc.) luego a ambiente (testing/prod/dev/capa) y a grupo de trabajo (webserver, database, etc), luego las cosas propias del host.  Ahora escribis un playbook que cuenta la historia de ese nodo desde que se conecta ansible hasta que esta listo para dar sus servicios a la infra.  Y eso se incorpora al site.yml</p>
+<p>Rinse Repeat</p>
+<p>Otro modelo de trabajo es el propuesto por Alessandro Franceschi , de example42.com. con quien incluso intercambiamos un par de email sobre el tema de organizar código puppet para infraestructuras generales, múltiples clientes, y cómo seguir la evolución del código puppet a lo largo del tiempo (donde dev/test/prod también se aplica a código puppet y es ortogonal con el dev/test/prod de los devs de apps)</p>
+<p>En todos los casos, la herramienta de trabajo se transforma en un framework de expresión de infraestructura, mediante un cuidadoso uso de las estructuras de abstracción de código y de asignación de datos en hjerarquías o grafos de precedencias para aosciar parámetros de infra con programas que las implementan.</p>
+<p>Uff. Es mucha palabrería que suena a sanata cuando no implementaste una o dos infras previamente.  Es un aprendizaje iterativo.  Primero trabajamos con recursos (paquetes/archivos/servicios), después queremos asociar recursos relacionados con un subsistema dado (sshd por ejemplo), después hay servicios que dependen y usan otros, y hay que orquestarlos (ej: postfix + amavis + spamassasin + rbl + buzones + webmail + &hellip;) y después querés expresar ideas como escalabilidad (hay 5 servidores de X, quiero que haya 7).  Es necesario expresar cómo obtener una VM nueva, aprovisionarla en un ambiente dado, testear que tiene la funcionalidad solicitada, conectarla a las redes de trabajo, asegurar las reglas de firewall en los demás servidores, ruteo y facilidades (acceso desde el proxy, desde el mirror, monitoreo, backups, logs).</p>
+<p>A medida que nos movemos por ese continuo de gestión de servicios (no de servidores) vamos haciéndonos las preguntas y transpiramos para conseguir, probar y depurar las respuestas.</p>
+<p>Es explorar un territorio desconocido, sin mapas ni baqueanos.  Hay que ir despacio, sin detenerse.  Tomate tu tiempo.  En cualquier estadío que estemos, estamos mejor que antes.</p>
+<p>Ale, esto lo tenés que leer después de 3 o 4 cerverzas y no sé lo que sale jajaja.</p>
+<p>Andá al fondo del mail, parte de un proyecto en Puppet en el que buscaron cómo modelar una infraestructura definiendo roles y perfiles. Luego en el hilo que está enlazado tratan de tomar esos conceptos y ver cómo se pueden expresar en Ansible.</p>
+<p>No es la única -ni definitiva- solución al problema de cómo organizar una infraestructura de uso general con Ansible pero creo que sirve al menos para orientar la discusión. El esquema de <a href="https://git.santafe.gov.ar/dpit/escrutinio2019">https://git.santafe.gov.ar/dpit/escrutinio2019</a> que planteó César responde a éste modelo, pero tenemos que verlo nosotros para sumar la experiencia de lo que logramos en estos meses.</p>
+<p>Puede parecer quizás abstracto, pero ya comprobamos en la práctica que es necesaria una conceptualización para saber dónde va cada variable, qué tarea va en qué playbook o en qué rol, etc.</p>
+<p>De hecho creo que ya tenemos algunas cuestiones para analizar que este modelo no aborda o resuelve:</p>
+<p>Separar aprovisionamiento/creación de las tareas operativas/mantenimiento
+Separar el inventario de los playbooks, ¿un inventario o muchos inventarios?</p>
+<p><a href="https://stackoverflow.com/questions/35926324/how-do-you-handle-server-dependencies-in-ansible-roles">https://stackoverflow.com/questions/35926324/how-do-you-handle-server-dependencies-in-ansible-roles</a>
+el ejemplo de nginx_web / nginx_fileserver / nginx para una especie de &ldquo;herencia del hombre pobre&rdquo; en Ansible</p>
+<p><a href="https://github.com/kuleszaj/ansible-dependency-example">https://github.com/kuleszaj/ansible-dependency-example</a>
+usa variables en el meta.yml para declarar una dependencia</p>
+<p><a href="https://groups.google.com/forum/#!topic/ansible-project/37bcs9dLH1g">https://groups.google.com/forum/#!topic/ansible-project/37bcs9dLH1g</a>
+Ansible Role dependencies After Role
+My Role A starts an installer that always overrides the certificates. I also got a certificate deployment role Role B which should always be called after role A.</p>
+<p><a href="https://blog.eulinux.org/2016/01/ansible-conditional-role-dependencies.html">https://blog.eulinux.org/2016/01/ansible-conditional-role-dependencies.html</a>
+Ansible: Using conditional role dependencies
+para que la distinción de master/slave no requiera un par de grupos en el inventario / esto vale cuando hacemos un role para instalar tanto server como client</p>
+<p>Para leer <a href="https://www.craigdunn.org/2012/05/239/">https://www.craigdunn.org/2012/05/239/</a> debe buscarlo en:
+<a href="http://web.archive.org/web/20131116063306/http://www.craigdunn.org/2012/05/239/">http://web.archive.org/web/20131116063306/http://www.craigdunn.org/2012/05/239/</a></p>
+<p>Mauro:</p>
+<p>Mirá el readme de ese repositorio, eso lo armó césar en base a algunas cosas sobre la que él me iluminó y que charlamos juntos. Esa propuesta finalmente no se implementó porq no nos dieron bola, pero quedó la idea:</p>
+<p><a href="https://git.santafe.gov.ar/dpit/escrutinio2019/blob/master/README.md">https://git.santafe.gov.ar/dpit/escrutinio2019/blob/master/README.md</a></p>
+<p>En este enfoque (abajo hay referencias a la discusión) Hay 3 conceptos básicos: rol, perfil y componente. Nada nodo (vm para nosotros ahora) tiene un rol. Un &ldquo;rol&rdquo; se escribe en forma de playbook. Un playbook de &ldquo;rol&rdquo; consta de una secuencia de plays, donde cada play es un &ldquo;perfil&rdquo; &mdash;&gt; es lo que vos hiciste para el requerimiento sobre wildfly.</p>
+<p><a href="https://gitlab.com/respaldos_stg/dpit/escrutinio2019/-/blob/master/README.md">https://gitlab.com/respaldos_stg/dpit/escrutinio2019/-/blob/master/README.md</a> :</p>
+<h1 id="inventarios">Inventarios</h1>
+<p>Se trabaja con múltiples inventarios.  El inventario forma parte de este repositorio Git.</p>
+<p>Dentro del directorio <code>inventories/</code> hay un directorio para cada inventario.  En este momento están definidos los siguientes:</p>
+<ul>
+<li>development</li>
+<li>production</li>
+<li>staging</li>
+<li>testing</li>
+</ul>
+<p>Cuando nos referimos a &ldquo;inventario&rdquo; estamos haciendo alusión a uno de esos subdirectorios de <code>inventories/</code>.</p>
+<p>En un inventario dado hay tres elementos:</p>
+<ul>
+<li><code>hosts</code> es un archivo que lista los nodos de este inventario</li>
+<li><code>group_vars/</code> contiene un archivo de variables para cada grupo de nodos creado en el inventario</li>
+<li><code>host_vars/</code>contiene un archivo de variables para cada nodo del inventario</li>
+</ul>
+<p>Los archivos de variables de grupo y de nodo pueden o no existir. si existe el
+archivo <code>group_vars/all</code>, sus valores son aplicables a todos los nodos, sin importar si
+pertenecen o no a algún grupo.</p>
+<p>Los valores de las variables en estos archivos tienen la siguiente precedencia,
+de mayor a menor:</p>
+<ol>
+<li>playbook</li>
+<li>nodo</li>
+<li>grupo</li>
+<li>all</li>
+</ol>
+<p>Los directorios creados actualmente tienen esta forma:</p>
+<pre tabindex="0"><code>├── inventories/
+│   ├── development/
+│   │   ├── group_vars/
+│   │   ├── hosts
+│   │   └── host_vars/
+│   ├── production/
+│   │   ├── group_vars/
+│   │   ├── hosts
+│   │   └── host_vars/
+│   ├── staging/
+│   │   ├── group_vars/
+│   │   ├── hosts
+│   │   └── host_vars/
+│   └── testing/
+│       ├── group_vars/
+│       ├── hosts
+│       └── host_vars/
+</code></pre><h1 id="estructura-de-este-repositorio">Estructura de este repositorio</h1>
+<pre tabindex="0"><code>.
+├── .gitignore
+├── README.md
+├── TODO.md
+├── requirements.txt
+├── rol-cachebalancer-srv.yml
+├── rol-cache-srv.yml
+├── rol-dns-srv.yml
+├── rol-file-srv.yml
+├── rol-jenkinsjava-srv.yml
+├── rol-jenkinsphp-srv.yml
+├── rol-mysql-srv.yml
+├── rol-tomcat-srv.yml
+├── rol-webbalancer-srv.yml
+├── rol-webphp-srv.yml
+├── site-upgrade.yml
+├── site.yml
+├── inventories/
+├── roles/
+├── files/
+└── templates/
+</code></pre><p>Describimos brevemente los archivos y directorios del primer nivel:</p>
+<p>El playbook de alto nivel para asegurar la instalaci{on de todas las VMs es <code>site.yml</code>.
+Uno similar, que sirve para actualizar los programas a la última versión en cada VM es <code>site-upgrade.yml</code>.</p>
+<p><code>README.md</code> es este archivo que estás leyendo. <code>TODO.md</code> es una lista de asuntos por resolver (To Do List).</p>
+<p><code>.gitignore</code> es parte del repo Git, es la lista de excepciones con los archivos que no se desea almacenar en el repo.</p>
+<p>Un nodo es una máquina virtual o física que forma parte de escrutinio2019.  Algunos de esos nodos están bajo
+responsabilidad del Área ASI (Aplicaciones y Servicios de Internet).  Solamente nos ocuparemos de estos nodos.</p>
+<p>Los nodos se describen en el Inventario, el cual se aloja dentro del directorio <code>inventories/</code>.
+Más información en la sección &ldquo;Inventario&rdquo; más arriba.</p>
+<p>Cada nodo pertenece a uno y sólo un &ldquo;rol&rdquo; que describe su función y relaciones con los demás nodos.  Para cada &ldquo;rol&rdquo; puede
+haber más de un nodo que satisface ese &ldquo;rol&rdquo;.</p>
+<p>Una lista de cada &ldquo;rol&rdquo; identificado es la siguiente:</p>
+<ul>
+<li><code>rol-cachebalancer-srv.yml</code></li>
+<li><code>rol-cache-srv.yml</code></li>
+<li><code>rol-dns-srv.yml</code></li>
+<li><code>rol-file-srv.yml</code></li>
+<li><code>rol-jenkinsjava-srv.yml</code></li>
+<li><code>rol-jenkinsphp-srv.yml</code></li>
+<li><code>rol-mysql-srv.yml</code></li>
+<li><code>rol-tomcat-srv.yml</code></li>
+<li><code>rol-webbalancer-srv.yml</code></li>
+<li><code>rol-webphp-srv.yml</code></li>
+</ul>
+<p>Un &ldquo;rol&rdquo; se escribe en forma de playbook.  Un playbook de &ldquo;rol&rdquo; consta de una secuencia de plays, donde cada play
+es un &ldquo;perfil&rdquo;.  Por ejemplo, los servidores de Glusterfs tienen un perfil/play para instalar Glusterfs y otro
+perfil/play para instalar un servidor FTP.</p>
+<p>El &ldquo;perfil&rdquo; describe un servicio o subsistema instalado en un &ldquo;rol&rdquo;.</p>
+<p>Un &ldquo;perfil&rdquo; necesita de &ldquo;componentes&rdquo; para proporcionar un servicio dado.</p>
+<p>Por ejemplo:</p>
+<ul>
+<li>componentes: apache 2.4 / php 7.1 (son &ldquo;ansible roles&rdquo; tomados de Ansible Galaxy o un repo Git propio)</li>
+<li>perfil: webserver (incluye los dos componentes anteriores) (es un play dentro del playbook del &ldquo;rol&rdquo;)</li>
+<li>rol <code>rol-webphp-srv.yml</code>: servidor para aplicación &ldquo;elecciones&rdquo; y &ldquo;api elecciones&rdquo;</li>
+<li>nodo: escphp1e, escphp2e, etc. implementan el &ldquo;rol&rdquo; <code>rol-webphp-srv.yml</code></li>
+</ul>
+<p>Los &ldquo;Ansible roles&rdquo; se alojan en el directorio <code>roles/</code>.  Este directorio está excluído del repo escrutinio2018.
+Cada ansible role debe tener su propio repositorio Git donde se lo desarrolla de manera independiete a los fines
+de lograr roles genéricos y reusables.</p>
+<p><code>requirements.txt</code> es la lista de roles Ansible con su versión correspondiente que son requisitos para
+correr los playbooks de escrutinio2019. En las &ldquo;Instrucciones de instalación&rdquo; se describe cómo se utiliza este archivo.</p>
+<p>Los directorios siguientes contienen los archivos y plantillas específicas para escrutinio, y que se utilizan en
+los ansible roles genéricos, y en los playbooks específicos:</p>
+<ul>
+<li><code>files/</code></li>
+<li><code>templates/</code></li>
+</ul>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://katra.ballardini.com.ar/" >
+    &copy;  César Ballardini 2025 
+  </a>
+    <div><div class="ananke-socials"><a href="http://linkedin.com/in/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a><a href="https://x.com/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition x-twitter link dib z-999 pt3 pt0-l mr1"
+        title="follow on X - Opens in a new window"
+        aria-label="follow on X - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+            
+          </span></a><a href="https://github.com/CesarBallardini/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+            
+          </span></a></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
