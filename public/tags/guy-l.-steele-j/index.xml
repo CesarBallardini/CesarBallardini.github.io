@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Guy L. Steele J. on katra</title>
+    <link>https://katra.ballardini.com.ar/tags/guy-l.-steele-j./</link>
+    <description>Recent content in Guy L. Steele J. on katra</description>
+    <generator>Hugo</generator>
+    <language>es-AR</language>
+    <copyright>César Ballardini</copyright>
+    <lastBuildDate>Mon, 27 Jan 2025 00:00:00 -0300</lastBuildDate>
+    <atom:link href="https://katra.ballardini.com.ar/tags/guy-l.-steele-j./index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Growing a Language</title>
+      <link>https://katra.ballardini.com.ar/posts/growing-a-language/</link>
+      <pubDate>Mon, 27 Jan 2025 00:00:00 -0300</pubDate>
+      <guid>https://katra.ballardini.com.ar/posts/growing-a-language/</guid>
+      <description>&lt;p&gt;Seguramente has visto presentaciones muy importantes, o interesantes, entretenidas.  La presentación de Guy Steele que te propongo, es una como nunca has visto antes.  Una presentación que tiene un mensaje importante para transmitir, pero que además usa el propio mensaje como mecanismo para desarrollar la presentación.  Tal vez algún detalle no tan relevante esté desactualizado, como las referencias a ciertas características de Java, pero si consideras Java en 1998 y lo analizas desde allí,este material es alimento para la mente.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

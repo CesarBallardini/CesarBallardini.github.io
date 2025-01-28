@@ -7,8 +7,29 @@
     <generator>Hugo</generator>
     <language>es-AR</language>
     <copyright>César Ballardini</copyright>
-    <lastBuildDate>Mon, 20 Jan 2025 00:00:00 -0300</lastBuildDate>
+    <lastBuildDate>Mon, 27 Jan 2025 00:00:00 -0300</lastBuildDate>
     <atom:link href="https://katra.ballardini.com.ar/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Guy L. Steele J.</title>
+      <link>https://katra.ballardini.com.ar/tags/guy-l.-steele-j./</link>
+      <pubDate>Mon, 27 Jan 2025 00:00:00 -0300</pubDate>
+      <guid>https://katra.ballardini.com.ar/tags/guy-l.-steele-j./</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>LISP</title>
+      <link>https://katra.ballardini.com.ar/tags/lisp/</link>
+      <pubDate>Mon, 27 Jan 2025 00:00:00 -0300</pubDate>
+      <guid>https://katra.ballardini.com.ar/tags/lisp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OOPSLA</title>
+      <link>https://katra.ballardini.com.ar/tags/oopsla/</link>
+      <pubDate>Mon, 27 Jan 2025 00:00:00 -0300</pubDate>
+      <guid>https://katra.ballardini.com.ar/tags/oopsla/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Github Pages</title>
       <link>https://katra.ballardini.com.ar/tags/github-pages/</link>

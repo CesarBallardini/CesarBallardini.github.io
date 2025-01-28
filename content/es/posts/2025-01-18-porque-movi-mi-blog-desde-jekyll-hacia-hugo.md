@@ -56,10 +56,7 @@ los posts comparten el formato y características.  En otro post veremos lo simp
 Entonces, paso a paso, lo que haremos será:
 
 1. [Instalar Hugo en la laptop, crear un sitio inicial y configurarlo.](/posts/como-instalar-hugo-en-mi-laptop/)
-2. Migrar los posts antiguos escritos para Jekyll.
+2. [Migrar los posts antiguos escritos para Jekyll.](/posts/como-mover-los-posts-jekyll-hacia-hugo.md)
 3. Generar el sitio estático para el blog.
 4. Publicar el blog en Github Pages
 5. Crear esta serie de posts para explicar cómo hacer estas tareas
-
-
-

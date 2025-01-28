@@ -48,3 +48,42 @@ tags: []
   * concatentative programming, byte book
 
 * strange loop
+
+
+https://archive.org/details/MastermindsOfProgramming
+Adin D. Falkoff: APL
+Thomas E. Kurtz: BASIC
+Charles H. Moore: FORTH
+Robin Milner: ML
+Donald D. Chamberlin: SQL
+Alfred Aho, Peter Weinberger, and Brian Kernighan: AWK
+Charles Geschke and John Warnock: PostScript
+Bjarne Stroustrup: C++
+Bertrand Meyer: Eiffel
+Brad Cox and Tom Love: Objective-C
+Larry Wall: Perl
+Simon Peyton Jones, Paul Hudak, Philip Wadler, and John Hughes: Haskell
+Guido van Rossum: Python
+Luiz Henrique de Figueiredo and Roberto Ierusalimschy: Lua
+James Gosling: Java
+Grady Booch, Ivar Jacobson, and James Rumbaugh: UML
+Anders Hejlsberg: Delphi inventor and lead developer of C#
+
+https://archive.org/details/@usege
+https://archive.org/details/folkscanomy_computer
+https://dl.acm.org/doi/10.1023/A%3A1010085415024
+https://journals.scholarsportal.info/browse/13883690/v12i0003?lang=en
+
+
+* simply scheme: 500 programadores
+* alan kay: opencroquet soft eng oximoron
+* https://www.dreamsongs.com/WorseIsBetter.html
+* The only people who seem to even believe that these productivity gains can be made tend to be proponents of ideas like Model Driven Architecture and Executable UML. These all want to abandon traditional programming languages in favour of some visual notation.
+* https://github.com/scheme-and-computer-science/library.readscheme.org/blob/master/page1.mdver  "Lambda: The Ultimate Imperative"
+* http://lambda-the-ultimate.org/classic/papers.html
+* Turing awards site
+* https://dspace.mit.edu/handle/1721.1/6933 The Definition and Implementation of a Computer Programming Language Based on Constraints
+* https://webperso.info.ucl.ac.be/~pvr/book.html Concepts, Techniques, and Models of Computer Programming
+usa Mozart un derivado de Oz
+* Hoare's CSP
+*
