@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Decoupling from Rails | katra</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="El legendario Jim Weirich1 presenta Decoupling from Rails en la reunión del
+Cincinnati Ruby Brigade de Octubre 2013.  En 2011 Robert C. Martin2 desafió a la comunidad de Ruby on Rails3 a desacoplar la aplicación del framework Web.  Jim toma un pequeño ejemplo y lo desarrolla con la claridad y maestría que lo caracterizaba, que puedes ver en el vídeo4.
+DHH5 esbozó una crítica6, pero es claro que se sintió tocado en su diseño de RoR.  En el enlace se aprecian los comentarios y respuestas de otros miembros de la comunidad.  En particular me interesó la respuesta de Pat Maddox7, si bien puede verse como contemporizadora.">
+    <meta name="generator" content="Hugo 0.142.0">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+      <meta name="author" content = "César Ballardini">
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.8ea42c4c5025337ca923faf1dc6e64b4dab13894d8f3f6908ee774c5b1502fec.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://katra.ballardini.com.ar/posts/jim-weinrich-refactoring-ruby-on-rails/">
+    
+
+    <meta property="og:url" content="https://katra.ballardini.com.ar/posts/jim-weinrich-refactoring-ruby-on-rails/">
+  <meta property="og:site_name" content="katra">
+  <meta property="og:title" content="Decoupling from Rails">
+  <meta property="og:description" content="El legendario Jim Weirich1 presenta Decoupling from Rails en la reunión del Cincinnati Ruby Brigade de Octubre 2013. En 2011 Robert C. Martin2 desafió a la comunidad de Ruby on Rails3 a desacoplar la aplicación del framework Web. Jim toma un pequeño ejemplo y lo desarrolla con la claridad y maestría que lo caracterizaba, que puedes ver en el vídeo4.
+DHH5 esbozó una crítica6, pero es claro que se sintió tocado en su diseño de RoR. En el enlace se aprecian los comentarios y respuestas de otros miembros de la comunidad. En particular me interesó la respuesta de Pat Maddox7, si bien puede verse como contemporizadora.">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-01-28T00:00:00-03:00">
+    <meta property="article:modified_time" content="2025-01-28T00:00:00-03:00">
+    <meta property="article:tag" content="Ruby on Rails">
+    <meta property="article:tag" content="Repository">
+    <meta property="article:tag" content="DHH">
+    <meta property="article:tag" content="Jim Weirich">
+    <meta property="article:tag" content="Keynote">
+    <meta property="article:tag" content="Arquitectura">
+
+  <meta itemprop="name" content="Decoupling from Rails">
+  <meta itemprop="description" content="El legendario Jim Weirich1 presenta Decoupling from Rails en la reunión del Cincinnati Ruby Brigade de Octubre 2013. En 2011 Robert C. Martin2 desafió a la comunidad de Ruby on Rails3 a desacoplar la aplicación del framework Web. Jim toma un pequeño ejemplo y lo desarrolla con la claridad y maestría que lo caracterizaba, que puedes ver en el vídeo4.
+DHH5 esbozó una crítica6, pero es claro que se sintió tocado en su diseño de RoR. En el enlace se aprecian los comentarios y respuestas de otros miembros de la comunidad. En particular me interesó la respuesta de Pat Maddox7, si bien puede verse como contemporizadora.">
+  <meta itemprop="datePublished" content="2025-01-28T00:00:00-03:00">
+  <meta itemprop="dateModified" content="2025-01-28T00:00:00-03:00">
+  <meta itemprop="wordCount" content="156">
+  <meta itemprop="keywords" content="Ruby on Rails,Repository,DHH,Jim Weirich,Keynote,Arquitectura,Dev">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Decoupling from Rails">
+  <meta name="twitter:description" content="El legendario Jim Weirich1 presenta Decoupling from Rails en la reunión del Cincinnati Ruby Brigade de Octubre 2013. En 2011 Robert C. Martin2 desafió a la comunidad de Ruby on Rails3 a desacoplar la aplicación del framework Web. Jim toma un pequeño ejemplo y lo desarrolla con la claridad y maestría que lo caracterizaba, que puedes ver en el vídeo4.
+DHH5 esbozó una crítica6, pero es claro que se sintió tocado en su diseño de RoR. En el enlace se aprecian los comentarios y respuestas de otros miembros de la comunidad. En particular me interesó la respuesta de Pat Maddox7, si bien puede verse como contemporizadora.">
+
+      
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        katra
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/posts/" title="Entradas pagina">
+              Entradas
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="http://linkedin.com/in/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a><a href="https://x.com/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition x-twitter link dib z-999 pt3 pt0-l mr1"
+        title="follow on X - Opens in a new window"
+        aria-label="follow on X - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+            
+          </span></a><a href="https://github.com/CesarBallardini/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+            
+          </span></a></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Entradas
+      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fjim-weinrich-refactoring-ruby-on-rails%2F&amp;subject=Decoupling&#43;from&#43;Rails"
+        class="ananke-social-link email no-underline"
+        title="Share on Email" aria-label="Share on Email"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
+                
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fjim-weinrich-refactoring-ruby-on-rails%2F&amp;summary=El&#43;legendario&#43;Jim&#43;Weirich1&#43;presenta&#43;Decoupling&#43;from&#43;Rails&#43;en&#43;la&#43;reuni%C3%B3n&#43;del&#43;Cincinnati&#43;Ruby&#43;Brigade&#43;de&#43;Octubre&#43;2013.&#43;En&#43;2011&#43;Robert&#43;C.&#43;Martin2&#43;desafi%C3%B3&#43;a&#43;la&#43;comunidad&#43;de&#43;Ruby&#43;on&#43;Rails3&#43;a&#43;desacoplar&#43;la&#43;aplicaci%C3%B3n&#43;del&#43;framework&#43;Web.&#43;Jim&#43;toma&#43;un&#43;peque%C3%B1o&#43;ejemplo&#43;y&#43;lo&#43;desarrolla&#43;con&#43;la&#43;claridad&#43;y&#43;maestr%C3%ADa&#43;que&#43;lo&#43;caracterizaba%2C&#43;que&#43;puedes&#43;ver&#43;en&#43;el&#43;v%C3%ADdeo4.%0ADHH5&#43;esboz%C3%B3&#43;una&#43;cr%C3%ADtica6%2C&#43;pero&#43;es&#43;claro&#43;que&#43;se&#43;sinti%C3%B3&#43;tocado&#43;en&#43;su&#43;dise%C3%B1o&#43;de&#43;RoR.&#43;En&#43;el&#43;enlace&#43;se&#43;aprecian&#43;los&#43;comentarios&#43;y&#43;respuestas&#43;de&#43;otros&#43;miembros&#43;de&#43;la&#43;comunidad.&#43;En&#43;particular&#43;me&#43;interes%C3%B3&#43;la&#43;respuesta&#43;de&#43;Pat&#43;Maddox7%2C&#43;si&#43;bien&#43;puede&#43;verse&#43;como&#43;contemporizadora.%0A&amp;title=Decoupling&#43;from&#43;Rails&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fjim-weinrich-refactoring-ruby-on-rails%2F"
+        class="ananke-social-link linkedin no-underline"
+        title="Share on LinkedIn" aria-label="Share on LinkedIn"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+                
+              </span></a><a href="https://twitter.com/intent/tweet/?&amp;text=El&#43;legendario&#43;Jim&#43;Weirich1&#43;presenta&#43;Decoupling&#43;from&#43;Rails&#43;en&#43;la&#43;reuni%C3%B3n&#43;del&#43;Cincinnati&#43;Ruby&#43;Brigade&#43;de&#43;Octubre&#43;2013.&#43;En&#43;2011&#43;Robert&#43;C.&#43;Martin2&#43;desafi%C3%B3&#43;a&#43;la&#43;comunidad&#43;de&#43;Ruby&#43;on&#43;Rails3&#43;a&#43;desacoplar&#43;la&#43;aplicaci%C3%B3n&#43;del&#43;framework&#43;Web.&#43;Jim&#43;toma&#43;un&#43;peque%C3%B1o&#43;ejemplo&#43;y&#43;lo&#43;desarrolla&#43;con&#43;la&#43;claridad&#43;y&#43;maestr%C3%ADa&#43;que&#43;lo&#43;caracterizaba%2C&#43;que&#43;puedes&#43;ver&#43;en&#43;el&#43;v%C3%ADdeo4.%0ADHH5&#43;esboz%C3%B3&#43;una&#43;cr%C3%ADtica6%2C&#43;pero&#43;es&#43;claro&#43;que&#43;se&#43;sinti%C3%B3&#43;tocado&#43;en&#43;su&#43;dise%C3%B1o&#43;de&#43;RoR.&#43;En&#43;el&#43;enlace&#43;se&#43;aprecian&#43;los&#43;comentarios&#43;y&#43;respuestas&#43;de&#43;otros&#43;miembros&#43;de&#43;la&#43;comunidad.&#43;En&#43;particular&#43;me&#43;interes%C3%B3&#43;la&#43;respuesta&#43;de&#43;Pat&#43;Maddox7%2C&#43;si&#43;bien&#43;puede&#43;verse&#43;como&#43;contemporizadora.%0A&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fjim-weinrich-refactoring-ruby-on-rails%2F"
+        class="ananke-social-link x-twitter no-underline"
+        title="Share on X" aria-label="Share on X"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+                
+              </span></a><a href="%25!s%28%3cnil%3e%29?"
+        class="ananke-social-link github no-underline"
+        title="Share on GitHub" aria-label="Share on GitHub"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+                
+              </span></a></div>
+<h1 class="f1 athelas mt3 mb1">Decoupling from Rails</h1>
+      
+      <p class="tracked">
+        Por <strong>César Ballardini</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-01-28T00:00:00-03:00">28 de enero de 2025</time>
+      
+
+      
+      
+        <span class="f6 mv4 dib tracked"> - Lectura en un minuto </span>
+        <span class="f6 mv4 dib tracked"> - 156 palabras </span>
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>El legendario Jim Weirich<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> presenta <em>Decoupling from Rails</em> en la reunión del
+Cincinnati Ruby Brigade de Octubre 2013.  En 2011 Robert C. Martin<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> desafió a la comunidad de Ruby on Rails<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> a desacoplar la aplicación del framework Web.  Jim toma un pequeño ejemplo y lo desarrolla con la claridad y maestría que lo caracterizaba, que puedes ver en el vídeo<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</p>
+<p>DHH<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> esbozó una crítica<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>, pero es claro que se sintió tocado en su diseño de RoR.  En el enlace se aprecian los comentarios y respuestas de otros miembros de la comunidad.  En particular me interesó la respuesta de Pat Maddox<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>, si bien puede verse como contemporizadora.</p>
+<p>Dejáte llevar por la magia de los tests y la habilidad de Jim Weirich.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://en.wikipedia.org/wiki/Jim_Weirich">Jim Weirich</a>, en Wikipedia.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://en.wikipedia.org/wiki/Robert_C._Martin">Robert C. Martin</a>, entrada en Wikipedia.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p><a href="https://rubyonrails.org/">Ruby on Rails</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p><a href="https://www.youtube.com/watch?v=tg5RFeSfBM4">Decoupling from Rails</a>, Jim Weirich, October CincyRb.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p><a href="https://en.wikipedia.org/wiki/David_Heinemeier_Hansson">David Heinemeier Hansson</a>, en Wikipedia&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p><a href="https://gist.github.com/dhh/4849a20d2ba89b34b201?permalink_comment_id=1228701">Test Induced Design Damage</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p><a href="https://web.archive.org/web/20160310143422/https://patmaddox.com/2014/05/15/poof-and-then-rails-was-gone/"><em>poof</em> … and then Rails was gone</a>&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/ruby-on-rails/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Ruby on Rails</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/repository/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Repository</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/dhh/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">DHH</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/jim-weirich/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Jim Weirich</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/keynote/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Keynote</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/arquitectura/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Arquitectura</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/dev/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Dev</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://katra.ballardini.com.ar/" >
+    &copy;  César Ballardini 2025 
+  </a>
+    <div><div class="ananke-socials"><a href="http://linkedin.com/in/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a><a href="https://x.com/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition x-twitter link dib z-999 pt3 pt0-l mr1"
+        title="follow on X - Opens in a new window"
+        aria-label="follow on X - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+            
+          </span></a><a href="https://github.com/CesarBallardini/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+            
+          </span></a></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

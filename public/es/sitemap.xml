@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://katra.ballardini.com.ar/</loc>
-    <lastmod>2025-01-27T00:00:00-03:00</lastmod>
+    <lastmod>2025-01-28T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -17,10 +17,65 @@
                 href="https://katra.ballardini.com.ar/"
                 />
   </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/</loc>
-    <lastmod>2025-01-27T00:00:00-03:00</lastmod>
+    <loc>https://katra.ballardini.com.ar/tags/arquitectura/</loc>
+    <lastmod>2025-01-28T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/posts/jim-weinrich-refactoring-ruby-on-rails/</loc>
+    <lastmod>2025-01-28T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/dev/</loc>
+    <lastmod>2025-01-28T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/dhh/</loc>
+    <lastmod>2025-01-28T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/posts/</loc>
+    <lastmod>2025-01-28T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/jim-weirich/</loc>
+    <lastmod>2025-01-28T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/keynote/</loc>
+    <lastmod>2025-01-28T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/repository/</loc>
+    <lastmod>2025-01-28T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/ruby-on-rails/</loc>
+    <lastmod>2025-01-28T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/</loc>
+    <lastmod>2025-01-28T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/tags/"
+                />
   </url><url>
     <loc>https://katra.ballardini.com.ar/posts/growing-a-language/</loc>
     <lastmod>2025-01-27T00:00:00-03:00</lastmod>
@@ -41,21 +96,6 @@
     <lastmod>2025-01-27T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/</loc>
-    <lastmod>2025-01-27T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://katra.ballardini.com.ar/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es-AR"
-                href="https://katra.ballardini.com.ar/tags/"
-                />
   </url><url>
     <loc>https://katra.ballardini.com.ar/posts/como-mover-los-posts-jekyll-hacia-hugo/</loc>
     <lastmod>2025-01-20T00:00:00-03:00</lastmod>

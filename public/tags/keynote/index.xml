@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Keynote on katra</title>
+    <link>https://katra.ballardini.com.ar/tags/keynote/</link>
+    <description>Recent content in Keynote on katra</description>
+    <generator>Hugo</generator>
+    <language>es-AR</language>
+    <copyright>César Ballardini</copyright>
+    <lastBuildDate>Tue, 28 Jan 2025 00:00:00 -0300</lastBuildDate>
+    <atom:link href="https://katra.ballardini.com.ar/tags/keynote/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Decoupling from Rails</title>
+      <link>https://katra.ballardini.com.ar/posts/jim-weinrich-refactoring-ruby-on-rails/</link>
+      <pubDate>Tue, 28 Jan 2025 00:00:00 -0300</pubDate>
+      <guid>https://katra.ballardini.com.ar/posts/jim-weinrich-refactoring-ruby-on-rails/</guid>
+      <description>&lt;p&gt;El legendario Jim Weirich&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; presenta &lt;em&gt;Decoupling from Rails&lt;/em&gt; en la reunión del&#xA;Cincinnati Ruby Brigade de Octubre 2013.  En 2011 Robert C. Martin&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; desafió a la comunidad de Ruby on Rails&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; a desacoplar la aplicación del framework Web.  Jim toma un pequeño ejemplo y lo desarrolla con la claridad y maestría que lo caracterizaba, que puedes ver en el vídeo&lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;&#xA;&lt;p&gt;DHH&lt;sup id=&#34;fnref:5&#34;&gt;&lt;a href=&#34;#fn:5&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;5&lt;/a&gt;&lt;/sup&gt; esbozó una crítica&lt;sup id=&#34;fnref:6&#34;&gt;&lt;a href=&#34;#fn:6&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;6&lt;/a&gt;&lt;/sup&gt;, pero es claro que se sintió tocado en su diseño de RoR.  En el enlace se aprecian los comentarios y respuestas de otros miembros de la comunidad.  En particular me interesó la respuesta de Pat Maddox&lt;sup id=&#34;fnref:7&#34;&gt;&lt;a href=&#34;#fn:7&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;, si bien puede verse como contemporizadora.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
