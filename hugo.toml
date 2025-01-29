@@ -91,3 +91,9 @@ username = "CesarBallardini"
 username = "cesar.ballardini"
 # profilelink = "https://www.facebook.com/cesar.ballardini"
 
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
