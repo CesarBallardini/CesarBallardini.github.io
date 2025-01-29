@@ -8,7 +8,7 @@ tags: ['Guy L. Steele J.', 'LISP', 'OOPSLA']
 Seguramente has visto presentaciones muy importantes, o interesantes, entretenidas.  La presentación de Guy Steele que te propongo, es una como nunca has visto antes.  Una presentación que tiene un mensaje importante para transmitir, pero que además usa el propio mensaje como mecanismo para desarrollar la presentación.  Tal vez algún detalle no tan relevante esté desactualizado, como las referencias a ciertas características de Java, pero si consideras Java en 1998 y lo analizas desde allí,este material es alimento para la mente.
 
 
-La presentación principal de Guy Steele en la 13.<sup>a</sup> conferencia ACM OOPSLA sobre _Object Oriented Programming Systems, Languages and Applications_ de  1998 llamada __Growing a Language__ discute la importancia del diseño de un lenguaje de programación cuyos usuarios puedan expandir.
+La presentación principal de Guy Steele[^steele]  en la 13.<sup>a</sup> conferencia ACM OOPSLA sobre _Object Oriented Programming Systems, Languages and Applications_ de  1998 llamada __Growing a Language__ discute la importancia del diseño de un lenguaje de programación cuyos usuarios puedan expandir.
 
 El comentario en el canal de YouTube del Computer History Museum:
 
@@ -40,10 +40,12 @@ Lucid, Inc.
 * [The Evolution of Numerical Computing in Java](https://web.archive.org/web/20000919153002/http://www.javasoft.com/people/jag/FP.html), James Gosling, en Wayback Machine.
 * [On Numbers and Games](https://en.wikipedia.org/wiki/On_Numbers_and_Games), John Horton Conway, entrada en Wikipedia.
 * [On Numbers and Games](https://libgen.is/search.php?&req=On+Numbers+and+Games&phrase=1&view=simple&column=def&sort=year&sortmode=DESC), John Horton Conway, opción para leer offline.
+* [The Elements of Style](https://en.wikipedia.org/wiki/The_Elements_of_Style), Strunk & White, en Wikipedia.
+* [The Elements of Style](https://libgen.is/book/index.php?md5=70F5B6387E942FDA220EF069CB1FAC52), Strunk & White, para leer offline.
 
+[^steele]: [Guy L. Steele Jr.](https://en.wikipedia.org/wiki/Guy_L._Steele_Jr.) en Wikipedia
 
-
-[^video]: [Vídeo en YouTube](  https://www.youtube.com/watch?v=lw6TaiXzHAE).
+[^video]: [Vídeo en YouTube](https://www.youtube.com/watch?v=lw6TaiXzHAE).
 
 [^texto]: [Texto de la presentación](https://homepages.inf.ed.ac.uk/wadler/documents/steele-oopsla98.pdf)
 
