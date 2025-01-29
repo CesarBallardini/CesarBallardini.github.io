@@ -22,7 +22,26 @@ Un pequeño avance para que te pique la curiosidad:
 
 > _My point is that a good programmer in these times does not just write programs. A good programmer builds a working vocabulary._
 
+> If you give a person a fish, he can eat for a day.\
+If you teach a person to fish, he can eat his whole life long.\
+If you give a person tools, he can make a fishing pole—and lots of other tools! He can
+build a machine to crank out fishing poles. In this way he can help other persons to catch
+fish.
+
 ¡Que lo disfrutes!
+
+Referencias citadas en la presentación:
+* [Lisp: Good News, Bad News, How to Win Big](https://www.dreamsongs.com/WIB.html), Richard P. Gabriel,
+Lucid, Inc.
+* [The Cathedral and the Bazaar](http://www.catb.org/esr/writings/cathedral-bazaar/cathedral-bazaar/), Eric S. Raymond.
+* [La Catedral y el Bazar](https://biblioweb.sindominio.net/telematica/catedral.html), Eric S. Raymond.
+* [The Oregon Experiment](https://en.wikipedia.org/wiki/The_Oregon_Experiment), Christopher Alexander, entrada en Wikipedia.
+* [The Oregon experiment](https://archive.org/details/oregonexperimen000alex), libro para leer online en Internet Archive.
+* [The Evolution of Numerical Computing in Java](https://web.archive.org/web/20000919153002/http://www.javasoft.com/people/jag/FP.html), James Gosling, en Wayback Machine.
+* [On Numbers and Games](https://en.wikipedia.org/wiki/On_Numbers_and_Games), John Horton Conway, entrada en Wikipedia.
+* [On Numbers and Games](https://libgen.is/search.php?&req=On+Numbers+and+Games&phrase=1&view=simple&column=def&sort=year&sortmode=DESC), John Horton Conway, opción para leer offline.
+
+
 
 [^video]: [Vídeo en YouTube](  https://www.youtube.com/watch?v=lw6TaiXzHAE).
 

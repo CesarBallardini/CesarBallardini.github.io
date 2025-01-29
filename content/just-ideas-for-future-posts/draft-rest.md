@@ -86,4 +86,4 @@ https://journals.scholarsportal.info/browse/13883690/v12i0003?lang=en
 * https://webperso.info.ucl.ac.be/~pvr/book.html Concepts, Techniques, and Models of Computer Programming
 usa Mozart un derivado de Oz
 * Hoare's CSP
-*
+* James Gosling:que dejaria afuera: clases, prefiere no usar herencia
