@@ -87,3 +87,14 @@ https://journals.scholarsportal.info/browse/13883690/v12i0003?lang=en
 usa Mozart un derivado de Oz
 * Hoare's CSP
 * James Gosling:que dejaria afuera: clases, prefiere no usar herencia
+* DCI architecture
+* expert system basic
+  * https://vintageapple.org/byte/pdf/198504_Byte_Magazine_Vol_10-04_Artificial_Intelligence.pdf pp. 315 version pascal y seudocódigo
+  *  https://archive.org/details/byte-magazine-1981-09/page/n239/mode/1up Byte Magazine September 1981, Volume 6, N.° 9, pp. 238-281 Knowledge-Based Expert Systems Come of Age, by Richard O. Duda, John G. Gaschnig.
+  *  El código empieza en https://archive.org/details/byte-magazine-1981-09/page/n265/mode/1up
+  *  https://archive.org/details/lisp-1981-addison-wesley/page/n253/mode/1up , Chapter 18:  Expert Problem Solving Using IF-THEN Rules, pp. 239-250, en Lisp de P. Winston y B. Horn, 1981
+
+* hexagonal arch:
+  * [Object-oriented software engineering, A Use Case Driven Approach](https://archive.org/details/objectorientedso00jaco), Ivar Jacobson, 1992
+  * [Object-oriented software engineering, A Use Case Driven Approach](https://libgen.is/book/index.php?md5=DE6D6444A59A5A87DC215BF969D415DF), para leer offline
+  * [The Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
