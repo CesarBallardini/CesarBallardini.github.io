@@ -7,8 +7,15 @@
     <generator>Hugo</generator>
     <language>es-AR</language>
     <copyright>César Ballardini</copyright>
-    <lastBuildDate>Sun, 28 Aug 2016 00:00:00 -0300</lastBuildDate>
+    <lastBuildDate>Wed, 05 Feb 2025 00:00:00 -0300</lastBuildDate>
     <atom:link href="https://katra.ballardini.com.ar/tags/debian/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Saluden a Debian que se fue</title>
+      <link>https://katra.ballardini.com.ar/posts/saluden-a-debian/</link>
+      <pubDate>Wed, 05 Feb 2025 00:00:00 -0300</pubDate>
+      <guid>https://katra.ballardini.com.ar/posts/saluden-a-debian/</guid>
+      <description>&lt;p&gt;Debian deja de publicar en X.  Los usuarios de X dejarán de recibir noticias de Debian, porque&#xA;El &lt;em&gt;Debian Publicity Team&lt;/em&gt; &lt;em&gt;siente&lt;/em&gt; que allí la gente que a ellos les preocupa no se &lt;em&gt;sienten&lt;/em&gt; seguros.&lt;/p&gt;&#xA;&lt;p&gt;Mucho sentimiento, poco raciocinio.  Deberemos acostumbrarnos a estos tiempos que corren.  Tiempos donde el &lt;em&gt;yo&lt;/em&gt; es lo más preciado. Yo, yo, yo. Pero también tiempos donde es muy&#xA;importante el &amp;ldquo;postureo&amp;rdquo; o &lt;em&gt;virtue signaling&lt;/em&gt;.  Donde mi yo es tan inmenso que engulle a los que yo considero débiles, inermes y vulnerables.  Por cierto lo que menos importa es la&#xA;opinión de esos vulnerables. Yo soy el que tiene la opinión.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Cómo instalar Vagrant en Ubuntu y Debian</title>
       <link>https://katra.ballardini.com.ar/posts/como-instalar-vagrant-en-ubuntu-y-debian/</link>
