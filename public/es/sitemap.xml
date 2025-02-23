@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://katra.ballardini.com.ar/</loc>
-    <lastmod>2025-02-05T00:00:00-03:00</lastmod>
+    <lastmod>2025-02-23T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -17,23 +17,38 @@
                 href="https://katra.ballardini.com.ar/"
                 />
   </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/debian/</loc>
-    <lastmod>2025-02-05T00:00:00-03:00</lastmod>
+    <loc>https://katra.ballardini.com.ar/tags/arqueologia/</loc>
+    <lastmod>2025-02-23T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/computadora-personal/</loc>
+    <lastmod>2025-02-23T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://katra.ballardini.com.ar/posts/</loc>
-    <lastmod>2025-02-05T00:00:00-03:00</lastmod>
+    <lastmod>2025-02-23T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/saluden-a-debian/</loc>
-    <lastmod>2025-02-05T00:00:00-03:00</lastmod>
+    <loc>https://katra.ballardini.com.ar/tags/olivetti/</loc>
+    <lastmod>2025-02-23T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/posts/programma-101/</loc>
+    <lastmod>2025-02-23T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/programma-101/</loc>
+    <lastmod>2025-02-23T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/</loc>
-    <lastmod>2025-02-05T00:00:00-03:00</lastmod>
+    <lastmod>2025-02-23T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -47,13 +62,23 @@
                 href="https://katra.ballardini.com.ar/tags/"
                 />
   </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/debian/</loc>
+    <lastmod>2025-02-04T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/posts/saluden-a-debian/</loc>
+    <lastmod>2025-02-04T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://katra.ballardini.com.ar/tags/woke-politics/</loc>
-    <lastmod>2025-02-05T00:00:00-03:00</lastmod>
+    <lastmod>2025-02-04T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/x/</loc>
-    <lastmod>2025-02-05T00:00:00-03:00</lastmod>
+    <lastmod>2025-02-04T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>

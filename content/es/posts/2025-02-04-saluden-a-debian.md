@@ -36,12 +36,12 @@ Con un pequeño paralelo entonces, estos medios de distribución de propaganda d
 con su mensaje unificado.
 
 Fue bueno mientras duró, Debian, los "enemigos del Estado" de Alemania huyeron a las
-naciones libres y ayudaron a terminar con el dictador.  ¿Será ése el final de una metadistro?
+naciones libres y ayudaron a terminar con el dictador.  ¿Será ése el final de una meta-distro?
 
 Veremos.
 
 Por mi parte, desde que aparecieron dispositivos como tarjetas gráficas, de red,
-de audio, cámaras, digitalizadores de trazos, etc. y Debian por cuestiones de
+de audio, cámaras, digitalizare de trazos, etc. y Debian por cuestiones de
 política decidió no darles soporte, encontré un confortable hogar en Ubuntu.
 
 [^micro]: [micro noticia](https://micronews.debian.org/2025/1738154246.html)

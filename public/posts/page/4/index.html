@@ -7,7 +7,7 @@
     <title>Entradas | katra</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="el espíritu y la tecnología de la información">
-    <meta name="generator" content="Hugo 0.143.0">
+    <meta name="generator" content="Hugo 0.143.1">
     
     
     
@@ -49,8 +49,8 @@
 
   <meta itemprop="name" content="Entradas">
   <meta itemprop="description" content="el espíritu y la tecnología de la información">
-  <meta itemprop="datePublished" content="2025-02-05T00:00:00-03:00">
-  <meta itemprop="dateModified" content="2025-02-05T00:00:00-03:00">
+  <meta itemprop="datePublished" content="2025-02-23T00:00:00-03:00">
+  <meta itemprop="dateModified" content="2025-02-23T00:00:00-03:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Entradas">
   <meta name="twitter:description" content="el espíritu y la tecnología de la información">
@@ -137,6 +137,42 @@
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Entradas</span>
     <h1 class="f3 near-black">
+      <a href="/posts/jekyll-hpstr-como-eliminar-el-ejemplo/" class="link black dim">
+        Jekyll HPSTR: Cómo eliminar el ejemplo y poner tu propio contenido
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>Nuevamente comenzamos revisando las <a href="https://mmistakes.github.io/hpstr-jekyll-theme/theme-setup/">instrucciones</a> del tema HPSTR en</p>
+<p>Entonces, dentro de la VM:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /vagrant/www/CesarBallardini.github.io/
+</span></span></code></pre></div><p>Eliminamos los directorios:</p>
+<ul>
+<li><code>theme-setup/</code></li>
+<li><code>about/</code></li>
+</ul>
+<p>Mantenemos los directorios siguientes:</p>
+<ul>
+<li><code>assets/</code> (traducir <em>back</em> en <code>js/plugins/jquery.dlmenu.js</code>, y en <code>js/scripts/.min.js</code>)</li>
+<li><code>images/</code> (dejo sólo las imágenes <code>apple-touch-icon-114x114-precomposed.png</code>, <code>apple-touch-icon-144x144-precomposed.png</code>, <code>apple-touch-icon-72x72-precomposed.png</code>, <code>apple-touch-icon-precomposed.png</code>, <code>twitter-card-summary-large-image.jpg</code>; agrego <code>cesarballardini.jpg</code>)</li>
+<li><code>_data/</code> (comento los enlaces en <code>_navigation.yml</code>)</li>
+<li><code>_includes/</code> (<code>navigation.html</code> traducir mensajes, <code>read-more.html</code> arreglar fechas, traducir tiempo de lectura en <code>read-time-index.html</code> y <code>read-time.html</code>)</li>
+<li><code>_layouts/</code> (<code>post.html</code> arreglar fechas)</li>
+<li><code>_posts/</code> (elimino los archivos con los posts de ejemplo)</li>
+<li><code>_sass/</code> (atribución de entradas pasar a castellano en <code>_page.scss</code>)</li>
+</ul>
+<p>Los siguientes, los mantenemos pero hay que personalizarlos:</p>
+    </div>
+    <a href="/posts/jekyll-hpstr-como-eliminar-el-ejemplo/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Leer más</a>
+  </div>
+</div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Entradas</span>
+    <h1 class="f3 near-black">
       <a href="/posts/jekyll-el-tema-hpstr/" class="link black dim">
         Jekyll: El tema HPSTR
       </a>
@@ -173,25 +209,6 @@
 
         </div>
       
-        <div class="relative w-100 w-30-l mb4 bg-white">
-          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Entradas</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/mi-nuevo-blog-con-jekyll/" class="link black dim">
-        Mi nuevo blog con Jekyll
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>Un día cualquiera te das cuenta que ya no querés mantener tu blog con Wordpress alojado en tu propio VPS. Hay una nueva versión de Wordpress, no todos los plugins que usas son compatibles.  Tenés que hacer backups de la base de datos y de la instalación. Uno se sincera: no me gusta escribir, soy de las personas que disfrutan una buena charla.</p>
-<p>¿Para qué escribo? Para olvidar sin pena. ¿Para quién escribo? Para quien quiera recordar.  Cuando olvidamos suficientemente profundo es como si no conociéramos más, salvo las cicatrices que deja ese conocimiento.  Cuando otra persona o yo mismo encuentro lo que escribí hace tiempo, aprendemos.  La escritura es nuestra oportunidad de hacer persistir lo que pensamos, lo que valoramos en cierto momento. Aprendemos que era valioso en aquel momento, como para haberle dedicado el trabajo de escribirlo.</p>
-    </div>
-    <a href="/posts/mi-nuevo-blog-con-jekyll/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Leer más</a>
-  </div>
-</div>
-
-        </div>
-      
     </section>
     <ul class="pagination pagination-default">
       <li class="page-item">
@@ -212,11 +229,14 @@
       <li class="page-item active">
         <a aria-current="page" aria-label="Page 4" class="page-link" role="button">4</a>
       </li>
-      <li class="page-item disabled">
-        <a aria-disabled="true" aria-label="Next" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&raquo;</span></a>
+      <li class="page-item">
+        <a href="/posts/page/5/" aria-label="Page 5" class="page-link" role="button">5</a>
       </li>
-      <li class="page-item disabled">
-        <a aria-disabled="true" aria-label="Last" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      <li class="page-item">
+        <a href="/posts/page/5/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/5/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul></article>
 

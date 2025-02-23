@@ -5,6 +5,23 @@ description: ''
 tags: []
 ---
 
+https://www.reddit.com/r/programming/comments/bpb5v6/alan_kay_on_his_original_thoughts_when_he_came_up/ Alan Kay on his original thoughts when he came up with the term "OOP"
+"OOP to me means only messaging, local retention and protection and hiding of state-process, and extreme late-binding of all things. It can be done in Smalltalk and in LISP. There are possibly other systems in which this is possible, but I'm not aware of them."
+
+https://softwareengineering.stackexchange.com/questions/46592/so-what-did-alan-kay-really-mean-by-the-term-object-oriented
+
+I made up the term 'object-oriented', and I can tell you I didn't have C++ in mind
+-- Alan Kay, OOPSLA '97 https://www.youtube.com/watch?v=oKg1hTOQXoY
+
+https://www.youtube.com/watch?v=oKg1hTOQXoY
+Alan Kay at OOPSLA 1997 - The computer revolution hasnt happened yet
+
+https://userpage.fu-berlin.de/~ram/pub/pub_jf47ht81Ht/doc_kay_oop_en
+https://curtispoe.org/articles/alan-kay-and-oo-programming.html
+https://www.reddit.com/r/programming/comments/bqu8td/a_simple_explanation_of_what_alan_kay_meant_when/
+
+
+
 *
 * Sector publico y privador -> diferencias
 * Cambios de tecnologias -> aceptacion a la evolucion
