@@ -7,7 +7,7 @@
     <title>Entradas | katra</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="el espíritu y la tecnología de la información">
-    <meta name="generator" content="Hugo 0.143.1">
+    <meta name="generator" content="Hugo 0.145.0">
     
     
     
@@ -49,8 +49,8 @@
 
   <meta itemprop="name" content="Entradas">
   <meta itemprop="description" content="el espíritu y la tecnología de la información">
-  <meta itemprop="datePublished" content="2025-02-23T00:00:00-03:00">
-  <meta itemprop="dateModified" content="2025-02-23T00:00:00-03:00">
+  <meta itemprop="datePublished" content="2025-03-10T00:00:00-03:00">
+  <meta itemprop="dateModified" content="2025-03-10T00:00:00-03:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Entradas">
   <meta name="twitter:description" content="el espíritu y la tecnología de la información">
@@ -137,6 +137,26 @@
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Entradas</span>
     <h1 class="f3 near-black">
+      <a href="/posts/jim-weinrich-refactoring-ruby-on-rails/" class="link black dim">
+        Decoupling from Rails
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>El legendario Jim Weirich<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> presenta <em>Decoupling from Rails</em> en la reunión del
+Cincinnati Ruby Brigade de Octubre 2013.  En 2011 Robert C. Martin<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> desafió a la comunidad de Ruby on Rails<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> a desacoplar la aplicación del framework Web.  Jim toma un pequeño ejemplo y lo desarrolla con la claridad y maestría que lo caracterizaba, que puedes ver en el vídeo<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</p>
+<p>DHH<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> esbozó una crítica<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>, pero es claro que se sintió tocado en su diseño de RoR.  En el enlace se aprecian los comentarios y respuestas de otros miembros de la comunidad.  En particular me interesó la respuesta de Pat Maddox<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>, si bien puede verse como contemporizadora.</p>
+    </div>
+    <a href="/posts/jim-weinrich-refactoring-ruby-on-rails/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Leer más</a>
+  </div>
+</div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Entradas</span>
+    <h1 class="f3 near-black">
       <a href="/posts/growing-a-language/" class="link black dim">
         Growing a Language
       </a>
@@ -175,52 +195,6 @@ Nos movemos al directorio donde reside el nuevo blog:</p>
 </span></span></code></pre></div><p>Y con eso es suficiente.  Ahora cuando accedemos al blog Hugo están disponibles las antiguas entradas.</p>
     </div>
     <a href="/posts/como-mover-los-posts-jekyll-hacia-hugo/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Leer más</a>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white">
-          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Entradas</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/como-instalar-hugo-en-mi-laptop/" class="link black dim">
-        Cómo instalar Hugo en mi laptop
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="1-instalamos-hugo">1. Instalamos Hugo</h2>
-<ul>
-<li><a href="https://gohugo.io/installation/windows/#chocolatey">https://gohugo.io/installation/windows/#chocolatey</a></li>
-</ul>
-<p>La forma simple en una laptop con MS Windows 11 es mediante Chocolatey.
-Con permisos de administrador, ejecuta:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>choco install hugo-extended
-</span></span></code></pre></div><p>Eso instala un solo archivo binario con el programa ejecutable.  Para ver la versión,
-en una terminal de usuario normal, ejecuta:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Powershell" data-lang="Powershell"><span style="display:flex;"><span>hugo version
-</span></span></code></pre></div><p>En mi caso, eso da:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>hugo v0.141.0-e7bd51698e5c3778a86003018702b1a7dcb9559a+extended windows/amd64 BuildDate=2025-01-16T13:11:18Z VendorInfo=gohugoio
-</span></span></code></pre></div><h2 id="2-creamos-un-blog">2. Creamos un blog</h2>
-<p>Usaremos la Quick Start Guide: <a href="https://gohugo.io/getting-started/quick-start/">https://gohugo.io/getting-started/quick-start/</a></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd ~/cesar/blog/
-</span></span><span style="display:flex;"><span>hugo new site katra
-</span></span><span style="display:flex;"><span>cd katra/
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>git init
-</span></span><span style="display:flex;"><span>git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;theme = &#39;ananke&#39;&#34;</span> &gt;&gt; hugo.toml
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Correr con alguno de los siguientes:</span>
-</span></span><span style="display:flex;"><span>hugo server
-</span></span><span style="display:flex;"><span>hugo server --buildDrafts
-</span></span><span style="display:flex;"><span>hugo server --buildDrafts --disableFastRender
-</span></span></code></pre></div><h2 id="3-agregar-una-página">3. Agregar una página</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new content content/posts/my-first-post.md
-</span></span></code></pre></div><p>Abre <code>content/posts/my-first-post.md</code> y escribe algo de contenido.</p>
-    </div>
-    <a href="/posts/como-instalar-hugo-en-mi-laptop/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Leer más</a>
   </div>
 </div>
 
