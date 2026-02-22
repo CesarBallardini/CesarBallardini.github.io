@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es-AR">
+<html lang="es-AR"ZgotmplZ>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -7,7 +7,7 @@
     <title>Cómo instalar Vagrant en Ubuntu y Debian | katra</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="Instalación de Vagrant, Virtualbox, plugins, y entorno sobre variantes GNU/Linux Debian y Ubuntu">
-    <meta name="generator" content="Hugo 0.145.0">
+    <meta name="generator" content="Hugo 0.156.0">
     
     
     
@@ -18,7 +18,7 @@
     
 
     
-<link rel="stylesheet" href="/ananke/css/main.min.8ea42c4c5025337ca923faf1dc6e64b4dab13894d8f3f6908ee774c5b1502fec.css" >
+<link rel="stylesheet" href="/ananke/css/main.min.5595da07e7ff588360f7e7ee4cb4d34c40b221e230afa32a20e95168bfd86285.css" >
 
 
 
@@ -192,7 +192,7 @@ de esta manera podemos instalar la última versión estable provista por el due�
 de este proceder puede ser si el dueño del proyecto no proporciona versiones binarias para las versiones de sistema operativo que necesitamos usar, y ése no es el caso con Debian y Ubuntu.</p>
 <p>La opción de usar la instalación mediante el sistema de gestión de paquetes de tu sistema operativo GNU/Linux es buena.  En particular es muy simple, por ejemplo en Debian o Ubuntu
 simplemente uno escribe:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  apt-get install virtualbox dkms vagrant
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  apt-get install virtualbox dkms vagrant
 </span></span></code></pre></div><p>Si las versiones que consigues de esa manera alcanzan en tu trabajo, por favor, no sigas leyendo este artículo.  Si necesitas las versiones actuales
 de cada paquete, entonces la instalación desde el gestor de paquetes tal vez no alcance, sigue leyendo.</p>
 <p>Vamos a instalar entonces primero Virtualbox, luego Vagrant y a continuación algunos plugins muy útiles de Vagrant.</p>
@@ -221,7 +221,7 @@ de cada paquete, entonces la instalación desde el gestor de paquetes tal vez no
 <li>Usamos <code>VBoxManage</code> para instalar el pack dentro del Virtualbox.</li>
 </ol>
 <p>Para evitar errores y acciones manuales, escribí un <em>script</em> en Bash que automatiza todas estas tareas.  Sólo hace falta proporcionarle el valor de las versiones que se buscan, y lo demás se realiza sin tropiezos.  Las variables de marras son:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>VB_MayorVersion<span style="color:#f92672">=</span>5.0
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>VB_MayorVersion<span style="color:#f92672">=</span>5.0
 </span></span><span style="display:flex;"><span>VB_MinorVersion<span style="color:#f92672">=</span><span style="color:#ae81ff">26</span>
 </span></span><span style="display:flex;"><span>VB_EXTPACK_ReleaseNumber<span style="color:#f92672">=</span><span style="color:#ae81ff">108824</span>
 </span></span></code></pre></div><p>y sus valores se obtienen de la página <a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a> antes mencionada. Por ejemplo, el enlace de descarga de las extensiones apunta a un archivo de nombre <code>Oracle_VM_VirtualBox_Extension_Pack-5.0.26-108824.vbox-extpack</code> y de allí se obtiene el <code>108824</code> mencionado en la variable <code>VB_EXTPACK_ReleaseNumber</code>.</p>
@@ -233,7 +233,7 @@ de cada paquete, entonces la instalación desde el gestor de paquetes tal vez no
 lo instalaremos con <code>dpkg -i</code>.</p>
 <p>Al igual que en el caso de Virtualbox, a los fines de evitar errores, en el <em>script</em> hay una sección que hace estas tareas, y sólo hay que proporcionarle
 la versión de vagrant en una variable, como se muestra a continuación:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>VAG_Version<span style="color:#f92672">=</span>1.8.1
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>VAG_Version<span style="color:#f92672">=</span>1.8.1
 </span></span></code></pre></div><h2 id="instalación-de-plugins-en-vagrant">Instalación de plugins en Vagrant</h2>
 <p>Los plugins son mecanismos de extensión que posee Vagrant para incorporar comportamiento adicional.</p>
 <p>Una lista de los actualmente disponibles se puede encontrar en <a href="https://github.com/mitchellh/vagrant/wiki/Available-Vagrant-Plugins">https://github.com/mitchellh/vagrant/wiki/Available-Vagrant-Plugins</a>.</p>
@@ -243,9 +243,9 @@ la versión de vagrant en una variable, como se muestra a continuación:</p>
 <li>vagrant-proxyconf configura la VM para que use las variables de entorno de proxy del anfitrión. Esto es fundamental si tu acceso a Internet es mediante un proxy corporativo.</li>
 </ul>
 <p>La forma de instalar plugins es muy simple, en nuestro caso:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  vagrant plugin install vagrant-vbguest vagrant-proxyconf
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  vagrant plugin install vagrant-vbguest vagrant-proxyconf
 </span></span></code></pre></div><p>En el caso de <code>vagrant-proxyconf</code> vamos a agregar a la configuración global de la cuenta de usuario que utilizamos lo siguiente en <code>~/.vagrant.d/Vagrantfile</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#66d9ef">Vagrant</span><span style="color:#f92672">.</span>configure(<span style="color:#e6db74">&#34;2&#34;</span>) <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>config<span style="color:#f92672">|</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#66d9ef">Vagrant</span><span style="color:#f92672">.</span>configure(<span style="color:#e6db74">&#34;2&#34;</span>) <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>config<span style="color:#f92672">|</span>
 </span></span><span style="display:flex;"><span>  puts <span style="color:#e6db74">&#34;proxyconf...&#34;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">Vagrant</span><span style="color:#f92672">.</span>has_plugin?(<span style="color:#e6db74">&#34;vagrant-proxyconf&#34;</span>)
 </span></span><span style="display:flex;"><span>    puts <span style="color:#e6db74">&#34;find proxyconf plugin !&#34;</span>
@@ -274,8 +274,8 @@ se trata de verificar si ya fue realizada con anterioridad, para evitar repetirl
 ya no sean tan fáciles de leer.  En otra oportunidad veremos cómo usar una herramienta más apropiada a las instalaciones,
 llamada Ansible, la cual incorpora de fábrica estas importantes características.</p>
 <p>A continuación, toma un momento para revisar el programa y si necesitas virtualización hecha simple, hazlo correr.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># buscar paquete apropiado a arquitectura y cpu en https://www.vagrantup.com/downloads.html</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
 </span></span><span style="display:flex;"><span>VAG_Version<span style="color:#f92672">=</span>1.8.1
@@ -437,7 +437,7 @@ llamada Ansible, la cual incorpora de fábrica estas importantes característica
 </span></span></code></pre></div><h2 id="obtener-el-código-fuente-desde-github">Obtener el código fuente desde Github</h2>
 <p>Se creó un repo en Github: <a href="https://github.com/CesarBallardini/instala-virtualbox-vagrant">https://github.com/CesarBallardini/instala-virtualbox-vagrant</a></p>
 <p>Para obtener este código fuente, debes clonar el repositorio mediante SSH o HTTPS:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  git clone git@github.com:CesarBallardini/instala-virtualbox-vagrant.git     <span style="color:#75715e"># SSH</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  git clone git@github.com:CesarBallardini/instala-virtualbox-vagrant.git     <span style="color:#75715e"># SSH</span>
 </span></span><span style="display:flex;"><span>  git clone https://github.com/CesarBallardini/instala-virtualbox-vagrant.git <span style="color:#75715e"># HTTPS</span>
 </span></span></code></pre></div><h2 id="para-crear-inicialmente-este-proyecto">Para crear inicialmente este proyecto</h2>
 <p>Para subir el código de este proyecto, simplemente hay que hacer:</p>
@@ -449,14 +449,14 @@ llamada Ansible, la cual incorpora de fábrica estas importantes característica
 </code></pre><ul>
 <li>inicializar el repo git, agregar los cambios relevantes, crear el commit inicial:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  git init
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  git init
 </span></span><span style="display:flex;"><span>  git add .
 </span></span><span style="display:flex;"><span>  git commit -m <span style="color:#e6db74">&#34;instrucciones de instalacion y Vagrantfile para probarlas&#34;</span>
 </span></span></code></pre></div><ul>
 <li>crear un repo en Github, ene ste caso se creó el <code>instala-virtualbox-vagrant</code></li>
 <li>poner el repo de github como origin y subir los cambios:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  git remote add origin https://github.com/CesarBallardini/instala-virtualbox-vagrant.git
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  git remote add origin https://github.com/CesarBallardini/instala-virtualbox-vagrant.git
 </span></span><span style="display:flex;"><span>  git push -u origin master
 </span></span></code></pre></div><ul class="pa0">
   
@@ -511,7 +511,7 @@ llamada Ansible, la cual incorpora de fábrica estas importantes característica
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://katra.ballardini.com.ar/" >
-    &copy;  César Ballardini 2025 
+    &copy;  César Ballardini 2026 
   </a>
     <div><div class="ananke-socials"><a href="http://linkedin.com/in/cesarballardini" target="_blank" rel="noopener"
         class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"

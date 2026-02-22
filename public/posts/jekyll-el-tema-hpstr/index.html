@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es-AR">
+<html lang="es-AR"ZgotmplZ>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -7,7 +7,7 @@
     <title>Jekyll: El tema HPSTR | katra</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="El tema HPSTR en el blog.">
-    <meta name="generator" content="Hugo 0.145.0">
+    <meta name="generator" content="Hugo 0.156.0">
     
     
     
@@ -18,7 +18,7 @@
     
 
     
-<link rel="stylesheet" href="/ananke/css/main.min.8ea42c4c5025337ca923faf1dc6e64b4dab13894d8f3f6908ee774c5b1502fec.css" >
+<link rel="stylesheet" href="/ananke/css/main.min.5595da07e7ff588360f7e7ee4cb4d34c40b221e230afa32a20e95168bfd86285.css" >
 
 
 
@@ -185,30 +185,30 @@
 <p>Vamos a tratar primero el caso inicial, cuando por primera vez creamos nuestro blog. Yo voy a referir mi cuenta en Github, que es <code>CesarBallardini</code>, así que en el resto de esta serie sobre cómo tener funcionando tu blog jekyll + HPSTR, vas a tener que cambiar este nombre de cuenta por el tuyo. Así también sucederá con mi nombre y apellido, y dirección de correo electrónico.</p>
 <p>Debemos crear el repo <code>CesarBallardini.github.io</code>, completamente vacío: sin <code>.gitignore</code> ni <code>README.md</code>.</p>
 <p>Clonamos el repo inicial:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /vagrant/www/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /vagrant/www/
 </span></span><span style="display:flex;"><span>git clone https://github.com/CesarBallardini/CesarBallardini.github.io
 </span></span><span style="display:flex;"><span>cd CesarBallardini.github.io/
 </span></span></code></pre></div><p>En la VM configuramos Git, sólo para este repo:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git config user.email <span style="color:#e6db74">&#34;cesar@ballardini.com.ar&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git config user.email <span style="color:#e6db74">&#34;cesar@ballardini.com.ar&#34;</span>
 </span></span><span style="display:flex;"><span>git config user.name <span style="color:#e6db74">&#34;Cesar Ballardini&#34;</span>
 </span></span></code></pre></div><p>Cargamos el tema HPSTR desde el repo propio:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git remote add hipster https://github.com/CesarBallardini/hpstr-jekyll-theme.git
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git remote add hipster https://github.com/CesarBallardini/hpstr-jekyll-theme.git
 </span></span><span style="display:flex;"><span>git fetch hipster master
 </span></span><span style="display:flex;"><span>git merge hipster/master -m <span style="color:#e6db74">&#34;incorporo HPSTR al repo de jekyll&#34;</span>
 </span></span></code></pre></div><p>Ahora tenemos dos alternativas: verlo localmente, para tener una visualización previa de cómo va a quedar el blog, y la otra posibilidad es subirlo a Github para hacerlo público.</p>
 <h2 id="localmente-desde-la-vm">Localmente desde la VM</h2>
 <p>Para verlo localmente, usaremos el programa jekyll, ya instalado en la VM, nos aseguramos de instalar las gemas requeridas como dependencias:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bundle install
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bundle install
 </span></span></code></pre></div><p>Y lo publicamos localmente:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bundle exec jekyll build
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bundle exec jekyll build
 </span></span><span style="display:flex;"><span>bundle exec jekyll serve --host 192.168.33.10 --incremental
 </span></span></code></pre></div><p>Queda accesible en <a href="http://192.168.33.10:4000/">http://192.168.33.10:4000/</a> en nuestro navegador (que es el IP configurado en el <code>Vagrantfile</code> en FIXME).</p>
 <h2 id="publicado-en-github">Publicado en Github</h2>
 <p>Por otro lado. lo podemos publicar en Github (aquí nos solicitará nuestro nombre de usuario y contraseña en Github):</p>
 <p>La primera vez desconecto el <em>tracking</em> de la rama aguas arriba:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git branch --unset-upstream
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git branch --unset-upstream
 </span></span></code></pre></div><p>Y ahora hago el push hacia Github:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git push origin master
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git push origin master
 </span></span></code></pre></div><p>Y puedes acceder al Blog desde allí en: <a href="http://cesarballardini.github.io/">http://cesarballardini.github.io/</a></p>
 <ul class="pa0">
   
@@ -267,7 +267,7 @@
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://katra.ballardini.com.ar/" >
-    &copy;  César Ballardini 2025 
+    &copy;  César Ballardini 2026 
   </a>
     <div><div class="ananke-socials"><a href="http://linkedin.com/in/cesarballardini" target="_blank" rel="noopener"
         class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es-AR">
+<html lang="es-AR"ZgotmplZ>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -7,7 +7,7 @@
     <title>Jekyll: una VM Vagrant para hacerlo funcionar | katra</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="Una VM es un buen lugar para tener una visualización previa de lo que publicaremos.">
-    <meta name="generator" content="Hugo 0.145.0">
+    <meta name="generator" content="Hugo 0.156.0">
     
     
     
@@ -18,7 +18,7 @@
     
 
     
-<link rel="stylesheet" href="/ananke/css/main.min.8ea42c4c5025337ca923faf1dc6e64b4dab13894d8f3f6908ee774c5b1502fec.css" >
+<link rel="stylesheet" href="/ananke/css/main.min.5595da07e7ff588360f7e7ee4cb4d34c40b221e230afa32a20e95168bfd86285.css" >
 
 
 
@@ -196,7 +196,7 @@
 <li><code>provision/ansible-playbook-install.sh</code> (instala roles y el playbook a usar)</li>
 <li><code>provision/ansible-setup.sh</code> (corre Ansible para instalar Jekyll)</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#66d9ef">VAGRANTFILE_API_VERSION</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;2&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#66d9ef">VAGRANTFILE_API_VERSION</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;2&#34;</span>
 </span></span><span style="display:flex;"><span>arch<span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;i386&#34;</span> ; bits<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;32&#34;</span> ; distro<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;trusty&#34;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">Vagrant</span><span style="color:#f92672">.</span>configure(<span style="color:#66d9ef">VAGRANTFILE_API_VERSION</span>) <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>config<span style="color:#f92672">|</span>
@@ -227,10 +227,10 @@
 </span></span></code></pre></div><h2 id="el-aprovisionamiento-del-sistema-operativo-básico">El aprovisionamiento del sistema operativo básico</h2>
 <p>No hay mucho más que comentar en el código siguiente.  <em>Use the source, Luke!</em></p>
 <p>Creamos un directorio <code>provision/</code> donde residirá todo el código de aprovisionamiento en shell, y un directorio <code>provision/ansible/</code> donde estarán roles, configuración y playbooks de Ansible.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p provision/ansible
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p provision/ansible
 </span></span></code></pre></div><p>El <code>provision/os-setup.sh</code> será el siguiente:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">##</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># provision/os-setup.sh</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># instala lo necesario a nivel de sistema operativo</span>
@@ -330,8 +330,8 @@
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># EOF</span>
 </span></span></code></pre></div><h2 id="instalación-de-ansible">Instalación de Ansible</h2>
 <p>Este <em>script</em> corre con privilegios de <em>root</em> y se ocupa de instalar la fuente de paquetes en Ubuntu (FIXME para otros S.O.) necesarios para instalar la versión estable más moderna de ansible.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">##</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># provision/ansible-setup.sh</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># instala lo necesario para que funcione ansible</span>
@@ -345,10 +345,10 @@
 <p>Vamos a usar playbooks de ansible para realizar la instalación de Jekyll y sus dependencias.</p>
 <p>El primer paso es asegurar la configuración de ansible, la cual requiere un archivo de inventario, y uno de configuración global.</p>
 <p>El inventario se denomina jk.inventory y su contenido es un grupo denominado jk, donde sólo reside la identificación de la VM (jk.dev) con una conexión local, para evitar el uso de SSH:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#66d9ef">[jk]</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#66d9ef">[jk]</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">jk.dev  ansible_connection</span><span style="color:#f92672">=</span><span style="color:#e6db74">local</span>
 </span></span></code></pre></div><p>El archivo de configuración de ansible se denomina <code>ansible.cfg</code>, y se instala localmente en el directorio de trabajo, para que se use en lugar del archivo global a nivel de sistema.  En nuestro caso está casi vacío de contenido y sólo tiene las líneas:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#66d9ef">[defaults]</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#66d9ef">[defaults]</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">roles_path</span>    <span style="color:#f92672">=</span> <span style="color:#e6db74">./roles</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">[privilege_escalation]</span>
@@ -357,15 +357,15 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">[accelerate]</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">[selinux]</span>
 </span></span></code></pre></div><p>Para ejecutar ansible usaremos el mandato <code>provision/ansible-run.sh</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /vagrant/provision/ansible
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /vagrant/provision/ansible
 </span></span><span style="display:flex;"><span>time ansible-playbook -vv -i jk.inventory instala-jekyll.yml
 </span></span></code></pre></div><h2 id="cómo-crear-el-playbook-de-instalación-de-jekyll">Cómo crear el playbook de instalación de Jekyll</h2>
 <p>Primero debemos instalar los roles necesarios desde Ansible Galaxy:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /vagrant/provision/ansible/roles/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /vagrant/provision/ansible/roles/
 </span></span><span style="display:flex;"><span>ansible-galaxy install rvm_io.rvm1-ruby
 </span></span><span style="display:flex;"><span>ansible-galaxy install igor_mukhin.jekyll
 </span></span></code></pre></div><p>Nuestro playbook de instalación será: <code>instala-jekyll.yml</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">hosts</span>: <span style="color:#ae81ff">jk</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">hosts</span>: <span style="color:#ae81ff">jk</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">vars</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">jekyll_version</span>: <span style="color:#ae81ff">3.2.1</span>
 </span></span><span style="display:flex;"><span>
@@ -373,7 +373,7 @@
 </span></span><span style="display:flex;"><span>    - {<span style="color:#f92672">role: rvm_io.rvm1-ruby, rvm1_gpg_key_server</span>: <span style="color:#e6db74">&#39;hkp://keyserver.ubuntu.com:80&#39;</span> }
 </span></span><span style="display:flex;"><span>    - {<span style="color:#f92672">role: igor_mukhin.jekyll, tags: jekyll, become</span>: <span style="color:#66d9ef">true</span> }
 </span></span></code></pre></div><p>Nota: Un problema de permisos en la creación de symlinks en roles/rvm_io.rvm1-ruby/tasks/rubies.yml se resuelve usando privilegios de administrador en el task, que debería quedar (cerca de la línea 54):</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Symlink ruby related binaries on the system path</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Symlink ruby related binaries on the system path</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">file</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">state</span>: <span style="color:#e6db74">&#39;link&#39;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">src</span>: <span style="color:#e6db74">&#39;{{ rvm1_install_path }}/wrappers/default/{{ item }}&#39;</span>
@@ -384,8 +384,8 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">with_items</span>: <span style="color:#e6db74">&#39;{{ rvm1_symlink_binaries }}&#39;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">become</span>: <span style="color:#66d9ef">yes</span>
 </span></span></code></pre></div><p>Todos estos pasos los englobaremos en un script bash para que corra al momento del aprovisionamiento, <code>provision/ansible-playbook-install.sh</code> es:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">##</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># provision/ansible-playbook-install.sh</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># instala roles, playbooks y variables</span>
@@ -419,7 +419,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># emparcho rvm_io.rvm1-ruby, sino da problema de permisos al crear los symlinks</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span> -z <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span> sed -n -e <span style="color:#e6db74">&#34;63p&#34;</span>  /vagrant/provision/ansible/roles/rvm_io.rvm1-ruby/tasks/rubies.yml <span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  <span style="color:#f92672">&amp;&amp;</span> sed -i <span style="color:#e6db74">&#39;63i\ \ become: yes&#39;</span> /vagrant/provision/ansible/roles/rvm_io.rvm1-ruby/tasks/rubies.yml
+</span></span></span><span style="display:flex;"><span>  <span style="color:#f92672">&amp;&amp;</span> sed -i <span style="color:#e6db74">&#39;63i\ \ become: yes&#39;</span> /vagrant/provision/ansible/roles/rvm_io.rvm1-ruby/tasks/rubies.yml
 </span></span></code></pre></div><ul class="pa0">
   
    <li class="list di">
@@ -489,7 +489,7 @@
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://katra.ballardini.com.ar/" >
-    &copy;  César Ballardini 2025 
+    &copy;  César Ballardini 2026 
   </a>
     <div><div class="ananke-socials"><a href="http://linkedin.com/in/cesarballardini" target="_blank" rel="noopener"
         class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"

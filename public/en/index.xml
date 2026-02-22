@@ -7,6 +7,21 @@
     <generator>Hugo</generator>
     <language>en-US</language>
     <copyright>César Ballardini</copyright>
+    <lastBuildDate>Sun, 22 Feb 2026 00:00:00 -0300</lastBuildDate>
     <atom:link href="https://katra.ballardini.com.ar/en/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Consulting</title>
+      <link>https://katra.ballardini.com.ar/en/consulting/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 -0300</pubDate>
+      <guid>https://katra.ballardini.com.ar/en/consulting/</guid>
+      <description>&lt;h1 id=&#34;césar-ballardini&#34;&gt;César Ballardini&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;Senior Software Developer · System Architect · Educator&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Energy Grid &amp;amp; Power Systems | Vue.js · TypeScript · Python · GNU/Linux&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;about&#34;&gt;About&lt;/h2&gt;&#xA;&lt;p&gt;I&amp;rsquo;m a generalizing specialist &amp;ndash; someone who can go deep on system architecture, software development, or infrastructure, and connect the dots across all three. With 35+ years in the field, I&amp;rsquo;ve built software, managed servers, taught at universities, and delivered solutions across the energy, government, and education sectors.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CV</title>
+      <link>https://katra.ballardini.com.ar/en/cv/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 -0300</pubDate>
+      <guid>https://katra.ballardini.com.ar/en/cv/</guid>
+      <description>&lt;h1 id=&#34;césar-ballardini&#34;&gt;César Ballardini&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;Senior Software Developer · System Architect · Educator | Energy Grid &amp;amp; Power Systems | Vue.js · TypeScript · Python · GNU/Linux&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Argentina&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;&#xA;&lt;p&gt;I&amp;rsquo;m a generalizing specialist &amp;ndash; someone who can go deep on system architecture, software development, or infrastructure, and connect the dots across all three. With 35+ years in the field, I&amp;rsquo;ve built software, managed servers, taught at universities, and shipped products across the energy, government, and education sectors.&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>
