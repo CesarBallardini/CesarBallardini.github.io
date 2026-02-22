@@ -77,7 +77,7 @@ networks = [
 username = "cesar.ballardini@gmail.com"
 
 [params.ananke.social.linkedin]
-username = "cesarballardini"
+username = "cesar-ballardini"
 
 [params.ananke.social.x-twitter]
 username = "cesarballardini"

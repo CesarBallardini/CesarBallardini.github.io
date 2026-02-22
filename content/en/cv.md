@@ -1,6 +1,6 @@
 +++
 title = "CV"
-description = "Cesar Ballardini -- Senior Software Developer · System Architect · Educator -- Professional Profile"
+description = "César Ballardini -- Senior Software Developer · System Architect · Educator -- Professional Profile"
 date = "2026-02-22"
 aliases = ["resume", "profile", "professional-profile"]
 author = "Cesar Ballardini"
@@ -8,7 +8,7 @@ menu = "main"
 weight = 20
 +++
 
-# César Ballardini
+# César Ballardin
 
 **Senior Software Developer · System Architect · Educator | Energy Grid & Power Systems | Vue.js · TypeScript · Python · GNU/Linux**
 
@@ -201,7 +201,7 @@ Electronics (coursework) -- 1982 - 1988
 
 Tecnico Nacional, Mecanico Electrico (National Mechanical-Electrical Technician) -- 1975 - 1980
 
-A technical secondary school operated by Universidad Nacional del Litoral specializing in industrial and vocational education with strong emphasis on hands-on trade training through three pathways: Construction, Mechanical-Electrical, and Chemistry.
+A technical and vocational high school operated by Universidad Nacional del Litoral specializing in industrial education with strong emphasis on hands-on trade training through three pathways: Construction, Mechanical-Electrical, and Chemistry.
 
 ---
 
@@ -256,7 +256,7 @@ A technical secondary school operated by Universidad Nacional del Litoral specia
 ## Contact & Links
 
 - **Email:** cesar.ballardini@gmail.com
-- **LinkedIn:** [linkedin.com/in/cesarballardini](https://www.linkedin.com/in/cesarballardini/)
+- **LinkedIn:** [linkedin.com/in/cesar-ballardini](https://www.linkedin.com/in/cesar-ballardini/)
 - **GitHub:** [github.com/CesarBallardini](https://github.com/CesarBallardini)
 - **Blog:** [katra.ballardini.com.ar](http://katra.ballardini.com.ar) (in Spanish)
 - **Consulting Services:** [Consulting](/en/consulting/)

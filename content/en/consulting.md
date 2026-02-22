@@ -40,7 +40,7 @@ I help organizations solve complex technical challenges by combining modern soft
 ## Links
 
 - [Full CV](/en/cv/)
-- [LinkedIn](https://www.linkedin.com/in/cesarballardini/)
+- [LinkedIn](https://www.linkedin.com/in/cesar-ballardini/)
 - [GitHub](https://github.com/CesarBallardini)
 - [Blog](http://katra.ballardini.com.ar) (in Spanish)
 
