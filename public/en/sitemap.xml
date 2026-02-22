@@ -11,6 +11,16 @@
     <lastmod>2026-02-22T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/cv/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/cv/"
+                />
   </url><url>
     <loc>https://katra.ballardini.com.ar/en/</loc>
     <lastmod>2026-02-22T00:00:00-03:00</lastmod>

@@ -7,8 +7,22 @@
     <generator>Hugo</generator>
     <language>es-AR</language>
     <copyright>César Ballardini</copyright>
-    <lastBuildDate>Mon, 10 Mar 2025 00:00:00 -0300</lastBuildDate>
+    <lastBuildDate>Sun, 22 Feb 2026 00:00:00 -0300</lastBuildDate>
     <atom:link href="https://katra.ballardini.com.ar/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Consultoría</title>
+      <link>https://katra.ballardini.com.ar/consultoria/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 -0300</pubDate>
+      <guid>https://katra.ballardini.com.ar/consultoria/</guid>
+      <description>&lt;h1 id=&#34;césar-ballardini&#34;&gt;César Ballardini&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;Desarrollador de Software Senior · Arquitecto de Sistemas · Educador&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Redes Eléctricas y Sistemas de Potencia | Vue.js · TypeScript · Python · GNU/Linux&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;acerca-de-mí&#34;&gt;Acerca de mí&lt;/h2&gt;&#xA;&lt;p&gt;Soy un especialista generalista &amp;ndash; alguien que puede profundizar en arquitectura de sistemas, desarrollo de software o infraestructura, y conectar los puntos entre las tres áreas. Con más de 35 años en el campo, he construido software, administrado servidores, enseñado en universidades y entregado soluciones en los sectores de energía, gobierno y educación.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CV</title>
+      <link>https://katra.ballardini.com.ar/cv/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 -0300</pubDate>
+      <guid>https://katra.ballardini.com.ar/cv/</guid>
+      <description>&lt;h1 id=&#34;césar-ballardini&#34;&gt;César Ballardini&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;Desarrollador de Software Senior · Arquitecto de Sistemas · Educador | Redes Eléctricas y Sistemas de Potencia | Vue.js · TypeScript · Python · GNU/Linux&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Argentina&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;resumen&#34;&gt;Resumen&lt;/h2&gt;&#xA;&lt;p&gt;Soy un especialista generalista &amp;ndash; alguien que puede profundizar en arquitectura de sistemas, desarrollo de software o infraestructura, y conectar los puntos entre las tres áreas. Con más de 35 años en el campo, he construido software, administrado servidores, enseñado en universidades y entregado productos en los sectores de energía, gobierno y educación.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Soplar humo de tabaco</title>
       <link>https://katra.ballardini.com.ar/posts/soplar-humo-de-tabaco/</link>
