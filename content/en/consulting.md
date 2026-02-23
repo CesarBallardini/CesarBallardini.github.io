@@ -1,6 +1,6 @@
 +++
 title = "Consulting"
-description = "Senior Software Developer · System Architect · Educator -- Consulting Services"
+description = "César Ballardini -- Senior Software Developer · System Architect · Educator -- Consulting Services"
 date = "2026-02-22"
 aliases = ["services", "contact", "about"]
 author = "Cesar Ballardini"
@@ -12,34 +12,34 @@ weight = 10
 
 **Senior Software Developer · System Architect · Educator**
 
-Energy Grid & Power Systems | Vue.js · TypeScript · Python · GNU/Linux
+Vue.js · TypeScript · Python · GNU/Linux
 
 ---
 
 ## About
 
-I'm a generalizing specialist -- someone who can go deep on system architecture, software development, or infrastructure, and connect the dots across all three. With 35+ years in the field, I've built software, managed servers, taught at universities, and delivered solutions across the energy, government, and education sectors.
+I operate as a senior software developer, system architect, and technical educator with more than 35 years of experience spanning software development, infrastructure engineering, and university instruction. I have delivered solutions across the energy, government, education, and private consulting sectors.
 
-I help organizations solve complex technical challenges by combining modern software development with deep infrastructure expertise. Whether it's building an internal platform, automating server provisioning, integrating GNU/Linux and Windows environments, or training your technical team -- I deliver working solutions with clarity and reliability.
+I assist organizations in resolving complex technical challenges by combining modern software development practices with deep infrastructure expertise. Whether the requirement involves building an internal platform, automating server provisioning, integrating heterogeneous environments, containerizing applications, or upskilling your technical team -- I deliver robust, well-documented solutions.
 
 ## Services
 
-- **Custom Software Development** -- Frontend applications in Vue.js and TypeScript, backend services in Python and Flask, data visualizations, and database solutions with PostgreSQL
-- **Infrastructure & Automation** -- GNU/Linux administration, Infrastructure as Code with Ansible and Terraform, virtualization with QEMU/libvirt/Vagrant, cloud deployments on AWS and Digital Ocean, DevOps practices
-- **System Integration** -- Integration between GNU/Linux and Microsoft Windows server environments, email systems, security, and vertical business applications
-- **Technical Training** -- GNU/Linux system administration, performance analysis, programming paradigms, and AI fundamentals -- delivered on-site for your technical teams
-- **Energy Sector Expertise** -- Working in the energy industry since 1989, from SCADA software at a provincial power utility to grid optimization software today
+- **Custom Software Development** -- Frontend applications built with Vue.js and TypeScript, backend services in Python and Flask, interactive data visualizations using D3.js and Chart.js, and database solutions with PostgreSQL
+- **Infrastructure & Automation** -- GNU/Linux system administration, Infrastructure as Code with Ansible and Terraform, containerization with Docker, virtualization with QEMU/libvirt/Vagrant, cloud deployments on AWS and Digital Ocean, and DevOps practices
+- **System Integration** -- Integration across GNU/Linux and Microsoft Windows server environments, including file services (Samba), messaging, security, and vertical business applications
+- **Technical Training** -- GNU/Linux system administration, performance analysis, programming paradigms, and software development fundamentals -- delivered on-site or remotely for your technical teams
 
 ## Why work with me
 
-- **35+ years** of hands-on experience across development, infrastructure, and education
-- **Proven results** -- from pioneering Infrastructure as Code practices in government organizations, to automating server provisioning that cut deployment times by 90%, to building analysis tools for power systems engineers working on grid optimization
-- **Open-source expertise** -- deep commitment to Free Software and GNU/Linux as cost-effective, reliable alternatives to proprietary solutions
-- **Teacher mindset** -- I explain complex systems clearly, document thoroughly, and train your people to be self-sufficient
+- **35+ years** of hands-on experience across software development, infrastructure, and education
+- **Demonstrated results** -- from introducing Infrastructure as Code practices in government organizations, to automating server provisioning that reduced deployment times by 90%, to building analysis platforms for power systems engineers contributing to over $100 million in annual customer savings
+- **Open-source expertise** -- sustained commitment to Free Software and GNU/Linux as cost-effective, reliable alternatives to proprietary solutions
+- **Educator's precision** -- I communicate complex systems with clarity, document thoroughly, and structure knowledge transfer so that teams gain autonomy
 
 ## Links
 
 - [Full CV](/en/cv/)
+- [Skill Keywords](/en/skills/)
 - [LinkedIn](https://www.linkedin.com/in/cesar-ballardini/)
 - [GitHub](https://github.com/CesarBallardini)
 - [Blog](http://katra.ballardini.com.ar) (in Spanish)

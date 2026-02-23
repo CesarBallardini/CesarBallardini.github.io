@@ -153,9 +153,9 @@ weight = 30
 
 ### CI/CD
 
-**components:** GitLab, Jenkins
+**components:** GitLab, Jenkins, Docker
 **topics:** continuous integration, continuous delivery, build pipelines, automated testing
-**topics:** artifact management, deployment automation, environment management
+**topics:** artifact management, deployment automation, environment management, containerized builds
 
 ### Version Control
 
@@ -166,11 +166,13 @@ weight = 30
 
 ## Virtualization & Cloud
 
-### Virtualization
+### Virtualization & Containers
 
 **components:** QEMU, libvirt, KVM, VirtualBox, VMware ESXi, vserver
+**containers:** Docker, Docker Compose, container images, container registries
 **tools:** Vagrant, virsh, virt-manager
 **topics:** hypervisors (Type 1, Type 2), virtual machine management, snapshots, cloning
+**topics:** containerized applications, container orchestration, development containers
 **topics:** container-like virtualization (vserver), resource isolation, virtual networking
 **topics:** reproducible environments, test environments, development environments
 

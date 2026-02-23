@@ -1,6 +1,6 @@
 +++
 title = "Consultoría"
-description = "Desarrollador de Software Senior · Arquitecto de Sistemas · Educador -- Servicios de Consultoría"
+description = "César Ballardini -- Desarrollador de Software Senior · Arquitecto de Sistemas · Educador -- Servicios de Consultoría"
 date = "2026-02-22"
 aliases = ["servicios", "contacto", "acerca"]
 author = "César Ballardini"
@@ -12,34 +12,34 @@ weight = 10
 
 **Desarrollador de Software Senior · Arquitecto de Sistemas · Educador**
 
-Redes Eléctricas y Sistemas de Potencia | Vue.js · TypeScript · Python · GNU/Linux
+Vue.js · TypeScript · Python · GNU/Linux
 
 ---
 
 ## Acerca de mí
 
-Soy un especialista generalista -- alguien que puede profundizar en arquitectura de sistemas, desarrollo de software o infraestructura, y conectar los puntos entre las tres áreas. Con más de 35 años en el campo, he construido software, administrado servidores, enseñado en universidades y entregado soluciones en los sectores de energía, gobierno y educación.
+Ejerzo como desarrollador de software senior, arquitecto de sistemas y educador técnico con más de 35 años de trayectoria en desarrollo de software, ingeniería de infraestructura y docencia universitaria. He entregado soluciones en los sectores de energía, gobierno, educación y consultoría privada.
 
-Ayudo a las organizaciones a resolver desafíos técnicos complejos combinando desarrollo de software moderno con profunda experiencia en infraestructura. Ya sea construyendo una plataforma interna, automatizando el aprovisionamiento de servidores, integrando entornos GNU/Linux y Windows, o capacitando a su equipo técnico -- entrego soluciones funcionales con claridad y confiabilidad.
+Asisto a organizaciones en la resolución de desafíos técnicos complejos, combinando prácticas modernas de desarrollo de software con experiencia profunda en infraestructura. Sea que el requerimiento involucre construir una plataforma interna, automatizar el aprovisionamiento de servidores, integrar entornos heterogéneos, contenerizar aplicaciones o capacitar a su equipo técnico — entrego soluciones robustas y bien documentadas.
 
 ## Servicios
 
-- **Desarrollo de Software a Medida** -- Aplicaciones frontend en Vue.js y TypeScript, servicios backend en Python y Flask, visualización de datos y soluciones de bases de datos con PostgreSQL
-- **Infraestructura y Automatización** -- Administración GNU/Linux, Infraestructura como Código con Ansible y Terraform, virtualización con QEMU/libvirt/Vagrant, despliegues en la nube en AWS y Digital Ocean, prácticas DevOps
-- **Integración de Sistemas** -- Integración entre entornos de servidores GNU/Linux y Microsoft Windows, sistemas de correo electrónico, seguridad y aplicaciones de negocio verticales
-- **Capacitación Técnica** -- Administración de sistemas GNU/Linux, análisis de rendimiento, paradigmas de programación y fundamentos de inteligencia artificial -- entregado en sitio para sus equipos técnicos
-- **Experiencia en el Sector Energético** -- Trabajando en la industria energética desde 1989, desde software SCADA en una empresa provincial de energía hasta software de optimización de redes eléctricas en la actualidad
+- **Desarrollo de Software a Medida** — Aplicaciones frontend construidas con Vue.js y TypeScript, servicios backend en Python y Flask, visualizaciones de datos interactivas con D3.js y Chart.js, y soluciones de bases de datos con PostgreSQL
+- **Infraestructura y Automatización** — Administración de sistemas GNU/Linux, Infraestructura como Código con Ansible y Terraform, contenerización con Docker, virtualización con QEMU/libvirt/Vagrant, despliegues en la nube sobre AWS y Digital Ocean, y prácticas DevOps
+- **Integración de Sistemas** — Integración entre entornos de servidores GNU/Linux y Microsoft Windows, incluyendo servicios de archivos (Samba), mensajería, seguridad y aplicaciones de negocio verticales
+- **Capacitación Técnica** — Administración de sistemas GNU/Linux, análisis de rendimiento, paradigmas de programación y fundamentos de desarrollo de software — impartido en sitio o de forma remota para sus equipos técnicos
 
 ## Por qué trabajar conmigo
 
-- **Más de 35 años** de experiencia práctica en desarrollo, infraestructura y educación
-- **Resultados comprobados** -- desde la introducción pionera de prácticas de Infraestructura como Código en organizaciones gubernamentales, hasta la automatización del aprovisionamiento de servidores que redujo los tiempos de despliegue en un 90%, hasta la construcción de herramientas de análisis para ingenieros de sistemas de potencia que trabajan en optimización de redes eléctricas
-- **Experiencia en código abierto** -- profundo compromiso con el Software Libre y GNU/Linux como alternativas rentables y confiables a las soluciones propietarias
-- **Mentalidad de educador** -- explico sistemas complejos con claridad, documento a fondo y capacito a su equipo para que sea autosuficiente
+- **Más de 35 años** de experiencia práctica en desarrollo de software, infraestructura y educación
+- **Resultados demostrados** — desde la implementación de prácticas de Infraestructura como Código en organizaciones gubernamentales, hasta la automatización del aprovisionamiento de servidores que redujo tiempos de despliegue en un 90%, hasta la construcción de plataformas de análisis para ingenieros de sistemas de potencia que contribuyeron a más de $100 millones en ahorros anuales para clientes
+- **Experiencia en código abierto** — compromiso sostenido con el Software Libre y GNU/Linux como alternativas rentables y confiables a las soluciones propietarias
+- **Precisión de educador** — comunico sistemas complejos con claridad, documento con rigor y estructuro la transferencia de conocimiento para que los equipos adquieran autonomía
 
 ## Enlaces
 
 - [CV completo](/es/cv/)
+- [Habilidades Técnicas](/es/habilidades/)
 - [LinkedIn](https://www.linkedin.com/in/cesar-ballardini/)
 - [GitHub](https://github.com/CesarBallardini)
 - [Blog](http://katra.ballardini.com.ar)

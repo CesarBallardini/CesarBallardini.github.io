@@ -14,7 +14,7 @@ weight = 30
 
 ---
 
-> A continuación se presenta una lista parcial de palabras clave. Cada una representa un componente, habilidad o actividad con la que trabajo o he trabajado. No dude en [contactarme](/es/consultoria/) para documentación, detalles o discusión sobre cualquier tema listado.
+> A continuación se presenta una lista parcial de palabras clave. Cada una representa un componente, habilidad o actividad con la que trabajo o he trabajado. Para documentación, detalles o discusión sobre cualquier tema listado, [contactarme](/es/consultoria/).
 
 ---
 
@@ -153,9 +153,9 @@ weight = 30
 
 ### CI/CD
 
-**componentes:** GitLab, Jenkins
+**componentes:** GitLab, Jenkins, Docker
 **temas:** integración continua, entrega continua, pipelines de construcción, pruebas automatizadas
-**temas:** gestión de artefactos, automatización de despliegues, gestión de entornos
+**temas:** gestión de artefactos, automatización de despliegues, gestión de entornos, builds contenerizados
 
 ### Control de Versiones
 
@@ -166,11 +166,13 @@ weight = 30
 
 ## Virtualización y Nube
 
-### Virtualización
+### Virtualización y Contenedores
 
 **componentes:** QEMU, libvirt, KVM, VirtualBox, VMware ESXi, vserver
+**contenedores:** Docker, Docker Compose, imágenes de contenedores, registros de contenedores
 **herramientas:** Vagrant, virsh, virt-manager
 **temas:** hipervisores (Tipo 1, Tipo 2), gestión de máquinas virtuales, snapshots, clonación
+**temas:** aplicaciones contenerizadas, orquestación de contenedores, contenedores de desarrollo
 **temas:** virtualización tipo contenedor (vserver), aislamiento de recursos, redes virtuales
 **temas:** entornos reproducibles, entornos de prueba, entornos de desarrollo
 
