@@ -87,6 +87,13 @@
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 1.5rem;
+  overflow-x: auto;
+  display: block;
+}
+
+.cv-page tbody {
+  display: table;
+  width: 100%;
 }
 
 .cv-page th {
@@ -108,6 +115,7 @@
 
 .cv-page td:last-child {
   color: #444;
+  word-break: break-word;
 }
 
 .cv-page tr:last-child td {
@@ -240,15 +248,92 @@
   }
 }
 
-/* --- Responsive --- */
+/* --- Responsive: tablet (max 768px) --- */
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .cv-page {
+    font-size: 0.88rem;
+  }
+
   .cv-page h1 {
-    font-size: 1.7rem;
+    font-size: 1.8rem;
+  }
+
+  .cv-page h2 {
+    margin: 1.5rem 0 0.8rem;
+  }
+
+  .cv-page h3 {
+    margin-top: 1.4rem;
+  }
+
+  .cv-page hr {
+    margin: 1.5rem 0;
+  }
+
+  #extended-skills ~ p {
+    font-size: 0.85rem;
+  }
+}
+
+/* --- Responsive: phone (max 480px) --- */
+
+@media (max-width: 480px) {
+  .cv-page {
+    font-size: 0.85rem;
+  }
+
+  .cv-page h1 {
+    font-size: 1.5rem;
+    letter-spacing: 0.02em;
+  }
+
+  .cv-page h1 + p + p + p + p {
+    font-size: 0.8rem;
+  }
+
+  .cv-page h2 {
+    font-size: 1rem;
+  }
+
+  .cv-page td:first-child {
+    width: 70px;
+    font-size: 0.82rem;
+  }
+
+  .cv-page td {
+    padding: 0.35rem 0.4rem;
+  }
+
+  .cv-page h3 {
+    font-size: 0.92rem;
+    padding-left: 0.6rem;
+  }
+
+  .cv-page h3 + p,
+  .cv-page h3 + p + p {
+    padding-left: 0.6rem;
+  }
+
+  .cv-page h3 ~ ul {
+    padding-left: 1.6rem;
+  }
+
+  .cv-page ul {
+    padding-left: 1.2rem;
   }
 
   #languages + ul {
     flex-direction: column;
     gap: 0.3rem;
+  }
+
+  #extended-skills ~ p {
+    font-size: 0.82rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .cv-page > p:last-child {
+    font-size: 0.82rem;
   }
 }
