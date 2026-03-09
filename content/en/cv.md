@@ -55,7 +55,7 @@ I work as a senior software developer, system architect, and technical educator.
 
 ## Major Achievements
 
-- Grid reconfigurations identified through the analysis platform I develop at NewGrid have contributed to over $100 million in annual customer savings in the U.S. Midwest ([World Economic Forum](https://initiatives.weforum.org/future-power-system/case-study-details/topology-optimization-for-grid-congestion-management/aJYTG00000013qH4AQ))
+- Helped build the analysis platform at NewGrid that power systems engineers use to identify grid reconfigurations and study their impacts — work that has contributed to over $100 million in annual customer savings in the U.S. Midwest ([World Economic Forum](https://initiatives.weforum.org/future-power-system/case-study-details/topology-optimization-for-grid-congestion-management/aJYTG00000013qH4AQ))
 - Introduced Infrastructure as Code practices using Ansible within a provincial government organization, establishing the first IaC environments from the ground up
 - Engineered custom Debian installation media that reduced desktop provisioning from 2–3 days per machine to 5 simultaneous installations in 2 hours
 - Migrated a 50-user Microsoft Windows file server to a Debian-based Samba server architected to support 300 users
@@ -96,7 +96,7 @@ I work as a senior software developer, system architect, and technical educator.
 
 - Design and maintain an internal analysis platform used by power systems engineers to investigate client grid congestion and recommend transmission reconfigurations
 - Develop tooling for a team of highly specialized electrical engineers with deep expertise in grid operations and electricity markets
-- Reconfigurations identified through this work have contributed to over $100 million in annual customer savings in the U.S. Midwest ([World Economic Forum](https://initiatives.weforum.org/future-power-system/case-study-details/topology-optimization-for-grid-congestion-management/aJYTG00000013qH4AQ))
+- The platform our team builds enables engineers to identify reconfigurations that have contributed to over $100 million in annual customer savings in the U.S. Midwest ([World Economic Forum](https://initiatives.weforum.org/future-power-system/case-study-details/topology-optimization-for-grid-congestion-management/aJYTG00000013qH4AQ))
 - Collaborate closely with domain experts to translate complex power systems workflows into effective software solutions
 
 ### NewGrid

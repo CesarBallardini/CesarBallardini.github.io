@@ -35,7 +35,7 @@ I assist organizations in resolving complex technical challenges by combining mo
 ## Why work with me
 
 - **35+ years** of hands-on experience across software development, infrastructure, and education
-- **Demonstrated results** -- from introducing Infrastructure as Code practices in government organizations, to automating server provisioning that reduced deployment times by 90%, to building analysis platforms for power systems engineers contributing to over $100 million in annual customer savings
+- **Demonstrated results** -- introducing Infrastructure as Code practices in government organizations, automating server provisioning that reduced deployment times by 90%, and building the analysis software that power systems engineers use to identify grid reconfigurations contributing to over $100 million in annual customer savings
 - **Open-source expertise** -- sustained commitment to Free Software and GNU/Linux as cost-effective, reliable alternatives to proprietary solutions
 - **Educator's precision** -- I communicate complex systems with clarity, document thoroughly, and structure knowledge transfer so that teams gain autonomy
 

@@ -35,7 +35,7 @@ Asisto a organizaciones en la resolución de desafíos técnicos complejos, comb
 ## Por qué trabajar conmigo
 
 - **Más de 35 años** de experiencia práctica en desarrollo de software, infraestructura y educación
-- **Resultados demostrados** — desde la implementación de prácticas de Infraestructura como Código en organizaciones gubernamentales, hasta la automatización del aprovisionamiento de servidores que redujo tiempos de despliegue en un 90%, hasta la construcción de plataformas de análisis para ingenieros de sistemas de potencia que contribuyeron a más de $100 millones en ahorros anuales para clientes
+- **Resultados demostrados** — implementación de prácticas de Infraestructura como Código en organizaciones gubernamentales, automatización del aprovisionamiento de servidores que redujo tiempos de despliegue en un 90%, y construcción del software de análisis que los ingenieros de sistemas de potencia utilizan para identificar reconfiguraciones de red, contribuyendo a más de $100 millones en ahorros anuales para clientes
 - **Experiencia en código abierto** — compromiso sostenido con el Software Libre y GNU/Linux como alternativas rentables y confiables a las soluciones propietarias
 - **Precisión de educador** — comunico sistemas complejos con claridad, documento con rigor y estructuro la transferencia de conocimiento para que los equipos adquieran autonomía
 

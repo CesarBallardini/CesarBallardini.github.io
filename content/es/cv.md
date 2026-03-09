@@ -55,7 +55,7 @@ Ejerzo como desarrollador de software senior, arquitecto de sistemas y educador 
 
 ## Logros Principales
 
-- Las reconfiguraciones de red identificadas mediante la plataforma de análisis que desarrollo en NewGrid han generado más de $100 millones en ahorros anuales para clientes del medio oeste de EE.UU. ([World Economic Forum](https://initiatives.weforum.org/future-power-system/case-study-details/topology-optimization-for-grid-congestion-management/aJYTG00000013qH4AQ))
+- Trabajé en la construcción de la plataforma de análisis en NewGrid que los ingenieros de sistemas de potencia utilizan para identificar reconfiguraciones de red y estudiar sus impactos — trabajo que ha contribuido a generar más de $100 millones en ahorros anuales para clientes del medio oeste de EE.UU. ([World Economic Forum](https://initiatives.weforum.org/future-power-system/case-study-details/topology-optimization-for-grid-congestion-management/aJYTG00000013qH4AQ))
 - Implementé prácticas de Infraestructura como Código con Ansible en una organización gubernamental provincial, estableciendo los primeros entornos IaC desde cero
 - Diseñé medios de instalación Debian personalizados que redujeron el aprovisionamiento de escritorios de 2–3 días por máquina a 5 instalaciones simultáneas en 2 horas
 - Migré un servidor de archivos Microsoft Windows de 50 usuarios a un servidor Samba sobre Debian, arquitectado para soportar 300 usuarios
@@ -97,7 +97,7 @@ Ejerzo como desarrollador de software senior, arquitecto de sistemas y educador 
 
 - Diseño y mantengo una plataforma interna de análisis que utilizan ingenieros de sistemas de potencia para investigar problemas de congestión de redes de clientes y recomendar reconfiguraciones de transmisión
 - Desarrollo herramientas para un equipo de ingenieros eléctricos altamente especializados con experiencia profunda en operación de redes eléctricas y mercados de electricidad
-- Las reconfiguraciones identificadas mediante este trabajo han generado más de $100 millones en ahorros anuales para clientes del medio oeste de EE.UU. ([World Economic Forum - Topology Optimization for Grid Congestion Management](https://initiatives.weforum.org/future-power-system/case-study-details/topology-optimization-for-grid-congestion-management/aJYTG00000013qH4AQ))
+- La plataforma que construye nuestro equipo permite a los ingenieros identificar reconfiguraciones que han generado más de $100 millones en ahorros anuales para clientes del medio oeste de EE.UU. ([World Economic Forum - Topology Optimization for Grid Congestion Management](https://initiatives.weforum.org/future-power-system/case-study-details/topology-optimization-for-grid-congestion-management/aJYTG00000013qH4AQ))
 - Colaboro estrechamente con expertos de dominio para traducir flujos de trabajo complejos de sistemas de potencia en soluciones de software efectivas
 
 ### NewGrid
