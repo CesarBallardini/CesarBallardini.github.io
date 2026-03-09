@@ -6,19 +6,18 @@ aliases = ["currículum", "perfil", "perfil-profesional"]
 author = "César Ballardini"
 menu = "main"
 weight = 20
+layout = "cv"
+page_css = ["cv.css"]
 +++
 
 # César Ballardini
 
-**Desarrollador de Software Senior · Arquitecto de Sistemas · Educador | Redes Eléctricas y Sistemas de Potencia | Vue.js · TypeScript · Python · GNU/Linux**
+**Desarrollador de Software Senior · Arquitecto de Sistemas · Educador**
+**Redes Eléctricas y Sistemas de Potencia | Vue.js · TypeScript · Python · GNU/Linux**
 
 Argentina
 
-- **Email:** cesar.ballardini@gmail.com
-- **LinkedIn:** [linkedin.com/in/cesar-ballardini](https://www.linkedin.com/in/cesar-ballardini/)
-- **GitHub:** [github.com/CesarBallardini](https://github.com/CesarBallardini)
-- **Habilidades Técnicas:** [katra.ballardini.com.ar/es/habilidades/](/es/habilidades/)
-- **Servicios de Consultoría:** [katra.ballardini.com.ar/es/consultoria/](/es/consultoria/)
+[cesar.ballardini@gmail.com](mailto:cesar.ballardini@gmail.com) · [LinkedIn](https://www.linkedin.com/in/cesar-ballardini/) · [GitHub](https://github.com/CesarBallardini) · [Habilidades Técnicas](/es/habilidades/) · [Servicios de Consultoría](/es/consultoria/)
 
 ---
 
@@ -30,7 +29,7 @@ Ejerzo como desarrollador de software senior, arquitecto de sistemas y educador 
 - Capacidad operativa para diseñar, construir, automatizar y mantener sistemas en producción de punta a punta
 - Aptitud para transmitir conceptos técnicos complejos con precisión y claridad — forjada a lo largo de dos décadas de instrucción universitaria
 
-## Los beneficios de esta experiencia incluyen:
+## Beneficios de Esta Experiencia
 
 - Herramientas internas construidas a medida que convierten flujos de trabajo de dominio complejos en software efectivo y operativo
 - Infraestructura automatizada y reproducible que acelera el aprovisionamiento y elimina la deriva de configuración
@@ -94,7 +93,7 @@ Ejerzo como desarrollador de software senior, arquitecto de sistemas y educador 
 ### NewGrid
 
 **Desarrollador de Software Senior**
-Enero 2023 - Presente | Boston, MA
+*Enero 2023 – Presente | Boston, MA*
 
 - Diseño y mantengo una plataforma interna de análisis que utilizan ingenieros de sistemas de potencia para investigar problemas de congestión de redes de clientes y recomendar reconfiguraciones de transmisión
 - Desarrollo herramientas para un equipo de ingenieros eléctricos altamente especializados con experiencia profunda en operación de redes eléctricas y mercados de electricidad
@@ -104,7 +103,7 @@ Enero 2023 - Presente | Boston, MA
 ### NewGrid
 
 **Desarrollador de Software**
-Marzo 2022 - Diciembre 2022 | Boston, MA
+*Marzo 2022 – Diciembre 2022 | Boston, MA*
 
 - Me incorporé a NewGrid para desarrollar herramientas internas que respaldan los servicios de optimización topológica de transmisión de la empresa
 - Entregué funcionalidades de software para ingenieros que analizan patrones de congestión de redes y evalúan opciones de reconfiguración
@@ -112,7 +111,7 @@ Marzo 2022 - Diciembre 2022 | Boston, MA
 ### Secretaría de Tecnologías para la Gestión (Gobierno de la Provincia de Santa Fe)
 
 **Ingeniero de Automatización de Aprovisionamiento de Servidores y Aplicaciones**
-Julio 2016 - Enero 2023 | Provincia de Santa Fe, Argentina
+*Julio 2016 – Enero 2023 | Provincia de Santa Fe, Argentina*
 
 - Automaticé el aprovisionamiento y configuración de máquinas virtuales sobre hipervisores VMware en entornos de prueba, staging, capacitación y producción
 - Configuré servicios a nivel de sistema operativo (DNS, proxy web, parámetros de kernel) y stacks de aplicaciones incluyendo GitLab, Jenkins, LDAP, Apache, PHP, PostgreSQL, MySQL y sistemas de archivos compartidos
@@ -125,7 +124,7 @@ Julio 2016 - Enero 2023 | Provincia de Santa Fe, Argentina
 ### Ministerio de Innovación y Cultura (Gobierno de la Provincia de Santa Fe)
 
 **Administrador de Sistemas y Redes**
-Enero 2012 - Junio 2016 | Santa Fe, Argentina
+*Enero 2012 – Junio 2016 | Santa Fe, Argentina*
 
 - Escalé la infraestructura de TI a más de 300 escritorios administrados distribuidos en múltiples edificios
 - Reemplacé la totalidad de impresoras de inyección de tinta locales por impresoras láser de red, una por oficina
@@ -138,7 +137,7 @@ Enero 2012 - Junio 2016 | Santa Fe, Argentina
 ### Ministerio de Innovación y Cultura (Gobierno de la Provincia de Santa Fe)
 
 **Contratista de Sistemas y Redes**
-Junio 2008 - Diciembre 2011 | Santa Fe, Argentina
+*Junio 2008 – Diciembre 2011 | Santa Fe, Argentina*
 
 - Establecí el sistema de tickets de TI para seguimiento de ítems de trabajo, coordinación de compras de componentes e insumos, y construcción de una base de conocimiento institucional de problemas y resoluciones
 - Senté las bases operativas de los servicios de TI dentro de un área gubernamental de reciente creación
@@ -154,8 +153,8 @@ Junio 2008 - Diciembre 2011 | Santa Fe, Argentina
 
 ### Universidad Tecnológica Nacional Facultad Regional Santa Fe
 
-**Jefe de Trabajos Prácticos - Paradigmas de Programación**
-Marzo 2001 - Presente | Santa Fe, Argentina
+**Jefe de Trabajos Prácticos – Paradigmas de Programación**
+*Marzo 2001 – Presente | Santa Fe, Argentina*
 
 - Instruyo a estudiantes en paradigmas de programación funcional, lógica y orientada a objetos mediante Pharo Smalltalk, Racket Scheme y SWI Prolog
 - Dirijo la implementación práctica de programas en múltiples paradigmas
@@ -164,8 +163,8 @@ Marzo 2001 - Presente | Santa Fe, Argentina
 
 ### Universidad Tecnológica Nacional Regional Santa Fe
 
-**Jefe de Trabajos Prácticos - Diseño e Implementación de Sistemas Operativos**
-Junio 2010 - Mayo 2015 | Santa Fe, Argentina
+**Jefe de Trabajos Prácticos – Diseño e Implementación de Sistemas Operativos**
+*Junio 2010 – Mayo 2015 | Santa Fe, Argentina*
 
 - Dirigí sesiones de laboratorio prácticas centradas en la comprensión, modificación y extensión del sistema operativo MINIX 3
 - Los estudiantes exploraron los internos de una arquitectura de microkernel: lectura de assembler, escritura de código C para servidores de dispositivos, servidores de sistema de archivos, manejo de interrupciones de hardware y software, y planificación de CPU
@@ -174,7 +173,7 @@ Junio 2010 - Mayo 2015 | Santa Fe, Argentina
 ### Consultor de TI Independiente
 
 **Consultor de TI Independiente**
-Agosto 2000 - Presente
+*Agosto 2000 – Presente*
 
 - Servicios independientes de administración de sistemas, desarrollo de software y capacitación técnica
 - Migré servidores de archivos de clientes de Microsoft Windows a servidores Samba sobre Debian
@@ -185,7 +184,7 @@ Agosto 2000 - Presente
 ### Netmanagers
 
 **Titular**
-Marzo 2006 - Diciembre 2011 | Argentina
+*Marzo 2006 – Diciembre 2011 | Argentina*
 
 - Fundé y dirigí una empresa de consultoría de TI especializada en soluciones de código abierto y Software Libre para infraestructura empresarial
 - Diseñé e implementé estrategias de infraestructura de red para clientes en transporte marítimo de carga, plataformas educativas web, manufactura e industrias de servicios
@@ -196,7 +195,7 @@ Marzo 2006 - Diciembre 2011 | Argentina
 ### Universidad Católica de Santiago del Estero
 
 **Profesor Adjunto**
-Marzo 2005 - Julio 2011 | Rafaela, Argentina
+*Marzo 2005 – Julio 2011 | Rafaela, Argentina*
 
 - Inteligencia Artificial: enseñé algoritmos de búsqueda, representación de conocimiento y lógica mediante Python
 - Ingeniería de Software para Aplicaciones de Internet:
@@ -207,7 +206,7 @@ Marzo 2005 - Julio 2011 | Rafaela, Argentina
 ### Universidad Adventista del Plata
 
 **Profesor Adjunto**
-Agosto 2001 - Febrero 2011 | Villa Libertador General San Martín, Argentina
+*Agosto 2001 – Febrero 2011 | Villa Libertador General San Martín, Argentina*
 
 - Dicté cuatro materias: Inteligencia Artificial, Ingeniería de Software, Sistemas de Bases de Datos Avanzados e Introducción a la Programación
 - Instrucción impartida en múltiples lenguajes incluyendo Python y C
@@ -215,7 +214,7 @@ Agosto 2001 - Febrero 2011 | Villa Libertador General San Martín, Argentina
 ### Empresa Provincial de la Energía de Santa Fe
 
 **Supervisor de Software**
-Diciembre 1989 - Agosto 2000 | Santa Fe, Argentina
+*Diciembre 1989 – Agosto 2000 | Santa Fe, Argentina*
 
 - Administré firewalls, DNS, NIS, sistemas de correo y sistemas de bases de datos para una empresa provincial de energía
 - Brindé soporte técnico de segundo nivel en servidores de aplicaciones SCO Unix y GNU/Linux que atendían a más de 350 usuarios
@@ -229,7 +228,7 @@ Diciembre 1989 - Agosto 2000 | Santa Fe, Argentina
 ### Universidad Tecnológica Nacional - Facultad Regional Santa Fe
 
 **Sysadmin y Postmaster**
-Marzo 1996 - Marzo 1998 | Santa Fe, Argentina
+*Marzo 1996 – Marzo 1998 | Santa Fe, Argentina*
 
 - Establecí y administré el primer acceso a Internet en línea del campus universitario
 - Desplegué el primer servidor web público de la facultad con configuración de seguridad rigurosa
@@ -240,7 +239,7 @@ Marzo 1996 - Marzo 1998 | Santa Fe, Argentina
 ### Universidad Nacional de Rosario
 
 **Desarrollador de Software**
-Febrero 1988 - Diciembre 1989 | Rosario, Argentina
+*Febrero 1988 – Diciembre 1989 | Rosario, Argentina*
 
 - Desarrollé software educativo mediante Micro-Prolog y automatización de diapositivas de carrusel
 - Diseñé un sistema de gestión de registros de alumnos para seguimiento de registros académicos: materias, exámenes y calificaciones
@@ -254,10 +253,6 @@ Febrero 1988 - Diciembre 1989 | Rosario, Argentina
 
 Ingeniero en Sistemas de Información — 2002
 
-### Universidad Nacional de Rosario (UNR)
-
-Electrónica (cursado) — 1982 - 1988
-
 ### Escuela Industrial Superior - UNL
 
 Técnico Nacional, Mecánico Eléctrico — 1975 - 1980
@@ -268,7 +263,7 @@ Institución secundaria técnica y vocacional dependiente de la Universidad Naci
 
 ## Certificaciones
 
-- **Machine Learning** — Coursera — Emitido Sep 2014
+**Machine Learning** — Coursera — Emitido Sep 2014
 
 ---
 
@@ -300,7 +295,7 @@ Institución secundaria técnica y vocacional dependiente de la Universidad Naci
 ### GIAIT UTN FRSF
 
 **Instructor de Programación**
-1993 - 1998 | Santa Fe, Argentina
+*1993 – 1998 | Santa Fe, Argentina*
 
 - Instruí a estudiantes en múltiples paradigmas de programación: funcional, lógica y orientada a objetos
 - Miembro del GIAIT (Grupo de Informática Aplicado al Inglés Técnico)
@@ -308,12 +303,10 @@ Institución secundaria técnica y vocacional dependiente de la Universidad Naci
 ### LUGLi (Linux User's Group del Litoral) Argentina
 
 **Miembro**
-1996 - 2010
+*1996 – 2010*
 
 - Miembro activo de una comunidad regional dedicada a GNU/Linux, Software Libre, educación y contenido libre
 
 ---
-
-## Habilidades Técnicas
 
 Un índice completo y categorizado de palabras clave técnicas está disponible en la página de [Habilidades Técnicas](/es/habilidades/).

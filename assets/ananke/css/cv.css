@@ -1,0 +1,254 @@
+/* ===================================================================
+   CV Page Styles
+   Applied via layout "cv" which wraps content in .cv-page
+   =================================================================== */
+
+.cv-page {
+  max-width: 820px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* --- Name heading --- */
+
+.cv-page h1 {
+  font-size: 2.1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #1a3a5c;
+  text-align: center;
+  margin: 0 0 0.5rem;
+}
+
+/* Tagline & location: paragraphs right after h1 */
+.cv-page h1 + p,
+.cv-page h1 + p + p,
+.cv-page h1 + p + p + p {
+  text-align: center;
+  color: #556;
+  margin: 0 0 0.3rem;
+}
+
+/* Contact links line */
+.cv-page h1 + p + p + p + p {
+  text-align: center;
+  font-size: 0.88rem;
+  margin-bottom: 1.5rem;
+}
+
+.cv-page h1 + p + p + p + p a {
+  color: #1a3a5c;
+  text-decoration: none;
+  border-bottom: 1px dotted #1a3a5c;
+}
+
+.cv-page h1 + p + p + p + p a:hover {
+  color: #2a5a8c;
+  border-bottom-style: solid;
+}
+
+/* --- Horizontal rules as section dividers --- */
+
+.cv-page hr {
+  border: none;
+  border-top: 2px solid #1a3a5c;
+  margin: 2rem 0;
+}
+
+/* --- Section headings (h2) --- */
+
+.cv-page h2 {
+  color: #1a3a5c;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid #d8dde3;
+  padding-bottom: 0.4rem;
+  margin: 2rem 0 1rem;
+}
+
+/* --- All lists: simple clean bullets --- */
+
+.cv-page ul {
+  padding-left: 1.4rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.cv-page li {
+  margin-bottom: 0.35rem;
+  color: #444;
+}
+
+/* --- Summary table --- */
+
+.cv-page table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+
+.cv-page th {
+  display: none;
+}
+
+.cv-page td {
+  padding: 0.45rem 0.7rem;
+  vertical-align: top;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.cv-page td:first-child {
+  white-space: nowrap;
+  width: 90px;
+  text-align: right;
+  color: #1a3a5c;
+}
+
+.cv-page td:last-child {
+  color: #444;
+}
+
+.cv-page tr:last-child td {
+  border-bottom: none;
+}
+
+/* --- Experience entries (h3 + bold role + italic meta + list) --- */
+
+.cv-page h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a3a5c;
+  margin: 1.8rem 0 0.15rem;
+  padding-left: 0.8rem;
+  border-left: 3px solid #1a3a5c;
+}
+
+/* Role line (bold paragraph after h3) */
+.cv-page h3 + p {
+  margin: 0 0 0;
+  font-weight: 600;
+  color: #444;
+  padding-left: 0.8rem;
+}
+
+/* Date/location line (italic paragraph) */
+.cv-page h3 + p + p {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  color: #888;
+  padding-left: 0.8rem;
+}
+
+/* Bullets under experience entries */
+.cv-page h3 ~ ul {
+  padding-left: 2.2rem;
+}
+
+/* --- Education: style h3 under education the same way --- */
+
+#education + h3,
+#education ~ h3 {
+  border-left-color: #d8dde3;
+}
+
+/* Education detail text */
+#education ~ p {
+  padding-left: 0.8rem;
+}
+
+/* --- Certifications --- */
+
+#certifications + p {
+  padding-left: 0.8rem;
+}
+
+/* --- Top Skills line --- */
+
+#top-skills + p {
+  font-size: 1rem;
+  text-align: center;
+  color: #1a3a5c;
+  margin-bottom: 1.5rem;
+}
+
+/* Extended skills categories */
+#extended-skills ~ p {
+  padding: 0.5rem 0.8rem;
+  background: #f6f8fa;
+  border-left: 3px solid #1a3a5c;
+  border-radius: 0 4px 4px 0;
+  margin-bottom: 0.5rem;
+}
+
+/* --- Languages list: horizontal --- */
+
+#languages + ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 2rem;
+}
+
+/* --- Volunteer --- */
+
+#volunteer-experience ~ h3 {
+  border-left-color: #d8dde3;
+}
+
+/* --- Footer link --- */
+
+.cv-page > p:last-child {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  font-size: 0.88rem;
+}
+
+.cv-page > p:last-child a {
+  color: #1a3a5c;
+  text-decoration: none;
+  border-bottom: 1px dotted #1a3a5c;
+}
+
+/* --- Print --- */
+
+@media print {
+  .cv-page {
+    font-size: 10.5pt;
+    color: #000;
+  }
+
+  .cv-page h1,
+  .cv-page h2,
+  .cv-page h3 {
+    color: #000;
+  }
+
+  .cv-page hr {
+    border-top-color: #000;
+  }
+
+  .cv-page h2 {
+    border-bottom-color: #000;
+  }
+
+  .cv-page h3 {
+    border-left-color: #000;
+  }
+}
+
+/* --- Responsive --- */
+
+@media (max-width: 600px) {
+  .cv-page h1 {
+    font-size: 1.7rem;
+  }
+
+  #languages + ul {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+}

@@ -1,0 +1,7 @@
+{{- with .Params.page_css }}
+  {{- range . }}
+    {{- with resources.Get (printf "ananke/css/%s" .) }}
+      <style>{{ .Content | safeCSS }}</style>
+    {{- end }}
+  {{- end }}
+{{- end }}

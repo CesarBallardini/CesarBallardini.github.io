@@ -7,7 +7,7 @@
     <title>CV | katra.en</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="César Ballardini -- Senior Software Developer · System Architect · Educator -- Professional Profile">
-    <meta name="generator" content="Hugo 0.156.0">
+    <meta name="generator" content="Hugo 0.157.0">
     
     
     
@@ -48,7 +48,7 @@
   <meta itemprop="description" content="César Ballardini -- Senior Software Developer · System Architect · Educator -- Professional Profile">
   <meta itemprop="datePublished" content="2026-02-22T00:00:00-03:00">
   <meta itemprop="dateModified" content="2026-02-22T00:00:00-03:00">
-  <meta itemprop="wordCount" content="2081">
+  <meta itemprop="wordCount" content="2060">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="CV">
   <meta name="twitter:description" content="César Ballardini -- Senior Software Developer · System Architect · Educator -- Professional Profile">
@@ -56,10 +56,265 @@
       
     
 	
+      <style>/* ===================================================================
+   CV Page Styles
+   Applied via layout "cv" which wraps content in .cv-page
+   =================================================================== */
+
+.cv-page {
+  max-width: 820px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* --- Name heading --- */
+
+.cv-page h1 {
+  font-size: 2.1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #1a3a5c;
+  text-align: center;
+  margin: 0 0 0.5rem;
+}
+
+/* Tagline & location: paragraphs right after h1 */
+.cv-page h1 + p,
+.cv-page h1 + p + p,
+.cv-page h1 + p + p + p {
+  text-align: center;
+  color: #556;
+  margin: 0 0 0.3rem;
+}
+
+/* Contact links line */
+.cv-page h1 + p + p + p + p {
+  text-align: center;
+  font-size: 0.88rem;
+  margin-bottom: 1.5rem;
+}
+
+.cv-page h1 + p + p + p + p a {
+  color: #1a3a5c;
+  text-decoration: none;
+  border-bottom: 1px dotted #1a3a5c;
+}
+
+.cv-page h1 + p + p + p + p a:hover {
+  color: #2a5a8c;
+  border-bottom-style: solid;
+}
+
+/* --- Horizontal rules as section dividers --- */
+
+.cv-page hr {
+  border: none;
+  border-top: 2px solid #1a3a5c;
+  margin: 2rem 0;
+}
+
+/* --- Section headings (h2) --- */
+
+.cv-page h2 {
+  color: #1a3a5c;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid #d8dde3;
+  padding-bottom: 0.4rem;
+  margin: 2rem 0 1rem;
+}
+
+/* --- All lists: simple clean bullets --- */
+
+.cv-page ul {
+  padding-left: 1.4rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.cv-page li {
+  margin-bottom: 0.35rem;
+  color: #444;
+}
+
+/* --- Summary table --- */
+
+.cv-page table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+
+.cv-page th {
+  display: none;
+}
+
+.cv-page td {
+  padding: 0.45rem 0.7rem;
+  vertical-align: top;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.cv-page td:first-child {
+  white-space: nowrap;
+  width: 90px;
+  text-align: right;
+  color: #1a3a5c;
+}
+
+.cv-page td:last-child {
+  color: #444;
+}
+
+.cv-page tr:last-child td {
+  border-bottom: none;
+}
+
+/* --- Experience entries (h3 + bold role + italic meta + list) --- */
+
+.cv-page h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a3a5c;
+  margin: 1.8rem 0 0.15rem;
+  padding-left: 0.8rem;
+  border-left: 3px solid #1a3a5c;
+}
+
+/* Role line (bold paragraph after h3) */
+.cv-page h3 + p {
+  margin: 0 0 0;
+  font-weight: 600;
+  color: #444;
+  padding-left: 0.8rem;
+}
+
+/* Date/location line (italic paragraph) */
+.cv-page h3 + p + p {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  color: #888;
+  padding-left: 0.8rem;
+}
+
+/* Bullets under experience entries */
+.cv-page h3 ~ ul {
+  padding-left: 2.2rem;
+}
+
+/* --- Education: style h3 under education the same way --- */
+
+#education + h3,
+#education ~ h3 {
+  border-left-color: #d8dde3;
+}
+
+/* Education detail text */
+#education ~ p {
+  padding-left: 0.8rem;
+}
+
+/* --- Certifications --- */
+
+#certifications + p {
+  padding-left: 0.8rem;
+}
+
+/* --- Top Skills line --- */
+
+#top-skills + p {
+  font-size: 1rem;
+  text-align: center;
+  color: #1a3a5c;
+  margin-bottom: 1.5rem;
+}
+
+/* Extended skills categories */
+#extended-skills ~ p {
+  padding: 0.5rem 0.8rem;
+  background: #f6f8fa;
+  border-left: 3px solid #1a3a5c;
+  border-radius: 0 4px 4px 0;
+  margin-bottom: 0.5rem;
+}
+
+/* --- Languages list: horizontal --- */
+
+#languages + ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 2rem;
+}
+
+/* --- Volunteer --- */
+
+#volunteer-experience ~ h3 {
+  border-left-color: #d8dde3;
+}
+
+/* --- Footer link --- */
+
+.cv-page > p:last-child {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  font-size: 0.88rem;
+}
+
+.cv-page > p:last-child a {
+  color: #1a3a5c;
+  text-decoration: none;
+  border-bottom: 1px dotted #1a3a5c;
+}
+
+/* --- Print --- */
+
+@media print {
+  .cv-page {
+    font-size: 10.5pt;
+    color: #000;
+  }
+
+  .cv-page h1,
+  .cv-page h2,
+  .cv-page h3 {
+    color: #000;
+  }
+
+  .cv-page hr {
+    border-top-color: #000;
+  }
+
+  .cv-page h2 {
+    border-bottom-color: #000;
+  }
+
+  .cv-page h3 {
+    border-left-color: #000;
+  }
+}
+
+/* --- Responsive --- */
+
+@media (max-width: 600px) {
+  .cv-page h1 {
+    font-size: 1.7rem;
+  }
+
+  #languages + ul {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+}
+</style>
+
   </head><body class="ma0 avenir bg-near-white production">
 
     
-   
   
 
   <header>
@@ -144,78 +399,28 @@
   <article class="flex-l flex-wrap justify-between mw8 center ph3">
     <header class="mt4 w-100">
       <aside class="instapaper_ignoref b helvetica tracked ttu">
-          
         katra.en
-      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=https%3A%2F%2Fkatra.ballardini.com.ar%2Fen%2Fcv%2F&amp;subject=CV"
-        class="ananke-social-link email no-underline"
-        title="Share on Email" aria-label="Share on Email"
-        target="_blank" rel="nofollow noopener noreferrer">
-        <span class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
-                
-              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=https%3A%2F%2Fkatra.ballardini.com.ar%2Fen%2Fcv%2F&amp;summary=C%C3%A9sar&#43;Ballardini&#43;Senior&#43;Software&#43;Developer&#43;%C2%B7&#43;System&#43;Architect&#43;%C2%B7&#43;Educator&#43;%7C&#43;Energy&#43;Grid&#43;%26amp%3Bamp%3B&#43;Power&#43;Systems&#43;%7C&#43;Vue.js&#43;%C2%B7&#43;TypeScript&#43;%C2%B7&#43;Python&#43;%C2%B7&#43;GNU%2FLinux%0AArgentina%0AEmail%3A&#43;cesar.ballardini%40gmail.com&#43;LinkedIn%3A&#43;linkedin.com%2Fin%2Fcesar-ballardini&#43;GitHub%3A&#43;github.com%2FCesarBallardini&#43;Skill&#43;Keywords%3A&#43;katra.ballardini.com.ar%2Fen%2Fskills%2F&#43;Consulting&#43;Services%3A&#43;katra.ballardini.com.ar%2Fen%2Fconsulting%2F&#43;Basic&#43;Info&#43;I&#43;work&#43;as&#43;a&#43;senior&#43;software&#43;developer%2C&#43;system&#43;architect%2C&#43;and&#43;technical&#43;educator.&#43;This&#43;role&#43;draws&#43;on&#43;more&#43;than&#43;35&#43;years&#43;of&#43;experience&#43;across&#43;software&#43;development%2C&#43;infrastructure&#43;engineering%2C&#43;and&#43;university&#43;teaching.&#43;The&#43;result&#43;is%3A%0AComprehensive&#43;understanding&#43;of&#43;the&#43;full&#43;technology&#43;stack%2C&#43;from&#43;frontend&#43;applications&#43;through&#43;backend&#43;services&#43;to&#43;underlying&#43;infrastructure&#43;Practical&#43;ability&#43;to&#43;design%2C&#43;build%2C&#43;automate%2C&#43;and&#43;maintain&#43;production&#43;systems&#43;end-to-end&#43;Capacity&#43;to&#43;communicate&#43;complex&#43;technical&#43;concepts&#43;with&#43;clarity&#43;%26amp%3Bndash%3B&#43;refined&#43;through&#43;two&#43;decades&#43;of&#43;university&#43;instruction&#43;Benefits&#43;from&#43;this&#43;experience&#43;include%3A&#43;Purpose-built&#43;internal&#43;tools&#43;that&#43;translate&#43;intricate&#43;domain&#43;workflows&#43;into&#43;effective%2C&#43;usable&#43;software&#43;Automated%2C&#43;reproducible&#43;infrastructure&#43;that&#43;accelerates&#43;provisioning&#43;and&#43;eliminates&#43;configuration&#43;drift&#43;Robust&#43;GNU%2FLinux&#43;server&#43;and&#43;network&#43;environments%2C&#43;seamlessly&#43;integrated&#43;with&#43;heterogeneous&#43;systems&#43;Thorough&#43;documentation&#43;and&#43;structured&#43;knowledge&#43;transfer&#43;%26amp%3Bndash%3B&#43;teams&#43;gain&#43;autonomy%2C&#43;not&#43;dependency&#43;Summary&#43;35%2B&#43;years&#43;in&#43;IT%2C&#43;software&#43;development%2C&#43;and&#43;infrastructure&#43;25%2B&#43;years&#43;teaching&#43;at&#43;universities&#43;%283&#43;institutions%2C&#43;6%2B&#43;courses%29&#43;10%2B&#43;years&#43;in&#43;the&#43;energy&#43;sector&#43;%28SCADA%2C&#43;grid&#43;optimization%29&#43;300%2B&#43;managed&#43;desktops&#43;provisioned&#43;and&#43;administered&#43;350%2B&#43;users&#43;supported&#43;on&#43;SCO&#43;Unix&#43;and&#43;GNU%2FLinux&#43;application&#43;servers&#43;%24100M%2B&#43;in&#43;annual&#43;customer&#43;savings&#43;attributed&#43;to&#43;grid&#43;reconfiguration&#43;work&#43;4&#43;sectors&#43;served%3A&#43;energy%2C&#43;government%2C&#43;education%2C&#43;private&#43;consulting&#43;2&#43;languages%3A&#43;Spanish&#43;%28native%29%2C&#43;English&#43;%28professional&#43;working%29&#43;Major&#43;Achievements&#43;Grid&#43;reconfigurations&#43;identified&#43;through&#43;the&#43;analysis&#43;platform&#43;I&#43;develop&#43;at&#43;NewGrid&#43;have&#43;contributed&#43;to&#43;over&#43;%24100&#43;million&#43;in&#43;annual&#43;customer&#43;savings&#43;in&#43;the&#43;U.S.&#43;Midwest&#43;%28World&#43;Economic&#43;Forum%29&#43;Introduced&#43;Infrastructure&#43;as&#43;Code&#43;practices&#43;using&#43;Ansible&#43;within&#43;a&#43;provincial&#43;government&#43;organization%2C&#43;establishing&#43;the&#43;first&#43;IaC&#43;environments&#43;from&#43;the&#43;ground&#43;up&#43;Engineered&#43;custom&#43;Debian&#43;installation&#43;media&#43;that&#43;reduced&#43;desktop&#43;provisioning&#43;from&#43;2%26amp%3Bndash%3B3&#43;days&#43;per&#43;machine&#43;to&#43;5&#43;simultaneous&#43;installations&#43;in&#43;2&#43;hours&#43;Migrated&#43;a&#43;50-user&#43;Microsoft&#43;Windows&#43;file&#43;server&#43;to&#43;a&#43;Debian-based&#43;Samba&#43;server&#43;architected&#43;to&#43;support&#43;300&#43;users&#43;Scaled&#43;IT&#43;infrastructure&#43;to&#43;over&#43;300&#43;managed&#43;desktops&#43;distributed&#43;across&#43;multiple&#43;government&#43;buildings&#43;Established&#43;the&#43;first&#43;online&#43;Internet&#43;access&#43;and&#43;the&#43;first&#43;public-facing&#43;web&#43;server&#43;at&#43;a&#43;university&#43;campus&#43;Designed&#43;and&#43;deployed&#43;the&#43;first&#43;intranet&#43;at&#43;a&#43;provincial&#43;power&#43;utility&#43;serving&#43;350%2B&#43;users&#43;Founded&#43;and&#43;directed&#43;an&#43;IT&#43;consulting&#43;firm&#43;delivering&#43;open-source&#43;solutions&#43;to&#43;clients&#43;in&#43;maritime&#43;transport%2C&#43;education%2C&#43;manufacturing%2C&#43;and&#43;services&#43;Current&#43;Focus&#43;Designing&#43;and&#43;maintaining&#43;an&#43;internal&#43;analysis&#43;platform&#43;used&#43;by&#43;power&#43;systems&#43;engineers&#43;to&#43;investigate&#43;grid&#43;congestion&#43;and&#43;recommend&#43;transmission&#43;reconfigurations&#43;Developing&#43;specialized&#43;tooling&#43;for&#43;highly&#43;qualified&#43;electrical&#43;engineers&#43;with&#43;deep&#43;expertise&#43;in&#43;grid&#43;operations&#43;and&#43;electricity&#43;markets&#43;Collaborating&#43;with&#43;domain&#43;experts&#43;to&#43;translate&#43;complex&#43;power&#43;systems&#43;workflows&#43;into&#43;well-structured&#43;software&#43;solutions&#43;Teaching&#43;programming&#43;paradigms&#43;%28Smalltalk%2C&#43;Scheme%2C&#43;Prolog%29&#43;at&#43;Universidad&#43;Tecnol%C3%B3gica&#43;Nacional&#43;%26amp%3Bndash%3B&#43;25&#43;years&#43;and&#43;continuing&#43;Skills&#43;Full-stack&#43;software&#43;development&#43;spanning&#43;modern&#43;frontend&#43;technologies&#43;%28Vue.js%2C&#43;TypeScript%2C&#43;Vite%29&#43;and&#43;backend&#43;services&#43;%28Python%2C&#43;Flask%2C&#43;PostgreSQL%29%2C&#43;with&#43;a&#43;focus&#43;on&#43;building&#43;internal&#43;tools&#43;for&#43;domain&#43;specialists&#43;System&#43;architecture&#43;and&#43;infrastructure&#43;design%2C&#43;from&#43;bare-metal&#43;GNU%2FLinux&#43;servers&#43;to&#43;cloud&#43;deployments&#43;on&#43;AWS%2C&#43;Digital&#43;Ocean%2C&#43;and&#43;Tektonic&#43;Infrastructure&#43;automation&#43;and&#43;configuration&#43;management&#43;using&#43;Ansible&#43;and&#43;Terraform%2C&#43;encompassing&#43;fleet-wide&#43;convergence&#43;and&#43;reproducible&#43;development&#43;environments&#43;with&#43;Vagrant&#43;and&#43;Docker&#43;containers&#43;Network&#43;services&#43;engineering%3A&#43;DNS%2C&#43;DHCP%2C&#43;firewalls%2C&#43;web&#43;proxies%2C&#43;mail&#43;servers%2C&#43;backup&#43;systems&#43;%28Bacula%29%2C&#43;and&#43;VPN&#43;Data&#43;visualization&#43;and&#43;interactive&#43;analytical&#43;dashboards&#43;using&#43;D3.js%2C&#43;Chart.js%2C&#43;and&#43;Leaflet&#43;for&#43;geospatial&#43;representation&#43;Heterogeneous&#43;environment&#43;integration&#43;across&#43;GNU%2FLinux&#43;and&#43;Microsoft&#43;Windows&#43;platforms%2C&#43;including&#43;file&#43;services&#43;%28Samba%29%2C&#43;messaging%2C&#43;spam&#43;filtering%2C&#43;and&#43;vertical&#43;business&#43;applications&#43;Technical&#43;instruction&#43;and&#43;curriculum&#43;design&#43;for&#43;university&#43;courses&#43;and&#43;professional&#43;workshops%2C&#43;with&#43;a&#43;sustained&#43;ability&#43;to&#43;convey&#43;complex&#43;systems&#43;with&#43;precision&#43;and&#43;clarity&#43;Energy&#43;sector&#43;domain&#43;expertise&#43;spanning&#43;SCADA&#43;software&#43;evaluation%2C&#43;grid&#43;congestion&#43;analysis%2C&#43;and&#43;transmission&#43;topology&#43;optimization&#43;Experience&#43;NewGrid&#43;Senior&#43;Software&#43;Developer&#43;January&#43;2023&#43;-&#43;Present&#43;%7C&#43;Boston%2C&#43;MA%0A&amp;title=CV&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fen%2Fcv%2F"
-        class="ananke-social-link linkedin no-underline"
-        title="Share on LinkedIn" aria-label="Share on LinkedIn"
-        target="_blank" rel="nofollow noopener noreferrer">
-        <span class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
-                
-              </span></a><a href="https://twitter.com/intent/tweet/?&amp;text=C%C3%A9sar&#43;Ballardini&#43;Senior&#43;Software&#43;Developer&#43;%C2%B7&#43;System&#43;Architect&#43;%C2%B7&#43;Educator&#43;%7C&#43;Energy&#43;Grid&#43;%26amp%3Bamp%3B&#43;Power&#43;Systems&#43;%7C&#43;Vue.js&#43;%C2%B7&#43;TypeScript&#43;%C2%B7&#43;Python&#43;%C2%B7&#43;GNU%2FLinux%0AArgentina%0AEmail%3A&#43;cesar.ballardini%40gmail.com&#43;LinkedIn%3A&#43;linkedin.com%2Fin%2Fcesar-ballardini&#43;GitHub%3A&#43;github.com%2FCesarBallardini&#43;Skill&#43;Keywords%3A&#43;katra.ballardini.com.ar%2Fen%2Fskills%2F&#43;Consulting&#43;Services%3A&#43;katra.ballardini.com.ar%2Fen%2Fconsulting%2F&#43;Basic&#43;Info&#43;I&#43;work&#43;as&#43;a&#43;senior&#43;software&#43;developer%2C&#43;system&#43;architect%2C&#43;and&#43;technical&#43;educator.&#43;This&#43;role&#43;draws&#43;on&#43;more&#43;than&#43;35&#43;years&#43;of&#43;experience&#43;across&#43;software&#43;development%2C&#43;infrastructure&#43;engineering%2C&#43;and&#43;university&#43;teaching.&#43;The&#43;result&#43;is%3A%0AComprehensive&#43;understanding&#43;of&#43;the&#43;full&#43;technology&#43;stack%2C&#43;from&#43;frontend&#43;applications&#43;through&#43;backend&#43;services&#43;to&#43;underlying&#43;infrastructure&#43;Practical&#43;ability&#43;to&#43;design%2C&#43;build%2C&#43;automate%2C&#43;and&#43;maintain&#43;production&#43;systems&#43;end-to-end&#43;Capacity&#43;to&#43;communicate&#43;complex&#43;technical&#43;concepts&#43;with&#43;clarity&#43;%26amp%3Bndash%3B&#43;refined&#43;through&#43;two&#43;decades&#43;of&#43;university&#43;instruction&#43;Benefits&#43;from&#43;this&#43;experience&#43;include%3A&#43;Purpose-built&#43;internal&#43;tools&#43;that&#43;translate&#43;intricate&#43;domain&#43;workflows&#43;into&#43;effective%2C&#43;usable&#43;software&#43;Automated%2C&#43;reproducible&#43;infrastructure&#43;that&#43;accelerates&#43;provisioning&#43;and&#43;eliminates&#43;configuration&#43;drift&#43;Robust&#43;GNU%2FLinux&#43;server&#43;and&#43;network&#43;environments%2C&#43;seamlessly&#43;integrated&#43;with&#43;heterogeneous&#43;systems&#43;Thorough&#43;documentation&#43;and&#43;structured&#43;knowledge&#43;transfer&#43;%26amp%3Bndash%3B&#43;teams&#43;gain&#43;autonomy%2C&#43;not&#43;dependency&#43;Summary&#43;35%2B&#43;years&#43;in&#43;IT%2C&#43;software&#43;development%2C&#43;and&#43;infrastructure&#43;25%2B&#43;years&#43;teaching&#43;at&#43;universities&#43;%283&#43;institutions%2C&#43;6%2B&#43;courses%29&#43;10%2B&#43;years&#43;in&#43;the&#43;energy&#43;sector&#43;%28SCADA%2C&#43;grid&#43;optimization%29&#43;300%2B&#43;managed&#43;desktops&#43;provisioned&#43;and&#43;administered&#43;350%2B&#43;users&#43;supported&#43;on&#43;SCO&#43;Unix&#43;and&#43;GNU%2FLinux&#43;application&#43;servers&#43;%24100M%2B&#43;in&#43;annual&#43;customer&#43;savings&#43;attributed&#43;to&#43;grid&#43;reconfiguration&#43;work&#43;4&#43;sectors&#43;served%3A&#43;energy%2C&#43;government%2C&#43;education%2C&#43;private&#43;consulting&#43;2&#43;languages%3A&#43;Spanish&#43;%28native%29%2C&#43;English&#43;%28professional&#43;working%29&#43;Major&#43;Achievements&#43;Grid&#43;reconfigurations&#43;identified&#43;through&#43;the&#43;analysis&#43;platform&#43;I&#43;develop&#43;at&#43;NewGrid&#43;have&#43;contributed&#43;to&#43;over&#43;%24100&#43;million&#43;in&#43;annual&#43;customer&#43;savings&#43;in&#43;the&#43;U.S.&#43;Midwest&#43;%28World&#43;Economic&#43;Forum%29&#43;Introduced&#43;Infrastructure&#43;as&#43;Code&#43;practices&#43;using&#43;Ansible&#43;within&#43;a&#43;provincial&#43;government&#43;organization%2C&#43;establishing&#43;the&#43;first&#43;IaC&#43;environments&#43;from&#43;the&#43;ground&#43;up&#43;Engineered&#43;custom&#43;Debian&#43;installation&#43;media&#43;that&#43;reduced&#43;desktop&#43;provisioning&#43;from&#43;2%26amp%3Bndash%3B3&#43;days&#43;per&#43;machine&#43;to&#43;5&#43;simultaneous&#43;installations&#43;in&#43;2&#43;hours&#43;Migrated&#43;a&#43;50-user&#43;Microsoft&#43;Windows&#43;file&#43;server&#43;to&#43;a&#43;Debian-based&#43;Samba&#43;server&#43;architected&#43;to&#43;support&#43;300&#43;users&#43;Scaled&#43;IT&#43;infrastructure&#43;to&#43;over&#43;300&#43;managed&#43;desktops&#43;distributed&#43;across&#43;multiple&#43;government&#43;buildings&#43;Established&#43;the&#43;first&#43;online&#43;Internet&#43;access&#43;and&#43;the&#43;first&#43;public-facing&#43;web&#43;server&#43;at&#43;a&#43;university&#43;campus&#43;Designed&#43;and&#43;deployed&#43;the&#43;first&#43;intranet&#43;at&#43;a&#43;provincial&#43;power&#43;utility&#43;serving&#43;350%2B&#43;users&#43;Founded&#43;and&#43;directed&#43;an&#43;IT&#43;consulting&#43;firm&#43;delivering&#43;open-source&#43;solutions&#43;to&#43;clients&#43;in&#43;maritime&#43;transport%2C&#43;education%2C&#43;manufacturing%2C&#43;and&#43;services&#43;Current&#43;Focus&#43;Designing&#43;and&#43;maintaining&#43;an&#43;internal&#43;analysis&#43;platform&#43;used&#43;by&#43;power&#43;systems&#43;engineers&#43;to&#43;investigate&#43;grid&#43;congestion&#43;and&#43;recommend&#43;transmission&#43;reconfigurations&#43;Developing&#43;specialized&#43;tooling&#43;for&#43;highly&#43;qualified&#43;electrical&#43;engineers&#43;with&#43;deep&#43;expertise&#43;in&#43;grid&#43;operations&#43;and&#43;electricity&#43;markets&#43;Collaborating&#43;with&#43;domain&#43;experts&#43;to&#43;translate&#43;complex&#43;power&#43;systems&#43;workflows&#43;into&#43;well-structured&#43;software&#43;solutions&#43;Teaching&#43;programming&#43;paradigms&#43;%28Smalltalk%2C&#43;Scheme%2C&#43;Prolog%29&#43;at&#43;Universidad&#43;Tecnol%C3%B3gica&#43;Nacional&#43;%26amp%3Bndash%3B&#43;25&#43;years&#43;and&#43;continuing&#43;Skills&#43;Full-stack&#43;software&#43;development&#43;spanning&#43;modern&#43;frontend&#43;technologies&#43;%28Vue.js%2C&#43;TypeScript%2C&#43;Vite%29&#43;and&#43;backend&#43;services&#43;%28Python%2C&#43;Flask%2C&#43;PostgreSQL%29%2C&#43;with&#43;a&#43;focus&#43;on&#43;building&#43;internal&#43;tools&#43;for&#43;domain&#43;specialists&#43;System&#43;architecture&#43;and&#43;infrastructure&#43;design%2C&#43;from&#43;bare-metal&#43;GNU%2FLinux&#43;servers&#43;to&#43;cloud&#43;deployments&#43;on&#43;AWS%2C&#43;Digital&#43;Ocean%2C&#43;and&#43;Tektonic&#43;Infrastructure&#43;automation&#43;and&#43;configuration&#43;management&#43;using&#43;Ansible&#43;and&#43;Terraform%2C&#43;encompassing&#43;fleet-wide&#43;convergence&#43;and&#43;reproducible&#43;development&#43;environments&#43;with&#43;Vagrant&#43;and&#43;Docker&#43;containers&#43;Network&#43;services&#43;engineering%3A&#43;DNS%2C&#43;DHCP%2C&#43;firewalls%2C&#43;web&#43;proxies%2C&#43;mail&#43;servers%2C&#43;backup&#43;systems&#43;%28Bacula%29%2C&#43;and&#43;VPN&#43;Data&#43;visualization&#43;and&#43;interactive&#43;analytical&#43;dashboards&#43;using&#43;D3.js%2C&#43;Chart.js%2C&#43;and&#43;Leaflet&#43;for&#43;geospatial&#43;representation&#43;Heterogeneous&#43;environment&#43;integration&#43;across&#43;GNU%2FLinux&#43;and&#43;Microsoft&#43;Windows&#43;platforms%2C&#43;including&#43;file&#43;services&#43;%28Samba%29%2C&#43;messaging%2C&#43;spam&#43;filtering%2C&#43;and&#43;vertical&#43;business&#43;applications&#43;Technical&#43;instruction&#43;and&#43;curriculum&#43;design&#43;for&#43;university&#43;courses&#43;and&#43;professional&#43;workshops%2C&#43;with&#43;a&#43;sustained&#43;ability&#43;to&#43;convey&#43;complex&#43;systems&#43;with&#43;precision&#43;and&#43;clarity&#43;Energy&#43;sector&#43;domain&#43;expertise&#43;spanning&#43;SCADA&#43;software&#43;evaluation%2C&#43;grid&#43;congestion&#43;analysis%2C&#43;and&#43;transmission&#43;topology&#43;optimization&#43;Experience&#43;NewGrid&#43;Senior&#43;Software&#43;Developer&#43;January&#43;2023&#43;-&#43;Present&#43;%7C&#43;Boston%2C&#43;MA%0A&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fen%2Fcv%2F"
-        class="ananke-social-link x-twitter no-underline"
-        title="Share on X" aria-label="Share on X"
-        target="_blank" rel="nofollow noopener noreferrer">
-        <span class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
-                
-              </span></a><a href="%25!s%28%3cnil%3e%29?"
-        class="ananke-social-link github no-underline"
-        title="Share on GitHub" aria-label="Share on GitHub"
-        target="_blank" rel="nofollow noopener noreferrer">
-        <span class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
-                
-              </span></a></div>
-<h1 class="f1 athelas mt3 mb1">CV</h1>
-      
-      <p class="tracked">
-        By <strong>Cesar Ballardini</strong>
-      </p>
-      
-      
-      
-      <time class="f6 mv4 dib tracked" datetime="2026-02-22T00:00:00-03:00">22 de February de 2026</time>
-      
-
-      
-      
-        <span class="f6 mv4 dib tracked"> - 10 minutes read </span>
-        <span class="f6 mv4 dib tracked"> - 2081 words </span>
-      
+      </aside>
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h1 id="césar-ballardini">César Ballardini</h1>
-<p><strong>Senior Software Developer · System Architect · Educator | Energy Grid &amp; Power Systems | Vue.js · TypeScript · Python · GNU/Linux</strong></p>
+    <div class="cv-page nested-copy-line-height lh-copy f4 nested-links mid-gray w-100"><h1 id="césar-ballardini">César Ballardini</h1>
+<p><strong>Senior Software Developer · System Architect · Educator</strong>
+<strong>Energy Grid &amp; Power Systems | Vue.js · TypeScript · Python · GNU/Linux</strong></p>
 <p>Argentina</p>
-<ul>
-<li><strong>Email:</strong> <a href="mailto:cesar.ballardini@gmail.com">cesar.ballardini@gmail.com</a></li>
-<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/cesar-ballardini/">linkedin.com/in/cesar-ballardini</a></li>
-<li><strong>GitHub:</strong> <a href="https://github.com/CesarBallardini">github.com/CesarBallardini</a></li>
-<li><strong>Skill Keywords:</strong> <a href="/en/skills/">katra.ballardini.com.ar/en/skills/</a></li>
-<li><strong>Consulting Services:</strong> <a href="/en/consulting/">katra.ballardini.com.ar/en/consulting/</a></li>
-</ul>
+<p><a href="mailto:cesar.ballardini@gmail.com">cesar.ballardini@gmail.com</a> · <a href="https://www.linkedin.com/in/cesar-ballardini/">LinkedIn</a> · <a href="https://github.com/CesarBallardini">GitHub</a> · <a href="/en/skills/">Skill Keywords</a> · <a href="/en/consulting/">Consulting Services</a></p>
 <hr>
 <h2 id="basic-info">Basic Info</h2>
 <p>I work as a senior software developer, system architect, and technical educator. This role draws on more than 35 years of experience across software development, infrastructure engineering, and university teaching. The result is:</p>
 <ul>
 <li>Comprehensive understanding of the full technology stack, from frontend applications through backend services to underlying infrastructure</li>
 <li>Practical ability to design, build, automate, and maintain production systems end-to-end</li>
-<li>Capacity to communicate complex technical concepts with clarity &ndash; refined through two decades of university instruction</li>
+<li>Capacity to communicate complex technical concepts with clarity — refined through two decades of university instruction</li>
 </ul>
-<h2 id="benefits-from-this-experience-include">Benefits from this experience include:</h2>
+<h2 id="benefits-from-this-experience">Benefits from This Experience</h2>
 <ul>
 <li>Purpose-built internal tools that translate intricate domain workflows into effective, usable software</li>
 <li>Automated, reproducible infrastructure that accelerates provisioning and eliminates configuration drift</li>
 <li>Robust GNU/Linux server and network environments, seamlessly integrated with heterogeneous systems</li>
-<li>Thorough documentation and structured knowledge transfer &ndash; teams gain autonomy, not dependency</li>
+<li>Thorough documentation and structured knowledge transfer — teams gain autonomy, not dependency</li>
 </ul>
 <hr>
 <h2 id="summary">Summary</h2>
@@ -266,7 +471,7 @@
 <ul>
 <li>Grid reconfigurations identified through the analysis platform I develop at NewGrid have contributed to over $100 million in annual customer savings in the U.S. Midwest (<a href="https://initiatives.weforum.org/future-power-system/case-study-details/topology-optimization-for-grid-congestion-management/aJYTG00000013qH4AQ">World Economic Forum</a>)</li>
 <li>Introduced Infrastructure as Code practices using Ansible within a provincial government organization, establishing the first IaC environments from the ground up</li>
-<li>Engineered custom Debian installation media that reduced desktop provisioning from 2&ndash;3 days per machine to 5 simultaneous installations in 2 hours</li>
+<li>Engineered custom Debian installation media that reduced desktop provisioning from 2–3 days per machine to 5 simultaneous installations in 2 hours</li>
 <li>Migrated a 50-user Microsoft Windows file server to a Debian-based Samba server architected to support 300 users</li>
 <li>Scaled IT infrastructure to over 300 managed desktops distributed across multiple government buildings</li>
 <li>Established the first online Internet access and the first public-facing web server at a university campus</li>
@@ -279,7 +484,7 @@
 <li>Designing and maintaining an internal analysis platform used by power systems engineers to investigate grid congestion and recommend transmission reconfigurations</li>
 <li>Developing specialized tooling for highly qualified electrical engineers with deep expertise in grid operations and electricity markets</li>
 <li>Collaborating with domain experts to translate complex power systems workflows into well-structured software solutions</li>
-<li>Teaching programming paradigms (Smalltalk, Scheme, Prolog) at Universidad Tecnológica Nacional &ndash; 25 years and continuing</li>
+<li>Teaching programming paradigms (Smalltalk, Scheme, Prolog) at Universidad Tecnológica Nacional — 25 years and continuing</li>
 </ul>
 <hr>
 <h2 id="skills">Skills</h2>
@@ -297,23 +502,23 @@
 <h2 id="experience">Experience</h2>
 <h3 id="newgrid">NewGrid</h3>
 <p><strong>Senior Software Developer</strong>
-January 2023 - Present | Boston, MA</p>
+<em>January 2023 – Present | Boston, MA</em></p>
 <ul>
 <li>Design and maintain an internal analysis platform used by power systems engineers to investigate client grid congestion and recommend transmission reconfigurations</li>
 <li>Develop tooling for a team of highly specialized electrical engineers with deep expertise in grid operations and electricity markets</li>
-<li>Reconfigurations identified through this work have contributed to over $100 million in annual customer savings in the U.S. Midwest (<a href="https://initiatives.weforum.org/future-power-system/case-study-details/topology-optimization-for-grid-congestion-management/aJYTG00000013qH4AQ">World Economic Forum - Topology Optimization for Grid Congestion Management</a>)</li>
+<li>Reconfigurations identified through this work have contributed to over $100 million in annual customer savings in the U.S. Midwest (<a href="https://initiatives.weforum.org/future-power-system/case-study-details/topology-optimization-for-grid-congestion-management/aJYTG00000013qH4AQ">World Economic Forum</a>)</li>
 <li>Collaborate closely with domain experts to translate complex power systems workflows into effective software solutions</li>
 </ul>
 <h3 id="newgrid-1">NewGrid</h3>
 <p><strong>Software Developer</strong>
-March 2022 - December 2022 | Boston, MA</p>
+<em>March 2022 – December 2022 | Boston, MA</em></p>
 <ul>
 <li>Joined NewGrid to develop internal tools supporting the company&rsquo;s transmission topology optimization services</li>
 <li>Delivered software features for engineers analyzing grid congestion patterns and evaluating reconfiguration options</li>
 </ul>
-<h3 id="secretaria-de-tecnologias-para-la-gestion-government-technology-office---santa-fe-province">Secretaria de Tecnologias para la Gestion (Government Technology Office - Santa Fe Province)</h3>
+<h3 id="secretaría-de-tecnologías-para-la-gestión-government-technology-office--santa-fe-province">Secretaría de Tecnologías para la Gestión (Government Technology Office – Santa Fe Province)</h3>
 <p><strong>Server and Application Provisioning Automation Engineer</strong>
-July 2016 - January 2023 | Santa Fe Province, Argentina</p>
+<em>July 2016 – January 2023 | Santa Fe Province, Argentina</em></p>
 <ul>
 <li>Automated provisioning and configuration of virtual machines on VMware hypervisors across testing, staging, training, and production environments</li>
 <li>Configured OS-level services (DNS, web proxy, kernel parameters) and application stacks including GitLab, Jenkins, LDAP, Apache, PHP, PostgreSQL, MySQL, and shared filesystems</li>
@@ -323,21 +528,21 @@ July 2016 - January 2023 | Santa Fe Province, Argentina</p>
 <li>Delivered a Debian server administration course for senior technical staff</li>
 <li>Diagnosed and resolved server and application issues for the provincial government of Santa Fe</li>
 </ul>
-<h3 id="ministerio-de-innovacion-y-cultura-ministry-of-innovation-and-culture---santa-fe-province">Ministerio de Innovacion y Cultura (Ministry of Innovation and Culture - Santa Fe Province)</h3>
+<h3 id="ministerio-de-innovación-y-cultura-ministry-of-innovation-and-culture--santa-fe-province">Ministerio de Innovación y Cultura (Ministry of Innovation and Culture – Santa Fe Province)</h3>
 <p><strong>Systems and Network Administrator</strong>
-January 2012 - June 2016 | Santa Fe, Argentina</p>
+<em>January 2012 – June 2016 | Santa Fe, Argentina</em></p>
 <ul>
 <li>Scaled the IT infrastructure to over 300 managed desktops distributed across multiple buildings</li>
 <li>Replaced all locally attached inkjet printers with networked laser printers on a per-office basis</li>
-<li>Engineered custom Debian installation media that reduced desktop provisioning from 2&ndash;3 days per machine to 5 simultaneous installations in 2 hours</li>
+<li>Engineered custom Debian installation media that reduced desktop provisioning from 2–3 days per machine to 5 simultaneous installations in 2 hours</li>
 <li>Migrated centralized configuration management from Puppet to Ansible</li>
 <li>Interconnected all ministry buildings to the Internet, enabling remote administration and diagnostics from headquarters</li>
 <li>Deployed government applications for the Culture area including cultural heritage (Patrimonio Cultural) and open-source library and catalog software</li>
 <li>Advised on and implemented free software adoption strategies across the ministry</li>
 </ul>
-<h3 id="ministerio-de-innovacion-y-cultura-ministry-of-innovation-and-culture---santa-fe-province-1">Ministerio de Innovacion y Cultura (Ministry of Innovation and Culture - Santa Fe Province)</h3>
+<h3 id="ministerio-de-innovación-y-cultura-ministry-of-innovation-and-culture--santa-fe-province-1">Ministerio de Innovación y Cultura (Ministry of Innovation and Culture – Santa Fe Province)</h3>
 <p><strong>Systems and Network Contractor</strong>
-June 2008 - December 2011 | Santa Fe, Argentina</p>
+<em>June 2008 – December 2011 | Santa Fe, Argentina</em></p>
 <ul>
 <li>Established the IT ticketing system to track work items, coordinate procurement of components and supplies, and build an institutional knowledge base of issues and resolutions</li>
 <li>Laid the operational foundation for IT services within a newly created government area</li>
@@ -351,26 +556,26 @@ June 2008 - December 2011 | Santa Fe, Argentina</p>
 <li>Diagnosed and resolved network, operating system, and application issues across the ministry&rsquo;s infrastructure</li>
 <li>Administered GNU/Linux desktop networks, server installations, and network services</li>
 </ul>
-<h3 id="universidad-tecnologica-nacional-facultad-regional-santa-fe">Universidad Tecnologica Nacional Facultad Regional Santa Fe</h3>
-<p><strong>Head Teaching Assistant - Programming Paradigms</strong>
-March 2001 - Present | Santa Fe, Argentina</p>
+<h3 id="universidad-tecnológica-nacional--facultad-regional-santa-fe">Universidad Tecnológica Nacional – Facultad Regional Santa Fe</h3>
+<p><strong>Head Teaching Assistant – Programming Paradigms</strong>
+<em>March 2001 – Present | Santa Fe, Argentina</em></p>
 <ul>
 <li>Instruct students in functional, logic, and object-oriented programming paradigms using Pharo Smalltalk, Racket Scheme, and SWI Prolog</li>
 <li>Guide students through hands-on implementation of programs across multiple paradigms</li>
 <li>Coordinate junior and senior teaching assistants</li>
 <li>25 years of continuous involvement in the course</li>
 </ul>
-<h3 id="universidad-tecnologica-nacional-regional-santa-fe">Universidad Tecnologica Nacional Regional Santa Fe</h3>
-<p><strong>Head Teaching Assistant - Operating Systems Design &amp; Implementation</strong>
-June 2010 - May 2015 | Santa Fe, Argentina</p>
+<h3 id="universidad-tecnológica-nacional--regional-santa-fe">Universidad Tecnológica Nacional – Regional Santa Fe</h3>
+<p><strong>Head Teaching Assistant – Operating Systems Design &amp; Implementation</strong>
+<em>June 2010 – May 2015 | Santa Fe, Argentina</em></p>
 <ul>
 <li>Directed hands-on laboratory sessions focused on the comprehension, modification, and extension of the MINIX 3 operating system</li>
 <li>Students explored the internals of a microkernel architecture, learning to read assembler and write C code for device driver servers, file system servers, hardware and software interrupt handling, and CPU scheduling</li>
 <li>Supervised student projects involving kernel-level C programming and operating system internals</li>
 </ul>
-<h3 id="self-employed---it-consultant">Self Employed - IT Consultant</h3>
+<h3 id="self-employed--it-consultant">Self Employed – IT Consultant</h3>
 <p><strong>Freelance IT Consultant</strong>
-August 2000 - Present</p>
+<em>August 2000 – Present</em></p>
 <ul>
 <li>Independent system administration, software development, and technical training services</li>
 <li>Migrated client file servers from Microsoft Windows to Debian-based Samba servers</li>
@@ -380,7 +585,7 @@ August 2000 - Present</p>
 </ul>
 <h3 id="netmanagers">Netmanagers</h3>
 <p><strong>Owner</strong>
-March 2006 - December 2011 | Argentina</p>
+<em>March 2006 – December 2011 | Argentina</em></p>
 <ul>
 <li>Founded and directed an IT consulting firm specializing in open-source and Free Software solutions for business infrastructure</li>
 <li>Designed and implemented network infrastructure strategies for clients in maritime freight transport, web-based educational platforms, manufacturing, and service industries</li>
@@ -388,9 +593,9 @@ March 2006 - December 2011 | Argentina</p>
 <li>Evaluated and strengthened logical security across client environments</li>
 <li>Cultivated long-term client relationships through strategic IT consulting and sustained technical support</li>
 </ul>
-<h3 id="universidad-catolica-de-santiago-del-estero">Universidad Catolica de Santiago del Estero</h3>
+<h3 id="universidad-católica-de-santiago-del-estero">Universidad Católica de Santiago del Estero</h3>
 <p><strong>Adjunct Professor</strong>
-March 2005 - July 2011 | Rafaela, Argentina</p>
+<em>March 2005 – July 2011 | Rafaela, Argentina</em></p>
 <ul>
 <li>Artificial Intelligence: taught search algorithms, knowledge representation, and logic using Python</li>
 <li>Software Engineering for Internet Applications:
@@ -403,14 +608,14 @@ March 2005 - July 2011 | Rafaela, Argentina</p>
 </ul>
 <h3 id="universidad-adventista-del-plata">Universidad Adventista del Plata</h3>
 <p><strong>Adjunct Professor</strong>
-August 2001 - February 2011 | Villa Libertador General San Martin, Argentina</p>
+<em>August 2001 – February 2011 | Villa Libertador General San Martín, Argentina</em></p>
 <ul>
 <li>Taught four courses: Artificial Intelligence, Software Engineering, Advanced Database Systems, and Introduction to Programming</li>
 <li>Instruction delivered across multiple languages including Python and C</li>
 </ul>
-<h3 id="empresa-provincial-de-la-energia-de-santa-fe-provincial-power-utility-of-santa-fe">Empresa Provincial de la Energia de Santa Fe (Provincial Power Utility of Santa Fe)</h3>
+<h3 id="empresa-provincial-de-la-energía-de-santa-fe-provincial-power-utility-of-santa-fe">Empresa Provincial de la Energía de Santa Fe (Provincial Power Utility of Santa Fe)</h3>
 <p><strong>Software Supervisor</strong>
-December 1989 - August 2000 | Santa Fe, Argentina</p>
+<em>December 1989 – August 2000 | Santa Fe, Argentina</em></p>
 <ul>
 <li>Administered firewalls, DNS, NIS, mail systems, and database systems for a provincial power utility</li>
 <li>Provided second-tier technical support on SCO Unix and GNU/Linux application servers serving 350+ users</li>
@@ -421,9 +626,9 @@ December 1989 - August 2000 | Santa Fe, Argentina</p>
 <li>Designed and deployed the company&rsquo;s first intranet</li>
 <li>Trained technical staff on systems and tooling</li>
 </ul>
-<h3 id="universidad-tecnologica-nacional---facultad-regional-santa-fe">Universidad Tecnologica Nacional - Facultad Regional Santa Fe</h3>
+<h3 id="universidad-tecnológica-nacional--facultad-regional-santa-fe-1">Universidad Tecnológica Nacional – Facultad Regional Santa Fe</h3>
 <p><strong>Sysadmin &amp; Postmaster</strong>
-March 1996 - March 1998 | Santa Fe, Argentina</p>
+<em>March 1996 – March 1998 | Santa Fe, Argentina</em></p>
 <ul>
 <li>Established and administered the first online Internet access on the university campus</li>
 <li>Deployed the faculty&rsquo;s first public-facing web server with stringent security configuration</li>
@@ -433,7 +638,7 @@ March 1996 - March 1998 | Santa Fe, Argentina</p>
 </ul>
 <h3 id="universidad-nacional-de-rosario">Universidad Nacional de Rosario</h3>
 <p><strong>Software Developer</strong>
-February 1988 - December 1989 | Rosario, Argentina</p>
+<em>February 1988 – December 1989 | Rosario, Argentina</em></p>
 <ul>
 <li>Developed educational software using Micro-Prolog and carousel slide automation</li>
 <li>Engineered a student records management system for tracking academic records including courses, examinations, and grades</li>
@@ -441,18 +646,14 @@ February 1988 - December 1989 | Rosario, Argentina</p>
 </ul>
 <hr>
 <h2 id="education">Education</h2>
-<h3 id="universidad-tecnologica-nacional-utn">Universidad Tecnologica Nacional (UTN)</h3>
-<p>Ingeniero en Sistemas de Informacion (Information Systems Engineer) &ndash; 2002</p>
-<h3 id="universidad-nacional-de-rosario-unr">Universidad Nacional de Rosario (UNR)</h3>
-<p>Electronics (coursework) &ndash; 1982 - 1988</p>
-<h3 id="escuela-industrial-superior---unl">Escuela Industrial Superior - UNL</h3>
-<p>Tecnico Nacional, Mecanico Electrico (National Mechanical-Electrical Technician) &ndash; 1975 - 1980</p>
+<h3 id="universidad-tecnológica-nacional-utn">Universidad Tecnológica Nacional (UTN)</h3>
+<p>Ingeniero en Sistemas de Información (Information Systems Engineer) — 2002</p>
+<h3 id="escuela-industrial-superior--unl">Escuela Industrial Superior – UNL</h3>
+<p>Técnico Nacional, Mecánico Eléctrico (National Mechanical-Electrical Technician) — 1975 – 1980</p>
 <p>A technical and vocational secondary institution operated by Universidad Nacional del Litoral, specializing in industrial education with rigorous emphasis on practical trade training across three pathways: Construction, Mechanical-Electrical, and Chemistry.</p>
 <hr>
 <h2 id="certifications">Certifications</h2>
-<ul>
-<li><strong>Machine Learning</strong> &ndash; Coursera &ndash; Issued Sep 2014</li>
-</ul>
+<p><strong>Machine Learning</strong> — Coursera — Issued Sep 2014</p>
 <hr>
 <h2 id="top-skills">Top Skills</h2>
 <p><strong>System Architecture</strong> · <strong>Infrastructure Automation</strong> · <strong>Technical Training</strong></p>
@@ -464,43 +665,22 @@ February 1988 - December 1989 | Rosario, Argentina</p>
 <hr>
 <h2 id="languages">Languages</h2>
 <ul>
-<li><strong>Spanish</strong> &ndash; Native or Bilingual</li>
-<li><strong>English</strong> &ndash; Professional Working</li>
+<li><strong>Spanish</strong> — Native or Bilingual</li>
+<li><strong>English</strong> — Professional Working</li>
 </ul>
 <hr>
 <h2 id="volunteer-experience">Volunteer Experience</h2>
 <h3 id="giait-utn-frsf">GIAIT UTN FRSF</h3>
 <p><strong>Programming Instructor</strong>
-1993 - 1998 | Santa Fe, Argentina</p>
-<ul>
-<li>Instructed students in multiple programming paradigms: functional, logic, and object-oriented</li>
-<li>Member of GIAIT (Grupo de Informatica Aplicado al Ingles Tecnico) research group</li>
-</ul>
+<em>1993 – 1998 | Santa Fe, Argentina</em></p>
+<p>Instructed students in multiple programming paradigms: functional, logic, and object-oriented. Member of GIAIT (Grupo de Informática Aplicado al Inglés Técnico) research group.</p>
 <h3 id="lugli-linux-users-group-del-litoral-argentina">LUGLi (Linux User&rsquo;s Group del Litoral) Argentina</h3>
 <p><strong>Member</strong>
-1996 - 2010</p>
-<ul>
-<li>Active member of a regional community dedicated to GNU/Linux, Free Software, education, and free content</li>
-</ul>
+<em>1996 – 2010</em></p>
+<p>Active member of a regional community dedicated to GNU/Linux, Free Software, education, and free content.</p>
 <hr>
-<h2 id="skill-keywords">Skill Keywords</h2>
 <p>A comprehensive, categorized index of technical keywords is available at the <a href="/en/skills/">Skill Keywords</a> page.</p>
-<ul class="pa0">
-  
-</ul>
-<div class="mt6 instapaper_ignoref">
-      
-      
-      </div>
-    </div>
-
-    <aside class="w-30-l mt6-l">
-
-
-
-
-</aside>
-
+</div>
   </article>
 
     </main>

@@ -7,7 +7,7 @@
     <title>CV | katra</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="César Ballardini -- Desarrollador de Software Senior · Arquitecto de Sistemas · Educador -- Perfil Profesional">
-    <meta name="generator" content="Hugo 0.156.0">
+    <meta name="generator" content="Hugo 0.157.0">
     
     
     
@@ -48,7 +48,7 @@
   <meta itemprop="description" content="César Ballardini -- Desarrollador de Software Senior · Arquitecto de Sistemas · Educador -- Perfil Profesional">
   <meta itemprop="datePublished" content="2026-02-22T00:00:00-03:00">
   <meta itemprop="dateModified" content="2026-02-22T00:00:00-03:00">
-  <meta itemprop="wordCount" content="2433">
+  <meta itemprop="wordCount" content="2416">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="CV">
   <meta name="twitter:description" content="César Ballardini -- Desarrollador de Software Senior · Arquitecto de Sistemas · Educador -- Perfil Profesional">
@@ -56,10 +56,265 @@
       
     
 	
+      <style>/* ===================================================================
+   CV Page Styles
+   Applied via layout "cv" which wraps content in .cv-page
+   =================================================================== */
+
+.cv-page {
+  max-width: 820px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* --- Name heading --- */
+
+.cv-page h1 {
+  font-size: 2.1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #1a3a5c;
+  text-align: center;
+  margin: 0 0 0.5rem;
+}
+
+/* Tagline & location: paragraphs right after h1 */
+.cv-page h1 + p,
+.cv-page h1 + p + p,
+.cv-page h1 + p + p + p {
+  text-align: center;
+  color: #556;
+  margin: 0 0 0.3rem;
+}
+
+/* Contact links line */
+.cv-page h1 + p + p + p + p {
+  text-align: center;
+  font-size: 0.88rem;
+  margin-bottom: 1.5rem;
+}
+
+.cv-page h1 + p + p + p + p a {
+  color: #1a3a5c;
+  text-decoration: none;
+  border-bottom: 1px dotted #1a3a5c;
+}
+
+.cv-page h1 + p + p + p + p a:hover {
+  color: #2a5a8c;
+  border-bottom-style: solid;
+}
+
+/* --- Horizontal rules as section dividers --- */
+
+.cv-page hr {
+  border: none;
+  border-top: 2px solid #1a3a5c;
+  margin: 2rem 0;
+}
+
+/* --- Section headings (h2) --- */
+
+.cv-page h2 {
+  color: #1a3a5c;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid #d8dde3;
+  padding-bottom: 0.4rem;
+  margin: 2rem 0 1rem;
+}
+
+/* --- All lists: simple clean bullets --- */
+
+.cv-page ul {
+  padding-left: 1.4rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.cv-page li {
+  margin-bottom: 0.35rem;
+  color: #444;
+}
+
+/* --- Summary table --- */
+
+.cv-page table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+
+.cv-page th {
+  display: none;
+}
+
+.cv-page td {
+  padding: 0.45rem 0.7rem;
+  vertical-align: top;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.cv-page td:first-child {
+  white-space: nowrap;
+  width: 90px;
+  text-align: right;
+  color: #1a3a5c;
+}
+
+.cv-page td:last-child {
+  color: #444;
+}
+
+.cv-page tr:last-child td {
+  border-bottom: none;
+}
+
+/* --- Experience entries (h3 + bold role + italic meta + list) --- */
+
+.cv-page h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a3a5c;
+  margin: 1.8rem 0 0.15rem;
+  padding-left: 0.8rem;
+  border-left: 3px solid #1a3a5c;
+}
+
+/* Role line (bold paragraph after h3) */
+.cv-page h3 + p {
+  margin: 0 0 0;
+  font-weight: 600;
+  color: #444;
+  padding-left: 0.8rem;
+}
+
+/* Date/location line (italic paragraph) */
+.cv-page h3 + p + p {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  color: #888;
+  padding-left: 0.8rem;
+}
+
+/* Bullets under experience entries */
+.cv-page h3 ~ ul {
+  padding-left: 2.2rem;
+}
+
+/* --- Education: style h3 under education the same way --- */
+
+#education + h3,
+#education ~ h3 {
+  border-left-color: #d8dde3;
+}
+
+/* Education detail text */
+#education ~ p {
+  padding-left: 0.8rem;
+}
+
+/* --- Certifications --- */
+
+#certifications + p {
+  padding-left: 0.8rem;
+}
+
+/* --- Top Skills line --- */
+
+#top-skills + p {
+  font-size: 1rem;
+  text-align: center;
+  color: #1a3a5c;
+  margin-bottom: 1.5rem;
+}
+
+/* Extended skills categories */
+#extended-skills ~ p {
+  padding: 0.5rem 0.8rem;
+  background: #f6f8fa;
+  border-left: 3px solid #1a3a5c;
+  border-radius: 0 4px 4px 0;
+  margin-bottom: 0.5rem;
+}
+
+/* --- Languages list: horizontal --- */
+
+#languages + ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 2rem;
+}
+
+/* --- Volunteer --- */
+
+#volunteer-experience ~ h3 {
+  border-left-color: #d8dde3;
+}
+
+/* --- Footer link --- */
+
+.cv-page > p:last-child {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  font-size: 0.88rem;
+}
+
+.cv-page > p:last-child a {
+  color: #1a3a5c;
+  text-decoration: none;
+  border-bottom: 1px dotted #1a3a5c;
+}
+
+/* --- Print --- */
+
+@media print {
+  .cv-page {
+    font-size: 10.5pt;
+    color: #000;
+  }
+
+  .cv-page h1,
+  .cv-page h2,
+  .cv-page h3 {
+    color: #000;
+  }
+
+  .cv-page hr {
+    border-top-color: #000;
+  }
+
+  .cv-page h2 {
+    border-bottom-color: #000;
+  }
+
+  .cv-page h3 {
+    border-left-color: #000;
+  }
+}
+
+/* --- Responsive --- */
+
+@media (max-width: 600px) {
+  .cv-page h1 {
+    font-size: 1.7rem;
+  }
+
+  #languages + ul {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+}
+</style>
+
   </head><body class="ma0 avenir bg-near-white production">
 
     
-   
   
 
   <header>
@@ -150,64 +405,14 @@
   <article class="flex-l flex-wrap justify-between mw8 center ph3">
     <header class="mt4 w-100">
       <aside class="instapaper_ignoref b helvetica tracked ttu">
-          
         
-      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=https%3A%2F%2Fkatra.ballardini.com.ar%2Fcv%2F&amp;subject=CV"
-        class="ananke-social-link email no-underline"
-        title="Share on Email" aria-label="Share on Email"
-        target="_blank" rel="nofollow noopener noreferrer">
-        <span class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
-                
-              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=https%3A%2F%2Fkatra.ballardini.com.ar%2Fcv%2F&amp;summary=C%C3%A9sar&#43;Ballardini&#43;Desarrollador&#43;de&#43;Software&#43;Senior&#43;%C2%B7&#43;Arquitecto&#43;de&#43;Sistemas&#43;%C2%B7&#43;Educador&#43;%7C&#43;Redes&#43;El%C3%A9ctricas&#43;y&#43;Sistemas&#43;de&#43;Potencia&#43;%7C&#43;Vue.js&#43;%C2%B7&#43;TypeScript&#43;%C2%B7&#43;Python&#43;%C2%B7&#43;GNU%2FLinux%0AArgentina%0AEmail%3A&#43;cesar.ballardini%40gmail.com&#43;LinkedIn%3A&#43;linkedin.com%2Fin%2Fcesar-ballardini&#43;GitHub%3A&#43;github.com%2FCesarBallardini&#43;Habilidades&#43;T%C3%A9cnicas%3A&#43;katra.ballardini.com.ar%2Fes%2Fhabilidades%2F&#43;Servicios&#43;de&#43;Consultor%C3%ADa%3A&#43;katra.ballardini.com.ar%2Fes%2Fconsultoria%2F&#43;Informaci%C3%B3n&#43;B%C3%A1sica&#43;Ejerzo&#43;como&#43;desarrollador&#43;de&#43;software&#43;senior%2C&#43;arquitecto&#43;de&#43;sistemas&#43;y&#43;educador&#43;t%C3%A9cnico.&#43;Este&#43;perfil&#43;se&#43;sustenta&#43;en&#43;m%C3%A1s&#43;de&#43;35&#43;a%C3%B1os&#43;de&#43;trayectoria&#43;en&#43;desarrollo&#43;de&#43;software%2C&#43;ingenier%C3%ADa&#43;de&#43;infraestructura&#43;y&#43;docencia&#43;universitaria.&#43;El&#43;resultado%3A%0A&amp;title=CV&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fcv%2F"
-        class="ananke-social-link linkedin no-underline"
-        title="Share on LinkedIn" aria-label="Share on LinkedIn"
-        target="_blank" rel="nofollow noopener noreferrer">
-        <span class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
-                
-              </span></a><a href="https://twitter.com/intent/tweet/?&amp;text=C%C3%A9sar&#43;Ballardini&#43;Desarrollador&#43;de&#43;Software&#43;Senior&#43;%C2%B7&#43;Arquitecto&#43;de&#43;Sistemas&#43;%C2%B7&#43;Educador&#43;%7C&#43;Redes&#43;El%C3%A9ctricas&#43;y&#43;Sistemas&#43;de&#43;Potencia&#43;%7C&#43;Vue.js&#43;%C2%B7&#43;TypeScript&#43;%C2%B7&#43;Python&#43;%C2%B7&#43;GNU%2FLinux%0AArgentina%0AEmail%3A&#43;cesar.ballardini%40gmail.com&#43;LinkedIn%3A&#43;linkedin.com%2Fin%2Fcesar-ballardini&#43;GitHub%3A&#43;github.com%2FCesarBallardini&#43;Habilidades&#43;T%C3%A9cnicas%3A&#43;katra.ballardini.com.ar%2Fes%2Fhabilidades%2F&#43;Servicios&#43;de&#43;Consultor%C3%ADa%3A&#43;katra.ballardini.com.ar%2Fes%2Fconsultoria%2F&#43;Informaci%C3%B3n&#43;B%C3%A1sica&#43;Ejerzo&#43;como&#43;desarrollador&#43;de&#43;software&#43;senior%2C&#43;arquitecto&#43;de&#43;sistemas&#43;y&#43;educador&#43;t%C3%A9cnico.&#43;Este&#43;perfil&#43;se&#43;sustenta&#43;en&#43;m%C3%A1s&#43;de&#43;35&#43;a%C3%B1os&#43;de&#43;trayectoria&#43;en&#43;desarrollo&#43;de&#43;software%2C&#43;ingenier%C3%ADa&#43;de&#43;infraestructura&#43;y&#43;docencia&#43;universitaria.&#43;El&#43;resultado%3A%0A&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fcv%2F"
-        class="ananke-social-link x-twitter no-underline"
-        title="Share on X" aria-label="Share on X"
-        target="_blank" rel="nofollow noopener noreferrer">
-        <span class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
-                
-              </span></a><a href="%25!s%28%3cnil%3e%29?"
-        class="ananke-social-link github no-underline"
-        title="Share on GitHub" aria-label="Share on GitHub"
-        target="_blank" rel="nofollow noopener noreferrer">
-        <span class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
-                
-              </span></a></div>
-<h1 class="f1 athelas mt3 mb1">CV</h1>
-      
-      <p class="tracked">
-        Por <strong>César Ballardini</strong>
-      </p>
-      
-      
-      
-      <time class="f6 mv4 dib tracked" datetime="2026-02-22T00:00:00-03:00">22 de febrero de 2026</time>
-      
-
-      
-      
-        <span class="f6 mv4 dib tracked"> - Lectura en 12 minutos </span>
-        <span class="f6 mv4 dib tracked"> - 2433 palabras </span>
-      
+      </aside>
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h1 id="césar-ballardini">César Ballardini</h1>
-<p><strong>Desarrollador de Software Senior · Arquitecto de Sistemas · Educador | Redes Eléctricas y Sistemas de Potencia | Vue.js · TypeScript · Python · GNU/Linux</strong></p>
+    <div class="cv-page nested-copy-line-height lh-copy f4 nested-links mid-gray w-100"><h1 id="césar-ballardini">César Ballardini</h1>
+<p><strong>Desarrollador de Software Senior · Arquitecto de Sistemas · Educador</strong>
+<strong>Redes Eléctricas y Sistemas de Potencia | Vue.js · TypeScript · Python · GNU/Linux</strong></p>
 <p>Argentina</p>
-<ul>
-<li><strong>Email:</strong> <a href="mailto:cesar.ballardini@gmail.com">cesar.ballardini@gmail.com</a></li>
-<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/cesar-ballardini/">linkedin.com/in/cesar-ballardini</a></li>
-<li><strong>GitHub:</strong> <a href="https://github.com/CesarBallardini">github.com/CesarBallardini</a></li>
-<li><strong>Habilidades Técnicas:</strong> <a href="/es/habilidades/">katra.ballardini.com.ar/es/habilidades/</a></li>
-<li><strong>Servicios de Consultoría:</strong> <a href="/es/consultoria/">katra.ballardini.com.ar/es/consultoria/</a></li>
-</ul>
+<p><a href="mailto:cesar.ballardini@gmail.com">cesar.ballardini@gmail.com</a> · <a href="https://www.linkedin.com/in/cesar-ballardini/">LinkedIn</a> · <a href="https://github.com/CesarBallardini">GitHub</a> · <a href="/es/habilidades/">Habilidades Técnicas</a> · <a href="/es/consultoria/">Servicios de Consultoría</a></p>
 <hr>
 <h2 id="información-básica">Información Básica</h2>
 <p>Ejerzo como desarrollador de software senior, arquitecto de sistemas y educador técnico. Este perfil se sustenta en más de 35 años de trayectoria en desarrollo de software, ingeniería de infraestructura y docencia universitaria. El resultado:</p>
@@ -216,7 +421,7 @@
 <li>Capacidad operativa para diseñar, construir, automatizar y mantener sistemas en producción de punta a punta</li>
 <li>Aptitud para transmitir conceptos técnicos complejos con precisión y claridad — forjada a lo largo de dos décadas de instrucción universitaria</li>
 </ul>
-<h2 id="los-beneficios-de-esta-experiencia-incluyen">Los beneficios de esta experiencia incluyen:</h2>
+<h2 id="beneficios-de-esta-experiencia">Beneficios de Esta Experiencia</h2>
 <ul>
 <li>Herramientas internas construidas a medida que convierten flujos de trabajo de dominio complejos en software efectivo y operativo</li>
 <li>Infraestructura automatizada y reproducible que acelera el aprovisionamiento y elimina la deriva de configuración</li>
@@ -303,7 +508,7 @@
 <h2 id="experiencia">Experiencia</h2>
 <h3 id="newgrid">NewGrid</h3>
 <p><strong>Desarrollador de Software Senior</strong>
-Enero 2023 - Presente | Boston, MA</p>
+<em>Enero 2023 – Presente | Boston, MA</em></p>
 <ul>
 <li>Diseño y mantengo una plataforma interna de análisis que utilizan ingenieros de sistemas de potencia para investigar problemas de congestión de redes de clientes y recomendar reconfiguraciones de transmisión</li>
 <li>Desarrollo herramientas para un equipo de ingenieros eléctricos altamente especializados con experiencia profunda en operación de redes eléctricas y mercados de electricidad</li>
@@ -312,14 +517,14 @@ Enero 2023 - Presente | Boston, MA</p>
 </ul>
 <h3 id="newgrid-1">NewGrid</h3>
 <p><strong>Desarrollador de Software</strong>
-Marzo 2022 - Diciembre 2022 | Boston, MA</p>
+<em>Marzo 2022 – Diciembre 2022 | Boston, MA</em></p>
 <ul>
 <li>Me incorporé a NewGrid para desarrollar herramientas internas que respaldan los servicios de optimización topológica de transmisión de la empresa</li>
 <li>Entregué funcionalidades de software para ingenieros que analizan patrones de congestión de redes y evalúan opciones de reconfiguración</li>
 </ul>
 <h3 id="secretaría-de-tecnologías-para-la-gestión-gobierno-de-la-provincia-de-santa-fe">Secretaría de Tecnologías para la Gestión (Gobierno de la Provincia de Santa Fe)</h3>
 <p><strong>Ingeniero de Automatización de Aprovisionamiento de Servidores y Aplicaciones</strong>
-Julio 2016 - Enero 2023 | Provincia de Santa Fe, Argentina</p>
+<em>Julio 2016 – Enero 2023 | Provincia de Santa Fe, Argentina</em></p>
 <ul>
 <li>Automaticé el aprovisionamiento y configuración de máquinas virtuales sobre hipervisores VMware en entornos de prueba, staging, capacitación y producción</li>
 <li>Configuré servicios a nivel de sistema operativo (DNS, proxy web, parámetros de kernel) y stacks de aplicaciones incluyendo GitLab, Jenkins, LDAP, Apache, PHP, PostgreSQL, MySQL y sistemas de archivos compartidos</li>
@@ -331,7 +536,7 @@ Julio 2016 - Enero 2023 | Provincia de Santa Fe, Argentina</p>
 </ul>
 <h3 id="ministerio-de-innovación-y-cultura-gobierno-de-la-provincia-de-santa-fe">Ministerio de Innovación y Cultura (Gobierno de la Provincia de Santa Fe)</h3>
 <p><strong>Administrador de Sistemas y Redes</strong>
-Enero 2012 - Junio 2016 | Santa Fe, Argentina</p>
+<em>Enero 2012 – Junio 2016 | Santa Fe, Argentina</em></p>
 <ul>
 <li>Escalé la infraestructura de TI a más de 300 escritorios administrados distribuidos en múltiples edificios</li>
 <li>Reemplacé la totalidad de impresoras de inyección de tinta locales por impresoras láser de red, una por oficina</li>
@@ -343,7 +548,7 @@ Enero 2012 - Junio 2016 | Santa Fe, Argentina</p>
 </ul>
 <h3 id="ministerio-de-innovación-y-cultura-gobierno-de-la-provincia-de-santa-fe-1">Ministerio de Innovación y Cultura (Gobierno de la Provincia de Santa Fe)</h3>
 <p><strong>Contratista de Sistemas y Redes</strong>
-Junio 2008 - Diciembre 2011 | Santa Fe, Argentina</p>
+<em>Junio 2008 – Diciembre 2011 | Santa Fe, Argentina</em></p>
 <ul>
 <li>Establecí el sistema de tickets de TI para seguimiento de ítems de trabajo, coordinación de compras de componentes e insumos, y construcción de una base de conocimiento institucional de problemas y resoluciones</li>
 <li>Senté las bases operativas de los servicios de TI dentro de un área gubernamental de reciente creación</li>
@@ -358,8 +563,8 @@ Junio 2008 - Diciembre 2011 | Santa Fe, Argentina</p>
 <li>Administré redes de escritorios GNU/Linux, instalaciones de servidores y servicios de red</li>
 </ul>
 <h3 id="universidad-tecnológica-nacional-facultad-regional-santa-fe">Universidad Tecnológica Nacional Facultad Regional Santa Fe</h3>
-<p><strong>Jefe de Trabajos Prácticos - Paradigmas de Programación</strong>
-Marzo 2001 - Presente | Santa Fe, Argentina</p>
+<p><strong>Jefe de Trabajos Prácticos – Paradigmas de Programación</strong>
+<em>Marzo 2001 – Presente | Santa Fe, Argentina</em></p>
 <ul>
 <li>Instruyo a estudiantes en paradigmas de programación funcional, lógica y orientada a objetos mediante Pharo Smalltalk, Racket Scheme y SWI Prolog</li>
 <li>Dirijo la implementación práctica de programas en múltiples paradigmas</li>
@@ -367,8 +572,8 @@ Marzo 2001 - Presente | Santa Fe, Argentina</p>
 <li>25 años de participación continua en la cátedra</li>
 </ul>
 <h3 id="universidad-tecnológica-nacional-regional-santa-fe">Universidad Tecnológica Nacional Regional Santa Fe</h3>
-<p><strong>Jefe de Trabajos Prácticos - Diseño e Implementación de Sistemas Operativos</strong>
-Junio 2010 - Mayo 2015 | Santa Fe, Argentina</p>
+<p><strong>Jefe de Trabajos Prácticos – Diseño e Implementación de Sistemas Operativos</strong>
+<em>Junio 2010 – Mayo 2015 | Santa Fe, Argentina</em></p>
 <ul>
 <li>Dirigí sesiones de laboratorio prácticas centradas en la comprensión, modificación y extensión del sistema operativo MINIX 3</li>
 <li>Los estudiantes exploraron los internos de una arquitectura de microkernel: lectura de assembler, escritura de código C para servidores de dispositivos, servidores de sistema de archivos, manejo de interrupciones de hardware y software, y planificación de CPU</li>
@@ -376,7 +581,7 @@ Junio 2010 - Mayo 2015 | Santa Fe, Argentina</p>
 </ul>
 <h3 id="consultor-de-ti-independiente">Consultor de TI Independiente</h3>
 <p><strong>Consultor de TI Independiente</strong>
-Agosto 2000 - Presente</p>
+<em>Agosto 2000 – Presente</em></p>
 <ul>
 <li>Servicios independientes de administración de sistemas, desarrollo de software y capacitación técnica</li>
 <li>Migré servidores de archivos de clientes de Microsoft Windows a servidores Samba sobre Debian</li>
@@ -386,7 +591,7 @@ Agosto 2000 - Presente</p>
 </ul>
 <h3 id="netmanagers">Netmanagers</h3>
 <p><strong>Titular</strong>
-Marzo 2006 - Diciembre 2011 | Argentina</p>
+<em>Marzo 2006 – Diciembre 2011 | Argentina</em></p>
 <ul>
 <li>Fundé y dirigí una empresa de consultoría de TI especializada en soluciones de código abierto y Software Libre para infraestructura empresarial</li>
 <li>Diseñé e implementé estrategias de infraestructura de red para clientes en transporte marítimo de carga, plataformas educativas web, manufactura e industrias de servicios</li>
@@ -396,7 +601,7 @@ Marzo 2006 - Diciembre 2011 | Argentina</p>
 </ul>
 <h3 id="universidad-católica-de-santiago-del-estero">Universidad Católica de Santiago del Estero</h3>
 <p><strong>Profesor Adjunto</strong>
-Marzo 2005 - Julio 2011 | Rafaela, Argentina</p>
+<em>Marzo 2005 – Julio 2011 | Rafaela, Argentina</em></p>
 <ul>
 <li>Inteligencia Artificial: enseñé algoritmos de búsqueda, representación de conocimiento y lógica mediante Python</li>
 <li>Ingeniería de Software para Aplicaciones de Internet:
@@ -409,14 +614,14 @@ Marzo 2005 - Julio 2011 | Rafaela, Argentina</p>
 </ul>
 <h3 id="universidad-adventista-del-plata">Universidad Adventista del Plata</h3>
 <p><strong>Profesor Adjunto</strong>
-Agosto 2001 - Febrero 2011 | Villa Libertador General San Martín, Argentina</p>
+<em>Agosto 2001 – Febrero 2011 | Villa Libertador General San Martín, Argentina</em></p>
 <ul>
 <li>Dicté cuatro materias: Inteligencia Artificial, Ingeniería de Software, Sistemas de Bases de Datos Avanzados e Introducción a la Programación</li>
 <li>Instrucción impartida en múltiples lenguajes incluyendo Python y C</li>
 </ul>
 <h3 id="empresa-provincial-de-la-energía-de-santa-fe">Empresa Provincial de la Energía de Santa Fe</h3>
 <p><strong>Supervisor de Software</strong>
-Diciembre 1989 - Agosto 2000 | Santa Fe, Argentina</p>
+<em>Diciembre 1989 – Agosto 2000 | Santa Fe, Argentina</em></p>
 <ul>
 <li>Administré firewalls, DNS, NIS, sistemas de correo y sistemas de bases de datos para una empresa provincial de energía</li>
 <li>Brindé soporte técnico de segundo nivel en servidores de aplicaciones SCO Unix y GNU/Linux que atendían a más de 350 usuarios</li>
@@ -429,7 +634,7 @@ Diciembre 1989 - Agosto 2000 | Santa Fe, Argentina</p>
 </ul>
 <h3 id="universidad-tecnológica-nacional---facultad-regional-santa-fe">Universidad Tecnológica Nacional - Facultad Regional Santa Fe</h3>
 <p><strong>Sysadmin y Postmaster</strong>
-Marzo 1996 - Marzo 1998 | Santa Fe, Argentina</p>
+<em>Marzo 1996 – Marzo 1998 | Santa Fe, Argentina</em></p>
 <ul>
 <li>Establecí y administré el primer acceso a Internet en línea del campus universitario</li>
 <li>Desplegué el primer servidor web público de la facultad con configuración de seguridad rigurosa</li>
@@ -439,7 +644,7 @@ Marzo 1996 - Marzo 1998 | Santa Fe, Argentina</p>
 </ul>
 <h3 id="universidad-nacional-de-rosario">Universidad Nacional de Rosario</h3>
 <p><strong>Desarrollador de Software</strong>
-Febrero 1988 - Diciembre 1989 | Rosario, Argentina</p>
+<em>Febrero 1988 – Diciembre 1989 | Rosario, Argentina</em></p>
 <ul>
 <li>Desarrollé software educativo mediante Micro-Prolog y automatización de diapositivas de carrusel</li>
 <li>Diseñé un sistema de gestión de registros de alumnos para seguimiento de registros académicos: materias, exámenes y calificaciones</li>
@@ -449,16 +654,12 @@ Febrero 1988 - Diciembre 1989 | Rosario, Argentina</p>
 <h2 id="educación">Educación</h2>
 <h3 id="universidad-tecnológica-nacional-utn">Universidad Tecnológica Nacional (UTN)</h3>
 <p>Ingeniero en Sistemas de Información — 2002</p>
-<h3 id="universidad-nacional-de-rosario-unr">Universidad Nacional de Rosario (UNR)</h3>
-<p>Electrónica (cursado) — 1982 - 1988</p>
 <h3 id="escuela-industrial-superior---unl">Escuela Industrial Superior - UNL</h3>
 <p>Técnico Nacional, Mecánico Eléctrico — 1975 - 1980</p>
 <p>Institución secundaria técnica y vocacional dependiente de la Universidad Nacional del Litoral, especializada en educación industrial con riguroso énfasis en formación práctica de oficios a través de tres orientaciones: Construcciones, Mecánico-Eléctrica y Química.</p>
 <hr>
 <h2 id="certificaciones">Certificaciones</h2>
-<ul>
-<li><strong>Machine Learning</strong> — Coursera — Emitido Sep 2014</li>
-</ul>
+<p><strong>Machine Learning</strong> — Coursera — Emitido Sep 2014</p>
 <hr>
 <h2 id="habilidades-principales">Habilidades Principales</h2>
 <p><strong>Arquitectura de Sistemas</strong> · <strong>Automatización de Infraestructura</strong> · <strong>Capacitación Técnica</strong></p>
@@ -477,36 +678,20 @@ Febrero 1988 - Diciembre 1989 | Rosario, Argentina</p>
 <h2 id="experiencia-voluntaria">Experiencia Voluntaria</h2>
 <h3 id="giait-utn-frsf">GIAIT UTN FRSF</h3>
 <p><strong>Instructor de Programación</strong>
-1993 - 1998 | Santa Fe, Argentina</p>
+<em>1993 – 1998 | Santa Fe, Argentina</em></p>
 <ul>
 <li>Instruí a estudiantes en múltiples paradigmas de programación: funcional, lógica y orientada a objetos</li>
 <li>Miembro del GIAIT (Grupo de Informática Aplicado al Inglés Técnico)</li>
 </ul>
 <h3 id="lugli-linux-users-group-del-litoral-argentina">LUGLi (Linux User&rsquo;s Group del Litoral) Argentina</h3>
 <p><strong>Miembro</strong>
-1996 - 2010</p>
+<em>1996 – 2010</em></p>
 <ul>
 <li>Miembro activo de una comunidad regional dedicada a GNU/Linux, Software Libre, educación y contenido libre</li>
 </ul>
 <hr>
-<h2 id="habilidades-técnicas">Habilidades Técnicas</h2>
 <p>Un índice completo y categorizado de palabras clave técnicas está disponible en la página de <a href="/es/habilidades/">Habilidades Técnicas</a>.</p>
-<ul class="pa0">
-  
-</ul>
-<div class="mt6 instapaper_ignoref">
-      
-      
-      </div>
-    </div>
-
-    <aside class="w-30-l mt6-l">
-
-
-
-
-</aside>
-
+</div>
   </article>
 
     </main>
