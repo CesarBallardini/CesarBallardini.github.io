@@ -39,6 +39,12 @@ layout = "cv"
 page_css = ["cv.css"]
 ```
 
+## Content guidelines
+
+- César is part of a development team at NewGrid — he does backend and frontend work but is not the sole builder. When describing the $100M savings or the analysis platform, frame it as team work (e.g., "helped build", "our team builds"). He develops the **software** that engineers use; he does not perform grid reconfigurations.
+- Prefer clean enumerations (commas + "and"/"y") over repetitive connectors like "from... to... to..." or "desde... hasta... hasta..."
+- Keep both language versions (ES/EN) consistent — changes to one should be mirrored in the other.
+
 ## Deployment
 
 Push to `master` triggers `.github/workflows/static.yml` which deploys `./public` to GitHub Pages. The CI does not run Hugo.

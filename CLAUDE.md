@@ -99,6 +99,17 @@ Menu pages use `menu = "main"` and `weight` for ordering.
 
 Push to `master` triggers `.github/workflows/static.yml`, which uploads `./public` to GitHub Pages. Hugo must be run locally before pushing — the CI does **not** run Hugo.
 
+## Content Guidelines
+
+### Professional role at NewGrid
+
+César is part of a development team at NewGrid — he does backend and frontend development but is not the sole builder. When describing the $100M savings achievement or the analysis platform, always frame it as team work (e.g., "helped build", "the platform our team builds", "trabajé en la construcción de"). Never imply he built it alone or performed the grid reconfigurations — he develops the **software** that power systems engineers use.
+
+### Writing style for CV/consulting pages
+
+- When listing achievements, prefer clean enumerations (commas + "and"/"y") over repetitive connectors like "from... to... to..." or "desde... hasta... hasta..."
+- Keep both language versions (ES/EN) consistent in tone and structure — changes to one should be mirrored in the other
+
 ## Editor Settings
 
 `.vscode/settings.json` configures cSpell with 150+ technical terms, line wrap at 100 chars, trim trailing whitespace, and insert final newline.

@@ -6,6 +6,8 @@
 
 The site covers professional consulting services, a full CV/résumé, technical skill keywords, and blog posts on software development, system administration, and programming paradigms.
 
+César currently works as part of the development team at NewGrid, doing backend and frontend development on an analysis platform that power systems engineers use to identify grid reconfigurations — work that has contributed to over $100 million in annual customer savings in the U.S. Midwest.
+
 ## Professional Pages (English)
 
 - [CV](https://katra.ballardini.com.ar/en/cv/): Full curriculum vitae with experience, education, achievements, and skills
