@@ -1,0 +1,29 @@
+# César Ballardini — katra.ballardini.com.ar
+
+<!-- Standard: https://llmstxt.org/ -->
+
+> Personal blog and professional profile of César Ballardini — Senior Software Developer, System Architect, and Educator with 35+ years of experience in software development, infrastructure engineering, and university teaching. Bilingual site in Spanish (primary) and English.
+
+The site covers professional consulting services, a full CV/résumé, technical skill keywords, and blog posts on software development, system administration, and programming paradigms.
+
+## Professional Pages (English)
+
+- [CV](https://katra.ballardini.com.ar/en/cv/): Full curriculum vitae with experience, education, achievements, and skills
+- [Consulting](https://katra.ballardini.com.ar/en/consulting/): Consulting services offered — custom software, infrastructure automation, system integration, technical training
+- [Skill Keywords](https://katra.ballardini.com.ar/en/skills/): Categorized index of technical skills — programming, frontend, backend, databases, infrastructure, cloud, energy sector, teaching
+
+## Páginas Profesionales (Español)
+
+- [CV](https://katra.ballardini.com.ar/cv/): Currículum vitae completo con experiencia, educación, logros y habilidades
+- [Consultoría](https://katra.ballardini.com.ar/consultoria/): Servicios de consultoría — desarrollo de software, automatización de infraestructura, integración de sistemas, capacitación técnica
+- [Habilidades Técnicas](https://katra.ballardini.com.ar/habilidades/): Índice categorizado de habilidades técnicas
+
+## Blog (Español)
+
+- [Blog](https://katra.ballardini.com.ar/): Artículos sobre desarrollo de software, administración de sistemas, y paradigmas de programación
+
+## Contact
+
+- [Email](mailto:cesar.ballardini@gmail.com): cesar.ballardini@gmail.com
+- [LinkedIn](https://www.linkedin.com/in/cesar-ballardini/): Professional profile
+- [GitHub](https://github.com/CesarBallardini): Open source projects and repositories

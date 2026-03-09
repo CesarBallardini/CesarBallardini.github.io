@@ -34,6 +34,47 @@ The `/public` directory is committed to the repo — GitHub Actions deploys it d
 - **Drafts**: `content/just-ideas-for-future-posts/` — organized by `dev/`, `misc/`, `sysadmin/`
 - **Static output**: `docs/` contains CNAME; `public/` is the full built site
 
+## Custom Layout & CSS System
+
+### Per-page CSS loading
+
+Pages can load CSS files selectively via frontmatter, avoiding site-wide CSS bloat:
+
+```toml
+layout = "cv"
+page_css = ["cv.css"]
+```
+
+- `layouts/partials/head-additions.html` — overrides the theme partial; reads `page_css` from frontmatter and inlines CSS from `assets/ananke/css/` into a `<style>` tag on that page only
+- `layouts/_default/cv.html` — custom layout that wraps `.Content` in a `<div class="cv-page">` wrapper, omits author/date/reading-time header, and uses full width
+- `assets/ananke/css/cv.css` — styles for CV, consulting, and skills pages, scoped under `.cv-page`; uses Hugo auto-generated heading IDs (e.g., `#experience`, `#education`) to scope section-specific styles
+
+### CSS styling approach
+
+The CV/consulting/skills pages use **pure markdown** with CSS targeting standard HTML elements:
+- `h1` → name, `h2` → section headings, `h3` → experience entries
+- `h3 + p` → role (bold), `h3 + p + p` → date/location (italic)
+- Hugo heading IDs for section-specific rules: `#languages + ul`, `#extended-skills ~ p`, etc.
+- Responsive breakpoints at 768px (tablet) and 480px (phone)
+- Print styles included
+
+### Translation pairing
+
+Pages with different filenames across languages need `translationKey` in frontmatter:
+```toml
+translationKey = "consulting"   # pairs consulting.md ↔ consultoria.md
+translationKey = "skills"       # pairs skills.md ↔ habilidades.md
+```
+Pages with the same filename (e.g., `cv.md`) auto-pair without `translationKey`.
+
+## URL Structure
+
+Spanish is the default language — its pages have **no `/es/` prefix**:
+- Spanish CV: `/cv/`, consulting: `/consultoria/`, skills: `/habilidades/`
+- English CV: `/en/cv/`, consulting: `/en/consulting/`, skills: `/en/skills/`
+
+Internal links in Spanish content must use `/cv/`, `/habilidades/`, `/consultoria/` (not `/es/cv/`).
+
 ## Content Conventions
 
 **New Hugo posts** use TOML frontmatter (`+++` delimiters):
@@ -51,6 +92,8 @@ author = "César Ballardini"
 **Legacy posts** (from 2016 Jekyll era) use YAML frontmatter (`---` delimiters) with `layout: post`. Both formats coexist.
 
 Menu pages use `menu = "main"` and `weight` for ordering.
+
+**Tags**: avoid periods in tag values — they generate slugs ending in `.` which are invalid Windows filenames (e.g., use `Guy L Steele Jr` not `Guy L. Steele J.`).
 
 ## Deployment
 
