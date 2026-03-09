@@ -51,7 +51,7 @@
   <meta itemprop="description" content="César Ballardini -- Desarrollador de Software Senior · Arquitecto de Sistemas · Educador -- Palabras Clave de Habilidades Técnicas">
   <meta itemprop="datePublished" content="2026-02-22T00:00:00-03:00">
   <meta itemprop="dateModified" content="2026-02-22T00:00:00-03:00">
-  <meta itemprop="wordCount" content="1380">
+  <meta itemprop="wordCount" content="1333">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Habilidades Técnicas">
   <meta name="twitter:description" content="César Ballardini -- Desarrollador de Software Senior · Arquitecto de Sistemas · Educador -- Palabras Clave de Habilidades Técnicas">
@@ -400,6 +400,106 @@
   }
 }
 </style>
+      <style>/* ===================================================================
+   Skills Page Styles
+   Loaded after cv.css on skills pages — overrides cv.css list rules
+   =================================================================== */
+
+/* --- h3 titles: chevron instead of left border --- */
+
+.cv-page h3 {
+  border-left: none;
+  padding-left: 0;
+}
+
+.cv-page h3::before {
+  content: "\203A";
+  margin-right: 0.5rem;
+  font-size: 1.2em;
+  font-weight: 700;
+  color: #1a3a5c;
+}
+
+/* --- Card-like keyword rows (lists after h3 and h2) --- */
+
+.cv-page h3 + ul,
+.cv-page h2 + ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.5rem 0 1rem 1.2rem;
+}
+
+.cv-page h3 + ul > li,
+.cv-page h2 + ul > li {
+  padding: 0.5rem 0.8rem;
+  background: #f6f8fa;
+  border-top: 2px solid #1a3a5c;
+  margin-bottom: 0.5rem;
+  color: #444;
+}
+
+/* --- Label treatment: uppercase, small, navy --- */
+
+.cv-page h3 + ul > li > strong,
+.cv-page h2 + ul > li > strong {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: #1a3a5c;
+}
+
+/* --- Contact section: restore default list styling --- */
+
+#contact--links + ul,
+#contact-links + ul,
+#contacto-y-enlaces + ul {
+  list-style: disc;
+  padding-left: 1.4rem;
+}
+
+#contact--links + ul > li,
+#contact-links + ul > li,
+#contacto-y-enlaces + ul > li {
+  padding: 0;
+  background: none;
+  border-top: none;
+}
+
+#contact--links + ul > li > strong,
+#contact-links + ul > li > strong,
+#contacto-y-enlaces + ul > li > strong {
+  text-transform: none;
+  font-size: inherit;
+  letter-spacing: normal;
+  color: inherit;
+}
+
+/* --- Responsive: phone (max 480px) --- */
+
+@media (max-width: 480px) {
+  .cv-page h3 + ul > li > strong,
+  .cv-page h2 + ul > li > strong {
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .cv-page h3 + ul > li,
+  .cv-page h2 + ul > li {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* --- Print --- */
+
+@media print {
+  .cv-page h3 + ul > li,
+  .cv-page h2 + ul > li {
+    background: none;
+    border-top-color: #000;
+  }
+}
+</style>
 
   </head><body class="ma0 avenir bg-near-white production is-page is-page page-habilidades">
     
@@ -502,170 +602,191 @@
 <hr>
 <h2 id="programación">Programación</h2>
 <h3 id="lenguajes-de-programación">Lenguajes de Programación</h3>
-<p><strong>actuales:</strong> Python, TypeScript, JavaScript, SQL, Bash
-<strong>anteriores:</strong> C, Ruby, PHP, Smalltalk, Scheme, Prolog, Clipper</p>
+<ul>
+<li><strong>actuales:</strong> Python, TypeScript, JavaScript, SQL, Bash</li>
+<li><strong>anteriores:</strong> C, Ruby, PHP, Smalltalk, Scheme, Prolog, Clipper</li>
+</ul>
 <h3 id="paradigmas-de-programación">Paradigmas de Programación</h3>
-<p><strong>temas:</strong> programación orientada a objetos, programación funcional, programación lógica, programación imperativa, programación dirigida por eventos
-<strong>lenguajes:</strong> Pharo Smalltalk (POO), Racket Scheme (funcional), SWI Prolog (lógica), Python (multi-paradigma), TypeScript (multi-paradigma)
-<strong>temas:</strong> paso de mensajes, clausuras, funciones de orden superior, unificación, backtracking, coincidencia de patrones, recursión, polimorfismo, encapsulamiento, herencia</p>
+<ul>
+<li><strong>temas:</strong> programación orientada a objetos, programación funcional, programación lógica, programación imperativa, programación dirigida por eventos, paso de mensajes, clausuras, funciones de orden superior, unificación, backtracking, coincidencia de patrones, recursión, polimorfismo, encapsulamiento, herencia</li>
+<li><strong>lenguajes:</strong> Pharo Smalltalk (POO), Racket Scheme (funcional), SWI Prolog (lógica), Python (multi-paradigma), TypeScript (multi-paradigma)</li>
+</ul>
 <h3 id="conceptos-de-programación">Conceptos de Programación</h3>
-<p><strong>temas:</strong> estructuras de datos, algoritmos, patrones de diseño, sistemas de tipos, tipado estático, tipado dinámico
-<strong>temas:</strong> concurrencia, programación asincrónica, promesas, async/await, programación reactiva
-<strong>temas:</strong> refactorización, revisión de código, programación en pares, desarrollo dirigido por pruebas, pruebas unitarias</p>
+<ul>
+<li><strong>temas:</strong> estructuras de datos, algoritmos, patrones de diseño, sistemas de tipos, tipado estático, tipado dinámico, concurrencia, programación asincrónica, promesas, async/await, programación reactiva, refactorización, revisión de código, programación en pares, desarrollo dirigido por pruebas, pruebas unitarias</li>
+</ul>
 <hr>
 <h2 id="desarrollo-frontend">Desarrollo Frontend</h2>
 <h3 id="ecosistema-vuejs">Ecosistema Vue.js</h3>
-<p><strong>componentes:</strong> Vue 3, Composition API, <code>&lt;script setup&gt;</code>, Single File Components, Vue Router, Pinia
-<strong>componentes:</strong> Vuetify 3, Element Plus, Vite, Vitest
-<strong>temas:</strong> reactividad, propiedades computadas, watchers, composables, provide/inject, slots, emits, props
-<strong>temas:</strong> gestión de estado, diseño de stores, arquitectura de componentes, carga diferida, división de código</p>
+<ul>
+<li><strong>componentes:</strong> Vue 3, Composition API, <code>&lt;script setup&gt;</code>, Single File Components, Vue Router, Pinia, Vuetify 3, Element Plus, Vite, Vitest</li>
+<li><strong>temas:</strong> reactividad, propiedades computadas, watchers, composables, provide/inject, slots, emits, props, gestión de estado, diseño de stores, arquitectura de componentes, carga diferida, división de código</li>
+</ul>
 <h3 id="bibliotecas-y-frameworks-de-ui">Bibliotecas y Frameworks de UI</h3>
-<p><strong>componentes:</strong> Vuetify 3, Element Plus
-<strong>temas:</strong> diseño responsivo, material design, bibliotecas de componentes, validación de formularios, tablas de datos, diálogos, cajones de navegación</p>
+<ul>
+<li><strong>componentes:</strong> Vuetify 3, Element Plus</li>
+<li><strong>temas:</strong> diseño responsivo, material design, bibliotecas de componentes, validación de formularios, tablas de datos, diálogos, cajones de navegación</li>
+</ul>
 <h3 id="visualización-de-datos">Visualización de Datos</h3>
-<p><strong>componentes:</strong> D3.js, Chart.js, Leaflet
-<strong>temas:</strong> gráficos interactivos, visualización de series temporales, mapeo geoespacial, SVG, renderizado canvas
-<strong>temas:</strong> gráficos de barras, gráficos de líneas, diagramas de dispersión, mapas de calor, diagramas de Gantt, capas de mapa, tooltips, zoom, paneo</p>
+<ul>
+<li><strong>componentes:</strong> D3.js, Chart.js, Leaflet</li>
+<li><strong>temas:</strong> gráficos interactivos, visualización de series temporales, mapeo geoespacial, SVG, renderizado canvas, gráficos de barras, gráficos de líneas, diagramas de dispersión, mapas de calor, diagramas de Gantt, capas de mapa, tooltips, zoom, paneo</li>
+</ul>
 <h3 id="estándares-web">Estándares Web</h3>
-<p><strong>habilidades:</strong> HTML5, CSS3, SVG, diseño responsivo
-<strong>temas:</strong> SPA (Aplicación de Página Única), enrutamiento del lado del cliente, AJAX, consumo de API REST, JSON, WebSockets, Server-Sent Events</p>
+<ul>
+<li><strong>habilidades:</strong> HTML5, CSS3, SVG, diseño responsivo</li>
+<li><strong>temas:</strong> SPA (Aplicación de Página Única), enrutamiento del lado del cliente, AJAX, consumo de API REST, JSON, WebSockets, Server-Sent Events</li>
+</ul>
 <hr>
 <h2 id="desarrollo-backend">Desarrollo Backend</h2>
 <h3 id="python">Python</h3>
-<p><strong>componentes:</strong> Python 3, Flask, SQLAlchemy, Alembic
-<strong>temas:</strong> diseño de API REST, manejo de solicitudes, middleware, manejo de errores, logging
-<strong>temas:</strong> entornos virtuales, pip, gestión de paquetes, gestión de dependencias</p>
+<ul>
+<li><strong>componentes:</strong> Python 3, Flask, SQLAlchemy, Alembic</li>
+<li><strong>temas:</strong> diseño de API REST, manejo de solicitudes, middleware, manejo de errores, logging, entornos virtuales, pip, gestión de paquetes, gestión de dependencias</li>
+</ul>
 <h3 id="diseño-de-apis">Diseño de APIs</h3>
-<p><strong>temas:</strong> servicios RESTful, diseño de endpoints, métodos HTTP, códigos de estado, paginación, filtrado, ordenamiento
-<strong>temas:</strong> autenticación, autorización, autenticación basada en tokens, Azure AD, MSAL, OAuth 2.0
-<strong>temas:</strong> documentación de APIs, patrones de solicitud/respuesta, manejo de errores, validación</p>
+<ul>
+<li><strong>temas:</strong> servicios RESTful, diseño de endpoints, métodos HTTP, códigos de estado, paginación, filtrado, ordenamiento, autenticación, autorización, autenticación basada en tokens, Azure AD, MSAL, OAuth 2.0, documentación de APIs, patrones de solicitud/respuesta, manejo de errores, validación</li>
+</ul>
 <hr>
 <h2 id="bases-de-datos">Bases de Datos</h2>
 <h3 id="bases-de-datos-relacionales">Bases de Datos Relacionales</h3>
-<p><strong>componentes:</strong> PostgreSQL, MySQL, MariaDB, SQLite
-<strong>temas:</strong> SQL, diseño de esquemas, normalización, indexación, optimización de consultas, joins, subconsultas, vistas
-<strong>temas:</strong> procedimientos almacenados, triggers, restricciones, claves foráneas, transacciones, ACID
-<strong>temas:</strong> administración de bases de datos, respaldo y recuperación, replicación, ajuste de rendimiento</p>
+<ul>
+<li><strong>componentes:</strong> PostgreSQL, MySQL, MariaDB, SQLite</li>
+<li><strong>temas:</strong> SQL, diseño de esquemas, normalización, indexación, optimización de consultas, joins, subconsultas, vistas, procedimientos almacenados, triggers, restricciones, claves foráneas, transacciones, ACID, administración de bases de datos, respaldo y recuperación, replicación, ajuste de rendimiento</li>
+</ul>
 <h3 id="herramientas-de-bases-de-datos">Herramientas de Bases de Datos</h3>
-<p><strong>herramientas:</strong> psql, pgAdmin, MySQL Workbench, DBeaver
-<strong>temas:</strong> migración de bases de datos, ETL, importación/exportación de datos, scripting SQL</p>
+<ul>
+<li><strong>herramientas:</strong> psql, pgAdmin, MySQL Workbench, DBeaver</li>
+<li><strong>temas:</strong> migración de bases de datos, ETL, importación/exportación de datos, scripting SQL</li>
+</ul>
 <hr>
 <h2 id="infraestructura-y-gnulinux">Infraestructura y GNU/Linux</h2>
 <h3 id="sistemas-gnulinux">Sistemas GNU/Linux</h3>
-<p><strong>distribuciones:</strong> Debian, Ubuntu, CentOS, Red Hat Enterprise Linux
-<strong>temas:</strong> administración de sistemas, gestión de paquetes (apt, yum, dpkg), configuración de kernel, parámetros de kernel
-<strong>temas:</strong> systemd, sistemas de inicio, gestión de servicios, gestión de procesos, cron, gestión de logs
-<strong>temas:</strong> sistemas de archivos (ext4, XFS, NFS, Samba/CIFS), gestión de discos, LVM, RAID
-<strong>temas:</strong> gestión de usuarios, permisos, ACLs, PAM, sudo, hardening de seguridad</p>
+<ul>
+<li><strong>distribuciones:</strong> Debian, Ubuntu, CentOS, Red Hat Enterprise Linux</li>
+<li><strong>temas:</strong> administración de sistemas, gestión de paquetes (apt, yum, dpkg), configuración de kernel, parámetros de kernel, systemd, sistemas de inicio, gestión de servicios, gestión de procesos, cron, gestión de logs, sistemas de archivos (ext4, XFS, NFS, Samba/CIFS), gestión de discos, LVM, RAID, gestión de usuarios, permisos, ACLs, PAM, sudo, hardening de seguridad</li>
+</ul>
 <h3 id="redes">Redes</h3>
-<p><strong>servicios:</strong> DNS (BIND), DHCP, NIS, NTP
-<strong>servicios:</strong> proxy web (Squid), proxy inverso, PAC (Proxy Auto-Configuration)
-<strong>servicios:</strong> firewalls (iptables, nftables), NAT, redirección de puertos, VPN
-<strong>temas:</strong> TCP/IP, enrutamiento, switching, VLANs, subnetting, resolución de problemas de red
-<strong>herramientas:</strong> tcpdump, wireshark, nmap, netstat, ss, traceroute, dig, ping</p>
+<ul>
+<li><strong>servicios:</strong> DNS (BIND), DHCP, NIS, NTP, proxy web (Squid), proxy inverso, PAC (Proxy Auto-Configuration), firewalls (iptables, nftables), NAT, redirección de puertos, VPN</li>
+<li><strong>temas:</strong> TCP/IP, enrutamiento, switching, VLANs, subnetting, resolución de problemas de red</li>
+<li><strong>herramientas:</strong> tcpdump, wireshark, nmap, netstat, ss, traceroute, dig, ping</li>
+</ul>
 <h3 id="correo-electrónico-y-comunicación">Correo Electrónico y Comunicación</h3>
-<p><strong>componentes:</strong> Postfix, Sendmail, Dovecot, UUCP
-<strong>temas:</strong> SMTP, IMAP, POP3, relay de correo, filtrado de spam, detección de virus, SPF, DKIM, DMARC
-<strong>temas:</strong> listas de correo, administración de servidores de correo, seguridad de correo electrónico</p>
+<ul>
+<li><strong>componentes:</strong> Postfix, Sendmail, Dovecot, UUCP</li>
+<li><strong>temas:</strong> SMTP, IMAP, POP3, relay de correo, filtrado de spam, detección de virus, SPF, DKIM, DMARC, listas de correo, administración de servidores de correo, seguridad de correo electrónico</li>
+</ul>
 <h3 id="servidores-web">Servidores Web</h3>
-<p><strong>componentes:</strong> Apache HTTP Server, Nginx
-<strong>temas:</strong> virtual hosts, SSL/TLS, HTTPS, Let&rsquo;s Encrypt, proxy inverso, balanceo de carga
-<strong>temas:</strong> .htaccess, reescritura de URLs, control de acceso, ajuste de rendimiento, caché</p>
+<ul>
+<li><strong>componentes:</strong> Apache HTTP Server, Nginx</li>
+<li><strong>temas:</strong> virtual hosts, SSL/TLS, HTTPS, Let&rsquo;s Encrypt, proxy inverso, balanceo de carga, .htaccess, reescritura de URLs, control de acceso, ajuste de rendimiento, caché</li>
+</ul>
 <h3 id="respaldo-y-almacenamiento">Respaldo y Almacenamiento</h3>
-<p><strong>componentes:</strong> Bacula, rsync, tar
-<strong>temas:</strong> estrategias de respaldo, respaldo completo/incremental/diferencial, almacenamiento en cinta, respaldo en red
-<strong>temas:</strong> recuperación ante desastres, rotación de respaldos, pruebas de restauración, respaldo remoto</p>
+<ul>
+<li><strong>componentes:</strong> Bacula, rsync, tar</li>
+<li><strong>temas:</strong> estrategias de respaldo, respaldo completo/incremental/diferencial, almacenamiento en cinta, respaldo en red, recuperación ante desastres, rotación de respaldos, pruebas de restauración, respaldo remoto</li>
+</ul>
 <hr>
 <h2 id="automatización-y-devops">Automatización y DevOps</h2>
 <h3 id="infraestructura-como-código">Infraestructura como Código</h3>
-<p><strong>herramientas:</strong> Ansible, Terraform
-<strong>temas:</strong> gestión de configuración, playbooks, roles, inventarios, variables, plantillas (Jinja2)
-<strong>temas:</strong> idempotencia, convergencia, configuración de estado deseado, detección de desviaciones
-<strong>temas:</strong> aprovisionamiento de infraestructura, gestión de estado, ciclo de vida de recursos, módulos</p>
+<ul>
+<li><strong>herramientas:</strong> Ansible, Terraform</li>
+<li><strong>temas:</strong> gestión de configuración, playbooks, roles, inventarios, variables, plantillas (Jinja2), idempotencia, convergencia, configuración de estado deseado, detección de desviaciones, aprovisionamiento de infraestructura, gestión de estado, ciclo de vida de recursos, módulos</li>
+</ul>
 <h3 id="gestión-de-configuración">Gestión de Configuración</h3>
-<p><strong>herramientas:</strong> Ansible, Puppet (legado)
-<strong>temas:</strong> configuración centralizada, gestión de flotas, convergencia de configuración, basado en agentes vs sin agentes
-<strong>temas:</strong> aprovisionamiento de servidores, aprovisionamiento de escritorios, configuración de SO, despliegue de aplicaciones</p>
+<ul>
+<li><strong>herramientas:</strong> Ansible, Puppet (legado)</li>
+<li><strong>temas:</strong> configuración centralizada, gestión de flotas, convergencia de configuración, basado en agentes vs sin agentes, aprovisionamiento de servidores, aprovisionamiento de escritorios, configuración de SO, despliegue de aplicaciones</li>
+</ul>
 <h3 id="cicd">CI/CD</h3>
-<p><strong>componentes:</strong> GitLab, Jenkins, Docker
-<strong>temas:</strong> integración continua, entrega continua, pipelines de construcción, pruebas automatizadas
-<strong>temas:</strong> gestión de artefactos, automatización de despliegues, gestión de entornos, builds contenerizados</p>
+<ul>
+<li><strong>componentes:</strong> GitLab, Jenkins, Docker</li>
+<li><strong>temas:</strong> integración continua, entrega continua, pipelines de construcción, pruebas automatizadas, gestión de artefactos, automatización de despliegues, gestión de entornos, builds contenerizados</li>
+</ul>
 <h3 id="control-de-versiones">Control de Versiones</h3>
-<p><strong>herramientas:</strong> Git, GitLab, GitHub, Bitbucket
-<strong>temas:</strong> estrategias de ramificación, flujos de merge, pull requests, revisión de código, gestión de repositorios</p>
+<ul>
+<li><strong>herramientas:</strong> Git, GitLab, GitHub, Bitbucket</li>
+<li><strong>temas:</strong> estrategias de ramificación, flujos de merge, pull requests, revisión de código, gestión de repositorios</li>
+</ul>
 <hr>
 <h2 id="virtualización-y-nube">Virtualización y Nube</h2>
 <h3 id="virtualización-y-contenedores">Virtualización y Contenedores</h3>
-<p><strong>componentes:</strong> QEMU, libvirt, KVM, VirtualBox, VMware ESXi, vserver
-<strong>contenedores:</strong> Docker, Docker Compose, imágenes de contenedores, registros de contenedores
-<strong>herramientas:</strong> Vagrant, virsh, virt-manager
-<strong>temas:</strong> hipervisores (Tipo 1, Tipo 2), gestión de máquinas virtuales, snapshots, clonación
-<strong>temas:</strong> aplicaciones contenerizadas, orquestación de contenedores, contenedores de desarrollo
-<strong>temas:</strong> virtualización tipo contenedor (vserver), aislamiento de recursos, redes virtuales
-<strong>temas:</strong> entornos reproducibles, entornos de prueba, entornos de desarrollo</p>
+<ul>
+<li><strong>componentes:</strong> QEMU, libvirt, KVM, VirtualBox, VMware ESXi, vserver</li>
+<li><strong>contenedores:</strong> Docker, Docker Compose, imágenes de contenedores, registros de contenedores</li>
+<li><strong>herramientas:</strong> Vagrant, virsh, virt-manager</li>
+<li><strong>temas:</strong> hipervisores (Tipo 1, Tipo 2), gestión de máquinas virtuales, snapshots, clonación, aplicaciones contenerizadas, orquestación de contenedores, contenedores de desarrollo, virtualización tipo contenedor (vserver), aislamiento de recursos, redes virtuales, entornos reproducibles, entornos de prueba, entornos de desarrollo</li>
+</ul>
 <h3 id="plataformas-en-la-nube">Plataformas en la Nube</h3>
-<p><strong>plataformas:</strong> AWS, Digital Ocean, Tektonic
-<strong>temas:</strong> aprovisionamiento en la nube, servidores privados virtuales, almacenamiento en la nube, redes en la nube
-<strong>temas:</strong> escalamiento de infraestructura, gestión de costos, seguridad en la nube, gestión de claves SSH</p>
+<ul>
+<li><strong>plataformas:</strong> AWS, Digital Ocean, Tektonic</li>
+<li><strong>temas:</strong> aprovisionamiento en la nube, servidores privados virtuales, almacenamiento en la nube, redes en la nube, escalamiento de infraestructura, gestión de costos, seguridad en la nube, gestión de claves SSH</li>
+</ul>
 <hr>
 <h2 id="sector-energético">Sector Energético</h2>
 <h3 id="operaciones-de-red-y-sistemas-de-potencia">Operaciones de Red y Sistemas de Potencia</h3>
-<p><strong>temas:</strong> optimización topológica de transmisión, análisis de congestión de redes, reconfiguración de transmisión
-<strong>temas:</strong> confiabilidad de la red, condiciones de emergencia, cuellos de botella de congestión, costos operativos
-<strong>temas:</strong> análisis de flujo de potencia, redundancia de red, operaciones de red eléctrica, mercados de electricidad</p>
+<ul>
+<li><strong>temas:</strong> optimización topológica de transmisión, análisis de congestión de redes, reconfiguración de transmisión, confiabilidad de la red, condiciones de emergencia, cuellos de botella de congestión, costos operativos, análisis de flujo de potencia, redundancia de red, operaciones de red eléctrica, mercados de electricidad</li>
+</ul>
 <h3 id="scada-y-software-de-servicios-públicos">SCADA y Software de Servicios Públicos</h3>
-<p><strong>temas:</strong> SCADA (Control de Supervisión y Adquisición de Datos), evaluación y selección de software SCADA
-<strong>temas:</strong> gestión de servicios públicos, sistemas de lectura de medidores, sistemas portátiles de ingreso de mediciones
-<strong>temas:</strong> distribución de energía, operaciones de empresas provinciales de energía</p>
+<ul>
+<li><strong>temas:</strong> SCADA (Control de Supervisión y Adquisición de Datos), evaluación y selección de software SCADA, gestión de servicios públicos, sistemas de lectura de medidores, sistemas portátiles de ingreso de mediciones, distribución de energía, operaciones de empresas provinciales de energía</li>
+</ul>
 <hr>
 <h2 id="sistemas-operativos">Sistemas Operativos</h2>
 <h3 id="internos-del-sistema">Internos del Sistema</h3>
-<p><strong>temas:</strong> diseño de sistemas operativos, arquitectura de microkernel (MINIX 3), kernels monolíticos
-<strong>temas:</strong> controladores de dispositivos, sistemas de archivos, manejo de interrupciones (hardware y software), planificación de CPU
-<strong>temas:</strong> gestión de procesos, gestión de memoria, comunicación entre procesos, llamadas al sistema
-<strong>lenguajes:</strong> C (programación de kernel), assembler (x86)</p>
+<ul>
+<li><strong>temas:</strong> diseño de sistemas operativos, arquitectura de microkernel (MINIX 3), kernels monolíticos, controladores de dispositivos, sistemas de archivos, manejo de interrupciones (hardware y software), planificación de CPU, gestión de procesos, gestión de memoria, comunicación entre procesos, llamadas al sistema</li>
+<li><strong>lenguajes:</strong> C (programación de kernel), assembler (x86)</li>
+</ul>
 <h3 id="unix-y-linux">Unix y Linux</h3>
-<p><strong>sistemas:</strong> Debian GNU/Linux, Ubuntu, CentOS, RHEL, SCO Unix
-<strong>temas:</strong> POSIX, scripting de shell, programación de sistemas, configuración de kernel, proceso de arranque
-<strong>temas:</strong> arranque remoto, PXE, instalación por red, medios de instalación personalizados</p>
+<ul>
+<li><strong>sistemas:</strong> Debian GNU/Linux, Ubuntu, CentOS, RHEL, SCO Unix</li>
+<li><strong>temas:</strong> POSIX, scripting de shell, programación de sistemas, configuración de kernel, proceso de arranque, arranque remoto, PXE, instalación por red, medios de instalación personalizados</li>
+</ul>
 <hr>
 <h2 id="docencia-y-capacitación">Docencia y Capacitación</h2>
 <h3 id="materias-universitarias-dictadas">Materias Universitarias Dictadas</h3>
-<p><strong>materias:</strong> Paradigmas de Programación (Smalltalk, Scheme, Prolog), Diseño e Implementación de Sistemas Operativos (MINIX 3)
-<strong>materias:</strong> Inteligencia Artificial, Ingeniería de Software para Aplicaciones de Internet
-<strong>materias:</strong> Sistemas de Bases de Datos Avanzados, Introducción a la Programación</p>
+<ul>
+<li><strong>materias:</strong> Paradigmas de Programación (Smalltalk, Scheme, Prolog), Diseño e Implementación de Sistemas Operativos (MINIX 3), Inteligencia Artificial, Ingeniería de Software para Aplicaciones de Internet, Sistemas de Bases de Datos Avanzados, Introducción a la Programación</li>
+</ul>
 <h3 id="capacitación-profesional">Capacitación Profesional</h3>
-<p><strong>temas:</strong> administración de sistemas GNU/Linux, administración de servidores Debian, análisis de rendimiento
-<strong>temas:</strong> desarrollo curricular, laboratorios prácticos, supervisión de proyectos de estudiantes
-<strong>temas:</strong> enseñanza basada en paradigmas: funcional (Scheme), lógica (Prolog), orientada a objetos (Smalltalk)</p>
+<ul>
+<li><strong>temas:</strong> administración de sistemas GNU/Linux, administración de servidores Debian, análisis de rendimiento, desarrollo curricular, laboratorios prácticos, supervisión de proyectos de estudiantes, enseñanza basada en paradigmas: funcional (Scheme), lógica (Prolog), orientada a objetos (Smalltalk)</li>
+</ul>
 <h3 id="universidades">Universidades</h3>
-<p><strong>instituciones:</strong> Universidad Tecnológica Nacional (UTN FRSF), Universidad Católica de Santiago del Estero (UCSE), Universidad Adventista del Plata (UAP)
-<strong>roles:</strong> Jefe de Trabajos Prácticos, Profesor Adjunto</p>
+<ul>
+<li><strong>instituciones:</strong> Universidad Tecnológica Nacional (UTN FRSF), Universidad Católica de Santiago del Estero (UCSE), Universidad Adventista del Plata (UAP)</li>
+<li><strong>roles:</strong> Jefe de Trabajos Prácticos, Profesor Adjunto</li>
+</ul>
 <hr>
 <h2 id="metodologías-y-prácticas">Metodologías y Prácticas</h2>
 <h3 id="prácticas-de-desarrollo">Prácticas de Desarrollo</h3>
-<p><strong>temas:</strong> Agile, Kanban, revisión de código, programación en pares, desarrollo dirigido por pruebas
-<strong>temas:</strong> mejora continua, desarrollo iterativo, planificación de sprints
-<strong>temas:</strong> gestión de deuda técnica, refactorización, documentación</p>
+<ul>
+<li><strong>temas:</strong> Agile, Kanban, revisión de código, programación en pares, desarrollo dirigido por pruebas, mejora continua, desarrollo iterativo, planificación de sprints, gestión de deuda técnica, refactorización, documentación</li>
+</ul>
 <h3 id="prácticas-de-infraestructura">Prácticas de Infraestructura</h3>
-<p><strong>temas:</strong> Infraestructura como Código (IaC), gestión de configuración, entornos reproducibles
-<strong>temas:</strong> monitoreo, logging, alertas, respuesta a incidentes, resolución de problemas
-<strong>temas:</strong> planificación de capacidad, análisis de rendimiento, identificación de cuellos de botella</p>
+<ul>
+<li><strong>temas:</strong> Infraestructura como Código (IaC), gestión de configuración, entornos reproducibles, monitoreo, logging, alertas, respuesta a incidentes, resolución de problemas, planificación de capacidad, análisis de rendimiento, identificación de cuellos de botella</li>
+</ul>
 <h3 id="gestión-de-proyectos">Gestión de Proyectos</h3>
-<p><strong>temas:</strong> sistemas de tickets, seguimiento de ítems de trabajo, gestión de base de conocimiento
-<strong>temas:</strong> coordinación de equipos, mentoría técnica, colaboración entre equipos
-<strong>temas:</strong> relevamiento de requisitos, propuestas técnicas, estimación</p>
+<ul>
+<li><strong>temas:</strong> sistemas de tickets, seguimiento de ítems de trabajo, gestión de base de conocimiento, coordinación de equipos, mentoría técnica, colaboración entre equipos, relevamiento de requisitos, propuestas técnicas, estimación</li>
+</ul>
 <hr>
 <h2 id="internacionalización">Internacionalización</h2>
-<p><strong>temas:</strong> I18n (internacionalización), l10n (localización), configuración regional
-<strong>temas:</strong> codificación de caracteres, Unicode, soporte multi-idioma en aplicaciones
-<strong>temas:</strong> interfaces traducidas, soporte derecha-a-izquierda, formato de fechas/números</p>
+<ul>
+<li><strong>temas:</strong> I18n (internacionalización), l10n (localización), configuración regional, codificación de caracteres, Unicode, soporte multi-idioma en aplicaciones, interfaces traducidas, soporte derecha-a-izquierda, formato de fechas/números</li>
+</ul>
 <hr>
 <h2 id="herramientas-y-editores">Herramientas y Editores</h2>
-<p><strong>editores:</strong> Vim, VS Code
-<strong>herramientas:</strong> Git, Docker, Make, SSH, tmux
-<strong>herramientas:</strong> psql, mysql, curl, wget, jq
-<strong>temas:</strong> scripting de shell (Bash), dominio de línea de comandos, scripts de automatización</p>
+<ul>
+<li><strong>editores:</strong> Vim, VS Code</li>
+<li><strong>herramientas:</strong> Git, Docker, Make, SSH, tmux, psql, mysql, curl, wget, jq</li>
+<li><strong>temas:</strong> scripting de shell (Bash), dominio de línea de comandos, scripts de automatización</li>
+</ul>
 <hr>
 <h2 id="contacto-y-enlaces">Contacto y Enlaces</h2>
 <ul>
