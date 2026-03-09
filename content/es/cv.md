@@ -95,8 +95,7 @@ Ejerzo como desarrollador de software senior, arquitecto de sistemas y educador 
 **Desarrollador de Software Senior**
 *Enero 2023 – Presente | Boston, MA*
 
-- Diseño y mantengo una plataforma interna de análisis que utilizan ingenieros de sistemas de potencia para investigar problemas de congestión de redes de clientes y recomendar reconfiguraciones de transmisión
-- Desarrollo herramientas para un equipo de ingenieros eléctricos altamente especializados con experiencia profunda en operación de redes eléctricas y mercados de electricidad
+- Participo en el diseño y mantenimiento de una plataforma interna de análisis que utilizan ingenieros eléctricos especializados en sistemas de potencia, operación de redes y mercados eléctricos para investigar congestiones en redes de clientes y recomendar reconfiguraciones de transmisión
 - La plataforma que construye nuestro equipo permite a los ingenieros identificar reconfiguraciones que han generado más de $100 millones en ahorros anuales para clientes del medio oeste de EE.UU. ([World Economic Forum - Topology Optimization for Grid Congestion Management](https://initiatives.weforum.org/future-power-system/case-study-details/topology-optimization-for-grid-congestion-management/aJYTG00000013qH4AQ))
 - Colaboro estrechamente con expertos de dominio para traducir flujos de trabajo complejos de sistemas de potencia en soluciones de software efectivas
 

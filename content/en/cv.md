@@ -94,8 +94,7 @@ I work as a senior software developer, system architect, and technical educator.
 **Senior Software Developer**
 *January 2023 – Present | Boston, MA*
 
-- Design and maintain an internal analysis platform used by power systems engineers to investigate client grid congestion and recommend transmission reconfigurations
-- Develop tooling for a team of highly specialized electrical engineers with deep expertise in grid operations and electricity markets
+- Help design and maintain an internal analysis platform used by power systems engineers with deep expertise in grid operations and electricity markets to investigate client grid congestion and recommend transmission reconfigurations
 - The platform our team builds enables engineers to identify reconfigurations that have contributed to over $100 million in annual customer savings in the U.S. Midwest ([World Economic Forum](https://initiatives.weforum.org/future-power-system/case-study-details/topology-optimization-for-grid-congestion-management/aJYTG00000013qH4AQ))
 - Collaborate closely with domain experts to translate complex power systems workflows into effective software solutions
 
