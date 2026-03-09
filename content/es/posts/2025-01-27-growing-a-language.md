@@ -2,7 +2,7 @@
 layout: post
 title: 'Growing a Language'
 description: ''
-tags: ['Guy L. Steele J.', 'LISP', 'OOPSLA']
+tags: ['Guy L Steele Jr', 'LISP', 'OOPSLA']
 ---
 
 Seguramente has visto presentaciones muy importantes, o interesantes, entretenidas.  La presentación de Guy Steele que te propongo, es una como nunca has visto antes.  Una presentación que tiene un mensaje importante para transmitir, pero que además usa el propio mensaje como mecanismo para desarrollar la presentación.  Tal vez algún detalle no tan relevante esté desactualizado, como las referencias a ciertas características de Java, pero si consideras Java en 1998 y lo analizas desde allí,este material es alimento para la mente.
