@@ -6,6 +6,9 @@ aliases = ["keywords", "technologies", "tech-stack"]
 author = "Cesar Ballardini"
 menu = "main"
 weight = 30
+layout = "cv"
+page_css = ["cv.css"]
+translationKey = "skills"
 +++
 
 # César Ballardini — Skill Keywords

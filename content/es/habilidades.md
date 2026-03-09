@@ -6,6 +6,9 @@ aliases = ["palabras-clave", "tecnologias", "stack-tecnologico", "skills"]
 author = "César Ballardini"
 menu = "main"
 weight = 30
+layout = "cv"
+page_css = ["cv.css"]
+translationKey = "skills"
 +++
 
 # César Ballardini — Habilidades Técnicas
@@ -14,7 +17,7 @@ weight = 30
 
 ---
 
-> A continuación se presenta una lista parcial de palabras clave. Cada una representa un componente, habilidad o actividad con la que trabajo o he trabajado. Para documentación, detalles o discusión sobre cualquier tema listado, [contactarme](/es/consultoria/).
+> A continuación se presenta una lista parcial de palabras clave. Cada una representa un componente, habilidad o actividad con la que trabajo o he trabajado. Para documentación, detalles o discusión sobre cualquier tema listado, [contactarme](/consultoria/).
 
 ---
 
@@ -283,5 +286,5 @@ weight = 30
 - **LinkedIn:** [linkedin.com/in/cesar-ballardini](https://www.linkedin.com/in/cesar-ballardini/)
 - **GitHub:** [github.com/CesarBallardini](https://github.com/CesarBallardini)
 - **Blog:** [katra.ballardini.com.ar](http://katra.ballardini.com.ar)
-- **Servicios de Consultoría:** [Consultoría](/es/consultoria/)
-- **CV Completo:** [CV](/es/cv/)
+- **Servicios de Consultoría:** [Consultoría](/consultoria/)
+- **CV Completo:** [CV](/cv/)

@@ -6,9 +6,12 @@ aliases = ["services", "contact", "about"]
 author = "Cesar Ballardini"
 menu = "main"
 weight = 10
+layout = "cv"
+page_css = ["cv.css"]
+translationKey = "consulting"
 +++
 
-# César Ballardini
+# César Ballardini — Consulting
 
 **Senior Software Developer · System Architect · Educator**
 

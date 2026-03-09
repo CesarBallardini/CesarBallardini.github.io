@@ -17,7 +17,7 @@ page_css = ["cv.css"]
 
 Argentina
 
-[cesar.ballardini@gmail.com](mailto:cesar.ballardini@gmail.com) · [LinkedIn](https://www.linkedin.com/in/cesar-ballardini/) · [GitHub](https://github.com/CesarBallardini) · [Habilidades Técnicas](/es/habilidades/) · [Servicios de Consultoría](/es/consultoria/)
+[cesar.ballardini@gmail.com](mailto:cesar.ballardini@gmail.com) · [LinkedIn](https://www.linkedin.com/in/cesar-ballardini/) · [GitHub](https://github.com/CesarBallardini) · [Habilidades Técnicas](/habilidades/) · [Servicios de Consultoría](/consultoria/)
 
 ---
 
@@ -309,4 +309,4 @@ Institución secundaria técnica y vocacional dependiente de la Universidad Naci
 
 ---
 
-Un índice completo y categorizado de palabras clave técnicas está disponible en la página de [Habilidades Técnicas](/es/habilidades/).
+Un índice completo y categorizado de palabras clave técnicas está disponible en la página de [Habilidades Técnicas](/habilidades/).

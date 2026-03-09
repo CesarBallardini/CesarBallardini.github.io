@@ -2,72 +2,92 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/en/consulting/</loc>
-    <lastmod>2026-02-22T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://localhost:1313/en/cv/</loc>
+    <loc>https://katra.ballardini.com.ar/en/consulting/</loc>
     <lastmod>2026-02-22T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="es-AR"
-                href="http://localhost:1313/cv/"
+                href="https://katra.ballardini.com.ar/consultoria/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:1313/en/cv/"
+                href="https://katra.ballardini.com.ar/en/consulting/"
                 />
   </url><url>
-    <loc>http://localhost:1313/en/skills/</loc>
-    <lastmod>2026-02-22T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://localhost:1313/en/</loc>
+    <loc>https://katra.ballardini.com.ar/en/cv/</loc>
     <lastmod>2026-02-22T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="es-AR"
-                href="http://localhost:1313/"
+                href="https://katra.ballardini.com.ar/cv/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:1313/en/"
+                href="https://katra.ballardini.com.ar/en/cv/"
                 />
   </url><url>
-    <loc>http://localhost:1313/en/categories/</loc>
+    <loc>https://katra.ballardini.com.ar/en/skills/</loc>
+    <lastmod>2026-02-22T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="es-AR"
-                href="http://localhost:1313/categories/"
+                href="https://katra.ballardini.com.ar/habilidades/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:1313/en/categories/"
+                href="https://katra.ballardini.com.ar/en/skills/"
                 />
   </url><url>
-    <loc>http://localhost:1313/en/tags/</loc>
+    <loc>https://katra.ballardini.com.ar/en/</loc>
+    <lastmod>2026-02-22T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="es-AR"
-                href="http://localhost:1313/tags/"
+                href="https://katra.ballardini.com.ar/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:1313/en/tags/"
+                href="https://katra.ballardini.com.ar/en/"
+                />
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/en/categories/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/categories/"
+                />
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/en/tags/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/tags/"
                 />
   </url>
 </urlset>

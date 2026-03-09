@@ -6,9 +6,12 @@ aliases = ["servicios", "contacto", "acerca"]
 author = "César Ballardini"
 menu = "main"
 weight = 10
+layout = "cv"
+page_css = ["cv.css"]
+translationKey = "consulting"
 +++
 
-# César Ballardini
+# César Ballardini — Consultoría
 
 **Desarrollador de Software Senior · Arquitecto de Sistemas · Educador**
 
@@ -38,8 +41,8 @@ Asisto a organizaciones en la resolución de desafíos técnicos complejos, comb
 
 ## Enlaces
 
-- [CV completo](/es/cv/)
-- [Habilidades Técnicas](/es/habilidades/)
+- [CV completo](/cv/)
+- [Habilidades Técnicas](/habilidades/)
 - [LinkedIn](https://www.linkedin.com/in/cesar-ballardini/)
 - [GitHub](https://github.com/CesarBallardini)
 - [Blog](http://katra.ballardini.com.ar)
