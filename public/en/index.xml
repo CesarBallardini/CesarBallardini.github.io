@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>katra.en</title>
+    <title>katra</title>
     <link>https://katra.ballardini.com.ar/en/</link>
-    <description>Recent content on katra.en</description>
+    <description>Recent content on katra</description>
     <generator>Hugo</generator>
     <language>en-US</language>
     <copyright>César Ballardini</copyright>

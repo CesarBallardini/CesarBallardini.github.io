@@ -6,9 +6,6 @@
   {{ $section := .Site.GetPage "section" .Section }}
   <article class="flex-l flex-wrap justify-between mw8 center ph3">
     <header class="mt4 w-100">
-      <aside class="instapaper_ignoref b helvetica tracked ttu">
-        {{ .CurrentSection.Title }}
-      </aside>
     </header>
     <div class="cv-page nested-copy-line-height lh-copy f4 nested-links {{ $.Param "text_color" | default "mid-gray" }} w-100">
       {{- .Content -}}

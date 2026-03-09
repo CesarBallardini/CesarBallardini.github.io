@@ -24,7 +24,7 @@ read_more_copy = "Leer más..."
 contentDir = "content/en"
 languageCode = 'en-US'
 weight = 2
-title = "katra.en"
+title = "katra"
 read_more_copy = "Read more about this entry"
 
 [pagination]
