@@ -31,7 +31,6 @@
 .cv-page h2 + ul > li {
   padding: 0.5rem 0.8rem;
   background: #f6f8fa;
-  border-top: 2px solid #1a3a5c;
   margin-bottom: 0.5rem;
   color: #444;
 }
@@ -60,7 +59,6 @@
 #contacto-y-enlaces + ul > li {
   padding: 0;
   background: none;
-  border-top: none;
 }
 
 #contact--links + ul > li > strong,
@@ -94,6 +92,5 @@
   .cv-page h3 + ul > li,
   .cv-page h2 + ul > li {
     background: none;
-    border-top-color: #000;
   }
 }
