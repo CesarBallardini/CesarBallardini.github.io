@@ -2,7 +2,7 @@
 title = "CV"
 description = "César Ballardini -- Desarrollador de Software Senior · Arquitecto de Sistemas · Educador -- Perfil Profesional"
 date = "2026-02-22"
-aliases = ["currículum", "perfil", "perfil-profesional"]
+aliases = ["curriculum", "perfil", "perfil-profesional"]
 author = "César Ballardini"
 menu = "main"
 weight = 20
