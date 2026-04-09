@@ -2,30 +2,36 @@
 
 <!-- Standard: https://llmstxt.org/ -->
 
-> Personal blog and professional profile of César Ballardini — Senior Software Developer, System Architect, and Educator with 35+ years of experience in software development, infrastructure engineering, and university teaching. Bilingual site in Spanish (primary) and English.
+> Personal blog and professional profile of César Ballardini — Senior Software Developer, System Architect, and Educator with 35+ years of experience in software development, infrastructure engineering, and university teaching. Bilingual site in Spanish (primary, default) and English.
 
-The site covers professional consulting services, a full CV/résumé, technical skill keywords, and blog posts on software development, system administration, and programming paradigms.
+The site is a Hugo blog using the Ananke theme, hosted on GitHub Pages. It covers professional consulting services, a full CV/résumé, technical skill keywords, and Spanish-language blog posts on software development, system administration, programming languages, and computing history. The English section currently holds professional pages (CV, consulting, skills); blog posts are Spanish-only for now.
 
 César currently works as part of the development team at NewGrid, doing backend and frontend development on an analysis platform that power systems engineers use to identify grid reconfigurations — work that has contributed to over $100 million in annual customer savings in the U.S. Midwest.
 
 ## Professional Pages (English)
 
-- [CV](https://katra.ballardini.com.ar/en/cv/): Full curriculum vitae with experience, education, achievements, and skills
+- [CV](https://katra.ballardini.com.ar/en/cv/): Full curriculum vitae — experience, education, achievements, and skills
 - [Consulting](https://katra.ballardini.com.ar/en/consulting/): Consulting services offered — custom software, infrastructure automation, system integration, technical training
 - [Skill Keywords](https://katra.ballardini.com.ar/en/skills/): Categorized index of technical skills — programming, frontend, backend, databases, infrastructure, cloud, energy sector, teaching
 
 ## Páginas Profesionales (Español)
 
-- [CV](https://katra.ballardini.com.ar/cv/): Currículum vitae completo con experiencia, educación, logros y habilidades
+- [CV](https://katra.ballardini.com.ar/cv/): Currículum vitae completo — experiencia, educación, logros y habilidades
 - [Consultoría](https://katra.ballardini.com.ar/consultoria/): Servicios de consultoría — desarrollo de software, automatización de infraestructura, integración de sistemas, capacitación técnica
 - [Habilidades Técnicas](https://katra.ballardini.com.ar/habilidades/): Índice categorizado de habilidades técnicas
 
 ## Blog (Español)
 
-- [Blog](https://katra.ballardini.com.ar/): Artículos sobre desarrollo de software, administración de sistemas, y paradigmas de programación
+- [Blog](https://katra.ballardini.com.ar/): Artículos sobre desarrollo de software, administración de sistemas, lenguajes de programación, e historia del cómputo
 
 ## Contact
 
 - [Email](mailto:cesar.ballardini@gmail.com): cesar.ballardini@gmail.com
 - [LinkedIn](https://www.linkedin.com/in/cesar-ballardini/): Professional profile
 - [GitHub](https://github.com/CesarBallardini): Open source projects and repositories
+
+## Optional
+
+- [Source repository](https://github.com/CesarBallardini/CesarBallardini.github.io): The full Hugo source for this site, including `content/`, `themes/`, and `hugo.toml`
+- [Editorial roadmap (private catalog visible in source)](https://github.com/CesarBallardini/CesarBallardini.github.io/blob/master/content/just-ideas-for-future-posts/near-future-posts.md): The master catalog of ~180 planned post ideas, organized in 11 thematic series (classic languages, Lisp family, recursion + functional CS, software engineering philosophy, computing pioneers, personal CS memoir, IaC + devops, legacy systems archaeology, local computing memory, lateral nerd curiosities, life topics). Each idea has its own `draft-{slug}.md` file under one of the category folders alongside the catalog. None of this is rendered to the live site — it is private editorial scratch — but it is visible in the public repo
+- [AGENTS.md](https://github.com/CesarBallardini/CesarBallardini.github.io/blob/master/AGENTS.md): Build, content, and editorial planning instructions for AI coding agents working on this repository
