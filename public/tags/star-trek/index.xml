@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Star Trek on katra</title>
+    <link>http://localhost:3131/tags/star-trek/</link>
+    <description>Recent content in Star Trek on katra</description>
+    <generator>Hugo</generator>
+    <language>es-AR</language>
+    <copyright>César Ballardini</copyright>
+    <lastBuildDate>Tue, 04 Jul 2000 00:00:00 -0300</lastBuildDate>
+    <atom:link href="http://localhost:3131/tags/star-trek/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>¿Por qué katra?</title>
+      <link>http://localhost:3131/posts/por-que-katra/</link>
+      <pubDate>Tue, 04 Jul 2000 00:00:00 -0300</pubDate>
+      <guid>http://localhost:3131/posts/por-que-katra/</guid>
+      <description>&lt;p&gt;Cada vez que alguien me pregunta por qué el blog se llama &lt;em&gt;katra&lt;/em&gt;, la respuesta corta es:Spock.&lt;/p&gt;&#xA;&lt;p&gt;En el universo de Star Trek, los vulcanos tienen un concepto que no tiene equivalente directo en&#xA;ningún idioma terrestre.  La &lt;strong&gt;katra&lt;/strong&gt; es la esencia viviente de una persona: todo lo que fue, todo&#xA;lo que aprendió, todo lo que pensó.  No es exactamente el alma — es más parecido a la totalidad de&#xA;una mente transferible.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

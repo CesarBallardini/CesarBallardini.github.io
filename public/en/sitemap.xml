@@ -2,92 +2,92 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://katra.ballardini.com.ar/en/consulting/</loc>
+    <loc>http://localhost:3131/en/consulting/</loc>
     <lastmod>2026-02-22T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="es-AR"
-                href="https://katra.ballardini.com.ar/consultoria/"
+                href="http://localhost:3131/consultoria/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://katra.ballardini.com.ar/en/consulting/"
+                href="http://localhost:3131/en/consulting/"
                 />
   </url><url>
-    <loc>https://katra.ballardini.com.ar/en/cv/</loc>
+    <loc>http://localhost:3131/en/cv/</loc>
     <lastmod>2026-02-22T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="es-AR"
-                href="https://katra.ballardini.com.ar/cv/"
+                href="http://localhost:3131/cv/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://katra.ballardini.com.ar/en/cv/"
+                href="http://localhost:3131/en/cv/"
                 />
   </url><url>
-    <loc>https://katra.ballardini.com.ar/en/skills/</loc>
+    <loc>http://localhost:3131/en/skills/</loc>
     <lastmod>2026-02-22T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="es-AR"
-                href="https://katra.ballardini.com.ar/habilidades/"
+                href="http://localhost:3131/habilidades/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://katra.ballardini.com.ar/en/skills/"
+                href="http://localhost:3131/en/skills/"
                 />
   </url><url>
-    <loc>https://katra.ballardini.com.ar/en/</loc>
+    <loc>http://localhost:3131/en/</loc>
     <lastmod>2026-02-22T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="es-AR"
-                href="https://katra.ballardini.com.ar/"
+                href="http://localhost:3131/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://katra.ballardini.com.ar/en/"
+                href="http://localhost:3131/en/"
                 />
   </url><url>
-    <loc>https://katra.ballardini.com.ar/en/categories/</loc>
+    <loc>http://localhost:3131/en/categories/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="es-AR"
-                href="https://katra.ballardini.com.ar/categories/"
+                href="http://localhost:3131/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://katra.ballardini.com.ar/en/categories/"
+                href="http://localhost:3131/en/categories/"
                 />
   </url><url>
-    <loc>https://katra.ballardini.com.ar/en/tags/</loc>
+    <loc>http://localhost:3131/en/tags/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="es-AR"
-                href="https://katra.ballardini.com.ar/tags/"
+                href="http://localhost:3131/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://katra.ballardini.com.ar/en/tags/"
+                href="http://localhost:3131/en/tags/"
                 />
   </url>
 </urlset>
