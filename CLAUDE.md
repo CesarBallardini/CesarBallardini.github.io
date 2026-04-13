@@ -2,6 +2,24 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Git rules (NEVER break)
+
+**Do not run any git command that adds, deletes, or modifies the repository state.** This includes, but is not limited to:
+
+- `git commit` (including `--amend`)
+- `git add` / `git rm` / `git mv` / `git restore` / `git reset`
+- `git push` / `git pull` / `git fetch` with side effects
+- `git branch` (create/delete) / `git checkout` / `git switch`
+- `git merge` / `git rebase` / `git cherry-pick` / `git revert`
+- `git stash` (push/pop/apply)
+- `git tag` (create/delete)
+- `git clean`
+- `git submodule` mutations
+
+**Read-only git is allowed:** `git status`, `git diff`, `git log`, `git show`, `git blame`, `git ls-files`, `git config --get`.
+
+**If the user asks for a commit, push, branch change, etc.:** draft the command or the commit message as text and let the user run it themselves. Never execute it.
+
 ## What This Is
 
 Personal bilingual Hugo blog ("katra") by César Ballardini, published at https://katra.ballardini.com.ar/. Content is primarily in Spanish (es-AR), with an English section prepared but currently empty.
@@ -20,6 +38,8 @@ No Makefile, no npm scripts, no other build tooling in the root. The theme has i
 ## Deployment
 
 GitHub Actions (`.github/workflows/static.yml`) deploys the pre-built `./public/` directory to GitHub Pages on every push to `master`. There is **no Hugo build step in CI** — the `public/` directory must be committed and up to date before pushing.
+
+Because `public/` is committed, stale files from previous builds (old slugs, removed tags, renamed posts) do not get cleaned automatically. Build with `hugo --cleanDestinationDir` to drop orphan files, or `rm -rf public && hugo` for a fully fresh tree before committing.
 
 ## Content Conventions
 
@@ -82,6 +102,7 @@ There is no Series F. The skip is intentional and preserved.
 
 - **Theme:** Ananke, included as a git submodule at `themes/ananke` (source: `github.com/theNewDynamic/gohugo-theme-ananke`)
 - **Custom partial:** `layouts/partials/head-additions.html` — injects per-page CSS listed in the `page_css` frontmatter array
+- **Custom partial:** `layouts/partials/site-header.html` — overrides the theme's site header. Identical to the theme copy in the *with-featured-image* branch; in the *no-featured-image* branch (used by the homepage and any post without `featured_image`), it trims the tall black banner on desktop: outer `pb6-l` → `pb2-l` (8rem → 0.5rem bottom padding), title `f-subheadline-l` → `f1-l` (5rem → 3rem), subtitle `f3-l` → `f4-l` with margins `mt3 mb4` → `mt2 mb2`. Mobile layout matches the theme default.
 - **Custom CSS:** `assets/ananke/css/tables.css` — adds borders and padding to markdown tables; loaded via `page_css` frontmatter
 - **Archetype:** `archetypes/default.md` uses TOML frontmatter with auto-date and title derived from filename
 - **Config:** Single file `hugo.toml` — bilingual setup with Spanish (weight 1) as default, English (weight 2) secondary; `featured_image_class = "cover bg-center"`

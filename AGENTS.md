@@ -4,6 +4,24 @@
 
 Personal bilingual Hugo blog ("katra") by César Ballardini, published at https://katra.ballardini.com.ar/. Content is primarily in Spanish (es-AR), with an English section holding professional pages (CV, consulting, skills). Hosted on GitHub Pages.
 
+## Git rules (NEVER break)
+
+Agents working on this repo **must not run any git command that adds, deletes, or modifies repository state**. Prohibited:
+
+- `git commit` (including `--amend`)
+- `git add` / `git rm` / `git mv` / `git restore` / `git reset`
+- `git push` / `git pull` / `git fetch` with side effects
+- `git branch` (create/delete) / `git checkout` / `git switch`
+- `git merge` / `git rebase` / `git cherry-pick` / `git revert`
+- `git stash` (push/pop/apply)
+- `git tag` (create/delete)
+- `git clean`
+- `git submodule` mutations
+
+Read-only git is allowed: `git status`, `git diff`, `git log`, `git show`, `git blame`, `git ls-files`, `git config --get`.
+
+When the user asks for a commit, push, branch change, etc., draft the command or commit message as text and hand it back for the user to run manually.
+
 ## Submodule setup
 
 After cloning, initialize the Ananke theme submodule:
@@ -26,6 +44,8 @@ Hugo must be run locally before pushing — the CI only uploads `/public` to Git
 ## Deployment
 
 Push to `master` triggers `.github/workflows/static.yml` which deploys the pre-built `./public/` directory to GitHub Pages. The `public/` directory must be committed and up to date before pushing.
+
+Because `public/` is committed, stale files from previous builds (old slugs, removed tags, renamed posts) are not cleaned automatically. Build with `hugo --cleanDestinationDir` to drop orphans, or `rm -rf public && hugo` for a fully fresh tree before committing.
 
 ## Code style guidelines
 
@@ -93,6 +113,7 @@ When the user refers to "the plan" or "the editorial plan", they mean `content/j
 - **Custom layouts:**
   - `layouts/_default/cv.html` — wraps content in `.cv-page` div, used by CV, consulting, and skills pages
   - `layouts/partials/head-additions.html` — per-page CSS loading via `page_css` frontmatter param; inlines CSS from `assets/ananke/css/`
+  - `layouts/partials/site-header.html` — overrides the theme's site header. Identical to the theme copy in the *with-featured-image* branch; in the *no-featured-image* branch (used by the homepage and any post without `featured_image`), it trims the tall black banner on desktop: outer `pb6-l` → `pb2-l` (8rem → 0.5rem bottom padding), title `f-subheadline-l` → `f1-l` (5rem → 3rem), subtitle `f3-l` → `f4-l` with margins `mt3 mb4` → `mt2 mb2`. Mobile layout matches the theme default.
 - **Custom CSS:**
   - `assets/ananke/css/cv.css` — styles scoped under `.cv-page`, targeting standard HTML elements via Hugo auto-generated heading IDs
   - `assets/ananke/css/skills.css` — styles for the skills page
