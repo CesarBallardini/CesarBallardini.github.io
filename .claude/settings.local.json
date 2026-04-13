@@ -1,7 +1,34 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "WebSearch",
+      "Bash(ls -d \"C:/Users/cesar/cesar/blog/katra/CesarBallardini.github.io/content/just-ideas-for-future-posts\"/*/)",
+      "Bash(xargs -I {} basename {})",
+      "WebFetch(domain:medium.com)",
+      "WebFetch(domain:controlai.news)",
+      "WebFetch(domain:deepmind.google)",
+      "WebFetch(domain:en.wikipedia.org)",
+      "WebFetch(domain:ericweinhoffer.com)",
+      "WebFetch(domain:www.nybooks.com)",
+      "WebFetch(domain:brettweir.com)",
+      "WebFetch(domain:machinethinking.co)",
+      "WebFetch(domain:www.nbcnews.com)",
+      "WebFetch(domain:intelligence.org)",
+      "WebFetch(domain:www.npr.org)",
+      "WebFetch(domain:llmstxt.org)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:commons.wikimedia.org)",
+      "WebFetch(domain:collection.sciencemuseumgroup.org.uk)",
+      "WebFetch(domain:www.circuitousroot.com)",
+      "WebFetch(domain:encyclopedie.uchicago.edu)",
+      "WebFetch(domain:artfl-iiif.uchicago.edu)",
+      "WebFetch(domain:www.thehenryford.org)",
+      "WebFetch(domain:gallica.bnf.fr)",
+      "WebFetch(domain:www.lindahall.org)",
+      "WebFetch(domain:archive.org)",
+      "Bash(pkill -f \"hugo server\")",
+      "WebFetch(domain:www.flickr.com)"
     ]
   }
 }

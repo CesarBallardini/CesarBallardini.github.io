@@ -6,17 +6,20 @@
     
     <title>Soplar humo de tabaco | katra</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="La situación que voy a describir no está relacionada directamente con sistemas de información,
-computadoras o lenguajes de programación.  Sin embargo, está fuertemente asociada con la manera en
-que las personas perciben los problemas y proponen soluciones, y de eso hay mucho en los grupos de
-TI, sean desarrolladores o administradores de sistemas.
-Sean dos dos actividades centrales que se dan en secuencia, A y B. Parte de la gente no llega
-a tiempo para realizar satisfactoriamente A, y luego se queda para realizar B.  La proporción
-de gente que no aprovecha A es aproximadamente un 80% de los que podrían beneficiarse con ella.
-La proporción de gente que se beneficia de A respecto de la que se beneficia de B es
-aproximadamente un 18%.  O sea, 72% del total de beneficiados por B no tienen relación
-directa en este momento con la actividad en A.">
-    <meta name="generator" content="Hugo 0.159.0">
+    <meta name="description" content="Un sistema con muchos procesos tiene un tiempo de login de un minuto, cuando la expectativa es de
+1 ó 2 segundos.  Los procesos ocupan toda la memoria disponible, así que alguien propone aumentar la RAM.
+La solución parece obvia: más memoria, mejor rendimiento.
+
+
+
+Diagrama de estados de un proceso1
+Resultado: el tiempo de login sube a dos minutos.
+¿Qué pasó?  Antes de agregar memoria, muchos procesos que podrían estar listos para ejecutarse
+habían sido desalojados (page-out) a disco: el sistema operativo los había movido al disco para
+liberar RAM.  Un proceso en disco no compite por la CPU; simplemente espera allí, fuera de la cola
+de listos.  Con poca memoria, la cantidad de procesos compitiendo activamente por la CPU era baja,
+y cada uno recibía su quantum en su turno.">
+    <meta name="generator" content="Hugo 0.160.1">
     
     
     
@@ -50,8 +53,10 @@ directa en este momento con la actividad en A.">
     <meta property="og:url" content="https://katra.ballardini.com.ar/posts/soplar-humo-de-tabaco/">
   <meta property="og:site_name" content="katra">
   <meta property="og:title" content="Soplar humo de tabaco">
-  <meta property="og:description" content="La situación que voy a describir no está relacionada directamente con sistemas de información, computadoras o lenguajes de programación. Sin embargo, está fuertemente asociada con la manera en que las personas perciben los problemas y proponen soluciones, y de eso hay mucho en los grupos de TI, sean desarrolladores o administradores de sistemas.
-Sean dos dos actividades centrales que se dan en secuencia, A y B. Parte de la gente no llega a tiempo para realizar satisfactoriamente A, y luego se queda para realizar B. La proporción de gente que no aprovecha A es aproximadamente un 80% de los que podrían beneficiarse con ella. La proporción de gente que se beneficia de A respecto de la que se beneficia de B es aproximadamente un 18%. O sea, 72% del total de beneficiados por B no tienen relación directa en este momento con la actividad en A.">
+  <meta property="og:description" content="Un sistema con muchos procesos tiene un tiempo de login de un minuto, cuando la expectativa es de 1 ó 2 segundos. Los procesos ocupan toda la memoria disponible, así que alguien propone aumentar la RAM. La solución parece obvia: más memoria, mejor rendimiento.
+Diagrama de estados de un proceso1
+Resultado: el tiempo de login sube a dos minutos.
+¿Qué pasó? Antes de agregar memoria, muchos procesos que podrían estar listos para ejecutarse habían sido desalojados (page-out) a disco: el sistema operativo los había movido al disco para liberar RAM. Un proceso en disco no compite por la CPU; simplemente espera allí, fuera de la cola de listos. Con poca memoria, la cantidad de procesos compitiendo activamente por la CPU era baja, y cada uno recibía su quantum en su turno.">
   <meta property="og:locale" content="es_AR">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -60,18 +65,24 @@ Sean dos dos actividades centrales que se dan en secuencia, A y B. Parte de la g
     <meta property="article:tag" content="Humo">
     <meta property="article:tag" content="Problem Solving">
     <meta property="article:tag" content="Medicina">
+    <meta property="article:tag" content="CPU">
+    <meta property="article:tag" content="Process Scheduling">
 
   <meta itemprop="name" content="Soplar humo de tabaco">
-  <meta itemprop="description" content="La situación que voy a describir no está relacionada directamente con sistemas de información, computadoras o lenguajes de programación. Sin embargo, está fuertemente asociada con la manera en que las personas perciben los problemas y proponen soluciones, y de eso hay mucho en los grupos de TI, sean desarrolladores o administradores de sistemas.
-Sean dos dos actividades centrales que se dan en secuencia, A y B. Parte de la gente no llega a tiempo para realizar satisfactoriamente A, y luego se queda para realizar B. La proporción de gente que no aprovecha A es aproximadamente un 80% de los que podrían beneficiarse con ella. La proporción de gente que se beneficia de A respecto de la que se beneficia de B es aproximadamente un 18%. O sea, 72% del total de beneficiados por B no tienen relación directa en este momento con la actividad en A.">
+  <meta itemprop="description" content="Un sistema con muchos procesos tiene un tiempo de login de un minuto, cuando la expectativa es de 1 ó 2 segundos. Los procesos ocupan toda la memoria disponible, así que alguien propone aumentar la RAM. La solución parece obvia: más memoria, mejor rendimiento.
+Diagrama de estados de un proceso1
+Resultado: el tiempo de login sube a dos minutos.
+¿Qué pasó? Antes de agregar memoria, muchos procesos que podrían estar listos para ejecutarse habían sido desalojados (page-out) a disco: el sistema operativo los había movido al disco para liberar RAM. Un proceso en disco no compite por la CPU; simplemente espera allí, fuera de la cola de listos. Con poca memoria, la cantidad de procesos compitiendo activamente por la CPU era baja, y cada uno recibía su quantum en su turno.">
   <meta itemprop="datePublished" content="2025-03-10T00:00:00-03:00">
   <meta itemprop="dateModified" content="2025-03-10T00:00:00-03:00">
-  <meta itemprop="wordCount" content="787">
-  <meta itemprop="keywords" content="Humo,Problem Solving,Medicina">
+  <meta itemprop="wordCount" content="592">
+  <meta itemprop="keywords" content="Humo,Problem Solving,Medicina,CPU,Process Scheduling">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Soplar humo de tabaco">
-  <meta name="twitter:description" content="La situación que voy a describir no está relacionada directamente con sistemas de información, computadoras o lenguajes de programación. Sin embargo, está fuertemente asociada con la manera en que las personas perciben los problemas y proponen soluciones, y de eso hay mucho en los grupos de TI, sean desarrolladores o administradores de sistemas.
-Sean dos dos actividades centrales que se dan en secuencia, A y B. Parte de la gente no llega a tiempo para realizar satisfactoriamente A, y luego se queda para realizar B. La proporción de gente que no aprovecha A es aproximadamente un 80% de los que podrían beneficiarse con ella. La proporción de gente que se beneficia de A respecto de la que se beneficia de B es aproximadamente un 18%. O sea, 72% del total de beneficiados por B no tienen relación directa en este momento con la actividad en A.">
+  <meta name="twitter:description" content="Un sistema con muchos procesos tiene un tiempo de login de un minuto, cuando la expectativa es de 1 ó 2 segundos. Los procesos ocupan toda la memoria disponible, así que alguien propone aumentar la RAM. La solución parece obvia: más memoria, mejor rendimiento.
+Diagrama de estados de un proceso1
+Resultado: el tiempo de login sube a dos minutos.
+¿Qué pasó? Antes de agregar memoria, muchos procesos que podrían estar listos para ejecutarse habían sido desalojados (page-out) a disco: el sistema operativo los había movido al disco para liberar RAM. Un proceso en disco no compite por la CPU; simplemente espera allí, fuera de la cola de listos. Con poca memoria, la cantidad de procesos compitiendo activamente por la CPU era baja, y cada uno recibía su quantum en su turno.">
 
       
       
@@ -83,8 +94,11 @@ Sean dos dos actividades centrales que se dan en secuencia, A y B. Parte de la g
    
   
 
-  <header>
-    <div class="bg-black">
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('/posts/soplar-humo-de-tabaco/hero-resuscitation-set.jpg');">
+    <div class="bg-black-60">
       <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l center items-center justify-between">
     <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
@@ -151,6 +165,12 @@ Sean dos dos actividades centrales que se dan en secuencia, A y B. Parte de la g
   </div>
 </nav>
 
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">Soplar humo de tabaco</div>
+          
+        
+      </div>
     </div>
   </header>
 
@@ -172,14 +192,14 @@ Sean dos dos actividades centrales que se dan en secuencia, A y B. Parte de la g
         <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
                 
-              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fsoplar-humo-de-tabaco%2F&amp;summary=La&#43;situaci%C3%B3n&#43;que&#43;voy&#43;a&#43;describir&#43;no&#43;est%C3%A1&#43;relacionada&#43;directamente&#43;con&#43;sistemas&#43;de&#43;informaci%C3%B3n%2C&#43;computadoras&#43;o&#43;lenguajes&#43;de&#43;programaci%C3%B3n.&#43;Sin&#43;embargo%2C&#43;est%C3%A1&#43;fuertemente&#43;asociada&#43;con&#43;la&#43;manera&#43;en&#43;que&#43;las&#43;personas&#43;perciben&#43;los&#43;problemas&#43;y&#43;proponen&#43;soluciones%2C&#43;y&#43;de&#43;eso&#43;hay&#43;mucho&#43;en&#43;los&#43;grupos&#43;de&#43;TI%2C&#43;sean&#43;desarrolladores&#43;o&#43;administradores&#43;de&#43;sistemas.%0ASean&#43;dos&#43;dos&#43;actividades&#43;centrales&#43;que&#43;se&#43;dan&#43;en&#43;secuencia%2C&#43;A&#43;y&#43;B.&#43;Parte&#43;de&#43;la&#43;gente&#43;no&#43;llega&#43;a&#43;tiempo&#43;para&#43;realizar&#43;satisfactoriamente&#43;A%2C&#43;y&#43;luego&#43;se&#43;queda&#43;para&#43;realizar&#43;B.&#43;La&#43;proporci%C3%B3n&#43;de&#43;gente&#43;que&#43;no&#43;aprovecha&#43;A&#43;es&#43;aproximadamente&#43;un&#43;80%25&#43;de&#43;los&#43;que&#43;podr%C3%ADan&#43;beneficiarse&#43;con&#43;ella.&#43;La&#43;proporci%C3%B3n&#43;de&#43;gente&#43;que&#43;se&#43;beneficia&#43;de&#43;A&#43;respecto&#43;de&#43;la&#43;que&#43;se&#43;beneficia&#43;de&#43;B&#43;es&#43;aproximadamente&#43;un&#43;18%25.&#43;O&#43;sea%2C&#43;72%25&#43;del&#43;total&#43;de&#43;beneficiados&#43;por&#43;B&#43;no&#43;tienen&#43;relaci%C3%B3n&#43;directa&#43;en&#43;este&#43;momento&#43;con&#43;la&#43;actividad&#43;en&#43;A.%0A&amp;title=Soplar&#43;humo&#43;de&#43;tabaco&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fsoplar-humo-de-tabaco%2F"
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fsoplar-humo-de-tabaco%2F&amp;summary=Un&#43;sistema&#43;con&#43;muchos&#43;procesos&#43;tiene&#43;un&#43;tiempo&#43;de&#43;login&#43;de&#43;un&#43;minuto%2C&#43;cuando&#43;la&#43;expectativa&#43;es&#43;de&#43;1&#43;%C3%B3&#43;2&#43;segundos.&#43;Los&#43;procesos&#43;ocupan&#43;toda&#43;la&#43;memoria&#43;disponible%2C&#43;as%C3%AD&#43;que&#43;alguien&#43;propone&#43;aumentar&#43;la&#43;RAM.&#43;La&#43;soluci%C3%B3n&#43;parece&#43;obvia%3A&#43;m%C3%A1s&#43;memoria%2C&#43;mejor&#43;rendimiento.%0ADiagrama&#43;de&#43;estados&#43;de&#43;un&#43;proceso1%0AResultado%3A&#43;el&#43;tiempo&#43;de&#43;login&#43;sube&#43;a&#43;dos&#43;minutos.%0A%C2%BFQu%C3%A9&#43;pas%C3%B3%3F&#43;Antes&#43;de&#43;agregar&#43;memoria%2C&#43;muchos&#43;procesos&#43;que&#43;podr%C3%ADan&#43;estar&#43;listos&#43;para&#43;ejecutarse&#43;hab%C3%ADan&#43;sido&#43;desalojados&#43;%28page-out%29&#43;a&#43;disco%3A&#43;el&#43;sistema&#43;operativo&#43;los&#43;hab%C3%ADa&#43;movido&#43;al&#43;disco&#43;para&#43;liberar&#43;RAM.&#43;Un&#43;proceso&#43;en&#43;disco&#43;no&#43;compite&#43;por&#43;la&#43;CPU%3B&#43;simplemente&#43;espera&#43;all%C3%AD%2C&#43;fuera&#43;de&#43;la&#43;cola&#43;de&#43;listos.&#43;Con&#43;poca&#43;memoria%2C&#43;la&#43;cantidad&#43;de&#43;procesos&#43;compitiendo&#43;activamente&#43;por&#43;la&#43;CPU&#43;era&#43;baja%2C&#43;y&#43;cada&#43;uno&#43;recib%C3%ADa&#43;su&#43;quantum&#43;en&#43;su&#43;turno.%0A&amp;title=Soplar&#43;humo&#43;de&#43;tabaco&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fsoplar-humo-de-tabaco%2F"
         class="ananke-social-link linkedin no-underline"
         title="Share on LinkedIn" aria-label="Share on LinkedIn"
         target="_blank" rel="nofollow noopener noreferrer">
         <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
                 
-              </span></a><a href="https://twitter.com/intent/tweet/?&amp;text=La&#43;situaci%C3%B3n&#43;que&#43;voy&#43;a&#43;describir&#43;no&#43;est%C3%A1&#43;relacionada&#43;directamente&#43;con&#43;sistemas&#43;de&#43;informaci%C3%B3n%2C&#43;computadoras&#43;o&#43;lenguajes&#43;de&#43;programaci%C3%B3n.&#43;Sin&#43;embargo%2C&#43;est%C3%A1&#43;fuertemente&#43;asociada&#43;con&#43;la&#43;manera&#43;en&#43;que&#43;las&#43;personas&#43;perciben&#43;los&#43;problemas&#43;y&#43;proponen&#43;soluciones%2C&#43;y&#43;de&#43;eso&#43;hay&#43;mucho&#43;en&#43;los&#43;grupos&#43;de&#43;TI%2C&#43;sean&#43;desarrolladores&#43;o&#43;administradores&#43;de&#43;sistemas.%0ASean&#43;dos&#43;dos&#43;actividades&#43;centrales&#43;que&#43;se&#43;dan&#43;en&#43;secuencia%2C&#43;A&#43;y&#43;B.&#43;Parte&#43;de&#43;la&#43;gente&#43;no&#43;llega&#43;a&#43;tiempo&#43;para&#43;realizar&#43;satisfactoriamente&#43;A%2C&#43;y&#43;luego&#43;se&#43;queda&#43;para&#43;realizar&#43;B.&#43;La&#43;proporci%C3%B3n&#43;de&#43;gente&#43;que&#43;no&#43;aprovecha&#43;A&#43;es&#43;aproximadamente&#43;un&#43;80%25&#43;de&#43;los&#43;que&#43;podr%C3%ADan&#43;beneficiarse&#43;con&#43;ella.&#43;La&#43;proporci%C3%B3n&#43;de&#43;gente&#43;que&#43;se&#43;beneficia&#43;de&#43;A&#43;respecto&#43;de&#43;la&#43;que&#43;se&#43;beneficia&#43;de&#43;B&#43;es&#43;aproximadamente&#43;un&#43;18%25.&#43;O&#43;sea%2C&#43;72%25&#43;del&#43;total&#43;de&#43;beneficiados&#43;por&#43;B&#43;no&#43;tienen&#43;relaci%C3%B3n&#43;directa&#43;en&#43;este&#43;momento&#43;con&#43;la&#43;actividad&#43;en&#43;A.%0A&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fsoplar-humo-de-tabaco%2F"
+              </span></a><a href="https://twitter.com/intent/tweet/?&amp;text=Un&#43;sistema&#43;con&#43;muchos&#43;procesos&#43;tiene&#43;un&#43;tiempo&#43;de&#43;login&#43;de&#43;un&#43;minuto%2C&#43;cuando&#43;la&#43;expectativa&#43;es&#43;de&#43;1&#43;%C3%B3&#43;2&#43;segundos.&#43;Los&#43;procesos&#43;ocupan&#43;toda&#43;la&#43;memoria&#43;disponible%2C&#43;as%C3%AD&#43;que&#43;alguien&#43;propone&#43;aumentar&#43;la&#43;RAM.&#43;La&#43;soluci%C3%B3n&#43;parece&#43;obvia%3A&#43;m%C3%A1s&#43;memoria%2C&#43;mejor&#43;rendimiento.%0ADiagrama&#43;de&#43;estados&#43;de&#43;un&#43;proceso1%0AResultado%3A&#43;el&#43;tiempo&#43;de&#43;login&#43;sube&#43;a&#43;dos&#43;minutos.%0A%C2%BFQu%C3%A9&#43;pas%C3%B3%3F&#43;Antes&#43;de&#43;agregar&#43;memoria%2C&#43;muchos&#43;procesos&#43;que&#43;podr%C3%ADan&#43;estar&#43;listos&#43;para&#43;ejecutarse&#43;hab%C3%ADan&#43;sido&#43;desalojados&#43;%28page-out%29&#43;a&#43;disco%3A&#43;el&#43;sistema&#43;operativo&#43;los&#43;hab%C3%ADa&#43;movido&#43;al&#43;disco&#43;para&#43;liberar&#43;RAM.&#43;Un&#43;proceso&#43;en&#43;disco&#43;no&#43;compite&#43;por&#43;la&#43;CPU%3B&#43;simplemente&#43;espera&#43;all%C3%AD%2C&#43;fuera&#43;de&#43;la&#43;cola&#43;de&#43;listos.&#43;Con&#43;poca&#43;memoria%2C&#43;la&#43;cantidad&#43;de&#43;procesos&#43;compitiendo&#43;activamente&#43;por&#43;la&#43;CPU&#43;era&#43;baja%2C&#43;y&#43;cada&#43;uno&#43;recib%C3%ADa&#43;su&#43;quantum&#43;en&#43;su&#43;turno.%0A&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fsoplar-humo-de-tabaco%2F"
         class="ananke-social-link x-twitter no-underline"
         title="Share on X" aria-label="Share on X"
         target="_blank" rel="nofollow noopener noreferrer">
@@ -208,80 +228,74 @@ Sean dos dos actividades centrales que se dan en secuencia, A y B. Parte de la g
       
         
         
-        <span class="f6 mv4 dib tracked"> - Lectura en 4 minutos </span>
-        <span class="f6 mv4 dib tracked"> - 787 palabras </span>
+        <span class="f6 mv4 dib tracked"> - Lectura en 3 minutos </span>
+        <span class="f6 mv4 dib tracked"> - 592 palabras </span>
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><p>La situación que voy a describir no está relacionada directamente con sistemas de información,
-computadoras o lenguajes de programación.  Sin embargo, está fuertemente asociada con la manera en
-que las personas perciben los problemas y proponen soluciones, y de eso hay mucho en los grupos de
-TI, sean desarrolladores o administradores de sistemas.</p>
-<p>Sean dos dos actividades centrales que se dan en secuencia, <em>A</em> y <em>B</em>. Parte de la gente no llega
-a tiempo para realizar satisfactoriamente <em>A</em>, y luego se queda para realizar <em>B</em>.  La proporción
-de gente que no aprovecha <em>A</em> es aproximadamente un 80% de los que podrían beneficiarse con ella.
-La proporción de gente que se beneficia de <em>A</em> respecto de la que se beneficia de <em>B</em> es
-aproximadamente un 18%.  O sea, 72% del total de beneficiados por <em>B</em> no tienen relación
-directa en este momento con la actividad en <em>A</em>.</p>
-<p>¿Cómo podemos mejorar la participación en <em>A</em>?</p>
-<p>Ésa es una pregunta problemática si la utilizamos como meta principal.  Estaríamos fijando la vista
-en el problema del 18% y desatendiendo el 72%, en principio.</p>
-<p>Una propuesta de solución puede ser empezar <em>A</em> más tarde.  Pero sin resolver el problema de la
-causa de la tardanza, esto solamente posterga el problema.</p>
-<p>Otra propuesta de solución es realizar primero <em>B</em> y luego <em>A</em>, o sea invertir la secuencia.  En este
-caso, eso es posible, no hay dependencias entre las actividades.  Ahora entonces los que llegan tarde
-se pierden <em>B</em> y llegan a tiempo para <em>A</em>.  Es claro que si las actividades son igual de importantes
-esto realmente no es una solución, pues ahora ese 18% se perderá la actividad <em>B</em>.</p>
-<p>Ahora sí analicemos el problema más genéricamente:</p>
-<p>¿Qué evidencia tenemos que el cambio va a tener el efecto esperado?  Es claro que primero debemos
-definir el efecto esperado, en lo posible de alguna manera cuantitativa.  Hay ganancias y pérdidas.
-¿Cuáles son las pérdidas aceptables? ¿Cuáles son las ganancias mínimas que justifican el cambio?</p>
-<p>Hay un argumento implícito aquí:</p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><p>Un sistema con muchos procesos tiene un tiempo de login de un minuto, cuando la expectativa es de
+1 ó 2 segundos.  Los procesos ocupan toda la memoria disponible, así que alguien propone aumentar la RAM.
+La solución parece obvia: más memoria, mejor rendimiento.</p>
+<div style="text-align:center;margin:1.5rem auto;">
+<img src="process-states.svg" alt="Estados de un proceso: nuevo, listo, corriendo, esperando, terminado" style="max-width:100%;">
+</div>
+<p><em>Diagrama de estados de un proceso</em><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p>Resultado: el tiempo de login sube a dos minutos.</p>
+<p>¿Qué pasó?  Antes de agregar memoria, muchos procesos que podrían estar listos para ejecutarse
+habían sido desalojados (<em>page-out</em>) a disco: el sistema operativo los había movido al disco para
+liberar RAM.  Un proceso en disco no compite por la CPU; simplemente espera allí, fuera de la cola
+de listos.  Con poca memoria, la cantidad de procesos compitiendo activamente por la CPU era baja,
+y cada uno recibía su quantum en su turno.</p>
+<p>Al aumentar la RAM, esos procesos volvieron a memoria principal y entraron a la cola de listos.
+El problema es que la CPU no cambió: el cuello de botella siempre fue la CPU, no la memoria.
+Ahora más procesos compiten por el mismo recurso escaso, cada uno espera más tiempo su turno, y
+el login tarda el doble.</p>
+<p>Agregar memoria no resolvió el problema; lo empeoró, porque nadie analizó <em>por qué</em> el login era
+lento antes de proponer el cambio.</p>
+<p>El mismo error, llevado al extremo, tiene raíces históricas más profundas de lo que parece.</p>
+<p>Todo cambio lleva implícito un argumento:</p>
 <ol>
 <li>No estamos logrando el <em>objetivo deseado</em>.</li>
 <li>El <em>método actual</em> produce el <em>logro actual</em>.</li>
 <li>Al cambiar el método por un <em>método diferente</em>, vamos a lograr el <em>objetivo deseado</em>.</li>
 </ol>
-<p>En la lista anterior, sólo el <em>método actual</em> está definido, en el mejor de los casos.</p>
-<p>El <em>objetivo deseado</em> es pasible de resultar en un mínimo local, que no beneficia a la organización.
-He visto esto muchas veces en las organizaciones para las cuales he trabajado: un grupo determina
-un objetivo que es beneficioso para el grupo, sin considerar el beneficio global para la
-organización.  Sabemos que cada grupo obtiene su óptimo local a expensas de recursos y perjuicios en
-otros grupos.</p>
-<p>Y el <em>método diferente</em> tiene el inconveniente de sus resultados por verse.  Debe haber una relación
-lógica entre la forma de atacar el problema identificado, el mecanismo de funcionamiento del nuevo
-método, y la obtención de los resultados deseados.  No por ser diferente significa que es bueno.
-Que es bueno, debe demostrarse.  A veces la demostración se hace mediante simulaciones, pruebas
-piloto, u otros medios.  El consenso no es una demostración.</p>
-<p>El consenso no es una demostración puede ilustrarse mediante una técnica &ldquo;médica&rdquo; ya caída en
-desuso: el enema de humo de tabaco<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>,<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
-<p>El procedimiento creo que no requiere explicación, así que vamos a su fundamento.  El tabaco se
-importa del Nuevo Mundo y llega a Europa, donde los médicos le encuentran algunos aspectos
-terapéuticos en el siglo XVII.  La medicina en esos momentos se basaba en una teoría de los
-Humores<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> y el tabaco terminó siendo una panacea.  Los indígenas norteamericanos soplaban humo
-de tabaco por allí para tratar los dolores abdominales y para resucitar personas que casi se ahogan
-en un río para estimular la respiración.</p>
-<p>La lista de dolencias tratadas era larga, e incluía: dolor de cabeza, falla respiratoria, gripe,
-hernias, calambres abdominales, fiebre tifoidea, y brotes de cólera.</p>
-<p>En resumen, sólo porque otros lo hacen, sólo porque es una práctica ancestral, o porque otros
-médicos lo aplican, no quiere decir que es bueno para el objetivo deseado.  Debemos hacer las cuentas
-y analizar cómo la solución propuesta resuelve el problema que tenemos.</p>
-<p>No debemos olvidar que el tratamiento es seleccionado entre alternativas.  Al seleccionar una
-alternativa que no resuelve el problema, puede suceder que los efectos de la solución sean
-negativos, empeorando el problema.  En los casos más suaves, el problema tal vez no empeora,
-pero se pierde tiempo en conseguir la solución verdadera, demorando el resultado deseado.  Siempre
-un plan de acción que no genera el buen resultado, es un mal plan.</p>
-<p>Encontremos la causa raíz, antes de soplar humo en el trasero del problema.</p>
+<p>El problema es que en esa lista sólo el <em>método actual</em> está definido.  El <em>objetivo deseado</em> suele
+estar mal especificado, y los resultados del <em>método diferente</em> están por verse.</p>
+<p><strong>Para que un cambio sea válido, debe existir una relación lógica entre el problema identificado,
+el mecanismo por el cual el nuevo método lo resuelve, y el resultado esperado.</strong>  Esa cadena lógica
+es la base racional del plan: por qué cada paso existe, qué problema resuelve.  Sin ella, cambiar
+de método es un acto de fe, no de ingeniería.  El consenso no es una demostración.</p>
+<p>Esto puede ilustrarse con una técnica médica ya abandonada: el enema de humo de
+tabaco<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>,<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</p>
+<p>El tabaco llegó a Europa desde el Nuevo Mundo en el siglo XVII.  Enmarcado en la teoría de los
+Humores<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>, los médicos le encontraron propiedades terapéuticas.  Los indígenas
+norteamericanos soplaban humo de tabaco para tratar dolores abdominales y para estimular la
+respiración de personas casi ahogadas; los médicos europeos adoptaron la práctica y ampliaron las
+indicaciones: dolores de cabeza, hernias, calambres, fiebre tifoidea, cólera.</p>
+<p>¿Por qué funcionaba?  No funcionaba.  Pero era práctica ancestral, la aplicaban otros médicos,
+había consenso.</p>
+<p>Cambiar de método sin entender la base racional del método actual es exactamente eso: soplar humo.
+No importa si es práctica ancestral, si hay consenso en el equipo, o si &ldquo;otros proyectos lo hacen
+así&rdquo;.  Sin la cadena lógica —problema real → mecanismo del nuevo método → resultado esperado—
+estamos en el terreno de la medicina chamánica.</p>
+<p>Identificar la causa raíz es el punto de partida, no el destino.  Lo que necesitamos asegurar es
+que el plan esté construido <em>sobre</em> esa causa: que cada uno de sus pasos, por su mecanismo y sus
+consecuencias, acerque al estado deseado.</p>
+<p>Si los pasos del plan no consiguen el objetivo deseado, seguimos soplando humo en el trasero del
+problema.</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn:1">
-<p><a href="https://es.wikipedia.org/wiki/Enema_de_humo_de_tabaco">Enema de humo de tabaco</a> en Wikipedia&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Diagrama <a href="https://commons.wikimedia.org/wiki/File:Process_states.en.svg">Process states</a>, VolodyA! V Anarhist — dominio público, via Wikimedia Commons.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2">
-<p><a href="https://en.wikipedia.org/wiki/Tobacco_smoke_enema">Tobacco smoke enema</a> en Wikipedia&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="https://es.wikipedia.org/wiki/Enema_de_humo_de_tabaco">Enema de humo de tabaco</a> en Wikipedia&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3">
-<p><a href="https://es.wikipedia.org/wiki/Teor%C3%ADa_de_los_cuatro_humores">Teoría de los cuatro humores</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Tobacco_smoke_enema">Tobacco smoke enema</a> en Wikipedia&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p><a href="https://es.wikipedia.org/wiki/Teor%C3%ADa_de_los_cuatro_humores">Teoría de los cuatro humores</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
@@ -297,6 +311,14 @@ un plan de acción que no genera el buen resultado, es un mal plan.</p>
   
    <li class="list di">
      <a href="/tags/medicina/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Medicina</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/cpu/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">CPU</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/process-scheduling/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Process Scheduling</a>
    </li>
   
 </ul>

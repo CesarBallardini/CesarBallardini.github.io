@@ -2,9 +2,9 @@
 
 <!-- Standard: https://llmstxt.org/ -->
 
-> Personal blog and professional profile of César Ballardini — Senior Software Developer, System Architect, and Educator with 35+ years of experience in software development, infrastructure engineering, and university teaching. Bilingual site in Spanish (primary, default) and English.
+> Personal blog and professional profile of César Ballardini — Senior Software Developer, System Architect, and Educator with 35+ years of experience in software development, infrastructure engineering, and university teaching. Bilingual site in Spanish (primary, default) and English. Blog posts cover computing history, programming languages, software engineering philosophy, operating systems, and the history of AI — written for an experienced technical audience.
 
-The site is a Hugo blog using the Ananke theme, hosted on GitHub Pages. It covers professional consulting services, a full CV/résumé, technical skill keywords, and Spanish-language blog posts on software development, system administration, programming languages, and computing history. The English section currently holds professional pages (CV, consulting, skills); blog posts are Spanish-only for now.
+The site is a Hugo blog using the Ananke theme, hosted on GitHub Pages. It covers professional consulting services, a full CV/résumé, technical skill keywords, and Spanish-language blog posts on software development, system administration, programming languages, and computing history. The English section holds professional pages (CV, consulting, skills); blog posts are Spanish-only for now.
 
 César currently works as part of the development team at NewGrid, doing backend and frontend development on an analysis platform that power systems engineers use to identify grid reconfigurations — work that has contributed to over $100 million in annual customer savings in the U.S. Midwest.
 
@@ -32,6 +32,7 @@ César currently works as part of the development team at NewGrid, doing backend
 
 ## Optional
 
-- [Source repository](https://github.com/CesarBallardini/CesarBallardini.github.io): The full Hugo source for this site, including `content/`, `themes/`, and `hugo.toml`
-- [Editorial roadmap (private catalog visible in source)](https://github.com/CesarBallardini/CesarBallardini.github.io/blob/master/content/just-ideas-for-future-posts/near-future-posts.md): The master catalog of ~180 planned post ideas, organized in 11 thematic series (classic languages, Lisp family, recursion + functional CS, software engineering philosophy, computing pioneers, personal CS memoir, IaC + devops, legacy systems archaeology, local computing memory, lateral nerd curiosities, life topics). Each idea has its own `draft-{slug}.md` file under one of the category folders alongside the catalog. None of this is rendered to the live site — it is private editorial scratch — but it is visible in the public repo
+- [Source repository](https://github.com/CesarBallardini/CesarBallardini.github.io): Full Hugo source for this site, including content, theme configuration, and editorial planning system
+- [Editorial roadmap](https://github.com/CesarBallardini/CesarBallardini.github.io/blob/master/content/just-ideas-for-future-posts/near-future-posts.md): Master catalog of ~180 planned post ideas across 11 thematic series — classic languages, Lisp family, recursion and functional CS, software engineering philosophy, computing pioneers, personal CS memoir, IaC and devops, legacy systems archaeology, local computing memory, lateral nerd curiosities, and life topics. Each idea has its own draft file under a category folder. Not rendered to the live site but visible in the public repo
+- [CLAUDE.md](https://github.com/CesarBallardini/CesarBallardini.github.io/blob/master/CLAUDE.md): Project instructions for Claude Code — build commands, content conventions, editorial planning system, and architecture
 - [AGENTS.md](https://github.com/CesarBallardini/CesarBallardini.github.io/blob/master/AGENTS.md): Build, content, and editorial planning instructions for AI coding agents working on this repository

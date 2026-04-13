@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Inteligencia Artificial on katra</title>
+    <link>https://katra.ballardini.com.ar/tags/inteligencia-artificial/</link>
+    <description>Recent content in Inteligencia Artificial on katra</description>
+    <generator>Hugo</generator>
+    <language>es-AR</language>
+    <copyright>César Ballardini</copyright>
+    <lastBuildDate>Fri, 10 Apr 2026 00:00:00 -0300</lastBuildDate>
+    <atom:link href="https://katra.ballardini.com.ar/tags/inteligencia-artificial/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Del torno a la inteligencia artificial: cuando la precisión se autoperfecciona a sí misma</title>
+      <link>https://katra.ballardini.com.ar/posts/torno-precision-bootstrapping-ia/</link>
+      <pubDate>Fri, 10 Apr 2026 00:00:00 -0300</pubDate>
+      <guid>https://katra.ballardini.com.ar/posts/torno-precision-bootstrapping-ia/</guid>
+      <description>&lt;p&gt;¿Qué tiene en común el torno de precisión y la inteligencia artificial?&lt;/p&gt;&#xA;&lt;p&gt;A primera vista, nada.  Uno es una máquina de hierro que arranca virutas de metal; la otra es&#xA;software que predice la siguiente palabra.  Pero las dos enfrentan el mismo problema fundacional:&#xA;para construir una versión mejor de sí mismas, necesitan una versión de sí mismas que ya sea&#xA;suficientemente buena.  El torno preciso se fabrica con piezas precisas, pero las piezas precisas&#xA;se fabrican en un torno preciso.  La IA capaz de mejorar IA necesita ser lo bastante inteligente&#xA;para entender qué mejorar, pero esa inteligencia es justamente lo que estamos tratando de construir.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

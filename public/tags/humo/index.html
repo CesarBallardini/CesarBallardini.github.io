@@ -7,7 +7,7 @@
     <title>katra</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="">
-    <meta name="generator" content="Hugo 0.159.0">
+    <meta name="generator" content="Hugo 0.160.1">
     
     
     
@@ -157,16 +157,19 @@
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>La situación que voy a describir no está relacionada directamente con sistemas de información,
-computadoras o lenguajes de programación.  Sin embargo, está fuertemente asociada con la manera en
-que las personas perciben los problemas y proponen soluciones, y de eso hay mucho en los grupos de
-TI, sean desarrolladores o administradores de sistemas.</p>
-<p>Sean dos dos actividades centrales que se dan en secuencia, <em>A</em> y <em>B</em>. Parte de la gente no llega
-a tiempo para realizar satisfactoriamente <em>A</em>, y luego se queda para realizar <em>B</em>.  La proporción
-de gente que no aprovecha <em>A</em> es aproximadamente un 80% de los que podrían beneficiarse con ella.
-La proporción de gente que se beneficia de <em>A</em> respecto de la que se beneficia de <em>B</em> es
-aproximadamente un 18%.  O sea, 72% del total de beneficiados por <em>B</em> no tienen relación
-directa en este momento con la actividad en <em>A</em>.</p>
+      <p>Un sistema con muchos procesos tiene un tiempo de login de un minuto, cuando la expectativa es de
+1 ó 2 segundos.  Los procesos ocupan toda la memoria disponible, así que alguien propone aumentar la RAM.
+La solución parece obvia: más memoria, mejor rendimiento.</p>
+<div style="text-align:center;margin:1.5rem auto;">
+<img src="process-states.svg" alt="Estados de un proceso: nuevo, listo, corriendo, esperando, terminado" style="max-width:100%;">
+</div>
+<p><em>Diagrama de estados de un proceso</em><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p>Resultado: el tiempo de login sube a dos minutos.</p>
+<p>¿Qué pasó?  Antes de agregar memoria, muchos procesos que podrían estar listos para ejecutarse
+habían sido desalojados (<em>page-out</em>) a disco: el sistema operativo los había movido al disco para
+liberar RAM.  Un proceso en disco no compite por la CPU; simplemente espera allí, fuera de la cola
+de listos.  Con poca memoria, la cantidad de procesos compitiendo activamente por la CPU era baja,
+y cada uno recibía su quantum en su turno.</p>
     </div>
     <a href="/posts/soplar-humo-de-tabaco/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Leer más</a>
   </div>

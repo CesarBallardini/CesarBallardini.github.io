@@ -71,11 +71,11 @@ content/just-ideas-for-future-posts/
 ├── devops/                   ← Serie G  — IaC + deployment          (33 drafts)
 ├── legacy/                   ← Serie H  — Arqueología legacy        (13 drafts)
 ├── local/                    ← Serie I  — Memoria del cómputo local (13 drafts)
-├── nerd/                     ← Serie J  — Curiosidad nerd lateral   ( 9 drafts)
+├── nerd/                     ← Serie J  — Curiosidad nerd lateral   (10 drafts)
 └── vida/                     ← Serie K  — Vida y trabajo (lateral)  (23 drafts)
 ```
 
-**Total**: 180 drafts repartidos en 11 categorías. El catálogo maestro vive en `near-future-posts.md` (este archivo).
+**Total**: 181 drafts repartidos en 11 categorías. El catálogo maestro vive en `near-future-posts.md` (este archivo).
 
 **Convención de nombres de archivo draft:** `draft-{slug}.md` donde `{slug}` es el mismo slug que aparece dentro del archivo en el campo `**Slug propuesto:**` y que después se usará en el `hugo new content/es/posts/YYYY-MM-DD-{slug}/index.md`. El prefijo `draft-` marca que el archivo es un borrador de idea (no publicado), aunque sólo el contenido de `content/es/posts/` y `content/en/posts/` se renderiza al sitio.
 

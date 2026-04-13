@@ -48,7 +48,7 @@
                 />
   </url><url>
     <loc>https://katra.ballardini.com.ar/</loc>
-    <lastmod>2026-02-22T00:00:00-03:00</lastmod>
+    <lastmod>2026-04-10T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -62,7 +62,67 @@
                 href="https://katra.ballardini.com.ar/"
                 />
   </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/bootstrapping/</loc>
+    <lastmod>2026-04-10T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/posts/torno-precision-bootstrapping-ia/</loc>
+    <lastmod>2026-04-10T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://katra.ballardini.com.ar/posts/</loc>
+    <lastmod>2026-04-10T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/historia/</loc>
+    <lastmod>2026-04-10T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/inteligencia-artificial/</loc>
+    <lastmod>2026-04-10T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/mecanizado/</loc>
+    <lastmod>2026-04-10T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/nerd-lateral/</loc>
+    <lastmod>2026-04-10T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/precision/</loc>
+    <lastmod>2026-04-10T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/</loc>
+    <lastmod>2026-04-10T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/tags/"
+                />
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/torno/</loc>
+    <lastmod>2026-04-10T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/cpu/</loc>
     <lastmod>2025-03-10T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -82,25 +142,15 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/soplar-humo-de-tabaco/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/process-scheduling/</loc>
     <lastmod>2025-03-10T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/</loc>
+    <loc>https://katra.ballardini.com.ar/posts/soplar-humo-de-tabaco/</loc>
     <lastmod>2025-03-10T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://katra.ballardini.com.ar/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es-AR"
-                href="https://katra.ballardini.com.ar/tags/"
-                />
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/arqueologia/</loc>
     <lastmod>2025-02-23T00:00:00-03:00</lastmod>

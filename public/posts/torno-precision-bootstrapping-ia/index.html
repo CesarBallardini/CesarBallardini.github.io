@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Del torno a la inteligencia artificial: cuando la precisión se autoperfecciona a sí misma | katra</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="La historia del torno de precisión como metáfora para entender qué pasa cuando usamos IA para mejorar IA">
+    <meta name="generator" content="Hugo 0.160.1">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    <meta name="author" content="César Ballardini">
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://katra.ballardini.com.ar/posts/torno-precision-bootstrapping-ia/">
+    
+
+    
+    
+    <meta property="og:url" content="https://katra.ballardini.com.ar/posts/torno-precision-bootstrapping-ia/">
+  <meta property="og:site_name" content="katra">
+  <meta property="og:title" content="Del torno a la inteligencia artificial: cuando la precisión se autoperfecciona a sí misma">
+  <meta property="og:description" content="La historia del torno de precisión como metáfora para entender qué pasa cuando usamos IA para mejorar IA">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-04-10T00:00:00-03:00">
+    <meta property="article:modified_time" content="2026-04-10T00:00:00-03:00">
+    <meta property="article:tag" content="Torno">
+    <meta property="article:tag" content="Precision">
+    <meta property="article:tag" content="Bootstrapping">
+    <meta property="article:tag" content="Inteligencia Artificial">
+    <meta property="article:tag" content="Mecanizado">
+    <meta property="article:tag" content="Historia">
+
+  <meta itemprop="name" content="Del torno a la inteligencia artificial: cuando la precisión se autoperfecciona a sí misma">
+  <meta itemprop="description" content="La historia del torno de precisión como metáfora para entender qué pasa cuando usamos IA para mejorar IA">
+  <meta itemprop="datePublished" content="2026-04-10T00:00:00-03:00">
+  <meta itemprop="dateModified" content="2026-04-10T00:00:00-03:00">
+  <meta itemprop="wordCount" content="2741">
+  <meta itemprop="keywords" content="Torno,Precision,Bootstrapping,Inteligencia Artificial,Mecanizado,Historia,Nerd Lateral">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Del torno a la inteligencia artificial: cuando la precisión se autoperfecciona a sí misma">
+  <meta name="twitter:description" content="La historia del torno de precisión como metáfora para entender qué pasa cuando usamos IA para mejorar IA">
+
+      
+      
+    
+	
+      <style>/* ===================================================================
+   Table Styles
+   Applied via page_css: ['tables.css'] in frontmatter
+   =================================================================== */
+
+article table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+}
+
+article th,
+article td {
+  border: 1px solid #ccc;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+article thead th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+  border-bottom-width: 2px;
+}
+
+article tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+</style>
+
+  </head><body class="ma0 avenir bg-near-white production is-page is-page page-2026-04-10-torno-precision-bootstrapping-ia">
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('/posts/torno-precision-bootstrapping-ia/hero-cassier-lathe-1904.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        katra
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/consultoria/" title="Consultoría pagina">
+              Consultoría
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/cv/" title="CV pagina">
+              CV
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/habilidades/" title="Habilidades Técnicas pagina">
+              Habilidades Técnicas
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/posts/" title="Entradas pagina">
+              Entradas
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="http://linkedin.com/in/cesar-ballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a><a href="https://x.com/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition x-twitter link dib z-999 pt3 pt0-l mr1"
+        title="follow on X - Opens in a new window"
+        aria-label="follow on X - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+            
+          </span></a><a href="https://github.com/CesarBallardini/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+            
+          </span></a></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">Del torno a la inteligencia artificial: cuando la precisión se autoperfecciona a sí misma</div>
+          
+            <div class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
+              La historia del torno de precisión como metáfora para entender qué pasa cuando usamos IA para mejorar IA
+            </div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+
+  <article class="page-2026-04-10-torno-precision-bootstrapping-ia flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Entradas
+      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Ftorno-precision-bootstrapping-ia%2F&amp;subject=Del&#43;torno&#43;a&#43;la&#43;inteligencia&#43;artificial%3A&#43;cuando&#43;la&#43;precisi%C3%B3n&#43;se&#43;autoperfecciona&#43;a&#43;s%C3%AD&#43;misma"
+        class="ananke-social-link email no-underline"
+        title="Share on Email" aria-label="Share on Email"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
+                
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Ftorno-precision-bootstrapping-ia%2F&amp;summary=%C2%BFQu%C3%A9&#43;tiene&#43;en&#43;com%C3%BAn&#43;el&#43;torno&#43;de&#43;precisi%C3%B3n&#43;y&#43;la&#43;inteligencia&#43;artificial%3F%0AA&#43;primera&#43;vista%2C&#43;nada.&#43;Uno&#43;es&#43;una&#43;m%C3%A1quina&#43;de&#43;hierro&#43;que&#43;arranca&#43;virutas&#43;de&#43;metal%3B&#43;la&#43;otra&#43;es&#43;software&#43;que&#43;predice&#43;la&#43;siguiente&#43;palabra.&#43;Pero&#43;las&#43;dos&#43;enfrentan&#43;el&#43;mismo&#43;problema&#43;fundacional%3A&#43;para&#43;construir&#43;una&#43;versi%C3%B3n&#43;mejor&#43;de&#43;s%C3%AD&#43;mismas%2C&#43;necesitan&#43;una&#43;versi%C3%B3n&#43;de&#43;s%C3%AD&#43;mismas&#43;que&#43;ya&#43;sea&#43;suficientemente&#43;buena.&#43;El&#43;torno&#43;preciso&#43;se&#43;fabrica&#43;con&#43;piezas&#43;precisas%2C&#43;pero&#43;las&#43;piezas&#43;precisas&#43;se&#43;fabrican&#43;en&#43;un&#43;torno&#43;preciso.&#43;La&#43;IA&#43;capaz&#43;de&#43;mejorar&#43;IA&#43;necesita&#43;ser&#43;lo&#43;bastante&#43;inteligente&#43;para&#43;entender&#43;qu%C3%A9&#43;mejorar%2C&#43;pero&#43;esa&#43;inteligencia&#43;es&#43;justamente&#43;lo&#43;que&#43;estamos&#43;tratando&#43;de&#43;construir.%0A&amp;title=Del&#43;torno&#43;a&#43;la&#43;inteligencia&#43;artificial%3A&#43;cuando&#43;la&#43;precisi%C3%B3n&#43;se&#43;autoperfecciona&#43;a&#43;s%C3%AD&#43;misma&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Ftorno-precision-bootstrapping-ia%2F"
+        class="ananke-social-link linkedin no-underline"
+        title="Share on LinkedIn" aria-label="Share on LinkedIn"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+                
+              </span></a><a href="https://twitter.com/intent/tweet/?&amp;text=%C2%BFQu%C3%A9&#43;tiene&#43;en&#43;com%C3%BAn&#43;el&#43;torno&#43;de&#43;precisi%C3%B3n&#43;y&#43;la&#43;inteligencia&#43;artificial%3F%0AA&#43;primera&#43;vista%2C&#43;nada.&#43;Uno&#43;es&#43;una&#43;m%C3%A1quina&#43;de&#43;hierro&#43;que&#43;arranca&#43;virutas&#43;de&#43;metal%3B&#43;la&#43;otra&#43;es&#43;software&#43;que&#43;predice&#43;la&#43;siguiente&#43;palabra.&#43;Pero&#43;las&#43;dos&#43;enfrentan&#43;el&#43;mismo&#43;problema&#43;fundacional%3A&#43;para&#43;construir&#43;una&#43;versi%C3%B3n&#43;mejor&#43;de&#43;s%C3%AD&#43;mismas%2C&#43;necesitan&#43;una&#43;versi%C3%B3n&#43;de&#43;s%C3%AD&#43;mismas&#43;que&#43;ya&#43;sea&#43;suficientemente&#43;buena.&#43;El&#43;torno&#43;preciso&#43;se&#43;fabrica&#43;con&#43;piezas&#43;precisas%2C&#43;pero&#43;las&#43;piezas&#43;precisas&#43;se&#43;fabrican&#43;en&#43;un&#43;torno&#43;preciso.&#43;La&#43;IA&#43;capaz&#43;de&#43;mejorar&#43;IA&#43;necesita&#43;ser&#43;lo&#43;bastante&#43;inteligente&#43;para&#43;entender&#43;qu%C3%A9&#43;mejorar%2C&#43;pero&#43;esa&#43;inteligencia&#43;es&#43;justamente&#43;lo&#43;que&#43;estamos&#43;tratando&#43;de&#43;construir.%0A&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Ftorno-precision-bootstrapping-ia%2F"
+        class="ananke-social-link x-twitter no-underline"
+        title="Share on X" aria-label="Share on X"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+                
+              </span></a><a href="%25!s%28%3cnil%3e%29?"
+        class="ananke-social-link github no-underline"
+        title="Share on GitHub" aria-label="Share on GitHub"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+                
+              </span></a></div>
+<h1 class="f1 athelas mt3 mb1">Del torno a la inteligencia artificial: cuando la precisión se autoperfecciona a sí misma</h1>
+      
+      <p class="tracked"><strong>César Ballardini</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-04-10T00:00:00-03:00">10 de abril de 2026</time>
+      
+
+      
+      
+        
+        
+        <span class="f6 mv4 dib tracked"> - Lectura en 13 minutos </span>
+        <span class="f6 mv4 dib tracked"> - 2741 palabras </span>
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><p>¿Qué tiene en común el torno de precisión y la inteligencia artificial?</p>
+<p>A primera vista, nada.  Uno es una máquina de hierro que arranca virutas de metal; la otra es
+software que predice la siguiente palabra.  Pero las dos enfrentan el mismo problema fundacional:
+para construir una versión mejor de sí mismas, necesitan una versión de sí mismas que ya sea
+suficientemente buena.  El torno preciso se fabrica con piezas precisas, pero las piezas precisas
+se fabrican en un torno preciso.  La IA capaz de mejorar IA necesita ser lo bastante inteligente
+para entender qué mejorar, pero esa inteligencia es justamente lo que estamos tratando de construir.</p>
+<p>Es el problema del huevo y la gallina.  Y las dos lo resolvieron de la misma manera: iterando.</p>
+<h2 id="el-primer-torno">El primer torno</h2>
+<p>La evidencia más antigua de un torno viene del Egipto antiguo, alrededor del 1300 antes de nuestra
+era<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.  Era un aparato de dos personas: una enrollaba una cuerda alrededor de la pieza y
+tiraba para hacerla girar, la otra apoyaba una herramienta afilada contra el material.  Los romanos
+le agregaron un arco que permitía girar la pieza con una sola mano.</p>
+<p>¿Precisión?  La que daban el ojo y el pulso.  Milímetros, con suerte.  No existía la idea de
+&ldquo;tolerancia&rdquo; porque no existía la idea de que dos piezas idénticas pudieran ser intercambiables.
+Cada objeto era único, ajustado a mano contra su compañero.  Si un eje no entraba en su buje,
+lo limabas hasta que entrara.</p>
+<h2 id="los-tornos-antes-de-la-revolución-industrial">Los tornos antes de la Revolución Industrial</h2>
+<p>Durante la Edad Media apareció el torno de pedal, que liberó las dos manos del operario.  Fue una
+mejora enorme en comodidad, pero no en precisión.  El problema seguía siendo el mismo: la
+herramienta de corte la sostenía la mano humana, y la mano humana tiembla.</p>
+<p>Jesse Ramsden<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> construyó entre 1767 y 1775 su máquina de dividir circular: una rueda de 45
+pulgadas con 2160 dientes de precisión, engranada con un tornillo patrón.  Con ella se podían
+graduar las escalas angulares de sextantes y octantes de manera mecánica.  Lo que antes llevaba
+horas de trabajo manual de un artesano experto, ahora se hacía en 30 minutos.  Ramsden le dio a
+los fabricantes de instrumentos británicos décadas de ventaja sobre el resto de Europa.</p>
+<p>Pero aun así, las piezas mecánicas grandes — cilindros, ejes, engranajes — seguían siendo burdas.
+Los cilindros se forjaban a martillo, eran irregulares, y perdían presión por todos lados.
+James Watt lo sabía mejor que nadie.</p>
+<h2 id="la-máquina-de-vapor">La máquina de vapor</h2>
+<p>Watt tenía el diseño de una máquina de vapor superior a la de Newcomen, pero no podía construirla.
+El problema era el cilindro: necesitaba uno lo bastante redondo para que el pistón sellara sin
+perder vapor, y nadie podía fabricar un cilindro así.  Los cilindros de hierro forjado de la época
+tenían irregularidades de varios milímetros.</p>
+<p>En 1774, John Wilkinson<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> — apodado &ldquo;Iron-Mad Wilkinson&rdquo; — inventó una máquina de
+mandrilar que resolvió el problema.  En vez de forjar un tubo hueco (inherentemente impreciso),
+Wilkinson partía de un bloque sólido de hierro y lo perforaba con un eje cortante apoyado en ambos
+extremos.  La rigidez del eje era la fuente de la precisión — no necesitó una máquina precisa
+previa, solo una barra muy rígida.</p>
+<p>La tolerancia que logró: &ldquo;no yerra más que el espesor de un chelín viejo&rdquo;, unos 2.5 milímetros
+en un cilindro de 120 centímetros de diámetro.  Parece burdo hoy, pero fue suficiente para que la
+máquina de vapor de Watt funcionara.  Watt le dio a Wilkinson un contrato de exclusividad.</p>
+<p>Y acá empieza la cadena de bootstrapping.</p>
+<p>La palabra <em>bootstrapping</em> viene de una vieja expresión inglesa: &ldquo;pull yourself up by your
+bootstraps&rdquo; — levantarte tirando de las presillas de tus propias botas.  Se la suele asociar con
+el Barón Munchausen<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>, el personaje del libro de Rudolf Erich Raspe (1785) que se salva
+de situaciones imposibles con hazañas absurdas.  Aunque en la versión original el Barón se saca
+de un pantano tirándose del pelo (de su coleta, para ser exactos), la versión con las botas se
+le pegó después.  Lo importante es el sentido original: la frase describía algo <em>físicamente
+imposible</em>.  No podés levantarte del piso tirando de tus propios zapatos.  Recién en el siglo XX
+el significado se invirtió y pasó a significar &ldquo;salir adelante con tus propios medios.&rdquo;</p>
+<p>En ingeniería, el término recuperó el sentido original de paradoja: ¿cómo arrancás un sistema que
+se necesita a sí mismo para funcionar?  Una computadora necesita un programa para cargar programas
+— el <em>bootstrap loader</em>.  Un compilador necesita un compilador para compilarse a sí mismo.  Y un
+torno preciso necesita piezas precisas que solo un torno preciso puede fabricar.</p>
+<h2 id="la-aceleración-en-la-precisión">La aceleración en la precisión</h2>
+<h3 id="henry-maudslay-y-el-torno-de-roscar-1800">Henry Maudslay y el torno de roscar (~1800)</h3>
+<p>Henry Maudslay<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> es el padre fundador de la máquina-herramienta moderna.  Su invención
+clave fue el torno con corredera (<em>slide rest</em>) y el tornillo patrón (<em>leadscrew</em>) con engranajes
+intercambiables.  El portaherramientas ya no dependía de la mano humana: estaba fijado a
+superficies metálicas cepilladas con precisión, y avanzaba en proporción exacta al giro de la pieza.</p>
+<p>El resultado: por primera vez se podían cortar roscas estandarizadas.  Antes de Maudslay, cada
+tornillo era ligeramente diferente y ninguna tuerca encajaba en otro bulón.  Después de Maudslay,
+las piezas podían ser intercambiables.</p>
+<p>Tolerancia de trabajo: centésimas de milímetro, del orden de 0.025 mm.</p>
+<p><img src="/posts/torno-precision-bootstrapping-ia/maudslay-lathe-1800.jpg" alt="Torno de roscar de Henry Maudslay, circa 1800. Se ve el tornillo patrón a lo largo de la bancada y el portaherramientas con corredera que eliminó la dependencia de la mano humana.">
+<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></p>
+<p>Maudslay también construyó el &ldquo;Lord Chancellor&rdquo;, un micrómetro de banco capaz de medir a
+diezmilésimas de pulgada — unos 2.5 micrones.  Lo usaba como árbitro final en su taller.  Y acá
+aparece una clave de todo este proceso: la medición siempre fue un paso adelante de la manufactura.
+No podés mejorar lo que no podés medir.</p>
+<h3 id="joseph-whitworth-y-la-planaridad-desde-la-nada-1850s">Joseph Whitworth y la planaridad desde la nada (1850s)</h3>
+<p>Joseph Whitworth<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> fue aprendiz de Maudslay, y llevó la idea más lejos.  Estandarizó
+la rosca británica (el estándar Whitworth, la primera norma nacional de roscas) y perfeccionó
+el <em>método de los tres platos</em> para crear superficies perfectamente planas.</p>
+<p>El método es el ejemplo más puro de bootstrapping de precisión que conozco, y merece que lo
+cuente con detalle.  Tomá tres platos de acero — los vamos a llamar Rojo, Verde y Azul.  Untá
+uno con azul de Prusia<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> (un pigmento), frotalo contra el segundo: las marcas de
+pigmento te muestran dónde están los puntos altos.  Rasqueteá los puntos altos.  Ahora usá
+el primero como referencia para rasquetear el tercero.  Después frotá el segundo contra el tercero.
+Repetí el ciclo.</p>
+<p>Lo extraordinario es que los errores no se acumulan — se cancelan.  Al alternar cuál plato es
+referencia y cuál se corrige, el proceso converge a la planaridad geométrica verdadera sin
+necesitar una referencia externa que ya sea plana.  Es planaridad surgida de la nada, solo
+geometría e iteración.  Es un compilador compilándose a sí mismo, dos siglos antes de que
+existieran los compiladores.</p>
+<p>Whitworth también construyó la &ldquo;Máquina del Millonésimo&rdquo;<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>, exhibida en la Gran
+Exposición de 1851.  Medía a una millonésima de pulgada, unos 25 nanómetros.  Era tan sensible
+que detectaba la dilatación térmica de una barra de hierro de una pulgada por el calor de un
+dedo tocándola.</p>
+<h3 id="carl-edvard-johansson-y-los-bloques-patrón-1901">Carl Edvard Johansson y los bloques patrón (1901)</h3>
+<p>El sueco Johansson<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup> inventó los <em>gauge blocks</em> — bloques patrón de longitud que se
+combinan por adherencia molecular (<em>wringing</em>): los apretás y torcés suavemente uno contra otro,
+y se adhieren por fuerzas intermoleculares y presión atmosférica.  Para 1910 había roto la barrera
+del milésimo de milímetro: 1 micrón.  Sus bloques eran más precisos que los patrones de las
+oficinas nacionales de metrología.</p>
+<p>Henry Ford lo contrató en 1923.  Su primer cliente americano fue Henry Leland en Cadillac,
+alrededor de 1908 — el hombre que hizo de la intercambiabilidad total de piezas la base de la
+industria automotriz.</p>
+<h3 id="la-escalera-completa">La escalera completa</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Época</th>
+          <th>Tolerancia</th>
+          <th>Hito</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Egipto antiguo (~1300 AEC)</td>
+          <td>varios mm</td>
+          <td>Torno de cuerda, ajuste a ojo</td>
+      </tr>
+      <tr>
+          <td>1774 — Wilkinson</td>
+          <td>~2.5 mm</td>
+          <td>Cilindro para la máquina de vapor de Watt</td>
+      </tr>
+      <tr>
+          <td>~1800 — Maudslay</td>
+          <td>~0.025 mm</td>
+          <td>Torno de roscar con corredera</td>
+      </tr>
+      <tr>
+          <td>1850s — Whitworth</td>
+          <td>medición a ~25 nm</td>
+          <td>Máquina del Millonésimo</td>
+      </tr>
+      <tr>
+          <td>1901 — Johansson</td>
+          <td>1 micrón (0.001 mm)</td>
+          <td>Bloques patrón como estándar físico</td>
+      </tr>
+      <tr>
+          <td>CNC moderno</td>
+          <td>2-5 micrones</td>
+          <td>Mecanizado industrial estándar</td>
+      </tr>
+      <tr>
+          <td>Ultra-precisión</td>
+          <td>sub-micrón, ~100 nm</td>
+          <td>Óptica, aeroespacial, semiconductores</td>
+      </tr>
+  </tbody>
+</table>
+<p>Cada generación de máquinas-herramienta fabricó las piezas de la siguiente generación, más
+precisa.  Superficies planas mejores produjeron guías mejores; guías mejores produjeron cortes más
+rectos; cortes más rectos produjeron tornillos patrón más exactos; tornillos más exactos produjeron
+tornos más precisos.  Y en cada escalón, un nuevo instrumento de medición reveló errores que
+antes eran invisibles y creó la demanda para el siguiente salto.</p>
+<p>El ciclo nunca se detuvo.</p>
+<h2 id="la-conexión-ia">La conexión IA</h2>
+<p>En Springfield, Missouri, un maquinista llamado Dave Gingery<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup> bootstrappeó un taller
+mecánico completo a partir de chatarra.  Empezó con un balde de 20 litros convertido en fundición,
+coló un torno rudimentario en aluminio, usó ese torno para construir una taladradora, y después
+fue reemplazando piezas del propio torno con versiones mejoradas fabricadas en las nuevas máquinas.
+Kevin Kelly lo llama un &ldquo;dispositivo de up-creation&rdquo;: una máquina capaz de generar más precisión
+de la que tiene.</p>
+<p>La Revolución Industrial entera fue un dispositivo de up-creation a escala civilizatoria.</p>
+<p>En 1965, el estadístico y criptógrafo I.J. Good<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup> escribió:</p>
+<blockquote>
+<p>Sea una máquina ultrainteligente aquella que puede superar ampliamente todas las actividades
+intelectuales de cualquier humano por inteligente que sea.  Dado que el diseño de máquinas es
+una de esas actividades, una máquina ultrainteligente podría diseñar máquinas aún mejores;
+habría entonces, sin duda alguna, una &ldquo;explosión de inteligencia&rdquo;, y la inteligencia del hombre
+quedaría muy atrás.</p>
+</blockquote>
+<p>Good fue el primero en nombrar el bucle recursivo que el torno venía recorriendo en silencio
+desde hacía siglos.  Pero durante doscientos años la analogía no cerró del todo, porque no
+existía una herramienta que pudiera mejorarse a sí misma en el plano de la inteligencia.</p>
+<p>Hasta ahora.</p>
+<p>Hoy los ejemplos son concretos:</p>
+<ul>
+<li>
+<p><strong>AlphaChip</strong><sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup> (Google DeepMind) usa aprendizaje por refuerzo para diseñar los
+<em>floorplans</em> de los chips TPU — los mismos chips que corren los modelos de DeepMind.  Ya diseñó
+layouts para tres generaciones consecutivas de TPU.  Lo que a un equipo humano le tomaba semanas,
+AlphaChip lo genera en horas.  DeepMind lo dice explícitamente: &ldquo;los chips han impulsado el
+progreso de la IA, y AlphaChip devuelve el favor.&rdquo;</p>
+</li>
+<li>
+<p><strong>AlphaEvolve</strong><sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup> (Google DeepMind, mayo 2025) es un agente evolutivo de código que
+descubre y optimiza algoritmos.  Recuperó 0.7% de los recursos de cómputo globales de Google,
+logró un 32.5% de speedup en kernels FlashAttention, y encontró la primera mejora al algoritmo
+de Strassen para multiplicación de matrices en 56 años.</p>
+</li>
+<li>
+<p><strong>GPT-5.3-Codex</strong><sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup> (OpenAI, febrero 2026): OpenAI declaró que es &ldquo;el primer modelo que
+fue instrumental en crearse a sí mismo.&rdquo;  Usaron versiones tempranas del modelo para debuggear
+su propio entrenamiento y administrar clusters de GPU.</p>
+</li>
+<li>
+<p><strong>Claude diseñando Claude</strong><sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup> (Anthropic, septiembre 2025): Dario Amodei dijo que
+&ldquo;esencialmente tenemos a Claude diseñando la siguiente versión de Claude&hellip; ese bucle empieza
+a cerrarse muy rápido.&rdquo;</p>
+</li>
+</ul>
+<p>La tabla de analogías se arma sola:</p>
+<p><img src="/posts/torno-precision-bootstrapping-ia/recursive-self-improvement.svg" alt="Mejora recursiva sin y con auto-mejora: a la izquierda, progreso lineal donde el rendimiento se duplica cada 3 años; a la derecha, el mismo proceso con auto-mejora recursiva, donde cada generación acelera a la siguiente.">
+<sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup></p>
+<table>
+  <thead>
+      <tr>
+          <th>Torno / mecanizado</th>
+          <th>IA</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Torno rudimentario</td>
+          <td>Modelos base tempranos</td>
+      </tr>
+      <tr>
+          <td>Cada generación fabrica la siguiente</td>
+          <td>Cada modelo entrena o diseña al siguiente</td>
+      </tr>
+      <tr>
+          <td>Método de los tres platos: planaridad de la nada</td>
+          <td>NAS / AutoML: arquitecturas de la nada</td>
+      </tr>
+      <tr>
+          <td>&ldquo;No podés mejorar lo que no podés medir&rdquo;</td>
+          <td>Benchmarks y evaluaciones como instrumentos</td>
+      </tr>
+      <tr>
+          <td>Bloques patrón de Johansson</td>
+          <td>Datasets curados como estándar de referencia</td>
+      </tr>
+      <tr>
+          <td>CNC: la máquina programa la máquina</td>
+          <td>IA escribiendo código para IA</td>
+      </tr>
+      <tr>
+          <td>AlphaChip diseña el chip que corre AlphaChip</td>
+          <td>El bucle se cierra</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="perspectivas-desde-la-historia-reciente">Perspectivas desde la historia reciente</h2>
+<p>¿Hasta dónde llega la analogía?</p>
+<p>François Chollet<sup id="fnref:18"><a href="#fn:18" class="footnote-ref" role="doc-noteref">18</a></sup> argumenta que la explosión de inteligencia es improbable.  Su razón:
+el progreso exponencial choca con fricción exponencial en otras partes del sistema.  El resultado
+es crecimiento lineal o sigmoidal, no exponencial.  Señala que la mejora recursiva de herramientas
+viene ocurriendo durante toda la historia humana sin producir una singularidad.</p>
+<p>El contra-argumento: el mecanizado nunca produjo una singularidad porque las mejoras eran físicas.
+Los átomos tienen fricción, los metales tienen elasticidad, la termodinámica pone límites.  La IA
+opera en información, donde copiar es gratis y la iteración es casi instantánea.  ¿Es esa
+diferencia suficiente para romper el patrón histórico?</p>
+<p>La historia del torno sugiere cautela.  Cada salto de precisión fue real, pero cada salto también
+fue más difícil que el anterior.  Pasar de milímetros a décimas de milímetro tomó unas décadas.
+Pasar de décimas a micrones tomó un siglo.  Pasar de micrones a nanómetros requirió cambiar de
+tecnología por completo — de la mecánica a la óptica y la litografía.  La curva de precisión del
+mecanizado<sup id="fnref:19"><a href="#fn:19" class="footnote-ref" role="doc-noteref">19</a></sup> no es exponencial: es una escalera donde cada peldaño cuesta más que el
+anterior.</p>
+<p>Quizás la IA siga el mismo patrón.  Los primeros saltos de capacidad — de GPT-2 a GPT-4, digamos —
+fueron dramáticos.  Los siguientes podrían requerir cambios de paradigma equivalentes a pasar del
+rasqueteado manual a la interferometría láser.  No está claro que el bucle recursivo, por poderoso
+que sea, escape a los rendimientos decrecientes.</p>
+<p>Pero hay algo que la historia del torno deja fuera de duda: el ciclo funciona.  Maudslay no
+necesitó un torno perfecto para empezar.  Necesitó uno apenas mejor que el anterior, y la paciencia
+de iterar.</p>
+<h2 id="conclusión">Conclusión</h2>
+<p>El método de los tres platos de Whitworth crea planaridad de la nada — sin una superficie plana
+previa, sin un instrumento que diga &ldquo;esto es plano.&rdquo;  Solo tres platos imperfectos, alternándose
+como referencia y como pieza, corrigiéndose mutuamente, convergiendo hacia algo que ninguno de
+los tres tenía al principio.</p>
+<p>La IA está haciendo lo mismo.  Modelos imperfectos que diseñan chips, que escriben código, que
+generan datos de entrenamiento, que descubren algoritmos — cada uno corrigiendo al siguiente, cada
+siguiente un poco mejor que el anterior.</p>
+<p>La pregunta que nos queda no es si la IA puede mejorar IA.  Ya lo está haciendo.  La pregunta
+es si el ciclo converge — como los tres platos de Whitworth, que se estabilizan en una superficie
+plana — o si diverge.</p>
+<p>Maudslay resolvió su problema del huevo y la gallina hace doscientos años.  Nosotros recién
+estamos empezando a resolver el nuestro.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://en.wikipedia.org/wiki/Lathe">Lathe</a> — historia del torno desde el Egipto antiguo hasta CNC, en Wikipedia.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://en.wikipedia.org/wiki/Jesse_Ramsden">Jesse Ramsden</a> — la máquina de dividir circular y la fabricación de instrumentos de precisión en el siglo XVIII.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p><a href="https://en.wikipedia.org/wiki/John_Wilkinson_%28industrialist%29">John Wilkinson (industrialist)</a> — la máquina de mandrilar que hizo posible la máquina de vapor de Watt.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p><a href="https://en.wikipedia.org/wiki/Bootstrapping">Bootstrapping</a> — Wikipedia sobre el origen del término, su conexión con el Barón Munchausen, y su uso en ingeniería y computación.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p><a href="https://en.wikipedia.org/wiki/Henry_Maudslay">Henry Maudslay</a> — torno de roscar, micrómetro Lord Chancellor, y la generación de ingenieros que formó.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>Imagen de <a href="https://commons.wikimedia.org/wiki/File:Machine_Tool_Collection_Gilbert_1966_Plate_10.jpg">K.R. Gilbert, <em>The Machine Tool Collection</em>, Science Museum London (1966), Plate 10</a> — dominio público.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p><a href="https://en.wikipedia.org/wiki/Joseph_Whitworth">Joseph Whitworth</a> — estandarización de roscas y la Máquina del Millonésimo.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8">
+<p><a href="https://ericweinhoffer.com/blog/2017/7/30/the-whitworth-three-plates-method">The Whitworth Three Plates Method</a> — Eric Weinhoffer explica cómo se crea planaridad desde cero con tres platos.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:9">
+<p><a href="https://www.imeche.org/news/news-article/the-stunning-sensitivity-of-the-imeche-archive%27s-%27millionth-machine%27">The stunning sensitivity of the IMechE Archive&rsquo;s &lsquo;Millionth Machine&rsquo;</a> — la Máquina del Millonésimo en el Institution of Mechanical Engineers.&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:10">
+<p><a href="https://en.wikipedia.org/wiki/Carl_Edvard_Johansson">Carl Edvard Johansson</a> — inventor de los bloques patrón, barrera del micrón rota en 1910.&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:11">
+<p><a href="https://medium.com/@kevin2kelly/bootstrapping-the-industrial-age-dc8a100b351d">Bootstrapping the Industrial Age</a> — Kevin Kelly sobre Dave Gingery, dispositivos de up-creation y el bootstrapping de la precisión.&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:12">
+<p><a href="https://languagelog.ldc.upenn.edu/myl/Good1964.pdf">Speculations Concerning the First Ultraintelligent Machine</a> — I.J. Good, en <em>Advances in Computers</em>, vol. 6, Academic Press, 1965. El paper original donde Good acuña el concepto de &ldquo;explosión de inteligencia&rdquo;. El MIRI (Machine Intelligence Research Institute) tomó este concepto como eje de su trabajo, aunque la organización ha sido criticada por su sesgo alarmista: en 2024 abandonó la investigación técnica en alineación para dedicarse al activismo mediático y el lobby político, y su co-fundador Eliezer Yudkowsky ha propuesto medidas tan extremas como atacar datacenters con misiles para frenar el desarrollo de IA.&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:13">
+<p><a href="https://deepmind.google/blog/how-alphachip-transformed-computer-chip-design/">How AlphaChip transformed computer chip design</a> — Google DeepMind, IA diseñando los chips que corren IA.&#160;<a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:14">
+<p><a href="https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/">AlphaEvolve: a Gemini-powered coding agent for designing advanced algorithms</a> — Google DeepMind, mayo 2025.&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:15">
+<p><a href="https://www.nbcnews.com/tech/innovation/openai-says-new-codex-coding-model-helped-build-rcna257521">OpenAI says new Codex coding model helped build itself</a> — NBC News sobre GPT-5.3-Codex.&#160;<a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:16">
+<p><a href="https://www.axios.com/2025/09/17/ai-anthropic-amodei-claude">Anthropic&rsquo;s Claude is getting better at building itself</a> — Axios, septiembre 2025.&#160;<a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:17">
+<p>Imagen de <a href="https://commons.wikimedia.org/wiki/File:Recursive_self-improvement.svg">Rolf h nelson, Wikimedia Commons (2018)</a> — CC BY-SA 4.0.&#160;<a href="#fnref:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:18">
+<p><a href="https://medium.com/@francois.chollet/the-impossibility-of-intelligence-explosion-5be4a9eda6ec">The Impossibility of Intelligence Explosion</a> — François Chollet, el contra-argumento escéptico.&#160;<a href="#fnref:18" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:19">
+<p>Simon Winchester, <em>The Perfectionists: How Precision Engineers Created the Modern World</em> (2018) — el libro definitivo sobre la historia de la precisión, de Wilkinson a la litografía de semiconductores. Disponible para préstamo en <a href="https://archive.org/details/perfectionistsho0000winc">Internet Archive</a>. Charlas del autor en C-SPAN Book TV: <a href="https://archive.org/details/CSPAN2_20181224_144600_Simon_Winchester_The_Perfectionists">Miami Book Fair, dic. 2018</a> y <a href="https://archive.org/details/CSPAN2_20181118_030000_Simon_Winchester_The_Perfectionists">nov. 2018</a>.&#160;<a href="#fnref:19" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/torno/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Torno</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/precision/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Precision</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/bootstrapping/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Bootstrapping</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/inteligencia-artificial/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Inteligencia Artificial</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/mecanizado/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Mecanizado</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/historia/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Historia</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/nerd-lateral/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Nerd Lateral</a>
+   </li>
+  
+</ul>
+
+      
+    </div></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://katra.ballardini.com.ar/" >
+    &copy;  César Ballardini 2026 
+  </a>
+    <div><div class="ananke-socials"><a href="http://linkedin.com/in/cesar-ballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a><a href="https://x.com/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition x-twitter link dib z-999 pt3 pt0-l mr1"
+        title="follow on X - Opens in a new window"
+        aria-label="follow on X - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+            
+          </span></a><a href="https://github.com/CesarBallardini/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+            
+          </span></a></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

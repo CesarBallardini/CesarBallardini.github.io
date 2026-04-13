@@ -12,7 +12,7 @@ Personal bilingual Hugo blog ("katra") by César Ballardini, published at https:
 hugo server          # Local dev server with live reload (default: http://localhost:1313/)
 hugo server -D       # Include draft posts
 hugo                 # Build site to ./public/
-hugo new content/es/posts/YYYY-MM-DD-slug-here.md   # Create a new Spanish post
+hugo new content/es/posts/YYYY-MM-DD-slug-here/index.md   # Create a new Spanish post (page bundle)
 ```
 
 No Makefile, no npm scripts, no other build tooling in the root. The theme has its own package.json but that's managed upstream.
@@ -23,10 +23,14 @@ GitHub Actions (`.github/workflows/static.yml`) deploys the pre-built `./public/
 
 ## Content Conventions
 
-- **Post filename pattern:** `YYYY-MM-DD-slug-in-lowercase.md` — Hugo extracts the date from the filename (`[frontmatter] date = [':filename', ':default']`)
+- **Post format:** all posts use **page bundles** — `content/es/posts/YYYY-MM-DD-slug/index.md` with images and assets as siblings inside the same folder. Flat `.md` files are the old format; do not create new ones.
+- **Post filename pattern:** `YYYY-MM-DD-slug-in-lowercase` — Hugo extracts the date from the directory name (`[frontmatter] date = [':filename', ':default']`)
 - **Spanish posts go in:** `content/es/posts/`
 - **English posts go in:** `content/en/posts/`
 - **Frontmatter:** YAML (`---`) for all 2025+ posts. The full house rules — frontmatter shape, tag rules (no periods, Hugo Windows limitation), footnote style (named, never numeric), internal link rules (no `/es/` prefix in Spanish URLs), image bundles vs flat files, voice — live in [`content/just-ideas-for-future-posts/near-future-posts.md`](content/just-ideas-for-future-posts/near-future-posts.md) under "Convenciones de la casa". Read that section before writing or editing a post — it reflects the actual practice in the published posts, not what `AGENTS.md` says (they conflict; the published posts win).
+- **Hero banner:** every post has `featured_image: hero-filename.jpg` in frontmatter. The image lives in the post's bundle folder. Use landscape-oriented images (2.5:1 ratio or wider); portrait photos must be cropped with Pillow before use (`uv run --with Pillow python`). `featured_image_class = "cover bg-center"` is set globally in `hugo.toml`.
+- **Per-page CSS:** add `page_css: ['tables.css']` to frontmatter for posts with markdown tables. The CSS lives at `assets/ananke/css/tables.css` and is loaded via the `layouts/partials/head-additions.html` partial.
+- **Image attribution:** every public domain or CC-licensed image requires a named footnote with URL, author, and license. Example: `[^img_foo]: Imagen de [Title](URL) — CC BY-SA 4.0 — Author.`
 - **Draft ideas** live in the editorial planning system at `content/just-ideas-for-future-posts/` (outside Hugo's content tree, not rendered to the site). See [Editorial Planning System](#editorial-planning-system) below.
 - **Unsafe HTML** is enabled in Goldmark renderer (`markup.goldmark.renderer.unsafe = true`)
 
@@ -69,7 +73,7 @@ There is no Series F. The skip is intentional and preserved.
 
 **Two key operating principles to respect**:
 
-1. **Ideas are kept forever, never deleted for staleness.** When an idea cools off, mark its `Estado actual:` as `en hibernación` or `concepto refinado` and leave the draft file in place. The only legitimate reason to delete a draft is that the concept has been factually superseded. Do not suggest deleting unwritten drafts in maintenance passes.
+1. **Ideas are kept forever, never deleted for staleness.** When an idea cools off, mark its `Estado actual:` as `en hibernación` or `concepto refinado` and leave the draft file in place. The only legitimate reason to delete a draft is that the concept has been factually superseded or the post has been published with no remaining improvements. Do not suggest deleting unwritten drafts in maintenance passes. When a post is published: delete the draft file and remove its entry from the index **only if** the draft has no pending improvements listed. If it has pending improvements (cross-links to add, possible follow-up posts, etc.), keep both the draft and the index entry.
 2. **The author has lived experience in some of these topics** (Argentine public-sector IT — STG and Ministerio de Cultura Santa Fe in particular) and personal life topics in Series K. Do not invent details about institutions, projects, dates, or personal circumstances; ask the user or leave gaps in the entry. The drafts already in place reflect this — they have placeholders where verification is needed.
 
 **When the user says "the plan" or "the editorial plan"**, they mean `content/just-ideas-for-future-posts/near-future-posts.md` and the 11 category folders alongside it.
@@ -77,9 +81,10 @@ There is no Series F. The skip is intentional and preserved.
 ## Architecture
 
 - **Theme:** Ananke, included as a git submodule at `themes/ananke` (source: `github.com/theNewDynamic/gohugo-theme-ananke`)
-- **No custom layouts or shortcodes** — the site relies entirely on the Ananke theme defaults
+- **Custom partial:** `layouts/partials/head-additions.html` — injects per-page CSS listed in the `page_css` frontmatter array
+- **Custom CSS:** `assets/ananke/css/tables.css` — adds borders and padding to markdown tables; loaded via `page_css` frontmatter
 - **Archetype:** `archetypes/default.md` uses TOML frontmatter with auto-date and title derived from filename
-- **Config:** Single file `hugo.toml` — bilingual setup with Spanish (weight 1) as default, English (weight 2) secondary
+- **Config:** Single file `hugo.toml` — bilingual setup with Spanish (weight 1) as default, English (weight 2) secondary; `featured_image_class = "cover bg-center"`
 - **Pagination:** Currently set to 3 per page (intentionally low)
 - **Static assets:** `favicon/` directory has the favicon; `static/` is empty
 
@@ -89,3 +94,13 @@ After cloning, initialize the theme submodule:
 ```bash
 git submodule update --init --recursive
 ```
+
+## External Reference Sites
+
+Sites approved for browsing when researching content for this blog:
+
+- **[Internet Archive](https://archive.org/)** — book lookups, borrowable texts, C-SPAN recordings, historical media
+- **[Wikimedia Commons](https://commons.wikimedia.org/)** — images with clear licensing (CC, public domain) for blog post illustrations
+- **[llmstxt.org](https://llmstxt.org/)** — specification for the `llms.txt` file format
+- **[agentsmd/agents.md](https://github.com/agentsmd/agents.md)** — specification for the `AGENTS.md` file format
+- **[Science Museum Group Collection](https://collection.sciencemuseumgroup.org.uk/)** — historical engineering artifacts and images (typically CC-BY-NC-SA 4.0)
