@@ -1,6 +1,6 @@
 # Posts del futuro cercano — plan editorial de katra
 
-> **Última revisión:** 2026-04-09 (cosecha de `draft-rest.md` completada y archivo eliminado; `ipc.c` placeholder eliminado)
+> **Última revisión:** 2026-04-14 (C-01 publicado — primer post de Serie C; W0 baja a 1 pendiente; nuevo I-14 cosechado de la edición de C-01)
 > **Owner:** César — archivo editorial privado, no se renderiza al sitio.
 > **Audiencia objetivo del blog:** lectores nerd / orientados a CS — algoritmos, arquitectura de software y de computadoras, prácticas de programación, lenguajes (mainstream y oscuros). La Serie K (vida y trabajo) es la sección honesta para temas laterales no-CS.
 > **Tono buscado en cada post:** divertido, entretenido, **un solo concepto** por entrada.
@@ -262,7 +262,7 @@ Cada entrada del plan vive en un archivo `draft-*.md` propio bajo la carpeta de 
 
 **Concepto de la serie:** los textos y charlas que cambian la manera de pensar sobre lo que hacemos. Kay, Hickey, Beck, Dijkstra. No "filosofía" en el sentido vacío sino: ¿qué es realmente esto que llamamos "ingeniería"?
 
-- **C-01** — [¿"Ingeniería de software" es un oxímoron?](filosofia/draft-ingenieria-software-oximoron.md)
+- **C-01** — [¿"Ingeniería de software" es un oxímoron?](/posts/2026-04-14-ingenieria-software-oximoron/) ✅ **publicado 2026-04-14**
 - **C-02** — [Simple no es lo mismo que fácil (Rich Hickey)](filosofia/draft-simple-no-es-facil-hickey.md)
 - **C-03** — [Tidy First: limpiar antes de cambiar (Kent Beck)](filosofia/draft-tidy-first-kent-beck.md)
 - **C-04** — [TDD bass drop: cuando el test rojo te da dopamina](filosofia/draft-tdd-bass-drop-dopamina.md)
@@ -407,6 +407,7 @@ Cada entrada del plan vive en un archivo `draft-*.md` propio bajo la carpeta de 
 - **I-11** — [Dist-prog-book: el libro sobre programación distribuida que forkeé para leer (y la colección de Lambda the Ultimate)](local/draft-dist-prog-book-lambda-ultimate.md)
 - **I-12** — [archive.org como acervo de CS: folkscanomy_computer y Byte Magazine](local/draft-archive-org-folkscanomy-acervo-cs.md) 🌱 *cosecha*
 - **I-13** — [Papers académicos viejos en ACM Digital Library y Springer: cómo cazarlos](local/draft-jlc-acm-papers-historia.md) 🌱 *cosecha*
+- **I-14** — [Contra la colegiación obligatoria de los informáticos (caso Santa Fe 2007)](local/draft-contra-la-colegiacion-de-informaticos.md) 🆕 *cosechado de [[C-01]] el 2026-04-14*
 
 ---
 
@@ -502,7 +503,7 @@ Cada entrada del plan vive en un archivo `draft-*.md` propio bajo la carpeta de 
 
 | Wave | Tema | Posts | Notas |
 | --- | --- | --- | --- |
-| **W0** | Cosecha rápida (ya tienen prosa real) | 2 | [[C-01]] (oxímoron, ~53 líneas de prosa), [[G-01]] (Ansible roles/profiles, ~318 líneas) |
+| **W0** | Cosecha rápida (ya tienen prosa real) | 1 pendiente | ~~[[C-01]]~~ publicado 2026-04-14; [[G-01]] (Ansible roles/profiles, ~318 líneas) pendiente |
 | **W1** | Crowd pleasers (biografías de bajo esfuerzo, imágenes públicas abundantes) | 5 | [[D-01]] Engelbart, [[D-03]] Turing, [[D-02]] Sketchpad, [[A1-01]] Kay, [[A2-03]] Y combinator (Weirich) |
 | **W2** | Lanzamiento de cada serie (un post-piloto por serie para crear los anchors de cross-link) | ~9 | El post más fácil de cada serie. Una vez escritos, todas las series tienen al menos un destino para los `[[ID]]`. |
 | **W3** | Round-robin de completitud | ~30 | Completar series rotando: la que va más atrás tiene prioridad. Mantiene visibilidad de las 10 series sin agotar al lector. |

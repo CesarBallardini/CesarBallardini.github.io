@@ -41,5 +41,5 @@
 
 **Tags propuestos:** `['Software Engineer', 'Alan Kay', 'ingenieria alternativa', 'filosofia', 'profesion']`
 
-**Estado actual:** prose-started — el seed tiene los primeros 8-10 párrafos del ensayo, hasta la enumeración de ingenierías clásicas y alternativas. Falta cerrar con la cita de Kay y las tres respuestas posibles.
+**Estado actual:** publicado 2026-04-14 — [ingenieria-software-oximoron](/posts/2026-04-14-ingenieria-software-oximoron/). Pendiente: resolver cross-links de salida (`[[C-05]]`, `[[A1-01]]`, `[[D-04]]`) hacia este post cuando esos posts se publiquen — buscar este slug en sus respectivos drafts y linkearlo desde la prosa.
 

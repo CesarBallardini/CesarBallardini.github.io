@@ -1,27 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>OOPSLA on katra</title>
-    <link>http://localhost:3131/tags/oopsla/</link>
-    <description>Recent content in OOPSLA on katra</description>
+    <title>Profesion on katra</title>
+    <link>http://localhost:3131/tags/profesion/</link>
+    <description>Recent content in Profesion on katra</description>
     <generator>Hugo</generator>
     <language>es-AR</language>
     <copyright>César Ballardini</copyright>
     <lastBuildDate>Tue, 14 Apr 2026 00:00:00 -0300</lastBuildDate>
-    <atom:link href="http://localhost:3131/tags/oopsla/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:3131/tags/profesion/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>¿El término &#34;Ingeniería de software&#34; es un oxímoron?</title>
       <link>http://localhost:3131/posts/ingenieria-software-oximoron/</link>
       <pubDate>Tue, 14 Apr 2026 00:00:00 -0300</pubDate>
       <guid>http://localhost:3131/posts/ingenieria-software-oximoron/</guid>
       <description>&lt;p&gt;Ingeniería. Ingeniero. &lt;em&gt;Engine&lt;/em&gt;. Máquina. Vamos a hacer una pregunta tonta y peligrosa: ¿qué máquina construye un ingeniero de software? Si te sale rápido, sospechá. Yo llevo treinta años metido en el software y todavía no tengo una respuesta que me convenza.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;&#xA;&lt;p&gt;Lo interesante no es que la pregunta sea difícil. Lo interesante es que la pregunta no la inventó un crítico externo de la disciplina, ni un filósofo decidido a molestar, ni un estudiante con ganas de quedar bien en un seminario. La escribió Alan Kay, el tipo que acuñó &lt;em&gt;object-oriented&lt;/em&gt;, en un apéndice de un manual técnico que casi nadie lee. La dejó ahí, como quien deja una bomba en el cajón de una mesa de luz, y siguió escribiendo software.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Growing a Language</title>
-      <link>http://localhost:3131/posts/growing-a-language/</link>
-      <pubDate>Mon, 27 Jan 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/posts/growing-a-language/</guid>
-      <description>&lt;p&gt;Seguramente has visto presentaciones muy importantes, o interesantes, entretenidas.  La presentación de Guy Steele que te propongo, es una como nunca has visto antes.  Una presentación que tiene un mensaje importante para transmitir, pero que además usa el propio mensaje como mecanismo para desarrollar la presentación.  Tal vez algún detalle no tan relevante esté desactualizado, como las referencias a ciertas características de Java, pero si consideras Java en 1998 y lo analizas desde allí,este material es alimento para la mente.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

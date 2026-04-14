@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=3131&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>¿El término &#34;Ingeniería de software&#34; es un oxímoron? | katra</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="La pregunta que Alan Kay dejó en el apéndice de un manual en 2002.">
+    <meta name="generator" content="Hugo 0.160.1">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    <meta name="author" content="César Ballardini">
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:3131/posts/ingenieria-software-oximoron/">
+    
+
+    
+    
+    <meta property="og:url" content="http://localhost:3131/posts/ingenieria-software-oximoron/">
+  <meta property="og:site_name" content="katra">
+  <meta property="og:title" content="¿El término &#34;Ingeniería de software&#34; es un oxímoron?">
+  <meta property="og:description" content="La pregunta que Alan Kay dejó en el apéndice de un manual en 2002.">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-04-14T00:00:00-03:00">
+    <meta property="article:modified_time" content="2026-04-14T00:00:00-03:00">
+    <meta property="article:tag" content="Filosofia">
+    <meta property="article:tag" content="Alan Kay">
+    <meta property="article:tag" content="Ingenieria Alternativa">
+    <meta property="article:tag" content="OOPSLA">
+    <meta property="article:tag" content="Profesion">
+    <meta property="article:tag" content="Dijkstra">
+
+  <meta itemprop="name" content="¿El término &#34;Ingeniería de software&#34; es un oxímoron?">
+  <meta itemprop="description" content="La pregunta que Alan Kay dejó en el apéndice de un manual en 2002.">
+  <meta itemprop="datePublished" content="2026-04-14T00:00:00-03:00">
+  <meta itemprop="dateModified" content="2026-04-14T00:00:00-03:00">
+  <meta itemprop="wordCount" content="2092">
+  <meta itemprop="keywords" content="Filosofia,Alan Kay,Ingenieria Alternativa,OOPSLA,Profesion,Dijkstra">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="¿El término &#34;Ingeniería de software&#34; es un oxímoron?">
+  <meta name="twitter:description" content="La pregunta que Alan Kay dejó en el apéndice de un manual en 2002.">
+
+	
+
+  </head><body class="ma0 avenir bg-near-white development is-page is-page page-2026-04-14-ingenieria-software-oximoron">
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('/posts/ingenieria-software-oximoron/hero-alan-kay.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        katra
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/consultoria/" title="Consultoría pagina">
+              Consultoría
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/cv/" title="CV pagina">
+              CV
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/habilidades/" title="Habilidades Técnicas pagina">
+              Habilidades Técnicas
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/posts/" title="Entradas pagina">
+              Entradas
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="http://linkedin.com/in/cesar-ballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a><a href="https://x.com/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition x-twitter link dib z-999 pt3 pt0-l mr1"
+        title="follow on X - Opens in a new window"
+        aria-label="follow on X - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+            
+          </span></a><a href="https://github.com/CesarBallardini/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+            
+          </span></a></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">¿El término &#34;Ingeniería de software&#34; es un oxímoron?</div>
+          
+            <div class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
+              La pregunta que Alan Kay dejó en el apéndice de un manual en 2002.
+            </div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+
+  <article class="page-2026-04-14-ingenieria-software-oximoron flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Entradas
+      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=http%3A%2F%2Flocalhost%3A3131%2Fposts%2Fingenieria-software-oximoron%2F&amp;subject=%C2%BFEl&#43;t%C3%A9rmino&#43;%26%2334%3BIngenier%C3%ADa&#43;de&#43;software%26%2334%3B&#43;es&#43;un&#43;ox%C3%ADmoron%3F"
+        class="ananke-social-link email no-underline"
+        title="Share on Email" aria-label="Share on Email"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
+                
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A3131%2Fposts%2Fingenieria-software-oximoron%2F&amp;summary=Ingenier%C3%ADa.&#43;Ingeniero.&#43;Engine.&#43;M%C3%A1quina.&#43;Vamos&#43;a&#43;hacer&#43;una&#43;pregunta&#43;tonta&#43;y&#43;peligrosa%3A&#43;%C2%BFqu%C3%A9&#43;m%C3%A1quina&#43;construye&#43;un&#43;ingeniero&#43;de&#43;software%3F&#43;Si&#43;te&#43;sale&#43;r%C3%A1pido%2C&#43;sospech%C3%A1.&#43;Yo&#43;llevo&#43;treinta&#43;a%C3%B1os&#43;metido&#43;en&#43;el&#43;software&#43;y&#43;todav%C3%ADa&#43;no&#43;tengo&#43;una&#43;respuesta&#43;que&#43;me&#43;convenza.1%0ALo&#43;interesante&#43;no&#43;es&#43;que&#43;la&#43;pregunta&#43;sea&#43;dif%C3%ADcil.&#43;Lo&#43;interesante&#43;es&#43;que&#43;la&#43;pregunta&#43;no&#43;la&#43;invent%C3%B3&#43;un&#43;cr%C3%ADtico&#43;externo&#43;de&#43;la&#43;disciplina%2C&#43;ni&#43;un&#43;fil%C3%B3sofo&#43;decidido&#43;a&#43;molestar%2C&#43;ni&#43;un&#43;estudiante&#43;con&#43;ganas&#43;de&#43;quedar&#43;bien&#43;en&#43;un&#43;seminario.&#43;La&#43;escribi%C3%B3&#43;Alan&#43;Kay%2C&#43;el&#43;tipo&#43;que&#43;acu%C3%B1%C3%B3&#43;object-oriented%2C&#43;en&#43;un&#43;ap%C3%A9ndice&#43;de&#43;un&#43;manual&#43;t%C3%A9cnico&#43;que&#43;casi&#43;nadie&#43;lee.&#43;La&#43;dej%C3%B3&#43;ah%C3%AD%2C&#43;como&#43;quien&#43;deja&#43;una&#43;bomba&#43;en&#43;el&#43;caj%C3%B3n&#43;de&#43;una&#43;mesa&#43;de&#43;luz%2C&#43;y&#43;sigui%C3%B3&#43;escribiendo&#43;software.%0A&amp;title=%C2%BFEl&#43;t%C3%A9rmino&#43;%26%2334%3BIngenier%C3%ADa&#43;de&#43;software%26%2334%3B&#43;es&#43;un&#43;ox%C3%ADmoron%3F&amp;url=http%3A%2F%2Flocalhost%3A3131%2Fposts%2Fingenieria-software-oximoron%2F"
+        class="ananke-social-link linkedin no-underline"
+        title="Share on LinkedIn" aria-label="Share on LinkedIn"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+                
+              </span></a><a href="https://twitter.com/intent/tweet/?&amp;text=Ingenier%C3%ADa.&#43;Ingeniero.&#43;Engine.&#43;M%C3%A1quina.&#43;Vamos&#43;a&#43;hacer&#43;una&#43;pregunta&#43;tonta&#43;y&#43;peligrosa%3A&#43;%C2%BFqu%C3%A9&#43;m%C3%A1quina&#43;construye&#43;un&#43;ingeniero&#43;de&#43;software%3F&#43;Si&#43;te&#43;sale&#43;r%C3%A1pido%2C&#43;sospech%C3%A1.&#43;Yo&#43;llevo&#43;treinta&#43;a%C3%B1os&#43;metido&#43;en&#43;el&#43;software&#43;y&#43;todav%C3%ADa&#43;no&#43;tengo&#43;una&#43;respuesta&#43;que&#43;me&#43;convenza.1%0ALo&#43;interesante&#43;no&#43;es&#43;que&#43;la&#43;pregunta&#43;sea&#43;dif%C3%ADcil.&#43;Lo&#43;interesante&#43;es&#43;que&#43;la&#43;pregunta&#43;no&#43;la&#43;invent%C3%B3&#43;un&#43;cr%C3%ADtico&#43;externo&#43;de&#43;la&#43;disciplina%2C&#43;ni&#43;un&#43;fil%C3%B3sofo&#43;decidido&#43;a&#43;molestar%2C&#43;ni&#43;un&#43;estudiante&#43;con&#43;ganas&#43;de&#43;quedar&#43;bien&#43;en&#43;un&#43;seminario.&#43;La&#43;escribi%C3%B3&#43;Alan&#43;Kay%2C&#43;el&#43;tipo&#43;que&#43;acu%C3%B1%C3%B3&#43;object-oriented%2C&#43;en&#43;un&#43;ap%C3%A9ndice&#43;de&#43;un&#43;manual&#43;t%C3%A9cnico&#43;que&#43;casi&#43;nadie&#43;lee.&#43;La&#43;dej%C3%B3&#43;ah%C3%AD%2C&#43;como&#43;quien&#43;deja&#43;una&#43;bomba&#43;en&#43;el&#43;caj%C3%B3n&#43;de&#43;una&#43;mesa&#43;de&#43;luz%2C&#43;y&#43;sigui%C3%B3&#43;escribiendo&#43;software.%0A&amp;url=http%3A%2F%2Flocalhost%3A3131%2Fposts%2Fingenieria-software-oximoron%2F"
+        class="ananke-social-link x-twitter no-underline"
+        title="Share on X" aria-label="Share on X"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+                
+              </span></a><a href="%25!s%28%3cnil%3e%29?"
+        class="ananke-social-link github no-underline"
+        title="Share on GitHub" aria-label="Share on GitHub"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+                
+              </span></a></div>
+<h1 class="f1 athelas mt3 mb1">¿El término &#34;Ingeniería de software&#34; es un oxímoron?</h1>
+      
+      <p class="tracked"><strong>César Ballardini</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-04-14T00:00:00-03:00">14 de abril de 2026</time>
+      
+
+      
+      
+        
+        
+        <span class="f6 mv4 dib tracked"> - Lectura en 10 minutos </span>
+        <span class="f6 mv4 dib tracked"> - 2092 palabras </span>
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><p>Ingeniería. Ingeniero. <em>Engine</em>. Máquina. Vamos a hacer una pregunta tonta y peligrosa: ¿qué máquina construye un ingeniero de software? Si te sale rápido, sospechá. Yo llevo treinta años metido en el software y todavía no tengo una respuesta que me convenza.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p>Lo interesante no es que la pregunta sea difícil. Lo interesante es que la pregunta no la inventó un crítico externo de la disciplina, ni un filósofo decidido a molestar, ni un estudiante con ganas de quedar bien en un seminario. La escribió Alan Kay, el tipo que acuñó <em>object-oriented</em>, en un apéndice de un manual técnico que casi nadie lee. La dejó ahí, como quien deja una bomba en el cajón de una mesa de luz, y siguió escribiendo software.</p>
+<h2 id="las-ingenierías-clásicas-se-organizan-alrededor-de-una-máquina">Las ingenierías clásicas se organizan alrededor de una máquina</h2>
+<p>El sustantivo <em>ingeniería</em> se siente robusto porque evoca algo muy específico. Las ingenierías que le dieron al nombre su prestigio —la civil, la mecánica, la eléctrica, la química— están todas organizadas alrededor de un objeto físico. El ingeniero civil diseña y supervisa la construcción de un puente: el puente es la cosa. El ingeniero mecánico diseña un motor, una caja reductora, una prensa: el motor es la cosa. El ingeniero eléctrico diseña una red de distribución, un transformador, un circuito: el circuito es la cosa.</p>
+<p>Ese objeto físico cumple una función doble. Por un lado, ancla el vocabulario técnico: cuando dos ingenieros civiles discuten sobre momentos flectores, los dos están pensando en el mismo puente. Por otro lado, ancla la responsabilidad civil. Si el puente se cae, hay un colegio profesional, una matrícula, una firma en un plano y un juicio posible. La palabra <em>ingeniero</em>, en las disciplinas clásicas, no es un adjetivo que se agrega al currículum: es un contrato con la sociedad que tiene consecuencias jurídicas. La etimología no está de adorno: <em>engineer</em> viene de <em>engine</em>, y <em>engine</em> es esa máquina concreta que alguien firmó y que puede matarte si la firmó mal.</p>
+<h2 id="las-ingenierías-alternativas">Las &ldquo;ingenierías alternativas&rdquo;</h2>
+<p>Con esa imagen en la cabeza, la lista de disciplinas que usan la palabra <em>ingeniería</em> con un adjetivo adelante se vuelve divertida. Ingeniería industrial, ingeniería ambiental, ingeniería financiera, ingeniería social. Y, por supuesto, <em>ingeniería de software</em>. El patrón es el mismo que en las &ldquo;medicinas alternativas&rdquo;: el adjetivo cambia el sustantivo sin pedir permiso. Medicina china, medicina ayurvédica, medicina basada en ondas cósmicas. <em>Medicina</em> hace el trabajo pesado — importa el prestigio — y el adjetivo pone la condición.</p>
+<p>No estoy acusando a nadie de impostor. La ingeniería industrial tiene su historia y su cuerpo de conocimiento. La ingeniería financiera modela cosas que valen la pena modelar. Lo que pasa es que, cuando se comparan con las clásicas, a todas les falta <em>la máquina</em>: el objeto físico que ancla el vocabulario y la responsabilidad. Un ingeniero financiero no firma un puente. Un ingeniero industrial firma procesos, que son invisibles hasta que fallan y nadie sabe bien quién los firmó. Y un ingeniero de software firma… ¿qué, exactamente?</p>
+<p>Una respuesta honesta empieza por reconocer que cuando le ponemos el adjetivo <em>alternativa</em> a la palabra <em>ingeniería</em>, estamos pidiéndole al sustantivo que nos preste el prestigio sin pagar los costos. Y eso, como todo préstamo no pagado, genera deuda.</p>
+<h2 id="la-pregunta-que-dejó-alan-kay-en-2002">La pregunta que dejó Alan Kay en 2002</h2>
+<p>En octubre de 2002, Alan Kay publicó el borrador 0.1 del manual de Croquet, un sistema de colaboración 3D hecho sobre Squeak que casi no sobrevivió a su propio entusiasmo.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> El manual tenía un apéndice B titulado, literalmente, <em>Is &ldquo;Software Engineering&rdquo; an Oxymoron?</em>.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> No era un ensayo independiente: era una reflexión dentro de un documento técnico, escondida al final.</p>
+<p>La pregunta de Kay es honesta, no retórica. No dice &ldquo;la ingeniería de software es una farsa&rdquo;. Dice algo más sutil: si tomamos en serio la etimología —<em>engineer</em> viene de <em>engine</em>— y miramos lo que construye nuestra disciplina, ¿a cuál objeto le estamos poniendo nuestra firma?</p>
+<p>Importa que la pregunta la escriba Kay y no un crítico externo. Kay no está afuera tirando piedras. Kay es uno de los que fundó la disciplina: Sketchpad de Sutherland estaba en su genealogía, Smalltalk fue su criatura, el Dynabook fue su visión, el PARC fue su casa. El mismo tipo había dicho cinco años antes, en OOPSLA 1997, en una keynote titulada <em>The Computer Revolution Hasn&rsquo;t Happened Yet</em>.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> Cuando alguien con ese currículum, con cuarenta años de ver a la disciplina desde adentro, pregunta si el nombre con que la bautizamos es un oxímoron, no está despreciando el campo: está preocupado. La preocupación honesta del que labura en algo y no ve cerrar la ecuación.</p>
+<h2 id="tres-respuestas-que-circulan">Tres respuestas que circulan</h2>
+<p><strong>&ldquo;El software <em>es</em> la máquina.&rdquo;</strong> La más directa: ¿qué máquina construye un ingeniero de software? El programa mismo. El código es la máquina, ejecutándose sobre una CPU genérica. El problema con esta respuesta es la indirección. Lo que el desarrollador escribe no es la máquina: es una receta para una receta. El compilador (o el intérprete, o el JIT) decide cómo transformar el código fuente en instrucciones reales para una CPU concreta, sobre un sistema operativo concreto, sobre un kernel que puede interrumpir el proceso en cualquier instante. El plano del ingeniero civil <em>es</em> el puente que se construye; el código del desarrollador está a tres o cuatro capas de la cosa que efectivamente corre. Y la cosa que corre se modifica todos los martes — no hay un <em>as-built</em> que certificar, porque nunca termina de construirse.</p>
+<p><strong>&ldquo;Ingeniería es aplicar conocimiento científico a un problema práctico.&rdquo;</strong> Esta es la posición de Mary Shaw en su artículo de 1990:<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> el software ya tiene ciencia (teoría de computabilidad, lógica, análisis de algoritmos), ya tiene práctica (sistemas que funcionan), y por lo tanto tiene derecho a llamarse ingeniería. Es una respuesta defendible y sofisticada. Pero es blanda: pierde el lado de <em>responsabilidad civil</em> de la palabra. Un farmacéutico también aplica conocimiento científico a un problema práctico, y no por eso se llama ingeniero farmacéutico. La ciencia-aplicada-a-problemas-prácticos es condición necesaria, no suficiente.</p>
+<p><strong>&ldquo;El software es matemática aplicada.&rdquo;</strong> Esta es, aproximadamente, la posición de Dijkstra, visible en los EWD y especialmente en EWD 1305, <em>Answers to questions from students of Software Engineering</em>.<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> Para Dijkstra el problema no era la ingeniería en sí: era pretender hacerla con el rigor rebajado del apuro comercial. Su propuesta implícita era abandonar la palabra <em>ingeniería</em> y aceptar que el software es una rama de la matemática aplicada. Es la respuesta más honesta de las tres: acepta el oxímoron y lo resuelve renunciando al sustantivo equivocado. También es la menos popular, porque nadie quiere poner &ldquo;matemático aplicado&rdquo; en LinkedIn.</p>
+<h2 id="por-qué-no-es-un-debate-académico">Por qué no es un debate académico</h2>
+<p>Uno podría pensar que todo esto es filosofía de café, y en parte lo es. Pero tiene consecuencias prácticas. Las ingenierías clásicas tienen códigos de ética profesional ligados a colegios que pueden expulsarte, matrícula obligatoria para firmar ciertos trabajos, responsabilidad civil objetiva, seguro obligatorio, y controles previos a la habilitación. Ninguna de esas cosas existe, en sentido fuerte, para el software.</p>
+<p>El <em>Software Engineering Code of Ethics</em> de ACM/IEEE-CS, publicado en 1999,<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> es un documento valioso, pero no tiene fuerza vinculante: nadie pierde la matrícula por violarlo, porque en la inmensa mayoría de las jurisdicciones no hay matrícula que perder. Hubo intentos de regular la profesión, y todos terminaron diluidos. Texas ofreció entre 2013 y 2019 una licencia PE específica para <em>Software Engineering</em>; NCEES la discontinuó por falta de candidatos —en cinco administraciones del examen se anotaron 81 personas en total—.<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> Alberta, que sí restringía el uso del título <em>software engineer</em> por la ley de su colegio profesional, perdió en noviembre de 2023 una causa contra Getty Images y Jobber; en julio de 2024 la legislatura provincial sacó el título de la ley regulada.<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup> El intento siempre choca con la misma pregunta: ¿cuál es exactamente el software que debe regularse? ¿El código de la computadora del auto? ¿El de la tablet? ¿El del sitio de comidas a domicilio?</p>
+<p>Tom DeMarco —coautor de <em>Peopleware</em>, autor del libro de métricas <em>Controlling Software Projects</em> (1982)— publicó en IEEE Software en 2009 un texto donde se renuncia a sí mismo.<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup> El DeMarco joven había escrito la frase más citada del campo, <em>&ldquo;You can&rsquo;t control what you can&rsquo;t measure&rdquo;</em>; el DeMarco de 2009 corre el dial de la incomodidad un click más allá. La conclusión no es &ldquo;medí lo correcto&rdquo; —ese sería el consejo blando—, es algo peor: el reflejo de control te <em>selecciona</em> los proyectos equivocados, los de bajo retorno donde efectivamente se puede medir y controlar todo. Los proyectos que valen la pena —los que cambian el negocio, los que transforman a una empresa— son por definición experimentales: su construcción tal vez no, pero su concepción sí. La distinción que cierra el artículo es la que más sirve acá: una cosa es <em>to engineer software</em> (verbo), que tiene todo el sentido del mundo; otra cosa es <em>software engineering</em> (sustantivo), que terminó denotando un combo específico —procesos definidos, walkthroughs, matrices de trazabilidad, métricas, planificación rigurosa, estándares de código— que persigue consistencia y predictibilidad. Que el autor del libro de métricas más influyente firme esa renuncia es lo que le da peso.</p>
+<p>Mientras tanto, en los contratos seguimos firmando &ldquo;Ingeniero de Software&rdquo; y en las licencias del producto seguimos repartiendo &ldquo;AS IS, WITHOUT WARRANTY OF ANY KIND&rdquo;. El sustantivo de la portada dice una cosa, la letra chica dice exactamente la opuesta. En ninguna otra ingeniería pasa eso.</p>
+<h2 id="una-aspiración-no-una-credencial">Una aspiración, no una credencial</h2>
+<p>En 2021, en GOTO, Kay volvió sobre el asunto con una charla titulada <em>Aspiring to Learn The Engineering of Software</em>.<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup> El título es cuidadoso: <em>aspiring to learn</em>. No dice que el software ya sea una ingeniería. No dice que no vaya a serlo nunca. Dice algo más útil: es una aspiración. Hay prácticas —el testing sistemático, la verificación formal, la disciplina del diseño, la honestidad con las trade-offs— que se parecen más al trabajo del ingeniero civil que a la improvisación del artista. Y hay prácticas —firmar antes de pensar, copiar de Stack Overflow a ciegas, desplegar porque la consola da verde— que no se parecen a ninguna disciplina.</p>
+<p>La posición que me quedó después de treinta años de hacer esto es modesta. <em>Ingeniería de software</em> no es un oxímoron, pero tampoco es todavía una descripción: es una aspiración. Sigo escribiendo software, sigo firmando contratos que usan la palabra <em>ingeniero</em>, y sigo poniendo &ldquo;desarrollador&rdquo; en el CV cuando tengo que ser honesto. Voy a poner <em>ingeniero</em> en el CV con todas las letras el día que encuentre la máquina que estoy firmando. Kay no la encontró en cuarenta años. ¿Qué podría pretender yo en treinta? Por ahora aspiro a aprender la ingeniería del software, como dice el título de su charla, y tomo <em>ingeniería</em> como objetivo, no como credencial.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Imagen de <a href="https://commons.wikimedia.org/wiki/File:Alan_Kay_and_the_prototype_of_Dynabook,_pt._5_%283010032738%29.jpg">Alan Kay and the prototype of Dynabook, pt. 5</a> — CC-BY 2.0 — autor: Marcin Wichary, 5 de noviembre de 2008. Recortada a 2.5:1 para hero landscape.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://en.wikipedia.org/wiki/Croquet_Project">Croquet Project</a> en Wikipedia — contexto del sistema 3D colaborativo donde apareció el apéndice.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>Alan Kay et al., <em>Croquet: The User Manual</em>, draft 0.1, octubre 2002. Apéndice B: <em>Is &ldquo;Software Engineering&rdquo; an Oxymoron?</em>. <a href="http://web.archive.org/web/20030407181600/www.opencroquet.org/downloads/Croquet0.1.pdf">Copia en Wayback Machine</a>.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>Alan Kay, <a href="https://www.youtube.com/watch?v=oKg1hTOQXoY"><em>The Computer Revolution Hasn&rsquo;t Happened Yet</em></a>, keynote en OOPSLA 1997.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>Mary Shaw, <a href="https://people.cs.vt.edu/~kafura/CS6604/Papers/Prospects-Engineering-Discipline-Software.pdf"><em>Prospects for an Engineering Discipline of Software</em> (PDF)</a>, IEEE Software vol 7 n.º 6, noviembre 1990, pp. 15–24 — <a href="https://doi.org/10.1109/52.60586">DOI 10.1109/52.60586</a>. Página de <a href="https://en.wikipedia.org/wiki/Mary_Shaw_%28computer_scientist%29">Mary Shaw</a> en Wikipedia.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>Edsger W Dijkstra, EWD 1305 — <em>Answers to questions from students of Software Engineering</em>, Austin, noviembre 2000. <a href="https://www.cs.utexas.edu/~EWD/transcriptions/EWD13xx/EWD1305.html">Transcripción HTML</a> y <a href="https://www.cs.utexas.edu/~EWD/ewd13xx/EWD1305.PDF">escaneo PDF del manuscrito original</a> en el archivo EWD de UT Austin.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p><a href="https://www.acm.org/code-of-ethics/software-engineering-code">Software Engineering Code of Ethics</a> — ACM/IEEE-CS, 1999.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8">
+<p><a href="https://ncees.org/ncees-discontinuing-pe-software-engineering-exam/"><em>NCEES discontinuing PE Software Engineering exam</em></a> — anuncio oficial de NCEES (2018); el examen se administró por última vez en abril de 2019. Detalle de números bajos en <a href="https://www.nspe.org/career-growth/pe-magazine/may-2018/ncees-ends-software-engineering-pe-exam"><em>NCEES Ends Software Engineering PE Exam</em></a> (NSPE, mayo 2018) y en la <a href="https://pels.texas.gov/software.html">página de la Texas Board of Professional Engineers</a>.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:9">
+<p><a href="https://edmontonjournal.com/news/politics/court-sides-with-tech-companies-in-software-engineer-terminology-dispute"><em>Court sides with tech companies in &lsquo;software engineer&rsquo; terminology dispute</em></a> — Edmonton Journal, 11 de noviembre de 2023, sobre el fallo a favor de Getty Images y Jobber. Cierre del caso y enmienda legislativa (Bill 7) en el <a href="https://www.apega.ca/news/2024/07/03/apega-legal-action-concludes-key-clarifications-on-title-protection-provided">comunicado de APEGA del 3 de julio de 2024</a>.&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:10">
+<p>Tom DeMarco, <em>Software Engineering: An Idea Whose Time Has Come and Gone?</em>, IEEE Software, vol 26 n.º 4, julio-agosto 2009, pp. 95–96 (editorial corto). <a href="https://doi.org/10.1109/MS.2009.101">DOI 10.1109/MS.2009.101</a> — <a href="https://www.cs.uni.edu/~wallingf/teaching/172/resources/demarco-on-se.pdf">copia en PDF</a> en una página de curso de la University of Northern Iowa. <a href="https://www.infoq.com/news/2009/08/demarco-software-engineering-/">Comentario en InfoQ</a> que reproduce los pasajes clave.&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:11">
+<p>Alan Kay, <a href="https://www.youtube.com/watch?v=D43PlUr1x_E"><em>Aspiring to Learn The Engineering of Software</em></a>, GOTO 2021.&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/filosofia/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Filosofia</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/alan-kay/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Alan Kay</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/ingenieria-alternativa/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Ingenieria Alternativa</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/oopsla/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">OOPSLA</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/profesion/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Profesion</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/dijkstra/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Dijkstra</a>
+   </li>
+  
+</ul>
+
+      
+    </div></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:3131/" >
+    &copy;  César Ballardini 2026 
+  </a>
+    <div><div class="ananke-socials"><a href="http://linkedin.com/in/cesar-ballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a><a href="https://x.com/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition x-twitter link dib z-999 pt3 pt0-l mr1"
+        title="follow on X - Opens in a new window"
+        aria-label="follow on X - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+            
+          </span></a><a href="https://github.com/CesarBallardini/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+            
+          </span></a></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

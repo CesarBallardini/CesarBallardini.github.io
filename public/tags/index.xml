@@ -7,8 +7,50 @@
     <generator>Hugo</generator>
     <language>es-AR</language>
     <copyright>César Ballardini</copyright>
-    <lastBuildDate>Fri, 10 Apr 2026 00:00:00 -0300</lastBuildDate>
+    <lastBuildDate>Tue, 14 Apr 2026 00:00:00 -0300</lastBuildDate>
     <atom:link href="http://localhost:3131/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Alan Kay</title>
+      <link>http://localhost:3131/tags/alan-kay/</link>
+      <pubDate>Tue, 14 Apr 2026 00:00:00 -0300</pubDate>
+      <guid>http://localhost:3131/tags/alan-kay/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Dijkstra</title>
+      <link>http://localhost:3131/tags/dijkstra/</link>
+      <pubDate>Tue, 14 Apr 2026 00:00:00 -0300</pubDate>
+      <guid>http://localhost:3131/tags/dijkstra/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Filosofia</title>
+      <link>http://localhost:3131/tags/filosofia/</link>
+      <pubDate>Tue, 14 Apr 2026 00:00:00 -0300</pubDate>
+      <guid>http://localhost:3131/tags/filosofia/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ingenieria Alternativa</title>
+      <link>http://localhost:3131/tags/ingenieria-alternativa/</link>
+      <pubDate>Tue, 14 Apr 2026 00:00:00 -0300</pubDate>
+      <guid>http://localhost:3131/tags/ingenieria-alternativa/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OOPSLA</title>
+      <link>http://localhost:3131/tags/oopsla/</link>
+      <pubDate>Tue, 14 Apr 2026 00:00:00 -0300</pubDate>
+      <guid>http://localhost:3131/tags/oopsla/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Profesion</title>
+      <link>http://localhost:3131/tags/profesion/</link>
+      <pubDate>Tue, 14 Apr 2026 00:00:00 -0300</pubDate>
+      <guid>http://localhost:3131/tags/profesion/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Bootstrapping</title>
       <link>http://localhost:3131/tags/bootstrapping/</link>
@@ -203,13 +245,6 @@
       <link>http://localhost:3131/tags/lisp/</link>
       <pubDate>Mon, 27 Jan 2025 00:00:00 -0300</pubDate>
       <guid>http://localhost:3131/tags/lisp/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>OOPSLA</title>
-      <link>http://localhost:3131/tags/oopsla/</link>
-      <pubDate>Mon, 27 Jan 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/oopsla/</guid>
       <description></description>
     </item>
     <item>
