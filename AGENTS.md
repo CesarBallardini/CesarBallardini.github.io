@@ -132,7 +132,7 @@ When the user refers to "the plan" or "the editorial plan", they mean `content/j
 - **Custom layouts:**
   - `layouts/_default/cv.html` — wraps content in `.cv-page` div, used by CV, consulting, and skills pages
   - `layouts/partials/head-additions.html` — per-page CSS loading via `page_css` frontmatter param; inlines CSS from `assets/ananke/css/`
-  - `layouts/partials/site-header.html` — overrides the theme's site header. Identical to the theme copy in the *with-featured-image* branch; in the *no-featured-image* branch (used by the homepage and any post without `featured_image`), it trims the tall black banner on desktop: outer `pb6-l` → `pb2-l` (8rem → 0.5rem bottom padding), title `f-subheadline-l` → `f1-l` (5rem → 3rem), subtitle `f3-l` → `f4-l` with margins `mt3 mb4` → `mt2 mb2`. Mobile layout matches the theme default.
+  - `layouts/partials/site-header.html` — overrides the theme's site header. Two customizations: (1) in the *no-featured-image* branch (homepage and any post without `featured_image`), trims the tall black banner on desktop — outer `pb6-l` → `pb2-l`, title `f-subheadline-l` → `f1-l`, subtitle `f3-l` → `f4-l` with margins `mt3 mb4` → `mt2 mb2` (mobile layout matches the theme default); (2) when the `<h1>` is showing the site title ("katra"), wraps it in `<a href="posts/por-que-katra/">` with a native `title=""` tooltip ("¿Por qué katra?" on ES, "Why katra?" on EN). Pages with their own `.Title` render unchanged.
 - **Custom CSS:**
   - `assets/ananke/css/cv.css` — styles scoped under `.cv-page`, targeting standard HTML elements via Hugo auto-generated heading IDs
   - `assets/ananke/css/skills.css` — styles for the skills page

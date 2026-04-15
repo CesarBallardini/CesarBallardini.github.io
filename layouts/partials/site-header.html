@@ -8,7 +8,11 @@
       {{ partials.Include "site-navigation.html" .}}
       <div class="tc-l pv4 pv6-l ph3 ph4-ns">
         <h1 class="f2 f-subheadline-l fw2 white-90 mb0 lh-title">
-          {{ .Title | compare.Default .Site.Title }}
+          {{ if or (not .Title) (eq .Title .Site.Title) }}
+            <a href="{{ "posts/por-que-katra/" | relURL }}" class="white-90 no-underline" title="{{ if eq .Site.Language.Lang "en" }}Why katra?{{ else }}¿Por qué katra?{{ end }}">{{ .Site.Title }}</a>
+          {{ else }}
+            {{ .Title }}
+          {{ end }}
         </h1>
         {{ with .Params.description }}
           <h2 class="fw1 f5 f3-l white-80 measure-wide-l center mt3">
@@ -24,7 +28,11 @@
       {{ partials.Include "site-navigation.html" . }}
       <div class="tc-l pt3 pb3 ph3 ph4-ns">
         <h1 class="f2 f1-l fw2 light-silver mb0 lh-title">
-          {{ .Title | compare.Default .Site.Title }}
+          {{ if or (not .Title) (eq .Title .Site.Title) }}
+            <a href="{{ "posts/por-que-katra/" | relURL }}" class="light-silver no-underline" title="{{ if eq .Site.Language.Lang "en" }}Why katra?{{ else }}¿Por qué katra?{{ end }}">{{ .Site.Title }}</a>
+          {{ else }}
+            {{ .Title }}
+          {{ end }}
         </h1>
         {{ with .Params.description }}
           <h2 class="fw1 f5 f4-l white-80 measure-wide-l center lh-copy mt2 mb2">
