@@ -41,6 +41,10 @@ GitHub Actions (`.github/workflows/static.yml`) deploys the pre-built `./public/
 
 Because `public/` is committed, stale files from previous builds (old slugs, removed tags, renamed posts) do not get cleaned automatically. Build with `hugo --cleanDestinationDir` to drop orphan files, or `rm -rf public && hugo` for a fully fresh tree before committing.
 
+**Staging caveat:** if `hugo` is re-run after `git add`-ing `public/`, the rebuild overwrites the staged files and the commit will capture the older build. Re-stage with `git add -u public/` (and add any newly-untracked files) before committing.
+
+**Never commit a `hugo server` build.** `hugo server` rewrites `baseURL` to whatever localhost port it picked (e.g. `http://localhost:3131/`) and bakes that into every `<link rel="canonical">`, `og:url`, sitemap entry, RSS `<link>`, and internal nav href; it also injects a `/livereload.js?...port=NNNN` script into every page and emits a non-fingerprinted `public/ananke/css/main.min.css` alongside the fingerprinted asset that the HTML actually references. Any of those leaking to GitHub Pages breaks the RSS feed for subscribers and the canonical URL for search engines. Always do a fresh `hugo --cleanDestinationDir` (or `rm -rf public && hugo`) before staging `public/`, and verify with `grep -rl "localhost:" public/ | wc -l` returning `0`.
+
 ## Content Conventions
 
 - **Post format:** all posts use **page bundles** — `content/es/posts/YYYY-MM-DD-slug/index.md` with images and assets as siblings inside the same folder. Flat `.md` files are the old format; do not create new ones.
@@ -50,7 +54,9 @@ Because `public/` is committed, stale files from previous builds (old slugs, rem
 - **Frontmatter:** YAML (`---`) for all 2025+ posts. The full house rules — frontmatter shape, tag rules (no periods, Hugo Windows limitation), footnote style (named, never numeric), internal link rules (no `/es/` prefix in Spanish URLs), image bundles vs flat files, voice — live in [`content/just-ideas-for-future-posts/near-future-posts.md`](content/just-ideas-for-future-posts/near-future-posts.md) under "Convenciones de la casa". Read that section before writing or editing a post — it reflects the actual practice in the published posts, not what `AGENTS.md` says (they conflict; the published posts win).
 - **Hero banner:** every post has `featured_image: hero-filename.jpg` in frontmatter. The image lives in the post's bundle folder. Use landscape-oriented images (2.5:1 ratio or wider); portrait photos must be cropped with Pillow before use (`uv run --with Pillow python`). `featured_image_class = "cover bg-center"` is set globally in `hugo.toml`.
 - **Per-page CSS:** add `page_css: ['tables.css']` to frontmatter for posts with markdown tables. The CSS lives at `assets/ananke/css/tables.css` and is loaded via the `layouts/partials/head-additions.html` partial.
-- **Image attribution:** every public domain or CC-licensed image requires a named footnote with URL, author, and license. Example: `[^img_foo]: Imagen de [Title](URL) — CC BY-SA 4.0 — Author.`
+- **Image attribution:** every public domain or CC-licensed image requires a named footnote with URL, author, and license. Example: `[^img_foo]: Imagen de [Title](URL) — CC BY-SA 4.0 — Author.` If the image was cropped or otherwise adapted for the blog, note that at the end of the footnote (e.g. "Recortada a 2.5:1 para hero landscape.").
+- **Academic paper citations:** when a paper's canonical URL (IEEE Xplore, Springer, ACM DL) is paywalled or blocks automated fetch (IEEE returns HTTP 418), the footnote should link to a **stable DOI** (`https://doi.org/10.XXXX/...`) as the canonical reference plus a **free full-text mirror** when one exists (university course pages, archive.org, the author's Wikipedia page). Always include journal name / volume / issue / year in the footnote regardless of linkability.
+- **Verify fragile URLs before publishing:** YouTube links, personal blogs, and university-course paper mirrors move or disappear. Check that each fragile URL responds before the post ships; for load-bearing sources keep a Wayback Machine backup link in the footnote.
 - **Draft ideas** live in the editorial planning system at `content/just-ideas-for-future-posts/` (outside Hugo's content tree, not rendered to the site). See [Editorial Planning System](#editorial-planning-system) below.
 - **Unsafe HTML** is enabled in Goldmark renderer (`markup.goldmark.renderer.unsafe = true`)
 
@@ -120,8 +126,11 @@ git submodule update --init --recursive
 
 Sites approved for browsing when researching content for this blog:
 
-- **[Internet Archive](https://archive.org/)** — book lookups, borrowable texts, C-SPAN recordings, historical media
-- **[Wikimedia Commons](https://commons.wikimedia.org/)** — images with clear licensing (CC, public domain) for blog post illustrations
-- **[llmstxt.org](https://llmstxt.org/)** — specification for the `llms.txt` file format
-- **[agentsmd/agents.md](https://github.com/agentsmd/agents.md)** — specification for the `AGENTS.md` file format
-- **[Science Museum Group Collection](https://collection.sciencemuseumgroup.org.uk/)** — historical engineering artifacts and images (typically CC-BY-NC-SA 4.0)
+- **[Internet Archive](https://archive.org/)** — book lookups, borrowable texts, C-SPAN recordings, historical media; also the Wayback Machine for backup copies of fragile URLs.
+- **[Wikimedia Commons](https://commons.wikimedia.org/)** — images with clear licensing (CC, public domain) for blog post illustrations.
+- **[llmstxt.org](https://llmstxt.org/)** — specification for the `llms.txt` file format.
+- **[agentsmd/agents.md](https://github.com/agentsmd/agents.md)** — specification for the `AGENTS.md` file format.
+- **[Science Museum Group Collection](https://collection.sciencemuseumgroup.org.uk/)** — historical engineering artifacts and images (typically CC-BY-NC-SA 4.0).
+- **[Fundación Vía Libre](https://www.vialibre.org.ar/)** — Argentine digital rights foundation; primary source for local debates on software libre, colegiación profesional de informáticos, voto electrónico, políticas de IA en Latinoamérica, privacidad y propiedad intelectual.
+- **[EWD archive — UT Austin](https://www.cs.utexas.edu/~EWD/)** — Edsger Dijkstra's writings (EWD manuscripts), both HTML transcriptions and PDF scans of the originals. Stable.
+- **[DOI resolver](https://doi.org/)** — canonical citation URL for academic papers; use as the primary link when the publisher page is paywalled.

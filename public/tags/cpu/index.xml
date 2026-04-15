@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>CPU on katra</title>
-    <link>http://localhost:3131/tags/cpu/</link>
+    <link>https://katra.ballardini.com.ar/tags/cpu/</link>
     <description>Recent content in CPU on katra</description>
     <generator>Hugo</generator>
     <language>es-AR</language>
     <copyright>César Ballardini</copyright>
     <lastBuildDate>Mon, 10 Mar 2025 00:00:00 -0300</lastBuildDate>
-    <atom:link href="http://localhost:3131/tags/cpu/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://katra.ballardini.com.ar/tags/cpu/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Soplar humo de tabaco</title>
-      <link>http://localhost:3131/posts/soplar-humo-de-tabaco/</link>
+      <link>https://katra.ballardini.com.ar/posts/soplar-humo-de-tabaco/</link>
       <pubDate>Mon, 10 Mar 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/posts/soplar-humo-de-tabaco/</guid>
+      <guid>https://katra.ballardini.com.ar/posts/soplar-humo-de-tabaco/</guid>
       <description>&lt;p&gt;Un sistema con muchos procesos tiene un tiempo de login de un minuto, cuando la expectativa es de&#xA;1 ó 2 segundos.  Los procesos ocupan toda la memoria disponible, así que alguien propone aumentar la RAM.&#xA;La solución parece obvia: más memoria, mejor rendimiento.&lt;/p&gt;&#xA;&lt;div style=&#34;text-align:center;margin:1.5rem auto;&#34;&gt;&#xA;&lt;img src=&#34;process-states.svg&#34; alt=&#34;Estados de un proceso: nuevo, listo, corriendo, esperando, terminado&#34; style=&#34;max-width:100%;&#34;&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&lt;em&gt;Diagrama de estados de un proceso&lt;/em&gt;&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;&#xA;&lt;p&gt;Resultado: el tiempo de login sube a dos minutos.&lt;/p&gt;&#xA;&lt;p&gt;¿Qué pasó?  Antes de agregar memoria, muchos procesos que podrían estar listos para ejecutarse&#xA;habían sido desalojados (&lt;em&gt;page-out&lt;/em&gt;) a disco: el sistema operativo los había movido al disco para&#xA;liberar RAM.  Un proceso en disco no compite por la CPU; simplemente espera allí, fuera de la cola&#xA;de listos.  Con poca memoria, la cantidad de procesos compitiendo activamente por la CPU era baja,&#xA;y cada uno recibía su quantum en su turno.&lt;/p&gt;</description>
     </item>
   </channel>

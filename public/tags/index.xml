@@ -2,410 +2,410 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on katra</title>
-    <link>http://localhost:3131/tags/</link>
+    <link>https://katra.ballardini.com.ar/tags/</link>
     <description>Recent content in Tags on katra</description>
     <generator>Hugo</generator>
     <language>es-AR</language>
     <copyright>César Ballardini</copyright>
     <lastBuildDate>Tue, 14 Apr 2026 00:00:00 -0300</lastBuildDate>
-    <atom:link href="http://localhost:3131/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://katra.ballardini.com.ar/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Alan Kay</title>
-      <link>http://localhost:3131/tags/alan-kay/</link>
+      <link>https://katra.ballardini.com.ar/tags/alan-kay/</link>
       <pubDate>Tue, 14 Apr 2026 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/alan-kay/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/alan-kay/</guid>
       <description></description>
     </item>
     <item>
       <title>Dijkstra</title>
-      <link>http://localhost:3131/tags/dijkstra/</link>
+      <link>https://katra.ballardini.com.ar/tags/dijkstra/</link>
       <pubDate>Tue, 14 Apr 2026 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/dijkstra/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/dijkstra/</guid>
       <description></description>
     </item>
     <item>
       <title>Filosofia</title>
-      <link>http://localhost:3131/tags/filosofia/</link>
+      <link>https://katra.ballardini.com.ar/tags/filosofia/</link>
       <pubDate>Tue, 14 Apr 2026 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/filosofia/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/filosofia/</guid>
       <description></description>
     </item>
     <item>
       <title>Ingenieria Alternativa</title>
-      <link>http://localhost:3131/tags/ingenieria-alternativa/</link>
+      <link>https://katra.ballardini.com.ar/tags/ingenieria-alternativa/</link>
       <pubDate>Tue, 14 Apr 2026 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/ingenieria-alternativa/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/ingenieria-alternativa/</guid>
       <description></description>
     </item>
     <item>
       <title>OOPSLA</title>
-      <link>http://localhost:3131/tags/oopsla/</link>
+      <link>https://katra.ballardini.com.ar/tags/oopsla/</link>
       <pubDate>Tue, 14 Apr 2026 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/oopsla/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/oopsla/</guid>
       <description></description>
     </item>
     <item>
       <title>Profesion</title>
-      <link>http://localhost:3131/tags/profesion/</link>
+      <link>https://katra.ballardini.com.ar/tags/profesion/</link>
       <pubDate>Tue, 14 Apr 2026 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/profesion/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/profesion/</guid>
       <description></description>
     </item>
     <item>
       <title>Bootstrapping</title>
-      <link>http://localhost:3131/tags/bootstrapping/</link>
+      <link>https://katra.ballardini.com.ar/tags/bootstrapping/</link>
       <pubDate>Fri, 10 Apr 2026 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/bootstrapping/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/bootstrapping/</guid>
       <description></description>
     </item>
     <item>
       <title>Historia</title>
-      <link>http://localhost:3131/tags/historia/</link>
+      <link>https://katra.ballardini.com.ar/tags/historia/</link>
       <pubDate>Fri, 10 Apr 2026 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/historia/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/historia/</guid>
       <description></description>
     </item>
     <item>
       <title>Inteligencia Artificial</title>
-      <link>http://localhost:3131/tags/inteligencia-artificial/</link>
+      <link>https://katra.ballardini.com.ar/tags/inteligencia-artificial/</link>
       <pubDate>Fri, 10 Apr 2026 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/inteligencia-artificial/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/inteligencia-artificial/</guid>
       <description></description>
     </item>
     <item>
       <title>Mecanizado</title>
-      <link>http://localhost:3131/tags/mecanizado/</link>
+      <link>https://katra.ballardini.com.ar/tags/mecanizado/</link>
       <pubDate>Fri, 10 Apr 2026 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/mecanizado/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/mecanizado/</guid>
       <description></description>
     </item>
     <item>
       <title>Nerd Lateral</title>
-      <link>http://localhost:3131/tags/nerd-lateral/</link>
+      <link>https://katra.ballardini.com.ar/tags/nerd-lateral/</link>
       <pubDate>Fri, 10 Apr 2026 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/nerd-lateral/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/nerd-lateral/</guid>
       <description></description>
     </item>
     <item>
       <title>Precision</title>
-      <link>http://localhost:3131/tags/precision/</link>
+      <link>https://katra.ballardini.com.ar/tags/precision/</link>
       <pubDate>Fri, 10 Apr 2026 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/precision/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/precision/</guid>
       <description></description>
     </item>
     <item>
       <title>Torno</title>
-      <link>http://localhost:3131/tags/torno/</link>
+      <link>https://katra.ballardini.com.ar/tags/torno/</link>
       <pubDate>Fri, 10 Apr 2026 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/torno/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/torno/</guid>
       <description></description>
     </item>
     <item>
       <title>CPU</title>
-      <link>http://localhost:3131/tags/cpu/</link>
+      <link>https://katra.ballardini.com.ar/tags/cpu/</link>
       <pubDate>Mon, 10 Mar 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/cpu/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/cpu/</guid>
       <description></description>
     </item>
     <item>
       <title>Humo</title>
-      <link>http://localhost:3131/tags/humo/</link>
+      <link>https://katra.ballardini.com.ar/tags/humo/</link>
       <pubDate>Mon, 10 Mar 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/humo/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/humo/</guid>
       <description></description>
     </item>
     <item>
       <title>Medicina</title>
-      <link>http://localhost:3131/tags/medicina/</link>
+      <link>https://katra.ballardini.com.ar/tags/medicina/</link>
       <pubDate>Mon, 10 Mar 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/medicina/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/medicina/</guid>
       <description></description>
     </item>
     <item>
       <title>Problem Solving</title>
-      <link>http://localhost:3131/tags/problem-solving/</link>
+      <link>https://katra.ballardini.com.ar/tags/problem-solving/</link>
       <pubDate>Mon, 10 Mar 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/problem-solving/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/problem-solving/</guid>
       <description></description>
     </item>
     <item>
       <title>Process Scheduling</title>
-      <link>http://localhost:3131/tags/process-scheduling/</link>
+      <link>https://katra.ballardini.com.ar/tags/process-scheduling/</link>
       <pubDate>Mon, 10 Mar 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/process-scheduling/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/process-scheduling/</guid>
       <description></description>
     </item>
     <item>
       <title>Arqueologia</title>
-      <link>http://localhost:3131/tags/arqueologia/</link>
+      <link>https://katra.ballardini.com.ar/tags/arqueologia/</link>
       <pubDate>Sun, 23 Feb 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/arqueologia/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/arqueologia/</guid>
       <description></description>
     </item>
     <item>
       <title>Computadora Personal</title>
-      <link>http://localhost:3131/tags/computadora-personal/</link>
+      <link>https://katra.ballardini.com.ar/tags/computadora-personal/</link>
       <pubDate>Sun, 23 Feb 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/computadora-personal/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/computadora-personal/</guid>
       <description></description>
     </item>
     <item>
       <title>Olivetti</title>
-      <link>http://localhost:3131/tags/olivetti/</link>
+      <link>https://katra.ballardini.com.ar/tags/olivetti/</link>
       <pubDate>Sun, 23 Feb 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/olivetti/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/olivetti/</guid>
       <description></description>
     </item>
     <item>
       <title>Programma 101</title>
-      <link>http://localhost:3131/tags/programma-101/</link>
+      <link>https://katra.ballardini.com.ar/tags/programma-101/</link>
       <pubDate>Sun, 23 Feb 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/programma-101/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/programma-101/</guid>
       <description></description>
     </item>
     <item>
       <title>Debian</title>
-      <link>http://localhost:3131/tags/debian/</link>
+      <link>https://katra.ballardini.com.ar/tags/debian/</link>
       <pubDate>Tue, 04 Feb 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/debian/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/debian/</guid>
       <description></description>
     </item>
     <item>
       <title>Woke Politics</title>
-      <link>http://localhost:3131/tags/woke-politics/</link>
+      <link>https://katra.ballardini.com.ar/tags/woke-politics/</link>
       <pubDate>Tue, 04 Feb 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/woke-politics/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/woke-politics/</guid>
       <description></description>
     </item>
     <item>
       <title>X</title>
-      <link>http://localhost:3131/tags/x/</link>
+      <link>https://katra.ballardini.com.ar/tags/x/</link>
       <pubDate>Tue, 04 Feb 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/x/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/x/</guid>
       <description></description>
     </item>
     <item>
       <title>Arquitectura</title>
-      <link>http://localhost:3131/tags/arquitectura/</link>
+      <link>https://katra.ballardini.com.ar/tags/arquitectura/</link>
       <pubDate>Tue, 28 Jan 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/arquitectura/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/arquitectura/</guid>
       <description></description>
     </item>
     <item>
       <title>Dev</title>
-      <link>http://localhost:3131/tags/dev/</link>
+      <link>https://katra.ballardini.com.ar/tags/dev/</link>
       <pubDate>Tue, 28 Jan 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/dev/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/dev/</guid>
       <description></description>
     </item>
     <item>
       <title>DHH</title>
-      <link>http://localhost:3131/tags/dhh/</link>
+      <link>https://katra.ballardini.com.ar/tags/dhh/</link>
       <pubDate>Tue, 28 Jan 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/dhh/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/dhh/</guid>
       <description></description>
     </item>
     <item>
       <title>Jim Weirich</title>
-      <link>http://localhost:3131/tags/jim-weirich/</link>
+      <link>https://katra.ballardini.com.ar/tags/jim-weirich/</link>
       <pubDate>Tue, 28 Jan 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/jim-weirich/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/jim-weirich/</guid>
       <description></description>
     </item>
     <item>
       <title>Keynote</title>
-      <link>http://localhost:3131/tags/keynote/</link>
+      <link>https://katra.ballardini.com.ar/tags/keynote/</link>
       <pubDate>Tue, 28 Jan 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/keynote/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/keynote/</guid>
       <description></description>
     </item>
     <item>
       <title>Repository</title>
-      <link>http://localhost:3131/tags/repository/</link>
+      <link>https://katra.ballardini.com.ar/tags/repository/</link>
       <pubDate>Tue, 28 Jan 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/repository/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/repository/</guid>
       <description></description>
     </item>
     <item>
       <title>Ruby on Rails</title>
-      <link>http://localhost:3131/tags/ruby-on-rails/</link>
+      <link>https://katra.ballardini.com.ar/tags/ruby-on-rails/</link>
       <pubDate>Tue, 28 Jan 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/ruby-on-rails/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/ruby-on-rails/</guid>
       <description></description>
     </item>
     <item>
       <title>Guy L Steele Jr</title>
-      <link>http://localhost:3131/tags/guy-l-steele-jr/</link>
+      <link>https://katra.ballardini.com.ar/tags/guy-l-steele-jr/</link>
       <pubDate>Mon, 27 Jan 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/guy-l-steele-jr/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/guy-l-steele-jr/</guid>
       <description></description>
     </item>
     <item>
       <title>LISP</title>
-      <link>http://localhost:3131/tags/lisp/</link>
+      <link>https://katra.ballardini.com.ar/tags/lisp/</link>
       <pubDate>Mon, 27 Jan 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/lisp/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/lisp/</guid>
       <description></description>
     </item>
     <item>
       <title>Github Pages</title>
-      <link>http://localhost:3131/tags/github-pages/</link>
+      <link>https://katra.ballardini.com.ar/tags/github-pages/</link>
       <pubDate>Mon, 20 Jan 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/github-pages/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/github-pages/</guid>
       <description></description>
     </item>
     <item>
       <title>Hugo</title>
-      <link>http://localhost:3131/tags/hugo/</link>
+      <link>https://katra.ballardini.com.ar/tags/hugo/</link>
       <pubDate>Mon, 20 Jan 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/hugo/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/hugo/</guid>
       <description></description>
     </item>
     <item>
       <title>Jekyll</title>
-      <link>http://localhost:3131/tags/jekyll/</link>
+      <link>https://katra.ballardini.com.ar/tags/jekyll/</link>
       <pubDate>Mon, 20 Jan 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/jekyll/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/jekyll/</guid>
       <description></description>
     </item>
     <item>
       <title>Migracion</title>
-      <link>http://localhost:3131/tags/migracion/</link>
+      <link>https://katra.ballardini.com.ar/tags/migracion/</link>
       <pubDate>Mon, 20 Jan 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/migracion/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/migracion/</guid>
       <description></description>
     </item>
     <item>
       <title>Instalacion</title>
-      <link>http://localhost:3131/tags/instalacion/</link>
+      <link>https://katra.ballardini.com.ar/tags/instalacion/</link>
       <pubDate>Sun, 19 Jan 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/instalacion/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/instalacion/</guid>
       <description></description>
     </item>
     <item>
       <title>MS Windows 11</title>
-      <link>http://localhost:3131/tags/ms-windows-11/</link>
+      <link>https://katra.ballardini.com.ar/tags/ms-windows-11/</link>
       <pubDate>Sun, 19 Jan 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/ms-windows-11/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/ms-windows-11/</guid>
       <description></description>
     </item>
     <item>
       <title>Blog</title>
-      <link>http://localhost:3131/tags/blog/</link>
+      <link>https://katra.ballardini.com.ar/tags/blog/</link>
       <pubDate>Sat, 18 Jan 2025 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/blog/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/blog/</guid>
       <description></description>
     </item>
     <item>
       <title>Ubuntu</title>
-      <link>http://localhost:3131/tags/ubuntu/</link>
+      <link>https://katra.ballardini.com.ar/tags/ubuntu/</link>
       <pubDate>Sun, 28 Aug 2016 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/ubuntu/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/ubuntu/</guid>
       <description></description>
     </item>
     <item>
       <title>Vagrant</title>
-      <link>http://localhost:3131/tags/vagrant/</link>
+      <link>https://katra.ballardini.com.ar/tags/vagrant/</link>
       <pubDate>Sun, 28 Aug 2016 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/vagrant/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/vagrant/</guid>
       <description></description>
     </item>
     <item>
       <title>Virtualbox</title>
-      <link>http://localhost:3131/tags/virtualbox/</link>
+      <link>https://katra.ballardini.com.ar/tags/virtualbox/</link>
       <pubDate>Sun, 28 Aug 2016 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/virtualbox/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/virtualbox/</guid>
       <description></description>
     </item>
     <item>
       <title>Github</title>
-      <link>http://localhost:3131/tags/github/</link>
+      <link>https://katra.ballardini.com.ar/tags/github/</link>
       <pubDate>Thu, 25 Aug 2016 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/github/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/github/</guid>
       <description></description>
     </item>
     <item>
       <title>Hpstr</title>
-      <link>http://localhost:3131/tags/hpstr/</link>
+      <link>https://katra.ballardini.com.ar/tags/hpstr/</link>
       <pubDate>Thu, 25 Aug 2016 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/hpstr/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/hpstr/</guid>
       <description></description>
     </item>
     <item>
       <title>Tema</title>
-      <link>http://localhost:3131/tags/tema/</link>
+      <link>https://katra.ballardini.com.ar/tags/tema/</link>
       <pubDate>Thu, 25 Aug 2016 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/tema/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/tema/</guid>
       <description></description>
     </item>
     <item>
       <title>Theme</title>
-      <link>http://localhost:3131/tags/theme/</link>
+      <link>https://katra.ballardini.com.ar/tags/theme/</link>
       <pubDate>Thu, 25 Aug 2016 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/theme/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/theme/</guid>
       <description></description>
     </item>
     <item>
       <title>Ansible</title>
-      <link>http://localhost:3131/tags/ansible/</link>
+      <link>https://katra.ballardini.com.ar/tags/ansible/</link>
       <pubDate>Tue, 23 Aug 2016 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/ansible/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/ansible/</guid>
       <description></description>
     </item>
     <item>
       <title>Bundle</title>
-      <link>http://localhost:3131/tags/bundle/</link>
+      <link>https://katra.ballardini.com.ar/tags/bundle/</link>
       <pubDate>Tue, 23 Aug 2016 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/bundle/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/bundle/</guid>
       <description></description>
     </item>
     <item>
       <title>Ruby</title>
-      <link>http://localhost:3131/tags/ruby/</link>
+      <link>https://katra.ballardini.com.ar/tags/ruby/</link>
       <pubDate>Tue, 23 Aug 2016 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/ruby/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/ruby/</guid>
       <description></description>
     </item>
     <item>
       <title>Rvm</title>
-      <link>http://localhost:3131/tags/rvm/</link>
+      <link>https://katra.ballardini.com.ar/tags/rvm/</link>
       <pubDate>Tue, 23 Aug 2016 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/rvm/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/rvm/</guid>
       <description></description>
     </item>
     <item>
       <title>Vagrantfile</title>
-      <link>http://localhost:3131/tags/vagrantfile/</link>
+      <link>https://katra.ballardini.com.ar/tags/vagrantfile/</link>
       <pubDate>Tue, 23 Aug 2016 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/vagrantfile/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/vagrantfile/</guid>
       <description></description>
     </item>
     <item>
       <title>Rant</title>
-      <link>http://localhost:3131/tags/rant/</link>
+      <link>https://katra.ballardini.com.ar/tags/rant/</link>
       <pubDate>Mon, 22 Aug 2016 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/rant/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/rant/</guid>
       <description></description>
     </item>
     <item>
       <title>Katra</title>
-      <link>http://localhost:3131/tags/katra/</link>
+      <link>https://katra.ballardini.com.ar/tags/katra/</link>
       <pubDate>Tue, 04 Jul 2000 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/katra/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/katra/</guid>
       <description></description>
     </item>
     <item>
       <title>Spock</title>
-      <link>http://localhost:3131/tags/spock/</link>
+      <link>https://katra.ballardini.com.ar/tags/spock/</link>
       <pubDate>Tue, 04 Jul 2000 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/spock/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/spock/</guid>
       <description></description>
     </item>
     <item>
       <title>Star Trek</title>
-      <link>http://localhost:3131/tags/star-trek/</link>
+      <link>https://katra.ballardini.com.ar/tags/star-trek/</link>
       <pubDate>Tue, 04 Jul 2000 00:00:00 -0300</pubDate>
-      <guid>http://localhost:3131/tags/star-trek/</guid>
+      <guid>https://katra.ballardini.com.ar/tags/star-trek/</guid>
       <description></description>
     </item>
   </channel>

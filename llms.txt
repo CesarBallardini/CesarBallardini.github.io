@@ -22,7 +22,7 @@ César currently works as part of the development team at NewGrid, doing backend
 
 ## Blog (Español)
 
-- [Blog](https://katra.ballardini.com.ar/): Artículos sobre desarrollo de software, administración de sistemas, lenguajes de programación, e historia del cómputo
+- [Blog](https://katra.ballardini.com.ar/): Artículos sobre desarrollo de software, administración de sistemas, lenguajes de programación, filosofía de la ingeniería del software, historia del cómputo e historia de la IA
 
 ## Contact
 
@@ -33,6 +33,6 @@ César currently works as part of the development team at NewGrid, doing backend
 ## Optional
 
 - [Source repository](https://github.com/CesarBallardini/CesarBallardini.github.io): Full Hugo source for this site, including content, theme configuration, and editorial planning system
-- [Editorial roadmap](https://github.com/CesarBallardini/CesarBallardini.github.io/blob/master/content/just-ideas-for-future-posts/near-future-posts.md): Master catalog of ~180 planned post ideas across 11 thematic series — classic languages, Lisp family, recursion and functional CS, software engineering philosophy, computing pioneers, personal CS memoir, IaC and devops, legacy systems archaeology, local computing memory, lateral nerd curiosities, and life topics. Each idea has its own draft file under a category folder. Not rendered to the live site but visible in the public repo
+- [Editorial roadmap](https://github.com/CesarBallardini/CesarBallardini.github.io/blob/master/content/just-ideas-for-future-posts/near-future-posts.md): Master catalog of over 180 planned post ideas across 11 thematic series — classic languages, Lisp family, recursion and functional CS, software engineering philosophy, computing pioneers, personal CS memoir, IaC and devops, legacy systems archaeology, local computing memory (Argentine/LATAM context), lateral nerd curiosities, and life topics. Each idea has its own draft file under a category folder. Not rendered to the live site but visible in the public repo
 - [CLAUDE.md](https://github.com/CesarBallardini/CesarBallardini.github.io/blob/master/CLAUDE.md): Project instructions for Claude Code — git rules (no repo-mutating commands), build commands, content conventions, editorial planning system, and architecture
 - [AGENTS.md](https://github.com/CesarBallardini/CesarBallardini.github.io/blob/master/AGENTS.md): Instructions for AI coding agents working on this repository — git rules, build, content, architecture, and editorial planning

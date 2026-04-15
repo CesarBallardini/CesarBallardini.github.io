@@ -2,468 +2,468 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:3131/consultoria/</loc>
+    <loc>https://katra.ballardini.com.ar/consultoria/</loc>
     <lastmod>2026-02-22T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:3131/en/consulting/"
+                href="https://katra.ballardini.com.ar/en/consulting/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es-AR"
-                href="http://localhost:3131/consultoria/"
+                href="https://katra.ballardini.com.ar/consultoria/"
                 />
   </url><url>
-    <loc>http://localhost:3131/cv/</loc>
+    <loc>https://katra.ballardini.com.ar/cv/</loc>
     <lastmod>2026-02-22T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:3131/en/cv/"
+                href="https://katra.ballardini.com.ar/en/cv/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es-AR"
-                href="http://localhost:3131/cv/"
+                href="https://katra.ballardini.com.ar/cv/"
                 />
   </url><url>
-    <loc>http://localhost:3131/habilidades/</loc>
+    <loc>https://katra.ballardini.com.ar/habilidades/</loc>
     <lastmod>2026-02-22T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:3131/en/skills/"
+                href="https://katra.ballardini.com.ar/en/skills/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es-AR"
-                href="http://localhost:3131/habilidades/"
+                href="https://katra.ballardini.com.ar/habilidades/"
                 />
   </url><url>
-    <loc>http://localhost:3131/</loc>
+    <loc>https://katra.ballardini.com.ar/</loc>
     <lastmod>2026-04-14T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:3131/en/"
+                href="https://katra.ballardini.com.ar/en/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es-AR"
-                href="http://localhost:3131/"
+                href="https://katra.ballardini.com.ar/"
                 />
   </url><url>
-    <loc>http://localhost:3131/posts/ingenieria-software-oximoron/</loc>
+    <loc>https://katra.ballardini.com.ar/posts/ingenieria-software-oximoron/</loc>
     <lastmod>2026-04-14T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/alan-kay/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/alan-kay/</loc>
     <lastmod>2026-04-14T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/dijkstra/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/dijkstra/</loc>
     <lastmod>2026-04-14T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/posts/</loc>
+    <loc>https://katra.ballardini.com.ar/posts/</loc>
     <lastmod>2026-04-14T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/filosofia/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/filosofia/</loc>
     <lastmod>2026-04-14T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/ingenieria-alternativa/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/ingenieria-alternativa/</loc>
     <lastmod>2026-04-14T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/oopsla/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/oopsla/</loc>
     <lastmod>2026-04-14T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/profesion/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/profesion/</loc>
     <lastmod>2026-04-14T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/</loc>
     <lastmod>2026-04-14T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:3131/en/tags/"
+                href="https://katra.ballardini.com.ar/en/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es-AR"
-                href="http://localhost:3131/tags/"
+                href="https://katra.ballardini.com.ar/tags/"
                 />
   </url><url>
-    <loc>http://localhost:3131/tags/bootstrapping/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/bootstrapping/</loc>
     <lastmod>2026-04-10T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/posts/torno-precision-bootstrapping-ia/</loc>
+    <loc>https://katra.ballardini.com.ar/posts/torno-precision-bootstrapping-ia/</loc>
     <lastmod>2026-04-10T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/historia/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/historia/</loc>
     <lastmod>2026-04-10T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/inteligencia-artificial/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/inteligencia-artificial/</loc>
     <lastmod>2026-04-10T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/mecanizado/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/mecanizado/</loc>
     <lastmod>2026-04-10T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/nerd-lateral/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/nerd-lateral/</loc>
     <lastmod>2026-04-10T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/precision/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/precision/</loc>
     <lastmod>2026-04-10T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/torno/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/torno/</loc>
     <lastmod>2026-04-10T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/cpu/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/cpu/</loc>
     <lastmod>2025-03-10T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/humo/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/humo/</loc>
     <lastmod>2025-03-10T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/medicina/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/medicina/</loc>
     <lastmod>2025-03-10T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/problem-solving/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/problem-solving/</loc>
     <lastmod>2025-03-10T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/process-scheduling/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/process-scheduling/</loc>
     <lastmod>2025-03-10T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/posts/soplar-humo-de-tabaco/</loc>
+    <loc>https://katra.ballardini.com.ar/posts/soplar-humo-de-tabaco/</loc>
     <lastmod>2025-03-10T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/arqueologia/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/arqueologia/</loc>
     <lastmod>2025-02-23T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/computadora-personal/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/computadora-personal/</loc>
     <lastmod>2025-02-23T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/olivetti/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/olivetti/</loc>
     <lastmod>2025-02-23T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/posts/programma-101/</loc>
+    <loc>https://katra.ballardini.com.ar/posts/programma-101/</loc>
     <lastmod>2025-02-23T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/programma-101/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/programma-101/</loc>
     <lastmod>2025-02-23T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/debian/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/debian/</loc>
     <lastmod>2025-02-04T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/posts/saluden-a-debian/</loc>
+    <loc>https://katra.ballardini.com.ar/posts/saluden-a-debian/</loc>
     <lastmod>2025-02-04T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/woke-politics/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/woke-politics/</loc>
     <lastmod>2025-02-04T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/x/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/x/</loc>
     <lastmod>2025-02-04T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/arquitectura/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/arquitectura/</loc>
     <lastmod>2025-01-28T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/posts/jim-weinrich-refactoring-ruby-on-rails/</loc>
+    <loc>https://katra.ballardini.com.ar/posts/jim-weinrich-refactoring-ruby-on-rails/</loc>
     <lastmod>2025-01-28T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/dev/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/dev/</loc>
     <lastmod>2025-01-28T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/dhh/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/dhh/</loc>
     <lastmod>2025-01-28T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/jim-weirich/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/jim-weirich/</loc>
     <lastmod>2025-01-28T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/keynote/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/keynote/</loc>
     <lastmod>2025-01-28T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/repository/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/repository/</loc>
     <lastmod>2025-01-28T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/ruby-on-rails/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/ruby-on-rails/</loc>
     <lastmod>2025-01-28T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/posts/growing-a-language/</loc>
+    <loc>https://katra.ballardini.com.ar/posts/growing-a-language/</loc>
     <lastmod>2025-01-27T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/guy-l-steele-jr/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/guy-l-steele-jr/</loc>
     <lastmod>2025-01-27T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/lisp/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/lisp/</loc>
     <lastmod>2025-01-27T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/posts/como-mover-los-posts-jekyll-hacia-hugo/</loc>
+    <loc>https://katra.ballardini.com.ar/posts/como-mover-los-posts-jekyll-hacia-hugo/</loc>
     <lastmod>2025-01-20T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/github-pages/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/github-pages/</loc>
     <lastmod>2025-01-20T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/hugo/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/hugo/</loc>
     <lastmod>2025-01-20T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/jekyll/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/jekyll/</loc>
     <lastmod>2025-01-20T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/migracion/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/migracion/</loc>
     <lastmod>2025-01-20T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/posts/como-instalar-hugo-en-mi-laptop/</loc>
+    <loc>https://katra.ballardini.com.ar/posts/como-instalar-hugo-en-mi-laptop/</loc>
     <lastmod>2025-01-19T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/instalacion/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/instalacion/</loc>
     <lastmod>2025-01-19T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/ms-windows-11/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/ms-windows-11/</loc>
     <lastmod>2025-01-19T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/blog/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/blog/</loc>
     <lastmod>2025-01-18T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/posts/porque-movi-mi-blog-desde-jekyll-hacia-hugo/</loc>
+    <loc>https://katra.ballardini.com.ar/posts/porque-movi-mi-blog-desde-jekyll-hacia-hugo/</loc>
     <lastmod>2025-01-18T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/posts/como-instalar-vagrant-en-ubuntu-y-debian/</loc>
+    <loc>https://katra.ballardini.com.ar/posts/como-instalar-vagrant-en-ubuntu-y-debian/</loc>
     <lastmod>2016-08-28T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/ubuntu/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/ubuntu/</loc>
     <lastmod>2016-08-28T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/vagrant/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/vagrant/</loc>
     <lastmod>2016-08-28T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/virtualbox/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/virtualbox/</loc>
     <lastmod>2016-08-28T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/posts/vagrant-que-es-eso/</loc>
+    <loc>https://katra.ballardini.com.ar/posts/vagrant-que-es-eso/</loc>
     <lastmod>2016-08-26T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/github/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/github/</loc>
     <lastmod>2016-08-25T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/hpstr/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/hpstr/</loc>
     <lastmod>2016-08-25T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/posts/jekyll-hpstr-como-eliminar-el-ejemplo/</loc>
+    <loc>https://katra.ballardini.com.ar/posts/jekyll-hpstr-como-eliminar-el-ejemplo/</loc>
     <lastmod>2016-08-25T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/tema/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/tema/</loc>
     <lastmod>2016-08-25T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/theme/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/theme/</loc>
     <lastmod>2016-08-25T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/posts/jekyll-el-tema-hpstr/</loc>
+    <loc>https://katra.ballardini.com.ar/posts/jekyll-el-tema-hpstr/</loc>
     <lastmod>2016-08-24T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/ansible/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/ansible/</loc>
     <lastmod>2016-08-23T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/bundle/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/bundle/</loc>
     <lastmod>2016-08-23T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/posts/jekyll-una-vm-vagrant-para-hacerlo-funcionar/</loc>
+    <loc>https://katra.ballardini.com.ar/posts/jekyll-una-vm-vagrant-para-hacerlo-funcionar/</loc>
     <lastmod>2016-08-23T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/ruby/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/ruby/</loc>
     <lastmod>2016-08-23T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/rvm/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/rvm/</loc>
     <lastmod>2016-08-23T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/vagrantfile/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/vagrantfile/</loc>
     <lastmod>2016-08-23T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/posts/mi-nuevo-blog-con-jekyll/</loc>
+    <loc>https://katra.ballardini.com.ar/posts/mi-nuevo-blog-con-jekyll/</loc>
     <lastmod>2016-08-22T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/rant/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/rant/</loc>
     <lastmod>2016-08-22T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/posts/por-que-katra/</loc>
+    <loc>https://katra.ballardini.com.ar/posts/por-que-katra/</loc>
     <lastmod>2000-07-04T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/katra/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/katra/</loc>
     <lastmod>2000-07-04T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/spock/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/spock/</loc>
     <lastmod>2000-07-04T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/tags/star-trek/</loc>
+    <loc>https://katra.ballardini.com.ar/tags/star-trek/</loc>
     <lastmod>2000-07-04T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:3131/categories/</loc>
+    <loc>https://katra.ballardini.com.ar/categories/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:3131/en/categories/"
+                href="https://katra.ballardini.com.ar/en/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es-AR"
-                href="http://localhost:3131/categories/"
+                href="https://katra.ballardini.com.ar/categories/"
                 />
   </url>
 </urlset>
