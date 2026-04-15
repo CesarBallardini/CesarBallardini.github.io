@@ -62,6 +62,101 @@
                 href="https://katra.ballardini.com.ar/en/"
                 />
   </url><url>
+    <loc>https://katra.ballardini.com.ar/en/tags/blog/</loc>
+    <lastmod>2000-07-04T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/tags/blog/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/tags/blog/"
+                />
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/en/tags/katra/</loc>
+    <lastmod>2000-07-04T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/tags/katra/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/tags/katra/"
+                />
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/en/posts/</loc>
+    <lastmod>2000-07-04T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/posts/"
+                />
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/en/tags/spock/</loc>
+    <lastmod>2000-07-04T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/tags/spock/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/tags/spock/"
+                />
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/en/tags/star-trek/</loc>
+    <lastmod>2000-07-04T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/tags/star-trek/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/tags/star-trek/"
+                />
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/en/tags/</loc>
+    <lastmod>2000-07-04T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/tags/"
+                />
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/en/posts/why-katra/</loc>
+    <lastmod>2000-07-04T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://katra.ballardini.com.ar/en/categories/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -74,20 +169,6 @@
                 rel="alternate"
                 hreflang="en-US"
                 href="https://katra.ballardini.com.ar/en/categories/"
-                />
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/en/tags/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es-AR"
-                href="https://katra.ballardini.com.ar/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://katra.ballardini.com.ar/en/tags/"
                 />
   </url>
 </urlset>

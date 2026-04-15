@@ -81,6 +81,16 @@
     <lastmod>2026-04-14T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/posts/"
+                />
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/filosofia/</loc>
     <lastmod>2026-04-14T00:00:00-03:00</lastmod>
@@ -331,6 +341,16 @@
     <lastmod>2025-01-18T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/tags/blog/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/tags/blog/"
+                />
   </url><url>
     <loc>https://katra.ballardini.com.ar/posts/porque-movi-mi-blog-desde-jekyll-hacia-hugo/</loc>
     <lastmod>2025-01-18T00:00:00-03:00</lastmod>
@@ -441,16 +461,46 @@
     <lastmod>2000-07-04T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/tags/katra/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/tags/katra/"
+                />
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/spock/</loc>
     <lastmod>2000-07-04T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/tags/spock/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/tags/spock/"
+                />
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/star-trek/</loc>
     <lastmod>2000-07-04T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/tags/star-trek/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/tags/star-trek/"
+                />
   </url><url>
     <loc>https://katra.ballardini.com.ar/categories/</loc>
     <changefreq>monthly</changefreq>
