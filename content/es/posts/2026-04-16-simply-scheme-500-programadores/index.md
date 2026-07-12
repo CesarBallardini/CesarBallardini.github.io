@@ -3,6 +3,7 @@ layout: post
 title: 'Simply Scheme: el libro que no quería 500 programadores mediocres'
 description: 'Brian Harvey escribió, en el prefacio de su libro de 1994: la disciplina junta a 500 programadores mediocres; las ideas grandes necesitan unos pocos. Treinta años después, la apuesta sigue en pie.'
 tags: ['libros', 'Scheme', 'pedagogia', 'Berkeley', 'Brian Harvey']
+featured_image: 'hero-abacus-soda-hall.jpg'
 ---
 
 > _«Computer programs have become too large and complex to encompass in a human mind. Therefore, the job of computer science education is to teach people how to discipline their work in such a way that 500 mediocre programmers can join together and produce a program that correctly meets its specification.»_
@@ -19,7 +20,7 @@ Harvey y Wright apostaron por la segunda. Y lo interesante — lo que treinta a�
 
 ## Un curso para los que no iban a ser programadores
 
-Durante casi dos décadas, el curso CS 3 — _Introduction to Symbolic Programming_ — de la Universidad de California en Berkeley usó _Simply Scheme_ como libro de texto.[^cs3] La mayoría de los alumnos no eran de la carrera de informática: cursaban CS 3 porque necesitaban un curso de razonamiento cuantitativo, no porque quisieran programar. También lo tomaban los futuros informáticos que llegaban sin experiencia previa — alrededor del diez por ciento de los ingresantes a CS (Computer Science), según el propio Harvey.
+Durante casi dos décadas, el curso CS 3 — _Introduction to Symbolic Programming_ — de la Universidad de California en Berkeley[^img_hero] usó _Simply Scheme_ como libro de texto.[^cs3] La mayoría de los alumnos no eran de la carrera de informática: cursaban CS 3 porque necesitaban un curso de razonamiento cuantitativo, no porque quisieran programar. También lo tomaban los futuros informáticos que llegaban sin experiencia previa — alrededor del diez por ciento de los ingresantes a CS (Computer Science), según el propio Harvey.
 
 Ahí está la primera subversión del libro. La vista conservadora asume, sin decirlo, que las ideas grandes son para los que ya se sabe que van a ser programadores, y que al resto — la masa, los 500 — les alcanza con la disciplina y el proceso. Harvey apostó lo contrario: si las ideas potentes se enseñan bien, no hace falta preseleccionar a nadie. Cualquiera puede aprender a pensar así.
 
@@ -74,3 +75,5 @@ _Simply Scheme_ está disponible gratis, completo, en la web de Harvey.[^ss] Se 
 [^dijkstra]: Edsger W. Dijkstra, «On the Cruelty of Really Teaching Computing Science», publicado dentro de Peter J. Denning (ed.), [«A Debate on Teaching Computing Science»](https://doi.org/10.1145/76380.76381), _Communications of the ACM_ 32, n.º 12 (1989), pp. 1397–1414. Texto de Dijkstra disponible como [EWD 1036](https://www.cs.utexas.edu/~EWD/transcriptions/EWD10xx/EWD1036.html) en el archivo EWD de UT Austin. Harvey lo cita en el prefacio para marcar su desacuerdo.
 
 [^snap]: [Snap!](https://snap.berkeley.edu/) — _Build Your Own Blocks_, lenguaje visual creado por Brian Harvey y Jens Mönig. Berkeley lo usa en CS 10 como sucesor de CS 3.
+
+[^img_hero]: Imagen de portada: [Abacus at Soda Hall, UC Berkeley](https://commons.wikimedia.org/wiki/File:Abacus_at_Soda_Hall,_UC_Berkeley.jpg) — Dominio público (CC0) — D Coetzee, 2009. Recortada a 2.5:1 para hero landscape.
