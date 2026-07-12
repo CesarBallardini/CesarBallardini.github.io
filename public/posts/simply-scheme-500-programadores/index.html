@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Simply Scheme: el libro que no quería 500 programadores mediocres | katra</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Brian Harvey escribió, en el prefacio de su libro de 1994: la disciplina junta a 500 programadores mediocres; las ideas grandes necesitan unos pocos. Treinta años después, la apuesta sigue en pie.">
+    <meta name="generator" content="Hugo 0.164.0">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    <meta name="author" content="César Ballardini">
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://katra.ballardini.com.ar/posts/simply-scheme-500-programadores/">
+    
+
+    
+    
+    <meta property="og:url" content="https://katra.ballardini.com.ar/posts/simply-scheme-500-programadores/">
+	<meta property="og:site_name" content="katra">
+	<meta property="og:title" content="Simply Scheme: el libro que no quería 500 programadores mediocres">
+	<meta property="og:description" content="Brian Harvey escribió, en el prefacio de su libro de 1994: la disciplina junta a 500 programadores mediocres; las ideas grandes necesitan unos pocos. Treinta años después, la apuesta sigue en pie.">
+	<meta property="og:locale" content="es_AR">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-04-16T00:00:00-03:00">
+		<meta property="article:modified_time" content="2026-04-16T00:00:00-03:00">
+		<meta property="article:tag" content="Libros">
+		<meta property="article:tag" content="Scheme">
+		<meta property="article:tag" content="Pedagogia">
+		<meta property="article:tag" content="Berkeley">
+		<meta property="article:tag" content="Brian Harvey">
+
+	<meta itemprop="name" content="Simply Scheme: el libro que no quería 500 programadores mediocres">
+	<meta itemprop="description" content="Brian Harvey escribió, en el prefacio de su libro de 1994: la disciplina junta a 500 programadores mediocres; las ideas grandes necesitan unos pocos. Treinta años después, la apuesta sigue en pie.">
+	<meta itemprop="datePublished" content="2026-04-16T00:00:00-03:00">
+	<meta itemprop="dateModified" content="2026-04-16T00:00:00-03:00">
+	<meta itemprop="wordCount" content="1624">
+	<meta itemprop="keywords" content="Libros,Scheme,Pedagogia,Berkeley,Brian Harvey">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Simply Scheme: el libro que no quería 500 programadores mediocres">
+	<meta name="twitter:description" content="Brian Harvey escribió, en el prefacio de su libro de 1994: la disciplina junta a 500 programadores mediocres; las ideas grandes necesitan unos pocos. Treinta años después, la apuesta sigue en pie.">
+
+      
+      
+    
+	
+
+  </head><body class="ma0 avenir bg-near-white production is-page is-page page-2026-04-16-simply-scheme-500-programadores">
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        katra
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/consultoria/" title="Consultoría pagina">
+              Consultoría
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/cv/" title="CV pagina">
+              CV
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/habilidades/" title="Habilidades Técnicas pagina">
+              Habilidades Técnicas
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/posts/" title="Entradas pagina">
+              Entradas
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="http://linkedin.com/in/cesar-ballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a><a href="https://x.com/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition x-twitter link dib z-999 pt3 pt0-l mr1"
+        title="follow on X - Opens in a new window"
+        aria-label="follow on X - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+            
+          </span></a><a href="https://github.com/CesarBallardini/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+            
+          </span></a></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+
+  <article class="page-2026-04-16-simply-scheme-500-programadores flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Entradas
+      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fsimply-scheme-500-programadores%2F&amp;subject=Simply&#43;Scheme%3A&#43;el&#43;libro&#43;que&#43;no&#43;quer%C3%ADa&#43;500&#43;programadores&#43;mediocres"
+        class="ananke-social-link email no-underline"
+        title="Share on Email" aria-label="Share on Email"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
+                
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fsimply-scheme-500-programadores%2F&amp;summary=&#43;%C2%ABComputer&#43;programs&#43;have&#43;become&#43;too&#43;large&#43;and&#43;complex&#43;to&#43;encompass&#43;in&#43;a&#43;human&#43;mind.&#43;Therefore%2C&#43;the&#43;job&#43;of&#43;computer&#43;science&#43;education&#43;is&#43;to&#43;teach&#43;people&#43;how&#43;to&#43;discipline&#43;their&#43;work&#43;in&#43;such&#43;a&#43;way&#43;that&#43;500&#43;mediocre&#43;programmers&#43;can&#43;join&#43;together&#43;and&#43;produce&#43;a&#43;program&#43;that&#43;correctly&#43;meets&#43;its&#43;specification.%C2%BB%0AAs%C3%AD&#43;arranca%2C&#43;casi&#43;al&#43;pasar%2C&#43;el&#43;prefacio&#43;de&#43;Simply&#43;Scheme%3A&#43;Introducing&#43;Computer&#43;Science&#43;%28Brian&#43;Harvey&#43;y&#43;Matthew&#43;Wright%2C&#43;MIT&#43;Press%2C&#43;1994%29.1&#43;No&#43;es&#43;una&#43;cr%C3%ADtica&#43;ajena&#43;%E2%80%94&#43;es&#43;la&#43;caricatura&#43;que&#43;los&#43;propios&#43;autores&#43;hacen&#43;de&#43;lo&#43;que&#43;ellos&#43;llaman&#43;la&#43;vista&#43;conservadora&#43;de&#43;la&#43;educaci%C3%B3n&#43;en&#43;ciencias&#43;de&#43;la&#43;computaci%C3%B3n.&#43;La&#43;escriben&#43;para&#43;despu%C3%A9s&#43;voltearla.2%0A&amp;title=Simply&#43;Scheme%3A&#43;el&#43;libro&#43;que&#43;no&#43;quer%C3%ADa&#43;500&#43;programadores&#43;mediocres&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fsimply-scheme-500-programadores%2F"
+        class="ananke-social-link linkedin no-underline"
+        title="Share on LinkedIn" aria-label="Share on LinkedIn"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+                
+              </span></a><a href="https://twitter.com/intent/tweet/?&amp;text=&#43;%C2%ABComputer&#43;programs&#43;have&#43;become&#43;too&#43;large&#43;and&#43;complex&#43;to&#43;encompass&#43;in&#43;a&#43;human&#43;mind.&#43;Therefore%2C&#43;the&#43;job&#43;of&#43;computer&#43;science&#43;education&#43;is&#43;to&#43;teach&#43;people&#43;how&#43;to&#43;discipline&#43;their&#43;work&#43;in&#43;such&#43;a&#43;way&#43;that&#43;500&#43;mediocre&#43;programmers&#43;can&#43;join&#43;together&#43;and&#43;produce&#43;a&#43;program&#43;that&#43;correctly&#43;meets&#43;its&#43;specification.%C2%BB%0AAs%C3%AD&#43;arranca%2C&#43;casi&#43;al&#43;pasar%2C&#43;el&#43;prefacio&#43;de&#43;Simply&#43;Scheme%3A&#43;Introducing&#43;Computer&#43;Science&#43;%28Brian&#43;Harvey&#43;y&#43;Matthew&#43;Wright%2C&#43;MIT&#43;Press%2C&#43;1994%29.1&#43;No&#43;es&#43;una&#43;cr%C3%ADtica&#43;ajena&#43;%E2%80%94&#43;es&#43;la&#43;caricatura&#43;que&#43;los&#43;propios&#43;autores&#43;hacen&#43;de&#43;lo&#43;que&#43;ellos&#43;llaman&#43;la&#43;vista&#43;conservadora&#43;de&#43;la&#43;educaci%C3%B3n&#43;en&#43;ciencias&#43;de&#43;la&#43;computaci%C3%B3n.&#43;La&#43;escriben&#43;para&#43;despu%C3%A9s&#43;voltearla.2%0A&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fsimply-scheme-500-programadores%2F"
+        class="ananke-social-link x-twitter no-underline"
+        title="Share on X" aria-label="Share on X"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+                
+              </span></a><a href="%25!s%28%3cnil%3e%29?"
+        class="ananke-social-link github no-underline"
+        title="Share on GitHub" aria-label="Share on GitHub"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+                
+              </span></a></div>
+<h1 class="f1 athelas mt3 mb1">Simply Scheme: el libro que no quería 500 programadores mediocres</h1>
+      
+      <p class="tracked"><strong>César Ballardini</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-04-16T00:00:00-03:00">16 de abril de 2026</time>
+      
+
+      
+      
+        
+        
+        <span class="f6 mv4 dib tracked"> - Lectura en 8 minutos </span>
+        <span class="f6 mv4 dib tracked"> - 1624 palabras </span>
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><blockquote>
+<p><em>«Computer programs have become too large and complex to encompass in a human mind. Therefore, the job of computer science education is to teach people how to discipline their work in such a way that 500 mediocre programmers can join together and produce a program that correctly meets its specification.»</em></p>
+</blockquote>
+<p>Así arranca, casi al pasar, el prefacio de <em>Simply Scheme: Introducing Computer Science</em> (Brian Harvey y Matthew Wright, MIT Press, 1994).<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> No es una crítica ajena — es la caricatura que los propios autores hacen de lo que ellos llaman la <strong>vista conservadora</strong> de la educación en ciencias de la computación. La escriben para después voltearla.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<p>Porque dos frases más adelante viene la otra versión, la que ellos sí sostienen:</p>
+<blockquote>
+<p><em>«&hellip;the job of computer science education is to teach people how to expand their minds so that the programs can fit, by learning to think in a vocabulary of larger, more powerful, more flexible ideas than the obvious ones.»</em></p>
+</blockquote>
+<p>Ahí está el post entero en dos citas. Una dice: la complejidad del software le gana a la mente individual, así que hay que sumar cuerpos y disciplina hasta compensar. La otra dice: la complejidad del software le gana a la mente individual, así que hay que agrandar la mente. Quinientos programadores mediocres coordinados por proceso, o un puñado que piense en ideas más grandes. Mismo problema, dos apuestas completamente distintas sobre dónde poner el esfuerzo.</p>
+<p>Harvey y Wright apostaron por la segunda. Y lo interesante — lo que treinta años después sigue vigente — es que no la reservaron para una élite ya seleccionada.</p>
+<h2 id="un-curso-para-los-que-no-iban-a-ser-programadores">Un curso para los que no iban a ser programadores</h2>
+<p>Durante casi dos décadas, el curso CS 3 — <em>Introduction to Symbolic Programming</em> — de la Universidad de California en Berkeley usó <em>Simply Scheme</em> como libro de texto.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> La mayoría de los alumnos no eran de la carrera de informática: cursaban CS 3 porque necesitaban un curso de razonamiento cuantitativo, no porque quisieran programar. También lo tomaban los futuros informáticos que llegaban sin experiencia previa — alrededor del diez por ciento de los ingresantes a CS (Computer Science), según el propio Harvey.</p>
+<p>Ahí está la primera subversión del libro. La vista conservadora asume, sin decirlo, que las ideas grandes son para los que ya se sabe que van a ser programadores, y que al resto — la masa, los 500 — les alcanza con la disciplina y el proceso. Harvey apostó lo contrario: si las ideas potentes se enseñan bien, no hace falta preseleccionar a nadie. Cualquiera puede aprender a pensar así.</p>
+<h2 id="un-prólogo-a-sicp">Un prólogo a SICP</h2>
+<p>Si conocés SICP — <em>Structure and Interpretation of Computer Programs</em>, el libro de Abelson y Sussman, con Julie Sussman<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> — <em>Simply Scheme</em> es el libro que te lleva hasta la puerta de entrada. Harvey y Wright lo dicen sin ambigüedad: «Our book is a prequel; it&rsquo;s meant to teach you what you need to know in order to read that book successfully.»<sup id="fnref1:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<p>No es casualidad que Hal Abelson, coautor de SICP, haya escrito el prólogo de <em>Simply Scheme</em>.<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> Ahí Abelson nombra la misma trampa que Harvey caricaturiza en su propio prefacio, sólo que con otras palabras: «This book points the way out of the trap. It emphasizes programming as a way to express ideas, rather than just a way to get computers to perform tasks.» La trampa es creer que programar es dar instrucciones a una máquina — la tarea que, en el fondo, cualquiera de los 500 puede hacer si sigue el proceso. La salida es entender que programar es pensar con rigor sobre ideas — la tarea para la que hace falta una mente expandida, no un manual de disciplina.</p>
+<p>El dato que más me llamó la atención: <em>Simply Scheme</em> cubre, en 26 capítulos y siete partes, el material equivalente a las primeras cien páginas de SICP.<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> No es que sea más fácil — es que va más lento, con más ejemplos, más repetición y más paciencia. Donde SICP asume que ya sabés qué es una función, <em>Simply Scheme</em> te lo enseña. Donde SICP te tira a la pileta con recursión en el capítulo 1, Harvey espera hasta la Parte IV.</p>
+<p>Y eso no es una concesión. Es el mismo argumento del prefacio, llevado a la práctica: si el objetivo es agrandar la mente en vez de disciplinarla, hay que dar tiempo.</p>
+<h2 id="la-interacción-como-método-no-como-lujo">La interacción como método, no como lujo</h2>
+<p>El prefacio también cita explícitamente a Dijkstra, que en 1989 propuso que los alumnos de CS no tocaran una computadora.<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> Harvey se planta en la posición exactamente opuesta: sentaba a sus alumnos frente al intérprete de Scheme desde el primer día. Escribí una expresión, mirá el resultado. Para la vista conservadora esto sería ruido — mejor razonar en el papel antes de ensuciarse con la máquina. Para la vista radical es el método: las ideas grandes se aprenden probándolas, no memorizándolas.</p>
+<h2 id="tres-decisiones-que-construyen-una-mente-expandida">Tres decisiones que construyen una mente expandida</h2>
+<p>&ldquo;Expandir la mente&rdquo; suena lindo en un prefacio, pero Harvey y Wright lo bajan a decisiones concretas de diseño del libro. Son las que, para mí, explican por qué esto no es sólo retórica: son las prácticas puntuales que separan pensar en ideas grandes de simplemente acumular sintaxis.</p>
+<p><strong>Funciones de orden superior antes que recursión.</strong> En casi todos los cursos introductorios, la recursión aparece temprano y las funciones de orden superior tarde — si aparecen. Harvey invierte el orden. Su argumento: si se enseña recursión primero, el alumno construye un modelo mental incorrecto donde &ldquo;la función se llama a sí misma&rdquo; implica &ldquo;volver atrás&rdquo;, como un loop. Enseñar <code>map</code>, <code>filter</code> y <code>accumulate</code> primero construye la intuición de que las funciones son valores como cualquier otro.</p>
+<p><strong>Cero mutación.</strong> En todo el libro no hay un solo <code>set!</code>. No hay variables que cambien de valor. Harvey se ahorra así el modelo de evaluación por entornos — la parte más difícil de SICP — y trabaja todo el libro con el modelo de sustitución puro. La única excepción es <code>vector-set!</code> cerca del final, presentado como una concesión al mundo real.</p>
+<p><strong>Programación simbólica.</strong> En vez de arrancar con números y aritmética, <em>Simply Scheme</em> arranca con palabras y oraciones. <code>(first 'hello)</code> devuelve <code>h</code>. <code>(butfirst 'hello)</code> devuelve <code>ello</code>. <code>(sentence 'I 'love 'Scheme)</code> devuelve <code>(I love Scheme)</code>. Manipular texto es más interesante que sumar enteros, y lo interesante es lo que mantiene a la gente programando.</p>
+<p>Ninguna de las tres es una restricción — al revés de lo que haría la vista conservadora, que restringe para contener el daño. Las tres son apuestas a que, si entendés estas ideas primero, después podés cargar con más complejidad en la cabeza sin que se te desarme el modelo mental. Eso es, literalmente, &ldquo;expandir la mente para que los programas entren&rdquo;.</p>
+<h2 id="leerlo-hoy">Leerlo hoy</h2>
+<p>Berkeley ya no usa Scheme para su curso introductorio: CS 61A pasó a Python en 2011 y CS 3 fue reemplazado por CS 10, <em>The Beauty and Joy of Computing</em>, que usa Snap! — un lenguaje visual con funciones de orden superior creado por el propio Harvey.<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> El mundo se movió.</p>
+<p>Pero la elección entre las dos vistas no se resolvió — se volvió invisible. La mayoría de los cursos introductorios de hoy enseñan Python con <code>for</code> loops y variables mutables desde el día uno, sin declarar que están tomando partido. Es la vista conservadora de 1994, sin la caricatura de los &ldquo;500 mediocres&rdquo; que la hacía incómoda de defender en voz alta. Los alumnos de esos cursos salen sabiendo escribir un loop. Muchos no salen sabiendo qué es una función de orden superior, ni por qué esa idea importa.</p>
+<p>Y ahí está la apuesta que sigue abierta treinta años después: si necesitás resolver algo grande, ¿sumás gente disciplinada hasta que el proceso compense lo que a cada uno individualmente le falta, o invertís en que cada mente individual pueda cargar con más? Harvey no eligió la primera opción ni la reservó para unos pocos elegidos de antemano — apostó a que enseñarle a <em>cualquiera</em> a pensar en ideas grandes salía más barato, y era más honesto, que reclutar 500 personas para que la disciplina hiciera el trabajo que las ideas no estaban haciendo.</p>
+<p><em>Simply Scheme</em> está disponible gratis, completo, en la web de Harvey.<sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> Se puede leer en una semana. Si alguna vez quisiste entender SICP pero te rebotó, empezá por acá. Y si enseñás a programar — o simplemente programás y no querés ser uno de los 500 — leelo como lo que es: un manifiesto contra la idea de que la complejidad se resuelve con más gente y más proceso, en vez de con mejores ideas.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Brian Harvey &amp; Matthew Wright, <a href="https://people.eecs.berkeley.edu/~bh/ss-toc2.html"><em>Simply Scheme: Introducing Computer Science</em></a>, MIT Press, 2.ª ed. 1999. Texto completo disponible en la web de Harvey para uso personal.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://people.eecs.berkeley.edu/~bh/ssch0/preface.html">Prefacio de <em>Simply Scheme</em></a>, donde Harvey y Wright contraponen la &ldquo;vista conservadora&rdquo; y la &ldquo;vista radical&rdquo; de la educación en ciencias de la computación.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p><a href="https://people.eecs.berkeley.edu/~bh/cs3.html">CS 3: Introduction to Symbolic Programming</a> — página del curso en Berkeley.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>Harold Abelson &amp; Gerald Jay Sussman, con Julie Sussman, <a href="https://mitp-content-server.mit.edu/books/content/sectbyfn/books_pres_0/6515/sicp.zip/index.html"><em>Structure and Interpretation of Computer Programs</em></a>, MIT Press, 2.ª ed. 1996.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p><a href="https://people.eecs.berkeley.edu/~bh/ssch0/foreword.html">Prólogo de <em>Simply Scheme</em></a>, escrito por Hal Abelson, coautor de SICP.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p><a href="https://people.eecs.berkeley.edu/~bh/ssch26/preview.html">Capítulo 26: What&rsquo;s Next?</a> — donde Harvey conecta <em>Simply Scheme</em> con SICP y estima la cobertura.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>Edsger W. Dijkstra, «On the Cruelty of Really Teaching Computing Science», publicado dentro de Peter J. Denning (ed.), <a href="https://doi.org/10.1145/76380.76381">«A Debate on Teaching Computing Science»</a>, <em>Communications of the ACM</em> 32, n.º 12 (1989), pp. 1397–1414. Texto de Dijkstra disponible como <a href="https://www.cs.utexas.edu/~EWD/transcriptions/EWD10xx/EWD1036.html">EWD 1036</a> en el archivo EWD de UT Austin. Harvey lo cita en el prefacio para marcar su desacuerdo.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8">
+<p><a href="https://snap.berkeley.edu/">Snap!</a> — <em>Build Your Own Blocks</em>, lenguaje visual creado por Brian Harvey y Jens Mönig. Berkeley lo usa en CS 10 como sucesor de CS 3.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/libros/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Libros</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/scheme/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Scheme</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/pedagogia/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Pedagogia</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/berkeley/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Berkeley</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/brian-harvey/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Brian Harvey</a>
+   </li>
+  
+</ul>
+
+      
+    </div></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://katra.ballardini.com.ar/" >
+    &copy;  César Ballardini 2026 
+  </a>
+    <div><div class="ananke-socials"><a href="http://linkedin.com/in/cesar-ballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a><a href="https://x.com/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition x-twitter link dib z-999 pt3 pt0-l mr1"
+        title="follow on X - Opens in a new window"
+        aria-label="follow on X - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+            
+          </span></a><a href="https://github.com/CesarBallardini/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+            
+          </span></a></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
