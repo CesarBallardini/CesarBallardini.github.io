@@ -48,7 +48,7 @@
                 />
   </url><url>
     <loc>https://katra.ballardini.com.ar/</loc>
-    <lastmod>2026-04-22T00:00:00-03:00</lastmod>
+    <lastmod>2026-07-12T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -62,18 +62,18 @@
                 href="https://katra.ballardini.com.ar/en/"
                 />
   </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/cultura/</loc>
-    <lastmod>2026-04-22T00:00:00-03:00</lastmod>
+    <loc>https://katra.ballardini.com.ar/tags/computabilidad/</loc>
+    <lastmod>2026-07-12T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/derecho/</loc>
-    <lastmod>2026-04-22T00:00:00-03:00</lastmod>
+    <loc>https://katra.ballardini.com.ar/posts/interprete-reescritura-perezosa-turing/</loc>
+    <lastmod>2026-07-12T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://katra.ballardini.com.ar/posts/</loc>
-    <lastmod>2026-04-22T00:00:00-03:00</lastmod>
+    <lastmod>2026-07-12T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -86,6 +86,56 @@
                 hreflang="en-US"
                 href="https://katra.ballardini.com.ar/en/posts/"
                 />
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/interpretes/</loc>
+    <lastmod>2026-07-12T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/programacion-funcional/</loc>
+    <lastmod>2026-07-12T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/python/</loc>
+    <lastmod>2026-07-12T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/</loc>
+    <lastmod>2026-07-12T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/tags/"
+                />
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/term-rewriting/</loc>
+    <lastmod>2026-07-12T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/turing/</loc>
+    <lastmod>2026-07-12T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/cultura/</loc>
+    <lastmod>2026-04-22T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/derecho/</loc>
+    <lastmod>2026-04-22T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/filosofia/</loc>
     <lastmod>2026-04-22T00:00:00-03:00</lastmod>
@@ -111,21 +161,6 @@
     <lastmod>2026-04-22T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/</loc>
-    <lastmod>2026-04-22T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es-AR"
-                href="https://katra.ballardini.com.ar/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://katra.ballardini.com.ar/en/tags/"
-                />
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/berkeley/</loc>
     <lastmod>2026-04-16T00:00:00-03:00</lastmod>

@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>El intérprete que ejecuta el paper de Turing tal cual está escrito | katra</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Construí en Python un intérprete de reescritura perezosa que corre las m-configuraciones y m-funciones de &#34;On Computable Numbers&#34; (1936) literalmente, glifos y todo. Cómo funciona por dentro.">
+    <meta name="generator" content="Hugo 0.164.0">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    <meta name="author" content="César Ballardini">
+    
+
+    <link rel="stylesheet" href="/ananke/css/main.e65ecad14ec45356cb0945e8ee25e1e1ae98048c45c1ff0abd042666c7303e53.css" integrity="sha256-5l7K0U7EU1bLCUXo7iXh4a6YBIxFwf8KvQQmZscwPlM=" crossorigin="anonymous">
+    <script>
+  (function () {
+    "use strict";
+
+    
+    
+    function revealButtons() {
+      var buttons = document.querySelectorAll(".code-block .code-copy[hidden]");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].hidden = false;
+      }
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", revealButtons);
+    } else {
+      revealButtons();
+    }
+
+    function flash(button) {
+      var label = button.querySelector(".code-copy-label");
+      var previous = label ? label.textContent : null;
+      button.classList.add("is-copied");
+      if (label) label.textContent = "Copied";
+      window.setTimeout(function () {
+        button.classList.remove("is-copied");
+        if (label && previous !== null) label.textContent = previous;
+      }, 2000);
+    }
+
+    function legacyCopy(text) {
+      var area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "absolute";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.select();
+      var ok = false;
+      try {
+        ok = document.execCommand("copy");
+      } catch (e) {
+        ok = false;
+      }
+      document.body.removeChild(area);
+      return ok;
+    }
+
+    function copyFrom(button) {
+      var container = button.closest(".code-block");
+      if (!container) return;
+      var pre = container.querySelector("pre");
+      if (!pre) return;
+      var source = pre.querySelector("code") || pre;
+      var text = source.innerText;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { flash(button); },
+          function () { if (legacyCopy(text)) flash(button); }
+        );
+      } else if (legacyCopy(text)) {
+        flash(button);
+      }
+    }
+
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest(".code-copy");
+      if (button) copyFrom(button);
+    });
+  })();
+</script>
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://katra.ballardini.com.ar/posts/interprete-reescritura-perezosa-turing/">
+    
+
+    
+    
+    <meta property="og:url" content="https://katra.ballardini.com.ar/posts/interprete-reescritura-perezosa-turing/">
+	<meta property="og:site_name" content="katra">
+	<meta property="og:title" content="El intérprete que ejecuta el paper de Turing tal cual está escrito">
+	<meta property="og:description" content="Construí en Python un intérprete de reescritura perezosa que corre las m-configuraciones y m-funciones de &#34;On Computable Numbers&#34; (1936) literalmente, glifos y todo. Cómo funciona por dentro.">
+	<meta property="og:locale" content="es_AR">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-07-12T00:00:00-03:00">
+		<meta property="article:modified_time" content="2026-07-12T00:00:00-03:00">
+		<meta property="article:tag" content="Turing">
+		<meta property="article:tag" content="Computabilidad">
+		<meta property="article:tag" content="Interpretes">
+		<meta property="article:tag" content="Python">
+		<meta property="article:tag" content="Programacion Funcional">
+		<meta property="article:tag" content="Term Rewriting">
+
+	<meta itemprop="name" content="El intérprete que ejecuta el paper de Turing tal cual está escrito">
+	<meta itemprop="description" content="Construí en Python un intérprete de reescritura perezosa que corre las m-configuraciones y m-funciones de &#34;On Computable Numbers&#34; (1936) literalmente, glifos y todo. Cómo funciona por dentro.">
+	<meta itemprop="datePublished" content="2026-07-12T00:00:00-03:00">
+	<meta itemprop="dateModified" content="2026-07-12T00:00:00-03:00">
+	<meta itemprop="wordCount" content="3059">
+	<meta itemprop="keywords" content="Turing,Computabilidad,Interpretes,Python,Programacion Funcional,Term Rewriting">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="El intérprete que ejecuta el paper de Turing tal cual está escrito">
+	<meta name="twitter:description" content="Construí en Python un intérprete de reescritura perezosa que corre las m-configuraciones y m-funciones de &#34;On Computable Numbers&#34; (1936) literalmente, glifos y todo. Cómo funciona por dentro.">
+
+      
+      
+    
+	
+
+  </head><body class="ma0 avenir bg-near-white production is-page is-page page-2026-07-12-interprete-reescritura-perezosa-turing">
+   
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+      
+        
+        
+      
+    
+  
+  
+    <style>
+      
+        
+          
+          @media screen and (min-width: 480px) {
+            #featured-image-127871ba6a6df11826ecf7317618251e { background-image: url('/posts/interprete-reescritura-perezosa-turing/hero-alan-turing-1951_hu_e269803e0a7bcbc6.jpg'); }
+          }
+        
+      
+        
+      
+        
+      
+        
+      
+    </style>
+  
+  <header id="featured-image-127871ba6a6df11826ecf7317618251e" class="cover bg-center" style="background-image: url('/posts/interprete-reescritura-perezosa-turing/hero-alan-turing-1951_hu_e269803e0a7bcbc6.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        katra
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/consultoria/" title="Consultoría pagina">
+              Consultoría
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/cv/" title="CV pagina">
+              CV
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/habilidades/" title="Habilidades Técnicas pagina">
+              Habilidades Técnicas
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/posts/" title="Entradas pagina">
+              Entradas
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="http://linkedin.com/in/cesar-ballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      </a><a href="https://x.com/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition x-twitter link dib z-999 pt3 pt0-l mr1"
+        title="follow on X - Opens in a new window"
+        aria-label="follow on X - Opens in a new window">
+      </a><a href="https://github.com/CesarBallardini/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            
+          </span></a></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">El intérprete que ejecuta el paper de Turing tal cual está escrito</div>
+          
+            <div class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
+              Construí en Python un intérprete de reescritura perezosa que corre las m-configuraciones y m-funciones de &#34;On Computable Numbers&#34; (1936) literalmente, glifos y todo. Cómo funciona por dentro.
+            </div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+<main class="pb7" role="main">
+  
+
+  <article class="page-2026-07-12-interprete-reescritura-perezosa-turing flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu">
+    <a class="link dim" href="https://katra.ballardini.com.ar/posts/">Entradas</a>
+  </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Finterprete-reescritura-perezosa-turing%2F&amp;subject=El&#43;int%C3%A9rprete&#43;que&#43;ejecuta&#43;el&#43;paper&#43;de&#43;Turing&#43;tal&#43;cual&#43;est%C3%A1&#43;escrito"
+        class="ananke-social-link email no-underline"
+        title="Share on Email" aria-label="Share on Email"
+        target="_blank" rel="nofollow noopener noreferrer">
+        </a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Finterprete-reescritura-perezosa-turing%2F&amp;summary=Todo&#43;el&#43;mundo&#43;que&#43;estudi%C3%B3&#43;ciencias&#43;de&#43;la&#43;computaci%C3%B3n&#43;implement%C3%B3&#43;%26amp%3Bldquo%3Buna&#43;m%C3%A1quina&#43;de&#43;Turing%26amp%3Brdquo%3B&#43;en&#43;alg%C3%BAn&#43;momento1%3A&#43;una&#43;cinta%2C&#43;un&#43;cabezal%2C&#43;una&#43;tabla&#43;de&#43;transiciones&#43;%28estado%2C&#43;s%C3%ADmbolo%29&#43;%E2%86%92&#43;%28estado%2C&#43;s%C3%ADmbolo%2C&#43;movimiento%29.&#43;Es&#43;un&#43;ejercicio&#43;v%C3%A1lido%2C&#43;pero&#43;no&#43;es&#43;lo&#43;que&#43;Turing&#43;escribi%C3%B3&#43;en&#43;1936.&#43;Su&#43;notaci%C3%B3n&#43;real&#43;%E2%80%94la&#43;que&#43;usa&#43;en&#43;On&#43;Computable&#43;Numbers%2C&#43;with&#43;an&#43;Application&#43;to&#43;the&#43;Entscheidungsproblem2%E2%80%94&#43;es&#43;bastante&#43;m%C3%A1s&#43;rica&#43;que&#43;eso%2C&#43;y&#43;casi&#43;nadie&#43;la&#43;implementa&#43;como&#43;est%C3%A1&#43;en&#43;el&#43;paper.&#43;Yo&#43;quer%C3%ADa&#43;saber&#43;si&#43;pod%C3%ADa.%0A&amp;title=El&#43;int%C3%A9rprete&#43;que&#43;ejecuta&#43;el&#43;paper&#43;de&#43;Turing&#43;tal&#43;cual&#43;est%C3%A1&#43;escrito&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Finterprete-reescritura-perezosa-turing%2F"
+        class="ananke-social-link linkedin no-underline"
+        title="Share on LinkedIn" aria-label="Share on LinkedIn"
+        target="_blank" rel="nofollow noopener noreferrer">
+        </a><a href="https://twitter.com/intent/tweet/?&amp;text=Todo&#43;el&#43;mundo&#43;que&#43;estudi%C3%B3&#43;ciencias&#43;de&#43;la&#43;computaci%C3%B3n&#43;implement%C3%B3&#43;%26amp%3Bldquo%3Buna&#43;m%C3%A1quina&#43;de&#43;Turing%26amp%3Brdquo%3B&#43;en&#43;alg%C3%BAn&#43;momento1%3A&#43;una&#43;cinta%2C&#43;un&#43;cabezal%2C&#43;una&#43;tabla&#43;de&#43;transiciones&#43;%28estado%2C&#43;s%C3%ADmbolo%29&#43;%E2%86%92&#43;%28estado%2C&#43;s%C3%ADmbolo%2C&#43;movimiento%29.&#43;Es&#43;un&#43;ejercicio&#43;v%C3%A1lido%2C&#43;pero&#43;no&#43;es&#43;lo&#43;que&#43;Turing&#43;escribi%C3%B3&#43;en&#43;1936.&#43;Su&#43;notaci%C3%B3n&#43;real&#43;%E2%80%94la&#43;que&#43;usa&#43;en&#43;On&#43;Computable&#43;Numbers%2C&#43;with&#43;an&#43;Application&#43;to&#43;the&#43;Entscheidungsproblem2%E2%80%94&#43;es&#43;bastante&#43;m%C3%A1s&#43;rica&#43;que&#43;eso%2C&#43;y&#43;casi&#43;nadie&#43;la&#43;implementa&#43;como&#43;est%C3%A1&#43;en&#43;el&#43;paper.&#43;Yo&#43;quer%C3%ADa&#43;saber&#43;si&#43;pod%C3%ADa.%0A&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Finterprete-reescritura-perezosa-turing%2F"
+        class="ananke-social-link x-twitter no-underline"
+        title="Share on X" aria-label="Share on X"
+        target="_blank" rel="nofollow noopener noreferrer">
+        </a><a href="%25!s%28%3cnil%3e%29?"
+        class="ananke-social-link github no-underline"
+        title="Share on GitHub" aria-label="Share on GitHub"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                
+              </span></a></div>
+<h1 class="f1 athelas mt3 mb1">El intérprete que ejecuta el paper de Turing tal cual está escrito</h1>
+      
+      <p class="tracked"><strong>César Ballardini</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-07-12T00:00:00-03:00">12 de julio de 2026</time>
+      
+
+      
+      
+        
+        
+        <span class="f6 mv4 dib tracked"> - Lectura en 15 minutos </span>
+        <span class="f6 mv4 dib tracked"> - 3059 palabras </span>
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><p>Todo el mundo que estudió ciencias de la computación implementó &ldquo;una máquina de Turing&rdquo; en algún momento<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>: una cinta, un cabezal, una tabla de transiciones <code>(estado, símbolo) → (estado, símbolo, movimiento)</code>. Es un ejercicio válido, pero no es lo que Turing escribió en 1936. Su notación real —la que usa en <em>On Computable Numbers, with an Application to the Entscheidungsproblem</em><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>— es bastante más rica que eso, y casi nadie la implementa como está en el paper. Yo quería saber si podía.</p>
+<p>El resultado es <a href="https://github.com/CesarBallardini/turing-lazy-term-rewriting-interpreter"><code>turing-lazy-term-rewriting-interpreter</code></a><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>, un intérprete en Python que ejecuta esa notación literalmente: los mismos nombres, las mismas letras góticas, el mismo mecanismo que Turing describe con la frase &ldquo;la tabla completa se obtiene por sustitución repetida en las tablas esqueleto&rdquo;. Esa frase, tomada en serio, define el diseño entero.</p>
+<h2 id="lo-que-turing-escribió-y-por-qué-no-es-una-tabla-plana">Lo que Turing escribió, y por qué no es una tabla plana</h2>
+<p>El objetivo del paper es responder el <em>Entscheidungsproblem</em> de Hilbert: ¿existe un procedimiento mecánico que decida, para cualquier enunciado matemático, si es demostrable? Turing lo contesta que no, pero para hacerlo primero tiene que definir con precisión qué es un &ldquo;procedimiento mecánico&rdquo; — y ahí inventa lo que hoy llamamos máquina de Turing.</p>
+<p>Hasta acá, la historia que todos conocemos. Lo que se pierde en la versión de manual es que Turing, apenas termina de definir la máquina básica en las primeras secciones, se da cuenta de que escribir tablas de transición completas a mano es insostenible para cualquier máquina interesante. Así que en el §4 introduce una capa de abstracción: las <strong>m-funciones</strong> (<em>m-functions</em>), tablas parametrizadas que se combinan entre sí. Su notación usa dos alfabetos separados a propósito:</p>
+<ul>
+<li><strong>Letras góticas mayúsculas</strong> (ℭ, 𝔅, 𝔄, …) para variables de m-configuración — &ldquo;andá a esta otra tabla&rdquo;.</li>
+<li><strong>Letras griegas minúsculas</strong> (α, β, …) para variables de símbolo — &ldquo;el símbolo que estés leyendo en este momento&rdquo;.</li>
+</ul>
+<p>Con eso arma una biblioteca de primitivas reusables: <code>f(ℭ, 𝔅, α)</code> encuentra el símbolo <code>α</code> más próximo por la izquierda; <code>e(𝔅, α)</code> borra todas las ocurrencias de <code>α</code>; <code>c1</code>, <code>pe</code>, <code>cp</code> copian y comparan secuencias marcadas. Una máquina real —la que calcula π, o la que enumera números computables— se escribe componiendo estas funciones, no escribiendo cientos de filas de tabla a mano.</p>
+<p>La frase clave, la que da origen a todo el diseño del intérprete, está en el §4:</p>
+<blockquote>
+<p>«The reader should find no difficulty in seeing that this table is really a set of instructions which could be obeyed by a machine. […] The functional relation between a table and the complete table is obtained by repeated substitution.»<sup id="fnref1:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+</blockquote>
+<p>Traducido: las tablas con m-funciones son <strong>abreviaturas</strong>. La tabla completa —la que efectivamente se ejecuta— se obtiene reemplazando cada m-función por su definición, una y otra vez, hasta llegar a instrucciones concretas. Eso no es un detalle de notación. Es, literalmente, la definición de un sistema de reescritura de términos.</p>
+<h2 id="términos-no-estados">Términos, no estados</h2>
+<p>Si las tablas de Turing son abreviaturas que se expanden por sustitución, entonces el &ldquo;estado&rdquo; de la máquina en cualquier instante no es una etiqueta plana (<code>q0</code>, <code>q1</code>, …). Es una <strong>expresión</strong> — un término como <code>f(ℭ, 𝔅, α)</code> o, ya con todo resuelto, <code>f(halt, missing, x)</code>. Así que el primer paso para construir el intérprete fue modelar esa gramática, no una tabla de lookup:</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>type Term <span style="color:#f92672">=</span> Sym <span style="color:#f92672">|</span> SVar <span style="color:#f92672">|</span> MVar <span style="color:#f92672">|</span> Atom <span style="color:#f92672">|</span> MApp
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@dataclass</span>(frozen<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, slots<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MApp</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Application of an m-function / m-configuration to arguments.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    name: str
+</span></span><span style="display:flex;"><span>    args: tuple[Term, <span style="color:#f92672">...</span>] <span style="color:#f92672">=</span> ()</span></span></code></pre></div>
+  </div><p>Un término es un árbol: una hoja (un símbolo literal, una variable de símbolo, una variable de m-configuración) o una aplicación <code>nombre(arg₁, …, argₙ)</code> cuyos argumentos son, otra vez, términos. El &ldquo;estado actual&rdquo; de la máquina siempre es un <code>MApp</code> <strong>ground</strong> — sin variables sueltas.</p>
+<p>Hay una ambigüedad genuina acá que Turing no resuelve explícitamente y que el intérprete sí tiene que resolver: una hoja suelta como <code>x</code> en minúscula, ¿es el símbolo literal <code>x</code> o el nombre de una m-configuración de aridad cero? La respuesta, en el código, es que <strong>no se decide al leer el término</strong> — se decide al consumirlo, según el tipo del parámetro formal que lo recibe:</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">bind_params</span>(params: tuple[str, <span style="color:#f92672">...</span>], args: tuple[Term, <span style="color:#f92672">...</span>]) <span style="color:#f92672">-&gt;</span> Bindings:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> param, arg <span style="color:#f92672">in</span> zip(params, args, strict<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> is_symbol_var(param):     <span style="color:#75715e"># nombre griego → espera un símbolo</span>
+</span></span><span style="display:flex;"><span>            symbols[param] <span style="color:#f92672">=</span> _resolve_symbol(arg)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:                        <span style="color:#75715e"># nombre gótico/mayúscula → espera una m-config</span>
+</span></span><span style="display:flex;"><span>            m_configs[param] <span style="color:#f92672">=</span> _resolve_m_config(arg)</span></span></code></pre></div>
+  </div><p>Esto evita tener que mantener una tabla separada de &ldquo;namespace de símbolos&rdquo; vs. &ldquo;namespace de configuraciones&rdquo; — el árbol de sintaxis solo, más la aridad y el tipo del parámetro que consume cada hoja, alcanza. Es la clase de decisión de diseño que uno no anticipa hasta que intenta implementar la ambigüedad tal cual aparece en el texto original.</p>
+<p>Con el modelo de términos en su lugar, el programa entero es una tabla de entradas, cada una de dos clases:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Tipo</th>
+					<th>Efecto</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>Alias</strong></td>
+					<td>reescribe el término a otro término. Sin acción sobre la cinta. Sustitución pura.</td>
+			</tr>
+			<tr>
+					<td><strong>Table</strong></td>
+					<td>tiene filas que concuerdan con el símbolo escaneado; la fila que concuerda ejecuta operaciones (imprimir / borrar / mover) y <em>después</em> reescribe el estado al término de su <code>goto</code>.</td>
+			</tr>
+	</tbody>
+</table>
+<p>Los alias son las m-funciones &ldquo;definicionales&rdquo; del paper — puro azúcar sintáctico. Las tablas son las que de verdad tocan la cinta.</p>
+<h2 id="perezoso-no-ansioso">Perezoso, no ansioso</h2>
+<p>Acá está la decisión de diseño que le da nombre al proyecto. Si &ldquo;la tabla completa se obtiene por sustitución repetida&rdquo;, hay dos formas de leer eso:</p>
+<p><strong>Expansión ansiosa (eager):</strong> antes de correr nada, expandir <em>todas</em> las m-funciones hasta obtener la tabla plana y finita, y después correr un intérprete trivial sobre esa tabla. Es exactamente lo que Turing describe para producir &ldquo;la tabla completa&rdquo;, y es lo que necesitás si querés calcular la Descripción Estándar de la máquina (§5, más abajo). El problema —que el propio Turing señala de pasada— es que la sustitución puede generar <strong>infinitos</strong> términos-estado distintos. Si <code>p</code> se define en términos de sí misma, expandir ansiosamente puede producir <code>p</code>, <code>p(p(…))</code>, <code>p(p(p(…)))</code>, sin parar nunca. Para una máquina arbitraria, la expansión ansiosa puede no terminar.</p>
+<p><strong>Reescritura perezosa (lazy):</strong> no expandir nada por adelantado. Mantener el estado como término y reescribirlo únicamente cuando hace falta dar el próximo paso. Solo se materializan los términos que la computación realmente visita. Una máquina que corre para siempre —el caso normal para una que calcula una secuencia infinita, como π dígito por dígito— simplemente reescribe para siempre, un paso a la vez, en memoria acotada. Nunca intenta enumerar el espacio de estados completo (que puede ni siquiera ser finito).</p>
+<p>El intérprete es perezoso. No es una elección estética: es la que hace que &ldquo;sustitución repetida&rdquo; funcione como motor principal sin toparse con el problema de expansión infinita. Y es, casi al pie de la letra, el mismo argumento que separa la evaluación <em>call-by-need</em> de la evaluación <em>eager</em> en cálculo lambda y en lenguajes funcionales — la razón por la que Haskell puede tener listas infinitas sin explotar.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></p>
+<h2 id="un-paso-en-detalle">Un paso, en detalle</h2>
+<p>El loop principal vive en <code>machine.py</code>, y cada paso que toca la cinta hace esto:</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <pre tabindex="0"><code>1. scanned ← cinta.leer()
+
+2. RESOLVER ALIASES:
+     mientras la cabeza del término nombre un Alias:
+         env ← ligar los parámetros del alias con los argumentos del estado
+         estado ← sustituir(cuerpo_del_alias, env)   # reescritura pura, sin cinta
+     # ahora la cabeza del término nombra una Table
+
+3. env ← ligar los parámetros de la Table con los argumentos del estado
+
+4. ELEGIR FILA: la primera fila cuyo `Matcher` concuerda con el símbolo escaneado
+
+5. ACTUAR: ejecutar las operaciones de esa fila (imprimir / borrar / mover)
+
+6. REESCRIBIR: estado ← sustituir(goto_de_la_fila, env)</code></pre>
+  </div><p>Los pasos 2 y 6 son la reescritura de términos propiamente dicha. Los pasos 4 y 5 son donde la reescritura toca físicamente la cinta. Todo el paso 2+4 vive en una única función pura, <code>resolve_and_select</code>, que no toca la cinta para nada — y por eso el expansor estático (<code>expand.py</code>, el que sí hace la expansión ansiosa para calcular la Descripción Estándar) puede reusarla sin duplicar lógica.</p>
+<p>Para que esto se sienta menos abstracto, tomemos <code>e(𝔅, α)</code> — &ldquo;borrar cada ocurrencia de α&rdquo; — que Turing arma con dos alias y dos primitivas tabulares (<code>f</code>, la que ya vimos, y <code>e1</code>):</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <pre tabindex="0"><code>e(done, x)
+  → e(e(done, x), done, x)                 # alias
+  → f(e1(e(done, x), done, x), done, x)    # alias
+  → … f camina hasta encontrar la próxima &#39;x&#39; …   [pasos tabulares]
+  → e1(e(done, x), done, x)                # f la encontró, entra a e1
+  → (borra la x) ; luego → e(done, x)      # paso tabular + reescritura
+  → e(done, x)                             # de vuelta al principio: buscar la próxima x
+  → …                                      # repetir hasta que f no encuentre más</code></pre>
+  </div><p>El término intermedio <code>e(e(done, x), done, x)</code> se construyó al vuelo y se descartó enseguida — nunca fue parte de una tabla precalculada. Eso es laziness en acción, no una metáfora.</p>
+<h2 id="escribir-máquinas-en-los-glifos-de-turing">Escribir máquinas en los glifos de Turing</h2>
+<p>Todo lo anterior sería un ejercicio interesante pero incómodo si hubiera que escribir los términos a mano como strings. El proyecto expone un builder fluido que arma tablas y alias sin perder la fidelidad a la notación:</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> turing_machine <span style="color:#f92672">import</span> Machine, Program, Tape, m_function
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Máquina I (§3): imprime 0, _, 1, _, … → 0101…</span>
+</span></span><span style="display:flex;"><span>machine_i <span style="color:#f92672">=</span> Program(
+</span></span><span style="display:flex;"><span>    m_function(<span style="color:#e6db74">&#39;q1&#39;</span>)<span style="color:#f92672">.</span>when_blank()<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#39;0&#39;</span>)<span style="color:#f92672">.</span>right()<span style="color:#f92672">.</span>goto(<span style="color:#e6db74">&#39;q2&#39;</span>),
+</span></span><span style="display:flex;"><span>    m_function(<span style="color:#e6db74">&#39;q2&#39;</span>)<span style="color:#f92672">.</span>when_blank()<span style="color:#f92672">.</span>erase()<span style="color:#f92672">.</span>right()<span style="color:#f92672">.</span>goto(<span style="color:#e6db74">&#39;q3&#39;</span>),
+</span></span><span style="display:flex;"><span>    m_function(<span style="color:#e6db74">&#39;q3&#39;</span>)<span style="color:#f92672">.</span>when_blank()<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#39;1&#39;</span>)<span style="color:#f92672">.</span>right()<span style="color:#f92672">.</span>goto(<span style="color:#e6db74">&#39;q4&#39;</span>),
+</span></span><span style="display:flex;"><span>    m_function(<span style="color:#e6db74">&#39;q4&#39;</span>)<span style="color:#f92672">.</span>when_blank()<span style="color:#f92672">.</span>erase()<span style="color:#f92672">.</span>right()<span style="color:#f92672">.</span>goto(<span style="color:#e6db74">&#39;q1&#39;</span>),
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>print(Machine(machine_i, start<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;q1&#39;</span>, tape<span style="color:#f92672">=</span>Tape<span style="color:#f92672">.</span>blank())<span style="color:#f92672">.</span>run(figures<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>))  <span style="color:#75715e"># 0101010101</span></span></span></code></pre></div>
+  </div><p>Y la biblioteca estándar del §4 —la que compone <code>f</code>, <code>e</code>, <code>c1</code>, etc.— está escrita con los glifos reales, no con nombres ASCII inventados:</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>m_function(<span style="color:#e6db74">&#39;f&#39;</span>, <span style="color:#e6db74">&#39;ℭ&#39;</span>, <span style="color:#e6db74">&#39;𝔅&#39;</span>, <span style="color:#e6db74">&#39;α&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>when(_S)<span style="color:#f92672">.</span>left()<span style="color:#f92672">.</span>goto(<span style="color:#e6db74">&#39;f1(ℭ, 𝔅, α)&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>when_not(_S)<span style="color:#f92672">.</span>left()<span style="color:#f92672">.</span>goto(<span style="color:#e6db74">&#39;f(ℭ, 𝔅, α)&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>when_blank()<span style="color:#f92672">.</span>left()<span style="color:#f92672">.</span>goto(<span style="color:#e6db74">&#39;f(ℭ, 𝔅, α)&#39;</span>),</span></span></code></pre></div>
+  </div><p>Esto funciona porque las letras góticas y griegas viven dentro de strings del DSL, no como identificadores de Python — así que no hay normalización NFKC<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> que las aplaste a ASCII por accidente. <code>is_symbol_var</code> reconoce una letra griega minúscula (glifo o nombre completo, <code>α</code> o <code>alpha</code>); <code>is_m_config_var</code> reconoce cualquier token que empiece con mayúscula, gótica o latina. El resultado es que se puede escribir literalmente la notación del paper, o su transliteración ASCII, indistintamente — y ambas producen el mismo árbol de términos.</p>
+<h2 id="números-de-descripción-el-5">Números de descripción: el §5</h2>
+<p>Hay una sección del paper que casi nadie implementa porque no hace falta para &ldquo;correr&rdquo; una máquina, pero que es el corazón de la idea de máquina universal: el §5 le asigna a cada máquina un único número entero — su <strong>Descripción Estándar</strong>, convertida a un <strong>Description Number</strong> codificando cada instrucción como una secuencia de símbolos <code>D</code>, <code>A</code>, <code>C</code>, <code>R</code>, <code>L</code>, <code>N</code>, <code>;</code>. Esto es lo que permite, más adelante en el paper, que una máquina lea la descripción de <em>otra</em> máquina desde su propia cinta y la simule — la máquina universal.</p>
+<p>Para calcular esa codificación hace falta la tabla <strong>completa</strong> y <strong>finita</strong> — es decir, la versión ansiosa. Por eso el proyecto tiene las dos estrategias conviviendo a propósito: el intérprete perezoso corre máquinas (incluidas las que nunca terminan), y un expansor ansioso (<code>expand.py</code>) enumera el conjunto finito de estados alcanzables de una máquina concreta y produce la tabla plana que alimenta la codificación:</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>uv run python -m turing encode examples.machine_i --dn
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 31332531173113353111731113322531111731111335317</span></span></span></code></pre></div>
+  </div><p>Que la expansión ansiosa y la ejecución perezosa calculen exactamente la misma secuencia — hay un test que lo verifica machine por machine — es la demostración práctica de que el modelo perezoso es fiel a la &ldquo;sustitución repetida&rdquo; del paper: son el mismo cómputo visto de dos maneras.</p>
+<h2 id="por-qué-vale-la-pena-hacer-esto">Por qué vale la pena hacer esto</h2>
+<p>Uno podría preguntarse para qué construir esto en 2026, cuando ya sabemos perfectamente qué es computable y no necesitamos a Turing para calcularlo. La respuesta, para mí, no tiene que ver con computabilidad — tiene que ver con lo que se aprende de un texto fundacional cuando lo tomás en serio hasta el nivel de la notación. &ldquo;On Computable Numbers&rdquo; no es solo el paper que inventa la máquina de Turing: también es, sin que se lo suela leer así, uno de los primeros textos que describe un <strong>sistema de reescritura de términos</strong> con <strong>funciones parametrizadas</strong> y <strong>sustitución</strong> como mecanismo de evaluación — la misma idea que después reaparece, formalizada, en el cálculo lambda, en el modelo de sustitución de SICP,<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> y en cualquier intérprete que evalúa un AST reemplazando variables por valores.</p>
+<p>Implementar la notación tal cual, glifos incluidos, obliga a resolver ambigüedades que una paráfrasis moderna esconde — como la de &ldquo;¿esta hoja es un símbolo o una configuración?&rdquo; — y esas ambigüedades, una vez resueltas, terminan explicando decisiones de diseño que uno encuentra después en lenguajes bastante más modernos. Petzold hace un trabajo notable línea por línea sobre el paper en <em>The Annotated Turing</em>;<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> este proyecto es la versión &ldquo;y ahora hacé que compile&rdquo; de esa misma lectura.</p>
+<h2 id="las-decisiones-que-son-mías">Las decisiones que son mías</h2>
+<p>Escribí buena parte del código en colaboración con Claude, de Anthropic — lo cuento con más detalle abajo. Pero el diseño, en el sentido de &ldquo;qué forma tiene que tener esto para ser correcto y fiel al paper&rdquo;, es mío. Concretamente:</p>
+<ul>
+<li><strong>Modelar el estado como término, no como etiqueta plana</strong>, y tomar literalmente la frase de Turing de que &ldquo;la tabla completa se obtiene por sustitución repetida&rdquo; — esa lectura es la que arma todo el proyecto, y no es la lectura habitual del paper.</li>
+<li><strong>Reescritura perezosa en vez de expansión ansiosa</strong> como estrategia de ejecución, específicamente para poder correr máquinas que no terminan sin toparse con el problema de expansión infinita que el propio Turing señala.</li>
+<li><strong>Puertos y dependency injection por constructor</strong>, con una capa de arquitectura que <code>.importlinter</code> hace cumplir en cada corrida de CI: <code>encode → expand → machine → {table, tape} → {terms, ports} → symbols</code>. <code>Machine</code> recibe <code>ProgramPort</code> y <code>TapePort</code> por constructor y nunca construye un adaptador concreto — la única forma de que el motor no termine acoplado a una cinta o un programa en particular.</li>
+<li><strong>Table y Alias como dos tipos de entrada distintos</strong>, indexados por <code>(nombre, aridad)</code> para que las sobrecargas de Turing (<code>e/3</code> vs. <code>e/2</code>, varias <code>ce</code>/<code>cp</code>/<code>cpe</code>) convivan sin colisionar.</li>
+<li><strong>Resolver la ambigüedad símbolo-vs-configuración por el tipo del parámetro que la recibe</strong>, en vez de mantener una tabla de namespaces separada — la decisión que ya conté en la sección de términos.</li>
+<li><strong>No incluir <code>cr</code></strong> (copiar sin borrar el marcador) en la biblioteca estándar porque no tenía una transcripción confiable de esa tabla — preferí dejarla afuera, documentada como faltante, antes que adivinar una versión y que quedara mal.</li>
+<li><strong>El layout de casilleros alternados</strong> (cifras en las casillas pares, marcadores en las impares), que es el que usa Turing mismo en el paper y que además es load-bearing: <code>f</code> detecta el final de la cinta por dos blancos consecutivos seguidos, así que borrar un marcador mal en el medio de la cinta rompería esa detección.</li>
+<li><strong>Reusar la misma función <code>resolve_and_select</code></strong> tanto en el intérprete en vivo como en el expansor estático, para que las dos estrategias no puedan divergir silenciosamente — es lo que permite el test que compara ejecución perezosa contra expansión ansiosa y verifica que calculan la misma secuencia.</li>
+<li><strong>Usar el Número de Descripción de la Máquina I, tal como aparece impreso en el paper, como ancla de corrección</strong>: si el codificador no reproduce ese entero exacto, algo está mal en el modelo, no en un detalle de implementación.</li>
+</ul>
+<p>Ninguna de estas es una decisión que uno tercerice completamente a un asistente de IA — son las que definen si el proyecto es fiel al paper o simplemente &ldquo;otra simulación de máquina de Turing&rdquo; con nombres bonitos.</p>
+<p>El código está completo en el repositorio,<sup id="fnref1:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> con un CLI para correr, trazar y codificar máquinas, y un <a href="https://github.com/CesarBallardini/turing-lazy-term-rewriting-interpreter/blob/main/docs/lazy-term-rewriting-interpreter.md">documento de diseño</a> que explica el modelo de ejecución con más detalle del que entra acá. Si alguna vez leíste el paper de Turing y te quedaste con ganas de ver la notación <em>correr</em>, es exactamente para eso que lo escribí.</p>
+<p>Una aclaración sobre el repositorio: lo escribí con la asistencia de Claude, de Anthropic. Las decisiones de arriba son mías; buena parte del código que las implementa se escribió en colaboración con la IA.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Imagen de portada: <a href="https://commons.wikimedia.org/wiki/File:Alan_Turing_%281951%29.jpg">Alan Turing (1951)</a> — fotografía de estudio de Elliott &amp; Fry, 29 de marzo de 1951, vía Computer History Museum — Dominio público. Recortada a 2.5:1 para hero landscape.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>A. M. Turing, <a href="https://doi.org/10.1112/plms/s2-42.1.230"><em>On Computable Numbers, with an Application to the Entscheidungsproblem</em></a>, <em>Proceedings of the London Mathematical Society</em>, s2-42(1) (1937), pp. 230–265 (recibido el 28 de mayo de 1936). Copia de acceso libre: <a href="https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf">PDF en la University of Virginia</a>. Las citas de este post corresponden a los §§3–5 del paper.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>César Ballardini, <a href="https://github.com/CesarBallardini/turing-lazy-term-rewriting-interpreter"><em>turing-lazy-term-rewriting-interpreter</em></a>, repositorio en GitHub. Incluye el intérprete, el CLI <code>turing</code>, la biblioteca estándar del §4, el codificador de Números de Descripción del §5, y el documento de diseño citado en este post.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>Sobre evaluación perezosa vs. ansiosa en general: <a href="https://en.wikipedia.org/wiki/Evaluation_strategy">«Evaluation strategy»</a> en Wikipedia da un contraste conciso entre <em>call-by-value</em>, <em>call-by-name</em> y <em>call-by-need</em>. Graham Hutton, <em>Programming in Haskell</em> (2.ª ed.), cubre la laziness en la práctica; el explicador de Computerphile <a href="https://www.youtube.com/watch?v=bnRNiE_OVWA">«Infinite Data Structures: To Infinity &amp; Beyond!»</a> es una introducción visual libre a por qué la laziness permite computar con estructuras que nunca se materializan del todo — exactamente lo que hace posible correr máquinas de Turing que no terminan.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p><strong>NFKC</strong> (<em>Normalization Form Compatibility Composition</em>) es una de las cuatro formas estándar de normalización Unicode, definida en el <a href="https://unicode.org/reports/tr15/">Unicode Standard Annex #15</a>. Colapsa caracteres &ldquo;de compatibilidad&rdquo; —variantes visual o semánticamente equivalentes de un mismo carácter, como letras de ancho completo, ligaduras o símbolos matemáticos alfanuméricos— a una forma canónica. Importa acá porque Python normaliza los identificadores con NFKC (<a href="https://peps.python.org/pep-3131/">PEP 3131</a>): si las letras góticas o griegas fueran nombres de variables de Python en vez de texto dentro de strings, el propio lenguaje podría plancharlas a sus equivalentes ASCII antes de que el código las viera, perdiendo la distinción entre, por ejemplo, la ℭ gótica y la C latina.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>Harold Abelson &amp; Gerald Jay Sussman, con Julie Sussman, <em>Structure and Interpretation of Computer Programs</em>, MIT Press, 2.ª ed. 1996 — en particular el modelo de sustitución de evaluación (§1.1.5). <a href="https://mitp-content-server.mit.edu/books/content/sectbyfn/books_pres_0/6515/sicp.zip/index.html">Versión libre online</a>.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>Charles Petzold, <em>The Annotated Turing: A Guided Tour Through Alan Turing&rsquo;s Historic Paper on Computability and the Turing Machine</em>, Wiley, 2008. Recorrido línea por línea del paper de 1936, incluidas las tablas esqueleto y la máquina universal. Disponible para préstamo digital controlado en <a href="https://archive.org/details/annotatedturingg0000petz">archive.org</a> (requiere cuenta gratuita; no es descarga libre).&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+<ul class="pa0">
+  
+</ul><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/turing/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Turing</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/computabilidad/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Computabilidad</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/interpretes/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Interpretes</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/python/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Python</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/programacion-funcional/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Programacion Funcional</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/term-rewriting/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Term Rewriting</a>
+   </li>
+  
+</ul>
+
+      
+    </div></article>
+</main><footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://katra.ballardini.com.ar/" >
+    &copy;  César Ballardini 2026 
+  </a>
+    <div><div class="ananke-socials"><a href="http://linkedin.com/in/cesar-ballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      </a><a href="https://x.com/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition x-twitter link dib z-999 pt3 pt0-l mr1"
+        title="follow on X - Opens in a new window"
+        aria-label="follow on X - Opens in a new window">
+      </a><a href="https://github.com/CesarBallardini/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            
+          </span></a></div>
+</div>
+  </div>
+</footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

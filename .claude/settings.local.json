@@ -55,7 +55,8 @@
       "WebFetch(domain:www.canal-ar.com.ar)",
       "WebFetch(domain:cpcipc.org.ar)",
       "WebFetch(domain:www.mail-archive.com)",
-      "Bash(hugo --cleanDestinationDir)"
+      "Bash(hugo --cleanDestinationDir)",
+      "WebFetch(domain:api.crossref.org)"
     ]
   }
 }

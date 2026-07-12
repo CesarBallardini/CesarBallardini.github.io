@@ -12,9 +12,51 @@
 			<copyright>César Ballardini</copyright>
 		
 		
-			<lastBuildDate>Wed, 22 Apr 2026 00:00:00 -0300</lastBuildDate>
+			<lastBuildDate>Sun, 12 Jul 2026 00:00:00 -0300</lastBuildDate>
 		
 			<atom:link href="https://katra.ballardini.com.ar/tags/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Computabilidad</title>
+				<link>https://katra.ballardini.com.ar/tags/computabilidad/</link>
+				<pubDate>Sun, 12 Jul 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/computabilidad/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Interpretes</title>
+				<link>https://katra.ballardini.com.ar/tags/interpretes/</link>
+				<pubDate>Sun, 12 Jul 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/interpretes/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Programacion Funcional</title>
+				<link>https://katra.ballardini.com.ar/tags/programacion-funcional/</link>
+				<pubDate>Sun, 12 Jul 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/programacion-funcional/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Python</title>
+				<link>https://katra.ballardini.com.ar/tags/python/</link>
+				<pubDate>Sun, 12 Jul 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/python/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Term Rewriting</title>
+				<link>https://katra.ballardini.com.ar/tags/term-rewriting/</link>
+				<pubDate>Sun, 12 Jul 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/term-rewriting/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Turing</title>
+				<link>https://katra.ballardini.com.ar/tags/turing/</link>
+				<pubDate>Sun, 12 Jul 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/turing/</guid>
+				<description></description>
+			</item>
 			<item>
 				<title>Cultura</title>
 				<link>https://katra.ballardini.com.ar/tags/cultura/</link>
