@@ -72,11 +72,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/debian/</loc>
-    <lastmod>2026-07-12T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://katra.ballardini.com.ar/posts/interprete-reescritura-perezosa-turing/</loc>
     <lastmod>2026-07-12T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -112,27 +107,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/icot/</loc>
-    <lastmod>2026-07-12T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://katra.ballardini.com.ar/tags/interpretes/</loc>
-    <lastmod>2026-07-12T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/japon/</loc>
-    <lastmod>2026-07-12T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/kl1/</loc>
-    <lastmod>2026-07-12T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/klic/</loc>
     <lastmod>2026-07-12T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -157,17 +132,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/prolog-concurrente/</loc>
-    <lastmod>2026-07-12T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://katra.ballardini.com.ar/tags/python/</loc>
-    <lastmod>2026-07-12T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/kl1-icot-quinta-generacion/</loc>
     <lastmod>2026-07-12T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -198,11 +163,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/turing/</loc>
-    <lastmod>2026-07-12T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/vagrant/</loc>
     <lastmod>2026-07-12T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -397,6 +357,11 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/debian/</loc>
+    <lastmod>2025-02-04T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://katra.ballardini.com.ar/posts/saluden-a-debian/</loc>
     <lastmod>2025-02-04T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -533,6 +498,11 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/ubuntu/</loc>
+    <lastmod>2016-08-28T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/vagrant/</loc>
     <lastmod>2016-08-28T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

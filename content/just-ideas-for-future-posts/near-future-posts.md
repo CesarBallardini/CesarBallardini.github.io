@@ -227,7 +227,7 @@ Cada entrada del plan vive en un archivo `draft-*.md` propio bajo la carpeta de 
 - **A1-05** — [Clipper, xBase y los servidores web que no debían existir](lenguajes/draft-clipper-xbase-servidor-web.md)
 - **A1-06** — [PostScript como servidor web](lenguajes/draft-postscript-como-servidor-web.md)
 - **A1-07** — [Spectrum y MicroHobby: la cultura del 8-bit hispanohablante](lenguajes/draft-spectrum-microhobby-cultura-8-bit.md)
-- **A1-08** — [Resucitando KL1: el lenguaje del proyecto japonés de Quinta Generación, treinta años después](/posts/kl1-icot-quinta-generacion/) ✅ **publicado 2026-07-12**
+- **A1-08** — [Resucitando KL1: el lenguaje del proyecto japonés de Quinta Generación, treinta años después](/posts/kl1-icot-quinta-generacion/) ✅ **publicado 2026-07-13**
 - **A1-09** — [GnuCOBOL-lab: aprender RM/COBOL-85 desde un libro español de 1990 dentro de una VM Vagrant](lenguajes/draft-gnucobol-lab-rm-cobol-85.md)
 - **A1-10** — [«Soy mi propio abuelo»: modelar una humorada folklórica en Prolog](/posts/soy-mi-propio-abuelo-prolog/) ✅ **publicado 2026-07-12**
 - **A1-11** — [Pharo Smalltalk: el sistema vivo donde el código y el mundo son la misma cosa](lenguajes/draft-pharo-smalltalk-sistema-vivo.md)

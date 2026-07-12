@@ -1,12 +1,12 @@
 ### A1-08 — Resucitando KL1 (Kernel Language 1) y el proyecto japonés de 5ta generación con `kl1c`
 
 - **Archivo seed (repo POC):** [github.com/CesarBallardini/kl1c](https://github.com/CesarBallardini/kl1c) — Makefile, 6 stars, último push 2023-09-27
-- **Slug propuesto:** `kl1-icot-quinta-generacion` — publicado como `content/es/posts/2026-07-12-kl1-icot-quinta-generacion/index.md`
+- **Slug propuesto:** `kl1-icot-quinta-generacion` — publicado como `content/es/posts/2026-07-13-kl1-icot-quinta-generacion/index.md`
 - **Comando:** _no aplica — post ya publicado, este entry es para anclar el cross-link en el plan_
 - **Serie:** A1 — pero cruza fuerte con [[H-06]] (parábola del legacy) y [[D-03]] (Turing)
 - **Cross-links:** lleva a [[A1-04]] (Modula-2: otra utopía de los 80), [[A1-05]] (Clipper: el otro extremo de los 80), [[H-06]] (la parábola); puede inspirar una entrada propia sobre *concurrent logic programming*
 - **Idioma:** es
-- **Madurez:** **publicado** (2026-07-12)
+- **Madurez:** **publicado** (2026-07-13) — la fecha se movió un día respecto de las otras dos entradas publicadas el 2026-07-12 (Prolog, Turing) porque las tres compartían la misma fecha derivada del nombre de carpeta (sin hora), lo que dejaba el orden de aparición en `/posts/` a criterio interno no determinístico de Hugo. Mover KL1 a 07-13 lo fuerza a aparecer último, en el orden real en que se escribió.
 - **Length target:** ya escrito (~2264 palabras, 11 min de lectura)
 
 **Concepto:** entre 1982 y 1992 Japón gastó **el equivalente a 850 millones de dólares** en el *Fifth Generation Computer Systems Project* (5GCS), una apuesta a redefinir la computación alrededor de **programación lógica concurrente** corriendo en hardware paralelo dedicado (las máquinas PIM). El lenguaje del proyecto fue **KL1 (Kernel Language 1)**, descendiente de Concurrent Prolog y antecesor conceptual de cosas que hoy hacen Erlang/Elixir. El proyecto "fracasó" en términos de su objetivo declarado (no produjimos máquinas pensantes), pero produjo trabajo técnico enorme y sigue siendo una de las grandes ucronías de la computación. Mi POC `kl1c` empaqueta KLIC (la implementación portable en C) en un Vagrant moderno para que se pueda *correr* hoy.
@@ -38,7 +38,7 @@
 
 **Tags propuestos:** `['KL1', 'KLIC', 'ICOT', 'Prolog concurrente', 'Japon', 'Vagrant', 'Debian']` (los tags reales del post; se sacó "Quinta Generacion" e "historia" por no usarse como tags en el post final).
 
-**Estado actual:** **publicado el 2026-07-12**, [post en vivo](/posts/kl1-icot-quinta-generacion/). El post terminó siendo más rico que el plan original porque se clonó el repo real (no había clon local, se clonó al scratchpad para la sesión) en vez de escribir sólo a partir del resumen del draft: la sección de empaquetado usa la historia real encontrada en el `Vagrantfile` y los tres parches del repo (autodetección de `bcmp`/`bzero`/`strchr` rota en la libc moderna, y el instalador `expect` que no conocía las rutas multiarch de Debian) en vez de la descripción genérica "Vagrant + scripts" del outline original. Acciones pendientes desde el plan editorial:
+**Estado actual:** **publicado el 2026-07-13**, [post en vivo](/posts/kl1-icot-quinta-generacion/). El post terminó siendo más rico que el plan original porque se clonó el repo real (no había clon local, se clonó al scratchpad para la sesión) en vez de escribir sólo a partir del resumen del draft: la sección de empaquetado usa la historia real encontrada en el `Vagrantfile` y los tres parches del repo (autodetección de `bcmp`/`bzero`/`strchr` rota en la libc moderna, y el instalador `expect` que no conocía las rutas multiarch de Debian) en vez de la descripción genérica "Vagrant + scripts" del outline original. Acciones pendientes desde el plan editorial:
 - Agregar links a este post desde [[A1-04]] y [[A1-05]] cuando se escriban.
 - Cross-link con [[H-06]] (parábola del legacy) cuando ese post exista — comparten el tema de "código que sobrevive a su propio proyecto".
 - Posible entrada propia sobre *concurrent logic programming* en general, inspirada por este post (queda anotado pero sin ID asignado todavía).
