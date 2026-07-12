@@ -165,7 +165,7 @@ Las trece flechas rojas cubren los catorce predicados de "conclusión" que vimos
 
 [^cancion]: La misma estructura lógica aparece, de forma independiente, en la canción country estadounidense *I'm My Own Grandpa* (1947), de Lonzo & Oscar — [grabación original en YouTube](https://www.youtube.com/watch?v=x3CvRC4fAmk), [entrada en Wikipedia](https://en.wikipedia.org/wiki/I%27m_My_Own_Grandpa) — prueba de que el chiste de parentescos imposibles no es un invento exclusivamente hispanoamericano, sino un nudo lógico que se redescubre en distintas culturas.
 
-[^repo]: César Ballardini, [*prolog-me-case-con-una-viuda*](https://github.com/CesarBallardini/prolog-me-case-con-una-viuda), repositorio en GitHub. Contiene `dos-casamientos.pl`, la suite de tests `plunit` y la configuración de Travis CI.
+[^repo]: César Ballardini, [*prolog-me-case-con-una-viuda*](https://github.com/CesarBallardini/prolog-me-case-con-una-viuda), repositorio en GitHub. Contiene `dos-casamientos.pl`, la suite de tests `plunit` y el workflow de GitHub Actions que las corre en cada push.
 
 [^swipl]: [SWI-Prolog](https://www.swi-prolog.org/) — implementación de Prolog usada en este proyecto. Para quien quiera profundizar en el lenguaje: Ivan Bratko, *Prolog Programming for Artificial Intelligence*, 4.ª ed., Pearson, 2011 (edición anterior, 3.ª ed. 2001, en [préstamo digital controlado en archive.org](https://archive.org/details/prologprogrammin0000brat_l1m9)); y William F Clocksin & Christopher S Mellish, *[Programming in Prolog](https://link.springer.com/book/10.1007/978-3-642-55481-0)*, 5.ª ed., Springer, 2003 (edición anterior, 2.ª ed. 1985, en [préstamo digital controlado en archive.org](https://archive.org/details/programminginpro00cloc)) — los dos clásicos de referencia.
 
