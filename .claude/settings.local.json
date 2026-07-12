@@ -54,7 +54,8 @@
       "WebFetch(domain:www.vialibre.org.ar)",
       "WebFetch(domain:www.canal-ar.com.ar)",
       "WebFetch(domain:cpcipc.org.ar)",
-      "WebFetch(domain:www.mail-archive.com)"
+      "WebFetch(domain:www.mail-archive.com)",
+      "Bash(hugo --cleanDestinationDir)"
     ]
   }
 }

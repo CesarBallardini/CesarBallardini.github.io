@@ -8,13 +8,13 @@
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="en-US"
-                href="https://katra.ballardini.com.ar/en/consulting/"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/consultoria/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es-AR"
-                href="https://katra.ballardini.com.ar/consultoria/"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/consulting/"
                 />
   </url><url>
     <loc>https://katra.ballardini.com.ar/cv/</loc>
@@ -23,13 +23,13 @@
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="en-US"
-                href="https://katra.ballardini.com.ar/en/cv/"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/cv/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es-AR"
-                href="https://katra.ballardini.com.ar/cv/"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/cv/"
                 />
   </url><url>
     <loc>https://katra.ballardini.com.ar/habilidades/</loc>
@@ -38,29 +38,124 @@
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="en-US"
-                href="https://katra.ballardini.com.ar/en/skills/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="es-AR"
                 href="https://katra.ballardini.com.ar/habilidades/"
                 />
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/</loc>
-    <lastmod>2026-04-14T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://katra.ballardini.com.ar/en/"
+                href="https://katra.ballardini.com.ar/en/skills/"
                 />
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/</loc>
+    <lastmod>2026-04-22T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="es-AR"
                 href="https://katra.ballardini.com.ar/"
                 />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/"
+                />
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/cultura/</loc>
+    <lastmod>2026-04-22T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/derecho/</loc>
+    <lastmod>2026-04-22T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/posts/</loc>
+    <lastmod>2026-04-22T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/posts/"
+                />
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/filosofia/</loc>
+    <lastmod>2026-04-22T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/genero/</loc>
+    <lastmod>2026-04-22T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/posts/la-gran-feminizacion-helen-andrews/</loc>
+    <lastmod>2026-04-22T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/libertad-de-expresion/</loc>
+    <lastmod>2026-04-22T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/sociedad/</loc>
+    <lastmod>2026-04-22T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/</loc>
+    <lastmod>2026-04-22T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/tags/"
+                />
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/berkeley/</loc>
+    <lastmod>2026-04-16T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/brian-harvey/</loc>
+    <lastmod>2026-04-16T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/libros/</loc>
+    <lastmod>2026-04-16T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/pedagogia/</loc>
+    <lastmod>2026-04-16T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/scheme/</loc>
+    <lastmod>2026-04-16T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/posts/simply-scheme-500-programadores/</loc>
+    <lastmod>2026-04-16T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://katra.ballardini.com.ar/posts/ingenieria-software-oximoron/</loc>
     <lastmod>2026-04-14T00:00:00-03:00</lastmod>
@@ -73,26 +168,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/dijkstra/</loc>
-    <lastmod>2026-04-14T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/</loc>
-    <lastmod>2026-04-14T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://katra.ballardini.com.ar/en/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es-AR"
-                href="https://katra.ballardini.com.ar/posts/"
-                />
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/filosofia/</loc>
     <lastmod>2026-04-14T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -111,21 +186,6 @@
     <lastmod>2026-04-14T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/</loc>
-    <lastmod>2026-04-14T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://katra.ballardini.com.ar/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es-AR"
-                href="https://katra.ballardini.com.ar/tags/"
-                />
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/bootstrapping/</loc>
     <lastmod>2026-04-10T00:00:00-03:00</lastmod>
@@ -343,13 +403,13 @@
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="en-US"
-                href="https://katra.ballardini.com.ar/en/tags/blog/"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/tags/blog/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es-AR"
-                href="https://katra.ballardini.com.ar/tags/blog/"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/tags/blog/"
                 />
   </url><url>
     <loc>https://katra.ballardini.com.ar/posts/porque-movi-mi-blog-desde-jekyll-hacia-hugo/</loc>
@@ -463,13 +523,13 @@
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="en-US"
-                href="https://katra.ballardini.com.ar/en/tags/katra/"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/tags/katra/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es-AR"
-                href="https://katra.ballardini.com.ar/tags/katra/"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/tags/katra/"
                 />
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/spock/</loc>
@@ -478,13 +538,13 @@
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="en-US"
-                href="https://katra.ballardini.com.ar/en/tags/spock/"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/tags/spock/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es-AR"
-                href="https://katra.ballardini.com.ar/tags/spock/"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/tags/spock/"
                 />
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/star-trek/</loc>
@@ -493,13 +553,13 @@
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="en-US"
-                href="https://katra.ballardini.com.ar/en/tags/star-trek/"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/tags/star-trek/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es-AR"
-                href="https://katra.ballardini.com.ar/tags/star-trek/"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/tags/star-trek/"
                 />
   </url><url>
     <loc>https://katra.ballardini.com.ar/categories/</loc>
@@ -507,13 +567,13 @@
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="en-US"
-                href="https://katra.ballardini.com.ar/en/categories/"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/categories/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es-AR"
-                href="https://katra.ballardini.com.ar/categories/"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/categories/"
                 />
   </url>
 </urlset>

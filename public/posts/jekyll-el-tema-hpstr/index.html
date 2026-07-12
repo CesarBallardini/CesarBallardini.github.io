@@ -7,7 +7,7 @@
     <title>Jekyll: El tema HPSTR | katra</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="El tema HPSTR en el blog.">
-    <meta name="generator" content="Hugo 0.160.1">
+    <meta name="generator" content="Hugo 0.164.0">
     
     
     
@@ -16,14 +16,78 @@
     <meta name="author" content="César Ballardini">
     
 
+    <link rel="stylesheet" href="/ananke/css/main.e65ecad14ec45356cb0945e8ee25e1e1ae98048c45c1ff0abd042666c7303e53.css" integrity="sha256-5l7K0U7EU1bLCUXo7iXh4a6YBIxFwf8KvQQmZscwPlM=" crossorigin="anonymous">
+    <script>
+  (function () {
+    "use strict";
+
     
-<link rel="stylesheet" href="/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css" >
-
-
-
-
     
+    function revealButtons() {
+      var buttons = document.querySelectorAll(".code-block .code-copy[hidden]");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].hidden = false;
+      }
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", revealButtons);
+    } else {
+      revealButtons();
+    }
 
+    function flash(button) {
+      var label = button.querySelector(".code-copy-label");
+      var previous = label ? label.textContent : null;
+      button.classList.add("is-copied");
+      if (label) label.textContent = "Copied";
+      window.setTimeout(function () {
+        button.classList.remove("is-copied");
+        if (label && previous !== null) label.textContent = previous;
+      }, 2000);
+    }
+
+    function legacyCopy(text) {
+      var area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "absolute";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.select();
+      var ok = false;
+      try {
+        ok = document.execCommand("copy");
+      } catch (e) {
+        ok = false;
+      }
+      document.body.removeChild(area);
+      return ok;
+    }
+
+    function copyFrom(button) {
+      var container = button.closest(".code-block");
+      if (!container) return;
+      var pre = container.querySelector("pre");
+      if (!pre) return;
+      var source = pre.querySelector("code") || pre;
+      var text = source.innerText;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { flash(button); },
+          function () { if (legacyCopy(text)) flash(button); }
+        );
+      } else if (legacyCopy(text)) {
+        flash(button);
+      }
+    }
+
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest(".code-copy");
+      if (button) copyFrom(button);
+    });
+  })();
+</script>
 
     
       
@@ -39,29 +103,29 @@
     
     
     <meta property="og:url" content="https://katra.ballardini.com.ar/posts/jekyll-el-tema-hpstr/">
-  <meta property="og:site_name" content="katra">
-  <meta property="og:title" content="Jekyll: El tema HPSTR">
-  <meta property="og:description" content="El tema HPSTR en el blog.">
-  <meta property="og:locale" content="es_AR">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2016-08-24T00:00:00-03:00">
-    <meta property="article:modified_time" content="2016-08-24T00:00:00-03:00">
-    <meta property="article:tag" content="Blog">
-    <meta property="article:tag" content="Jekyll">
-    <meta property="article:tag" content="Theme">
-    <meta property="article:tag" content="Tema">
-    <meta property="article:tag" content="Hpstr">
+	<meta property="og:site_name" content="katra">
+	<meta property="og:title" content="Jekyll: El tema HPSTR">
+	<meta property="og:description" content="El tema HPSTR en el blog.">
+	<meta property="og:locale" content="es_AR">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2016-08-24T00:00:00-03:00">
+		<meta property="article:modified_time" content="2016-08-24T00:00:00-03:00">
+		<meta property="article:tag" content="Blog">
+		<meta property="article:tag" content="Jekyll">
+		<meta property="article:tag" content="Theme">
+		<meta property="article:tag" content="Tema">
+		<meta property="article:tag" content="Hpstr">
 
-  <meta itemprop="name" content="Jekyll: El tema HPSTR">
-  <meta itemprop="description" content="El tema HPSTR en el blog.">
-  <meta itemprop="datePublished" content="2016-08-24T00:00:00-03:00">
-  <meta itemprop="dateModified" content="2016-08-24T00:00:00-03:00">
-  <meta itemprop="wordCount" content="360">
-  <meta itemprop="keywords" content="Blog,Jekyll,Theme,Tema,Hpstr">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Jekyll: El tema HPSTR">
-  <meta name="twitter:description" content="El tema HPSTR en el blog.">
+	<meta itemprop="name" content="Jekyll: El tema HPSTR">
+	<meta itemprop="description" content="El tema HPSTR en el blog.">
+	<meta itemprop="datePublished" content="2016-08-24T00:00:00-03:00">
+	<meta itemprop="dateModified" content="2016-08-24T00:00:00-03:00">
+	<meta itemprop="wordCount" content="367">
+	<meta itemprop="keywords" content="Blog,Jekyll,Theme,Tema,Hpstr">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Jekyll: El tema HPSTR">
+	<meta name="twitter:description" content="El tema HPSTR en el blog.">
 
       
       
@@ -69,14 +133,60 @@
 	
 
   </head><body class="ma0 avenir bg-near-white production is-page is-page page-2016-08-24-jekyll-el-tema-hpstr">
-    
    
   
+
 
   
   
   
-  <header class="cover bg-center" style="background-image: url('/posts/jekyll-el-tema-hpstr/hero-typewriter.jpg');">
+  
+  
+  
+  
+  
+    
+    
+      
+        
+        
+      
+    
+  
+  
+    <style>
+      
+        
+          
+          @media screen and (min-width: 480px) {
+            #featured-image-0ce9621f5a2ed455b412c9c7a77aa8d6 { background-image: url('/posts/jekyll-el-tema-hpstr/hero-typewriter_hu_a4c6d74144bff46.jpg'); }
+          }
+        
+      
+        
+          
+          @media screen and (min-width: 960px) {
+            #featured-image-0ce9621f5a2ed455b412c9c7a77aa8d6 { background-image: url('/posts/jekyll-el-tema-hpstr/hero-typewriter_hu_b2eeb1cf7858db43.jpg'); }
+          }
+        
+      
+        
+          
+          @media screen and (min-width: 1440px) {
+            #featured-image-0ce9621f5a2ed455b412c9c7a77aa8d6 { background-image: url('/posts/jekyll-el-tema-hpstr/hero-typewriter_hu_fb42638ff220997c.jpg'); }
+          }
+        
+      
+        
+          
+          @media screen and (min-width: 1920px) {
+            #featured-image-0ce9621f5a2ed455b412c9c7a77aa8d6 { background-image: url('/posts/jekyll-el-tema-hpstr/hero-typewriter_hu_c26abd4d9894c96f.jpg'); }
+          }
+        
+      
+    </style>
+  
+  <header id="featured-image-0ce9621f5a2ed455b412c9c7a77aa8d6" class="cover bg-center" style="background-image: url('/posts/jekyll-el-tema-hpstr/hero-typewriter_hu_a4c6d74144bff46.jpg');">
     <div class="bg-black-60">
       <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l center items-center justify-between">
@@ -121,22 +231,16 @@
         class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
         title="follow on LinkedIn - Opens in a new window"
         aria-label="follow on LinkedIn - Opens in a new window">
-      <span class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
-            
-          </span></a><a href="https://x.com/cesarballardini" target="_blank" rel="noopener"
+      </a><a href="https://x.com/cesarballardini" target="_blank" rel="noopener"
         class="ananke-social-link link-transition x-twitter link dib z-999 pt3 pt0-l mr1"
         title="follow on X - Opens in a new window"
         aria-label="follow on X - Opens in a new window">
-      <span class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
-            
-          </span></a><a href="https://github.com/CesarBallardini/" target="_blank" rel="noopener"
+      </a><a href="https://github.com/CesarBallardini/" target="_blank" rel="noopener"
         class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
         title="follow on GitHub - Opens in a new window"
         aria-label="follow on GitHub - Opens in a new window">
       <span class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
             
           </span></a></div>
 
@@ -158,43 +262,30 @@
   </header>
 
 
-
-    <main class="pb7" role="main">
-      
+<main class="pb7" role="main">
   
 
   <article class="page-2016-08-24-jekyll-el-tema-hpstr flex-l mw7 center ph3 flex-wrap justify-between">
-    <header class="mt4 w-100">
-      <aside class="instapaper_ignoref b helvetica tracked ttu">
-          
-        Entradas
-      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fjekyll-el-tema-hpstr%2F&amp;subject=Jekyll%3A&#43;El&#43;tema&#43;HPSTR"
+    <header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu">
+    <a class="link dim" href="https://katra.ballardini.com.ar/posts/">Entradas</a>
+  </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fjekyll-el-tema-hpstr%2F&amp;subject=Jekyll%3A&#43;El&#43;tema&#43;HPSTR"
         class="ananke-social-link email no-underline"
         title="Share on Email" aria-label="Share on Email"
         target="_blank" rel="nofollow noopener noreferrer">
-        <span class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
-                
-              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fjekyll-el-tema-hpstr%2F&amp;summary=HPSTR&#43;es&#43;un&#43;tema&#43;de&#43;Jekyll&#43;que&#43;usa&#43;SCSS&#43;y&#43;requiere&#43;Jekyll&#43;3.x.%0ALos&#43;pasos&#43;de&#43;instalaci%C3%B3n&#43;est%C3%A1n&#43;descritos&#43;en&#43;las&#43;instrucciones&#43;de&#43;instalaci%C3%B3n&#43;de&#43;este&#43;tema&#43;y&#43;los&#43;voy&#43;a&#43;adaptar&#43;al&#43;entorno&#43;de&#43;VM&#43;que&#43;hemos&#43;construido&#43;antes.%0ALuego&#43;de&#43;levantar&#43;nuestra&#43;VM&#43;con&#43;Jekyll&#43;instalado%2C&#43;nos&#43;conectamos&#43;a&#43;nuestra&#43;cuenta&#43;en&#43;Github&#43;y&#43;hacemos&#43;un&#43;fork&#43;del&#43;repo&#43;del&#43;tema&#43;en&#43;Github.%0APara&#43;crear&#43;un&#43;sitio&#43;Web&#43;en&#43;Github%2C&#43;las&#43;instrucciones&#43;est%C3%A1n&#43;muy&#43;claras&#43;en&#43;el&#43;tutorial&#43;de&#43;github-pages.%0A&amp;title=Jekyll%3A&#43;El&#43;tema&#43;HPSTR&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fjekyll-el-tema-hpstr%2F"
+        </a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fjekyll-el-tema-hpstr%2F&amp;summary=HPSTR&#43;es&#43;un&#43;tema&#43;de&#43;Jekyll&#43;que&#43;usa&#43;SCSS&#43;y&#43;requiere&#43;Jekyll&#43;3.x.%0ALos&#43;pasos&#43;de&#43;instalaci%C3%B3n&#43;est%C3%A1n&#43;descritos&#43;en&#43;las&#43;instrucciones&#43;de&#43;instalaci%C3%B3n&#43;de&#43;este&#43;tema&#43;y&#43;los&#43;voy&#43;a&#43;adaptar&#43;al&#43;entorno&#43;de&#43;VM&#43;que&#43;hemos&#43;construido&#43;antes.%0ALuego&#43;de&#43;levantar&#43;nuestra&#43;VM&#43;con&#43;Jekyll&#43;instalado%2C&#43;nos&#43;conectamos&#43;a&#43;nuestra&#43;cuenta&#43;en&#43;Github&#43;y&#43;hacemos&#43;un&#43;fork&#43;del&#43;repo&#43;del&#43;tema&#43;en&#43;Github.%0APara&#43;crear&#43;un&#43;sitio&#43;Web&#43;en&#43;Github%2C&#43;las&#43;instrucciones&#43;est%C3%A1n&#43;muy&#43;claras&#43;en&#43;el&#43;tutorial&#43;de&#43;github-pages.%0A&amp;title=Jekyll%3A&#43;El&#43;tema&#43;HPSTR&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fjekyll-el-tema-hpstr%2F"
         class="ananke-social-link linkedin no-underline"
         title="Share on LinkedIn" aria-label="Share on LinkedIn"
         target="_blank" rel="nofollow noopener noreferrer">
-        <span class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
-                
-              </span></a><a href="https://twitter.com/intent/tweet/?&amp;text=HPSTR&#43;es&#43;un&#43;tema&#43;de&#43;Jekyll&#43;que&#43;usa&#43;SCSS&#43;y&#43;requiere&#43;Jekyll&#43;3.x.%0ALos&#43;pasos&#43;de&#43;instalaci%C3%B3n&#43;est%C3%A1n&#43;descritos&#43;en&#43;las&#43;instrucciones&#43;de&#43;instalaci%C3%B3n&#43;de&#43;este&#43;tema&#43;y&#43;los&#43;voy&#43;a&#43;adaptar&#43;al&#43;entorno&#43;de&#43;VM&#43;que&#43;hemos&#43;construido&#43;antes.%0ALuego&#43;de&#43;levantar&#43;nuestra&#43;VM&#43;con&#43;Jekyll&#43;instalado%2C&#43;nos&#43;conectamos&#43;a&#43;nuestra&#43;cuenta&#43;en&#43;Github&#43;y&#43;hacemos&#43;un&#43;fork&#43;del&#43;repo&#43;del&#43;tema&#43;en&#43;Github.%0APara&#43;crear&#43;un&#43;sitio&#43;Web&#43;en&#43;Github%2C&#43;las&#43;instrucciones&#43;est%C3%A1n&#43;muy&#43;claras&#43;en&#43;el&#43;tutorial&#43;de&#43;github-pages.%0A&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fjekyll-el-tema-hpstr%2F"
+        </a><a href="https://twitter.com/intent/tweet/?&amp;text=HPSTR&#43;es&#43;un&#43;tema&#43;de&#43;Jekyll&#43;que&#43;usa&#43;SCSS&#43;y&#43;requiere&#43;Jekyll&#43;3.x.%0ALos&#43;pasos&#43;de&#43;instalaci%C3%B3n&#43;est%C3%A1n&#43;descritos&#43;en&#43;las&#43;instrucciones&#43;de&#43;instalaci%C3%B3n&#43;de&#43;este&#43;tema&#43;y&#43;los&#43;voy&#43;a&#43;adaptar&#43;al&#43;entorno&#43;de&#43;VM&#43;que&#43;hemos&#43;construido&#43;antes.%0ALuego&#43;de&#43;levantar&#43;nuestra&#43;VM&#43;con&#43;Jekyll&#43;instalado%2C&#43;nos&#43;conectamos&#43;a&#43;nuestra&#43;cuenta&#43;en&#43;Github&#43;y&#43;hacemos&#43;un&#43;fork&#43;del&#43;repo&#43;del&#43;tema&#43;en&#43;Github.%0APara&#43;crear&#43;un&#43;sitio&#43;Web&#43;en&#43;Github%2C&#43;las&#43;instrucciones&#43;est%C3%A1n&#43;muy&#43;claras&#43;en&#43;el&#43;tutorial&#43;de&#43;github-pages.%0A&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fjekyll-el-tema-hpstr%2F"
         class="ananke-social-link x-twitter no-underline"
         title="Share on X" aria-label="Share on X"
         target="_blank" rel="nofollow noopener noreferrer">
-        <span class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
-                
-              </span></a><a href="%25!s%28%3cnil%3e%29?"
+        </a><a href="%25!s%28%3cnil%3e%29?"
         class="ananke-social-link github no-underline"
         title="Share on GitHub" aria-label="Share on GitHub"
         target="_blank" rel="nofollow noopener noreferrer">
         <span class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+                <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
                 
               </span></a></div>
 <h1 class="f1 athelas mt3 mb1">Jekyll: El tema HPSTR</h1>
@@ -212,7 +303,7 @@
         
         
         <span class="f6 mv4 dib tracked"> - Lectura en 2 minutos </span>
-        <span class="f6 mv4 dib tracked"> - 360 palabras </span>
+        <span class="f6 mv4 dib tracked"> - 367 palabras </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><p>HPSTR es un tema de Jekyll que usa SCSS y requiere Jekyll 3.x.</p>
@@ -222,32 +313,62 @@
 <p>Vamos a tratar primero el caso inicial, cuando por primera vez creamos nuestro blog. Yo voy a referir mi cuenta en Github, que es <code>CesarBallardini</code>, así que en el resto de esta serie sobre cómo tener funcionando tu blog jekyll + HPSTR, vas a tener que cambiar este nombre de cuenta por el tuyo. Así también sucederá con mi nombre y apellido, y dirección de correo electrónico.</p>
 <p>Debemos crear el repo <code>CesarBallardini.github.io</code>, completamente vacío: sin <code>.gitignore</code> ni <code>README.md</code>.</p>
 <p>Clonamos el repo inicial:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /vagrant/www/
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /vagrant/www/
 </span></span><span style="display:flex;"><span>git clone https://github.com/CesarBallardini/CesarBallardini.github.io
-</span></span><span style="display:flex;"><span>cd CesarBallardini.github.io/
-</span></span></code></pre></div><p>En la VM configuramos Git, sólo para este repo:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git config user.email <span style="color:#e6db74">&#34;cesar@ballardini.com.ar&#34;</span>
-</span></span><span style="display:flex;"><span>git config user.name <span style="color:#e6db74">&#34;Cesar Ballardini&#34;</span>
-</span></span></code></pre></div><p>Cargamos el tema HPSTR desde el repo propio:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git remote add hipster https://github.com/CesarBallardini/hpstr-jekyll-theme.git
+</span></span><span style="display:flex;"><span>cd CesarBallardini.github.io/</span></span></code></pre></div>
+  </div><p>En la VM configuramos Git, sólo para este repo:</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git config user.email <span style="color:#e6db74">&#34;cesar@ballardini.com.ar&#34;</span>
+</span></span><span style="display:flex;"><span>git config user.name <span style="color:#e6db74">&#34;Cesar Ballardini&#34;</span></span></span></code></pre></div>
+  </div><p>Cargamos el tema HPSTR desde el repo propio:</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git remote add hipster https://github.com/CesarBallardini/hpstr-jekyll-theme.git
 </span></span><span style="display:flex;"><span>git fetch hipster master
-</span></span><span style="display:flex;"><span>git merge hipster/master -m <span style="color:#e6db74">&#34;incorporo HPSTR al repo de jekyll&#34;</span>
-</span></span></code></pre></div><p>Ahora tenemos dos alternativas: verlo localmente, para tener una visualización previa de cómo va a quedar el blog, y la otra posibilidad es subirlo a Github para hacerlo público.</p>
+</span></span><span style="display:flex;"><span>git merge hipster/master -m <span style="color:#e6db74">&#34;incorporo HPSTR al repo de jekyll&#34;</span></span></span></code></pre></div>
+  </div><p>Ahora tenemos dos alternativas: verlo localmente, para tener una visualización previa de cómo va a quedar el blog, y la otra posibilidad es subirlo a Github para hacerlo público.</p>
 <h2 id="localmente-desde-la-vm">Localmente desde la VM</h2>
 <p>Para verlo localmente, usaremos el programa jekyll, ya instalado en la VM, nos aseguramos de instalar las gemas requeridas como dependencias:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bundle install
-</span></span></code></pre></div><p>Y lo publicamos localmente:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bundle exec jekyll build
-</span></span><span style="display:flex;"><span>bundle exec jekyll serve --host 192.168.33.10 --incremental
-</span></span></code></pre></div><p>Queda accesible en <a href="http://192.168.33.10:4000/">http://192.168.33.10:4000/</a> en nuestro navegador (que es el IP configurado en el <code>Vagrantfile</code> en FIXME).</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bundle install</span></span></code></pre></div>
+  </div><p>Y lo publicamos localmente:</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bundle exec jekyll build
+</span></span><span style="display:flex;"><span>bundle exec jekyll serve --host 192.168.33.10 --incremental</span></span></code></pre></div>
+  </div><p>Queda accesible en <a href="http://192.168.33.10:4000/">http://192.168.33.10:4000/</a> en nuestro navegador (que es el IP configurado en el <code>Vagrantfile</code> en FIXME).</p>
 <h2 id="publicado-en-github">Publicado en Github</h2>
 <p>Por otro lado. lo podemos publicar en Github (aquí nos solicitará nuestro nombre de usuario y contraseña en Github):</p>
 <p>La primera vez desconecto el <em>tracking</em> de la rama aguas arriba:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git branch --unset-upstream
-</span></span></code></pre></div><p>Y ahora hago el push hacia Github:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git push origin master
-</span></span></code></pre></div><p>Y puedes acceder al Blog desde allí en: <a href="http://cesarballardini.github.io/">http://cesarballardini.github.io/</a></p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git branch --unset-upstream</span></span></code></pre></div>
+  </div><p>Y ahora hago el push hacia Github:</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git push origin master</span></span></code></pre></div>
+  </div><p>Y puedes acceder al Blog desde allí en: <a href="http://cesarballardini.github.io/">http://cesarballardini.github.io/</a></p>
 <ul class="pa0">
+  
+</ul><ul class="pa0">
   
    <li class="list di">
      <a href="/tags/blog/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Blog</a>
@@ -273,9 +394,7 @@
 
       
     </div></article>
-
-    </main>
-    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+</main><footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://katra.ballardini.com.ar/" >
     &copy;  César Ballardini 2026 
@@ -284,27 +403,47 @@
         class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
         title="follow on LinkedIn - Opens in a new window"
         aria-label="follow on LinkedIn - Opens in a new window">
-      <span class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
-            
-          </span></a><a href="https://x.com/cesarballardini" target="_blank" rel="noopener"
+      </a><a href="https://x.com/cesarballardini" target="_blank" rel="noopener"
         class="ananke-social-link link-transition x-twitter link dib z-999 pt3 pt0-l mr1"
         title="follow on X - Opens in a new window"
         aria-label="follow on X - Opens in a new window">
-      <span class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
-            
-          </span></a><a href="https://github.com/CesarBallardini/" target="_blank" rel="noopener"
+      </a><a href="https://github.com/CesarBallardini/" target="_blank" rel="noopener"
         class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
         title="follow on GitHub - Opens in a new window"
         aria-label="follow on GitHub - Opens in a new window">
       <span class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
             
           </span></a></div>
 </div>
   </div>
 </footer>
-
-  </body>
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
