@@ -227,7 +227,7 @@ Cada entrada del plan vive en un archivo `draft-*.md` propio bajo la carpeta de 
 - **A1-05** — [Clipper, xBase y los servidores web que no debían existir](lenguajes/draft-clipper-xbase-servidor-web.md)
 - **A1-06** — [PostScript como servidor web](lenguajes/draft-postscript-como-servidor-web.md)
 - **A1-07** — [Spectrum y MicroHobby: la cultura del 8-bit hispanohablante](lenguajes/draft-spectrum-microhobby-cultura-8-bit.md)
-- **A1-08** — [Resucitando KL1 (Kernel Language 1) y el proyecto japonés de 5ta generación con `kl1c`](lenguajes/draft-kl1-icot-quinta-generacion.md)
+- **A1-08** — [Resucitando KL1: el lenguaje del proyecto japonés de Quinta Generación, treinta años después](/posts/kl1-icot-quinta-generacion/) ✅ **publicado 2026-07-12**
 - **A1-09** — [GnuCOBOL-lab: aprender RM/COBOL-85 desde un libro español de 1990 dentro de una VM Vagrant](lenguajes/draft-gnucobol-lab-rm-cobol-85.md)
 - **A1-10** — [«Soy mi propio abuelo»: modelar una humorada folklórica en Prolog](/posts/soy-mi-propio-abuelo-prolog/) ✅ **publicado 2026-07-12**
 - **A1-11** — [Pharo Smalltalk: el sistema vivo donde el código y el mundo son la misma cosa](lenguajes/draft-pharo-smalltalk-sistema-vivo.md)
@@ -351,7 +351,7 @@ Cada entrada del plan vive en un archivo `draft-*.md` propio bajo la carpeta de 
 
 **Concepto de la serie:** infraestructura entendida como un problema de arquitectura de software, no de "tareas de sysadmin". Roles, profiles, componentes, inventarios, golden images, contenedores. Si tenés que pelearte con Ansible o con Docker, esta serie es para vos.
 
-- **G-01** — [Components, roles y profiles en Ansible (el patrón de Puppet bien aplicado)](devops/draft-ansible-roles-profiles-components.md) 🌟 *near-complete*
+- **G-01** — [Components, roles y profiles en Ansible (el patrón de Puppet bien aplicado)](devops/draft-ansible-roles-profiles-components.md)
 - **G-02** — [Infraestructura determinística: golden images, CVS y un Makefile](devops/draft-infraestructura-deterministica.md)
 - **G-03** — [Backups con rdiff-backup + rsync (y por qué los backups no sirven, lo que sirve es el restore)](devops/draft-backups-rdiff-rsync.md)
 - **G-04** — [Trac, wiki y tickets: registro de incidencias en un ministerio público](devops/draft-trac-wiki-tickets-ministerio.md)
@@ -520,7 +520,7 @@ Cada entrada del plan vive en un archivo `draft-*.md` propio bajo la carpeta de 
 
 | Wave | Tema | Posts | Notas |
 | --- | --- | --- | --- |
-| **W0** | Cosecha rápida (ya tienen prosa real) | 1 pendiente | ~~[[C-01]]~~ publicado 2026-04-14; [[G-01]] (Ansible roles/profiles, ~318 líneas) pendiente |
+| **W0** | Cosecha rápida (ya tienen prosa real) | 0 pendientes | ~~[[C-01]]~~ publicado 2026-04-14. [[G-01]] (Ansible roles/profiles) se movió a W2/W3 — no tiene un seed con prosa real, sólo outline y bibliografía, así que no cuenta como "cosecha rápida" |
 | **W1** | Crowd pleasers (biografías de bajo esfuerzo, imágenes públicas abundantes) | 5 | [[D-01]] Engelbart, [[D-03]] Turing, [[D-02]] Sketchpad, [[A1-01]] Kay, [[A2-03]] Y combinator (Weirich) |
 | **W2** | Lanzamiento de cada serie (un post-piloto por serie para crear los anchors de cross-link) | ~9 | El post más fácil de cada serie. Una vez escritos, todas las series tienen al menos un destino para los `[[ID]]`. |
 | **W3** | Round-robin de completitud | ~30 | Completar series rotando: la que va más atrás tiene prioridad. Mantiene visibilidad de las 10 series sin agotar al lector. |

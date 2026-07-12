@@ -1,12 +1,12 @@
 ### G-01 — Components, roles y profiles en Ansible (el patrón de Puppet bien aplicado)
 
-- **Archivo seed:** `sysadmin/draft-componets-roles-profiles-usando-ansible.md` (318 líneas, con prosa, citas y un Q&A interno; el más maduro de toda la serie G)
+- **Archivo seed:** ninguno — este mismo archivo es la única fuente. No existe un seed separado con la conversación/Q&A mencionada en el outline; hay que escribirlo desde la bibliografía y la experiencia real del autor.
 - **Slug propuesto:** `ansible-roles-profiles-components`
 - **Comando:** `hugo new content/es/posts/YYYY-MM-DD-ansible-roles-profiles-components/index.md`
 - **Serie:** G
 - **Cross-links:** lleva a [[G-02]] (infraestructura determinística), [[C-02]] (Hickey: simple vs easy aplicado a IaC), [[G-04]] (registro de incidencias para los runs de Ansible), [[I-04]] (MerLinux — la historia vivida de donde decanté este patrón, con la trilogía bash → Puppet → Ansible)
 - **Idioma:** es
-- **Madurez:** **near-complete** — el seed tiene la discusión completa entre dos personas, la cita de StackExchange, los links a Craig Dunn y al blog que originó el patrón. Falta estructurar y rescribir como post de blog.
+- **Madurez:** **seed-with-sources** — el outline y la bibliografía están armados (Craig Dunn, StackExchange, docs de Ansible), pero no hay prosa ni conversación real para transcribir. Hay que escribir el post desde cero.
 - **Length target:** long (2500-3500 palabras) — es uno de los anclas operacionales del blog
 
 **Concepto:** el patrón *components / profiles / roles* viene del mundo Puppet (Craig Dunn, 2012) y resuelve un problema real: cómo dejar de tener inventarios de Ansible que crecen sin estructura, donde cada server termina siendo un copy-paste del anterior con tres cambios. La traducción a Ansible no es obvia porque "role" en Puppet ≠ "role" en Ansible. El post explica los tres niveles, propone una convención de nombres, y muestra cómo modelar correctamente "n aplicaciones contra m servidores".
@@ -22,7 +22,7 @@
    - **Role** (rol Ansible que depende de profiles) — implementa *un rol de negocio* (`role-portal-clientes`, `role-erp-produccion`). Combina profiles + variables específicas del proyecto.
 4. La convención de nombres: por qué `component-`, `profile-`, `role-` como prefijos vale la pena, aunque sea fea.
 5. Donde van las variables: `defaults/main.yml` para parámetros del component, `vars/main.yml` para defaults funcionales, group_vars/host_vars para overrides.
-6. El Q&A real (del seed): ¿qué pasa con `profile-database` cuando puede ser MySQL o Oracle? Respuesta: dos profiles distintos, no uno con un switch. Justificación.
+6. Un caso concreto a resolver en el post: ¿qué pasa con `profile-database` cuando puede ser MySQL o Oracle? Respuesta propuesta: dos profiles distintos, no uno con un switch. Justificación.
 7. La modelización n×m (n aplicaciones × m servidores) — el ejemplo que más confunde a la gente. Mostrar la solución concreta.
 8. Cierre: el repo template que armé y por qué este patrón cambió cómo escribo IaC.
 
@@ -44,5 +44,5 @@
 
 **Tags propuestos:** `['Ansible', 'Puppet', 'roles', 'profiles', 'components', 'IaC', 'patterns']`
 
-**Estado actual:** **near-complete** — el seed contiene 318 líneas con la conversación original entre dos personas, citas de StackExchange completas, links de Craig Dunn y Puppet Labs, y la mitad de las preguntas operativas ya respondidas. El post se puede publicar con 2-3 sesiones de redacción.
+**Estado actual:** **seed-with-sources** — outline y bibliografía completos (Craig Dunn, StackExchange, Puppet Labs, docs de Ansible), pero sin prosa propia todavía. No hay un seed separado con más material — este archivo es la única fuente. Escribir apoyándose en la experiencia real del autor (ver [[I-04]]) para las partes n×m y el Q&A, no inventar detalles.
 

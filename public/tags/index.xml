@@ -23,6 +23,13 @@
 				<description></description>
 			</item>
 			<item>
+				<title>Debian</title>
+				<link>https://katra.ballardini.com.ar/tags/debian/</link>
+				<pubDate>Sun, 12 Jul 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/debian/</guid>
+				<description></description>
+			</item>
+			<item>
 				<title>Familia</title>
 				<link>https://katra.ballardini.com.ar/tags/familia/</link>
 				<pubDate>Sun, 12 Jul 2026 00:00:00 -0300</pubDate>
@@ -44,10 +51,38 @@
 				<description></description>
 			</item>
 			<item>
+				<title>ICOT</title>
+				<link>https://katra.ballardini.com.ar/tags/icot/</link>
+				<pubDate>Sun, 12 Jul 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/icot/</guid>
+				<description></description>
+			</item>
+			<item>
 				<title>Interpretes</title>
 				<link>https://katra.ballardini.com.ar/tags/interpretes/</link>
 				<pubDate>Sun, 12 Jul 2026 00:00:00 -0300</pubDate>
 				<guid>https://katra.ballardini.com.ar/tags/interpretes/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Japon</title>
+				<link>https://katra.ballardini.com.ar/tags/japon/</link>
+				<pubDate>Sun, 12 Jul 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/japon/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>KL1</title>
+				<link>https://katra.ballardini.com.ar/tags/kl1/</link>
+				<pubDate>Sun, 12 Jul 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/kl1/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>KLIC</title>
+				<link>https://katra.ballardini.com.ar/tags/klic/</link>
+				<pubDate>Sun, 12 Jul 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/klic/</guid>
 				<description></description>
 			</item>
 			<item>
@@ -79,6 +114,13 @@
 				<description></description>
 			</item>
 			<item>
+				<title>Prolog Concurrente</title>
+				<link>https://katra.ballardini.com.ar/tags/prolog-concurrente/</link>
+				<pubDate>Sun, 12 Jul 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/prolog-concurrente/</guid>
+				<description></description>
+			</item>
+			<item>
 				<title>Python</title>
 				<link>https://katra.ballardini.com.ar/tags/python/</link>
 				<pubDate>Sun, 12 Jul 2026 00:00:00 -0300</pubDate>
@@ -104,6 +146,13 @@
 				<link>https://katra.ballardini.com.ar/tags/turing/</link>
 				<pubDate>Sun, 12 Jul 2026 00:00:00 -0300</pubDate>
 				<guid>https://katra.ballardini.com.ar/tags/turing/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Vagrant</title>
+				<link>https://katra.ballardini.com.ar/tags/vagrant/</link>
+				<pubDate>Sun, 12 Jul 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/vagrant/</guid>
 				<description></description>
 			</item>
 			<item>
@@ -331,13 +380,6 @@
 				<description></description>
 			</item>
 			<item>
-				<title>Debian</title>
-				<link>https://katra.ballardini.com.ar/tags/debian/</link>
-				<pubDate>Tue, 04 Feb 2025 00:00:00 -0300</pubDate>
-				<guid>https://katra.ballardini.com.ar/tags/debian/</guid>
-				<description></description>
-			</item>
-			<item>
 				<title>Woke Politics</title>
 				<link>https://katra.ballardini.com.ar/tags/woke-politics/</link>
 				<pubDate>Tue, 04 Feb 2025 00:00:00 -0300</pubDate>
@@ -468,13 +510,6 @@
 				<link>https://katra.ballardini.com.ar/tags/ubuntu/</link>
 				<pubDate>Sun, 28 Aug 2016 00:00:00 -0300</pubDate>
 				<guid>https://katra.ballardini.com.ar/tags/ubuntu/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title>Vagrant</title>
-				<link>https://katra.ballardini.com.ar/tags/vagrant/</link>
-				<pubDate>Sun, 28 Aug 2016 00:00:00 -0300</pubDate>
-				<guid>https://katra.ballardini.com.ar/tags/vagrant/</guid>
 				<description></description>
 			</item>
 			<item>

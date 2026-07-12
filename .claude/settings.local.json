@@ -56,7 +56,9 @@
       "WebFetch(domain:cpcipc.org.ar)",
       "WebFetch(domain:www.mail-archive.com)",
       "Bash(hugo --cleanDestinationDir)",
-      "WebFetch(domain:api.crossref.org)"
+      "WebFetch(domain:api.crossref.org)",
+      "WebFetch(domain:www.ueda.info.waseda.ac.jp)",
+      "WebFetch(domain:theswissbay.ch)"
     ]
   }
 }
