@@ -22,7 +22,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Is
 
-Personal bilingual Hugo blog ("katra") by César Ballardini, published at https://katra.ballardini.com.ar/. Content is primarily in Spanish (es-AR), with an English section prepared but currently empty.
+Personal bilingual Hugo blog ("katra") by César Ballardini, published at https://katra.ballardini.com.ar/. Content is primarily in Spanish (es-AR); the English section has a small number of translated posts (not a 1:1 mirror of the Spanish content).
 
 ## Build & Development Commands
 
@@ -34,6 +34,8 @@ hugo new content/es/posts/YYYY-MM-DD-slug-here/index.md   # Create a new Spanish
 ```
 
 No Makefile, no npm scripts, no other build tooling in the root. The theme has its own package.json but that's managed upstream.
+
+**Local build artifacts**: `resources/_gen/` (Hugo's derived-asset cache — minified/fingerprinted CSS, processed images) is gitignored; safe to delete and let Hugo regenerate it. `.hugo_build.lock` is also gitignored. `public/` is the one build artifact that **is** committed (see Deployment below) — clean it with `hugo --cleanDestinationDir`, never delete it outright.
 
 ## Deployment
 
@@ -121,6 +123,8 @@ After cloning, initialize the theme submodule:
 ```bash
 git submodule update --init --recursive
 ```
+
+The ananke repo's default/actively-maintained branch is **`main`**, not `master` (`master` is a stale branch there, last updated 2024-10-18, and checking it out is a downgrade that breaks the build — `git checkout origin/master` produced a `can't evaluate field Social in type interface {}` render error in `social-share.html`). To update the submodule to the latest fixes, use `git checkout origin/main` from inside `themes/ananke/`, then rebuild and verify `hugo --cleanDestinationDir` succeeds with no warnings before committing the new submodule pointer.
 
 ## External Reference Sites
 

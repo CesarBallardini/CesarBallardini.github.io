@@ -115,9 +115,12 @@ translationKey: 'clave-única-si-hay-versión-bilingüe'
 El estilo canonizado por `growing-a-language.md` y `programma-101.md`:
 
 - **Footnotes con nombre** — nunca numéricas: `[^kay]`, `[^okasaki]`, `[^video]`.
-- Definiciones agrupadas al **final** del post.
+- Definiciones agrupadas al **final** del post, sin encabezado `## Referencias` (las definiciones sueltas ya rinden como sección al pie; ningún post publicado usa ese encabezado).
 - Formato: `[^name]: [Texto del enlace](URL) — comentario opcional.`
 - Opcionalmente, una lista de viñetas "Referencias citadas en la presentación" arriba de las definiciones de footnotes (ver `growing-a-language.md`) cuando lo amerita.
+- **Preferir la fuente/sitio propio del autor por sobre Wikipedia** como link de cita cuando ambos existen (p. ej. el archivo EWD de Dijkstra en UT Austin antes que su artículo de Wikipedia). Wikipedia sirve como lectura de contexto, no como cita primaria.
+- **Paywall / bloqueo de fetch automatizado** (IEEE, ACM DL devuelven 403/418): citar el **DOI** como referencia canónica (verificable vía `api.crossref.org` cuando el fetch directo falla) más un mirror de texto libre cuando exista (archive.org, página de curso universitario, EWD archive).
+- **Verificar antes de publicar**: toda cita con un número, una fecha o una atribución a una persona con nombre real amerita chequeo activo (fetch de la fuente, no sólo confiar en el recuerdo del modelo) — ver el caso real de una cita de auditoría mal atribuida en el post sobre feminización institucional (INADI/AGN), detectado recién en revisión.
 
 ### Links internos
 
@@ -125,22 +128,25 @@ El estilo canonizado por `growing-a-language.md` y `programma-101.md`:
 - Las URLs en inglés sí usan `/en/`.
 - Los cross-links entre posts del plan se escriben como `[[A1-03]]` durante el drafting y se resuelven a `[texto humano](/posts/YYYY-MM-DD-slug-real/)` en el momento de publicar.
 
-### Imágenes (convención nueva)
+### Imágenes
 
-El blog actualmente no tiene imágenes en ningún post. Esta sección fija la convención para los posts del plan que sí las van a usar.
+Todos los posts publicados usan **page bundle** con hero image (`featured_image` en frontmatter) — ya no es una convención "nueva" sin uso real, es la práctica establecida.
 
-- **Posts con imágenes**: usan **page bundle** — la carpeta `content/es/posts/YYYY-MM-DD-slug/` con `index.md` adentro y los archivos de imagen como hermanos. Comando: `hugo new content/es/posts/YYYY-MM-DD-slug/index.md`.
-- **Posts sin imágenes**: archivo plano. Comando: `hugo new content/es/posts/YYYY-MM-DD-slug.md`.
+- **Todo post nuevo**: page bundle — la carpeta `content/es/posts/YYYY-MM-DD-slug/` con `index.md` adentro y los archivos de imagen como hermanos. Comando: `hugo new content/es/posts/YYYY-MM-DD-slug/index.md`.
+- `featured_image: hero-nombre-descriptivo.jpg` en frontmatter, imagen landscape 2.5:1 o más ancha. Buscar en Wikimedia Commons primero (dominio público / CC); portrait hay que recortarlo con Pillow (`uv run --with Pillow python`) — ver ejemplos reales de crop 2.5:1 en los posts de Simply Scheme (foto del ábaco de Soda Hall, Berkeley) y de Turing (retrato de 1951 recortado a primer plano).
+- **Cuando el hero sale de un video/charla** (YouTube): preferir un frame real del video antes que el thumbnail promocional generado por el canal — `yt-dlp` para bajar el video (video-only, sin audio, para no perder tiempo) y `ffmpeg -ss <segundos> -frames:v 1 -update 1 archivo.jpg` para extraer el frame; ambas herramientas ya están disponibles en el entorno. Ver el post sobre Helen Andrews/NatCon5 para el caso real.
 - Markdown: `![alt text](archivo-en-el-bundle.jpg)` — la ruta es relativa al bundle.
-- Cada imagen pública lleva una footnote de atribución: `[^img1]: Imagen de [Wikimedia Commons](URL) — Dominio público / CC-BY-SA 4.0 — autor: Fulano.`
+- Cada imagen pública lleva una footnote de atribución nombrada `[^img_hero]` (o `[^img_nombre]` si hay más de una): `[^img_hero]: Imagen de [Título](URL) — Dominio público / CC-BY-SA 4.0 — autor, año. Recortada a 2.5:1 para hero landscape.` Referenciarla inline en algún punto natural del cuerpo (no dejarla huérfana — una footnote sin referencia inline no renderiza).
 - **Decisión a respetar**: una vez que un post se crea como bundle, no se muda a archivo plano (cambia la URL). Decidir layout antes de correr `hugo new`.
 
 ### Estilo y voz
 
 - Conversacional, primera persona ("voy a contarte", "me llamó la atención"), español rioplatense.
-- Code-switching libre con términos técnicos en inglés (`workflow`, `framework`, `deploy`, `pull request`).
+- Code-switching libre con términos técnicos en inglés (`workflow`, `framework`, `deploy`, `pull request`), pero **no verbos inventados tipo "matchear"/"bindear"** — usar el verbo español real (`concordar`, `ligar`) y dejar el término técnico en inglés como sustantivo o identificador de código cuando corresponda (`` `Matcher` ``, `` `bind_params` ``).
+- **Comillas: `«...»` (comillas angulares/latinas), no `"..."`.** Es la forma preferida por la RAE (*Ortografía de la lengua española*, 2010): `«cita»`, con `"..."` reservado para una cita anidada dentro de otra y `'...'` para glosar el sentido de una palabra. No es una regla universalmente respetada en el blog (posts de 2025 usan comillas rectas por costumbre de teclado), pero es el estándar a partir de 2026 para posts nuevos.
 - **Un concepto por post**, con el hook en los primeros dos párrafos.
 - Largo según el tema, sin relleno. Posts de 600-1000 palabras (story) son tan válidos como deep-dives de 2500+.
+- **Cuando el post trata sobre un proyecto de software propio construido con asistencia de IA**: incluir un párrafo de transparencia cerca del cierre nombrando la herramienta (p. ej. "lo escribí con la asistencia de Claude, de Anthropic") y, si aporta, una sección separada listando las decisiones de diseño que fueron del autor (no tercerizables a la IA) — ver el post sobre el intérprete de Turing para el patrón real.
 
 ### IDs estables para cross-links
 
