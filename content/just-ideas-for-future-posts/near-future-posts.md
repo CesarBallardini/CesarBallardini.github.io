@@ -120,6 +120,7 @@ El estilo canonizado por `growing-a-language.md` y `programma-101.md`:
 - Opcionalmente, una lista de viñetas "Referencias citadas en la presentación" arriba de las definiciones de footnotes (ver `growing-a-language.md`) cuando lo amerita.
 - **Preferir la fuente/sitio propio del autor por sobre Wikipedia** como link de cita cuando ambos existen (p. ej. el archivo EWD de Dijkstra en UT Austin antes que su artículo de Wikipedia). Wikipedia sirve como lectura de contexto, no como cita primaria.
 - **Paywall / bloqueo de fetch automatizado** (IEEE, ACM DL devuelven 403/418): citar el **DOI** como referencia canónica (verificable vía `api.crossref.org` cuando el fetch directo falla) más un mirror de texto libre cuando exista (archive.org, página de curso universitario, EWD archive).
+- **Libros citados que no están libres en ningún lado** (ni el sitio del editor ni una versión gratuita): citar la edición canónica igual (editorial, año, edición) y, si archive.org tiene *alguna* edición del libro (aunque sea una anterior a la citada, y aunque sea sólo préstamo digital controlado, no descarga libre), agregar el link con una aclaración de qué edición es — ver el post sobre Prolog (`soy-mi-propio-abuelo-prolog`) para el patrón real: Bratko 4.ª ed. 2011 citado como canónico, con link a la 3.ª ed. 2001 en préstamo controlado porque no hay copia libre de la 4.ª.
 - **Verificar antes de publicar**: toda cita con un número, una fecha o una atribución a una persona con nombre real amerita chequeo activo (fetch de la fuente, no sólo confiar en el recuerdo del modelo) — ver el caso real de una cita de auditoría mal atribuida en el post sobre feminización institucional (INADI/AGN), detectado recién en revisión.
 
 ### Links internos
@@ -139,6 +140,15 @@ Todos los posts publicados usan **page bundle** con hero image (`featured_image`
 - Cada imagen pública lleva una footnote de atribución nombrada `[^img_hero]` (o `[^img_nombre]` si hay más de una): `[^img_hero]: Imagen de [Título](URL) — Dominio público / CC-BY-SA 4.0 — autor, año. Recortada a 2.5:1 para hero landscape.` Referenciarla inline en algún punto natural del cuerpo (no dejarla huérfana — una footnote sin referencia inline no renderiza).
 - **Decisión a respetar**: una vez que un post se crea como bundle, no se muda a archivo plano (cambia la URL). Decidir layout antes de correr `hugo new`.
 
+### Diagramas (mermaid)
+
+El sitio no carga mermaid.js por defecto — hay que pedirlo explícitamente:
+
+- Agregar `mermaid: true` al frontmatter del post. Eso activa `layouts/partials/hooks/body-end.html` (ver `CLAUDE.md` → Architecture), que inyecta mermaid.js desde CDN y convierte cada fence ` ```mermaid ` en un diagrama vivo.
+- Sin ese flag, un fence ` ```mermaid ` se renderiza como código plano sin resaltar — no rompe la build, pero tampoco dibuja nada.
+- Patrón real: el post de Prolog (`soy-mi-propio-abuelo-prolog`) usa dos diagramas en un apéndice — uno con los hechos base (líneas negras) y otro con las conclusiones derivadas (líneas rojas, con los nodos que cierran el lazo resaltados en naranja vía `classDef` + `class`). Antes de un diagrama denso (muchas aristas cruzadas), conviene separarlo del diagrama de hechos base en vez de mezclar todo en uno solo — ver el mismo post para el ejemplo.
+- Validar la sintaxis de un diagrama antes de pegarlo (p. ej. codificando el `.mmd` en base64 y pidiendo el SVG a `https://mermaid.ink/svg/<base64>`) evita descubrir un error de sintaxis recién al mirar el post publicado.
+
 ### Estilo y voz
 
 - Conversacional, primera persona ("voy a contarte", "me llamó la atención"), español rioplatense.
@@ -147,6 +157,7 @@ Todos los posts publicados usan **page bundle** con hero image (`featured_image`
 - **Un concepto por post**, con el hook en los primeros dos párrafos.
 - Largo según el tema, sin relleno. Posts de 600-1000 palabras (story) son tan válidos como deep-dives de 2500+.
 - **Cuando el post trata sobre un proyecto de software propio construido con asistencia de IA**: incluir un párrafo de transparencia cerca del cierre nombrando la herramienta (p. ej. "lo escribí con la asistencia de Claude, de Anthropic") y, si aporta, una sección separada listando las decisiones de diseño que fueron del autor (no tercerizables a la IA) — ver el post sobre el intérprete de Turing para el patrón real.
+- **Nombrar un predicado/función en el texto** (no una llamada concreta con argumentos, sino el nombre en abstracto): negrita + indicador `nombre/aridad`, p. ej. **hijo_de/2**. Una llamada real con argumentos ligados (`hijo_de(yo, mi_padre)`) sigue en fuente de código entre backticks, no en negrita — la negrita+aridad es sólo para cuando se está nombrando/refiriendo al predicado como tal. Ver el post de Prolog (`soy-mi-propio-abuelo-prolog`) para el patrón real.
 
 ### IDs estables para cross-links
 
@@ -218,7 +229,7 @@ Cada entrada del plan vive en un archivo `draft-*.md` propio bajo la carpeta de 
 - **A1-07** — [Spectrum y MicroHobby: la cultura del 8-bit hispanohablante](lenguajes/draft-spectrum-microhobby-cultura-8-bit.md)
 - **A1-08** — [Resucitando KL1 (Kernel Language 1) y el proyecto japonés de 5ta generación con `kl1c`](lenguajes/draft-kl1-icot-quinta-generacion.md)
 - **A1-09** — [GnuCOBOL-lab: aprender RM/COBOL-85 desde un libro español de 1990 dentro de una VM Vagrant](lenguajes/draft-gnucobol-lab-rm-cobol-85.md)
-- **A1-10** — ["Soy mi propio abuelo": modelar una humorada folklórica en Prolog](lenguajes/draft-soy-mi-propio-abuelo-prolog.md)
+- **A1-10** — [«Soy mi propio abuelo»: modelar una humorada folklórica en Prolog](/posts/soy-mi-propio-abuelo-prolog/) ✅ **publicado 2026-07-12**
 - **A1-11** — [Pharo Smalltalk: el sistema vivo donde el código y el mundo son la misma cosa](lenguajes/draft-pharo-smalltalk-sistema-vivo.md)
 - **A1-12** — [El documento de Alan Kay sobre qué es realmente OOP (alojado en FU Berlin)](lenguajes/draft-kay-oop-doc-fu-berlin.md) 🌱 *cosecha*
 - **A1-13** — [Masterminds of Programming: roster completo de las 17 entrevistas](lenguajes/draft-masterminds-roster-completo.md) 🌱 *cosecha*
