@@ -384,6 +384,8 @@ Cada entrada del plan vive en un archivo `draft-*.md` propio bajo la carpeta de 
 - **G-31** — [Windows dev box setup scripts: automatizar la laptop corporativa con PowerShell + Chocolatey](devops/draft-windows-dev-box-powershell-chocolatey.md)
 - **G-32** — [infrastructure-development: el repo meta sobre cómo se bootea una práctica de infra](devops/draft-bootstrap-infrastructure-development-practice.md) ⚠️ *incompleto*
 - **G-33** — [La bandada de roles Ansible que forkeé para estudiar](devops/draft-forks-ansible-roles-bandada.md)
+- **G-34** — [El tooling de un backend Python en serio, antes de escribir la primera ruta](/posts/python-tooling-backend-desde-cero/) ✅ **publicado 2026-07-14** — parte 1/2, ver [[G-35]]
+- **G-35** — [Arquitectura hexagonal en FastAPI: puertos, adaptadores, y las formas de crear una abstracción en Python](devops/draft-fastapi-hexagonal-ports-adapters.md) 🌱 *seed-with-sources* — parte 2/2, depende de [[G-34]]
 
 ---
 

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Resucitando KL1: el lenguaje del proyecto japonés de Quinta Generación, treinta años después | katra</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Japón apostó 850 millones de dólares a un lenguaje de programación lógica concurrente y a hardware paralelo dedicado. El proyecto cerró en 1992. Empaqueté su compilador en un Vagrant moderno para hacerlo correr hoy — esta es la arqueología de esa reconstrucción.">
+    <meta name="generator" content="Hugo 0.164.0">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    <meta name="author" content="César Ballardini">
+    
+
+    <link rel="stylesheet" href="/ananke/css/main.e65ecad14ec45356cb0945e8ee25e1e1ae98048c45c1ff0abd042666c7303e53.css" integrity="sha256-5l7K0U7EU1bLCUXo7iXh4a6YBIxFwf8KvQQmZscwPlM=" crossorigin="anonymous">
+    <script>
+  (function () {
+    "use strict";
+
+    
+    
+    function revealButtons() {
+      var buttons = document.querySelectorAll(".code-block .code-copy[hidden]");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].hidden = false;
+      }
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", revealButtons);
+    } else {
+      revealButtons();
+    }
+
+    function flash(button) {
+      var label = button.querySelector(".code-copy-label");
+      var previous = label ? label.textContent : null;
+      button.classList.add("is-copied");
+      if (label) label.textContent = "Copied";
+      window.setTimeout(function () {
+        button.classList.remove("is-copied");
+        if (label && previous !== null) label.textContent = previous;
+      }, 2000);
+    }
+
+    function legacyCopy(text) {
+      var area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "absolute";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.select();
+      var ok = false;
+      try {
+        ok = document.execCommand("copy");
+      } catch (e) {
+        ok = false;
+      }
+      document.body.removeChild(area);
+      return ok;
+    }
+
+    function copyFrom(button) {
+      var container = button.closest(".code-block");
+      if (!container) return;
+      var pre = container.querySelector("pre");
+      if (!pre) return;
+      var source = pre.querySelector("code") || pre;
+      var text = source.innerText;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { flash(button); },
+          function () { if (legacyCopy(text)) flash(button); }
+        );
+      } else if (legacyCopy(text)) {
+        flash(button);
+      }
+    }
+
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest(".code-copy");
+      if (button) copyFrom(button);
+    });
+  })();
+</script>
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://katra.ballardini.com.ar/posts/kl1-icot-quinta-generacion/">
+    
+
+    
+    
+    <meta property="og:url" content="https://katra.ballardini.com.ar/posts/kl1-icot-quinta-generacion/">
+	<meta property="og:site_name" content="katra">
+	<meta property="og:title" content="Resucitando KL1: el lenguaje del proyecto japonés de Quinta Generación, treinta años después">
+	<meta property="og:description" content="Japón apostó 850 millones de dólares a un lenguaje de programación lógica concurrente y a hardware paralelo dedicado. El proyecto cerró en 1992. Empaqueté su compilador en un Vagrant moderno para hacerlo correr hoy — esta es la arqueología de esa reconstrucción.">
+	<meta property="og:locale" content="es_AR">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-07-13T00:00:00-03:00">
+		<meta property="article:modified_time" content="2026-07-13T00:00:00-03:00">
+		<meta property="article:tag" content="KL1">
+		<meta property="article:tag" content="KLIC">
+		<meta property="article:tag" content="ICOT">
+		<meta property="article:tag" content="Prolog Concurrente">
+		<meta property="article:tag" content="Japon">
+		<meta property="article:tag" content="Vagrant">
+
+	<meta itemprop="name" content="Resucitando KL1: el lenguaje del proyecto japonés de Quinta Generación, treinta años después">
+	<meta itemprop="description" content="Japón apostó 850 millones de dólares a un lenguaje de programación lógica concurrente y a hardware paralelo dedicado. El proyecto cerró en 1992. Empaqueté su compilador en un Vagrant moderno para hacerlo correr hoy — esta es la arqueología de esa reconstrucción.">
+	<meta itemprop="datePublished" content="2026-07-13T00:00:00-03:00">
+	<meta itemprop="dateModified" content="2026-07-13T00:00:00-03:00">
+	<meta itemprop="wordCount" content="2280">
+	<meta itemprop="keywords" content="KL1,KLIC,ICOT,Prolog Concurrente,Japon,Vagrant,Debian">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Resucitando KL1: el lenguaje del proyecto japonés de Quinta Generación, treinta años después">
+	<meta name="twitter:description" content="Japón apostó 850 millones de dólares a un lenguaje de programación lógica concurrente y a hardware paralelo dedicado. El proyecto cerró en 1992. Empaqueté su compilador en un Vagrant moderno para hacerlo correr hoy — esta es la arqueología de esa reconstrucción.">
+
+      
+      
+    
+	
+
+  </head><body class="ma0 avenir bg-near-white production is-page is-page page-2026-07-13-kl1-icot-quinta-generacion">
+   
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+      
+        
+        
+      
+    
+  
+  
+    <style>
+      
+        
+          
+          @media screen and (min-width: 480px) {
+            #featured-image-3295a6c9d50a5d601f58f35283f34f71 { background-image: url('/posts/kl1-icot-quinta-generacion/hero-icot-kl1_hu_2dbab1f5c950da2c.jpg'); }
+          }
+        
+      
+        
+          
+          @media screen and (min-width: 960px) {
+            #featured-image-3295a6c9d50a5d601f58f35283f34f71 { background-image: url('/posts/kl1-icot-quinta-generacion/hero-icot-kl1_hu_89ba03a4fb87d4b7.jpg'); }
+          }
+        
+      
+        
+          
+          @media screen and (min-width: 1440px) {
+            #featured-image-3295a6c9d50a5d601f58f35283f34f71 { background-image: url('/posts/kl1-icot-quinta-generacion/hero-icot-kl1_hu_98019aff3aed88a7.jpg'); }
+          }
+        
+      
+        
+          
+          @media screen and (min-width: 1920px) {
+            #featured-image-3295a6c9d50a5d601f58f35283f34f71 { background-image: url('/posts/kl1-icot-quinta-generacion/hero-icot-kl1_hu_324e8907e801072e.jpg'); }
+          }
+        
+      
+    </style>
+  
+  <header id="featured-image-3295a6c9d50a5d601f58f35283f34f71" class="cover bg-center" style="background-image: url('/posts/kl1-icot-quinta-generacion/hero-icot-kl1_hu_2dbab1f5c950da2c.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        katra
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/consultoria/" title="Consultoría pagina">
+              Consultoría
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/cv/" title="CV pagina">
+              CV
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/habilidades/" title="Habilidades Técnicas pagina">
+              Habilidades Técnicas
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/posts/" title="Entradas pagina">
+              Entradas
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="http://linkedin.com/in/cesar-ballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      </a><a href="https://x.com/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition x-twitter link dib z-999 pt3 pt0-l mr1"
+        title="follow on X - Opens in a new window"
+        aria-label="follow on X - Opens in a new window">
+      </a><a href="https://github.com/CesarBallardini/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            
+          </span></a></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">Resucitando KL1: el lenguaje del proyecto japonés de Quinta Generación, treinta años después</div>
+          
+            <div class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
+              Japón apostó 850 millones de dólares a un lenguaje de programación lógica concurrente y a hardware paralelo dedicado. El proyecto cerró en 1992. Empaqueté su compilador en un Vagrant moderno para hacerlo correr hoy — esta es la arqueología de esa reconstrucción.
+            </div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+<main class="pb7" role="main">
+  
+
+  <article class="page-2026-07-13-kl1-icot-quinta-generacion flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu">
+    <a class="link dim" href="https://katra.ballardini.com.ar/posts/">Entradas</a>
+  </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fkl1-icot-quinta-generacion%2F&amp;subject=Resucitando&#43;KL1%3A&#43;el&#43;lenguaje&#43;del&#43;proyecto&#43;japon%C3%A9s&#43;de&#43;Quinta&#43;Generaci%C3%B3n%2C&#43;treinta&#43;a%C3%B1os&#43;despu%C3%A9s"
+        class="ananke-social-link email no-underline"
+        title="Share on Email" aria-label="Share on Email"
+        target="_blank" rel="nofollow noopener noreferrer">
+        </a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fkl1-icot-quinta-generacion%2F&amp;summary=Entre&#43;1982&#43;y&#43;1992%2C&#43;en&#43;la&#43;misma&#43;%C3%A9poca&#43;en&#43;que&#43;las&#43;vidrieras&#43;electr%C3%B3nicas&#43;de&#43;Tokio&#43;ya&#43;anunciaban&#43;audio%2C&#43;video&#43;y&#43;calculadoras&#43;a&#43;los&#43;gritos1%2C&#43;Jap%C3%B3n&#43;gast%C3%B3&#43;el&#43;equivalente&#43;a&#43;850&#43;millones&#43;de&#43;d%C3%B3lares&#43;en&#43;el&#43;Fifth&#43;Generation&#43;Computer&#43;Systems&#43;Project&#43;%285GCS%29%3A&#43;una&#43;apuesta&#43;estatal&#43;a&#43;redefinir&#43;la&#43;computaci%C3%B3n&#43;alrededor&#43;de&#43;la&#43;programaci%C3%B3n&#43;l%C3%B3gica&#43;concurrente%2C&#43;corriendo&#43;sobre&#43;hardware&#43;paralelo&#43;dise%C3%B1ado&#43;espec%C3%ADficamente&#43;para&#43;eso.&#43;El&#43;lenguaje&#43;central&#43;del&#43;proyecto&#43;se&#43;llamaba&#43;KL1&#43;%E2%80%94&#43;Kernel&#43;Language&#43;1.&#43;El&#43;proyecto&#43;se&#43;cerr%C3%B3&#43;en&#43;1992&#43;sin&#43;haber&#43;producido&#43;la&#43;%26amp%3Bldquo%3Bm%C3%A1quina&#43;que&#43;piensa%26amp%3Brdquo%3B&#43;que&#43;promet%C3%ADa.&#43;Pero&#43;el&#43;c%C3%B3digo&#43;sobrevivi%C3%B3.&#43;Hace&#43;unos&#43;a%C3%B1os&#43;lo&#43;recompil%C3%A9&#43;en&#43;una&#43;laptop&#43;moderna&#43;y&#43;lo&#43;hice&#43;correr.&#43;Esta&#43;es&#43;la&#43;historia&#43;de&#43;esa&#43;reconstrucci%C3%B3n.%0A&amp;title=Resucitando&#43;KL1%3A&#43;el&#43;lenguaje&#43;del&#43;proyecto&#43;japon%C3%A9s&#43;de&#43;Quinta&#43;Generaci%C3%B3n%2C&#43;treinta&#43;a%C3%B1os&#43;despu%C3%A9s&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fkl1-icot-quinta-generacion%2F"
+        class="ananke-social-link linkedin no-underline"
+        title="Share on LinkedIn" aria-label="Share on LinkedIn"
+        target="_blank" rel="nofollow noopener noreferrer">
+        </a><a href="https://twitter.com/intent/tweet/?&amp;text=Entre&#43;1982&#43;y&#43;1992%2C&#43;en&#43;la&#43;misma&#43;%C3%A9poca&#43;en&#43;que&#43;las&#43;vidrieras&#43;electr%C3%B3nicas&#43;de&#43;Tokio&#43;ya&#43;anunciaban&#43;audio%2C&#43;video&#43;y&#43;calculadoras&#43;a&#43;los&#43;gritos1%2C&#43;Jap%C3%B3n&#43;gast%C3%B3&#43;el&#43;equivalente&#43;a&#43;850&#43;millones&#43;de&#43;d%C3%B3lares&#43;en&#43;el&#43;Fifth&#43;Generation&#43;Computer&#43;Systems&#43;Project&#43;%285GCS%29%3A&#43;una&#43;apuesta&#43;estatal&#43;a&#43;redefinir&#43;la&#43;computaci%C3%B3n&#43;alrededor&#43;de&#43;la&#43;programaci%C3%B3n&#43;l%C3%B3gica&#43;concurrente%2C&#43;corriendo&#43;sobre&#43;hardware&#43;paralelo&#43;dise%C3%B1ado&#43;espec%C3%ADficamente&#43;para&#43;eso.&#43;El&#43;lenguaje&#43;central&#43;del&#43;proyecto&#43;se&#43;llamaba&#43;KL1&#43;%E2%80%94&#43;Kernel&#43;Language&#43;1.&#43;El&#43;proyecto&#43;se&#43;cerr%C3%B3&#43;en&#43;1992&#43;sin&#43;haber&#43;producido&#43;la&#43;%26amp%3Bldquo%3Bm%C3%A1quina&#43;que&#43;piensa%26amp%3Brdquo%3B&#43;que&#43;promet%C3%ADa.&#43;Pero&#43;el&#43;c%C3%B3digo&#43;sobrevivi%C3%B3.&#43;Hace&#43;unos&#43;a%C3%B1os&#43;lo&#43;recompil%C3%A9&#43;en&#43;una&#43;laptop&#43;moderna&#43;y&#43;lo&#43;hice&#43;correr.&#43;Esta&#43;es&#43;la&#43;historia&#43;de&#43;esa&#43;reconstrucci%C3%B3n.%0A&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fkl1-icot-quinta-generacion%2F"
+        class="ananke-social-link x-twitter no-underline"
+        title="Share on X" aria-label="Share on X"
+        target="_blank" rel="nofollow noopener noreferrer">
+        </a><a href="%25!s%28%3cnil%3e%29?"
+        class="ananke-social-link github no-underline"
+        title="Share on GitHub" aria-label="Share on GitHub"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                
+              </span></a></div>
+<h1 class="f1 athelas mt3 mb1">Resucitando KL1: el lenguaje del proyecto japonés de Quinta Generación, treinta años después</h1>
+      
+      <p class="tracked"><strong>César Ballardini</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-07-13T00:00:00-03:00">13 de julio de 2026</time>
+      
+
+      
+      
+        
+        
+        <span class="f6 mv4 dib tracked"> - Lectura en 11 minutos </span>
+        <span class="f6 mv4 dib tracked"> - 2280 palabras </span>
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><p>Entre 1982 y 1992, en la misma época en que las vidrieras electrónicas de Tokio ya anunciaban audio, video y calculadoras a los gritos<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, Japón gastó el equivalente a 850 millones de dólares en el <em>Fifth Generation Computer Systems Project</em> (5GCS): una apuesta estatal a redefinir la computación alrededor de la <strong>programación lógica concurrente</strong>, corriendo sobre hardware paralelo diseñado específicamente para eso. El lenguaje central del proyecto se llamaba <strong>KL1</strong> — <em>Kernel Language 1</em>. El proyecto se cerró en 1992 sin haber producido la &ldquo;máquina que piensa&rdquo; que prometía. Pero el código sobrevivió. Hace unos años lo recompilé en una laptop moderna y lo hice correr. Esta es la historia de esa reconstrucción.</p>
+<h2 id="icot-y-la-apuesta-de-los-850-millones">ICOT y la apuesta de los 850 millones</h2>
+<p>A principios de los 80, el gobierno japonés miraba con preocupación cómo Estados Unidos discutía Lisp y las máquinas Symbolics, mientras la industria de semiconductores japonesa dominaba la manufactura pero no el diseño de sistemas inteligentes. La respuesta fue el <em>Institute for New Generation Computer Technology</em> (<strong>ICOT</strong>), un instituto central financiado por el gobierno y los fabricantes japoneses (Fujitsu, Hitachi, NEC, Toshiba, Matsushita, Mitsubishi, Oki, Sharp), con un mandato de diez años y una meta declarada: construir sistemas de inferencia masivamente paralelos, con un lenguaje de programación lógica como interfaz nativa entre el programador y el hardware.</p>
+<p>La apuesta técnica central fue <strong>no</strong> seguir el camino Lisp/von Neumann. En cambio, ICOT eligió la <strong>programación lógica</strong> — el paradigma de Prolog — como base, y le agregó <strong>concurrencia</strong> como primitiva del lenguaje, no como biblioteca. La idea: si el hardware iba a ser masivamente paralelo, el lenguaje tenía que expresar paralelismo de forma nativa desde la sintaxis misma de los programas.</p>
+<h2 id="kl1-como-lenguaje-de-prolog-a-las-guardas">KL1 como lenguaje: de Prolog a las guardas</h2>
+<p>KL1 no nace de cero. Desciende de una línea de lenguajes de programación lógica concurrente: Prolog clásico → <em>Concurrent Prolog</em> (Shapiro) → <strong>GHC</strong> (<em>Guarded Horn Clauses</em>, Kazunori Ueda, 1985)<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> → KL1, la síntesis final de ICOT.</p>
+<p>La idea que lo diferencia de Prolog es la <strong>guarda</strong>. En Prolog, cuando hay varias cláusulas que podrían aplicar, el motor las prueba en orden y hace backtracking si una falla. En KL1 (y en GHC, su antecesor directo), cada cláusula tiene una guarda — una condición que se evalúa <em>antes</em> de comprometerse con esa cláusula — y una vez que una guarda tiene éxito, esa elección es <strong>definitiva</strong>: no hay backtracking. Esto se llama <em>committed choice</em>, y es lo que hace que el modelo sea naturalmente concurrente: distintos objetivos pueden evaluar sus guardas en paralelo, sin necesidad de coordinarse entre sí hasta que uno se compromete.</p>
+<p>El ejemplo más chico que existe para ver esto es casi vergonzosamente simple — es el que trae la traducción al KL1 del libro de Huntbach y Ringwood, <em>Agent-Oriented Programming</em><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>:</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-prolog" data-lang="prolog"><span style="display:flex;"><span>:- <span style="color:#e6db74">module</span> <span style="color:#e6db74">main</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">main</span> <span style="color:#f92672">:-</span> <span style="color:#f92672">not</span>(<span style="color:#ae81ff">0</span>, X), io:<span style="color:#a6e22e">outstream</span>([<span style="color:#a6e22e">print</span>(X), <span style="color:#e6db74">nl</span>]).
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">not</span>(In, Out):- In <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> | Out <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">not</span>(In, Out):- In <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> | Out <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.</span></span></span></code></pre></div>
+  </div><p>Las dos cláusulas de <strong>not/2</strong> tienen guardas mutuamente excluyentes (<code>In = 0</code> y <code>In = 1</code>, antes de la barra <code>|</code>). El motor evalúa ambas guardas, sólo una puede tener éxito para un valor concreto de <code>In</code>, y esa cláusula se compromete sin mirar atrás. No parece gran cosa para invertir un bit — pero esa misma mecánica, escalada, es la que permite que miles de procesos KL1 corriendo en paralelo se sincronicen únicamente a través de la unificación de variables compartidas, sin locks, sin semáforos, sin un scheduler explícito escrito a mano.</p>
+<h2 id="por-qué-fracasó--y-por-qué-esa-palabra-es-injusta">Por qué &ldquo;fracasó&rdquo; — y por qué esa palabra es injusta</h2>
+<p>El 5GCS terminó en 1992 sin las máquinas que piensan que prometía en 1982. En la narrativa popular de la época, eso se leyó como un fracaso rotundo — el libro alarmista de Feigenbaum y McCorduck, <em>The Fifth Generation</em><sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>, escrito en pleno auge del proyecto, hoy es más un documento de época que una referencia técnica.</p>
+<p>Pero mirado en retrospectiva por el propio Kazunori Ueda —el diseñador de GHC y una de las figuras centrales del proyecto— la historia es más matizada. En su balance de 2018<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>, Ueda argumenta que el 5GCS produjo un cuerpo de trabajo técnico enorme sobre programación lógica concurrente, sistemas paralelos y modelos de computación declarativa, incluso si el objetivo declarado (IA fuerte sobre hardware dedicado) no se cumplió. Parte de ese trabajo influyó, indirectamente, en ideas que sí sobrevivieron con otros nombres: el modelo de actores, la sincronización por paso de mensajes sin estado compartido. Joe Armstrong, el creador de Erlang, dedica una sección de <em>A History of Erlang</em><sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> a reconocer la línea de investigación en programación lógica concurrente japonesa como parte del paisaje intelectual del que Erlang emerge, aunque su camino directo fuera otro (Prolog vía Ericsson, no KL1 vía ICOT).</p>
+<p>Y el trabajo de ingeniería sobrevivió literalmente, no sólo en espíritu: <strong>KLIC</strong>, la implementación portable de KL1 en C, se siguió manteniendo después del cierre formal de ICOT<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>, y hoy —treinta años después— se puede <em>bajar, compilar y correr</em>.</p>
+<h2 id="klic-la-implementación-que-sobrevivió">KLIC: la implementación que sobrevivió</h2>
+<p>KLIC<sup id="fnref1:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> es un compilador de KL1 a C, escrito por Takashi Chikayama y su equipo, pensado para correr sobre Unix genérico en vez de sobre las máquinas PIM (<em>Parallel Inference Machine</em>) dedicadas del proyecto original. Es, en otras palabras, la puerta de entrada a KL1 para cualquiera que no tenga una PIM en el garage.</p>
+<p>Hubo un paquete Debian de KLIC hasta 2006. Sus binarios eran de 32 bits (<code>i386</code>). Después de eso, nada — el paquete quedó huérfano, y con cada ciclo de vida de Debian se volvió más difícil de instalar en un sistema moderno.</p>
+<h2 id="el-poc-reconstruir-el-paquete-debian-de-2006-en-2020">El POC: reconstruir el paquete Debian de 2006 en 2020</h2>
+<p>Mi repo <code>kl1c</code><sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> hace exactamente esa reconstrucción, y el proceso resultó ser una lección de arqueología de software más interesante de lo que esperaba.</p>
+<p>El punto de partida es literal: el snapshot congelado de <code>snapshot.debian.org</code> correspondiente al 6 de noviembre de 2006 — el último día en que ese paquete existió en el archivo activo de Debian. De ahí se bajan los tres artefactos de un paquete fuente Debian clásico: el <code>.dsc</code> (metadata + checksums), el <code>.diff.gz</code> (el parche de empaquetado de Debian sobre el código original) y el <code>.orig.tar.gz</code> (el tarball upstream de KLIC 3.003). <code>dpkg-source -x</code> reconstruye el árbol de fuentes completo a partir de esos tres archivos, tal como lo hubiera visto un desarrollador Debian en 2006.</p>
+<p>A partir de ahí, nada compila limpio. Dos problemas concretos, cada uno una pequeña cápsula de por qué el software viejo se rompe:</p>
+<p><strong>El <code>Configure</code> de KLIC —un script interactivo estilo años 90 que autodetecta funciones de la libc— dejó de confiar en su propia autodetección.</strong> El script prueba si el sistema tiene <code>bcmp</code>/<code>bcopy</code>/<code>bzero</code>/<code>strchr</code> (las funciones BSD clásicas) o sus equivalentes POSIX modernos (<code>memcmp</code>/<code>memcpy</code>/<code>memset</code>/<code>index</code>), compilando pequeños programas de prueba al vuelo. En un Ubuntu de 2016, esa detección para <code>bcmp</code>, <code>bzero</code> y <code>strchr</code> specíficamente falla — no importa demasiado por qué; lo que importa es que la respuesta correcta ya se sabe de antemano. El parche del repo simplemente <strong>hardcodea</strong> la respuesta (<code>USEBCMP=&quot;#define&quot;</code>, etc.) en vez de confiar en una detección que ya no es confiable treinta años después.</p>
+<p><strong>El instalador interactivo no sabía que las rutas de librerías multiarch existen.</strong> KLIC se instala vía un script <code>expect</code> que simula un usuario respondiendo a los prompts del instalador original. Ese instalador de los 90 no conocía el layout <code>/usr/lib/i386-linux-gnu/</code> — la convención <em>multiarch</em> que Debian introdujo bastante después, para poder tener librerías de distintas arquitecturas conviviendo en el mismo sistema. El parche le agrega al script <code>expect</code> la respuesta específica que apunta ahí.</p>
+<p>Con esos dos parches (más uno tercero encadenado en <code>debian/rules</code>) y un <code>debian/compat</code> fijado en 5 (para que <code>debhelper</code> no se queje), <code>debuild -us -uc -d</code> produce paquetes <code>.deb</code> frescos — sin firmar, sin verificación estricta de dependencias, pero funcionales. Todo esto corre dentro de una VM Vagrant con el box <code>ubuntu/trusty32</code>: Ubuntu 14.04 &ldquo;Trusty Tahr&rdquo;, 32 bits. La elección de 32 bits no es casual — los binarios originales de 2006 eran <code>i386</code>, y reconstruir en la misma arquitectura evita tener que portear código C de los 90 a un modelo de punteros de 64 bits, que para un compilador con su propio runtime y representación de términos etiquetados es un problema bastante más profundo que un parche de tres líneas.</p>
+<h2 id="hello-concurrent-world-en-kl1">&ldquo;Hello, concurrent world&rdquo; en KL1</h2>
+<p>Con los paquetes instalados, el ejemplo que más me gusta correr no es <strong>not/2</strong> — ya lo vimos, es el más chico posible — sino la criba de Eratóstenes concurrente, un clásico de los lenguajes de programación lógica concurrente porque muestra el patrón real: procesos que se comunican exclusivamente a través de streams (listas cuya cola todavía no está instanciada):</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-prolog" data-lang="prolog"><span style="display:flex;"><span><span style="color:#a6e22e">gen</span>(N0,Max,Ns0) :- N0<span style="color:#f92672">=&lt;</span>Max | Ns0<span style="color:#f92672">=</span>[N0|Ns1], N1<span style="color:#e6db74">:=</span>N0<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">gen</span>(N1,Max,Ns1).
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">gen</span>(N0,Max,Ns0) :- N0 <span style="color:#f92672">&gt;</span>Max | Ns0<span style="color:#f92672">=</span>[].
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sift</span>([],     Zs0) :- Zs0<span style="color:#f92672">=</span>[].
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sift</span>([P|Xs1],Zs0) :- Zs0<span style="color:#f92672">=</span>[P|Zs1], <span style="color:#a6e22e">filter</span>(P,Xs1,Ys), <span style="color:#a6e22e">sift</span>(Ys,Zs1).
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">filter</span>(<span style="color:#66d9ef">_</span>,[],     Ys0) :-               Ys0<span style="color:#f92672">=</span>[].
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">filter</span>(P,[X|Xs1],Ys0) :- X <span style="color:#f92672">mod</span> P<span style="color:#e6db74">=\=</span><span style="color:#ae81ff">0</span> | Ys0<span style="color:#f92672">=</span>[X|Ys1], <span style="color:#a6e22e">filter</span>(P,Xs1,Ys1).
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">filter</span>(P,[X|Xs1],Ys0) :- X <span style="color:#f92672">mod</span> P<span style="color:#f92672">=:=</span><span style="color:#ae81ff">0</span> |              <span style="color:#a6e22e">filter</span>(P,Xs1,Ys0).</span></span></code></pre></div>
+  </div><p><strong>gen/3</strong> genera la lista de números desde 2 hasta el máximo. <strong>sift/2</strong> toma esa lista, separa el primer número (que es primo por construcción) y arma un <strong>filter/3</strong> que descarta sus múltiplos del resto del stream, encadenándose recursivamente con el siguiente <strong>sift/2</strong>. El resultado es, literalmente, una tubería de procesos concurrentes — uno por cada primo encontrado hasta el momento — cada uno filtrando el stream que le llega del anterior. Nadie escribió un scheduler. Nadie coordinó explícitamente nada. La sincronización entera sale de que cada proceso sólo puede avanzar cuando la cola del stream que está leyendo deja de ser una variable libre y pasa a estar instanciada por quien la produce.</p>
+<p>Es la misma idea que <strong>not/2</strong> mostraba en miniatura, escalada a un problema real: guardas + streams + committed choice alcanzan para expresar concurrencia sin que el programador tenga que pensar en threads.</p>
+<h2 id="el-eco-de-dijkstra">El eco de Dijkstra</h2>
+<p>Hay una conexión que no armé yo — la señala el propio README del repo, citando el trabajo de Dijkstra sobre <strong>comandos guardados</strong><sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>. La guarda de KL1 no es una invención aislada de ICOT: es un descendiente directo de la idea de Dijkstra de 1975 de que el no-determinismo controlado por guardas —condiciones que se evalúan antes de comprometerse con una rama de ejecución— es una forma más honesta de expresar programas concurrentes que el flujo de control secuencial disfrazado de paralelo. GHC y KL1 tomaron esa idea, la aplicaron a cláusulas de Horn, y construyeron todo un paradigma de programación lógica concurrente encima. Es uno de esos hilos que conecta un paper de fundamentos teóricos con un proyecto de 850 millones de dólares al otro lado del mundo, quince años después.</p>
+<h2 id="por-qué-vale-la-pena-resucitar-esto">Por qué vale la pena resucitar esto</h2>
+<p>Un proyecto cerrado en 1992, con un paquete Debian huérfano desde 2006, es exactamente el tipo de software que uno esperaría que esté perdido para siempre. No lo está. Los archivos de ICOT siguen preservados (con algunos mirrors muertos y otros vivos)<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>, el código de KLIC sigue compilando con los parches correctos, y el lenguaje que Japón diseñó para las máquinas que iban a pensar corre hoy, sin ironía, dentro de una VM de 32 bits en una laptop cualquiera. Si alguna vez pensaste que un proyecto &ldquo;fracasado&rdquo; es sinónimo de código perdido, esto es la prueba de que no necesariamente: alcanza con sentarse tres tardes, tres parches, y las ganas de ver correr algo que el mundo dejó de mantener hace veinte años.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Imagen de portada: <a href="https://commons.wikimedia.org/wiki/File:Akihabara_1976.jpg"><em>Akihabara 1976</em></a> — fotografía de John Lloyd, 1976, vía Wikimedia Commons — CC BY 2.0. Recortada a 2.5:1 para hero landscape. No es una foto de ICOT ni de una PIM (no hay fotos de acceso público de ninguna de las dos) — es el barrio electrónico de Tokio, unos años antes del arranque del proyecto, para ambientar la época y el lugar.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Kazunori Ueda, <em><a href="https://www.ueda.info.waseda.ac.jp/~ueda/pub/GHCthesis.pdf">Guarded Horn Clauses</a></em>, tesis de maestría, Universidad de Tokio, marzo de 1986 — el paper fundacional de GHC, la síntesis inmediatamente anterior a KL1.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>Matthew M Huntbach &amp; Graem A Ringwood, <em>Agent-Oriented Programming: From Prolog to Guarded Definite Clauses</em>, Lecture Notes in Artificial Intelligence 1630, Springer, 1999. <a href="https://doi.org/10.1007/3-540-47938-4">DOI 10.1007/3-540-47938-4</a> — referencia canónica. La copia en archive.org que circulaba hasta hace poco ya no está disponible (item marcado <code>dark</code>); hay una copia de texto completo en <a href="https://theswissbay.ch/pdf/Gentoomen%20Library/Artificial%20Intelligence/General/Agent-Oriented%20Programming%20-%20From%20Prolog%20to%20Guarded%20Definite%20Clauses%20-%20Matthew%20M.%20Huntbach.pdf">theswissbay.ch</a> (mirror personal, verificar antes de que se caiga).&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>Edward A Feigenbaum &amp; Pamela McCorduck, <em>The Fifth Generation: Artificial Intelligence and Japan&rsquo;s Computer Challenge to the World</em>, Addison-Wesley, 1983. <a href="https://archive.org/details/fifthgenerationa00feig">Préstamo digital controlado en archive.org</a>.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>Kazunori Ueda, <a href="https://doi.org/10.1016/j.scico.2017.06.002"><em>Logic/Constraint Programming and Concurrency: The Hard-Won Lessons of the Fifth Generation Computer Project</em></a>, <em>Science of Computer Programming</em>, vol. 164 (2018), pp. 3-17. El balance retrospectivo del propio diseñador de GHC.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>Joe Armstrong, <a href="https://doi.org/10.1145/1238844.1238850"><em>A History of Erlang</em></a>, <em>Proceedings of the Third ACM SIGPLAN Conference on History of Programming Languages</em> (HOPL III), 2007.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>Takashi Chikayama, <em>KLIC: A Portable Parallel Implementation of a Concurrent Logic Programming Language</em>, en <em>Parallel Symbolic Languages and Systems</em> (PSLS 1995), Lecture Notes in Computer Science, Springer, 1996. <a href="https://doi.org/10.1007/BFb0023068">DOI 10.1007/BFb0023068</a> — el paper que describe la implementación exacta que este proyecto empaqueta; copia incluida en el repo del POC.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8">
+<p>César Ballardini, <a href="https://github.com/CesarBallardini/kl1c"><em>kl1c</em></a>, repositorio en GitHub. Contiene el <code>Vagrantfile</code>, los parches de empaquetado, los paquetes <code>.deb</code> reconstruidos, y una colección de programas de ejemplo en KL1.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:9">
+<p>Edsger W Dijkstra, <a href="https://www.cs.utexas.edu/~EWD/transcriptions/EWD04xx/EWD472.html"><em>Guarded commands, non-determinacy and formal derivation of programs</em></a>, EWD472, 1975 (publicado en <em>Communications of the ACM</em> 18(8), 1975). El origen de la idea de &ldquo;guarda&rdquo; que GHC y KL1 heredan.&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:10">
+<p>El archivo de software libre de ICOT (<em>ICOT Free Software</em>, ifs) está preservado por Kazunori Ueda en Waseda: <a href="https://www.ueda.info.waseda.ac.jp/software.html">ueda.info.waseda.ac.jp/software.html</a> (<a href="https://web.archive.org/web/20251201151637/https://www.ueda.info.waseda.ac.jp/software.html">backup en Wayback Machine</a>). El dominio original <code>icot.or.jp</code> está caído; <a href="https://web.archive.org/web/20081231075254/http://www.icot.or.jp:80/ARCHIVE/HomePage-E.html">snapshot de 2008 en Wayback Machine</a>.&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+<ul class="pa0">
+  
+</ul><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/kl1/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">KL1</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/klic/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">KLIC</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/icot/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">ICOT</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/prolog-concurrente/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Prolog Concurrente</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/japon/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Japon</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/vagrant/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Vagrant</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/debian/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Debian</a>
+   </li>
+  
+</ul>
+
+      
+    </div></article>
+</main><footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://katra.ballardini.com.ar/" >
+    &copy;  César Ballardini 2026 
+  </a>
+    <div><div class="ananke-socials"><a href="http://linkedin.com/in/cesar-ballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      </a><a href="https://x.com/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition x-twitter link dib z-999 pt3 pt0-l mr1"
+        title="follow on X - Opens in a new window"
+        aria-label="follow on X - Opens in a new window">
+      </a><a href="https://github.com/CesarBallardini/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            
+          </span></a></div>
+</div>
+  </div>
+</footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

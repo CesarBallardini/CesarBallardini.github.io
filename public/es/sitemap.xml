@@ -48,7 +48,7 @@
                 />
   </url><url>
     <loc>https://katra.ballardini.com.ar/</loc>
-    <lastmod>2026-07-12T00:00:00-03:00</lastmod>
+    <lastmod>2026-07-13T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -61,6 +61,76 @@
                 hreflang="en-US"
                 href="https://katra.ballardini.com.ar/en/"
                 />
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/debian/</loc>
+    <lastmod>2026-07-13T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/posts/</loc>
+    <lastmod>2026-07-13T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/posts/"
+                />
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/icot/</loc>
+    <lastmod>2026-07-13T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/japon/</loc>
+    <lastmod>2026-07-13T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/kl1/</loc>
+    <lastmod>2026-07-13T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/klic/</loc>
+    <lastmod>2026-07-13T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/prolog-concurrente/</loc>
+    <lastmod>2026-07-13T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/posts/kl1-icot-quinta-generacion/</loc>
+    <lastmod>2026-07-13T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/</loc>
+    <lastmod>2026-07-13T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/tags/"
+                />
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/vagrant/</loc>
+    <lastmod>2026-07-13T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://katra.ballardini.com.ar/posts/soy-mi-propio-abuelo-prolog/</loc>
     <lastmod>2026-07-12T00:00:00-03:00</lastmod>
@@ -76,21 +146,6 @@
     <lastmod>2026-07-12T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/</loc>
-    <lastmod>2026-07-12T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es-AR"
-                href="https://katra.ballardini.com.ar/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://katra.ballardini.com.ar/en/posts/"
-                />
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/familia/</loc>
     <lastmod>2026-07-12T00:00:00-03:00</lastmod>
@@ -141,21 +196,6 @@
     <lastmod>2026-07-12T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/</loc>
-    <lastmod>2026-07-12T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es-AR"
-                href="https://katra.ballardini.com.ar/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://katra.ballardini.com.ar/en/tags/"
-                />
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/term-rewriting/</loc>
     <lastmod>2026-07-12T00:00:00-03:00</lastmod>
@@ -357,11 +397,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/debian/</loc>
-    <lastmod>2025-02-04T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://katra.ballardini.com.ar/posts/saluden-a-debian/</loc>
     <lastmod>2025-02-04T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -498,11 +533,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/ubuntu/</loc>
-    <lastmod>2016-08-28T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/vagrant/</loc>
     <lastmod>2016-08-28T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

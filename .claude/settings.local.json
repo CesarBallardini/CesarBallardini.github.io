@@ -58,7 +58,11 @@
       "Bash(hugo --cleanDestinationDir)",
       "WebFetch(domain:api.crossref.org)",
       "WebFetch(domain:www.ueda.info.waseda.ac.jp)",
-      "WebFetch(domain:theswissbay.ch)"
+      "WebFetch(domain:theswissbay.ch)",
+      "Bash(hugo --buildFuture)",
+      "Read(//c/Users/cesar/cesar/github/CesarBallardini/localenv-python/**)",
+      "Bash(uv run *)",
+      "Bash(hugo --buildFuture --cleanDestinationDir)"
     ]
   }
 }
