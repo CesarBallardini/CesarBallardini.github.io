@@ -1,0 +1,6 @@
+/* Tighter, smaller fenced code blocks (Chroma output lives in .highlight) */
+.highlight pre,
+.highlight pre code {
+  font-size: 0.78rem;
+  line-height: 1.3;
+}
