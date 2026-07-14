@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
-		<title>Python on katra</title>
-		<link>https://katra.ballardini.com.ar/tags/python/</link>
-		<description>Recent content in Python on katra</description>
+		<title>Linting on katra</title>
+		<link>https://katra.ballardini.com.ar/tags/linting/</link>
+		<description>Recent content in Linting on katra</description>
 		<generator>Hugo</generator>
 		<language>es-AR</language>
 		
@@ -14,20 +14,13 @@
 		
 			<lastBuildDate>Tue, 14 Jul 2026 00:00:00 -0300</lastBuildDate>
 		
-			<atom:link href="https://katra.ballardini.com.ar/tags/python/index.xml" rel="self" type="application/rss+xml" />
+			<atom:link href="https://katra.ballardini.com.ar/tags/linting/index.xml" rel="self" type="application/rss+xml" />
 			<item>
 				<title>El tooling de un backend Python en serio, antes de escribir la primera ruta</title>
 				<link>https://katra.ballardini.com.ar/posts/python-tooling-backend-desde-cero/</link>
 				<pubDate>Tue, 14 Jul 2026 00:00:00 -0300</pubDate>
 				<guid>https://katra.ballardini.com.ar/posts/python-tooling-backend-desde-cero/</guid>
 				<description>&lt;p&gt;Antes de escribir la primera ruta de un backend nuevo, vale la pena invertir un rato en el tooling que va a hacer cumplir la calidad del código automáticamente&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;. La apuesta es simple: &amp;ldquo;está prolijo&amp;rdquo; tiene que ser lo que pasa &lt;em&gt;por default&lt;/em&gt;, no lo que alguien se acuerda de hacer antes de un commit. Esto es lo que arma esa base en un proyecto Python real — la configuración es genérica y generalizada a propósito: no hay una línea de negocio, ni un nombre de cliente, ni nada que identifique de dónde sale. Lo único que se comparte es la parte compartible: cómo se arma el tooling. Armé además un scaffold público con todo esto funcionando de verdad — cloná, &lt;code&gt;make install&lt;/code&gt;, y andá probando cada sección de este post contra el repo real&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;</description>
-			</item>
-			<item>
-				<title>El intérprete que ejecuta el paper de Turing tal cual está escrito</title>
-				<link>https://katra.ballardini.com.ar/posts/interprete-reescritura-perezosa-turing/</link>
-				<pubDate>Sun, 12 Jul 2026 00:00:00 -0300</pubDate>
-				<guid>https://katra.ballardini.com.ar/posts/interprete-reescritura-perezosa-turing/</guid>
-				<description>&lt;p&gt;Todo el mundo que estudió ciencias de la computación implementó &amp;ldquo;una máquina de Turing&amp;rdquo; en algún momento&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;: una cinta, un cabezal, una tabla de transiciones &lt;code&gt;(estado, símbolo) → (estado, símbolo, movimiento)&lt;/code&gt;. Es un ejercicio válido, pero no es lo que Turing escribió en 1936. Su notación real —la que usa en &lt;em&gt;On Computable Numbers, with an Application to the Entscheidungsproblem&lt;/em&gt;&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;— es bastante más rica que eso, y casi nadie la implementa como está en el paper. Yo quería saber si podía.&lt;/p&gt;</description>
 			</item>
 	</channel>
 </rss>

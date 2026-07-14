@@ -25,7 +25,6 @@ dev = [
 ]
 deploy = [
     "docker",
-    "ansible",
 ]
 ```
 
@@ -54,7 +53,7 @@ Acá viene la parte menos obvia: el proyecto de referencia corre **dos** type ch
 
 Hay dos preguntas de seguridad que no son la misma pregunta, y por eso conviene no mezclarlas en una sola herramienta:
 
-- **¿El código que escribimos tiene patrones inseguros?** — la responde `bandit`[^bandit] (SAST, análisis estático), con un *baseline* commiteado al repo. La idea del baseline: sólo fallan los hallazgos **nuevos**. Los que ya existían y fueron revisados y aceptados no rompen el build cada vez — sin baseline, cualquier intento de adoptar un scanner de seguridad sobre un código base existente termina en una pantalla roja imposible de limpiar de una sola vez, y el equipo termina apagando la herramienta entera.
+- **¿El código que escribimos tiene patrones inseguros?** — la responde `bandit`[^bandit] (SAST, análisis estático). Su configuración deja preparado el flujo de *baseline*, que es la clave para adoptar un scanner de seguridad sobre un código base que ya tiene historia: se genera una vez una foto de los hallazgos actuales, se la commitea al repo, y de ahí en adelante sólo fallan los hallazgos **nuevos**. Los que ya existían y fueron revisados y aceptados no rompen el build cada vez — sin baseline, ese primer scan sobre código preexistente termina en una pantalla roja imposible de limpiar de una sola vez, y el equipo termina apagando la herramienta entera. (En un scaffold que arranca limpio como este todavía no hay nada que baselinear; el valor del baseline aparece el día que se apunta la herramienta a un proyecto real.)
 - **¿Las dependencias que usamos tienen vulnerabilidades conocidas?** — la responden `pip-audit` y `OSV-Scanner`[^osv] (SCA, ambos contra el lockfile), corriendo como workflow separado de CI. Un detalle chico pero real: `pip-audit` por default también intenta auditar el propio paquete del proyecto, que —al no estar publicado en PyPI— siempre sale como "no se puede auditar". El flag `--skip-editable` saca ese ruido sin ocultar nada real: sigue fallando si una dependencia de verdad tiene una vulnerabilidad conocida, sólo deja de quejarse por el propio código. Otro detalle no tan obvio: `OSV-Scanner` no es un paquete de Python — es un binario de Go de Google, así que no entra en el mundo `uv`. En vez de forzarlo ahí, se lo trata como lo que es: un binario que tiene que estar en el `PATH` (se instala aparte, por ejemplo con Chocolatey en Windows) y que `make security` invoca directo, sin pasar por `uv run`. En CI corre el mismo binario, vía el *reusable workflow* oficial de GitHub Actions que Google publica para eso — misma herramienta, dos formas distintas de invocarla según el contexto, cada una la que tiene sentido en ese contexto.
 
 ## Tests, organizados por lo que realmente cuesta correrlos
@@ -68,7 +67,7 @@ La organización de carpetas separa los tests por lo que realmente les cuesta co
 - **De aceptación (BDD)** — con [`pytest-bdd`](https://pytest-bdd.readthedocs.io/)[^pytestbdd], archivos `.feature` en su propia carpeta y los *step definitions* en una carpeta hermana, describiendo comportamiento en lenguaje natural estructurado (Gherkin).
 - **End-to-end** — contra un navegador real, vía [`pytest-playwright`](https://playwright.dev/python/docs/test-runners)[^playwright], los más lentos y los que menos se corren en el loop de desarrollo del día a día.
 
-Markers custom (`unit`, `integration`, `e2e`, y un `snapshot` que queda excluido por default y sólo corre a demanda) le dan a cada quien la posibilidad de correr sólo la porción de la suite que le importa en ese momento — nadie necesita esperar los e2e completos para saber si rompió algo unitario. Para generar datos de prueba sin hardcodear objetos gigantes a mano, `factory-boy` + `faker`. Para coverage, `pytest-cov` corriendo en paralelo vía `pytest-xdist` (`-n auto`, usa todos los cores disponibles), con el reporte en XML listo para subir a un servicio externo de tracking.
+Markers custom (`unit`, `integration`, `bdd`, `e2e`, y un `snapshot` que queda excluido por default y sólo corre a demanda) le dan a cada quien la posibilidad de correr sólo la porción de la suite que le importa en ese momento — nadie necesita esperar los e2e completos para saber si rompió algo unitario. Para generar datos de prueba sin hardcodear objetos gigantes a mano, `factory-boy` + `faker`. Para coverage, `pytest-cov` corriendo en paralelo vía `pytest-xdist` (`-n auto`, usa todos los cores disponibles), con el reporte en XML listo para subir a un servicio externo de tracking.
 
 ## pre-commit: la red de contención antes del commit
 

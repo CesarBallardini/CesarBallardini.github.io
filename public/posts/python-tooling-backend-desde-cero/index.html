@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>El tooling de un backend Python en serio, antes de escribir la primera ruta | katra</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Gestor de dependencias, linting, dos type checkers a propósito, seguridad estática y de dependencias, tests organizados por tipo, y todo enganchado a pre-commit y CI — la base de calidad de un backend Python, con configuración real generalizada.">
+    <meta name="generator" content="Hugo 0.164.0">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    <meta name="author" content="César Ballardini">
+    
+
+    <link rel="stylesheet" href="/ananke/css/main.e65ecad14ec45356cb0945e8ee25e1e1ae98048c45c1ff0abd042666c7303e53.css" integrity="sha256-5l7K0U7EU1bLCUXo7iXh4a6YBIxFwf8KvQQmZscwPlM=" crossorigin="anonymous">
+    <script>
+  (function () {
+    "use strict";
+
+    
+    
+    function revealButtons() {
+      var buttons = document.querySelectorAll(".code-block .code-copy[hidden]");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].hidden = false;
+      }
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", revealButtons);
+    } else {
+      revealButtons();
+    }
+
+    function flash(button) {
+      var label = button.querySelector(".code-copy-label");
+      var previous = label ? label.textContent : null;
+      button.classList.add("is-copied");
+      if (label) label.textContent = "Copied";
+      window.setTimeout(function () {
+        button.classList.remove("is-copied");
+        if (label && previous !== null) label.textContent = previous;
+      }, 2000);
+    }
+
+    function legacyCopy(text) {
+      var area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "absolute";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.select();
+      var ok = false;
+      try {
+        ok = document.execCommand("copy");
+      } catch (e) {
+        ok = false;
+      }
+      document.body.removeChild(area);
+      return ok;
+    }
+
+    function copyFrom(button) {
+      var container = button.closest(".code-block");
+      if (!container) return;
+      var pre = container.querySelector("pre");
+      if (!pre) return;
+      var source = pre.querySelector("code") || pre;
+      var text = source.innerText;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { flash(button); },
+          function () { if (legacyCopy(text)) flash(button); }
+        );
+      } else if (legacyCopy(text)) {
+        flash(button);
+      }
+    }
+
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest(".code-copy");
+      if (button) copyFrom(button);
+    });
+  })();
+</script>
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://katra.ballardini.com.ar/posts/python-tooling-backend-desde-cero/">
+    
+
+    
+    
+    <meta property="og:url" content="https://katra.ballardini.com.ar/posts/python-tooling-backend-desde-cero/">
+	<meta property="og:site_name" content="katra">
+	<meta property="og:title" content="El tooling de un backend Python en serio, antes de escribir la primera ruta">
+	<meta property="og:description" content="Gestor de dependencias, linting, dos type checkers a propósito, seguridad estática y de dependencias, tests organizados por tipo, y todo enganchado a pre-commit y CI — la base de calidad de un backend Python, con configuración real generalizada.">
+	<meta property="og:locale" content="es_AR">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-07-14T00:00:00-03:00">
+		<meta property="article:modified_time" content="2026-07-14T00:00:00-03:00">
+		<meta property="article:tag" content="Python">
+		<meta property="article:tag" content="Tooling">
+		<meta property="article:tag" content="Linting">
+		<meta property="article:tag" content="Type Checking">
+		<meta property="article:tag" content="Testing">
+		<meta property="article:tag" content="CI">
+
+	<meta itemprop="name" content="El tooling de un backend Python en serio, antes de escribir la primera ruta">
+	<meta itemprop="description" content="Gestor de dependencias, linting, dos type checkers a propósito, seguridad estática y de dependencias, tests organizados por tipo, y todo enganchado a pre-commit y CI — la base de calidad de un backend Python, con configuración real generalizada.">
+	<meta itemprop="datePublished" content="2026-07-14T00:00:00-03:00">
+	<meta itemprop="dateModified" content="2026-07-14T00:00:00-03:00">
+	<meta itemprop="wordCount" content="2312">
+	<meta itemprop="keywords" content="Python,Tooling,Linting,Type Checking,Testing,CI,Ruff,Pytest">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="El tooling de un backend Python en serio, antes de escribir la primera ruta">
+	<meta name="twitter:description" content="Gestor de dependencias, linting, dos type checkers a propósito, seguridad estática y de dependencias, tests organizados por tipo, y todo enganchado a pre-commit y CI — la base de calidad de un backend Python, con configuración real generalizada.">
+
+      
+      
+    
+	
+
+  </head><body class="ma0 avenir bg-near-white production is-page is-page page-2026-07-14-python-tooling-backend-desde-cero">
+   
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+      
+        
+        
+      
+    
+  
+  
+    <style>
+      
+        
+          
+          @media screen and (min-width: 480px) {
+            #featured-image-e9ae4cce220509a7b971797b2362da9f { background-image: url('/posts/python-tooling-backend-desde-cero/hero-toolbox_hu_182340762e71e231.jpg'); }
+          }
+        
+      
+        
+          
+          @media screen and (min-width: 960px) {
+            #featured-image-e9ae4cce220509a7b971797b2362da9f { background-image: url('/posts/python-tooling-backend-desde-cero/hero-toolbox_hu_296f149486493812.jpg'); }
+          }
+        
+      
+        
+          
+          @media screen and (min-width: 1440px) {
+            #featured-image-e9ae4cce220509a7b971797b2362da9f { background-image: url('/posts/python-tooling-backend-desde-cero/hero-toolbox_hu_d7358f1ac4cb4681.jpg'); }
+          }
+        
+      
+        
+          
+          @media screen and (min-width: 1920px) {
+            #featured-image-e9ae4cce220509a7b971797b2362da9f { background-image: url('/posts/python-tooling-backend-desde-cero/hero-toolbox_hu_3b2d51b456c9b17e.jpg'); }
+          }
+        
+      
+    </style>
+  
+  <header id="featured-image-e9ae4cce220509a7b971797b2362da9f" class="cover bg-center" style="background-image: url('/posts/python-tooling-backend-desde-cero/hero-toolbox_hu_182340762e71e231.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        katra
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/consultoria/" title="Consultoría pagina">
+              Consultoría
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/cv/" title="CV pagina">
+              CV
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/habilidades/" title="Habilidades Técnicas pagina">
+              Habilidades Técnicas
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/posts/" title="Entradas pagina">
+              Entradas
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="http://linkedin.com/in/cesar-ballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      </a><a href="https://x.com/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition x-twitter link dib z-999 pt3 pt0-l mr1"
+        title="follow on X - Opens in a new window"
+        aria-label="follow on X - Opens in a new window">
+      </a><a href="https://github.com/CesarBallardini/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            
+          </span></a></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">El tooling de un backend Python en serio, antes de escribir la primera ruta</div>
+          
+            <div class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
+              Gestor de dependencias, linting, dos type checkers a propósito, seguridad estática y de dependencias, tests organizados por tipo, y todo enganchado a pre-commit y CI — la base de calidad de un backend Python, con configuración real generalizada.
+            </div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+<main class="pb7" role="main">
+  
+
+  <article class="page-2026-07-14-python-tooling-backend-desde-cero flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu">
+    <a class="link dim" href="https://katra.ballardini.com.ar/posts/">Entradas</a>
+  </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fpython-tooling-backend-desde-cero%2F&amp;subject=El&#43;tooling&#43;de&#43;un&#43;backend&#43;Python&#43;en&#43;serio%2C&#43;antes&#43;de&#43;escribir&#43;la&#43;primera&#43;ruta"
+        class="ananke-social-link email no-underline"
+        title="Share on Email" aria-label="Share on Email"
+        target="_blank" rel="nofollow noopener noreferrer">
+        </a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fpython-tooling-backend-desde-cero%2F&amp;summary=Antes&#43;de&#43;escribir&#43;la&#43;primera&#43;ruta&#43;de&#43;un&#43;backend&#43;nuevo%2C&#43;vale&#43;la&#43;pena&#43;invertir&#43;un&#43;rato&#43;en&#43;el&#43;tooling&#43;que&#43;va&#43;a&#43;hacer&#43;cumplir&#43;la&#43;calidad&#43;del&#43;c%C3%B3digo&#43;autom%C3%A1ticamente1.&#43;La&#43;apuesta&#43;es&#43;simple%3A&#43;%26amp%3Bldquo%3Best%C3%A1&#43;prolijo%26amp%3Brdquo%3B&#43;tiene&#43;que&#43;ser&#43;lo&#43;que&#43;pasa&#43;por&#43;default%2C&#43;no&#43;lo&#43;que&#43;alguien&#43;se&#43;acuerda&#43;de&#43;hacer&#43;antes&#43;de&#43;un&#43;commit.&#43;Esto&#43;es&#43;lo&#43;que&#43;arma&#43;esa&#43;base&#43;en&#43;un&#43;proyecto&#43;Python&#43;real&#43;%E2%80%94&#43;la&#43;configuraci%C3%B3n&#43;es&#43;gen%C3%A9rica&#43;y&#43;generalizada&#43;a&#43;prop%C3%B3sito%3A&#43;no&#43;hay&#43;una&#43;l%C3%ADnea&#43;de&#43;negocio%2C&#43;ni&#43;un&#43;nombre&#43;de&#43;cliente%2C&#43;ni&#43;nada&#43;que&#43;identifique&#43;de&#43;d%C3%B3nde&#43;sale.&#43;Lo&#43;%C3%BAnico&#43;que&#43;se&#43;comparte&#43;es&#43;la&#43;parte&#43;compartible%3A&#43;c%C3%B3mo&#43;se&#43;arma&#43;el&#43;tooling.&#43;Arm%C3%A9&#43;adem%C3%A1s&#43;un&#43;scaffold&#43;p%C3%BAblico&#43;con&#43;todo&#43;esto&#43;funcionando&#43;de&#43;verdad&#43;%E2%80%94&#43;clon%C3%A1%2C&#43;make&#43;install%2C&#43;y&#43;and%C3%A1&#43;probando&#43;cada&#43;secci%C3%B3n&#43;de&#43;este&#43;post&#43;contra&#43;el&#43;repo&#43;real2.%0A&amp;title=El&#43;tooling&#43;de&#43;un&#43;backend&#43;Python&#43;en&#43;serio%2C&#43;antes&#43;de&#43;escribir&#43;la&#43;primera&#43;ruta&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fpython-tooling-backend-desde-cero%2F"
+        class="ananke-social-link linkedin no-underline"
+        title="Share on LinkedIn" aria-label="Share on LinkedIn"
+        target="_blank" rel="nofollow noopener noreferrer">
+        </a><a href="https://twitter.com/intent/tweet/?&amp;text=Antes&#43;de&#43;escribir&#43;la&#43;primera&#43;ruta&#43;de&#43;un&#43;backend&#43;nuevo%2C&#43;vale&#43;la&#43;pena&#43;invertir&#43;un&#43;rato&#43;en&#43;el&#43;tooling&#43;que&#43;va&#43;a&#43;hacer&#43;cumplir&#43;la&#43;calidad&#43;del&#43;c%C3%B3digo&#43;autom%C3%A1ticamente1.&#43;La&#43;apuesta&#43;es&#43;simple%3A&#43;%26amp%3Bldquo%3Best%C3%A1&#43;prolijo%26amp%3Brdquo%3B&#43;tiene&#43;que&#43;ser&#43;lo&#43;que&#43;pasa&#43;por&#43;default%2C&#43;no&#43;lo&#43;que&#43;alguien&#43;se&#43;acuerda&#43;de&#43;hacer&#43;antes&#43;de&#43;un&#43;commit.&#43;Esto&#43;es&#43;lo&#43;que&#43;arma&#43;esa&#43;base&#43;en&#43;un&#43;proyecto&#43;Python&#43;real&#43;%E2%80%94&#43;la&#43;configuraci%C3%B3n&#43;es&#43;gen%C3%A9rica&#43;y&#43;generalizada&#43;a&#43;prop%C3%B3sito%3A&#43;no&#43;hay&#43;una&#43;l%C3%ADnea&#43;de&#43;negocio%2C&#43;ni&#43;un&#43;nombre&#43;de&#43;cliente%2C&#43;ni&#43;nada&#43;que&#43;identifique&#43;de&#43;d%C3%B3nde&#43;sale.&#43;Lo&#43;%C3%BAnico&#43;que&#43;se&#43;comparte&#43;es&#43;la&#43;parte&#43;compartible%3A&#43;c%C3%B3mo&#43;se&#43;arma&#43;el&#43;tooling.&#43;Arm%C3%A9&#43;adem%C3%A1s&#43;un&#43;scaffold&#43;p%C3%BAblico&#43;con&#43;todo&#43;esto&#43;funcionando&#43;de&#43;verdad&#43;%E2%80%94&#43;clon%C3%A1%2C&#43;make&#43;install%2C&#43;y&#43;and%C3%A1&#43;probando&#43;cada&#43;secci%C3%B3n&#43;de&#43;este&#43;post&#43;contra&#43;el&#43;repo&#43;real2.%0A&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fpython-tooling-backend-desde-cero%2F"
+        class="ananke-social-link x-twitter no-underline"
+        title="Share on X" aria-label="Share on X"
+        target="_blank" rel="nofollow noopener noreferrer">
+        </a><a href="%25!s%28%3cnil%3e%29?"
+        class="ananke-social-link github no-underline"
+        title="Share on GitHub" aria-label="Share on GitHub"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                
+              </span></a></div>
+<h1 class="f1 athelas mt3 mb1">El tooling de un backend Python en serio, antes de escribir la primera ruta</h1>
+      
+      <p class="tracked"><strong>César Ballardini</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-07-14T00:00:00-03:00">14 de julio de 2026</time>
+      
+
+      
+      
+        
+        
+        <span class="f6 mv4 dib tracked"> - Lectura en 11 minutos </span>
+        <span class="f6 mv4 dib tracked"> - 2312 palabras </span>
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><p>Antes de escribir la primera ruta de un backend nuevo, vale la pena invertir un rato en el tooling que va a hacer cumplir la calidad del código automáticamente<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. La apuesta es simple: &ldquo;está prolijo&rdquo; tiene que ser lo que pasa <em>por default</em>, no lo que alguien se acuerda de hacer antes de un commit. Esto es lo que arma esa base en un proyecto Python real — la configuración es genérica y generalizada a propósito: no hay una línea de negocio, ni un nombre de cliente, ni nada que identifique de dónde sale. Lo único que se comparte es la parte compartible: cómo se arma el tooling. Armé además un scaffold público con todo esto funcionando de verdad — cloná, <code>make install</code>, y andá probando cada sección de este post contra el repo real<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
+<h2 id="gestión-de-dependencias-y-entorno">Gestión de dependencias y entorno</h2>
+<p>El punto de partida es <a href="https://docs.astral.sh/uv/"><code>uv</code></a><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> como gestor de paquetes y de entornos virtuales, con <code>uv.lock</code> commiteado al repo — así todo el mundo instala exactamente las mismas versiones, no &ldquo;lo que resuelva pip hoy&rdquo;. La versión de Python queda fija en un archivo <code>.python-version</code>, y el build backend es <code>hatchling</code>.</p>
+<p>Lo que vale la pena copiar es la separación de <strong>grupos de dependencias</strong>, usando la sintaxis nativa de <code>uv</code> (<code>[dependency-groups]</code> en <code>pyproject.toml</code>) en vez de la vieja costumbre de un solo <code>requirements-dev.txt</code> con todo mezclado:</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[<span style="color:#a6e22e">dependency-groups</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dev</span> = [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;pytest&gt;=8&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;pytest-cov&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;ruff&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;pyright&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;bandit&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;pre-commit&#34;</span>,
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">deploy</span> = [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;docker&#34;</span>,
+</span></span><span style="display:flex;"><span>]</span></span></code></pre></div>
+  </div><p>El grupo <code>dev</code> junta test, lint, type-check y seguridad — todo lo que necesita cualquiera que vaya a tocar código. El grupo <code>deploy</code> es sólo tooling de infraestructura: no se instala en un entorno de desarrollo normal, y tampoco corre en el job de tests de CI. La separación evita el típico entorno virtual de 400 paquetes donde nadie sabe bien para qué está la mitad.</p>
+<h2 id="linting-una-sola-herramienta-en-vez-de-cuatro">Linting: una sola herramienta en vez de cuatro</h2>
+<p><a href="https://docs.astral.sh/ruff/"><code>ruff</code></a><sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> reemplaza, en una sola herramienta escrita en Rust, lo que antes eran flake8 + black + isort + pyupgrade + pydocstyle corriendo por separado. La configuración real activa, entre otras, las categorías <code>B</code> (bugbear — errores comunes de diseño que el intérprete no detecta), <code>S</code> (reglas de estilo bandit, seguridad), <code>I</code> (orden de imports, isort), <code>N</code> (naming, PEP 8), <code>SIM</code> (simplificaciones), <code>RET</code>/<code>PIE</code> (patrones de retorno prolijos), <code>UP</code>/<code>YTT</code> (sintaxis moderna de Python), <code>TCH</code> (imports que sólo hacen falta para type checking) y <code>D</code> (pydocstyle, convención Google) — línea máxima de 119 caracteres, comillas simples, complejidad ciclomática máxima 15 vía <code>mccabe</code>.</p>
+<p>Lo interesante no es la lista de reglas — es cómo se manejan las excepciones. En vez de apagar una regla globalmente porque &ldquo;molesta en algún lado&rdquo;, las excepciones van acotadas por archivo y con una razón:</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[<span style="color:#a6e22e">tool</span>.<span style="color:#a6e22e">ruff</span>.<span style="color:#a6e22e">lint</span>.<span style="color:#a6e22e">per-file-ignores</span>]
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;tests/**&#34;</span> = [<span style="color:#e6db74">&#34;S101&#34;</span>]  <span style="color:#75715e"># assert es la forma idiomática de testear</span></span></span></code></pre></div>
+  </div><p><code>S101</code> marca el uso de <code>assert</code> fuera de tests. La razón no es estética: <code>assert</code> se <strong>elimina por completo</strong> cuando Python corre con la optimización <code>-O</code> activada, así que un <code>assert</code> en código de producción que valida algo importante es una validación que puede desaparecer en runtime sin que nadie se entere. En tests no hay ese riesgo — ahí <code>assert</code> es exactamente la herramienta correcta, y por eso la excepción está acotada a <code>tests/**</code>, no aplicada en todos lados.</p>
+<h2 id="dos-type-checkers-a-propósito">Dos type checkers, a propósito</h2>
+<p>Acá viene la parte menos obvia: el proyecto de referencia corre <strong>dos</strong> type checkers, <code>pyright</code><sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> y <code>pyrefly</code>, y no es una migración a medio camino — es una decisión deliberada. <code>pyright</code>, en modo &ldquo;standard&rdquo; con varias reglas escaladas a <code>error</code> (imports sin usar, acceso a un <code>Optional</code> sin chequear antes, compatibilidad de overrides entre clases), es el gate que corre en CI y bloquea el merge. <code>pyrefly</code> corre en paralelo, local, como parte del flujo de desarrollo (<code>make types</code>), porque es sensiblemente más rápido para iterar mientras se escribe código.</p>
+<p>¿Por qué no elegir uno solo? La propia configuración del proyecto lo documenta: hay un puñado de comentarios <code># type: ignore</code> que hacen falta para <code>pyright</code> — casos genuinamente difíciles de tipar, como kwargs dinámicos en la configuración o mapeo imperativo/clásico de un ORM — y resulta que <code>pyrefly</code> respeta esas mismas supresiones por default. Mantener los dos corriendo &ldquo;en paridad&rdquo; es una decisión de cinturón y tiradores: dos motores de inferencia distintos que, sobre el mismo código, tienden a encontrar cosas diferentes. No es indecisión, es redundancia elegida.</p>
+<h2 id="seguridad-dos-preguntas-distintas-dos-herramientas-distintas">Seguridad: dos preguntas distintas, dos herramientas distintas</h2>
+<p>Hay dos preguntas de seguridad que no son la misma pregunta, y por eso conviene no mezclarlas en una sola herramienta:</p>
+<ul>
+<li><strong>¿El código que escribimos tiene patrones inseguros?</strong> — la responde <code>bandit</code><sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> (SAST, análisis estático). Su configuración deja preparado el flujo de <em>baseline</em>, que es la clave para adoptar un scanner de seguridad sobre un código base que ya tiene historia: se genera una vez una foto de los hallazgos actuales, se la commitea al repo, y de ahí en adelante sólo fallan los hallazgos <strong>nuevos</strong>. Los que ya existían y fueron revisados y aceptados no rompen el build cada vez — sin baseline, ese primer scan sobre código preexistente termina en una pantalla roja imposible de limpiar de una sola vez, y el equipo termina apagando la herramienta entera. (En un scaffold que arranca limpio como este todavía no hay nada que baselinear; el valor del baseline aparece el día que se apunta la herramienta a un proyecto real.)</li>
+<li><strong>¿Las dependencias que usamos tienen vulnerabilidades conocidas?</strong> — la responden <code>pip-audit</code> y <code>OSV-Scanner</code><sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> (SCA, ambos contra el lockfile), corriendo como workflow separado de CI. Un detalle chico pero real: <code>pip-audit</code> por default también intenta auditar el propio paquete del proyecto, que —al no estar publicado en PyPI— siempre sale como &ldquo;no se puede auditar&rdquo;. El flag <code>--skip-editable</code> saca ese ruido sin ocultar nada real: sigue fallando si una dependencia de verdad tiene una vulnerabilidad conocida, sólo deja de quejarse por el propio código. Otro detalle no tan obvio: <code>OSV-Scanner</code> no es un paquete de Python — es un binario de Go de Google, así que no entra en el mundo <code>uv</code>. En vez de forzarlo ahí, se lo trata como lo que es: un binario que tiene que estar en el <code>PATH</code> (se instala aparte, por ejemplo con Chocolatey en Windows) y que <code>make security</code> invoca directo, sin pasar por <code>uv run</code>. En CI corre el mismo binario, vía el <em>reusable workflow</em> oficial de GitHub Actions que Google publica para eso — misma herramienta, dos formas distintas de invocarla según el contexto, cada una la que tiene sentido en ese contexto.</li>
+</ul>
+<h2 id="tests-organizados-por-lo-que-realmente-cuesta-correrlos">Tests, organizados por lo que realmente cuesta correrlos</h2>
+<p><code>pytest</code> se configura directamente en <code>pyproject.toml</code> (no un <code>pytest.ini</code> aparte, un archivo menos), con <code>--strict-markers</code> — un marker con un typo falla en vez de silenciarse en un <code>pytest -m marker_que_no_existe</code> que simplemente no corre nada.</p>
+<p>La organización de carpetas separa los tests por lo que realmente les cuesta correr, no por capricho:</p>
+<ul>
+<li><strong>Unitarios</strong> — sin infraestructura, rápidos, corren en cada guardado de archivo.</li>
+<li><strong>De integración</strong> — necesitan una base de datos real (o al menos un contenedor), más lentos.</li>
+<li><strong>De aceptación (BDD)</strong> — con <a href="https://pytest-bdd.readthedocs.io/"><code>pytest-bdd</code></a><sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>, archivos <code>.feature</code> en su propia carpeta y los <em>step definitions</em> en una carpeta hermana, describiendo comportamiento en lenguaje natural estructurado (Gherkin).</li>
+<li><strong>End-to-end</strong> — contra un navegador real, vía <a href="https://playwright.dev/python/docs/test-runners"><code>pytest-playwright</code></a><sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>, los más lentos y los que menos se corren en el loop de desarrollo del día a día.</li>
+</ul>
+<p>Markers custom (<code>unit</code>, <code>integration</code>, <code>bdd</code>, <code>e2e</code>, y un <code>snapshot</code> que queda excluido por default y sólo corre a demanda) le dan a cada quien la posibilidad de correr sólo la porción de la suite que le importa en ese momento — nadie necesita esperar los e2e completos para saber si rompió algo unitario. Para generar datos de prueba sin hardcodear objetos gigantes a mano, <code>factory-boy</code> + <code>faker</code>. Para coverage, <code>pytest-cov</code> corriendo en paralelo vía <code>pytest-xdist</code> (<code>-n auto</code>, usa todos los cores disponibles), con el reporte en XML listo para subir a un servicio externo de tracking.</p>
+<h2 id="pre-commit-la-red-de-contención-antes-del-commit">pre-commit: la red de contención antes del commit</h2>
+<p><a href="https://pre-commit.com/"><code>pre-commit</code></a><sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup> engancha todo lo anterior — o una parte, la más rápida — al momento del commit, no al momento del CI. Los hooks estándar de <code>pre-commit-hooks</code> (archivos grandes accidentalmente agregados, YAML/TOML/JSON mal formado, fin de archivo faltante, espacios en blanco colgados) van primero. Después, cuatro hooks locales propios del proyecto: <code>ruff check --fix</code>, <code>ruff format</code>, <code>uv lock --check</code> (que el lockfile esté sincronizado con <code>pyproject.toml</code>, para no descubrir un desfasaje recién en CI) y <code>bandit</code>.</p>
+<p>Ahí hay una decisión que vale la pena explicar, porque no es la default: <code>ruff</code> corre como hook <strong>local</strong>, invocado con <code>uv run --frozen</code>, en vez de usar el repo <code>astral-sh/ruff-pre-commit</code> ya armado para eso (que es lo que la mayoría de los tutoriales muestra). La razón es concreta: <code>ruff-pre-commit</code> fija su propia versión de ruff, independiente de la que está pineada en <code>uv.lock</code>. Con el tiempo esas dos versiones divergen — y ahí el lint que corre en pre-commit deja de ser exactamente el mismo lint que corre en CI o en <code>make lint</code>, lo que produce el peor tipo de bug de tooling: uno que pasa local y falla en CI (o al revés) sin ningún cambio de código de por medio. Invocar <code>uv run --frozen ruff</code> en vez del hook empaquetado garantiza que pre-commit, <code>make</code> y CI corren <em>exactamente</em> la misma versión, siempre, porque los tres leen del mismo <code>uv.lock</code>. Lo mismo aplica a <code>bandit</code>: como hook local corriendo por <code>system</code>, sin pasar por <code>uv run</code>, terminaba llamando a un <code>bandit</code> que ni siquiera estaba en el <code>PATH</code> fuera del entorno virtual del proyecto — un fallo silencioso hasta que alguien clona el repo sin haber activado el venv a mano.</p>
+<p>La idea de fondo, más allá de este caso puntual: cuanto más temprano se encuentra un problema, más barato sale arreglarlo. Un lint que falla en el editor cuesta un segundo. El mismo lint fallando en CI, después de hacer push, cuesta un ida y vuelta completo — y si encima pre-commit y CI corren versiones distintas de la misma herramienta, ese ida y vuelta puede ser puro ruido.</p>
+<h2 id="un-makefile-como-única-interfaz">Un Makefile como única interfaz</h2>
+<p>Nadie tiene por qué memorizar el comando exacto de cada herramienta, con todos sus flags. Un puñado de targets alcanza, cada uno respondiendo una sola pregunta:</p>
+<ul>
+<li><strong><code>help</code></strong> (el target por default: correr <code>make</code> sin argumentos alcanza) — lista todos los targets disponibles con una descripción de una línea cada uno, generada a partir de comentarios <code>##</code> en el propio Makefile.</li>
+<li><strong><code>install</code></strong> — sincroniza el entorno con <code>uv</code> e instala los hooks de pre-commit, en un solo paso.</li>
+<li><strong><code>lint</code></strong> — corre <code>ruff check</code> y <code>ruff format --check</code>, sin modificar nada (para CI).</li>
+<li><strong><code>format</code></strong> — la versión que sí modifica: <code>ruff format</code> más <code>ruff check --fix</code>.</li>
+<li><strong><code>types</code></strong> — corre los dos type checkers, <code>pyright</code> y <code>pyrefly</code>.</li>
+<li><strong><code>test</code></strong> — la suite completa, unit + integration + acceptance (los e2e quedan afuera por default).</li>
+<li><strong><code>test-bdd</code></strong> / <strong><code>test-integration</code></strong> / <strong><code>test-e2e</code></strong> — cada tipo de test por separado, para cuando sólo importa una porción de la suite.</li>
+<li><strong><code>security</code></strong> — <code>bandit</code> contra el baseline, más <code>pip-audit</code> y <code>OSV-Scanner</code> contra el lockfile.</li>
+<li><strong><code>precommit</code></strong> — corre todos los hooks de pre-commit a mano, sin esperar a un commit.</li>
+</ul>
+<p>Es una capa de indirección chiquita, pero es la diferencia entre &ldquo;che, ¿cómo corrías los tests de nuevo?&rdquo; y simplemente <code>make test</code> — o, si ni eso te acordás, <code>make</code> a secas. Y como cada target responde una sola pregunta, nada de un <code>make check-todo</code> gigante que corre todo junto y te deja adivinando cuál de las cinco herramientas fue la que rompió.</p>
+<h2 id="ci-no-un-job-por-responsabilidad-un-workflow-por-responsabilidad">CI: no un job por responsabilidad, un workflow por responsabilidad</h2>
+<p>La separación por responsabilidad se puede llevar un paso más allá de &ldquo;varios jobs en un mismo workflow de CI&rdquo;: tres <strong>workflows</strong> de GitHub Actions completamente independientes, cada uno en su propio archivo.</p>
+<ul>
+<li><strong><code>check</code></strong> — lint, formato, tipos.</li>
+<li><strong><code>pytest</code></strong> — con contenedores de servicio reales para Postgres y Redis (no mocks de infraestructura, la infraestructura real corriendo en el pipeline).</li>
+<li><strong><code>security</code></strong> — bandit contra el baseline, pip-audit y OSV-Scanner contra el lockfile.</li>
+</ul>
+<p>La razón de separarlos en archivos distintos y no sólo en jobs de un mismo workflow es concreta: GitHub genera un badge de estado por <em>workflow</em>, no por job. Con tres workflows separados, el README puede mostrar tres badges — uno por cada pregunta — en vez de un único badge verde/rojo que no dice cuál de las tres cosas fue la que rompió. Si el badge de seguridad está rojo, ya sabés qué mirar antes de abrir un solo log.</p>
+<h2 id="lo-que-este-tooling-no-resuelve">Lo que este tooling no resuelve</h2>
+<p>Todo esto hace cumplir <em>calidad</em> — que el código esté tipado, testeado, sin vulnerabilidades conocidas, con un estilo consistente. Lo que no dice nada es <em>cómo organizar el código en sí</em>: dónde va la lógica de negocio, cómo se relaciona con la base de datos, qué tan fácil es cambiar de framework web sin reescribir todo. Eso es arquitectura, no tooling, y es el tema de la segunda parte de este post.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Imagen de portada: <a href="https://commons.wikimedia.org/wiki/File:Socket_set_with_two_ratchets_in_box.jpeg"><em>Socket set with two ratchets in box</em></a> — fotografía de Pittigrilli, vía Wikimedia Commons — CC BY-SA 4.0. Recortada a 2.5:1 para hero landscape.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>César Ballardini, <a href="https://github.com/CesarBallardini/localenv-python"><em>localenv-python</em></a>, repositorio en GitHub. El scaffold completo, funcionando: <code>uv sync</code>, <code>make lint</code>, <code>make types</code>, <code>make test</code>, todo corre de verdad, no es pseudocódigo.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p><a href="https://docs.astral.sh/uv/">uv</a> — gestor de paquetes y proyectos Python de Astral, escrito en Rust.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p><a href="https://docs.astral.sh/ruff/">Ruff</a> — linter y formatter de Python, también de Astral.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p><a href="https://microsoft.github.io/pyright/">Pyright</a> — type checker estático de Microsoft.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p><a href="https://bandit.readthedocs.io/">Bandit</a> — analizador estático de seguridad (SAST) para Python, del proyecto PyCQA.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p><a href="https://pypi.org/project/pip-audit/">pip-audit</a> (PyPA) y <a href="https://google.github.io/osv-scanner/">OSV-Scanner</a> (Google) — análisis de vulnerabilidades conocidas en dependencias (SCA) contra el lockfile.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8">
+<p><a href="https://pytest-bdd.readthedocs.io/">pytest-bdd</a> — plugin de pytest para escribir tests de aceptación estilo Gherkin/Cucumber.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:9">
+<p><a href="https://playwright.dev/python/docs/test-runners">Playwright para Python</a> — automatización de navegador para tests end-to-end.&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:10">
+<p><a href="https://pre-commit.com/">pre-commit</a> — framework para gestionar hooks de git multi-lenguaje.&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+<ul class="pa0">
+  
+</ul><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/python/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Python</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/tooling/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Tooling</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/linting/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Linting</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/type-checking/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Type Checking</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/testing/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Testing</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/ci/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">CI</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/ruff/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Ruff</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/pytest/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Pytest</a>
+   </li>
+  
+</ul>
+
+      
+    </div></article>
+</main><footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://katra.ballardini.com.ar/" >
+    &copy;  César Ballardini 2026 
+  </a>
+    <div><div class="ananke-socials"><a href="http://linkedin.com/in/cesar-ballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      </a><a href="https://x.com/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition x-twitter link dib z-999 pt3 pt0-l mr1"
+        title="follow on X - Opens in a new window"
+        aria-label="follow on X - Opens in a new window">
+      </a><a href="https://github.com/CesarBallardini/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            
+          </span></a></div>
+</div>
+  </div>
+</footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
