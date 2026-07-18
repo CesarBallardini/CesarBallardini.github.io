@@ -80,7 +80,8 @@
   var paraStartTime = 0, paraEstSecs = 0, totalEstSecs = 0, doneEstSecs = 0;
 
   var ua = navigator.userAgent;
-  var nativePauseReliable = !/android/i.test(ua) && !/firefox/i.test(ua);
+  var isAndroid = /android/i.test(ua);
+  var nativePauseReliable = !isAndroid && !/firefox/i.test(ua);
 
   // Post language, from Hugo (.Language.Lang): "es" or "en".
   var LANG = "{{ .Language.Lang }}";
@@ -98,6 +99,12 @@
   };
   var T = STR[LANG] || STR.es;
   var C = CFG[LANG] || CFG.es;
+  // On Android the local Spanish voice is usually es-ES (Castilian). Prefer the more
+  // neutral es-US voice there instead — lead the locale order with it and make it the
+  // default TTS locale. (New object so the shared CFG stays untouched.)
+  if(isAndroid && LANG === 'es'){
+    C = { order:['es-US','es-AR','es-MX','es-419','es-CL','es-CO','es-ES'], deflang:'es-US', male:C.male };
+  }
 
   // Voice chosen by the visitor (voiceURI), remembered per language. Empty = automatic.
   var VOICE_KEY = 'katra-ap-voice-' + LANG;
@@ -180,25 +187,25 @@
     var NATURAL = /enhanced|premium|neural|natural/i;
     var order = C.order;
 
-    // Return the first pooled voice matching pred, preferring locales in `order`
-    // (es-AR is first for Spanish posts, so an Argentine voice wins when present).
-    function byLocale(pred){
-      for(var i=0;i<order.length;i++){
-        var hit = pool.find(function(v){
-          return v.lang && v.lang.toLowerCase().indexOf(order[i].toLowerCase()) === 0 && pred(v);
-        });
-        if(hit) return hit;
-      }
-      return pool.find(pred) || null;
+    // Locale-first: `order` is authoritative. Exhaust each locale fully (best
+    // gender/quality within it) before falling through to the next, so es-US is
+    // always tried before es-ES — es-ES is the last resort, never picked while a
+    // more-preferred Spanish variant (incl. the Google es-US voice) is available.
+    // Within a locale: male+natural, then male, then natural, then local, then any.
+    function inLocale(loc){
+      var v = pool.filter(function(x){ return x.lang && x.lang.toLowerCase().indexOf(loc.toLowerCase()) === 0; });
+      if(!v.length) return null;
+      return v.find(function(x){ return MALE.test(x.name) && NATURAL.test(x.name); })
+          || v.find(function(x){ return MALE.test(x.name); })
+          || v.find(function(x){ return NATURAL.test(x.name); })
+          || v.find(function(x){ return x.localService === true; })
+          || v[0];
     }
-
-    // Default preference: male voice, best quality, most local variant available.
-    return byLocale(function(v){ return MALE.test(v.name) && NATURAL.test(v.name); })
-        || byLocale(function(v){ return MALE.test(v.name); })
-        || byLocale(function(v){ return NATURAL.test(v.name); })
-        || byLocale(function(v){ return v.localService === true; })
-        || byLocale(function(){ return true; })
-        || pool[0] || null;
+    for(var i=0;i<order.length;i++){
+      var hit = inLocale(order[i]);
+      if(hit) return hit;
+    }
+    return pool[0] || null;
   }
 
   // Light normalization so common abbreviations don't get spelled out. Per-language.

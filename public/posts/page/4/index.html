@@ -116,8 +116,8 @@
 
 	<meta itemprop="name" content="Entradas">
 	<meta itemprop="description" content="el espíritu y la tecnología de la información">
-	<meta itemprop="datePublished" content="2026-07-14T00:00:00-03:00">
-	<meta itemprop="dateModified" content="2026-07-14T00:00:00-03:00">
+	<meta itemprop="datePublished" content="2026-07-18T00:00:00-03:00">
+	<meta itemprop="dateModified" content="2026-07-18T00:00:00-03:00">
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:title" content="Entradas">
 	<meta name="twitter:description" content="el espíritu y la tecnología de la información">
@@ -229,6 +229,40 @@
   <div class="mb3 pa4 gray overflow-hidden bg-white">
     <span class="f6 db">Entradas</span>
     
+      <time class="f6 db" datetime="2025-03-10T00:00:00-03:00">10 de marzo de 2025</time>
+    
+    <h1 class="f3 near-black">
+      <a href="/posts/soplar-humo-de-tabaco/" class="link black dim">
+        Soplar humo de tabaco
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>Un sistema con muchos procesos tiene un tiempo de login de un minuto, cuando la expectativa es de
+1 ó 2 segundos.  Los procesos ocupan toda la memoria disponible, así que alguien propone aumentar la RAM.
+La solución parece obvia: más memoria, mejor rendimiento.</p>
+<div style="text-align:center;margin:1.5rem auto;">
+<img src="process-states.svg" alt="Estados de un proceso: nuevo, listo, corriendo, esperando, terminado" style="max-width:100%;">
+</div>
+<p><em>Diagrama de estados de un proceso</em><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p>Resultado: el tiempo de login sube a dos minutos.</p>
+<p>¿Qué pasó?  Antes de agregar memoria, muchos procesos que podrían estar listos para ejecutarse
+habían sido desalojados (<em>page-out</em>) a disco: el sistema operativo los había movido al disco para
+liberar RAM.  Un proceso en disco no compite por la CPU; simplemente espera allí, fuera de la cola
+de listos.  Con poca memoria, la cantidad de procesos compitiendo activamente por la CPU era baja,
+y cada uno recibía su quantum en su turno.</p>
+    </div>
+    <a href="/posts/soplar-humo-de-tabaco/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Leer más</a>
+  </div>
+</div>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+          
+<div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Entradas</span>
+    
       <time class="f6 db" datetime="2025-02-23T00:00:00-03:00">23 de febrero de 2025</time>
     
     <h1 class="f3 near-black">
@@ -267,30 +301,6 @@ importante el &ldquo;postureo&rdquo; o <em>virtue signaling</em>.  Donde mi yo e
 opinión de esos vulnerables. Yo soy el que tiene la opinión.</p>
     </div>
     <a href="/posts/saluden-a-debian/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Leer más</a>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-          
-<div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Entradas</span>
-    
-      <time class="f6 db" datetime="2025-01-28T00:00:00-03:00">28 de enero de 2025</time>
-    
-    <h1 class="f3 near-black">
-      <a href="/posts/jim-weinrich-refactoring-ruby-on-rails/" class="link black dim">
-        Decoupling from Rails
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>El legendario Jim Weirich<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> presenta <em>Decoupling from Rails</em> en la reunión del
-Cincinnati Ruby Brigade de Octubre 2013.  En 2011 Robert C. Martin<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> desafió a la comunidad de Ruby on Rails<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> a desacoplar la aplicación del framework Web.  Jim toma un pequeño ejemplo y lo desarrolla con la claridad y maestría que lo caracterizaba, que puedes ver en el vídeo<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</p>
-<p>DHH<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> esbozó una crítica<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>, pero es claro que se sintió tocado en su diseño de RoR.  En el enlace se aprecian los comentarios y respuestas de otros miembros de la comunidad.  En particular me interesó la respuesta de Pat Maddox<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>, si bien puede verse como contemporizadora.</p>
-    </div>
-    <a href="/posts/jim-weinrich-refactoring-ruby-on-rails/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Leer más</a>
   </div>
 </div>
 

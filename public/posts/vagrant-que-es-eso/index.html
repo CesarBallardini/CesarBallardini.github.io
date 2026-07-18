@@ -542,7 +542,8 @@
   var paraStartTime = 0, paraEstSecs = 0, totalEstSecs = 0, doneEstSecs = 0;
 
   var ua = navigator.userAgent;
-  var nativePauseReliable = !/android/i.test(ua) && !/firefox/i.test(ua);
+  var isAndroid = /android/i.test(ua);
+  var nativePauseReliable = !isAndroid && !/firefox/i.test(ua);
 
   
   var LANG = "es";
@@ -560,6 +561,12 @@
   };
   var T = STR[LANG] || STR.es;
   var C = CFG[LANG] || CFG.es;
+  
+  
+  
+  if(isAndroid && LANG === 'es'){
+    C = { order:['es-US','es-AR','es-MX','es-419','es-CL','es-CO','es-ES'], deflang:'es-US', male:C.male };
+  }
 
   
   var VOICE_KEY = 'katra-ap-voice-' + LANG;
@@ -644,23 +651,23 @@
 
     
     
-    function byLocale(pred){
-      for(var i=0;i<order.length;i++){
-        var hit = pool.find(function(v){
-          return v.lang && v.lang.toLowerCase().indexOf(order[i].toLowerCase()) === 0 && pred(v);
-        });
-        if(hit) return hit;
-      }
-      return pool.find(pred) || null;
-    }
-
     
-    return byLocale(function(v){ return MALE.test(v.name) && NATURAL.test(v.name); })
-        || byLocale(function(v){ return MALE.test(v.name); })
-        || byLocale(function(v){ return NATURAL.test(v.name); })
-        || byLocale(function(v){ return v.localService === true; })
-        || byLocale(function(){ return true; })
-        || pool[0] || null;
+    
+    
+    function inLocale(loc){
+      var v = pool.filter(function(x){ return x.lang && x.lang.toLowerCase().indexOf(loc.toLowerCase()) === 0; });
+      if(!v.length) return null;
+      return v.find(function(x){ return MALE.test(x.name) && NATURAL.test(x.name); })
+          || v.find(function(x){ return MALE.test(x.name); })
+          || v.find(function(x){ return NATURAL.test(x.name); })
+          || v.find(function(x){ return x.localService === true; })
+          || v[0];
+    }
+    for(var i=0;i<order.length;i++){
+      var hit = inLocale(order[i]);
+      if(hit) return hit;
+    }
+    return pool[0] || null;
   }
 
   
