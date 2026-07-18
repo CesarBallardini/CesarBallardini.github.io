@@ -443,6 +443,452 @@ problema.</p>
   </div>
 </footer>
 
+<style>/* ===================================================================
+   Audio player — read-aloud (speechSynthesis)
+   Injected only when frontmatter has `audio_player: true`
+   (see layouts/partials/hooks/body-end.html)
+   =================================================================== */
+
+/* Highlight of the paragraph currently being read aloud */
+.reading-now {
+  background: rgba(13, 34, 64, 0.06);
+  box-shadow: -0.6rem 0 0 rgba(13, 34, 64, 0.06);
+  border-left: 3px solid #0d2240;
+  padding-left: 0.6rem;
+  margin-left: -0.9rem;
+  border-radius: 2px;
+  transition: background 0.25s ease;
+  scroll-margin-top: 5rem;
+}
+
+/* Native range thumb styling for the progress bar */
+#katra-apProgress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #0d2240;
+  cursor: pointer;
+  border: 2px solid #fffefb;
+  box-shadow: 0 1px 3px rgba(13, 34, 64, 0.4);
+}
+#katra-apProgress::-moz-range-thumb {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #0d2240;
+  cursor: pointer;
+  border: 2px solid #fffefb;
+}
+
+/* Keep the fixed player from colliding with content on small screens */
+@media (max-width: 30em) {
+  #katra-audioPlayer {
+    bottom: 0.75rem !important;
+    left: 0.75rem !important;
+  }
+}
+</style>
+
+<div id="katra-audioPlayer" style="position:fixed;bottom:1.25rem;left:1.25rem;z-index:9999;background:rgba(255,254,251,.98);border:1px solid #ddd5c5;border-radius:18px;box-shadow:0 8px 32px rgba(13,34,64,.18);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:.7rem .85rem .75rem;display:flex;flex-direction:column;gap:.42rem;width:242px;max-width:242px;font-family:athelas,georgia,serif;box-sizing:border-box;overflow:hidden;">
+  <div style="display:flex;align-items:center;gap:.5rem;width:100%;box-sizing:border-box;">
+    <button id="katra-apMainBtn" onclick="kapToggle()" title="Reproducir / Pausar" style="width:34px;height:34px;min-width:34px;border-radius:50%;background:#0d2240;border:none;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;box-shadow:0 2px 8px rgba(13,34,64,.4);padding:0;outline:none;line-height:1;">
+      <svg id="katra-apMainIcon" viewBox="0 0 24 24" width="16" height="16" fill="white" style="display:block;margin-left:2px;"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+    </button>
+    <span id="katra-apLabel" style="font-size:.78rem;font-weight:600;color:#0d2240;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.3;">Escuchar el artículo</span>
+    <button id="katra-apCollapseBtn" onclick="kapCollapse()" title="Mostrar/ocultar controles" style="width:28px;height:28px;min-width:28px;border-radius:8px;border:1.5px solid #ddd5c5;background:#f0f4fa;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;padding:0;outline:none;line-height:1;">
+      <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="#0d2240" stroke-width="2" stroke-linecap="round" style="display:block;"><line x1="2" y1="5" x2="18" y2="5"/><line x1="2" y1="10" x2="18" y2="10"/><line x1="2" y1="15" x2="18" y2="15"/></svg>
+    </button>
+  </div>
+  <div id="katra-apBody" style="display:flex;flex-direction:column;gap:.38rem;width:100%;box-sizing:border-box;overflow:hidden;">
+    <div style="display:flex;align-items:center;justify-content:center;gap:.4rem;padding:.1rem 0;width:100%;box-sizing:border-box;">
+      <button onclick="kapPrev()" title="Párrafo anterior" style="width:30px;height:30px;min-width:30px;border-radius:50%;border:1.5px solid #ddd5c5;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;outline:none;line-height:1;">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="#0d2240" style="display:block;"><rect x="4" y="4" width="3" height="16" rx="1"/><polygon points="20 4 9 12 20 20"/></svg>
+      </button>
+      <button id="katra-apPlayBtn" onclick="kapToggle()" title="Play / Pausa" style="width:40px;height:40px;min-width:40px;border-radius:50%;background:#0d2240;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 3px 12px rgba(13,34,64,.45);padding:0;outline:none;line-height:1;">
+        <svg id="katra-apPlayIcon" viewBox="0 0 24 24" width="17" height="17" fill="white" style="display:block;margin-left:2px;"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+      </button>
+      <button onclick="kapNext()" title="Párrafo siguiente" style="width:30px;height:30px;min-width:30px;border-radius:50%;border:1.5px solid #ddd5c5;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;outline:none;line-height:1;">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="#0d2240" style="display:block;"><rect x="17" y="4" width="3" height="16" rx="1"/><polygon points="4 4 15 12 4 20"/></svg>
+      </button>
+      <button onclick="kapStop()" title="Detener" style="width:30px;height:30px;min-width:30px;border-radius:50%;border:1.5px solid #ddd5c5;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;outline:none;line-height:1;">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="#0d2240" style="display:block;"><rect x="5" y="5" width="14" height="14" rx="2"/></svg>
+      </button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:.26rem;width:100%;box-sizing:border-box;">
+      <input id="katra-apProgress" type="range" min="0" max="100" value="0" oninput="kapSeek(this.value)" style="-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:4px;background:#ddd5c5;outline:none;cursor:pointer;border:none;padding:0;margin:0;display:block;box-sizing:border-box;">
+      <div style="display:flex;justify-content:space-between;font-size:.62rem;color:#7a726a;font-variant-numeric:tabular-nums;">
+        <span id="katra-apCur">0:00</span><span id="katra-apTot">0:00</span>
+      </div>
+    </div>
+    <div style="width:100%;box-sizing:border-box;">
+      <div style="font-size:.59rem;color:#7a726a;text-align:center;margin-bottom:.22rem;letter-spacing:.04em;">VELOCIDAD</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.25rem;width:100%;box-sizing:border-box;">
+        <button class="ap-spd" onclick="kapSpeed(.8)" style="border-radius:20px;border:1px solid #ddd5c5;background:#fff;font-size:.66rem;font-weight:600;color:#7a726a;cursor:pointer;outline:none;line-height:1.5;padding:.18rem 0;text-align:center;width:100%;box-sizing:border-box;">0.8×</button>
+        <button class="ap-spd" onclick="kapSpeed(1)" style="border-radius:20px;border:1px solid #0d2240;background:#0d2240;font-size:.66rem;font-weight:600;color:#fff;cursor:pointer;outline:none;line-height:1.5;padding:.18rem 0;text-align:center;width:100%;box-sizing:border-box;">1×</button>
+        <button class="ap-spd" onclick="kapSpeed(1.25)" style="border-radius:20px;border:1px solid #ddd5c5;background:#fff;font-size:.66rem;font-weight:600;color:#7a726a;cursor:pointer;outline:none;line-height:1.5;padding:.18rem 0;text-align:center;width:100%;box-sizing:border-box;">1.25×</button>
+        <button class="ap-spd" onclick="kapSpeed(1.5)" style="border-radius:20px;border:1px solid #ddd5c5;background:#fff;font-size:.66rem;font-weight:600;color:#7a726a;cursor:pointer;outline:none;line-height:1.5;padding:.18rem 0;text-align:center;width:100%;box-sizing:border-box;">1.5×</button>
+      </div>
+    </div>
+    <div id="katra-apVoiceWrap" style="width:100%;box-sizing:border-box;display:none;">
+      <label for="katra-apVoice" style="font-size:.59rem;color:#7a726a;text-align:center;display:block;margin-bottom:.22rem;letter-spacing:.04em;">VOZ</label>
+      <select id="katra-apVoice" onchange="kapSetVoice(this.value)" style="width:100%;box-sizing:border-box;font-family:inherit;font-size:.66rem;color:#0d2240;background:#fff;border:1px solid #ddd5c5;border-radius:8px;padding:.24rem .3rem;outline:none;cursor:pointer;"></select>
+    </div>
+    <div id="katra-apStatus" style="font-size:.64rem;color:#7a726a;text-align:center;line-height:1.35;min-height:.85rem;padding:.04rem 0;width:100%;box-sizing:border-box;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Presioná ▶ para escuchar</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var player = document.getElementById('katra-audioPlayer');
+  if(!('speechSynthesis' in window)){ if(player) player.style.display='none'; return; }
+  
+  if(!document.querySelector('article .nested-copy-line-height')){ if(player) player.style.display='none'; return; }
+
+  var synth = window.speechSynthesis;
+  var paras = [], idx = 0, state = 'stopped', speed = 1;
+  var cancelIntent = false, speakToken = 0, currentEl = null, ticker = null;
+  var paraStartTime = 0, paraEstSecs = 0, totalEstSecs = 0, doneEstSecs = 0;
+
+  var ua = navigator.userAgent;
+  var nativePauseReliable = !/android/i.test(ua) && !/firefox/i.test(ua);
+
+  
+  var LANG = "es";
+
+  
+  var STR = {
+    es: { listen:'Escuchar el artículo', loading:'Cargando voces…', paused:'En pausa — presioná ▶ para continuar', done:'✔ Lectura completada', press:'Presioná ▶ para escuchar', auto:'Automática', show:'Mostrar controles', hide:'Ocultar controles', para:function(a,b){ return 'Párrafo '+a+' de '+b; } },
+    en: { listen:'Listen to this article', loading:'Loading voices…', paused:'Paused — press ▶ to resume', done:'✔ Reading complete', press:'Press ▶ to listen', auto:'Automatic', show:'Show controls', hide:'Hide controls', para:function(a,b){ return 'Paragraph '+a+' of '+b; } }
+  };
+  var CFG = {
+    es: { order:['es-AR','es-MX','es-419','es-US','es-CL','es-CO','es-ES'], deflang:'es-419',
+          male:/\b(Pablo|Tom[aá]s|[AÁ]lvaro|Jorge|Juan|Diego|Carlos|Miguel|Enrique|Ra[uú]l|Andr[eé]s|Gonzalo|Lorenzo|Dar[ií]o|Mateo)\b/i },
+    en: { order:['en-US','en-GB','en-AU','en-CA','en-IE','en-IN'], deflang:'en-US',
+          male:/\b(David|Mark|Guy|Christopher|Eric|Roger|Brian|George|James|Daniel|Alex|Tom|Aaron|Fred|Ryan|Liam|Steffan|Andrew|Michael|Matthew)\b/i }
+  };
+  var T = STR[LANG] || STR.es;
+  var C = CFG[LANG] || CFG.es;
+
+  
+  var VOICE_KEY = 'katra-ap-voice-' + LANG;
+  var chosenVoiceURI = '';
+  try { chosenVoiceURI = localStorage.getItem(VOICE_KEY) || ''; } catch(e){}
+
+  function $(id){ return document.getElementById(id); }
+  function fmt(s){ s=Math.max(0,Math.round(s)); var m=Math.floor(s/60),ss=s%60; return m+':'+(ss<10?'0':'')+ss; }
+
+  
+  function contentRoot(){ return document.querySelector('article .nested-copy-line-height'); }
+
+  function collectParas(){
+    paras = [];
+    var root = contentRoot();
+    if(!root) return;
+    
+    var h1 = document.querySelector('article header h1');
+    if(h1){
+      var h1t = (h1.innerText || h1.textContent || '').replace(/\s+/g,' ').trim();
+      if(h1t.length > 1) paras.push({ el: h1, text: h1t });
+    }
+    
+    var SEL = 'h2, h3, h4, p, li, blockquote';
+    root.querySelectorAll(SEL).forEach(function(el){
+      
+      if(el.closest('ul.pa0')) return;
+      if(el.closest('.footnotes')) return;
+      
+      if(el.querySelector('p, li, blockquote')) return;
+      
+      
+      var clone = el.cloneNode(true);
+      clone.querySelectorAll('sup, a.anchor, .footnote-ref').forEach(function(n){ n.remove(); });
+      var t = (clone.innerText || clone.textContent || '').replace(/\s+/g,' ').trim();
+      
+      var isHeading = /^H[2-4]$/.test(el.tagName);
+      if(t.length > (isHeading ? 1 : 8)) paras.push({ el: el, text: t });
+    });
+    recalcTotal();
+  }
+
+  function recalcTotal(){
+    totalEstSecs = paras.reduce(function(s,p){ return s + p.text.length/(14*speed); }, 0);
+    $('katra-apTot').textContent = fmt(Math.round(totalEstSecs));
+  }
+
+  
+  function langVoices(){
+    var voices = synth.getVoices();
+    var m = voices.filter(function(v){ return v.lang && v.lang.toLowerCase().indexOf(LANG) === 0; });
+    return m.length ? m : voices;
+  }
+
+  function populateVoices(){
+    var sel = $('katra-apVoice');
+    if(!sel) return;
+    var list = langVoices();
+    if(!list.length) return; 
+    var opts = '<option value="">' + T.auto + '</option>';
+    list.forEach(function(v){
+      var selAttr = (v.voiceURI === chosenVoiceURI) ? ' selected' : '';
+      var label = v.name + ' (' + v.lang + ')';
+      opts += '<option value="' + v.voiceURI.replace(/"/g,'&quot;') + '"' + selAttr + '>' + label + '</option>';
+    });
+    sel.innerHTML = opts;
+    $('katra-apVoiceWrap').style.display = 'block';
+  }
+
+  function getBestVoice(){
+    var voices = synth.getVoices();
+    if(!voices.length) return null;
+    if(chosenVoiceURI){
+      var picked = voices.find(function(v){ return v.voiceURI === chosenVoiceURI; });
+      if(picked) return picked;
+    }
+    var pool = langVoices();
+    
+    var MALE = C.male;
+    var NATURAL = /enhanced|premium|neural|natural/i;
+    var order = C.order;
+
+    
+    
+    function byLocale(pred){
+      for(var i=0;i<order.length;i++){
+        var hit = pool.find(function(v){
+          return v.lang && v.lang.toLowerCase().indexOf(order[i].toLowerCase()) === 0 && pred(v);
+        });
+        if(hit) return hit;
+      }
+      return pool.find(pred) || null;
+    }
+
+    
+    return byLocale(function(v){ return MALE.test(v.name) && NATURAL.test(v.name); })
+        || byLocale(function(v){ return MALE.test(v.name); })
+        || byLocale(function(v){ return NATURAL.test(v.name); })
+        || byLocale(function(v){ return v.localService === true; })
+        || byLocale(function(){ return true; })
+        || pool[0] || null;
+  }
+
+  
+  function prepararTTS(text){
+    var t = text;
+    if(LANG === 'en'){
+      t = t.replace(/\be\.g\.\s*/gi, 'for example, ');
+      t = t.replace(/\bi\.e\.\s*/gi, 'that is, ');
+      t = t.replace(/\betc\.\s*/gi, 'et cetera. ');
+    } else {
+      t = t.replace(/\bp\.\s*ej\.\s*/gi, 'por ejemplo, ');
+      t = t.replace(/\betc\.\s*/gi, 'etcétera. ');
+    }
+    t = t.replace(/[«»“”]/g, '"');
+    t = t.replace(/\s[–—]\s/g, ', ');
+    t = t.replace(/\.{3,}/g, '...');
+    t = t.replace(/\s{2,}/g, ' ');
+    return t.trim();
+  }
+
+  function speakPara(i){
+    if(i < 0) i = 0;
+    if(i >= paras.length){ finish(); return; }
+    idx = i; cancelIntent = false; speakToken++;
+    var myToken = speakToken;
+    var p = paras[i];
+    if(currentEl) currentEl.classList.remove('reading-now');
+    currentEl = p.el;
+    p.el.classList.add('reading-now');
+    p.el.scrollIntoView({ behavior:'smooth', block:'center' });
+
+    $('katra-apLabel').textContent = T.para(i+1, paras.length);
+    $('katra-apStatus').textContent = p.text.slice(0,55)+(p.text.length>55?'…':'');
+
+    var utt = new SpeechSynthesisUtterance(prepararTTS(p.text));
+    utt.lang = C.deflang;
+    utt.rate = speed;
+    var voice = getBestVoice();
+    if(voice){ utt.voice = voice; utt.lang = voice.lang; }
+
+    utt.onend = function(){
+      if(myToken !== speakToken || cancelIntent) return;
+      doneEstSecs += p.text.length/(14*speed);
+      if(state === 'playing') speakPara(i+1);
+    };
+    utt.onerror = function(){
+      if(myToken !== speakToken || cancelIntent) return;
+      if(state === 'playing') speakPara(i+1);
+    };
+
+    paraEstSecs = p.text.length/(14*speed);
+    paraStartTime = Date.now();
+    synth.cancel();
+    setTimeout(function(){ if(myToken === speakToken) synth.speak(utt); }, 40);
+    startTicker();
+  }
+
+  function startTicker(){
+    clearInterval(ticker);
+    ticker = setInterval(function(){
+      if(state !== 'playing'){ clearInterval(ticker); return; }
+      var elapsed = (Date.now()-paraStartTime)/1000;
+      var done = doneEstSecs + Math.min(elapsed, paraEstSecs);
+      var pct = totalEstSecs>0 ? Math.min(100, Math.round(done/totalEstSecs*100)) : 0;
+      $('katra-apProgress').value = pct;
+      $('katra-apCur').textContent = fmt(Math.round(done));
+    }, 400);
+  }
+
+  function finish(){
+    state = 'stopped'; clearInterval(ticker);
+    if(currentEl){ currentEl.classList.remove('reading-now'); currentEl = null; }
+    updateIcon(); idx = 0; doneEstSecs = 0;
+    $('katra-apLabel').textContent = T.listen;
+    $('katra-apStatus').textContent = T.done;
+    $('katra-apProgress').value = 100;
+  }
+
+  function updateIcon(){
+    var playing = (state === 'playing');
+    var svg = playing
+      ? '<rect x="5" y="4" width="4" height="16" rx="1"/><rect x="15" y="4" width="4" height="16" rx="1"/>'
+      : '<polygon points="6 3 20 12 6 21 6 3"/>';
+    var ml = playing ? '0' : '2px';
+    ['katra-apMainIcon','katra-apPlayIcon'].forEach(function(id){
+      var el = $(id);
+      if(el){ el.innerHTML = svg; el.style.marginLeft = ml; }
+    });
+  }
+
+  window.kapToggle = function(){
+    if(state === 'stopped'){
+      state = 'playing'; updateIcon();
+      $('katra-apStatus').textContent = T.loading;
+      var voices = synth.getVoices();
+      if(voices.length === 0){
+        var onVC = function(){
+          synth.removeEventListener('voiceschanged', onVC);
+          collectParas(); doneEstSecs = 0; speakPara(0);
+        };
+        synth.addEventListener('voiceschanged', onVC);
+        try{ var u = new SpeechSynthesisUtterance(''); synth.speak(u); synth.cancel(); }catch(e){}
+      } else {
+        collectParas(); doneEstSecs = 0; speakPara(0);
+      }
+    } else if(state === 'playing'){
+      state = 'paused'; clearInterval(ticker); updateIcon();
+      var pauseTime = Math.min((Date.now()-paraStartTime)/1000, paraEstSecs);
+      doneEstSecs += pauseTime * 0.6;
+      if(nativePauseReliable){ synth.pause(); }
+      else { cancelIntent = true; speakToken++; synth.cancel(); }
+      $('katra-apStatus').textContent = T.paused;
+    } else if(state === 'paused'){
+      state = 'playing'; updateIcon();
+      if(nativePauseReliable && synth.paused){
+        cancelIntent = false; synth.resume(); startTicker();
+        var p = paras[idx];
+        if(p) $('katra-apStatus').textContent = p.text.slice(0,55)+(p.text.length>55?'…':'');
+      } else { cancelIntent = false; speakPara(idx); }
+    }
+  };
+
+  window.kapStop = function(){
+    state = 'stopped'; cancelIntent = true; speakToken++;
+    synth.cancel(); clearInterval(ticker); idx = 0; doneEstSecs = 0;
+    if(currentEl){ currentEl.classList.remove('reading-now'); currentEl = null; }
+    updateIcon();
+    $('katra-apLabel').textContent = T.listen;
+    $('katra-apStatus').textContent = T.press;
+    $('katra-apProgress').value = 0;
+    $('katra-apCur').textContent = '0:00';
+  };
+
+  function sumTo(n){ return paras.slice(0,n).reduce(function(s,p){ return s + p.text.length/(14*speed); }, 0); }
+
+  window.kapNext = function(){
+    if(state === 'stopped') return;
+    cancelIntent = true; speakToken++; synth.cancel(); clearInterval(ticker);
+    var next = idx+1;
+    setTimeout(function(){
+      cancelIntent = false; state = 'playing'; updateIcon();
+      if(next < paras.length){ doneEstSecs = sumTo(next); speakPara(next); } else finish();
+    }, 55);
+  };
+
+  window.kapPrev = function(){
+    if(state === 'stopped') return;
+    cancelIntent = true; speakToken++; synth.cancel(); clearInterval(ticker);
+    var prev = Math.max(0, idx-1);
+    setTimeout(function(){
+      cancelIntent = false; state = 'playing'; updateIcon();
+      doneEstSecs = sumTo(prev); speakPara(prev);
+    }, 55);
+  };
+
+  window.kapSeek = function(pct){
+    if(!paras.length){ collectParas(); }
+    if(!paras.length) return;
+    var target = Math.min(Math.round(paras.length*pct/100), paras.length-1);
+    cancelIntent = true; speakToken++; synth.cancel(); clearInterval(ticker);
+    doneEstSecs = sumTo(target);
+    setTimeout(function(){ cancelIntent = false; state = 'playing'; updateIcon(); speakPara(target); }, 55);
+  };
+
+  window.kapSpeed = function(s){
+    speed = s;
+    player.querySelectorAll('.ap-spd').forEach(function(b){
+      var active = parseFloat(b.textContent) === s;
+      b.style.background = active ? '#0d2240' : '#fff';
+      b.style.borderColor = active ? '#0d2240' : '#ddd5c5';
+      b.style.color = active ? '#fff' : '#7a726a';
+    });
+    recalcTotal();
+    if(state === 'playing'){
+      var savedIdx = idx;
+      cancelIntent = true; speakToken++; synth.cancel(); clearInterval(ticker);
+      doneEstSecs = sumTo(savedIdx);
+      setTimeout(function(){ cancelIntent = false; speakPara(savedIdx); }, 60);
+    }
+  };
+
+  window.kapSetVoice = function(uri){
+    chosenVoiceURI = uri || '';
+    try {
+      if(chosenVoiceURI) localStorage.setItem(VOICE_KEY, chosenVoiceURI);
+      else localStorage.removeItem(VOICE_KEY);
+    } catch(e){}
+    
+    if(state === 'playing'){
+      var savedIdx = idx;
+      cancelIntent = true; speakToken++; synth.cancel(); clearInterval(ticker);
+      setTimeout(function(){ cancelIntent = false; speakPara(savedIdx); }, 60);
+    }
+  };
+
+  window.kapCollapse = function(){
+    var body = $('katra-apBody'), btn = $('katra-apCollapseBtn');
+    if(!body) return;
+    if(body.style.display === 'none'){
+      body.style.display = 'flex'; btn.title = T.hide;
+    } else {
+      body.style.display = 'none'; btn.title = T.show;
+    }
+  };
+
+  
+  window.addEventListener('pagehide', function(){ try{ synth.cancel(); }catch(e){} });
+
+  
+  populateVoices();
+  synth.addEventListener('voiceschanged', populateVoices);
+
+  
+  var body0 = $('katra-apBody'), btn0 = $('katra-apCollapseBtn');
+  if(body0) body0.style.display = 'none';
+  if(btn0) btn0.title = T.show;
+})();
+</script>
 </body>
 </html>
 

@@ -1,0 +1,46 @@
+/* ===================================================================
+   Audio player — read-aloud (speechSynthesis)
+   Injected only when frontmatter has `audio_player: true`
+   (see layouts/partials/hooks/body-end.html)
+   =================================================================== */
+
+/* Highlight of the paragraph currently being read aloud */
+.reading-now {
+  background: rgba(13, 34, 64, 0.06);
+  box-shadow: -0.6rem 0 0 rgba(13, 34, 64, 0.06);
+  border-left: 3px solid #0d2240;
+  padding-left: 0.6rem;
+  margin-left: -0.9rem;
+  border-radius: 2px;
+  transition: background 0.25s ease;
+  scroll-margin-top: 5rem;
+}
+
+/* Native range thumb styling for the progress bar */
+#katra-apProgress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #0d2240;
+  cursor: pointer;
+  border: 2px solid #fffefb;
+  box-shadow: 0 1px 3px rgba(13, 34, 64, 0.4);
+}
+#katra-apProgress::-moz-range-thumb {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #0d2240;
+  cursor: pointer;
+  border: 2px solid #fffefb;
+}
+
+/* Keep the fixed player from colliding with content on small screens */
+@media (max-width: 30em) {
+  #katra-audioPlayer {
+    bottom: 0.75rem !important;
+    left: 0.75rem !important;
+  }
+}
