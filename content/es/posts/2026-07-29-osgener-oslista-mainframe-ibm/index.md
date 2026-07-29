@@ -15,7 +15,9 @@ Yo tengo el manual. Y tengo la salida de un job de producción que los corrió d
 
 La fuente es *40 años de informática en el Estado argentino*, de Pablo A Fontdevila, Arturo Laguado Duca y Horacio Cao, publicado por EDUNTREF en noviembre de 2007[^libro]. En la sección «La edad de oro del CUPED», la página 37 dice:
 
-> El desarrollo más reconocido fue el de dos utilitarios modulares desarrollados por Jorge Vattuone en el área de programación del CUPED. Estas dos herramientas – OS GENER y OS LIST - estaban diseñadas para formar parte del sistema operativo y así realizar tareas que, de otra manera, hubieran necesitado programas específicos. Con ellas, entre otras cosas, se podía aparear archivos o listas para reemplazar ó copiar datos de uno en otro, modificar o convertir datos de una tabla o archivo a otro, buscar archivos o tablas para seleccionar ó eliminar registros, etc. No hubo implementador, programador o analista que no haya echado mano a ellos ante cualquier contingencia.  Hasta el día de hoy veo entradas de experimentados (viejos) desarrolladores en Linkedin con referencias a proficiencia en el uso de esos programas.
+> El desarrollo más reconocido fue el de dos utilitarios modulares desarrollados por Jorge Vattuone en el área de programación del CUPED. Estas dos herramientas – OS GENER y OS LIST - estaban diseñadas para formar parte del sistema operativo y así realizar tareas que, de otra manera, hubieran necesitado programas específicos. Con ellas, entre otras cosas, se podía aparear archivos o listas para reemplazar ó copiar datos de uno en otro, modificar o convertir datos de una tabla o archivo a otro, buscar archivos o tablas para seleccionar ó eliminar registros, etc. No hubo implementador, programador o analista que no haya echado mano a ellos ante cualquier contingencia.
+
+Hasta el día de hoy veo entradas de experimentados (viejos) desarrolladores en Linkedin con referencias a proficiencia en el uso de esos programas.
 
 Había un área de investigación y desarrollo a la que los compañeros llamaban, «con sorna y algo de envidia», *los becados*; y había una política explícita:
 
