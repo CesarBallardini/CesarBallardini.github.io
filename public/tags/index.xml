@@ -12,9 +12,86 @@
 			<copyright>César Ballardini</copyright>
 		
 		
-			<lastBuildDate>Sat, 18 Jul 2026 00:00:00 -0300</lastBuildDate>
+			<lastBuildDate>Wed, 29 Jul 2026 00:00:00 -0300</lastBuildDate>
 		
 			<atom:link href="https://katra.ballardini.com.ar/tags/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Argentina</title>
+				<link>https://katra.ballardini.com.ar/tags/argentina/</link>
+				<pubDate>Wed, 29 Jul 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/argentina/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Arqueologia</title>
+				<link>https://katra.ballardini.com.ar/tags/arqueologia/</link>
+				<pubDate>Wed, 29 Jul 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/arqueologia/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>COBOL</title>
+				<link>https://katra.ballardini.com.ar/tags/cobol/</link>
+				<pubDate>Wed, 29 Jul 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/cobol/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>CUPED</title>
+				<link>https://katra.ballardini.com.ar/tags/cuped/</link>
+				<pubDate>Wed, 29 Jul 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/cuped/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>EBCDIC</title>
+				<link>https://katra.ballardini.com.ar/tags/ebcdic/</link>
+				<pubDate>Wed, 29 Jul 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/ebcdic/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>GnuCOBOL</title>
+				<link>https://katra.ballardini.com.ar/tags/gnucobol/</link>
+				<pubDate>Wed, 29 Jul 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/gnucobol/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Historia</title>
+				<link>https://katra.ballardini.com.ar/tags/historia/</link>
+				<pubDate>Wed, 29 Jul 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/historia/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>IBM</title>
+				<link>https://katra.ballardini.com.ar/tags/ibm/</link>
+				<pubDate>Wed, 29 Jul 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/ibm/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Legacy</title>
+				<link>https://katra.ballardini.com.ar/tags/legacy/</link>
+				<pubDate>Wed, 29 Jul 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/legacy/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Mainframe</title>
+				<link>https://katra.ballardini.com.ar/tags/mainframe/</link>
+				<pubDate>Wed, 29 Jul 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/mainframe/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>MVS</title>
+				<link>https://katra.ballardini.com.ar/tags/mvs/</link>
+				<pubDate>Wed, 29 Jul 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/mvs/</guid>
+				<description></description>
+			</item>
 			<item>
 				<title>Accesibilidad</title>
 				<link>https://katra.ballardini.com.ar/tags/accesibilidad/</link>
@@ -373,13 +450,6 @@
 				<description></description>
 			</item>
 			<item>
-				<title>Historia</title>
-				<link>https://katra.ballardini.com.ar/tags/historia/</link>
-				<pubDate>Fri, 10 Apr 2026 00:00:00 -0300</pubDate>
-				<guid>https://katra.ballardini.com.ar/tags/historia/</guid>
-				<description></description>
-			</item>
-			<item>
 				<title>Inteligencia Artificial</title>
 				<link>https://katra.ballardini.com.ar/tags/inteligencia-artificial/</link>
 				<pubDate>Fri, 10 Apr 2026 00:00:00 -0300</pubDate>
@@ -447,13 +517,6 @@
 				<link>https://katra.ballardini.com.ar/tags/process-scheduling/</link>
 				<pubDate>Mon, 10 Mar 2025 00:00:00 -0300</pubDate>
 				<guid>https://katra.ballardini.com.ar/tags/process-scheduling/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title>Arqueologia</title>
-				<link>https://katra.ballardini.com.ar/tags/arqueologia/</link>
-				<pubDate>Sun, 23 Feb 2025 00:00:00 -0300</pubDate>
-				<guid>https://katra.ballardini.com.ar/tags/arqueologia/</guid>
 				<description></description>
 			</item>
 			<item>

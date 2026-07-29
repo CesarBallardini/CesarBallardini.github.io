@@ -1,6 +1,8 @@
 # Posts del futuro cercano — plan editorial de katra
 
-> **Última revisión:** 2026-04-14 (C-01 publicado — primer post de Serie C; W0 baja a 1 pendiente; nuevo I-14 cosechado de la edición de C-01)
+> **Última revisión:** 2026-07-15 (A1-10 Prolog, A1-08 KL1 y G-34 tooling Python publicados en julio; 66 drafts expandidos a prosa con asistencia de Claude — sin revisar por César; conteos por carpeta reconciliados contra el disco)
+>
+> _Revisión previa:_ 2026-04-14 (C-01 publicado — primer post de Serie C; W0 queda en 0 pendientes tras mover [[G-01]] a W2/W3; nuevo I-14 cosechado de la edición de C-01)
 > **Owner:** César — archivo editorial privado, no se renderiza al sitio.
 > **Audiencia objetivo del blog:** lectores nerd / orientados a CS — algoritmos, arquitectura de software y de computadoras, prácticas de programación, lenguajes (mainstream y oscuros). La Serie K (vida y trabajo) es la sección honesta para temas laterales no-CS.
 > **Tono buscado en cada post:** divertido, entretenido, **un solo concepto** por entrada.
@@ -57,29 +59,31 @@ Cada entrada-archivo incluye concepto, hook, outline, bibliografía verificada, 
 
 ## Estructura del directorio
 
-Desde el 2026-04-09, cada entrada-post vive en su propio archivo markdown bajo una de las 10 carpetas de categoría, con un nombre del tipo `draft-{slug-descriptivo}.md`. La carpeta refleja la serie temática; el nombre del archivo refleja el tema concreto del post, no el ID.
+Desde el 2026-04-09, cada entrada-post vive en su propio archivo markdown bajo una de las 11 carpetas de categoría, con un nombre del tipo `draft-{slug-descriptivo}.md`. La carpeta refleja la serie temática; el nombre del archivo refleja el tema concreto del post, no el ID.
 
 ```
 content/just-ideas-for-future-posts/
 ├── near-future-posts.md      ← este archivo (catálogo maestro, guías, waves, índices)
-├── lenguajes/                ← Serie A1 — Lenguajes clásicos        (21 drafts)
+├── lenguajes/                ← Serie A1 — Lenguajes clásicos        (20 drafts)
 ├── lisp/                     ← Serie A2 — Familia Lisp              ( 9 drafts)
 ├── funcional/                ← Serie B  — Recursión y CS funcional  ( 8 drafts)
 ├── filosofia/                ← Serie C  — Filosofía de la SE        (16 drafts)
 ├── pioneros/                 ← Serie D  — Pioneros y artefactos     ( 6 drafts)
 ├── memoir/                   ← Serie E  — Memoir CS                 (29 drafts)
-├── devops/                   ← Serie G  — IaC + deployment          (33 drafts)
-├── legacy/                   ← Serie H  — Arqueología legacy        (13 drafts)
-├── local/                    ← Serie I  — Memoria del cómputo local (13 drafts)
-├── nerd/                     ← Serie J  — Curiosidad nerd lateral   (10 drafts)
+├── devops/                   ← Serie G  — IaC + deployment          (35 drafts)
+├── legacy/                   ← Serie H  — Arqueología legacy        (14 drafts)
+├── local/                    ← Serie I  — Memoria del cómputo local (14 drafts)
+├── nerd/                     ← Serie J  — Curiosidad nerd lateral   ( 9 drafts)
 └── vida/                     ← Serie K  — Vida y trabajo (lateral)  (23 drafts)
 ```
 
-**Total**: 181 drafts repartidos en 11 categorías. El catálogo maestro vive en `near-future-posts.md` (este archivo).
+**Total**: 183 archivos draft repartidos en 11 categorías (182 verificados contra el disco el 2026-07-15, más H-14 agregado el 2026-07-29). El catálogo maestro vive en `near-future-posts.md` (este archivo).
+
+> **Nota:** el total de archivos (182) no coincide con el total de entradas del índice (183, de las cuales 5 ya están publicadas). La diferencia sale de que algunos posts publicados conservan su archivo draft (D-04, y los tres de julio 2026) mientras que otros lo borraron al publicar (A1-10). Ver [Mantenimiento del plan](#mantenimiento-del-plan): el draft se borra sólo si no quedan mejoras pendientes.
 
 **Convención de nombres de archivo draft:** `draft-{slug}.md` donde `{slug}` es el mismo slug que aparece dentro del archivo en el campo `**Slug propuesto:**` y que después se usará en el `hugo new content/es/posts/YYYY-MM-DD-{slug}/index.md`. El prefijo `draft-` marca que el archivo es un borrador de idea (no publicado), aunque sólo el contenido de `content/es/posts/` y `content/en/posts/` se renderiza al sitio.
 
-**Nota sobre las referencias históricas a `dev/`, `sysadmin/`, `misc/`:** estas tres carpetas existían antes del refactor del 2026-04-09 como archivo de seeds cortos originales (notas de 3-10 líneas que luego se expandieron en los archivos draft completos de cada categoría). El 2026-04-09 se eliminaron del repo porque todo su contenido ya estaba absorbido en los archivos `draft-*.md` de las 10 carpetas de categoría. Los archivos draft actuales pueden mencionar esas rutas en el campo `**Archivo seed:**` como nota histórica — no son links vivos.
+**Nota sobre las referencias históricas a `dev/`, `sysadmin/`, `misc/`:** estas tres carpetas existían antes del refactor del 2026-04-09 como archivo de seeds cortos originales (notas de 3-10 líneas que luego se expandieron en los archivos draft completos de cada categoría). El 2026-04-09 se eliminaron del repo porque todo su contenido ya estaba absorbido en los archivos `draft-*.md` de las 11 carpetas de categoría. Los archivos draft actuales pueden mencionar esas rutas en el campo `**Archivo seed:**` como nota histórica — no son links vivos.
 
 ---
 
@@ -406,6 +410,7 @@ Cada entrada del plan vive en un archivo `draft-*.md` propio bajo la carpeta de 
 - **H-11** — [Linux Ubuntu para s390x sobre Hercules: instalando arquitectura IBM Z emulada en mi laptop](legacy/draft-linux-s390x-hercules.md)
 - **H-12** — [Hercules `prtspool`: imprimir desde MVS 3.8 a PDF](legacy/draft-hercules-prtspool-imprimir-mvs-pdf.md)
 - **H-13** — [Apache + PHP 5.6 + Symfony 1.4 y 3.4: correr una app PHP legacy en Docker](legacy/draft-apache-php56-symfony-legacy-docker.md)
+- **H-14** — [OSGENER y OSLISTA: desde fines de los '70 en un mainframe de IBM](/posts/osgener-oslista-mainframe-ibm/) ✅ **publicado 2026-07-29** — [el draft se conserva](legacy/draft-osgener-oslista-mainframe-ibm.md): quedan dos derivados y la versión en inglés
 
 ---
 
@@ -525,7 +530,7 @@ Cada entrada del plan vive en un archivo `draft-*.md` propio bajo la carpeta de 
 | **W0** | Cosecha rápida (ya tienen prosa real) | 0 pendientes | ~~[[C-01]]~~ publicado 2026-04-14. [[G-01]] (Ansible roles/profiles) se movió a W2/W3 — no tiene un seed con prosa real, sólo outline y bibliografía, así que no cuenta como "cosecha rápida" |
 | **W1** | Crowd pleasers (biografías de bajo esfuerzo, imágenes públicas abundantes) | 5 | [[D-01]] Engelbart, [[D-03]] Turing, [[D-02]] Sketchpad, [[A1-01]] Kay, [[A2-03]] Y combinator (Weirich) |
 | **W2** | Lanzamiento de cada serie (un post-piloto por serie para crear los anchors de cross-link) | ~9 | El post más fácil de cada serie. Una vez escritos, todas las series tienen al menos un destino para los `[[ID]]`. |
-| **W3** | Round-robin de completitud | ~30 | Completar series rotando: la que va más atrás tiene prioridad. Mantiene visibilidad de las 10 series sin agotar al lector. |
+| **W3** | Round-robin de completitud | ~30 | Completar series rotando: la que va más atrás tiene prioridad. Mantiene visibilidad de las 11 series sin agotar al lector. |
 | **W4** | Deep dives difíciles | ~6 | [[B-02]] Okasaki, [[B-06]] teoría imperativa, [[H-04]] migración COBOL, [[B-05]] trampolines, [[B-08]] WAM. Necesitan código, diagramas y pedagogía cuidadosa. Se escriben cuando hay momentum acumulado. |
 | **W5** | Bloque concentrado de Serie H | ~6-9 | Toda la Serie H se escribe en un sprint corto, porque los posts se cruzan mucho entre sí y es más eficiente trabajarlos juntos. |
 
