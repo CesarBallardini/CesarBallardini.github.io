@@ -12,9 +12,16 @@
 			<copyright>César Ballardini</copyright>
 		
 		
-			<lastBuildDate>Thu, 16 Apr 2026 00:00:00 -0300</lastBuildDate>
+			<lastBuildDate>Sun, 02 Aug 2026 00:00:00 -0300</lastBuildDate>
 		
 			<atom:link href="https://katra.ballardini.com.ar/tags/pedagogia/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>El termómetro de la Psicología</title>
+				<link>https://katra.ballardini.com.ar/posts/el-termometro-de-la-psicologia/</link>
+				<pubDate>Sun, 02 Aug 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/posts/el-termometro-de-la-psicologia/</guid>
+				<description>&lt;p&gt;⚠️ &lt;em&gt;Curiosidad nerd lateral — esto no es ciencia de la computación.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;Hace un tiempo escribí acá sobre el &lt;a href=&#34;https://katra.ballardini.com.ar/posts/soplar-humo-de-tabaco/&#34;&gt;enema de humo de tabaco&lt;/a&gt;. El post arrancaba con un problema de performance —alguien agrega RAM para acelerar un login y el login tarda el doble— y terminaba en los médicos europeos del siglo XVII soplando humo de tabaco por el recto de sus pacientes para tratar cefaleas, hernias, calambres, tifus y cólera. La pregunta era «¿por qué funcionaba?» y la respuesta era «no funcionaba». La tesis, que repito textual porque este post entero se apoya en ella:&lt;/p&gt;</description>
+			</item>
 			<item>
 				<title>Simply Scheme: el libro que no quería 500 programadores mediocres</title>
 				<link>https://katra.ballardini.com.ar/posts/simply-scheme-500-programadores/</link>

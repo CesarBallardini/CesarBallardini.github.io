@@ -48,7 +48,7 @@
                 />
   </url><url>
     <loc>https://katra.ballardini.com.ar/</loc>
-    <lastmod>2026-07-29T00:00:00-03:00</lastmod>
+    <lastmod>2026-08-02T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -60,6 +60,106 @@
                 rel="alternate"
                 hreflang="en-US"
                 href="https://katra.ballardini.com.ar/en/"
+                />
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/chatgpt/</loc>
+    <lastmod>2026-08-02T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/claude/</loc>
+    <lastmod>2026-08-02T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/crisis-de-replicacion/</loc>
+    <lastmod>2026-08-02T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/posts/el-termometro-de-la-psicologia/</loc>
+    <lastmod>2026-08-02T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/posts/</loc>
+    <lastmod>2026-08-02T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/posts/"
+                />
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/epistemologia/</loc>
+    <lastmod>2026-08-02T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/humo/</loc>
+    <lastmod>2026-08-02T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/ia/</loc>
+    <lastmod>2026-08-02T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/metodo-cientifico/</loc>
+    <lastmod>2026-08-02T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/nerd-lateral/</loc>
+    <lastmod>2026-08-02T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/neurociencia/</loc>
+    <lastmod>2026-08-02T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/pedagogia/</loc>
+    <lastmod>2026-08-02T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/psicologia/</loc>
+    <lastmod>2026-08-02T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/posts/sicologia-sin-humo-de-tabaco-segun-chatgpt/</loc>
+    <lastmod>2026-08-02T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/posts/sicologia-sin-humo-de-tabaco-segun-claude/</loc>
+    <lastmod>2026-08-02T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/</loc>
+    <lastmod>2026-08-02T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/tags/"
                 />
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/argentina/</loc>
@@ -86,21 +186,6 @@
     <lastmod>2026-07-29T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/</loc>
-    <lastmod>2026-07-29T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es-AR"
-                href="https://katra.ballardini.com.ar/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://katra.ballardini.com.ar/en/posts/"
-                />
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/gnucobol/</loc>
     <lastmod>2026-07-29T00:00:00-03:00</lastmod>
@@ -136,21 +221,6 @@
     <lastmod>2026-07-29T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/</loc>
-    <lastmod>2026-07-29T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es-AR"
-                href="https://katra.ballardini.com.ar/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://katra.ballardini.com.ar/en/tags/"
-                />
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/accesibilidad/</loc>
     <lastmod>2026-07-18T00:00:00-03:00</lastmod>
@@ -407,11 +477,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/pedagogia/</loc>
-    <lastmod>2026-04-16T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://katra.ballardini.com.ar/tags/scheme/</loc>
     <lastmod>2026-04-16T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -472,11 +537,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/nerd-lateral/</loc>
-    <lastmod>2026-04-10T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://katra.ballardini.com.ar/tags/precision/</loc>
     <lastmod>2026-04-10T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -488,11 +548,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/cpu/</loc>
-    <lastmod>2025-03-10T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/humo/</loc>
     <lastmod>2025-03-10T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

@@ -1,0 +1,22 @@
+{{- /*
+  Render hook para los bloques passthrough de Goldmark: convierte LaTeX en MathML
+  usando transform.ToMath, que es KaTeX compilado dentro del binario de Hugo.
+
+  Se renderiza EN TIEMPO DE BUILD. La página servida no carga ningún script ni
+  hoja de estilos externa: sale MathML nativo, que los navegadores dibujan solos
+  y que los lectores de pantalla saben leer.
+
+  Uso en el contenido:
+    inline    \( ... \)
+    en bloque \[ ... \]  o  $$ ... $$
+
+  Requiere [markup.goldmark.extensions.passthrough] habilitado en hugo.toml.
+*/ -}}
+{{- $opts := dict "output" "mathml" "displayMode" (eq .Type "block") -}}
+{{- with try (transform.ToMath .Inner $opts) -}}
+  {{- with .Err -}}
+    {{- errorf "render-passthrough: no se pudo renderizar la fórmula %q: %s" $.Inner . -}}
+  {{- else -}}
+    {{- .Value -}}
+  {{- end -}}
+{{- end -}}

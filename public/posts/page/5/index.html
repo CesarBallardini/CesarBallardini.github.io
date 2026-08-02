@@ -116,8 +116,8 @@
 
 	<meta itemprop="name" content="Entradas">
 	<meta itemprop="description" content="el espíritu y la tecnología de la información">
-	<meta itemprop="datePublished" content="2026-07-29T00:00:00-03:00">
-	<meta itemprop="dateModified" content="2026-07-29T00:00:00-03:00">
+	<meta itemprop="datePublished" content="2026-08-02T00:00:00-03:00">
+	<meta itemprop="dateModified" content="2026-08-02T00:00:00-03:00">
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:title" content="Entradas">
 	<meta name="twitter:description" content="el espíritu y la tecnología de la información">
@@ -229,21 +229,23 @@
   <div class="mb3 pa4 gray overflow-hidden bg-white">
     <span class="f6 db">Entradas</span>
     
-      <time class="f6 db" datetime="2025-02-04T00:00:00-03:00">04 de febrero de 2025</time>
+      <time class="f6 db" datetime="2026-04-10T00:00:00-03:00">10 de abril de 2026</time>
     
     <h1 class="f3 near-black">
-      <a href="/posts/saluden-a-debian/" class="link black dim">
-        Saluden a Debian que se fue
+      <a href="/posts/torno-precision-bootstrapping-ia/" class="link black dim">
+        Del torno a la inteligencia artificial: cuando la precisión se autoperfecciona a sí misma
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>Debian deja de publicar en X.  Los usuarios de X dejarán de recibir noticias de Debian, porque
-El <em>Debian Publicity Team</em> <em>siente</em> que allí la gente que a ellos les preocupa no se <em>sienten</em> seguros.</p>
-<p>Mucho sentimiento, poco raciocinio.  Deberemos acostumbrarnos a estos tiempos que corren.  Tiempos donde el <em>yo</em> es lo más preciado. Yo, yo, yo. Pero también tiempos donde es muy
-importante el &ldquo;postureo&rdquo; o <em>virtue signaling</em>.  Donde mi yo es tan inmenso que engulle a los que yo considero débiles, inermes y vulnerables.  Por cierto lo que menos importa es la
-opinión de esos vulnerables. Yo soy el que tiene la opinión.</p>
+      <p>¿Qué tiene en común el torno de precisión y la inteligencia artificial?</p>
+<p>A primera vista, nada.  Uno es una máquina de hierro que arranca virutas de metal; la otra es
+software que predice la siguiente palabra.  Pero las dos enfrentan el mismo problema fundacional:
+para construir una versión mejor de sí mismas, necesitan una versión de sí mismas que ya sea
+suficientemente buena.  El torno preciso se fabrica con piezas precisas, pero las piezas precisas
+se fabrican en un torno preciso.  La IA capaz de mejorar IA necesita ser lo bastante inteligente
+para entender qué mejorar, pero esa inteligencia es justamente lo que estamos tratando de construir.</p>
     </div>
-    <a href="/posts/saluden-a-debian/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Leer más</a>
+    <a href="/posts/torno-precision-bootstrapping-ia/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Leer más</a>
   </div>
 </div>
 
@@ -255,19 +257,29 @@ opinión de esos vulnerables. Yo soy el que tiene la opinión.</p>
   <div class="mb3 pa4 gray overflow-hidden bg-white">
     <span class="f6 db">Entradas</span>
     
-      <time class="f6 db" datetime="2025-01-28T00:00:00-03:00">28 de enero de 2025</time>
+      <time class="f6 db" datetime="2025-03-10T00:00:00-03:00">10 de marzo de 2025</time>
     
     <h1 class="f3 near-black">
-      <a href="/posts/jim-weinrich-refactoring-ruby-on-rails/" class="link black dim">
-        Decoupling from Rails
+      <a href="/posts/soplar-humo-de-tabaco/" class="link black dim">
+        Soplar humo de tabaco
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>El legendario Jim Weirich<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> presenta <em>Decoupling from Rails</em> en la reunión del
-Cincinnati Ruby Brigade de Octubre 2013.  En 2011 Robert C. Martin<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> desafió a la comunidad de Ruby on Rails<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> a desacoplar la aplicación del framework Web.  Jim toma un pequeño ejemplo y lo desarrolla con la claridad y maestría que lo caracterizaba, que puedes ver en el vídeo<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</p>
-<p>DHH<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> esbozó una crítica<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>, pero es claro que se sintió tocado en su diseño de RoR.  En el enlace se aprecian los comentarios y respuestas de otros miembros de la comunidad.  En particular me interesó la respuesta de Pat Maddox<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>, si bien puede verse como contemporizadora.</p>
+      <p>Un sistema con muchos procesos tiene un tiempo de login de un minuto, cuando la expectativa es de
+1 ó 2 segundos.  Los procesos ocupan toda la memoria disponible, así que alguien propone aumentar la RAM.
+La solución parece obvia: más memoria, mejor rendimiento.</p>
+<div style="text-align:center;margin:1.5rem auto;">
+<img src="process-states.svg" alt="Estados de un proceso: nuevo, listo, corriendo, esperando, terminado" style="max-width:100%;">
+</div>
+<p><em>Diagrama de estados de un proceso</em><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p>Resultado: el tiempo de login sube a dos minutos.</p>
+<p>¿Qué pasó?  Antes de agregar memoria, muchos procesos que podrían estar listos para ejecutarse
+habían sido desalojados (<em>page-out</em>) a disco: el sistema operativo los había movido al disco para
+liberar RAM.  Un proceso en disco no compite por la CPU; simplemente espera allí, fuera de la cola
+de listos.  Con poca memoria, la cantidad de procesos compitiendo activamente por la CPU era baja,
+y cada uno recibía su quantum en su turno.</p>
     </div>
-    <a href="/posts/jim-weinrich-refactoring-ruby-on-rails/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Leer más</a>
+    <a href="/posts/soplar-humo-de-tabaco/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Leer más</a>
   </div>
 </div>
 
@@ -279,17 +291,18 @@ Cincinnati Ruby Brigade de Octubre 2013.  En 2011 Robert C. Martin<sup id="fnref
   <div class="mb3 pa4 gray overflow-hidden bg-white">
     <span class="f6 db">Entradas</span>
     
-      <time class="f6 db" datetime="2025-01-27T00:00:00-03:00">27 de enero de 2025</time>
+      <time class="f6 db" datetime="2025-02-23T00:00:00-03:00">23 de febrero de 2025</time>
     
     <h1 class="f3 near-black">
-      <a href="/posts/growing-a-language/" class="link black dim">
-        Growing a Language
+      <a href="/posts/programma-101/" class="link black dim">
+        Olivetti Programma 101
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>Seguramente has visto presentaciones muy importantes, o interesantes, entretenidas.  La presentación de Guy Steele que te propongo, es una como nunca has visto antes.  Una presentación que tiene un mensaje importante para transmitir, pero que además usa el propio mensaje como mecanismo para desarrollar la presentación.  Tal vez algún detalle no tan relevante esté desactualizado, como las referencias a ciertas características de Java, pero si consideras Java en 1998 y lo analizas desde allí,este material es alimento para la mente.</p>
+      <p>La <em>Programma 101</em><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> no fue la primera computadora de escritorio producida comercialmente, pero fue la que se hizo más famosa.  Inventada por el italiano Pier Giorgio Perotto, y lanzada por la firma italiana Olivetti en la Feria Mundial de Nueva York de 1964.</p>
+<p>Varios elementos ayudaron a la fama de la <em>Perottina</em> o <em>P101</em> como también se la conocía.  El diseño futurista externo, la facilidad de uso y los periféricos que vienen incorporados en el gabinete.</p>
     </div>
-    <a href="/posts/growing-a-language/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Leer más</a>
+    <a href="/posts/programma-101/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Leer más</a>
   </div>
 </div>
 
@@ -323,7 +336,7 @@ Cincinnati Ruby Brigade de Octubre 2013.  En 2011 Robert C. Martin<sup id="fnref
 			<a href="/posts/page/6/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
 		</li>
 			<li class="page-item">
-				<a href="/posts/page/9/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+				<a href="/posts/page/10/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
 			</li>
 		</ul></article>
 </main><footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">

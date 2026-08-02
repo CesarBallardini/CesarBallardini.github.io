@@ -12,9 +12,86 @@
 			<copyright>César Ballardini</copyright>
 		
 		
-			<lastBuildDate>Wed, 29 Jul 2026 00:00:00 -0300</lastBuildDate>
+			<lastBuildDate>Sun, 02 Aug 2026 00:00:00 -0300</lastBuildDate>
 		
 			<atom:link href="https://katra.ballardini.com.ar/tags/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>ChatGPT</title>
+				<link>https://katra.ballardini.com.ar/tags/chatgpt/</link>
+				<pubDate>Sun, 02 Aug 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/chatgpt/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Claude</title>
+				<link>https://katra.ballardini.com.ar/tags/claude/</link>
+				<pubDate>Sun, 02 Aug 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/claude/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Crisis De Replicacion</title>
+				<link>https://katra.ballardini.com.ar/tags/crisis-de-replicacion/</link>
+				<pubDate>Sun, 02 Aug 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/crisis-de-replicacion/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Epistemologia</title>
+				<link>https://katra.ballardini.com.ar/tags/epistemologia/</link>
+				<pubDate>Sun, 02 Aug 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/epistemologia/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Humo</title>
+				<link>https://katra.ballardini.com.ar/tags/humo/</link>
+				<pubDate>Sun, 02 Aug 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/humo/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>IA</title>
+				<link>https://katra.ballardini.com.ar/tags/ia/</link>
+				<pubDate>Sun, 02 Aug 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/ia/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Metodo Cientifico</title>
+				<link>https://katra.ballardini.com.ar/tags/metodo-cientifico/</link>
+				<pubDate>Sun, 02 Aug 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/metodo-cientifico/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Nerd Lateral</title>
+				<link>https://katra.ballardini.com.ar/tags/nerd-lateral/</link>
+				<pubDate>Sun, 02 Aug 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/nerd-lateral/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Neurociencia</title>
+				<link>https://katra.ballardini.com.ar/tags/neurociencia/</link>
+				<pubDate>Sun, 02 Aug 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/neurociencia/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Pedagogia</title>
+				<link>https://katra.ballardini.com.ar/tags/pedagogia/</link>
+				<pubDate>Sun, 02 Aug 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/pedagogia/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Psicologia</title>
+				<link>https://katra.ballardini.com.ar/tags/psicologia/</link>
+				<pubDate>Sun, 02 Aug 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/psicologia/</guid>
+				<description></description>
+			</item>
 			<item>
 				<title>Argentina</title>
 				<link>https://katra.ballardini.com.ar/tags/argentina/</link>
@@ -394,13 +471,6 @@
 				<description></description>
 			</item>
 			<item>
-				<title>Pedagogia</title>
-				<link>https://katra.ballardini.com.ar/tags/pedagogia/</link>
-				<pubDate>Thu, 16 Apr 2026 00:00:00 -0300</pubDate>
-				<guid>https://katra.ballardini.com.ar/tags/pedagogia/</guid>
-				<description></description>
-			</item>
-			<item>
 				<title>Scheme</title>
 				<link>https://katra.ballardini.com.ar/tags/scheme/</link>
 				<pubDate>Thu, 16 Apr 2026 00:00:00 -0300</pubDate>
@@ -464,13 +534,6 @@
 				<description></description>
 			</item>
 			<item>
-				<title>Nerd Lateral</title>
-				<link>https://katra.ballardini.com.ar/tags/nerd-lateral/</link>
-				<pubDate>Fri, 10 Apr 2026 00:00:00 -0300</pubDate>
-				<guid>https://katra.ballardini.com.ar/tags/nerd-lateral/</guid>
-				<description></description>
-			</item>
-			<item>
 				<title>Precision</title>
 				<link>https://katra.ballardini.com.ar/tags/precision/</link>
 				<pubDate>Fri, 10 Apr 2026 00:00:00 -0300</pubDate>
@@ -489,13 +552,6 @@
 				<link>https://katra.ballardini.com.ar/tags/cpu/</link>
 				<pubDate>Mon, 10 Mar 2025 00:00:00 -0300</pubDate>
 				<guid>https://katra.ballardini.com.ar/tags/cpu/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title>Humo</title>
-				<link>https://katra.ballardini.com.ar/tags/humo/</link>
-				<pubDate>Mon, 10 Mar 2025 00:00:00 -0300</pubDate>
-				<guid>https://katra.ballardini.com.ar/tags/humo/</guid>
 				<description></description>
 			</item>
 			<item>

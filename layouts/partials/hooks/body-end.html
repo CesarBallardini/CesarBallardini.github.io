@@ -7,7 +7,28 @@
     div.textContent = code.textContent;
     code.parentElement.replaceWith(div);
   });
+  {{- if .Params.mermaid_html_labels }}
+  // OPT-IN por post con `mermaid_html_labels: true` en el frontmatter.
+  //
+  // Por defecto mermaid usa securityLevel 'strict', que implica htmlLabels:false:
+  // la librería mide el ancho del texto por su cuenta, sin ayuda del navegador, y
+  // con acentos y símbolos (↔, á, í) calcula de menos, así que recorta las
+  // etiquetas largas a media palabra. Con 'antiscript' se habilitan htmlLabels
+  // —el navegador mide el texto real— y además funciona el <br/> para partir
+  // líneas. 'antiscript' permite HTML en las etiquetas pero descarta <script>;
+  // se prefiere sobre 'loose' porque alcanza y concede menos.
+  //
+  // Es opt-in a propósito: cambiar esto para todo el sitio alteraría el layout de
+  // los diagramas ya publicados sin que nadie los haya revisado.
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'neutral',
+    securityLevel: 'antiscript',
+    flowchart: { htmlLabels: true, useMaxWidth: true }
+  });
+  {{- else }}
   mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+  {{- end }}
 </script>
 {{- end }}
 

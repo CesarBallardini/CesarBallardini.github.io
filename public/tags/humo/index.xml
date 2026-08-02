@@ -12,9 +12,23 @@
 			<copyright>César Ballardini</copyright>
 		
 		
-			<lastBuildDate>Mon, 10 Mar 2025 00:00:00 -0300</lastBuildDate>
+			<lastBuildDate>Sun, 02 Aug 2026 00:00:00 -0300</lastBuildDate>
 		
 			<atom:link href="https://katra.ballardini.com.ar/tags/humo/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>El termómetro de la Psicología</title>
+				<link>https://katra.ballardini.com.ar/posts/el-termometro-de-la-psicologia/</link>
+				<pubDate>Sun, 02 Aug 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/posts/el-termometro-de-la-psicologia/</guid>
+				<description>&lt;p&gt;⚠️ &lt;em&gt;Curiosidad nerd lateral — esto no es ciencia de la computación.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;Hace un tiempo escribí acá sobre el &lt;a href=&#34;https://katra.ballardini.com.ar/posts/soplar-humo-de-tabaco/&#34;&gt;enema de humo de tabaco&lt;/a&gt;. El post arrancaba con un problema de performance —alguien agrega RAM para acelerar un login y el login tarda el doble— y terminaba en los médicos europeos del siglo XVII soplando humo de tabaco por el recto de sus pacientes para tratar cefaleas, hernias, calambres, tifus y cólera. La pregunta era «¿por qué funcionaba?» y la respuesta era «no funcionaba». La tesis, que repito textual porque este post entero se apoya en ella:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Sicología sin humo de tabaco en el trasero, según ChatGPT</title>
+				<link>https://katra.ballardini.com.ar/posts/sicologia-sin-humo-de-tabaco-segun-chatgpt/</link>
+				<pubDate>Sun, 02 Aug 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/posts/sicologia-sin-humo-de-tabaco-segun-chatgpt/</guid>
+				<description>&lt;p&gt;⚠️ &lt;em&gt;Curiosidad nerd lateral — esto no es ciencia de la computación. Aunque el modo de falla del modelo sí lo es.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;En el post hermano de éste, &lt;a href=&#34;https://katra.ballardini.com.ar/posts/el-termometro-de-la-psicologia/&#34;&gt;«El termómetro de la Psicología»&lt;/a&gt;, sostengo que a una afirmación sobre seres humanos hay que exigirle lo mismo que a cualquier otra: una medición independiente de la teoría que la postula, y un número que pueda salir mal. Y que buena parte del aparato de la sicología no cumple ni lo uno ni lo otro.&lt;/p&gt;</description>
+			</item>
 			<item>
 				<title>Soplar humo de tabaco</title>
 				<link>https://katra.ballardini.com.ar/posts/soplar-humo-de-tabaco/</link>

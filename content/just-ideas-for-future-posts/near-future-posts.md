@@ -129,9 +129,11 @@ El estilo canonizado por `growing-a-language.md` y `programma-101.md`:
 
 ### Links internos
 
-- Las URLs en español **no llevan prefijo `/es/`** (es el idioma por defecto). Link interno correcto: `[texto](/posts/2025-02-23-programma-101/)`. Incorrecto: `/es/posts/...`.
+- Las URLs en español **no llevan prefijo `/es/`** (es el idioma por defecto). Link interno correcto: `[texto](/posts/programma-101/)`. Incorrecto: `/es/posts/...`.
+- **La URL tampoco lleva la fecha.** El bundle se llama `content/es/posts/YYYY-MM-DD-slug/`, pero Hugo se come el prefijo de fecha al armar el permalink (lo consume `date = [':filename', ':default']`), así que la URL publicada es `/posts/slug/`. El bundle `2025-03-10-soplar-humo-de-tabaco/` se sirve en `/posts/soplar-humo-de-tabaco/`. Escribir `/posts/2025-03-10-soplar-humo-de-tabaco/` da 404: **no se genera ningún alias con la forma con fecha.**
 - Las URLs en inglés sí usan `/en/`.
-- Los cross-links entre posts del plan se escriben como `[[A1-03]]` durante el drafting y se resuelven a `[texto humano](/posts/YYYY-MM-DD-slug-real/)` en el momento de publicar.
+- Los cross-links entre posts del plan se escriben como `[[A1-03]]` durante el drafting y se resuelven a `[texto humano](/posts/slug-real/)` —sin fecha— en el momento de publicar.
+- **Verificar antes de publicar**: compilar a un directorio aparte (`hugo -d /tmp/check`) y confirmar que existe el `index.html` de cada destino enlazado. En la serie J-10 aparecieron 18 enlaces rotos por este motivo, todos escritos siguiendo el ejemplo equivocado que había en esta misma sección.
 
 ### Imágenes
 
@@ -148,7 +150,7 @@ Todos los posts publicados usan **page bundle** con hero image (`featured_image`
 
 El sitio no carga mermaid.js por defecto — hay que pedirlo explícitamente:
 
-- Agregar `mermaid: true` al frontmatter del post. Eso activa `layouts/partials/hooks/body-end.html` (ver `CLAUDE.md` → Architecture), que inyecta mermaid.js desde CDN y convierte cada fence ` ```mermaid ` en un diagrama vivo.
+- Agregar `mermaid: true` al frontmatter del post. Eso activa `layouts/partials/hooks/body-end.html` (ver `Claude.md` → Architecture), que inyecta mermaid.js desde CDN y convierte cada fence ` ```mermaid ` en un diagrama vivo.
 - Sin ese flag, un fence ` ```mermaid ` se renderiza como código plano sin resaltar — no rompe la build, pero tampoco dibuja nada.
 - Patrón real: el post de Prolog (`soy-mi-propio-abuelo-prolog`) usa dos diagramas en un apéndice — uno con los hechos base (líneas negras) y otro con las conclusiones derivadas (líneas rojas, con los nodos que cierran el lazo resaltados en naranja vía `classDef` + `class`). Antes de un diagrama denso (muchas aristas cruzadas), conviene separarlo del diagrama de hechos base en vez de mezclar todo en uno solo — ver el mismo post para el ejemplo.
 - Validar la sintaxis de un diagrama antes de pegarlo (p. ej. codificando el `.mmd` en base64 y pidiendo el SVG a `https://mermaid.ink/svg/<base64>`) evita descubrir un error de sintaxis recién al mirar el post publicado.
@@ -283,7 +285,7 @@ Cada entrada del plan vive en un archivo `draft-*.md` propio bajo la carpeta de 
 
 **Concepto de la serie:** los textos y charlas que cambian la manera de pensar sobre lo que hacemos. Kay, Hickey, Beck, Dijkstra. No "filosofía" en el sentido vacío sino: ¿qué es realmente esto que llamamos "ingeniería"?
 
-- **C-01** — [¿"Ingeniería de software" es un oxímoron?](/posts/2026-04-14-ingenieria-software-oximoron/) ✅ **publicado 2026-04-14**
+- **C-01** — [¿"Ingeniería de software" es un oxímoron?](/posts/ingenieria-software-oximoron/) ✅ **publicado 2026-04-14**
 - **C-02** — [Simple no es lo mismo que fácil (Rich Hickey)](filosofia/draft-simple-no-es-facil-hickey.md)
 - **C-03** — [Tidy First: limpiar antes de cambiar (Kent Beck)](filosofia/draft-tidy-first-kent-beck.md)
 - **C-04** — [TDD bass drop: cuando el test rojo te da dopamina](filosofia/draft-tdd-bass-drop-dopamina.md)
@@ -450,6 +452,10 @@ Cada entrada del plan vive en un archivo `draft-*.md` propio bajo la carpeta de 
 - **J-07** — [Relevamiento de departamentos: el script Python que imprimía una etiqueta por unidad](nerd/draft-relevamiento-deptos-etiquetas.md) ⚠️ *viejo 2016*
 - **J-08** — [IBM MVS, Hercules y los jobs JCL que escribí para sentir cómo era 1970](nerd/draft-mvs-hercules-jcl-sentir-1970.md)
 - **J-09** — ["Look both ways before crossing a one-way street" — la paradoja de Doug Linder](nerd/draft-doug-linder-cruzar-calle-una-via.md) 🌱 *cosecha*
+- **J-10** — [Serie «Sicología sin humo de tabaco»](nerd/draft-sicologia-sin-humo-de-tabaco-segun-chatgpt.md) ✍️ **escrita 2026-08-02, sin publicar — un draft, tres posts.** Secuela de [«Soplar humo de tabaco»](/posts/soplar-humo-de-tabaco/). Se dividió por argumento (opción B) el 2026-08-02:
+  1. **[El termómetro de la Psicología](/posts/el-termometro-de-la-psicologia/)** — la tesis. Los dos disparadores pedagógicos (sicopedagogía y el salto de Freire), el criterio de la temperatura, la vara de la reproducibilidad, Freud y Jung, y siete casos de daño documentado. 5.841 palabras, 46 footnotes. Hero listo.
+  2. **[…según ChatGPT](/posts/sicologia-sin-humo-de-tabaco-segun-chatgpt/)** — la conversación de octubre de 2025 verbatim, la tabla dada vuelta y la sicofancia. 5.153 palabras, 15 footnotes. Hero listo.
+  3. **[…según Claude](/posts/sicologia-sin-humo-de-tabaco-segun-claude/)** — los mismos cuatro prompts a otro modelo, con su advertencia metodológica. 1.974 palabras, 12 footnotes. **Falta el hero.**
 
 ---
 

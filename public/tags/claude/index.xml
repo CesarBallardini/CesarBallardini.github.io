@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Claude on katra</title>
+		<link>https://katra.ballardini.com.ar/tags/claude/</link>
+		<description>Recent content in Claude on katra</description>
+		<generator>Hugo</generator>
+		<language>es-AR</language>
+		
+		
+		
+			<copyright>César Ballardini</copyright>
+		
+		
+			<lastBuildDate>Sun, 02 Aug 2026 00:00:00 -0300</lastBuildDate>
+		
+			<atom:link href="https://katra.ballardini.com.ar/tags/claude/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Sicología sin humo de tabaco en el trasero, según Claude</title>
+				<link>https://katra.ballardini.com.ar/posts/sicologia-sin-humo-de-tabaco-segun-claude/</link>
+				<pubDate>Sun, 02 Aug 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/posts/sicologia-sin-humo-de-tabaco-segun-claude/</guid>
+				<description>&lt;p&gt;⚠️ &lt;em&gt;Curiosidad nerd lateral — esto no es ciencia de la computación. Es el apéndice de otro post.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;Este post es la cola de &lt;a href=&#34;https://katra.ballardini.com.ar/posts/sicologia-sin-humo-de-tabaco-segun-chatgpt/&#34;&gt;«Sicología sin humo de tabaco en el trasero, según ChatGPT»&lt;/a&gt;. Ahí conté que en octubre de 2025 le hice a ChatGPT cuatro prompts encadenados para que le sacara a la sicología todo concepto sin instrumento, que cumplió las cuatro veces sin discutirme nada.&lt;/p&gt;&#xA;&lt;p&gt;Al escribir aquel post quedó una pregunta obvia dando vueltas: &lt;strong&gt;¿y si le hago los mismos cuatro prompts a otro modelo?&lt;/strong&gt;&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

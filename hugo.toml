@@ -96,4 +96,14 @@ username = "cesar.ballardini"
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+    # Passthrough: protege los delimitadores de LaTeX del parser de markdown,
+    # para que los `_`, `\` y `{}` lleguen intactos al renderizador de fórmulas.
+    # Sin esto, `k_B` se convierte en cursiva y la fórmula sale rota.
+    # Las fórmulas se renderizan en tiempo de build (ver layouts/_markup/render-passthrough.html):
+    # no hay JavaScript ni CDN involucrados.
+    [markup.goldmark.extensions.passthrough]
+      enable = true
+      [markup.goldmark.extensions.passthrough.delimiters]
+        block = [['\[', '\]'], ['$$', '$$']]
+        inline = [['\(', '\)']]
 
