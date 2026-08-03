@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>System 370 on katra</title>
+		<link>https://katra.ballardini.com.ar/tags/system-370/</link>
+		<description>Recent content in System 370 on katra</description>
+		<generator>Hugo</generator>
+		<language>es-AR</language>
+		
+		
+		
+			<copyright>César Ballardini</copyright>
+		
+		
+			<lastBuildDate>Mon, 03 Aug 2026 00:00:00 -0300</lastBuildDate>
+		
+			<atom:link href="https://katra.ballardini.com.ar/tags/system-370/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Construir el panel de control de un IBM System/370</title>
+				<link>https://katra.ballardini.com.ar/posts/panel-replica-ibm-370-145/</link>
+				<pubDate>Mon, 03 Aug 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/posts/panel-replica-ibm-370-145/</guid>
+				<description>&lt;p&gt;⚠️ &lt;em&gt;Curiosidad nerd lateral — esto no es ciencia de la computación. Es un fierro con luces.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;Hay una forma de que una computadora te mire de vuelta, y es el panel de control. No la pantalla: el panel. La fila de lámparas que parpadea con el contenido de un registro, la llave que detiene el procesador a mitad de una instrucción, el disco hexadecimal donde marcás la dirección del dispositivo desde el que querés arrancar. La imagen que encabeza este post es exactamente eso: la consola de un IBM System/370 Modelo 145, la máquina de la que trata todo lo que sigue.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

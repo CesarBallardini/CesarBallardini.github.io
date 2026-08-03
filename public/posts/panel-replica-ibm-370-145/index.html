@@ -1,0 +1,2083 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Construir el panel de control de un IBM System/370 | katra</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Una réplica física del panel de operador de un IBM 370/145, con lámparas reales y llaves que hacen algo, manejando Hercules y MVS 3.8j sobre una Raspberry Pi 5.">
+    <meta name="generator" content="Hugo 0.164.0">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    <meta name="author" content="César Ballardini">
+    
+
+    <link rel="stylesheet" href="/ananke/css/main.e65ecad14ec45356cb0945e8ee25e1e1ae98048c45c1ff0abd042666c7303e53.css" integrity="sha256-5l7K0U7EU1bLCUXo7iXh4a6YBIxFwf8KvQQmZscwPlM=" crossorigin="anonymous">
+    <script>
+  (function () {
+    "use strict";
+
+    
+    
+    function revealButtons() {
+      var buttons = document.querySelectorAll(".code-block .code-copy[hidden]");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].hidden = false;
+      }
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", revealButtons);
+    } else {
+      revealButtons();
+    }
+
+    function flash(button) {
+      var label = button.querySelector(".code-copy-label");
+      var previous = label ? label.textContent : null;
+      button.classList.add("is-copied");
+      if (label) label.textContent = "Copied";
+      window.setTimeout(function () {
+        button.classList.remove("is-copied");
+        if (label && previous !== null) label.textContent = previous;
+      }, 2000);
+    }
+
+    function legacyCopy(text) {
+      var area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "absolute";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.select();
+      var ok = false;
+      try {
+        ok = document.execCommand("copy");
+      } catch (e) {
+        ok = false;
+      }
+      document.body.removeChild(area);
+      return ok;
+    }
+
+    function copyFrom(button) {
+      var container = button.closest(".code-block");
+      if (!container) return;
+      var pre = container.querySelector("pre");
+      if (!pre) return;
+      var source = pre.querySelector("code") || pre;
+      var text = source.innerText;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { flash(button); },
+          function () { if (legacyCopy(text)) flash(button); }
+        );
+      } else if (legacyCopy(text)) {
+        flash(button);
+      }
+    }
+
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest(".code-copy");
+      if (button) copyFrom(button);
+    });
+  })();
+</script>
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://katra.ballardini.com.ar/posts/panel-replica-ibm-370-145/">
+    
+
+    
+    
+    <meta property="og:url" content="https://katra.ballardini.com.ar/posts/panel-replica-ibm-370-145/">
+	<meta property="og:site_name" content="katra">
+	<meta property="og:title" content="Construir el panel de control de un IBM System/370">
+	<meta property="og:description" content="Una réplica física del panel de operador de un IBM 370/145, con lámparas reales y llaves que hacen algo, manejando Hercules y MVS 3.8j sobre una Raspberry Pi 5.">
+	<meta property="og:locale" content="es_AR">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-08-03T00:00:00-03:00">
+		<meta property="article:modified_time" content="2026-08-03T00:00:00-03:00">
+		<meta property="article:tag" content="IBM">
+		<meta property="article:tag" content="System 370">
+		<meta property="article:tag" content="Hercules">
+		<meta property="article:tag" content="MVS">
+		<meta property="article:tag" content="Arduino">
+		<meta property="article:tag" content="Raspberry Pi">
+
+	<meta itemprop="name" content="Construir el panel de control de un IBM System/370">
+	<meta itemprop="description" content="Una réplica física del panel de operador de un IBM 370/145, con lámparas reales y llaves que hacen algo, manejando Hercules y MVS 3.8j sobre una Raspberry Pi 5.">
+	<meta itemprop="datePublished" content="2026-08-03T00:00:00-03:00">
+	<meta itemprop="dateModified" content="2026-08-03T00:00:00-03:00">
+	<meta itemprop="wordCount" content="8645">
+	<meta itemprop="keywords" content="IBM,System 370,Hercules,MVS,Arduino,Raspberry Pi,Electronica,Retrocomputacion,Nerd Lateral">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Construir el panel de control de un IBM System/370">
+	<meta name="twitter:description" content="Una réplica física del panel de operador de un IBM 370/145, con lámparas reales y llaves que hacen algo, manejando Hercules y MVS 3.8j sobre una Raspberry Pi 5.">
+
+      
+      
+    
+	
+      <style>/* ===================================================================
+   Table Styles
+   Applied via page_css: ['tables.css'] in frontmatter
+   =================================================================== */
+
+article table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+}
+
+article th,
+article td {
+  border: 1px solid #ccc;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+article thead th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+  border-bottom-width: 2px;
+}
+
+article tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+</style>
+
+  </head><body class="ma0 avenir bg-near-white production is-page is-page page-2026-08-03-panel-replica-ibm-370-145">
+   
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+      
+        
+        
+      
+    
+  
+  
+    <style>
+      
+        
+          
+          @media screen and (min-width: 480px) {
+            #featured-image-a1890b048a85f455bef4dca704b738df { background-image: url('/posts/panel-replica-ibm-370-145/hero-panel-370_hu_2942f14444a1853c.jpg'); }
+          }
+        
+      
+        
+          
+          @media screen and (min-width: 960px) {
+            #featured-image-a1890b048a85f455bef4dca704b738df { background-image: url('/posts/panel-replica-ibm-370-145/hero-panel-370_hu_7446e4b02bbac407.jpg'); }
+          }
+        
+      
+        
+          
+          @media screen and (min-width: 1440px) {
+            #featured-image-a1890b048a85f455bef4dca704b738df { background-image: url('/posts/panel-replica-ibm-370-145/hero-panel-370_hu_c79ac81e0b23e5a4.jpg'); }
+          }
+        
+      
+        
+          
+          @media screen and (min-width: 1920px) {
+            #featured-image-a1890b048a85f455bef4dca704b738df { background-image: url('/posts/panel-replica-ibm-370-145/hero-panel-370_hu_605106bf82e41c89.jpg'); }
+          }
+        
+      
+    </style>
+  
+  <header id="featured-image-a1890b048a85f455bef4dca704b738df" class="cover bg-center" style="background-image: url('/posts/panel-replica-ibm-370-145/hero-panel-370_hu_2942f14444a1853c.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        katra
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/consultoria/" title="Consultoría pagina">
+              Consultoría
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/cv/" title="CV pagina">
+              CV
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/habilidades/" title="Habilidades Técnicas pagina">
+              Habilidades Técnicas
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/posts/" title="Entradas pagina">
+              Entradas
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="http://linkedin.com/in/cesar-ballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      </a><a href="https://x.com/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition x-twitter link dib z-999 pt3 pt0-l mr1"
+        title="follow on X - Opens in a new window"
+        aria-label="follow on X - Opens in a new window">
+      </a><a href="https://github.com/CesarBallardini/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            
+          </span></a></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">Construir el panel de control de un IBM System/370</div>
+          
+            <div class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
+              Una réplica física del panel de operador de un IBM 370/145, con lámparas reales y llaves que hacen algo, manejando Hercules y MVS 3.8j sobre una Raspberry Pi 5.
+            </div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+<main class="pb7" role="main">
+  
+
+  <article class="page-2026-08-03-panel-replica-ibm-370-145 flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu">
+    <a class="link dim" href="https://katra.ballardini.com.ar/posts/">Entradas</a>
+  </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fpanel-replica-ibm-370-145%2F&amp;subject=Construir&#43;el&#43;panel&#43;de&#43;control&#43;de&#43;un&#43;IBM&#43;System%2F370"
+        class="ananke-social-link email no-underline"
+        title="Share on Email" aria-label="Share on Email"
+        target="_blank" rel="nofollow noopener noreferrer">
+        </a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fpanel-replica-ibm-370-145%2F&amp;summary=%E2%9A%A0%EF%B8%8F&#43;Curiosidad&#43;nerd&#43;lateral&#43;%E2%80%94&#43;esto&#43;no&#43;es&#43;ciencia&#43;de&#43;la&#43;computaci%C3%B3n.&#43;Es&#43;un&#43;fierro&#43;con&#43;luces.%0AHay&#43;una&#43;forma&#43;de&#43;que&#43;una&#43;computadora&#43;te&#43;mire&#43;de&#43;vuelta%2C&#43;y&#43;es&#43;el&#43;panel&#43;de&#43;control.&#43;No&#43;la&#43;pantalla%3A&#43;el&#43;panel.&#43;La&#43;fila&#43;de&#43;l%C3%A1mparas&#43;que&#43;parpadea&#43;con&#43;el&#43;contenido&#43;de&#43;un&#43;registro%2C&#43;la&#43;llave&#43;que&#43;detiene&#43;el&#43;procesador&#43;a&#43;mitad&#43;de&#43;una&#43;instrucci%C3%B3n%2C&#43;el&#43;disco&#43;hexadecimal&#43;donde&#43;marc%C3%A1s&#43;la&#43;direcci%C3%B3n&#43;del&#43;dispositivo&#43;desde&#43;el&#43;que&#43;quer%C3%A9s&#43;arrancar.&#43;La&#43;imagen&#43;que&#43;encabeza&#43;este&#43;post&#43;es&#43;exactamente&#43;eso%3A&#43;la&#43;consola&#43;de&#43;un&#43;IBM&#43;System%2F370&#43;Modelo&#43;145%2C&#43;la&#43;m%C3%A1quina&#43;de&#43;la&#43;que&#43;trata&#43;todo&#43;lo&#43;que&#43;sigue.1%0A&amp;title=Construir&#43;el&#43;panel&#43;de&#43;control&#43;de&#43;un&#43;IBM&#43;System%2F370&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fpanel-replica-ibm-370-145%2F"
+        class="ananke-social-link linkedin no-underline"
+        title="Share on LinkedIn" aria-label="Share on LinkedIn"
+        target="_blank" rel="nofollow noopener noreferrer">
+        </a><a href="https://twitter.com/intent/tweet/?&amp;text=%E2%9A%A0%EF%B8%8F&#43;Curiosidad&#43;nerd&#43;lateral&#43;%E2%80%94&#43;esto&#43;no&#43;es&#43;ciencia&#43;de&#43;la&#43;computaci%C3%B3n.&#43;Es&#43;un&#43;fierro&#43;con&#43;luces.%0AHay&#43;una&#43;forma&#43;de&#43;que&#43;una&#43;computadora&#43;te&#43;mire&#43;de&#43;vuelta%2C&#43;y&#43;es&#43;el&#43;panel&#43;de&#43;control.&#43;No&#43;la&#43;pantalla%3A&#43;el&#43;panel.&#43;La&#43;fila&#43;de&#43;l%C3%A1mparas&#43;que&#43;parpadea&#43;con&#43;el&#43;contenido&#43;de&#43;un&#43;registro%2C&#43;la&#43;llave&#43;que&#43;detiene&#43;el&#43;procesador&#43;a&#43;mitad&#43;de&#43;una&#43;instrucci%C3%B3n%2C&#43;el&#43;disco&#43;hexadecimal&#43;donde&#43;marc%C3%A1s&#43;la&#43;direcci%C3%B3n&#43;del&#43;dispositivo&#43;desde&#43;el&#43;que&#43;quer%C3%A9s&#43;arrancar.&#43;La&#43;imagen&#43;que&#43;encabeza&#43;este&#43;post&#43;es&#43;exactamente&#43;eso%3A&#43;la&#43;consola&#43;de&#43;un&#43;IBM&#43;System%2F370&#43;Modelo&#43;145%2C&#43;la&#43;m%C3%A1quina&#43;de&#43;la&#43;que&#43;trata&#43;todo&#43;lo&#43;que&#43;sigue.1%0A&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fpanel-replica-ibm-370-145%2F"
+        class="ananke-social-link x-twitter no-underline"
+        title="Share on X" aria-label="Share on X"
+        target="_blank" rel="nofollow noopener noreferrer">
+        </a><a href="%25!s%28%3cnil%3e%29?"
+        class="ananke-social-link github no-underline"
+        title="Share on GitHub" aria-label="Share on GitHub"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                
+              </span></a></div>
+<h1 class="f1 athelas mt3 mb1">Construir el panel de control de un IBM System/370</h1>
+      
+      <p class="tracked"><strong>César Ballardini</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-08-03T00:00:00-03:00">03 de agosto de 2026</time>
+      
+
+      
+      
+        
+        
+        <span class="f6 mv4 dib tracked"> - Lectura en 41 minutos </span>
+        <span class="f6 mv4 dib tracked"> - 8645 palabras </span>
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><p>⚠️ <em>Curiosidad nerd lateral — esto no es ciencia de la computación. Es un fierro con luces.</em></p>
+<p>Hay una forma de que una computadora te mire de vuelta, y es el panel de control. No la pantalla: el panel. La fila de lámparas que parpadea con el contenido de un registro, la llave que detiene el procesador a mitad de una instrucción, el disco hexadecimal donde marcás la dirección del dispositivo desde el que querés arrancar. La imagen que encabeza este post es exactamente eso: la consola de un IBM System/370 Modelo 145, la máquina de la que trata todo lo que sigue.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p>Eso desapareció alrededor de 1975. La consola dejó de ser un tablero y pasó a ser una terminal de video: en el IBM 3033, el sucesor directo de la máquina de la que trata este post, la «consola» ya era un escritorio en L con dos pantallas verdes.</p>
+<p>Este post es sobre reconstruir uno. No una foto ni un video de fondo: un panel físico, con lámparas que se encienden porque un emulador ejecutando MVS 3.8j decidió encenderlas, y con llaves que cuando las movés cambian lo que la máquina hace.</p>
+<h2 id="el-concepto-un-simulador-con-panel-réplica">El concepto: un simulador con panel réplica</h2>
+<p>La idea tiene tres piezas y una regla.</p>
+<p>Las piezas: un <strong>panel de acrílico cortado a láser</strong> que imita la consola original; un <strong>Arduino</strong> que enciende las lámparas y lee botones, llaves y discos rotativos; y una <strong>Raspberry Pi 5</strong> que corre el emulador <strong>Hercules</strong> con <strong>MVS Turnkey</strong> adentro. El Arduino se conecta a la Pi por <strong>UART</strong>, directo entre puertos serie — más abajo está por qué no por USB.</p>
+<p>La regla: <strong>máxima fidelidad</strong>. Todas las lámparas, todos los botones, todas las llaves.</p>
+<p>Y de esa regla sale inmediatamente el problema central del proyecto, que conviene enunciar antes que cualquier otra cosa:</p>
+<blockquote>
+<p><strong>Hercules es un emulador de arquitectura, no de microarquitectura.</strong></p>
+</blockquote>
+<p>Hercules te da la PSW, la dirección de instrucción, el estado del procesador —corriendo, detenido, en espera—, el estado de IPL, los registros, el almacenamiento, la actividad de dispositivos y los MIPS. No te da la ALU, ni el microcódigo, ni las líneas de bus y de almacenamiento local que las posiciones de los <em>rollers</em> mostraban en la máquina real.</p>
+<p>Eso significa que <strong>algunas lámparas del panel no se pueden encender honestamente</strong>. La decisión del proyecto es decirlo en voz alta en la documentación en vez de insinuar fidelidad completa — y más abajo hay una sección entera dedicada a qué hacer con ellas.</p>
+<h2 id="hercules-sobre-gnulinux-y-sobre-raspberry-pi-5">Hercules sobre GNU/Linux y sobre Raspberry Pi 5</h2>
+<p>Lo único que los documentos del proyecto fijan sobre la configuración es este par de líneas, y es más importante de lo que parece:</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <pre tabindex="0"><code>ARCHLVL   S/370        # REQUERIDO para MVS 3.8j — funcional, no cosmético
+CPUMODEL  0145         # cosmético: sólo cambia lo que reporta STIDP</code></pre>
+  </div><p><code>ARCHLVL</code> cambia de verdad la máquina emulada: el conjunto de instrucciones y el modo de direccionamiento. <code>CPUMODEL</code> <strong>no cambia nada</strong>. La documentación de IBM dice que define «un valor puramente cosmético»: fija el tipo de máquina que devuelve la instrucción <code>STIDP</code> y nada más.</p>
+<p>Eso tiene una consecuencia liberadora para este proyecto. MVS Turnkey viene configurado como <code>CPUMODEL 3033</code>; cambiarlo a <code>0145</code> hace que MVS reporte un 370/145 con <strong>cero diferencia de comportamiento</strong>. Es decir: <strong>la elección del panel es completamente independiente de lo que Hercules reporta</strong>. Se puede construir el panel de la máquina que uno quiera.</p>
+<h2 id="mvs-38j-turnkey-sobre-la-raspberry-pi-5">MVS 3.8j turnkey sobre la Raspberry Pi 5</h2>
+<p>MVS 3.8j es la última versión de OS/VS2 MVS que quedó en dominio público, y por eso es la que corre todo el mundo en emuladores.</p>
+<h3 id="por-qué-se-puede-usar">Por qué se puede usar</h3>
+<p>Conviene desarmar esto, porque circula una versión equivocada: <strong>nadie obligó a IBM a entregar el código fuente.</strong> No hubo orden judicial. Lo que hubo fueron dos cosas distintas que se suelen mezclar.</p>
+<p><strong>La primera es antimonopolio, y es indirecta.</strong> El Departamento de Justicia de los Estados Unidos demandó a IBM el <strong>17 de enero de 1969</strong> ante el tribunal del Distrito Sur de Nueva York, por monopolizar el mercado de computadoras de propósito general — sección 2 de la Sherman Act.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> Bajo esa presión, en el verano de 1969 IBM <strong>desagregó</strong> («unbundling») lo que hasta entonces vendía junto con el hardware, y partió su software en dos categorías: <strong>System Control Programming</strong>, que siguió sin cargo, y <strong>Program Products</strong>, que pasaron a cobrarse.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> El sistema operativo quedó del lado gratuito. El juicio, dicho sea de paso, duró trece años y terminó en 1982 con el propio Departamento de Justicia declarándolo «sin mérito» y abandonándolo.</p>
+<p><strong>La segunda es la que realmente importa, y es un accidente del régimen de copyright de la época.</strong> Hasta la ley de 1978, en Estados Unidos una obra publicada <strong>sin aviso de copyright</strong> caía automáticamente en el dominio público. IBM distribuyó estas versiones sin ese aviso — y su política corporativa es no reclamar derechos sobre el software que distribuyó de ese modo.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></p>
+<p>O sea: MVS 3.8j no se liberó, se <strong>escapó</strong>. La combinación de un producto sin cargo, distribuido sin la formalidad que la ley exigía, en el último momento en que esa formalidad era obligatoria. La versión 3.8 fue la última bajo ese régimen; lo que vino después ya estuvo protegido y licenciado, y por eso la emulación doméstica de mainframes se quedó congelada en 1981. Un sistema <strong>turnkey</strong> —TK4- o TK5— es una distribución preempaquetada: MVS 3.8j ya generado, con los volúmenes armados y la configuración de Hercules lista, para arrancar sin pasar por una instalación desde cero que en su momento llevaba días.</p>
+<p>Un detalle de mantenimiento que ya cuesta encontrar: el sitio original de TK4- en <code>wotho.ethz.ch</code> está <strong>caído</strong> —no resuelve, así que no tiene sentido enlazarlo—. El mirror vivo, verificado el 2026-08-02, es <strong><a href="https://wotho.pebble-beach.ch/tk4-/">wotho.pebble-beach.ch/tk4-</a></strong>.</p>
+<h2 id="discos-en-ram-para-los-volúmenes">Discos en RAM para los volúmenes</h2>
+<p>Los volúmenes de MVS son archivos, y una Pi 5 de 8 GB tiene bastante más RAM que la que necesitan. La tentación es obvia: montarlos en <code>tmpfs</code> y sacarse de encima la latencia de la tarjeta SD, que en un emulador de mainframe es la fuente de lentitud más visible.</p>
+<p>Es una decisión de diseño que el proyecto <strong>todavía no tiene tomada</strong>, y no por falta de ganas sino porque depende de un número que no está medido: cuánta RAM ocupan realmente los volúmenes de TK4- o TK5. De ese número sale todo lo demás — si entran o no en una Pi de 4 GB, si conviene poner todo en RAM o sólo los volúmenes de lectura y dejar los de escritura en almacenamiento persistente.</p>
+<p>Lo que sí se puede decir sin medir nada es cuál es el riesgo, y no es el que uno esperaría. MVS no usa los volúmenes como un caché: escribe en ellos continuamente — el spool, los catálogos, los datasets temporales. Con los volúmenes en RAM, cada corte de energía no cuesta rendimiento sino <strong>el trabajo entero</strong>.</p>
+<p>Y ahí engancha con una restricción que el inventario del panel ya fija por otras razones: la tecla <strong>POWER OFF</strong> debe disparar un apagado limpio de la Raspberry Pi, <strong>nunca un corte abrupto</strong>. Lo mismo vale para el interruptor de emergencia. Sin discos en RAM eso es una buena práctica; con discos en RAM pasa a ser lo único que separa al sistema de perderlo todo. La conclusión práctica es que las dos decisiones no son independientes: quien elija <code>tmpfs</code> está eligiendo también que el botón de apagado del panel sea software y no un contacto que corte la alimentación.</p>
+<h2 id="por-qué-un-370145-y-no-un-360">Por qué un 370/145 y no un 360</h2>
+<p>Ésta es la decisión mejor documentada del proyecto, y está tomada leyendo los manuales originales de IBM. La máquina objetivo es el <strong>IBM System/370 Modelo 145</strong>, por tres razones en orden de peso.</p>
+<p><strong>Primera: la elección es libre.</strong> Como vimos, <code>CPUMODEL</code> es cosmético. El panel no está atado a lo que el emulador reporta, así que se puede elegir por criterios de panel y no de compatibilidad.</p>
+<p><strong>Segunda, y es la decisiva: el /145 tiene la mejor proporción de lámparas realmente excitables.</strong> Tiene sólo dos <em>roller switches</em>, y el manual <code>GA24-3554-0</code> marca al pie que las posiciones 2 a 8 del A-REGISTER DISPLAY y las 3 a 8 del DISPLAY ASSEMBLER OUT son «para uso de servicio» — microarquitectura del 3145, sin equivalente en Hercules. Los modelos /155, /165 y /168 tienen muchas más lámparas, y casi todas son de las que no se pueden encender.</p>
+<p>El número que resume todo: <strong>de 16 posiciones de roller, 2 llevan contenido arquitectónico útil al operador — y esas 2 sí se pueden manejar.</strong></p>
+<p><strong>Tercera: es el que mejor está documentado en Bitsavers.</strong> Hay manual de procedimientos de operación, un manual de teoría y mantenimiento de 57 MB, y catálogo de partes. El 3033, en comparación, tiene tres archivos y ningún manual de campo.</p>
+<p>Y una advertencia que ahorra un error caro: <strong>no hay que replicar la consola del 3033.</strong> Ese modelo usaba el 3036, un escritorio en L con dos estaciones de trabajo 3277 y procesadores de servicio. Replicarlo fielmente da pantallas verdes, no luces.</p>
+<h2 id="el-panel-qué-significan-las-filas-de-lámparas-y-las-llaves">El panel: qué significan las filas de lámparas y las llaves</h2>
+<p>El panel está construido sobre un <strong>módulo de 18 posiciones</strong> — un hallazgo del relevamiento visual que ordena todo el diseño de la gráfica, porque da un paso de grilla único y repetido.</p>
+<p>Otro hallazgo que cambia la construcción: <strong>las posiciones sin etiqueta son posiciones de lámpara reales, no panel ciego.</strong> Están dibujadas del mismo tamaño que las etiquetadas: son portalámparas físicamente presentes para funciones no instaladas. Hay que construir las 18 de cada fila e iluminar sólo las etiquetadas.</p>
+<h3 id="las-cinco-lámparas-que-importan">Las cinco lámparas que importan</h3>
+<p>La fila <code>SYS  MAN  WAIT  TEST  LOAD</code> es la que un visitante mira primero, y <strong>las cinco se pueden manejar</strong>:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Lámpara</th>
+					<th>Qué indica</th>
+					<th>De dónde sale</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>SYSTEM</strong></td>
+					<td>Operaciones de CPU en curso</td>
+					<td>Hercules ejecutando</td>
+			</tr>
+			<tr>
+					<td><strong>MANUAL</strong></td>
+					<td>Reloj de CPU detenido o <em>soft stop</em>. Sólo con MANUAL encendida se pueden hacer store/display manuales</td>
+					<td>Hercules detenido</td>
+			</tr>
+			<tr>
+					<td><strong>WAIT</strong></td>
+					<td>Estado de espera: reloj corriendo, sin procesar instrucciones</td>
+					<td><strong>Bit de wait de la PSW</strong></td>
+			</tr>
+			<tr>
+					<td><strong>TEST</strong></td>
+					<td>Alguna llave fuera de su posición normal</td>
+					<td><strong>OR de cuatro llaves propias — no necesita datos del emulador</strong></td>
+			</tr>
+			<tr>
+					<td><strong>LOAD</strong></td>
+					<td>IPL en curso</td>
+					<td>Se enciende con la tecla LOAD, se apaga al cargar la PSW inicial</td>
+			</tr>
+	</tbody>
+</table>
+<p>La lámpara <strong>TEST</strong> merece un párrafo aparte porque es un regalo del diseño original. IBM la define como encendida cuando cualquiera de las llaves RATE, CHECK CONTROL, DIAGNOSTIC/CONSOLE FILE CONTROL o ADDRESS COMPARE CONTROL no está en posición normal. Es un OR puro de posiciones del propio panel: <strong>se calcula en el Arduino y no requiere un solo byte del emulador.</strong></p>
+<h3 id="los-bancos-de-lámparas">Los bancos de lámparas</h3>
+<table>
+	<thead>
+			<tr>
+					<th>Banco</th>
+					<th>Posiciones</th>
+					<th>Etiquetadas</th>
+					<th>Color</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>System Checks — fila 1</td>
+					<td>18</td>
+					<td>12</td>
+					<td>todas rojas</td>
+			</tr>
+			<tr>
+					<td>System Checks — fila 2</td>
+					<td>18</td>
+					<td>7</td>
+					<td>todas rojas</td>
+			</tr>
+			<tr>
+					<td>CPU Status</td>
+					<td>18</td>
+					<td>16</td>
+					<td>2 ámbar, resto blancas</td>
+			</tr>
+			<tr>
+					<td>Console File</td>
+					<td>18</td>
+					<td>16</td>
+					<td>6 rojas, 1 ámbar, resto blancas</td>
+			</tr>
+			<tr>
+					<td>System Indicators</td>
+					<td>5</td>
+					<td>5</td>
+					<td>1 ámbar, resto blancas</td>
+			</tr>
+			<tr>
+					<td>Display Assembler Out (roller)</td>
+					<td>36</td>
+					<td>36</td>
+					<td>4 ámbar, 32 blancas</td>
+			</tr>
+			<tr>
+					<td>A-Register Display (roller)</td>
+					<td>36</td>
+					<td>36</td>
+					<td>4 ámbar, 32 blancas</td>
+			</tr>
+			<tr>
+					<td><strong>Subtotal</strong></td>
+					<td><strong>149</strong></td>
+					<td><strong>128</strong></td>
+					<td></td>
+			</tr>
+	</tbody>
+</table>
+<p>IBM <strong>codifica por color las lentes</strong>: rojo para todo lo que es falla, ámbar para TEST, TOD CLOCK INVLD, IMPL REQD y <strong>todas las lámparas de paridad</strong>, blanco para el resto. Es directamente accionable: <strong>hay que comprar tres colores de LED, no uno.</strong></p>
+<p>Los bancos de rollers <strong>llevan lámpara de paridad</strong>: cada byte se muestra como <code>P 0 1 2 3 │ 4 5 6 7</code>, o sea <strong>nueve lámparas por byte y 36 por banco</strong>, no 32.</p>
+<p>Conviene saberlo si vas a leer el manual, porque ahí las dos fuentes no coinciden: las tablas de contenido listan sólo <code>Byte 0…Byte 3</code>, mientras que la gráfica del panel muestra la paridad. <strong>Manda la gráfica.</strong> Y en un PDF escaneado eso significa mirarlo, no extraerle el texto — la capa de texto de estos manuales reproduce las tablas, no los dibujos.</p>
+<h3 id="la-línea-más-valiosa-del-manual">La línea más valiosa del manual</h3>
+<p>De las dos posiciones de roller que sirven, la del A-Register Display trae esto:</p>
+<blockquote>
+<p>Cuando la CPU está en <em>soft stop</em> (indicador MANUAL encendido), los indicadores muestran la dirección de la instrucción siguiente.</p>
+</blockquote>
+<p>Es la frase más útil de todo el manual para este proyecto: significa que el banco principal de lámparas muestra <strong>la dirección de instrucción de la PSW</strong> cada vez que la máquina se detiene — que es exactamente lo que Hercules regala en cada breakpoint y en cada paso simple.</p>
+<h3 id="las-llaves">Las llaves</h3>
+<p>Hay cuatro familias de entradas, y <strong>dos de ellas se codifican de manera distinta</strong>, que es lo que decide el presupuesto de líneas.</p>
+<p><strong>Las cinco rotativas de modo</strong>, con sus 33 detentes. Marco cuáles IBM documenta para el cliente y cuáles reserva al personal de servicio, porque esa distinción decide qué se puede manejar de verdad desde Hercules:</p>
+<p><strong>ADDRESS COMPARE — 9 detentes.</strong> Cuándo se dispara la comparación con la dirección marcada en las ruedas CDEFGH. La llave tiene dos grupos, <code>LOGIC ADR</code> y <code>REAL ADR</code>, y por eso <code>ANY</code> e <code>I COUNTER</code> aparecen dos veces: una por cada tipo de dirección.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Detente</th>
+					<th>Qué hace</th>
+					<th>Uso</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>ANY</code> <em>(real)</em></td>
+					<td>Cualquier acceso a almacenamiento</td>
+					<td>Cliente</td>
+			</tr>
+			<tr>
+					<td><code>DATA STORE</code></td>
+					<td>Sólo cuando se escribe un dato</td>
+					<td>Cliente</td>
+			</tr>
+			<tr>
+					<td><code>I/O</code></td>
+					<td>Sólo en accesos de entrada/salida</td>
+					<td>Cliente</td>
+			</tr>
+			<tr>
+					<td><code>I COUNTER</code> <em>(real)</em></td>
+					<td>Sólo en búsqueda de instrucción</td>
+					<td>Cliente</td>
+			</tr>
+			<tr>
+					<td><code>DATA COMP TRAP</code></td>
+					<td>Para averiguar qué instrucción modifica una posición</td>
+					<td>Cliente</td>
+			</tr>
+			<tr>
+					<td><code>ANY</code> <em>(lógica)</em></td>
+					<td>Cualquier acceso, con dirección lógica</td>
+					<td>Cliente</td>
+			</tr>
+			<tr>
+					<td><code>I COUNTER</code> <em>(lógica)</em></td>
+					<td>Búsqueda de instrucción, dirección lógica</td>
+					<td>Cliente</td>
+			</tr>
+			<tr>
+					<td><code>CTRL WORD ADR TRAP</code></td>
+					<td>—</td>
+					<td>Servicio</td>
+			</tr>
+			<tr>
+					<td><code>CTRL WORD ADR</code></td>
+					<td>—</td>
+					<td>Servicio</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>STORAGE SELECT — 9 detentes.</strong> Qué memoria se lee o escribe en las operaciones manuales. El grupo <code>OR EXT REG</code> abarca desde <code>MPX CHAN</code> hasta <code>CHAN 4</code>.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Detente</th>
+					<th>Qué hace</th>
+					<th>Uso</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>MAIN STORAGE</code></td>
+					<td>Almacenamiento principal</td>
+					<td>Cliente</td>
+			</tr>
+			<tr>
+					<td><code>LOCAL STORAGE</code></td>
+					<td>Registros de propósito general y de punto flotante</td>
+					<td>Cliente</td>
+			</tr>
+			<tr>
+					<td><code>CONTROL STORAGE</code></td>
+					<td>Almacenamiento de control — microcódigo</td>
+					<td>Servicio</td>
+			</tr>
+			<tr>
+					<td><code>EXP LOCAL STOR REGS</code></td>
+					<td>—</td>
+					<td>Servicio</td>
+			</tr>
+			<tr>
+					<td><code>CHAN 1</code> · <code>CHAN 2</code> · <code>CHAN 3</code> · <code>CHAN 4</code></td>
+					<td>Registros externos de cada canal selector</td>
+					<td>Servicio</td>
+			</tr>
+			<tr>
+					<td><code>MPX CHAN</code></td>
+					<td>Canal multiplexor</td>
+					<td>Servicio</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>RATE — 3 detentes.</strong> El mejor mapeo funcional de todo el panel.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Detente</th>
+					<th>Qué hace</th>
+					<th>Uso</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>PROCESS</code></td>
+					<td>Procesamiento normal — Hercules corriendo libre</td>
+					<td>Cliente</td>
+			</tr>
+			<tr>
+					<td><code>INSTRUCTION STEP</code></td>
+					<td>Una instrucción completa por cada pulsación de START</td>
+					<td>Cliente</td>
+			</tr>
+			<tr>
+					<td><code>SINGLE CYCLE / HARD STOP</code></td>
+					<td>Paso por microciclo</td>
+					<td>Servicio</td>
+			</tr>
+	</tbody>
+</table>
+<p>⚠️ Son <strong>tres</strong> detentes, no cuatro: <code>SINGLE CYCLE</code> y <code>HARD STOP</code> comparten posición, con la leyenda en dos renglones.</p>
+<p><strong>CHECK CONTROL — 5 detentes.</strong> Qué hace la máquina cuando detecta un error de hardware.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Detente</th>
+					<th>Qué hace</th>
+					<th>Uso</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>PROCESS</code></td>
+					<td>Normal, con un sistema operativo que registra el volcado automáticamente</td>
+					<td>Cliente</td>
+			</tr>
+			<tr>
+					<td><code>STOP AFTER LOG</code></td>
+					<td>Detiene tras volcar el diagnóstico y enciende <code>LOG PRES</code></td>
+					<td>Cliente</td>
+			</tr>
+			<tr>
+					<td><code>NO RETRY</code></td>
+					<td>Sin reintento</td>
+					<td>Servicio</td>
+			</tr>
+			<tr>
+					<td><code>HARD STOP</code></td>
+					<td>Detención inmediata</td>
+					<td>Servicio</td>
+			</tr>
+			<tr>
+					<td><code>DISABLE</code></td>
+					<td>Deshabilitado</td>
+					<td>Servicio</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>DIAGNOSTIC / CONSOLE FILE CONTROL — 7 detentes.</strong> Diagnóstico y carga desde el disquete de microcódigo. Dos grupos: <code>STORAGE</code> y <code>CNSL FILE</code>.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Detente</th>
+					<th>Qué hace</th>
+					<th>Uso</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>PROCESS / IMPL</code></td>
+					<td>Normal, y carga desde el console file</td>
+					<td>Cliente</td>
+			</tr>
+			<tr>
+					<td><code>SCAN</code> · <code>READ</code></td>
+					<td>Lectura de almacenamiento</td>
+					<td>Servicio</td>
+			</tr>
+			<tr>
+					<td><code>RECYCLE</code> · <code>CE MODE</code></td>
+					<td>Modos de mantenimiento</td>
+					<td>Servicio</td>
+			</tr>
+			<tr>
+					<td><code>EXE CTRL WORD SWS A-H</code></td>
+					<td>Ejecuta la palabra de control marcada en las ruedas</td>
+					<td>Servicio</td>
+			</tr>
+			<tr>
+					<td><code>LOAD SWS A-H</code></td>
+					<td>Carga desde las ruedas</td>
+					<td>Servicio</td>
+			</tr>
+	</tbody>
+</table>
+<p>De las 33 detentes, <strong>12 son de cliente</strong>. Las otras 21 son de servicio y no tienen contraparte en Hercules — pero no son inertes: <strong>cuatro de estas cinco llaves encienden la lámpara TEST cuando salen de su posición normal</strong>, y eso se calcula en el Arduino sin pedirle nada al emulador.</p>
+<p>Se leen <strong>1 de N: una línea por detente</strong>, 33 líneas en total. No se codifican en binario, y por dos razones. La primera es que una llave de obleas ya entrega naturalmente un contacto por posición, así que codificar exigiría agregar un diodo por detente sin ganar casi nada. La segunda es que 33 líneas entran holgadas en el presupuesto de 128 entradas.</p>
+<p><strong>Las ocho ruedas hexadecimales A–H</strong> van al revés, y ahí sí hay que codificar:</p>
+<table>
+	<thead>
+			<tr>
+					<th></th>
+					<th>Sin codificar (1 de N)</th>
+					<th>Codificadas en hexadecimal</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Líneas por rueda</td>
+					<td>16</td>
+					<td><strong>4</strong></td>
+			</tr>
+			<tr>
+					<td>Líneas para las ocho</td>
+					<td><strong>128</strong></td>
+					<td><strong>32</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>Ocho ruedas de 16 posiciones leídas 1 de N costarían <strong>128 líneas — el presupuesto de entradas completo, sólo para las ruedas</strong>. Por eso se usan llaves con salida hexadecimal: cuatro bits por rueda, 32 líneas para las ocho. Si sólo se consiguen llaves de obleas comunes, se llega al mismo resultado con una <strong>matriz de diodos</strong> que baja los dieciséis detentes a cuatro líneas binarias más una de validez: <strong>33 diodos por rueda</strong>, 264 para las ocho. El esquemático y el porqué de esa quinta línea están en el <a href="/posts/panel-replica-ibm-370-145/#ap%c3%a9ndice-la-matriz-de-diodos-de-una-rueda">apéndice</a>.</p>
+<p><strong>Y las dos familias restantes</strong>, que no necesitan codificación porque son de a una línea:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Grupo</th>
+					<th>Cantidad</th>
+					<th>Líneas</th>
+					<th>Detalle</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Teclas</td>
+					<td><strong>18 posiciones</strong>, 15 etiquetadas</td>
+					<td>15</td>
+					<td>Las 3 restantes son tapas ciegas: se montan igual, pero no se conectan a nada</td>
+			</tr>
+			<tr>
+					<td>Palanquitas</td>
+					<td>~7</td>
+					<td>~7</td>
+					<td>LAMP TEST, INTERVAL TIMER, TOD CLOCK, ADDRESS COMPARE CONTROL (ésta de 3 posiciones, o sea 2 líneas)</td>
+			</tr>
+			<tr>
+					<td>Llave de contadores y EPO</td>
+					<td>2</td>
+					<td>~2</td>
+					<td>La llave que elige qué contador corre, y el corte de emergencia</td>
+			</tr>
+	</tbody>
+</table>
+<p>Sumando todo: <strong>unas 89 líneas de entrada</strong> —33 + 32 + 15 + 7 + 2— contra las 128 que dan los dieciséis 74HC165. Quedan 39 de sobra.</p>
+<p>La llave <strong>RATE</strong> es el mejor mapeo funcional del panel: <code>PROCESS</code> es Hercules corriendo libre e <code>INSTRUCTION STEP</code> es una instrucción por cada pulsación de START.</p>
+<p>Y las ruedas <strong>F, G, H</strong> son las de arrancar: dial de tres dígitos hexadecimales que forman la dirección del dispositivo de IPL. Bajo MVS Turnkey el volumen SYSRES está convencionalmente en <code>148</code>, así que las ruedas marcan <strong>1 4 8</strong>. Arquitectónicamente no seleccionan «un disco» sino una dirección de canal y unidad — el mismo dial sirve para arrancar de cinta, que era la forma normal de instalar el sistema.</p>
+<h2 id="leds-en-vez-de-lámparas-incandescentes">LEDs en vez de lámparas incandescentes</h2>
+<p>Acá hay que corregir una intuición razonable pero equivocada, y es la parte más interesante del diseño eléctrico.</p>
+<p>El 3145 usaba <strong>lámparas incandescentes</strong>. Un filamento tiene masa térmica: cuando el bit que muestra conmuta millones de veces por segundo, la lámpara no parpadea — <strong>brilla con un brillo proporcional a la fracción del tiempo que ese bit valió 1</strong>. Ese promediado es lo que producía el titileo característico de las <em>blinkenlights</em>.</p>
+<p>Entonces modular un LED con el ciclo de trabajo igual a la proporción de unos medida <strong>no es una aproximación al efecto: es reproducir la física que lo causaba.</strong></p>
+<p>Pero la técnica <strong>no es PWM de ventana fija</strong>. Es <strong>delta-sigma de primer orden</strong>, y la diferencia importa:</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>acc[i] <span style="color:#f92672">+=</span> target[i];            <span style="color:#75715e">// target 0..255
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> on <span style="color:#f92672">=</span> (acc[i] <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">256</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (on) acc[i] <span style="color:#f92672">-=</span> <span style="color:#ae81ff">256</span>;</span></span></code></pre></div>
+  </div><p>Delta-sigma <strong>distribuye los encendidos de manera pareja</strong>. Una lámpara al 50 % alterna en cada cuadro: una onda cuadrada de 500 Hz, invisible. El PWM ingenuo con el mismo ciclo de trabajo la encendería 128 cuadros seguidos y la apagaría otros 128 — un parpadeo visible de 3,9 Hz.</p>
+<p>El límite inferior es real y hay que respetarlo. Con objetivo <code>T</code>, el acumulador desborda cada <code>256/T</code> cuadros, así que la frecuencia de pulso es <code>1000 × T / 256</code> Hz:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Objetivo <code>T</code></th>
+					<th>Ciclo</th>
+					<th>Pulso</th>
+					<th>Veredicto</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>128</td>
+					<td>50 %</td>
+					<td>500 Hz</td>
+					<td>✅</td>
+			</tr>
+			<tr>
+					<td>32</td>
+					<td>12,5 %</td>
+					<td>125 Hz</td>
+					<td>✅</td>
+			</tr>
+			<tr>
+					<td><strong>16</strong></td>
+					<td><strong>6,3 %</strong></td>
+					<td><strong>62,5 Hz</strong></td>
+					<td>✅ <strong>piso — usar éste</strong></td>
+			</tr>
+			<tr>
+					<td>8</td>
+					<td>3,1 %</td>
+					<td>31 Hz</td>
+					<td>❌ parpadeo visible</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>Regla: cualquier objetivo por debajo de 16 se lleva a 0.</strong> Y es físicamente correcto, además: un filamento al 6 % de ciclo se ve apagado, así que la máquina real tenía el mismo piso.</p>
+<p>Dos consecuencias de diseño: no hace falta hardware de PWM por canal —simples registros de desplazamiento alcanzan, porque la modulación es temporal y vive en el firmware—, y <strong>el cuadro tiene que ser isócrono</strong>, disparado por un temporizador y nunca desde <code>loop()</code>, porque el <em>jitter</em> de atender el USB modularía el brillo.</p>
+<p>Un detalle práctico: <strong>LEDs difusos, nunca transparentes.</strong> Los transparentes tienen un haz angosto y ponen un punto caliente detrás de la tapa en vez de iluminarla pareja. Y <strong>un solo número de parte, un solo rollo</strong>: los lotes mezclados dan brillos visiblemente desparejos en un panel de 200 lámparas, y delta-sigma no lo disimula.</p>
+<h2 id="la-arquitectura-completa">La arquitectura completa</h2>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">flowchart LR
+  subgraph PI[&#34;Raspberry Pi 5&#34;]
+    H[&#34;&lt;b&gt;Hercules + MVS 3.8j&lt;/b&gt;&lt;br/&gt;TK4- / TK5&#34;]
+    M[&#34;&lt;b&gt;Módulo HDL&lt;/b&gt;&lt;br/&gt;muestrea PSW y registros&lt;br/&gt;a ~1 kHz&#34;]
+    D[&#34;&lt;b&gt;Demonio de panel&lt;/b&gt;&lt;br/&gt;agrega ciclo de trabajo&lt;br/&gt;por bit&#34;]
+    H --&gt; M --&gt; D
+  end
+  subgraph AR[&#34;Arduino Mega 2560&#34;]
+    T[&#34;&lt;b&gt;ISR de 1 kHz&lt;/b&gt;&lt;br/&gt;delta-sigma × 208&lt;br/&gt;trama SPI&lt;br/&gt;captura de llaves&#34;]
+    L[&#34;&lt;b&gt;Local:&lt;/b&gt; LAMP TEST,&lt;br/&gt;lámpara TEST, antirrebote&#34;]
+  end
+  subgraph PA[&#34;Panel&#34;]
+    O[&#34;&lt;b&gt;26 × TPIC6B595&lt;/b&gt;&lt;br/&gt;sumideros open-drain&#34;]
+    I[&#34;&lt;b&gt;16 × 74HC165&lt;/b&gt;&lt;br/&gt;entrada paralelo/serie&#34;]
+    LED[&#34;208 LEDs&#34;]
+    SW[&#34;128 líneas de llaves&#34;]
+  end
+  D &lt;--&gt;|&#34;UART 500 000 baud&lt;br/&gt;binario, ~11 KB/s&#34;| T
+  T --&gt;|&#34;SPI MOSI&#34;| O --&gt; LED
+  I --&gt;|&#34;SPI MISO&#34;| T
+  SW --&gt; I</code></pre>
+  </div><p><strong>La división de responsabilidades es la clave.</strong> El Arduino es dueño de la modulación de 1 kHz, del barrido de llaves, del antirrebote y de todo lo que tiene que seguir funcionando con el enlace muerto. <em>Toda</em> la semántica —qué significa una combinación de llaves, qué comando de Hercules emitir, cómo se calcula un ciclo de trabajo— vive en la Pi.</p>
+<p>No es una preferencia estética: es la división a la que llegó el proyecto Operation Blinkenlights después de abandonar su primera arquitectura, donde una placa de E/S por USB resultó <strong>mil veces demasiado lenta</strong> — del orden de 1 segundo de latencia contra ~1 ms con un Arduino.</p>
+<h2 id="los-integrados-excitar-leds-y-leer-llaves">Los integrados: excitar LEDs y leer llaves</h2>
+<h3 id="salida--tpic6b595">Salida — TPIC6B595</h3>
+<p>Registro de desplazamiento de 8 bits con <strong>salidas DMOS de potencia open-drain</strong>. Reemplaza al par 74HC595 + ULN2803 con un solo integrado.</p>
+<p>Soporta 150 mA por canal y necesitamos 10–15 mA: margen enorme. Se encadenan <code>SER OUT</code> → <code>SER IN</code> del siguiente, así que los 26 van en un solo bus SPI. <code>G</code> se ata a masa —salidas siempre habilitadas, el brillo es temporal— y <code>SRCLR</code> a +5 V.</p>
+<p>Como son sumideros, <strong>los ánodos van a +5 V a través de la resistencia y los cátodos al integrado</strong>:</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <pre tabindex="0"><code>        +5V  (riel dedicado del panel — NO el riel USB de la Pi)
+          │
+         ┌┴┐
+         │ │  R      ámbar ~2,0 V → 330 Ω
+         └┬┘         blanco cálido ~3,0 V → 220 Ω
+          │
+         ─┴─   LED difuso
+          ▽
+          │
+     ┌────┴──────────────┐
+     │ TPIC6B595  DRAINn │
+     └────┬──────────────┘
+         GND</code></pre>
+  </div><p>Se descartaron tres alternativas por razones concretas: el MAX7219 multiplexa internamente y late contra el cuadro de 1 kHz; el TLC5940 trae PWM por canal que es redundante con delta-sigma en firmware; y los WS2812 dan mal color detrás de las tapas de época y su protocolo de un hilo con tiempos duros pelea con el servicio de USB.</p>
+<h3 id="entrada--74hc165">Entrada — 74HC165</h3>
+<p>Entrada paralelo / salida serie, encadenado sobre el mismo reloj SPI. <strong>No tiene pull-ups internos</strong>: cada entrada necesita uno externo.</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <pre tabindex="0"><code>        +5V
+         │
+        ┌┴┐
+        │ │ 10 kΩ pull-up
+        └┬┘
+         │
+         ├────[ 1 kΩ ]────► entrada 74HC165
+         │
+         ○  contacto de la llave
+         │
+        GND</code></pre>
+  </div><p>La de 10 kΩ fija el estado en reposo; la de 1 kΩ en serie protege contra una falla de cableado o una descarga electrostática en un mazo largo — el mismo criterio que usa el PiDP-11.</p>
+<h3 id="las-ruedas-hexadecimales">Las ruedas hexadecimales</h3>
+<p>Ya vimos por qué van codificadas en hexadecimal y no leídas 1 de 16. Falta descartar la tercera opción, que es la que primero se le ocurre a cualquiera que haya hecho un proyecto con Arduino: <strong>encoders de cuadratura, no.</strong> No tienen posición absoluta, así que el panel perdería su ajuste cada vez que se apaga — y la máquina real nunca hacía eso: las ruedas quedaban donde el operador las había dejado.</p>
+<p>⚠️ Estas llaves suelen entregar el código <strong>complementado</strong>. Hay que verificarlo contra la hoja de datos e invertir en firmware: al revés, la rueda lee <code>F</code> cuando muestra <code>0</code>.</p>
+<h2 id="sobre-el-esquemático-completo-en-mermaid">Sobre el esquemático completo en mermaid</h2>
+<p><strong>Mermaid no sirve para esto, y conviene decirlo antes de que alguien pierda una tarde.</strong> Es una herramienta de diagramas de bloques y de flujo: no tiene símbolos de componentes, ni nodos eléctricos, ni forma de expresar que tres cosas se conectan al mismo punto. Un esquemático con 26 integrados encadenados, 208 LEDs con sus resistencias y 128 líneas con divisores no se puede expresar ahí.</p>
+<p>Las alternativas que sí funcionan embebidas en markdown, en orden de esfuerzo:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Opción</th>
+					<th>Qué da</th>
+					<th>Costo</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>Arte ASCII en bloque de código</strong></td>
+					<td>Lo que usan los documentos del proyecto y lo que usé arriba. Excelente para <em>una</em> etapa: una cadena de un integrado, un divisor, un LED con su resistencia</td>
+					<td>Cero herramientas</td>
+			</tr>
+			<tr>
+					<td><strong>SVG embebido</strong></td>
+					<td>Esquemático real, con símbolos. Se exporta de KiCad y se pega como archivo en el bundle del post</td>
+					<td>Hay que dibujarlo en KiCad</td>
+			</tr>
+			<tr>
+					<td><strong>Mermaid para el diagrama de bloques</strong></td>
+					<td>Lo que hice más arriba: señales y responsabilidades entre Pi, Arduino y panel. Ahí sí es la herramienta correcta</td>
+					<td>Ya está hecho</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>Mi recomendación:</strong> mermaid para la arquitectura, ASCII para cada etapa típica, y un esquemático real de KiCad para lo demás. Un esquemático de esa densidad además no se lee en una página web: se lee en un PDF que se pueda ampliar.</p>
+<h3 id="el-esquemático-de-la-unidad-repetida">El esquemático de la unidad repetida</h3>
+<p>Eso último ya está hecho. <strong><a href="/posts/panel-replica-ibm-370-145/kicad/unidad-repetida.pdf">Esquemático en PDF</a></strong> — hoja A3, generado con <a href="https://www.kicad.org/">KiCad</a> <strong>10.0.5</strong>, instalado en esta máquina con <a href="https://community.chocolatey.org/packages/kicad">Chocolatey</a>.</p>
+<p>No dibujé las 26 etapas: un esquemático de 26 integrados, 208 LEDs y 128 líneas no se lee, y además sería la misma etapa copiada. Lo que hay es <strong>la unidad que se repite</strong>, que es de donde se deduce el resto:</p>
+<ul>
+<li><strong>Etapa de salida</strong> — un TPIC6B595 con sus ocho LEDs y las resistencias a +5 V, con <code>SER OUT</code> etiquetado hacia el <code>SER IN</code> del siguiente.</li>
+<li><strong>Etapa de entrada</strong> — un 74HC165 con ocho llaves, cada una con su pull-up de 10 kΩ y su resistencia serie de 1 kΩ, y <code>Q7</code> etiquetado hacia MISO.</li>
+<li><strong>Las notas de conexión</strong> al Arduino Mega y el divisor hacia el UART de la Pi 5, en la columna derecha de la hoja.</li>
+</ul>
+<p>Los fuentes están en <a href="https://github.com/CesarBallardini/CesarBallardini.github.io/tree/master/content/es/posts/2026-08-03-panel-replica-ibm-370-145/kicad"><code>kicad/</code></a>: el esquemático, la biblioteca de símbolos y el script de Python que los genera.</p>
+<p><strong>Dos cosas que conviene decir sobre cómo se hizo.</strong></p>
+<p>El símbolo del <strong>TPIC6B595 no viene con KiCad</strong> y hubo que crearlo. Su pinout salió de la hoja de datos de TI —SLIS032A, paquete de 20 pines, vista superior— y no de la memoria de nadie. El del 74HC165 se verificó contra la biblioteca <code>74xx</code> que KiCad distribuye. Aun así: <strong>revisá el pinout contra la hoja de datos antes de fabricar</strong>, porque un pin mal transcrito en un esquemático que después se convierte en PCB es caro.</p>
+<p>Y el esquemático <strong>pasa el chequeo eléctrico de KiCad sin errores de cableado</strong>, que es la parte que conviene no saltear: <strong>un esquemático puede verse impecable y estar mal</strong>. Los dos modos de falla típicos son invisibles a simple vista — un extremo que cae fuera de la grilla de 1,27 mm, y un cable que termina una fracción de milímetro antes del pin. En pantalla las dos cosas se ven como una conexión. El ERC las encuentra en un segundo; el multímetro, después de soldar.</p>
+<p>Los 83 avisos que quedan son esperables en un extracto: la biblioteca propia no está registrada en la configuración global, las etiquetas de encadenado salen de la hoja, y los rieles no tienen <em>power flag</em> porque la alimentación entra desde fuera de este recorte.</p>
+<h2 id="conexiones-entre-arduino-placa-de-excitación-y-raspberry-pi-5">Conexiones entre Arduino, placa de excitación y Raspberry Pi 5</h2>
+<p>Del Mega 2560 se usan <strong>6 pines de 54</strong>. El resto queda para contadores horarios, un relé de EPO, un display de estado o un segundo panel.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Señal</th>
+					<th>Pin</th>
+					<th>Dir</th>
+					<th>Notas</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>SPI_MOSI</code></td>
+					<td>D51</td>
+					<td>sal</td>
+					<td>→ <code>SER IN</code> del primer TPIC6B595</td>
+			</tr>
+			<tr>
+					<td><code>SPI_MISO</code></td>
+					<td>D50</td>
+					<td>ent</td>
+					<td>← <code>QH</code> del primer 74HC165</td>
+			</tr>
+			<tr>
+					<td><code>SPI_SCK</code></td>
+					<td>D52</td>
+					<td>sal</td>
+					<td>→ todos los <code>SRCK</code> <strong>y</strong> todos los <code>CLK</code>: bus compartido</td>
+			</tr>
+			<tr>
+					<td><code>SPI_SS</code></td>
+					<td>D53</td>
+					<td><strong>sal</strong></td>
+					<td>⚠️ ver abajo</td>
+			</tr>
+			<tr>
+					<td><code>LED_LATCH</code></td>
+					<td>D8</td>
+					<td>sal</td>
+					<td>Flanco de subida transfiere a las salidas</td>
+			</tr>
+			<tr>
+					<td><code>SW_LOAD</code></td>
+					<td>D9</td>
+					<td>sal</td>
+					<td>Pulso bajo captura las llaves</td>
+			</tr>
+	</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong><code>SS</code> (D53) tiene que estar configurado como salida</strong>, aunque no haya nada conectado. En AVR, si queda como entrada y algo lo lleva a nivel bajo, el hardware SPI <strong>pasa silenciosamente a modo esclavo</strong> a mitad de transferencia y el panel se ensucia. <code>pinMode(53, OUTPUT);</code> antes de <code>SPI.begin();</code>, y no sacarlo nunca.</p>
+</blockquote>
+<p><strong>El orden dentro del cuadro importa</strong>: <code>SW_LOAD</code> se pulsa <em>antes</em> de la transferencia y <code>LED_LATCH</code> <em>después</em>. Al revés, se lee el estado de las llaves con un cuadro de atraso.</p>
+<h3 id="el-enlace-con-la-pi">El enlace con la Pi</h3>
+<p>Acá hay que separar dos cosas que se confunden fácil, porque <strong>la respuesta depende de qué placa uses</strong>.</p>
+<p><strong>Si la placa es una Arduino UNO R4 Minima, se conecta a la Pi con un cable USB-C y listo.</strong> El R4 trae USB nativo —y conector USB-C, a diferencia del USB-B del viejo R3—, así que entrega del orden de 1 MB/s: nuestros 11 KB/s usan el <strong>1 %</strong> del enlace, el baud rate pasa a ser un parámetro cosmético, y no hace falta ni divisor de tensión ni tocar el GPIO de la Pi. Un cable y nada más.</p>
+<p>Esa es, de lejos, la opción más simple, y si conseguís la placa es la que yo elegiría.</p>
+<p>El proyecto no la eligió por una razón que no tiene nada que ver con la técnica: <strong>al día de hoy no hay UNO R4 disponibles acá.</strong> El relevamiento de proveedores argentinos no encontró stock —habría que importarla— mientras que el Mega 2560 está en góndola y con precio. Es una foto del momento y no una propiedad del mundo: <strong>verificá disponibilidad antes de decidir</strong>, porque si aparece la R4 se ahorran el divisor de tensión, el cableado al GPIO y la mitad de las precauciones de la sección anterior.</p>
+<p>Vale aclarar que el Mega no es un premio consuelo. Es la placa a la que llegó Operation Blinkenlights, tiene 5 V de lógica —así que maneja las cadenas 74HC y TPIC sin adaptadores de nivel, que es exactamente lo que una Teensy de 3,3 V sí necesita— y le sobra el 75 % de CPU con todo andando. Lo único que se pierde con el Mega es la comodidad del enlace.</p>
+<p><strong>Pero el objetivo de este proyecto es un Mega 2560, y ahí no.</strong> El ATmega2560 <strong>no tiene periférico USB en absoluto</strong>: un segundo microcontrolador, el ATmega16U2, traduce USB a una línea serie común. El camino real es <code>Pi ↔ USB ↔ 16U2 ↔ UART ↔ ATmega2560</code>, con un techo práctico cerca de 50 kB/s. Así que <strong>el baud rate acá es un cuello de botella de hardware real</strong>, no un parámetro cosmético.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Baud</th>
+					<th>Bytes/s</th>
+					<th>Nuestra carga (~11,2 kB/s)</th>
+					<th>Veredicto</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>115 200 <em>(default de Arduino)</em></td>
+					<td>11 520</td>
+					<td><strong>97 %</strong></td>
+					<td>❌ <strong>inservible</strong></td>
+			</tr>
+			<tr>
+					<td>460 800</td>
+					<td>46 080</td>
+					<td>24 %</td>
+					<td>✅</td>
+			</tr>
+			<tr>
+					<td><strong>500 000</strong></td>
+					<td>50 000</td>
+					<td><strong>22 %</strong></td>
+					<td>✅ <strong>recomendado</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>Hay que fijar 500 000 baud; el default fallaría.</strong> Una rareza útil de AVR: con <code>U2X=1</code> a 16 MHz, 250 000, 500 000 y 1 000 000 son divisores <em>exactos</em>, mientras que el familiar 115 200 cae en 117 647 — 2,1 % de error. Las velocidades altas son más precisas que la baja.</p>
+<p><strong>Y por eso la opción elegida es otra: saltear el USB por completo.</strong> El Mega tiene 4 UARTs por hardware. Conectando <code>Serial1</code> (D18/D19) directo al UART del GPIO de la Pi se sacan del camino el 16U2, la pila USB y la enumeración — latencia mucho más baja y predecible, y una pieza menos que pueda fallar. Como el Mega es de 5 V y la Pi de 3,3 V, la línea del Mega hacia la Pi necesita divisor; la de la Pi hacia el Mega va directa, porque 3,3 V supera el umbral de nivel alto del AVR:</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <pre tabindex="0"><code>   Mega D18 (TX, 5 V) ──[ 1k8 ]──┬── Pi GPIO15 (RXD, 3,3 V)
+                                 │
+                               [ 3k3 ]      ← divisor: 5 V → ~3,2 V
+                                 │
+                                GND</code></pre>
+  </div><h2 id="cómo-la-pi-obtiene-los-datos-de-hercules">Cómo la Pi obtiene los datos de Hercules</h2>
+<p>Acá está el límite duro del proyecto, y conviene enunciarlo con el número en la mano:</p>
+<blockquote>
+<p><strong>No se puede transmitir estado por instrucción. Ni cerca.</strong></p>
+<p>Hercules corriendo S/370 en una Pi da del orden de decenas de MIPS. Mandar 3 bytes de dirección de instrucción por instrucción a 30 MIPS son <strong>90 MB/s ≈ 720 Mbit/s</strong>, contra un techo práctico de USB CDC cercano a 1 MB/s. Es <strong>unas 90 veces por encima del presupuesto</strong>, en el mejor caso.</p>
+</blockquote>
+<p>De ahí sale toda la arquitectura de datos: <strong>la agregación ocurre dentro de la Pi, y el enlace transporta ciclos de trabajo, nunca tráfico crudo.</strong></p>
+<p>El mecanismo tiene tres pasos:</p>
+<ol>
+<li>Un <strong>módulo HDL dentro de Hercules</strong> toma una muestra de la PSW, los registros y la palabra de almacenamiento seleccionada, y la deja en memoria compartida, con un temporizador de <strong>~1 kHz</strong>. Es barato: una muestra cada ~30 000 instrucciones.</li>
+<li>El <strong>demonio de panel</strong> acumula, por bit, cuántas veces valió 1 en una ventana de 20 a 50 ms.</li>
+<li><code>target = 255 × unos / muestras</code>, con el piso en 16.</li>
+</ol>
+<p>Y acá está lo bonito: <strong>esto es muestreo estadístico, no integración exacta — y cae justo donde caía la máquina real.</strong> Los bits altos de dirección cambian despacio y van a mostrar estructura real; los bits bajos cambian en cada instrucción y promedian cerca del 50 %, difuminándose a medio brillo. <strong>Eso es exactamente lo que se veía en un banco de lámparas de un 3145.</strong></p>
+<h3 id="el-protocolo">El protocolo</h3>
+<p>Binario, largo fijo, con CRC-16/CCITT.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Sentido</th>
+					<th>Contenido</th>
+					<th>Tamaño</th>
+					<th>Frecuencia</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Pi → Arduino</td>
+					<td>Magic, tipo, largo, <strong>208 bytes de brillo</strong>, CRC</td>
+					<td>214 B</td>
+					<td>50 Hz</td>
+			</tr>
+			<tr>
+					<td>Arduino → Pi</td>
+					<td>Magic, tipo, largo, 16 B de mapa de llaves, secuencia, CRC</td>
+					<td>23 B</td>
+					<td>20 Hz</td>
+			</tr>
+	</tbody>
+</table>
+<p>Nótese que <strong>la carga útil es brillo, no bits</strong>: el ancho de banda sobra y el ciclo de trabajo por lámpara es todo el punto del diseño. Hay además un ping/pong que lleva la versión de firmware y los tamaños de banco compilados, para que un desajuste entre firmware y host se detecte en vez de manejar el panel mal en silencio.</p>
+<blockquote>
+<p>⚠️ <strong>El error clásico.</strong> Las cadenas de registros de desplazamiento se llenan <strong>de atrás para adelante</strong>: el primer byte transmitido termina en el <em>último</em> integrado. Para cargar U1…U26 hay que mandar <strong>U26 primero</strong>. Definirlo en un solo lugar y verificarlo con la prueba del bit que camina. Al revés, el panel se mezcla de una forma que parece falla de cableado y cuesta un día entero.</p>
+</blockquote>
+<h2 id="programas-para-el-arduino">Programas para el Arduino</h2>
+<p>El firmware todavía no existe. Lo que sí está especificado —y alcanza para escribirlo— es la estructura del cuadro de 1 kHz:</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <pre tabindex="0"><code>ISR(TIMER1_COMPA_vect, ISR_NOBLOCK):
+  1. SW_LOAD bajo → 1 µs → alto        // el 74HC165 captura las llaves
+  2. for i in 0..25:
+        in[i] = SPI.transfer(frontBuffer[i])   // full duplex: lámparas afuera, llaves adentro
+  3. LED_LATCH alto → 1 µs → bajo      // las salidas se actualizan atómicamente
+  4. intercambiar buffers si el loop marcó uno listo
+  5. cada 5 cuadros, marcar datos de llaves para el loop principal  // antirrebote a 200 Hz</code></pre>
+  </div><p>Con dos requisitos que no son opcionales en un AVR de 16 MHz, y que explican por qué el delta-sigma <strong>no</strong> va adentro de la ISR:</p>
+<p>El USART del ATmega2560 tiene una FIFO de recepción de <strong>dos niveles</strong>. A 500 000 baud llega un byte cada 20 µs, así que hay unos 40 µs de margen antes de perder bytes. Pero la pasada de delta-sigma sobre 208 lámparas cuesta ≈ 130 µs — <strong>más del triple de la tolerancia</strong>. Una ISR normal bloquea interrupciones todo ese tiempo y perdería bytes recibidos, en silencio.</p>
+<p>Los dos arreglos, que se aplican juntos: declarar la ISR <code>ISR_NOBLOCK</code> para que la recepción del USART pueda interrumpirla, y <strong>doble buffer</strong>, calculando delta-sigma en el loop principal contra un buffer inactivo mientras la ISR sólo desplaza y engancha.</p>
+<p>El presupuesto queda en ≈ 25 % de CPU: 3,5 % en la ISR y el resto en el loop. Unos 75 % de margen.</p>
+<h2 id="programas-en-la-raspberry-pi-5">Programas en la Raspberry Pi 5</h2>
+<p>Tampoco existen todavía. Son dos piezas: el <strong>módulo HDL</strong> dentro de Hercules, que muestrea a 1 kHz hacia memoria compartida, y el <strong>demonio de panel</strong>, que agrega los ciclos de trabajo y habla el protocolo con el Arduino.</p>
+<p>De las dos, la del módulo HDL es la de mayor riesgo del proyecto, porque implica tocar el código de Hercules. Yo empezaría por ahí y no por el firmware: si esa pieza no sale, el panel queda decorativo por más impecable que esté la electrónica.</p>
+<h2 id="alimentación">Alimentación</h2>
+<p><strong>La fuente más probable de problemas. Leer antes de cablear.</strong></p>
+<table>
+	<thead>
+			<tr>
+					<th>Carga</th>
+					<th>Corriente</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>208 LEDs × 10 mA, todos encendidos (<strong>LAMP TEST</strong>)</td>
+					<td><strong>2,08 A</strong></td>
+			</tr>
+			<tr>
+					<td>26 × TPIC6B595 en reposo</td>
+					<td>~30 mA</td>
+			</tr>
+			<tr>
+					<td>16 × 74HC165 en reposo</td>
+					<td>~10 mA</td>
+			</tr>
+			<tr>
+					<td>Arduino Mega 2560</td>
+					<td>~50 mA</td>
+			</tr>
+			<tr>
+					<td><strong>Peor caso</strong></td>
+					<td><strong>≈ 2,15 A</strong></td>
+			</tr>
+			<tr>
+					<td>Típico (~30 % de ciclo en el panel)</td>
+					<td>≈ 0,7 A</td>
+			</tr>
+	</tbody>
+</table>
+<p>Cinco reglas, y la primera es la que salva el proyecto:</p>
+<ol>
+<li><strong>Fuente de 5 V dedicada, de 4 A o más, para el panel.</strong> Nunca sacar la corriente de los LEDs del regulador del Arduino ni de un puerto USB de la Pi: LAMP TEST haría caer la tensión de la Pi, que es la que está corriendo el emulador y su sistema de archivos.</li>
+<li><strong>Masa común, unida en un solo punto</strong> — en estrella, o el SPI se queda sin referencia.</li>
+<li><strong>Desacople: 100 nF en los pines de alimentación de cada integrado, más 1000 µF de bulk por banco de LEDs.</strong> Delta-sigma a 1 kHz significa que la corriente del panel conmuta continuamente: es un ambiente más hostil que el encendido estático, y con poco bulk los registros de desplazamiento tienen fallas.</li>
+<li><strong>No realimentar el Arduino.</strong> Alimentarlo por USB <em>o</em> desde la fuente del panel con la línea de 5 V del USB cortada — nunca las dos. Placa por USB, cadenas por fuente propia y masa común es la respuesta simple y correcta.</li>
+<li><strong>EPO como entrada</strong>, para que la Pi se apague limpia. Nunca cableado a algo que pueda cortar la alimentación a mitad de una escritura.</li>
+</ol>
+<h2 id="foto-del-panel-real">Foto del panel real</h2>
+<p>Falta, y no es un descuido: <strong>es uno de los ítems abiertos del proyecto</strong>. El inventario necesita una fotografía frontal de una consola 3145 completa para fijar la ubicación de las secciones entre sí y la proporción general del panel — dato que ninguno de los manuales da directamente.</p>
+<p>Dos museos tienen paneles /370 físicos y son el camino más corto: el Rhode Island Computer Museum y el Computing History de Cambridge. A cualquiera de los dos se le puede pedir una foto frontal, o medidas si acceden a tomarlas. Una foto tomada en ángulo sirve igual: se corrige la perspectiva sin necesidad de conocer ninguna dimensión absoluta.</p>
+<h2 id="conclusión-por-qué-no-lo-voy-a-construir">Conclusión: por qué no lo voy a construir</h2>
+<p>El proyecto es interesante y atractivo, y el diseño está cerrado hasta un nivel de detalle que permitiría empezar a comprar mañana. Pero los costos rondan <strong>los USD 1000 al día de hoy</strong>, y no me puedo permitir ese gasto en un juguete.</p>
+<p>Conviene saber dónde se va la plata, porque no es donde uno espera. Los LEDs, las resistencias, los capacitores y los pulsadores son commodity y se compran en una tarde. Los 42 integrados de la cadena —26 TPIC6B595 y 16 74HC165— son baratos por unidad, aunque en Argentina las casas de electrónica venden módulos y kits, no lógica suelta en cantidad, así que hay que importarlos.</p>
+<p>El costo real está en <strong>las llaves rotativas</strong>. Ocho ruedas hexadecimales más cinco rotativas de modo con cuentas de posiciones específicas —9, 9, 3, 5 y 7—, que son partes especializadas, difíciles de conseguir en cualquier parte y caras en versión industrial. Ahí, y en el corte láser del acrílico, se concentra el presupuesto. La electrónica es la parte barata.</p>
+<h3 id="lo-que-sí-se-puede-hacer-sin-gastar-nada">Lo que sí se puede hacer sin gastar nada</h3>
+<p>La Raspberry Pi 5 se conecta a la wifi. Con eso alcanza para tener <strong>la consola del sistema y una terminal TSO desde cualquier máquina de la casa</strong>, con un emulador de terminal: se entra a la Pi por red, y ahí están tanto la consola de Hercules como el TSO de MVS. Sin panel, sin acrílico, sin llaves rotativas, sin fuente de 4 A.</p>
+<p>Es decir: <strong>todo lo que la máquina hace está disponible por USD 0.</strong> Lo que cuesta mil dólares es exclusivamente que te mire de vuelta.</p>
+<h3 id="y-una-ironía-histórica-que-cierra-el-asunto">Y una ironía histórica que cierra el asunto</h3>
+<p>Vale la pena notar dónde termina esta historia. <strong>Desde el IBM 3033, los mainframes de IBM ya no tuvieron consola de control con luces y botones.</strong> El 3033 se anunció el 25 de marzo de 1977 y se entregó por primera vez el 17 de marzo de 1978, y su consola era el 3036: un escritorio con estaciones de trabajo 3277 — pantallas verdes.</p>
+<p>Y acá está el detalle que a mí me cierra el círculo. Ordenemos las fechas:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Hito</th>
+					<th>Fecha</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>S/370 Modelos 158 y 168 anunciados</td>
+					<td>2 de agosto de 1972</td>
+			</tr>
+			<tr>
+					<td>OS/VS2 Release 1 (SVS)</td>
+					<td>1972</td>
+			</tr>
+			<tr>
+					<td><strong>OS/VS2 Release 2 — es decir, MVS</strong></td>
+					<td><strong>1974</strong></td>
+			</tr>
+			<tr>
+					<td>IBM 3033 anunciado</td>
+					<td>25 de marzo de 1977</td>
+			</tr>
+			<tr>
+					<td>IBM 3033 primera entrega</td>
+					<td>17 de marzo de 1978</td>
+			</tr>
+			<tr>
+					<td><strong>MVS 3.8j — el que corre todo el mundo</strong></td>
+					<td><strong>1981</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>MVS nació en 1974, para las máquinas de su momento. Pero <strong>la versión que uno emula, el 3.8j, es de 1981</strong>: software de la era del 3033, tres años <em>posterior</em> al momento en que IBM ya había reemplazado el tablero por la pantalla verde.</p>
+<p>O sea que el panel que estoy reconstruyendo y el sistema operativo que va a correr detrás <strong>nunca convivieron en una sala de máquinas</strong>. Estoy poniendo un MVS de 1981 detrás de una consola que IBM había dejado de fabricar. No es un anacronismo grave —MVS 3.8j corre perfecto bajo <code>ARCHLVL S/370</code>, que es de lo que se trata—, pero conviene saberlo, y explica de paso por qué TK4- y TK5 vienen configurados como <code>CPUMODEL 3033</code>: reportan la máquina de su época, no la mía.</p>
+<p>Así que reconstruir el panel del /145 y conectarse por red a la misma máquina no son dos alternativas caprichosas. Son las dos épocas, una al lado de la otra: el tablero que se mira, y la terminal que lo reemplazó. IBM ya había elegido, y eligió la terminal.</p>
+<p>Lo cual, si uno quiere ser honesto, es también la razón por la que el panel es un juguete y no una herramienta. La terminal ganó porque era mejor para trabajar. El panel se extraña porque era mejor para mirar.</p>
+<h2 id="apéndice-la-matriz-de-diodos-de-una-rueda">Apéndice: la matriz de diodos de una rueda</h2>
+<p><strong><a href="/posts/panel-replica-ibm-370-145/kicad/matriz-diodos.pdf">Esquemático en PDF</a></strong> — hoja A3, con los 33 diodos dibujados. Los fuentes y el generador están en <a href="https://github.com/CesarBallardini/CesarBallardini.github.io/tree/master/content/es/posts/2026-08-03-panel-replica-ibm-370-145/kicad"><code>kicad/</code></a>.</p>
+<p>Esto resuelve el caso en que no se consiguen llaves con salida hexadecimal y hay que usar rotativas de obleas comunes, que entregan un contacto por detente.</p>
+<h3 id="cómo-funciona">Cómo funciona</h3>
+<p>El polo común de la llave va a masa. Cada terminal de posición sube por su propia línea. Cinco rieles horizontales —<code>b3 b2 b1 b0</code> y <code>POS0</code>— cruzan por arriba, cada uno con <strong>pull-up de 10 kΩ a +5 V</strong> y <strong>1 kΩ en serie</strong> hacia el 74HC165.</p>
+<p>Donde el bit vale 1 se monta un diodo, con el <strong>ánodo al riel y el cátodo al terminal de posición</strong>. Al elegir una posición, su terminal queda a masa y todos los diodos que cuelgan de él conducen, bajando sus rieles a unos 0,7 V — cómodamente por debajo del umbral de 1,5 V que el 74HC toma como nivel bajo a 5 V. Los terminales no elegidos flotan, así que sus diodos quedan polarizados en inversa y no cargan nada.</p>
+<p><strong>El diodo baja la línea, así que el código leído es el complemento del valor.</strong> En firmware: <code>val = (~leido) &amp; 0x0F</code>.</p>
+<h3 id="qué-posiciones-llevan-diodo">Qué posiciones llevan diodo</h3>
+<table>
+	<thead>
+			<tr>
+					<th>Pos</th>
+					<th>Hex</th>
+					<th style="text-align: center"><code>b3</code></th>
+					<th style="text-align: center"><code>b2</code></th>
+					<th style="text-align: center"><code>b1</code></th>
+					<th style="text-align: center"><code>b0</code></th>
+					<th style="text-align: center"><code>POS0</code></th>
+					<th style="text-align: center">Diodos</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0</td>
+					<td><code>0</code></td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center"><strong>▼</strong></td>
+					<td style="text-align: center">1</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td><code>1</code></td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">1</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td><code>2</code></td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">1</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td><code>3</code></td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">2</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td><code>4</code></td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">1</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><code>5</code></td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">2</td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><code>6</code></td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">2</td>
+			</tr>
+			<tr>
+					<td>7</td>
+					<td><code>7</code></td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">3</td>
+			</tr>
+			<tr>
+					<td>8</td>
+					<td><code>8</code></td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">1</td>
+			</tr>
+			<tr>
+					<td>9</td>
+					<td><code>9</code></td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">2</td>
+			</tr>
+			<tr>
+					<td>10</td>
+					<td><code>A</code></td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">2</td>
+			</tr>
+			<tr>
+					<td>11</td>
+					<td><code>B</code></td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">3</td>
+			</tr>
+			<tr>
+					<td>12</td>
+					<td><code>C</code></td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">2</td>
+			</tr>
+			<tr>
+					<td>13</td>
+					<td><code>D</code></td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">3</td>
+			</tr>
+			<tr>
+					<td>14</td>
+					<td><code>E</code></td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">3</td>
+			</tr>
+			<tr>
+					<td>15</td>
+					<td><code>F</code></td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">▼</td>
+					<td style="text-align: center">·</td>
+					<td style="text-align: center">4</td>
+			</tr>
+			<tr>
+					<td></td>
+					<td><strong>Total</strong></td>
+					<td style="text-align: center">8</td>
+					<td style="text-align: center">8</td>
+					<td style="text-align: center">8</td>
+					<td style="text-align: center">8</td>
+					<td style="text-align: center">1</td>
+					<td style="text-align: center"><strong>33</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>Cada línea binaria lleva 8 diodos, uno por cada posición en que ese bit vale 1. Más el de <code>POS0</code>: <strong>33 por rueda, 264 para las ocho.</strong></p>
+<h3 id="por-qué-la-quinta-línea-no-es-opcional">Por qué la quinta línea no es opcional</h3>
+<p>Ésta es la parte que se pasa por alto y la que justifica el apéndice entero.</p>
+<p>Las rotativas son <strong>break-before-make</strong>: mientras se gira, entre un detente y el siguiente <strong>ningún terminal está conectado</strong>, y las cuatro líneas binarias flotan altas. Eso se lee exactamente igual que una posición 0 legítima.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Líneas binarias</th>
+					<th><code>POS0</code></th>
+					<th>Significado</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>algún bit bajo</td>
+					<td>alto</td>
+					<td>Posiciones 1 a F — leer el código</td>
+			</tr>
+			<tr>
+					<td>todas altas</td>
+					<td><strong>bajo</strong></td>
+					<td><strong>Posición 0 legítima</strong></td>
+			</tr>
+			<tr>
+					<td>todas altas</td>
+					<td>alto</td>
+					<td><strong>Entre detentes</strong> — descartar, conservar el último valor válido</td>
+			</tr>
+	</tbody>
+</table>
+<p>Un diodo desde la posición 0 a una línea dedicada lo resuelve por completo. Sin él, <strong>una rueda a medio girar informaría cero en silencio</strong> — y en las ruedas F, G y H, que son las de <code>LOAD UNIT ADDRESS</code>, eso significa arrancar del dispositivo equivocado.</p>
+<p>Cuesta un diodo y una línea de entrada por rueda. Con las ocho ruedas son 8 líneas de las 39 que sobraban en el presupuesto.</p>
+<blockquote>
+<p>Una línea <code>VALID</code> completa —un diodo desde <em>cada</em> posición— también funcionaría, pero cuesta 16 diodos por rueda y no aporta más información: la posición 0 es el único código ambiguo.</p>
+</blockquote>
+<h2 id="hojas-de-datos">Hojas de datos</h2>
+<p>Las hojas de datos de los componentes principales están descargadas en el directorio de este post, bajo <code>datasheets/</code>, y se pueden abrir desde acá. La columna de la derecha lleva a la fuente original de cada una: <strong>conviene ir siempre al fabricante antes de fabricar nada</strong>, porque las revisiones cambian y la copia local queda congelada en la fecha en que se bajó.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Componente</th>
+					<th>Función en el panel</th>
+					<th>Copia local</th>
+					<th>Fuente original</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>TPIC6B595</strong></td>
+					<td>Registro de desplazamiento con salidas DMOS open-drain — excita 8 LEDs por integrado, 26 en total</td>
+					<td><a href="/posts/panel-replica-ibm-370-145/datasheets/TPIC6B595-TI-SLIS032A.pdf"><code>TPIC6B595-TI-SLIS032A.pdf</code></a></td>
+					<td><a href="https://www.ti.com/lit/ds/symlink/tpic6b595.pdf">Texas Instruments</a> — SLIS032A, julio 1995, revisada mayo 2005</td>
+			</tr>
+			<tr>
+					<td><strong>74HC165</strong></td>
+					<td>Entrada paralelo / salida serie — lee 8 líneas de llaves por integrado, 16 en total</td>
+					<td><a href="/posts/panel-replica-ibm-370-145/datasheets/74HC165-Nexperia.pdf"><code>74HC165-Nexperia.pdf</code></a></td>
+					<td><a href="https://assets.nexperia.com/documents/data-sheet/74HC_HCT165.pdf">Nexperia</a> — 74HC/HCT165</td>
+			</tr>
+			<tr>
+					<td><strong>ATmega2560</strong></td>
+					<td>El microcontrolador del Arduino Mega 2560</td>
+					<td><a href="/posts/panel-replica-ibm-370-145/datasheets/ATmega2560-Microchip.pdf"><code>ATmega2560-Microchip.pdf</code></a></td>
+					<td><a href="https://ww1.microchip.com/downloads/en/devicedoc/atmel-2549-8-bit-avr-microcontroller-atmega640-1280-1281-2560-2561_datasheet.pdf">Microchip</a> — doc. 2549</td>
+			</tr>
+			<tr>
+					<td><strong>1N4148</strong></td>
+					<td>Matriz de diodos que codifica cada rueda rotativa de 16 posiciones a 4 líneas binarias (opción B)</td>
+					<td><a href="/posts/panel-replica-ibm-370-145/datasheets/1N4148.pdf"><code>1N4148.pdf</code></a></td>
+					<td><a href="https://www.vishay.com/docs/81857/1n4148.pdf">Vishay</a></td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>LEDs y resistencias no llevan hoja de datos acá, y es a propósito.</strong> Los LEDs se compran por lote y <strong>la hoja de datos que importa es la del lote que compraste</strong>: la tensión directa determina el valor de la resistencia, y varía entre fabricantes y entre bines del mismo fabricante. Los valores del post —330 Ω para ámbar de ~2,0 V y 220 Ω para blanco cálido de ~3,0 V, a 10 mA— son el punto de partida, no la respuesta: hay que medir el LED que se compró. Y el criterio del plan de cableado es comprar <strong>un solo número de parte, un solo rollo</strong>, porque los lotes mezclados dan brillos desparejos que delta-sigma no disimula.</p>
+<blockquote>
+<p>⚠️ <strong>Nota sobre redistribución.</strong> Estos cuatro PDF son de sus fabricantes y suman <strong>unos 11 MB</strong> — el del ATmega2560 solo pesa 8,5 MB. Guardarlos acá los publica en el sitio y los versiona en el repositorio público, lo que en la práctica los redistribuye. Los fabricantes de semiconductores suelen tolerarlo sin problema, pero es una decisión, no un descuido. Si preferís no cargar el repo, alcanza con dejar la columna de fuentes originales y borrar <code>datasheets/</code>.</p>
+</blockquote>
+<h2 id="referencias-del-proyecto">Referencias del proyecto</h2>
+<p>Todo lo que está arriba sale de cuatro documentos de diseño, que viven en el directorio de este post bajo <code>referencias/</code> y se pueden leer completos:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Documento</th>
+					<th>Qué contiene</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong><a href="https://github.com/CesarBallardini/CesarBallardini.github.io/blob/master/content/es/posts/2026-08-03-panel-replica-ibm-370-145/referencias/2026-08-01-370-145-panel-inventory.md">Inventario del panel</a></strong></td>
+					<td>Cada lámpara, llave y tecla de la consola del /145, transcritas del manual <code>GA24-3554-0</code>, con su mapeo a Hercules y la auditoría de qué se puede manejar honestamente y qué no. Incluye el censo visual que corrigió los bancos de rollers de 32 a 36 lámparas</td>
+			</tr>
+			<tr>
+					<td><strong><a href="https://github.com/CesarBallardini/CesarBallardini.github.io/blob/master/content/es/posts/2026-08-03-panel-replica-ibm-370-145/referencias/2026-08-02-arduino-wiring-plan.md">Plan de cableado y firmware</a></strong></td>
+					<td>Delta-sigma a 1 kHz, cadenas TPIC6B595 y 74HC165, codificación de las ruedas hexadecimales, presupuestos de tiempo y de corriente, protocolo con el host, plan de puesta en marcha y lista de materiales con precios locales</td>
+			</tr>
+			<tr>
+					<td><strong><a href="https://github.com/CesarBallardini/CesarBallardini.github.io/blob/master/content/es/posts/2026-08-03-panel-replica-ibm-370-145/referencias/2026-08-01-references.md">Referencias</a></strong></td>
+					<td>Unas 320 fuentes verificadas en 21 secciones: manuales de IBM en Bitsavers, arte vectorial para el corte láser, interfaces de control de Hercules, MVS Turnkey, electrónica, trabajos previos —Operation Blinkenlights, PiDP, BlinkenBone— y qué enlaces están muertos y por cuáles se reemplazan</td>
+			</tr>
+			<tr>
+					<td><strong><a href="https://github.com/CesarBallardini/CesarBallardini.github.io/blob/master/content/es/posts/2026-08-03-panel-replica-ibm-370-145/referencias/CLAUDE.md">Decisiones cerradas</a></strong></td>
+					<td>Las decisiones de diseño que ya no se rediscuten, con su fundamento, y las notas de entorno del proyecto</td>
+			</tr>
+	</tbody>
+</table>
+<blockquote>
+<p><strong>Nota técnica.</strong> Los enlaces van a GitHub y no a este sitio a propósito: Hugo trata a los <code>.md</code> que están dentro de un <em>page bundle</em> como recursos de tipo página y <strong>no los copia a la salida</strong>, así que existen en el repositorio pero no en el sitio publicado. Si alguna vez conviene que sean descargables desde acá, la solución es renombrarlos a <code>.txt</code> — Hugo sí publica los recursos que no son páginas.</p>
+</blockquote>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Imagen de <a href="https://commons.wikimedia.org/wiki/File:Panel_370-145.png">Panel 370-145</a> — <strong>CC BY-SA 3.0</strong> — Oliver.obi, vía Wikimedia Commons. <strong>Es un render 3D, no una fotografía</strong>: se nota en los reflejos de las perillas y en la nitidez de las leyendas. La geometría y los rótulos coinciden con lo que documenta el manual <code>GA24-3554-0</code>, así que sirve como referencia visual — pero no es una consola real fotografiada, y el proyecto sigue necesitando una foto frontal de una máquina física para fijar las proporciones entre secciones. Original de 2560 × 1600 px; acá va recortada a 2,5:1 y con corrección de gamma (0,25) más contraste y saturación leves, porque el original está expuesto para que sólo se vean las lámparas encendidas contra el negro y a tamaño de hero se leía como una banda oscura. ⚠️ <strong>Ojo con la licencia</strong>: BY-SA obliga a compartir las obras derivadas bajo la misma licencia, así que este recorte también es CC BY-SA 3.0 — a diferencia de las demás imágenes del blog, que son CC BY o dominio público y sólo piden atribución.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p><em>U.S. v. IBM</em>, presentada el 17 de enero de 1969 ante el United States District Court for the Southern District of New York, por monopolización del mercado de computadoras digitales de propósito general bajo la sección 2 de la Sherman Act. Retirada en 1982 por el propio Departamento de Justicia. Contexto en <a href="https://historyofcomputercommunications.info/section/7.2/The-Justice-Department-IBM-and-AT&amp;T/">«The Justice Department: IBM and AT&amp;T»</a>, <em>History of Computer Communications</em>.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>La desagregación de 1969 y la partición del software en <em>System Control Programming</em> (sin cargo) y <em>Program Products</em> (con cargo): <a href="http://www.liquisearch.com/history_of_ibm/chronology/1969_-_antitrust_the_unbundling_of_software_and_services">«1969: Antitrust, The Unbundling of Software and Services»</a>, cronología de la historia de IBM.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>Sobre la política de IBM de no reclamar derechos sobre el software que distribuyó sin aviso de copyright, y sobre el efecto de la ley estadounidense anterior a 1978: <a href="https://www.ibiblio.org/jmaynard/">IBM Public Domain Software Collection</a>, de Jay Maynard — mantenedor de Hercules. Ver también las notas de instalación de <a href="https://www.jaymoseley.com/hercules/installMVS/iMVSintroV8.htm">Jay Moseley</a>, que documentan que varios integrantes de la comunidad de Hercules pidieron el software directamente a IBM como producto sin cargo. ⚠️ <strong>No es una opinión legal.</strong> Es la práctica establecida y la política declarada de IBM; si el uso fuera comercial, corresponde asesoramiento propio.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+<ul class="pa0">
+  
+</ul><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/ibm/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">IBM</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/system-370/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">System 370</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/hercules/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Hercules</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/mvs/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">MVS</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/arduino/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Arduino</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/raspberry-pi/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Raspberry Pi</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/electronica/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Electronica</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/retrocomputacion/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Retrocomputacion</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/nerd-lateral/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Nerd Lateral</a>
+   </li>
+  
+</ul>
+
+      
+    </div></article>
+</main><footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://katra.ballardini.com.ar/" >
+    &copy;  César Ballardini 2026 
+  </a>
+    <div><div class="ananke-socials"><a href="http://linkedin.com/in/cesar-ballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      </a><a href="https://x.com/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition x-twitter link dib z-999 pt3 pt0-l mr1"
+        title="follow on X - Opens in a new window"
+        aria-label="follow on X - Opens in a new window">
+      </a><a href="https://github.com/CesarBallardini/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            
+          </span></a></div>
+</div>
+  </div>
+</footer>
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  document.querySelectorAll('pre > code.language-mermaid').forEach(function (code) {
+    var div = document.createElement('div');
+    div.className = 'mermaid';
+    div.textContent = code.textContent;
+    code.parentElement.replaceWith(div);
+  });
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'neutral',
+    securityLevel: 'antiscript',
+    flowchart: { htmlLabels: true, useMaxWidth: true }
+  });
+</script>
+<style>/* ===================================================================
+   Audio player — read-aloud (speechSynthesis)
+   Injected only when frontmatter has `audio_player: true`
+   (see layouts/partials/hooks/body-end.html)
+   =================================================================== */
+
+/* Highlight of the paragraph currently being read aloud */
+.reading-now {
+  background: rgba(13, 34, 64, 0.06);
+  box-shadow: -0.6rem 0 0 rgba(13, 34, 64, 0.06);
+  border-left: 3px solid #0d2240;
+  padding-left: 0.6rem;
+  margin-left: -0.9rem;
+  border-radius: 2px;
+  transition: background 0.25s ease;
+  scroll-margin-top: 5rem;
+}
+
+/* Native range thumb styling for the progress bar */
+#katra-apProgress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #0d2240;
+  cursor: pointer;
+  border: 2px solid #fffefb;
+  box-shadow: 0 1px 3px rgba(13, 34, 64, 0.4);
+}
+#katra-apProgress::-moz-range-thumb {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #0d2240;
+  cursor: pointer;
+  border: 2px solid #fffefb;
+}
+
+/* Keep the fixed player from colliding with content on small screens */
+@media (max-width: 30em) {
+  #katra-audioPlayer {
+    bottom: 0.75rem !important;
+    left: 0.75rem !important;
+  }
+}
+</style>
+
+<div id="katra-audioPlayer" style="position:fixed;bottom:1.25rem;left:1.25rem;z-index:9999;background:rgba(255,254,251,.98);border:1px solid #ddd5c5;border-radius:18px;box-shadow:0 8px 32px rgba(13,34,64,.18);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:.7rem .85rem .75rem;display:flex;flex-direction:column;gap:.42rem;width:242px;max-width:242px;font-family:athelas,georgia,serif;box-sizing:border-box;overflow:hidden;">
+  <div style="display:flex;align-items:center;gap:.5rem;width:100%;box-sizing:border-box;">
+    <button id="katra-apMainBtn" onclick="kapToggle()" title="Reproducir / Pausar" style="width:34px;height:34px;min-width:34px;border-radius:50%;background:#0d2240;border:none;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;box-shadow:0 2px 8px rgba(13,34,64,.4);padding:0;outline:none;line-height:1;">
+      <svg id="katra-apMainIcon" viewBox="0 0 24 24" width="16" height="16" fill="white" style="display:block;margin-left:2px;"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+    </button>
+    <span id="katra-apLabel" style="font-size:.78rem;font-weight:600;color:#0d2240;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.3;">Escuchar el artículo</span>
+    <button id="katra-apCollapseBtn" onclick="kapCollapse()" title="Mostrar/ocultar controles" style="width:28px;height:28px;min-width:28px;border-radius:8px;border:1.5px solid #ddd5c5;background:#f0f4fa;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;padding:0;outline:none;line-height:1;">
+      <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="#0d2240" stroke-width="2" stroke-linecap="round" style="display:block;"><line x1="2" y1="5" x2="18" y2="5"/><line x1="2" y1="10" x2="18" y2="10"/><line x1="2" y1="15" x2="18" y2="15"/></svg>
+    </button>
+  </div>
+  <div id="katra-apBody" style="display:flex;flex-direction:column;gap:.38rem;width:100%;box-sizing:border-box;overflow:hidden;">
+    <div style="display:flex;align-items:center;justify-content:center;gap:.4rem;padding:.1rem 0;width:100%;box-sizing:border-box;">
+      <button onclick="kapPrev()" title="Párrafo anterior" style="width:30px;height:30px;min-width:30px;border-radius:50%;border:1.5px solid #ddd5c5;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;outline:none;line-height:1;">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="#0d2240" style="display:block;"><rect x="4" y="4" width="3" height="16" rx="1"/><polygon points="20 4 9 12 20 20"/></svg>
+      </button>
+      <button id="katra-apPlayBtn" onclick="kapToggle()" title="Play / Pausa" style="width:40px;height:40px;min-width:40px;border-radius:50%;background:#0d2240;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 3px 12px rgba(13,34,64,.45);padding:0;outline:none;line-height:1;">
+        <svg id="katra-apPlayIcon" viewBox="0 0 24 24" width="17" height="17" fill="white" style="display:block;margin-left:2px;"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+      </button>
+      <button onclick="kapNext()" title="Párrafo siguiente" style="width:30px;height:30px;min-width:30px;border-radius:50%;border:1.5px solid #ddd5c5;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;outline:none;line-height:1;">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="#0d2240" style="display:block;"><rect x="17" y="4" width="3" height="16" rx="1"/><polygon points="4 4 15 12 4 20"/></svg>
+      </button>
+      <button onclick="kapStop()" title="Detener" style="width:30px;height:30px;min-width:30px;border-radius:50%;border:1.5px solid #ddd5c5;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;outline:none;line-height:1;">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="#0d2240" style="display:block;"><rect x="5" y="5" width="14" height="14" rx="2"/></svg>
+      </button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:.26rem;width:100%;box-sizing:border-box;">
+      <input id="katra-apProgress" type="range" min="0" max="100" value="0" oninput="kapSeek(this.value)" style="-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:4px;background:#ddd5c5;outline:none;cursor:pointer;border:none;padding:0;margin:0;display:block;box-sizing:border-box;">
+      <div style="display:flex;justify-content:space-between;font-size:.62rem;color:#7a726a;font-variant-numeric:tabular-nums;">
+        <span id="katra-apCur">0:00</span><span id="katra-apTot">0:00</span>
+      </div>
+    </div>
+    <div style="width:100%;box-sizing:border-box;">
+      <div style="font-size:.59rem;color:#7a726a;text-align:center;margin-bottom:.22rem;letter-spacing:.04em;">VELOCIDAD</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.25rem;width:100%;box-sizing:border-box;">
+        <button class="ap-spd" onclick="kapSpeed(.8)" style="border-radius:20px;border:1px solid #ddd5c5;background:#fff;font-size:.66rem;font-weight:600;color:#7a726a;cursor:pointer;outline:none;line-height:1.5;padding:.18rem 0;text-align:center;width:100%;box-sizing:border-box;">0.8×</button>
+        <button class="ap-spd" onclick="kapSpeed(1)" style="border-radius:20px;border:1px solid #0d2240;background:#0d2240;font-size:.66rem;font-weight:600;color:#fff;cursor:pointer;outline:none;line-height:1.5;padding:.18rem 0;text-align:center;width:100%;box-sizing:border-box;">1×</button>
+        <button class="ap-spd" onclick="kapSpeed(1.25)" style="border-radius:20px;border:1px solid #ddd5c5;background:#fff;font-size:.66rem;font-weight:600;color:#7a726a;cursor:pointer;outline:none;line-height:1.5;padding:.18rem 0;text-align:center;width:100%;box-sizing:border-box;">1.25×</button>
+        <button class="ap-spd" onclick="kapSpeed(1.5)" style="border-radius:20px;border:1px solid #ddd5c5;background:#fff;font-size:.66rem;font-weight:600;color:#7a726a;cursor:pointer;outline:none;line-height:1.5;padding:.18rem 0;text-align:center;width:100%;box-sizing:border-box;">1.5×</button>
+      </div>
+    </div>
+    <div id="katra-apVoiceWrap" style="width:100%;box-sizing:border-box;display:none;">
+      <label for="katra-apVoice" style="font-size:.59rem;color:#7a726a;text-align:center;display:block;margin-bottom:.22rem;letter-spacing:.04em;">VOZ</label>
+      <select id="katra-apVoice" onchange="kapSetVoice(this.value)" style="width:100%;box-sizing:border-box;font-family:inherit;font-size:.66rem;color:#0d2240;background:#fff;border:1px solid #ddd5c5;border-radius:8px;padding:.24rem .3rem;outline:none;cursor:pointer;"></select>
+    </div>
+    <div id="katra-apStatus" style="font-size:.64rem;color:#7a726a;text-align:center;line-height:1.35;min-height:.85rem;padding:.04rem 0;width:100%;box-sizing:border-box;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Presioná ▶ para escuchar</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var player = document.getElementById('katra-audioPlayer');
+  if(!('speechSynthesis' in window)){ if(player) player.style.display='none'; return; }
+  
+  if(!document.querySelector('article .nested-copy-line-height')){ if(player) player.style.display='none'; return; }
+
+  var synth = window.speechSynthesis;
+  var paras = [], idx = 0, state = 'stopped', speed = 1;
+  var cancelIntent = false, speakToken = 0, currentEl = null, ticker = null;
+  var paraStartTime = 0, paraEstSecs = 0, totalEstSecs = 0, doneEstSecs = 0;
+
+  var ua = navigator.userAgent;
+  var isAndroid = /android/i.test(ua);
+  var nativePauseReliable = !isAndroid && !/firefox/i.test(ua);
+
+  
+  var LANG = "es";
+
+  
+  var STR = {
+    es: { listen:'Escuchar el artículo', loading:'Cargando voces…', paused:'En pausa — presioná ▶ para continuar', done:'✔ Lectura completada', press:'Presioná ▶ para escuchar', auto:'Automática', show:'Mostrar controles', hide:'Ocultar controles', para:function(a,b){ return 'Párrafo '+a+' de '+b; } },
+    en: { listen:'Listen to this article', loading:'Loading voices…', paused:'Paused — press ▶ to resume', done:'✔ Reading complete', press:'Press ▶ to listen', auto:'Automatic', show:'Show controls', hide:'Hide controls', para:function(a,b){ return 'Paragraph '+a+' of '+b; } }
+  };
+  var CFG = {
+    es: { order:['es-AR','es-MX','es-419','es-US','es-CL','es-CO','es-ES'], deflang:'es-419',
+          male:/\b(Pablo|Tom[aá]s|[AÁ]lvaro|Jorge|Juan|Diego|Carlos|Miguel|Enrique|Ra[uú]l|Andr[eé]s|Gonzalo|Lorenzo|Dar[ií]o|Mateo)\b/i },
+    en: { order:['en-US','en-GB','en-AU','en-CA','en-IE','en-IN'], deflang:'en-US',
+          male:/\b(David|Mark|Guy|Christopher|Eric|Roger|Brian|George|James|Daniel|Alex|Tom|Aaron|Fred|Ryan|Liam|Steffan|Andrew|Michael|Matthew)\b/i }
+  };
+  var T = STR[LANG] || STR.es;
+  var C = CFG[LANG] || CFG.es;
+  
+  
+  
+  if(isAndroid && LANG === 'es'){
+    C = { order:['es-US','es-AR','es-MX','es-419','es-CL','es-CO','es-ES'], deflang:'es-US', male:C.male };
+  }
+
+  
+  var VOICE_KEY = 'katra-ap-voice-' + LANG;
+  var chosenVoiceURI = '';
+  try { chosenVoiceURI = localStorage.getItem(VOICE_KEY) || ''; } catch(e){}
+
+  function $(id){ return document.getElementById(id); }
+  function fmt(s){ s=Math.max(0,Math.round(s)); var m=Math.floor(s/60),ss=s%60; return m+':'+(ss<10?'0':'')+ss; }
+
+  
+  function contentRoot(){ return document.querySelector('article .nested-copy-line-height'); }
+
+  function collectParas(){
+    paras = [];
+    var root = contentRoot();
+    if(!root) return;
+    
+    var h1 = document.querySelector('article header h1');
+    if(h1){
+      var h1t = (h1.innerText || h1.textContent || '').replace(/\s+/g,' ').trim();
+      if(h1t.length > 1) paras.push({ el: h1, text: h1t });
+    }
+    
+    var SEL = 'h2, h3, h4, p, li, blockquote';
+    root.querySelectorAll(SEL).forEach(function(el){
+      
+      if(el.closest('ul.pa0')) return;
+      if(el.closest('.footnotes')) return;
+      
+      if(el.querySelector('p, li, blockquote')) return;
+      
+      
+      var clone = el.cloneNode(true);
+      clone.querySelectorAll('sup, a.anchor, .footnote-ref').forEach(function(n){ n.remove(); });
+      var t = (clone.innerText || clone.textContent || '').replace(/\s+/g,' ').trim();
+      
+      var isHeading = /^H[2-4]$/.test(el.tagName);
+      if(t.length > (isHeading ? 1 : 8)) paras.push({ el: el, text: t });
+    });
+    recalcTotal();
+  }
+
+  function recalcTotal(){
+    totalEstSecs = paras.reduce(function(s,p){ return s + p.text.length/(14*speed); }, 0);
+    $('katra-apTot').textContent = fmt(Math.round(totalEstSecs));
+  }
+
+  
+  function langVoices(){
+    var voices = synth.getVoices();
+    var m = voices.filter(function(v){ return v.lang && v.lang.toLowerCase().indexOf(LANG) === 0; });
+    return m.length ? m : voices;
+  }
+
+  function populateVoices(){
+    var sel = $('katra-apVoice');
+    if(!sel) return;
+    var list = langVoices();
+    if(!list.length) return; 
+    var opts = '<option value="">' + T.auto + '</option>';
+    list.forEach(function(v){
+      var selAttr = (v.voiceURI === chosenVoiceURI) ? ' selected' : '';
+      var label = v.name + ' (' + v.lang + ')';
+      opts += '<option value="' + v.voiceURI.replace(/"/g,'&quot;') + '"' + selAttr + '>' + label + '</option>';
+    });
+    sel.innerHTML = opts;
+    $('katra-apVoiceWrap').style.display = 'block';
+  }
+
+  function getBestVoice(){
+    var voices = synth.getVoices();
+    if(!voices.length) return null;
+    if(chosenVoiceURI){
+      var picked = voices.find(function(v){ return v.voiceURI === chosenVoiceURI; });
+      if(picked) return picked;
+    }
+    var pool = langVoices();
+    
+    var MALE = C.male;
+    var NATURAL = /enhanced|premium|neural|natural/i;
+    var order = C.order;
+
+    
+    
+    
+    
+    
+    function inLocale(loc){
+      var v = pool.filter(function(x){ return x.lang && x.lang.toLowerCase().indexOf(loc.toLowerCase()) === 0; });
+      if(!v.length) return null;
+      return v.find(function(x){ return MALE.test(x.name) && NATURAL.test(x.name); })
+          || v.find(function(x){ return MALE.test(x.name); })
+          || v.find(function(x){ return NATURAL.test(x.name); })
+          || v.find(function(x){ return x.localService === true; })
+          || v[0];
+    }
+    for(var i=0;i<order.length;i++){
+      var hit = inLocale(order[i]);
+      if(hit) return hit;
+    }
+    return pool[0] || null;
+  }
+
+  
+  function prepararTTS(text){
+    var t = text;
+    if(LANG === 'en'){
+      t = t.replace(/\be\.g\.\s*/gi, 'for example, ');
+      t = t.replace(/\bi\.e\.\s*/gi, 'that is, ');
+      t = t.replace(/\betc\.\s*/gi, 'et cetera. ');
+    } else {
+      t = t.replace(/\bp\.\s*ej\.\s*/gi, 'por ejemplo, ');
+      t = t.replace(/\betc\.\s*/gi, 'etcétera. ');
+    }
+    t = t.replace(/[«»“”]/g, '"');
+    t = t.replace(/\s[–—]\s/g, ', ');
+    t = t.replace(/\.{3,}/g, '...');
+    t = t.replace(/\s{2,}/g, ' ');
+    return t.trim();
+  }
+
+  function speakPara(i){
+    if(i < 0) i = 0;
+    if(i >= paras.length){ finish(); return; }
+    idx = i; cancelIntent = false; speakToken++;
+    var myToken = speakToken;
+    var p = paras[i];
+    if(currentEl) currentEl.classList.remove('reading-now');
+    currentEl = p.el;
+    p.el.classList.add('reading-now');
+    p.el.scrollIntoView({ behavior:'smooth', block:'center' });
+
+    $('katra-apLabel').textContent = T.para(i+1, paras.length);
+    $('katra-apStatus').textContent = p.text.slice(0,55)+(p.text.length>55?'…':'');
+
+    var utt = new SpeechSynthesisUtterance(prepararTTS(p.text));
+    utt.lang = C.deflang;
+    utt.rate = speed;
+    var voice = getBestVoice();
+    if(voice){ utt.voice = voice; utt.lang = voice.lang; }
+
+    utt.onend = function(){
+      if(myToken !== speakToken || cancelIntent) return;
+      doneEstSecs += p.text.length/(14*speed);
+      if(state === 'playing') speakPara(i+1);
+    };
+    utt.onerror = function(){
+      if(myToken !== speakToken || cancelIntent) return;
+      if(state === 'playing') speakPara(i+1);
+    };
+
+    paraEstSecs = p.text.length/(14*speed);
+    paraStartTime = Date.now();
+    synth.cancel();
+    setTimeout(function(){ if(myToken === speakToken) synth.speak(utt); }, 40);
+    startTicker();
+  }
+
+  function startTicker(){
+    clearInterval(ticker);
+    ticker = setInterval(function(){
+      if(state !== 'playing'){ clearInterval(ticker); return; }
+      var elapsed = (Date.now()-paraStartTime)/1000;
+      var done = doneEstSecs + Math.min(elapsed, paraEstSecs);
+      var pct = totalEstSecs>0 ? Math.min(100, Math.round(done/totalEstSecs*100)) : 0;
+      $('katra-apProgress').value = pct;
+      $('katra-apCur').textContent = fmt(Math.round(done));
+    }, 400);
+  }
+
+  function finish(){
+    state = 'stopped'; clearInterval(ticker);
+    if(currentEl){ currentEl.classList.remove('reading-now'); currentEl = null; }
+    updateIcon(); idx = 0; doneEstSecs = 0;
+    $('katra-apLabel').textContent = T.listen;
+    $('katra-apStatus').textContent = T.done;
+    $('katra-apProgress').value = 100;
+  }
+
+  function updateIcon(){
+    var playing = (state === 'playing');
+    var svg = playing
+      ? '<rect x="5" y="4" width="4" height="16" rx="1"/><rect x="15" y="4" width="4" height="16" rx="1"/>'
+      : '<polygon points="6 3 20 12 6 21 6 3"/>';
+    var ml = playing ? '0' : '2px';
+    ['katra-apMainIcon','katra-apPlayIcon'].forEach(function(id){
+      var el = $(id);
+      if(el){ el.innerHTML = svg; el.style.marginLeft = ml; }
+    });
+  }
+
+  window.kapToggle = function(){
+    if(state === 'stopped'){
+      state = 'playing'; updateIcon();
+      $('katra-apStatus').textContent = T.loading;
+      var voices = synth.getVoices();
+      if(voices.length === 0){
+        var onVC = function(){
+          synth.removeEventListener('voiceschanged', onVC);
+          collectParas(); doneEstSecs = 0; speakPara(0);
+        };
+        synth.addEventListener('voiceschanged', onVC);
+        try{ var u = new SpeechSynthesisUtterance(''); synth.speak(u); synth.cancel(); }catch(e){}
+      } else {
+        collectParas(); doneEstSecs = 0; speakPara(0);
+      }
+    } else if(state === 'playing'){
+      state = 'paused'; clearInterval(ticker); updateIcon();
+      var pauseTime = Math.min((Date.now()-paraStartTime)/1000, paraEstSecs);
+      doneEstSecs += pauseTime * 0.6;
+      if(nativePauseReliable){ synth.pause(); }
+      else { cancelIntent = true; speakToken++; synth.cancel(); }
+      $('katra-apStatus').textContent = T.paused;
+    } else if(state === 'paused'){
+      state = 'playing'; updateIcon();
+      if(nativePauseReliable && synth.paused){
+        cancelIntent = false; synth.resume(); startTicker();
+        var p = paras[idx];
+        if(p) $('katra-apStatus').textContent = p.text.slice(0,55)+(p.text.length>55?'…':'');
+      } else { cancelIntent = false; speakPara(idx); }
+    }
+  };
+
+  window.kapStop = function(){
+    state = 'stopped'; cancelIntent = true; speakToken++;
+    synth.cancel(); clearInterval(ticker); idx = 0; doneEstSecs = 0;
+    if(currentEl){ currentEl.classList.remove('reading-now'); currentEl = null; }
+    updateIcon();
+    $('katra-apLabel').textContent = T.listen;
+    $('katra-apStatus').textContent = T.press;
+    $('katra-apProgress').value = 0;
+    $('katra-apCur').textContent = '0:00';
+  };
+
+  function sumTo(n){ return paras.slice(0,n).reduce(function(s,p){ return s + p.text.length/(14*speed); }, 0); }
+
+  window.kapNext = function(){
+    if(state === 'stopped') return;
+    cancelIntent = true; speakToken++; synth.cancel(); clearInterval(ticker);
+    var next = idx+1;
+    setTimeout(function(){
+      cancelIntent = false; state = 'playing'; updateIcon();
+      if(next < paras.length){ doneEstSecs = sumTo(next); speakPara(next); } else finish();
+    }, 55);
+  };
+
+  window.kapPrev = function(){
+    if(state === 'stopped') return;
+    cancelIntent = true; speakToken++; synth.cancel(); clearInterval(ticker);
+    var prev = Math.max(0, idx-1);
+    setTimeout(function(){
+      cancelIntent = false; state = 'playing'; updateIcon();
+      doneEstSecs = sumTo(prev); speakPara(prev);
+    }, 55);
+  };
+
+  window.kapSeek = function(pct){
+    if(!paras.length){ collectParas(); }
+    if(!paras.length) return;
+    var target = Math.min(Math.round(paras.length*pct/100), paras.length-1);
+    cancelIntent = true; speakToken++; synth.cancel(); clearInterval(ticker);
+    doneEstSecs = sumTo(target);
+    setTimeout(function(){ cancelIntent = false; state = 'playing'; updateIcon(); speakPara(target); }, 55);
+  };
+
+  window.kapSpeed = function(s){
+    speed = s;
+    player.querySelectorAll('.ap-spd').forEach(function(b){
+      var active = parseFloat(b.textContent) === s;
+      b.style.background = active ? '#0d2240' : '#fff';
+      b.style.borderColor = active ? '#0d2240' : '#ddd5c5';
+      b.style.color = active ? '#fff' : '#7a726a';
+    });
+    recalcTotal();
+    if(state === 'playing'){
+      var savedIdx = idx;
+      cancelIntent = true; speakToken++; synth.cancel(); clearInterval(ticker);
+      doneEstSecs = sumTo(savedIdx);
+      setTimeout(function(){ cancelIntent = false; speakPara(savedIdx); }, 60);
+    }
+  };
+
+  window.kapSetVoice = function(uri){
+    chosenVoiceURI = uri || '';
+    try {
+      if(chosenVoiceURI) localStorage.setItem(VOICE_KEY, chosenVoiceURI);
+      else localStorage.removeItem(VOICE_KEY);
+    } catch(e){}
+    
+    if(state === 'playing'){
+      var savedIdx = idx;
+      cancelIntent = true; speakToken++; synth.cancel(); clearInterval(ticker);
+      setTimeout(function(){ cancelIntent = false; speakPara(savedIdx); }, 60);
+    }
+  };
+
+  window.kapCollapse = function(){
+    var body = $('katra-apBody'), btn = $('katra-apCollapseBtn');
+    if(!body) return;
+    if(body.style.display === 'none'){
+      body.style.display = 'flex'; btn.title = T.hide;
+    } else {
+      body.style.display = 'none'; btn.title = T.show;
+    }
+  };
+
+  
+  window.addEventListener('pagehide', function(){ try{ synth.cancel(); }catch(e){} });
+
+  
+  populateVoices();
+  synth.addEventListener('voiceschanged', populateVoices);
+
+  
+  var body0 = $('katra-apBody'), btn0 = $('katra-apCollapseBtn');
+  if(body0) body0.style.display = 'none';
+  if(btn0) btn0.title = T.show;
+})();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
