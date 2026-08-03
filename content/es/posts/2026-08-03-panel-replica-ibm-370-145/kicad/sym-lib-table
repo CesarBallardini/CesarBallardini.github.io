@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "os370")(type "KiCad")(uri "${KIPRJMOD}/os370-panel.kicad_sym")(options "")(descr "Simbolos propios del panel 370/145"))
+)

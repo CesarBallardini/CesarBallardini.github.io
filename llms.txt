@@ -22,7 +22,7 @@ César currently works as part of the development team at NewGrid, doing backend
 
 ## Blog (Español)
 
-- [Blog](https://katra.ballardini.com.ar/): Artículos sobre desarrollo de software, administración de sistemas, lenguajes de programación, filosofía de la ingeniería del software, historia del cómputo e historia de la IA
+- [Blog](https://katra.ballardini.com.ar/): Artículos sobre desarrollo de software, administración de sistemas, lenguajes de programación, filosofía de la ingeniería del software, historia del cómputo, historia de la IA, epistemología y método científico, y trabajo práctico con modelos de lenguaje (transcripciones anotadas y verificadas contra fuentes primarias)
 
 ## Contact
 
