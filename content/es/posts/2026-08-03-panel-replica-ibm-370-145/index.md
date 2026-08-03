@@ -337,23 +337,9 @@ Ya vimos por qué van codificadas en hexadecimal y no leídas 1 de 16. Falta des
 
 ⚠️ Estas llaves suelen entregar el código **complementado**. Hay que verificarlo contra la hoja de datos e invertir en firmware: al revés, la rueda lee `F` cuando muestra `0`.
 
-## Sobre el esquemático completo en mermaid
+## El esquemático de la unidad repetida
 
-**Mermaid no sirve para esto, y conviene decirlo antes de que alguien pierda una tarde.** Es una herramienta de diagramas de bloques y de flujo: no tiene símbolos de componentes, ni nodos eléctricos, ni forma de expresar que tres cosas se conectan al mismo punto. Un esquemático con 26 integrados encadenados, 208 LEDs con sus resistencias y 128 líneas con divisores no se puede expresar ahí.
-
-Las alternativas que sí funcionan embebidas en markdown, en orden de esfuerzo:
-
-| Opción | Qué da | Costo |
-| --- | --- | --- |
-| **Arte ASCII en bloque de código** | Lo que usan los documentos del proyecto y lo que usé arriba. Excelente para *una* etapa: una cadena de un integrado, un divisor, un LED con su resistencia | Cero herramientas |
-| **SVG embebido** | Esquemático real, con símbolos. Se exporta de KiCad y se pega como archivo en el bundle del post | Hay que dibujarlo en KiCad |
-| **Mermaid para el diagrama de bloques** | Lo que hice más arriba: señales y responsabilidades entre Pi, Arduino y panel. Ahí sí es la herramienta correcta | Ya está hecho |
-
-**Mi recomendación:** mermaid para la arquitectura, ASCII para cada etapa típica, y un esquemático real de KiCad para lo demás. Un esquemático de esa densidad además no se lee en una página web: se lee en un PDF que se pueda ampliar.
-
-### El esquemático de la unidad repetida
-
-Eso último ya está hecho. **[Esquemático en PDF](kicad/unidad-repetida.pdf)** — hoja A3, generado con [KiCad](https://www.kicad.org/) **10.0.5**, instalado en esta máquina con [Chocolatey](https://community.chocolatey.org/packages/kicad).
+**[Esquemático en PDF](kicad/unidad-repetida.pdf)** — hoja A3, generado con [KiCad](https://www.kicad.org/) **10.0.5**, instalado en esta máquina con [Chocolatey](https://community.chocolatey.org/packages/kicad). Va en PDF y no embebido acá porque a esta densidad hace falta poder ampliarlo.
 
 No dibujé las 26 etapas: un esquemático de 26 integrados, 208 LEDs y 128 líneas no se lee, y además sería la misma etapa copiada. Lo que hay es **la unidad que se repite**, que es de donde se deduce el resto:
 
@@ -545,8 +531,8 @@ Lo cual, si uno quiere ser honesto, es también la razón por la que el panel es
 
 [^antitrust]: *U.S. v. IBM*, presentada el 17 de enero de 1969 ante el United States District Court for the Southern District of New York, por monopolización del mercado de computadoras digitales de propósito general bajo la sección 2 de la Sherman Act. Retirada en 1982 por el propio Departamento de Justicia. Contexto en [«The Justice Department: IBM and AT&T»](https://historyofcomputercommunications.info/section/7.2/The-Justice-Department-IBM-and-AT&T/), *History of Computer Communications*.
 [^unbundling]: La desagregación de 1969 y la partición del software en *System Control Programming* (sin cargo) y *Program Products* (con cargo): [«1969: Antitrust, The Unbundling of Software and Services»](http://www.liquisearch.com/history_of_ibm/chronology/1969_-_antitrust_the_unbundling_of_software_and_services), cronología de la historia de IBM.
-[^dominio-publico]: Sobre la política de IBM de no reclamar derechos sobre el software que distribuyó sin aviso de copyright, y sobre el efecto de la ley estadounidense anterior a 1978: [IBM Public Domain Software Collection](https://www.ibiblio.org/jmaynard/), de Jay Maynard — mantenedor de Hercules. Ver también las notas de instalación de [Jay Moseley](https://www.jaymoseley.com/hercules/installMVS/iMVSintroV8.htm), que documentan que varios integrantes de la comunidad de Hercules pidieron el software directamente a IBM como producto sin cargo. ⚠️ **No es una opinión legal.** Es la práctica establecida y la política declarada de IBM; si el uso fuera comercial, corresponde asesoramiento propio.
-[^img_hero]: Imagen de [Panel 370-145](https://commons.wikimedia.org/wiki/File:Panel_370-145.png) — **CC BY-SA 3.0** — Oliver.obi, vía Wikimedia Commons. **Es un render 3D, no una fotografía**: se nota en los reflejos de las perillas y en la nitidez de las leyendas. La geometría y los rótulos coinciden con lo que documenta el manual `GA24-3554-0`, así que sirve como referencia visual — pero no es una consola real fotografiada, y el proyecto sigue necesitando una foto frontal de una máquina física para fijar las proporciones entre secciones. Original de 2560 × 1600 px; acá va recortada a 2,5:1 y con corrección de gamma (0,25) más contraste y saturación leves, porque el original está expuesto para que sólo se vean las lámparas encendidas contra el negro y a tamaño de hero se leía como una banda oscura. ⚠️ **Ojo con la licencia**: BY-SA obliga a compartir las obras derivadas bajo la misma licencia, así que este recorte también es CC BY-SA 3.0 — a diferencia de las demás imágenes del blog, que son CC BY o dominio público y sólo piden atribución.
+[^dominio-publico]: Sobre la política de IBM de no reclamar derechos sobre el software que distribuyó sin aviso de copyright, y sobre el efecto de la ley estadounidense anterior a 1978: [IBM Public Domain Software Collection](https://www.ibiblio.org/jmaynard/), de Jay Maynard — mantenedor de Hercules. Ver también las notas de instalación de [Jay Moseley](https://www.jaymoseley.com/hercules/installMVS/iMVSintroV8.htm), que documentan que varios integrantes de la comunidad de Hercules pidieron el software directamente a IBM como producto sin cargo.
+[^img_hero]: Imagen de [Panel 370-145](https://commons.wikimedia.org/wiki/File:Panel_370-145.png) — **CC BY-SA 3.0** — Oliver.obi, vía Wikimedia Commons. **Es un render 3D, no una fotografía**: se nota en los reflejos de las perillas y en la nitidez de las leyendas. La geometría y los rótulos coinciden con lo que documenta el manual `GA24-3554-0`, así que sirve como referencia visual — pero no es una consola real fotografiada, y el proyecto sigue necesitando una foto frontal de una máquina física para fijar las proporciones entre secciones. Original de 2560 × 1600 px; acá va recortada a 2,5:1 y con corrección de gamma (0,25) más contraste y saturación leves, porque el original está expuesto para que sólo se vean las lámparas encendidas contra el negro y a tamaño de hero se leía como una banda oscura. Licencia BY-SA obliga a compartir las obras derivadas bajo la misma licencia, así que este recorte también es CC BY-SA 3.0.
 
 ## Apéndice: la matriz de diodos de una rueda
 
@@ -617,8 +603,6 @@ Las hojas de datos de los componentes principales están descargadas en el direc
 
 **LEDs y resistencias no llevan hoja de datos acá, y es a propósito.** Los LEDs se compran por lote y **la hoja de datos que importa es la del lote que compraste**: la tensión directa determina el valor de la resistencia, y varía entre fabricantes y entre bines del mismo fabricante. Los valores del post —330 Ω para ámbar de ~2,0 V y 220 Ω para blanco cálido de ~3,0 V, a 10 mA— son el punto de partida, no la respuesta: hay que medir el LED que se compró. Y el criterio del plan de cableado es comprar **un solo número de parte, un solo rollo**, porque los lotes mezclados dan brillos desparejos que delta-sigma no disimula.
 
-> ⚠️ **Nota sobre redistribución.** Estos cuatro PDF son de sus fabricantes y suman **unos 11 MB** — el del ATmega2560 solo pesa 8,5 MB. Guardarlos acá los publica en el sitio y los versiona en el repositorio público, lo que en la práctica los redistribuye. Los fabricantes de semiconductores suelen tolerarlo sin problema, pero es una decisión, no un descuido. Si preferís no cargar el repo, alcanza con dejar la columna de fuentes originales y borrar `datasheets/`.
-
 ## Referencias del proyecto
 
 Todo lo que está arriba sale de cuatro documentos de diseño, que viven en el directorio de este post bajo `referencias/` y se pueden leer completos:
@@ -629,5 +613,3 @@ Todo lo que está arriba sale de cuatro documentos de diseño, que viven en el d
 | **[Plan de cableado y firmware](https://github.com/CesarBallardini/CesarBallardini.github.io/blob/master/content/es/posts/2026-08-03-panel-replica-ibm-370-145/referencias/2026-08-02-arduino-wiring-plan.md)** | Delta-sigma a 1 kHz, cadenas TPIC6B595 y 74HC165, codificación de las ruedas hexadecimales, presupuestos de tiempo y de corriente, protocolo con el host, plan de puesta en marcha y lista de materiales con precios locales |
 | **[Referencias](https://github.com/CesarBallardini/CesarBallardini.github.io/blob/master/content/es/posts/2026-08-03-panel-replica-ibm-370-145/referencias/2026-08-01-references.md)** | Unas 320 fuentes verificadas en 21 secciones: manuales de IBM en Bitsavers, arte vectorial para el corte láser, interfaces de control de Hercules, MVS Turnkey, electrónica, trabajos previos —Operation Blinkenlights, PiDP, BlinkenBone— y qué enlaces están muertos y por cuáles se reemplazan |
 | **[Decisiones cerradas](https://github.com/CesarBallardini/CesarBallardini.github.io/blob/master/content/es/posts/2026-08-03-panel-replica-ibm-370-145/referencias/CLAUDE.md)** | Las decisiones de diseño que ya no se rediscuten, con su fundamento, y las notas de entorno del proyecto |
-
-> **Nota técnica.** Los enlaces van a GitHub y no a este sitio a propósito: Hugo trata a los `.md` que están dentro de un *page bundle* como recursos de tipo página y **no los copia a la salida**, así que existen en el repositorio pero no en el sitio publicado. Si alguna vez conviene que sean descargables desde acá, la solución es renombrarlos a `.txt` — Hugo sí publica los recursos que no son páginas.

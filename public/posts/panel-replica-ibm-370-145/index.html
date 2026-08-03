@@ -122,7 +122,7 @@
 	<meta itemprop="description" content="Una réplica física del panel de operador de un IBM 370/145, con lámparas reales y llaves que hacen algo, manejando Hercules y MVS 3.8j sobre una Raspberry Pi 5.">
 	<meta itemprop="datePublished" content="2026-08-03T00:00:00-03:00">
 	<meta itemprop="dateModified" content="2026-08-03T00:00:00-03:00">
-	<meta itemprop="wordCount" content="8436">
+	<meta itemprop="wordCount" content="8236">
 	<meta itemprop="keywords" content="IBM,System 370,Hercules,MVS,Arduino,Raspberry Pi,Electronica,Retrocomputacion,Nerd Lateral">
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:title" content="Construir el panel de control de un IBM System/370">
@@ -332,8 +332,8 @@ article tbody tr:nth-child(even) {
       
         
         
-        <span class="f6 mv4 dib tracked"> - Lectura en 40 minutos </span>
-        <span class="f6 mv4 dib tracked"> - 8436 palabras </span>
+        <span class="f6 mv4 dib tracked"> - Lectura en 39 minutos </span>
+        <span class="f6 mv4 dib tracked"> - 8236 palabras </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><p>⚠️ <em>Curiosidad nerd lateral — esto no es ciencia de la computación. Es un fierro con luces.</em></p>
@@ -1422,9 +1422,6 @@ CPUMODEL  0145         # cosmético: sólo cambia lo que reporta STIDP</code></p
 	</tbody>
 </table>
 <p><strong>LEDs y resistencias no llevan hoja de datos acá, y es a propósito.</strong> Los LEDs se compran por lote y <strong>la hoja de datos que importa es la del lote que compraste</strong>: la tensión directa determina el valor de la resistencia, y varía entre fabricantes y entre bines del mismo fabricante. Los valores del post —330 Ω para ámbar de ~2,0 V y 220 Ω para blanco cálido de ~3,0 V, a 10 mA— son el punto de partida, no la respuesta: hay que medir el LED que se compró. Y el criterio del plan de cableado es comprar <strong>un solo número de parte, un solo rollo</strong>, porque los lotes mezclados dan brillos desparejos que delta-sigma no disimula.</p>
-<blockquote>
-<p>⚠️ <strong>Nota sobre redistribución.</strong> Estos cuatro PDF son de sus fabricantes y suman <strong>unos 11 MB</strong> — el del ATmega2560 solo pesa 8,5 MB. Guardarlos acá los publica en el sitio y los versiona en el repositorio público, lo que en la práctica los redistribuye. Los fabricantes de semiconductores suelen tolerarlo sin problema, pero es una decisión, no un descuido. Si preferís no cargar el repo, alcanza con dejar la columna de fuentes originales y borrar <code>datasheets/</code>.</p>
-</blockquote>
 <h2 id="referencias-del-proyecto">Referencias del proyecto</h2>
 <p>Todo lo que está arriba sale de cuatro documentos de diseño, que viven en el directorio de este post bajo <code>referencias/</code> y se pueden leer completos:</p>
 <table>
@@ -1453,14 +1450,11 @@ CPUMODEL  0145         # cosmético: sólo cambia lo que reporta STIDP</code></p
 			</tr>
 	</tbody>
 </table>
-<blockquote>
-<p><strong>Nota técnica.</strong> Los enlaces van a GitHub y no a este sitio a propósito: Hugo trata a los <code>.md</code> que están dentro de un <em>page bundle</em> como recursos de tipo página y <strong>no los copia a la salida</strong>, así que existen en el repositorio pero no en el sitio publicado. Si alguna vez conviene que sean descargables desde acá, la solución es renombrarlos a <code>.txt</code> — Hugo sí publica los recursos que no son páginas.</p>
-</blockquote>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn:1">
-<p>Imagen de <a href="https://commons.wikimedia.org/wiki/File:Panel_370-145.png">Panel 370-145</a> — <strong>CC BY-SA 3.0</strong> — Oliver.obi, vía Wikimedia Commons. <strong>Es un render 3D, no una fotografía</strong>: se nota en los reflejos de las perillas y en la nitidez de las leyendas. La geometría y los rótulos coinciden con lo que documenta el manual <code>GA24-3554-0</code>, así que sirve como referencia visual — pero no es una consola real fotografiada, y el proyecto sigue necesitando una foto frontal de una máquina física para fijar las proporciones entre secciones. Original de 2560 × 1600 px; acá va recortada a 2,5:1 y con corrección de gamma (0,25) más contraste y saturación leves, porque el original está expuesto para que sólo se vean las lámparas encendidas contra el negro y a tamaño de hero se leía como una banda oscura. ⚠️ <strong>Ojo con la licencia</strong>: BY-SA obliga a compartir las obras derivadas bajo la misma licencia, así que este recorte también es CC BY-SA 3.0 — a diferencia de las demás imágenes del blog, que son CC BY o dominio público y sólo piden atribución.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Imagen de <a href="https://commons.wikimedia.org/wiki/File:Panel_370-145.png">Panel 370-145</a> — <strong>CC BY-SA 3.0</strong> — Oliver.obi, vía Wikimedia Commons. <strong>Es un render 3D, no una fotografía</strong>: se nota en los reflejos de las perillas y en la nitidez de las leyendas. La geometría y los rótulos coinciden con lo que documenta el manual <code>GA24-3554-0</code>, así que sirve como referencia visual — pero no es una consola real fotografiada, y el proyecto sigue necesitando una foto frontal de una máquina física para fijar las proporciones entre secciones. Original de 2560 × 1600 px; acá va recortada a 2,5:1 y con corrección de gamma (0,25) más contraste y saturación leves, porque el original está expuesto para que sólo se vean las lámparas encendidas contra el negro y a tamaño de hero se leía como una banda oscura. Licencia BY-SA obliga a compartir las obras derivadas bajo la misma licencia, así que este recorte también es CC BY-SA 3.0.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2">
 <p><em>U.S. v. IBM</em>, presentada el 17 de enero de 1969 ante el United States District Court for the Southern District of New York, por monopolización del mercado de computadoras digitales de propósito general bajo la sección 2 de la Sherman Act. Retirada en 1982 por el propio Departamento de Justicia. Contexto en <a href="https://historyofcomputercommunications.info/section/7.2/The-Justice-Department-IBM-and-AT&amp;T/">«The Justice Department: IBM and AT&amp;T»</a>, <em>History of Computer Communications</em>.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
@@ -1469,7 +1463,7 @@ CPUMODEL  0145         # cosmético: sólo cambia lo que reporta STIDP</code></p
 <p>La desagregación de 1969 y la partición del software en <em>System Control Programming</em> (sin cargo) y <em>Program Products</em> (con cargo): <a href="http://www.liquisearch.com/history_of_ibm/chronology/1969_-_antitrust_the_unbundling_of_software_and_services">«1969: Antitrust, The Unbundling of Software and Services»</a>, cronología de la historia de IBM.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:4">
-<p>Sobre la política de IBM de no reclamar derechos sobre el software que distribuyó sin aviso de copyright, y sobre el efecto de la ley estadounidense anterior a 1978: <a href="https://www.ibiblio.org/jmaynard/">IBM Public Domain Software Collection</a>, de Jay Maynard — mantenedor de Hercules. Ver también las notas de instalación de <a href="https://www.jaymoseley.com/hercules/installMVS/iMVSintroV8.htm">Jay Moseley</a>, que documentan que varios integrantes de la comunidad de Hercules pidieron el software directamente a IBM como producto sin cargo. ⚠️ <strong>No es una opinión legal.</strong> Es la práctica establecida y la política declarada de IBM; si el uso fuera comercial, corresponde asesoramiento propio.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Sobre la política de IBM de no reclamar derechos sobre el software que distribuyó sin aviso de copyright, y sobre el efecto de la ley estadounidense anterior a 1978: <a href="https://www.ibiblio.org/jmaynard/">IBM Public Domain Software Collection</a>, de Jay Maynard — mantenedor de Hercules. Ver también las notas de instalación de <a href="https://www.jaymoseley.com/hercules/installMVS/iMVSintroV8.htm">Jay Moseley</a>, que documentan que varios integrantes de la comunidad de Hercules pidieron el software directamente a IBM como producto sin cargo.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
