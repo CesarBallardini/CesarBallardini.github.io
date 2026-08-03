@@ -122,7 +122,7 @@
 	<meta itemprop="description" content="Una réplica física del panel de operador de un IBM 370/145, con lámparas reales y llaves que hacen algo, manejando Hercules y MVS 3.8j sobre una Raspberry Pi 5.">
 	<meta itemprop="datePublished" content="2026-08-03T00:00:00-03:00">
 	<meta itemprop="dateModified" content="2026-08-03T00:00:00-03:00">
-	<meta itemprop="wordCount" content="8645">
+	<meta itemprop="wordCount" content="8436">
 	<meta itemprop="keywords" content="IBM,System 370,Hercules,MVS,Arduino,Raspberry Pi,Electronica,Retrocomputacion,Nerd Lateral">
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:title" content="Construir el panel de control de un IBM System/370">
@@ -332,8 +332,8 @@ article tbody tr:nth-child(even) {
       
         
         
-        <span class="f6 mv4 dib tracked"> - Lectura en 41 minutos </span>
-        <span class="f6 mv4 dib tracked"> - 8645 palabras </span>
+        <span class="f6 mv4 dib tracked"> - Lectura en 40 minutos </span>
+        <span class="f6 mv4 dib tracked"> - 8436 palabras </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><p>⚠️ <em>Curiosidad nerd lateral — esto no es ciencia de la computación. Es un fierro con luces.</em></p>
@@ -880,38 +880,8 @@ CPUMODEL  0145         # cosmético: sólo cambia lo que reporta STIDP</code></p
 <h3 id="las-ruedas-hexadecimales">Las ruedas hexadecimales</h3>
 <p>Ya vimos por qué van codificadas en hexadecimal y no leídas 1 de 16. Falta descartar la tercera opción, que es la que primero se le ocurre a cualquiera que haya hecho un proyecto con Arduino: <strong>encoders de cuadratura, no.</strong> No tienen posición absoluta, así que el panel perdería su ajuste cada vez que se apaga — y la máquina real nunca hacía eso: las ruedas quedaban donde el operador las había dejado.</p>
 <p>⚠️ Estas llaves suelen entregar el código <strong>complementado</strong>. Hay que verificarlo contra la hoja de datos e invertir en firmware: al revés, la rueda lee <code>F</code> cuando muestra <code>0</code>.</p>
-<h2 id="sobre-el-esquemático-completo-en-mermaid">Sobre el esquemático completo en mermaid</h2>
-<p><strong>Mermaid no sirve para esto, y conviene decirlo antes de que alguien pierda una tarde.</strong> Es una herramienta de diagramas de bloques y de flujo: no tiene símbolos de componentes, ni nodos eléctricos, ni forma de expresar que tres cosas se conectan al mismo punto. Un esquemático con 26 integrados encadenados, 208 LEDs con sus resistencias y 128 líneas con divisores no se puede expresar ahí.</p>
-<p>Las alternativas que sí funcionan embebidas en markdown, en orden de esfuerzo:</p>
-<table>
-	<thead>
-			<tr>
-					<th>Opción</th>
-					<th>Qué da</th>
-					<th>Costo</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><strong>Arte ASCII en bloque de código</strong></td>
-					<td>Lo que usan los documentos del proyecto y lo que usé arriba. Excelente para <em>una</em> etapa: una cadena de un integrado, un divisor, un LED con su resistencia</td>
-					<td>Cero herramientas</td>
-			</tr>
-			<tr>
-					<td><strong>SVG embebido</strong></td>
-					<td>Esquemático real, con símbolos. Se exporta de KiCad y se pega como archivo en el bundle del post</td>
-					<td>Hay que dibujarlo en KiCad</td>
-			</tr>
-			<tr>
-					<td><strong>Mermaid para el diagrama de bloques</strong></td>
-					<td>Lo que hice más arriba: señales y responsabilidades entre Pi, Arduino y panel. Ahí sí es la herramienta correcta</td>
-					<td>Ya está hecho</td>
-			</tr>
-	</tbody>
-</table>
-<p><strong>Mi recomendación:</strong> mermaid para la arquitectura, ASCII para cada etapa típica, y un esquemático real de KiCad para lo demás. Un esquemático de esa densidad además no se lee en una página web: se lee en un PDF que se pueda ampliar.</p>
-<h3 id="el-esquemático-de-la-unidad-repetida">El esquemático de la unidad repetida</h3>
-<p>Eso último ya está hecho. <strong><a href="/posts/panel-replica-ibm-370-145/kicad/unidad-repetida.pdf">Esquemático en PDF</a></strong> — hoja A3, generado con <a href="https://www.kicad.org/">KiCad</a> <strong>10.0.5</strong>, instalado en esta máquina con <a href="https://community.chocolatey.org/packages/kicad">Chocolatey</a>.</p>
+<h2 id="el-esquemático-de-la-unidad-repetida">El esquemático de la unidad repetida</h2>
+<p><strong><a href="/posts/panel-replica-ibm-370-145/kicad/unidad-repetida.pdf">Esquemático en PDF</a></strong> — hoja A3, generado con <a href="https://www.kicad.org/">KiCad</a> <strong>10.0.5</strong>, instalado en esta máquina con <a href="https://community.chocolatey.org/packages/kicad">Chocolatey</a>. Va en PDF y no embebido acá porque a esta densidad hace falta poder ampliarlo.</p>
 <p>No dibujé las 26 etapas: un esquemático de 26 integrados, 208 LEDs y 128 líneas no se lee, y además sería la misma etapa copiada. Lo que hay es <strong>la unidad que se repite</strong>, que es de donde se deduce el resto:</p>
 <ul>
 <li><strong>Etapa de salida</strong> — un TPIC6B595 con sus ocho LEDs y las resistencias a +5 V, con <code>SER OUT</code> etiquetado hacia el <code>SER IN</code> del siguiente.</li>
