@@ -12,9 +12,16 @@
 			<copyright>César Ballardini</copyright>
 		
 		
-			<lastBuildDate>Tue, 28 Jan 2025 00:00:00 -0300</lastBuildDate>
+			<lastBuildDate>Tue, 04 Aug 2026 00:00:00 -0300</lastBuildDate>
 		
 			<atom:link href="https://katra.ballardini.com.ar/tags/arquitectura/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>DCI: la idea olvidada del hombre que inventó MVC</title>
+				<link>https://katra.ballardini.com.ar/posts/dci-data-context-interaction-reenskaug/</link>
+				<pubDate>Tue, 04 Aug 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/posts/dci-data-context-interaction-reenskaug/</guid>
+				<description>&lt;p&gt;Me pasa cada vez que abro un sistema orientado a objetos que no escribí yo. Miro las clases, entiendo perfectamente qué es cada una —&lt;code&gt;Account&lt;/code&gt;, &lt;code&gt;Customer&lt;/code&gt;, &lt;code&gt;LedgerEntry&lt;/code&gt;, &lt;code&gt;Branch&lt;/code&gt;—, y no tengo la menor idea de qué hace el sistema. El dominio está modelado con prolijidad de manual. El caso de uso, el que el usuario tenía en la cabeza cuando pidió el software, no está en ninguna parte. Está repartido en pedacitos de dos líneas dentro de once métodos de siete clases, y para reconstruirlo tengo que hacer el trabajo del compilador a mano.&lt;/p&gt;</description>
+			</item>
 			<item>
 				<title>Decoupling from Rails</title>
 				<link>https://katra.ballardini.com.ar/posts/jim-weinrich-refactoring-ruby-on-rails/</link>

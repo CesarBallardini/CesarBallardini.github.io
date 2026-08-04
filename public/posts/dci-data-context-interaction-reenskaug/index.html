@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>DCI: la idea olvidada del hombre que inventó MVC | katra</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Trygve Reenskaug pasó su jubilación buscando una forma de que el código muestre lo que el sistema hace, y no sólo lo que el sistema es. La llamó DCI. Casi nadie la conoce.">
+    <meta name="generator" content="Hugo 0.164.0">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    <meta name="author" content="César Ballardini">
+    
+
+    <link rel="stylesheet" href="/ananke/css/main.e65ecad14ec45356cb0945e8ee25e1e1ae98048c45c1ff0abd042666c7303e53.css" integrity="sha256-5l7K0U7EU1bLCUXo7iXh4a6YBIxFwf8KvQQmZscwPlM=" crossorigin="anonymous">
+    <script>
+  (function () {
+    "use strict";
+
+    
+    
+    function revealButtons() {
+      var buttons = document.querySelectorAll(".code-block .code-copy[hidden]");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].hidden = false;
+      }
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", revealButtons);
+    } else {
+      revealButtons();
+    }
+
+    function flash(button) {
+      var label = button.querySelector(".code-copy-label");
+      var previous = label ? label.textContent : null;
+      button.classList.add("is-copied");
+      if (label) label.textContent = "Copied";
+      window.setTimeout(function () {
+        button.classList.remove("is-copied");
+        if (label && previous !== null) label.textContent = previous;
+      }, 2000);
+    }
+
+    function legacyCopy(text) {
+      var area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "absolute";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.select();
+      var ok = false;
+      try {
+        ok = document.execCommand("copy");
+      } catch (e) {
+        ok = false;
+      }
+      document.body.removeChild(area);
+      return ok;
+    }
+
+    function copyFrom(button) {
+      var container = button.closest(".code-block");
+      if (!container) return;
+      var pre = container.querySelector("pre");
+      if (!pre) return;
+      var source = pre.querySelector("code") || pre;
+      var text = source.innerText;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { flash(button); },
+          function () { if (legacyCopy(text)) flash(button); }
+        );
+      } else if (legacyCopy(text)) {
+        flash(button);
+      }
+    }
+
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest(".code-copy");
+      if (button) copyFrom(button);
+    });
+  })();
+</script>
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://katra.ballardini.com.ar/posts/dci-data-context-interaction-reenskaug/">
+    
+
+    
+    
+    <meta property="og:url" content="https://katra.ballardini.com.ar/posts/dci-data-context-interaction-reenskaug/">
+	<meta property="og:site_name" content="katra">
+	<meta property="og:title" content="DCI: la idea olvidada del hombre que inventó MVC">
+	<meta property="og:description" content="Trygve Reenskaug pasó su jubilación buscando una forma de que el código muestre lo que el sistema hace, y no sólo lo que el sistema es. La llamó DCI. Casi nadie la conoce.">
+	<meta property="og:locale" content="es_AR">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-08-04T00:00:00-03:00">
+		<meta property="article:modified_time" content="2026-08-04T00:00:00-03:00">
+		<meta property="article:tag" content="DCI">
+		<meta property="article:tag" content="Reenskaug">
+		<meta property="article:tag" content="MVC">
+		<meta property="article:tag" content="Arquitectura">
+		<meta property="article:tag" content="OOP">
+		<meta property="article:tag" content="Coplien">
+
+	<meta itemprop="name" content="DCI: la idea olvidada del hombre que inventó MVC">
+	<meta itemprop="description" content="Trygve Reenskaug pasó su jubilación buscando una forma de que el código muestre lo que el sistema hace, y no sólo lo que el sistema es. La llamó DCI. Casi nadie la conoce.">
+	<meta itemprop="datePublished" content="2026-08-04T00:00:00-03:00">
+	<meta itemprop="dateModified" content="2026-08-04T00:00:00-03:00">
+	<meta itemprop="wordCount" content="5866">
+	<meta itemprop="keywords" content="DCI,Reenskaug,MVC,Arquitectura,OOP,Coplien,Smalltalk,Simula">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="DCI: la idea olvidada del hombre que inventó MVC">
+	<meta name="twitter:description" content="Trygve Reenskaug pasó su jubilación buscando una forma de que el código muestre lo que el sistema hace, y no sólo lo que el sistema es. La llamó DCI. Casi nadie la conoce.">
+
+      
+      
+    
+	
+
+  </head><body class="ma0 avenir bg-near-white production is-page is-page page-2026-08-04-dci-data-context-interaction-reenskaug">
+   
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+      
+        
+        
+      
+    
+  
+  
+    <style>
+      
+        
+          
+          @media screen and (min-width: 480px) {
+            #featured-image-a809254412ced41e9813f8b6c0adaa09 { background-image: url('/posts/dci-data-context-interaction-reenskaug/hero-manchester-baby_hu_270f8ac5f43a316e.jpg'); }
+          }
+        
+      
+        
+          
+          @media screen and (min-width: 960px) {
+            #featured-image-a809254412ced41e9813f8b6c0adaa09 { background-image: url('/posts/dci-data-context-interaction-reenskaug/hero-manchester-baby_hu_45255b75d3ec5f33.jpg'); }
+          }
+        
+      
+        
+          
+          @media screen and (min-width: 1440px) {
+            #featured-image-a809254412ced41e9813f8b6c0adaa09 { background-image: url('/posts/dci-data-context-interaction-reenskaug/hero-manchester-baby_hu_b5298dd28a73d448.jpg'); }
+          }
+        
+      
+        
+          
+          @media screen and (min-width: 1920px) {
+            #featured-image-a809254412ced41e9813f8b6c0adaa09 { background-image: url('/posts/dci-data-context-interaction-reenskaug/hero-manchester-baby_hu_3c84644131c83239.jpg'); }
+          }
+        
+      
+    </style>
+  
+  <header id="featured-image-a809254412ced41e9813f8b6c0adaa09" class="cover bg-center" style="background-image: url('/posts/dci-data-context-interaction-reenskaug/hero-manchester-baby_hu_270f8ac5f43a316e.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        katra
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/consultoria/" title="Consultoría pagina">
+              Consultoría
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/cv/" title="CV pagina">
+              CV
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/habilidades/" title="Habilidades Técnicas pagina">
+              Habilidades Técnicas
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/posts/" title="Entradas pagina">
+              Entradas
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="http://linkedin.com/in/cesar-ballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      </a><a href="https://x.com/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition x-twitter link dib z-999 pt3 pt0-l mr1"
+        title="follow on X - Opens in a new window"
+        aria-label="follow on X - Opens in a new window">
+      </a><a href="https://github.com/CesarBallardini/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            
+          </span></a></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">DCI: la idea olvidada del hombre que inventó MVC</div>
+          
+            <div class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
+              Trygve Reenskaug pasó su jubilación buscando una forma de que el código muestre lo que el sistema hace, y no sólo lo que el sistema es. La llamó DCI. Casi nadie la conoce.
+            </div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+<main class="pb7" role="main">
+  
+
+  <article class="page-2026-08-04-dci-data-context-interaction-reenskaug flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu">
+    <a class="link dim" href="https://katra.ballardini.com.ar/posts/">Entradas</a>
+  </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fdci-data-context-interaction-reenskaug%2F&amp;subject=DCI%3A&#43;la&#43;idea&#43;olvidada&#43;del&#43;hombre&#43;que&#43;invent%C3%B3&#43;MVC"
+        class="ananke-social-link email no-underline"
+        title="Share on Email" aria-label="Share on Email"
+        target="_blank" rel="nofollow noopener noreferrer">
+        </a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fdci-data-context-interaction-reenskaug%2F&amp;summary=Me&#43;pasa&#43;cada&#43;vez&#43;que&#43;abro&#43;un&#43;sistema&#43;orientado&#43;a&#43;objetos&#43;que&#43;no&#43;escrib%C3%AD&#43;yo.&#43;Miro&#43;las&#43;clases%2C&#43;entiendo&#43;perfectamente&#43;qu%C3%A9&#43;es&#43;cada&#43;una&#43;%E2%80%94Account%2C&#43;Customer%2C&#43;LedgerEntry%2C&#43;Branch%E2%80%94%2C&#43;y&#43;no&#43;tengo&#43;la&#43;menor&#43;idea&#43;de&#43;qu%C3%A9&#43;hace&#43;el&#43;sistema.&#43;El&#43;dominio&#43;est%C3%A1&#43;modelado&#43;con&#43;prolijidad&#43;de&#43;manual.&#43;El&#43;caso&#43;de&#43;uso%2C&#43;el&#43;que&#43;el&#43;usuario&#43;ten%C3%ADa&#43;en&#43;la&#43;cabeza&#43;cuando&#43;pidi%C3%B3&#43;el&#43;software%2C&#43;no&#43;est%C3%A1&#43;en&#43;ninguna&#43;parte.&#43;Est%C3%A1&#43;repartido&#43;en&#43;pedacitos&#43;de&#43;dos&#43;l%C3%ADneas&#43;dentro&#43;de&#43;once&#43;m%C3%A9todos&#43;de&#43;siete&#43;clases%2C&#43;y&#43;para&#43;reconstruirlo&#43;tengo&#43;que&#43;hacer&#43;el&#43;trabajo&#43;del&#43;compilador&#43;a&#43;mano.%0A&amp;title=DCI%3A&#43;la&#43;idea&#43;olvidada&#43;del&#43;hombre&#43;que&#43;invent%C3%B3&#43;MVC&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fdci-data-context-interaction-reenskaug%2F"
+        class="ananke-social-link linkedin no-underline"
+        title="Share on LinkedIn" aria-label="Share on LinkedIn"
+        target="_blank" rel="nofollow noopener noreferrer">
+        </a><a href="https://twitter.com/intent/tweet/?&amp;text=Me&#43;pasa&#43;cada&#43;vez&#43;que&#43;abro&#43;un&#43;sistema&#43;orientado&#43;a&#43;objetos&#43;que&#43;no&#43;escrib%C3%AD&#43;yo.&#43;Miro&#43;las&#43;clases%2C&#43;entiendo&#43;perfectamente&#43;qu%C3%A9&#43;es&#43;cada&#43;una&#43;%E2%80%94Account%2C&#43;Customer%2C&#43;LedgerEntry%2C&#43;Branch%E2%80%94%2C&#43;y&#43;no&#43;tengo&#43;la&#43;menor&#43;idea&#43;de&#43;qu%C3%A9&#43;hace&#43;el&#43;sistema.&#43;El&#43;dominio&#43;est%C3%A1&#43;modelado&#43;con&#43;prolijidad&#43;de&#43;manual.&#43;El&#43;caso&#43;de&#43;uso%2C&#43;el&#43;que&#43;el&#43;usuario&#43;ten%C3%ADa&#43;en&#43;la&#43;cabeza&#43;cuando&#43;pidi%C3%B3&#43;el&#43;software%2C&#43;no&#43;est%C3%A1&#43;en&#43;ninguna&#43;parte.&#43;Est%C3%A1&#43;repartido&#43;en&#43;pedacitos&#43;de&#43;dos&#43;l%C3%ADneas&#43;dentro&#43;de&#43;once&#43;m%C3%A9todos&#43;de&#43;siete&#43;clases%2C&#43;y&#43;para&#43;reconstruirlo&#43;tengo&#43;que&#43;hacer&#43;el&#43;trabajo&#43;del&#43;compilador&#43;a&#43;mano.%0A&amp;url=https%3A%2F%2Fkatra.ballardini.com.ar%2Fposts%2Fdci-data-context-interaction-reenskaug%2F"
+        class="ananke-social-link x-twitter no-underline"
+        title="Share on X" aria-label="Share on X"
+        target="_blank" rel="nofollow noopener noreferrer">
+        </a><a href="%25!s%28%3cnil%3e%29?"
+        class="ananke-social-link github no-underline"
+        title="Share on GitHub" aria-label="Share on GitHub"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                
+              </span></a></div>
+<h1 class="f1 athelas mt3 mb1">DCI: la idea olvidada del hombre que inventó MVC</h1>
+      
+      <p class="tracked"><strong>César Ballardini</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-08-04T00:00:00-03:00">04 de agosto de 2026</time>
+      
+
+      
+      
+        
+        
+        <span class="f6 mv4 dib tracked"> - Lectura en 28 minutos </span>
+        <span class="f6 mv4 dib tracked"> - 5866 palabras </span>
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><p>Me pasa cada vez que abro un sistema orientado a objetos que no escribí yo. Miro las clases, entiendo perfectamente qué es cada una —<code>Account</code>, <code>Customer</code>, <code>LedgerEntry</code>, <code>Branch</code>—, y no tengo la menor idea de qué hace el sistema. El dominio está modelado con prolijidad de manual. El caso de uso, el que el usuario tenía en la cabeza cuando pidió el software, no está en ninguna parte. Está repartido en pedacitos de dos líneas dentro de once métodos de siete clases, y para reconstruirlo tengo que hacer el trabajo del compilador a mano.</p>
+<p>Resulta que el tipo que inventó MVC pensaba lo mismo, y propuso una solución. Se llama DCI —<em>Data, Context, Interaction</em>— y casi nadie la conoce. Este post cuenta de dónde salió y qué dice. En <a href="/posts/dci-en-python-roles-en-runtime/">la segunda parte</a> lo escribimos en Python, y analizamos la conveniencia y limitaciones del lenguaje.</p>
+<h3 id="el-currículum-obliga-a-escuchar">El currículum obliga a escuchar</h3>
+<p>Trygve Reenskaug —suerte para mí que no me toca pronunciarlo— fue el autor del patrón Model-View-Controller. Los dos documentos fundacionales siguen publicados en <a href="https://folk.universitetetioslo.no/trygver/">su propia página</a>: «<a href="https://folk.universitetetioslo.no/trygver/1979/mvc-1/1979-05-MVC.pdf">Thing-Model-View-Editor</a>», del 12 de mayo de 1979, y «<a href="https://folk.universitetetioslo.no/trygver/1979/mvc-2/1979-12-MVC.pdf">Models-Views-Controllers</a>», del 10 de diciembre de 1979. El primer nombre que le puso fue <em>Thing-Model-View-Editor</em>; el que quedó salió recién después de discutirlo largo con Adele Goldberg<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. Eso solo ya es raro de asimilar: MVC es probablemente la sigla más repetida de la historia del software de aplicación, la que aparece en el primer capítulo de todo tutorial de framework web desde hace veinte años, y tiene un autor con nombre, apellido y página personal todavía en línea en un servidor universitario noruego<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. Reenskaug fue profesor emérito de informática en la Universidad de Oslo —así firmaba él mismo sus papers de DCI<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>— y se había retirado en 1997, lo que hace que todo lo que sigue sea, literalmente, su proyecto de jubilación<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>. Lamentablemente falleció en 2024, a los 93 años.</p>
+<p>Pero MVC ni siquiera es el principio de la historia; empezaremos por el principio porque explica todo lo demás.</p>
+<p>En los años sesenta Reenskaug trabajaba en Autokon<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>, un sistema CAD/CAM para diseño de barcos que entró en producción en 1963 y que terminaron usando la mayoría de los astilleros importantes del mundo<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>. Y ahí pasó algo que él contaba, cuarenta años después, como el origen de todo. El sistema guardaba el modelo del producto en una base de datos central<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>. Alguien despierto en el departamento de trazado se dio cuenta de que, si el modelo ya estaba en la base, se podían sacar directamente de ahí las cintas de control para las máquinas de oxicorte. Cortaron más de trescientas toneladas de acero antes de descubrir la diferencia entre <em>precisión</em> y <em>exactitud</em>: los datos tenían cuarenta bits de precisión, sí, pero las dimensiones seguían siendo tan aproximadas como en los planos 1:50 de los que habían salido<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>.</p>
+<p>Trescientas toneladas de chatarra y muchos dedos acusadores. Reenskaug concluyó que la culpa era del sistema, no del muchacho: antes, cada departamento era dueño de sus datos, y la transferencia entre departamentos estaba controlada, firmada por quien la mandaba y chequeada por quien la recibía. La base de datos común había roto ese patrón. No había dueño y no había control.</p>
+<p>De ahí salió su obsesión: los sistemas de computación tienen que reflejar la estructura de responsabilidad de la organización real. Intentó construirlo con Simula —que Nygaard y Dahl acababan de inventar en el Norsk Regnesentral<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>, del otro lado del patio de su oficina<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>— y se dio contra dos paredes. Una: un programa Simula corría segundos o minutos, y sus objetos nacían y morían dentro de esa corrida; él necesitaba que la ejecución durara un año o más. Es el problema de la persistencia<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup>, y en 1970 no tenía solución — «los objetos persistentes todavía estaban esperando ser inventados», anotó él mismo entre paréntesis<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup>; el término <em>persistent programming</em> aparece recién en 1983, con PS-algol<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup>. La otra fue el verdadero problema: <strong>Simula exigía que el emisor de un mensaje conociera la clase del receptor</strong>. Eso rompía la idea entera de componentes que se comunican por un protocolo estándar y son opacos por dentro. Chau Simula.</p>
+<p>Sin lenguaje que le sirviera, se construyó las dos cosas a mano. En el paper que llevó a la conferencia ICCAS de Tokio, en agosto de 1973, describe el lenguaje Prokon-0 y su principio de <em>Communicating Data Processes</em>: los procesos viven guardados en la base de datos, pasivos la mayor parte del tiempo, y se cargan a memoria recién cuando les llega un mensaje; cuál procedimiento se ejecuta lo decide una tabla que cada proceso tiene para sí, de modo que el mismo mensaje puede ser atendido de manera diferente en procesos distintos<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup>. Persistencia y despacho dinámico, escritos a mano en un astillero noruego.</p>
+<p>El proyecto se cayó cuando se derrumbó el mercado de barcos nuevos, y con el tiempo libre que le quedó escribió los papers que después lo llevaron a Xerox PARC como científico visitante en 1978/79, al grupo de Smalltalk. Ahí las ideas encajaron. En el grupo, contaba él, decían que había dos escuelas de orientación a objetos: la de la Costa Este, la de C++, «un artefacto de programación donde un objeto es una instancia de una clase y también una estructura de datos con métodos incorporados»; y la de la Costa Oeste, la de ellos, donde «la esencia de la orientación a objetos es que los objetos interactúan para realizar una tarea»<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup>. Toda la historia posterior de DCI es un intento de escribir código de acuerdo con esa segunda definición.</p>
+<p>Si bien coincidía con la definición de orientación a objetos de Alan Kay, sus reparos apuntaban a dos supuestos de la <em>implementación</em> de Smalltalk. El primero: que si un objeto está programado «para hacer lo correcto», se va a portar bien cuando interactúe con otros. Anda en los casos simples y falla en los sistemas donde el valor del todo es mayor que la suma de las partes, porque ahí qué es «lo correcto» depende del sistema entero — es decir, del contexto. El segundo: que la clase sea la unidad ideal de reutilización. Las clases se diseñan de a conjuntos y fuera de su conjunto no sirven; el ejemplo que da es el framework, un montón de clases que se complementan y que están pensadas para derivar subclases juntas. Su conclusión es de una línea: «las clases no son independientes, y hace falta un constructo de nivel más alto para especificar el todo»<sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup>. Treinta años después, ese constructo de nivel más alto es la C de DCI.</p>
+<p>Le siguió el paradigma de roles y el método OOram —<em>Object Oriented Role Analysis and Modeling</em>—, cuya primera herramienta demostró en el primer OOPSLA, en Portland, en 1986<sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup>. Llegó a formato libro como <em>Working with Objects: The OOram Software Engineering Method</em>, escrito con Per Wold y Odd Arild Lehne<sup id="fnref:18"><a href="#fn:18" class="footnote-ref" role="doc-noteref">18</a></sup>. Reenskaug venía pensando hace décadas que la unidad interesante no es el objeto, sino el <strong>rol</strong> que el objeto juega mientras algo pasa.</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">timeline TD
+    title De un astillero noruego a DCI
+    1963 : Autokon entra en producción
+         : 300 toneladas de acero mal cortado
+    1970 : Simula descartado
+         : el emisor debe conocer la clase del receptor
+    1973 : Prokon-0 y los Communicating Data Processes
+         : ICCAS, Tokio
+    1978 : Xerox PARC, grupo Smalltalk
+    1979 : Thing-Model-View-Editor
+         : Models-Views-Controllers (MVC)
+    1986 : OOram en el primer OOPSLA (Portland)
+    1997 : se jubila y arranca BabyUML
+    2008 : BabyUML pasa a llamarse BabyDCI
+    2009 : el paper de Artima
+    2014 : capítulo ASA y Working with objects</code></pre>
+  </div><p>Y después, décadas más tarde, llegó DCI. Acá conviene ser preciso con las fechas. El 28 de agosto de 2008 Reenskaug declaró que su proyecto BabyUML había llegado a su meta y lo rebautizó BabyDCI: esa «versión 2008» es la fecha de nacimiento del paradigma, y él mismo la escribía así<sup id="fnref:19"><a href="#fn:19" class="footnote-ref" role="doc-noteref">19</a></sup>. El paper —<em>The DCI Architecture: A New Vision of Object-Oriented Programming</em>, firmado junto con James O. Coplien— se publicó en Artima recién el 20 de marzo de 2009<sup id="fnref:20"><a href="#fn:20" class="footnote-ref" role="doc-noteref">20</a></sup>.</p>
+<p>Lo de «Baby», dicho sea de paso, tiene dos motivos. El primero es literal: la versión de 2008 era una criatura que él esperaba que creciera hasta convertirse en algo viable y potente. El segundo es una humorada con ambición: el primer computador electrónico digital de programa almacenado del mundo, en Manchester en 1948, se llamaba <em>The Baby</em><sup id="fnref:21"><a href="#fn:21" class="footnote-ref" role="doc-noteref">21</a></sup>. «Como todos sabemos, mucho vino después de ese comienzo endeble»<sup id="fnref:22"><a href="#fn:22" class="footnote-ref" role="doc-noteref">22</a></sup>.</p>
+<p>Que DCI haya salido del escritorio de Reenskaug y llegado a alguna parte es obra de Coplien, y no hace falta que lo diga yo: lo decía Reenskaug. «Después de 2008, DCI salió al mundo bajo el liderazgo de James Coplien. Sin él, DCI habría quedado como una curiosidad oscura»<sup id="fnref:23"><a href="#fn:23" class="footnote-ref" role="doc-noteref">23</a></sup>. Y fue Coplien quien lo llevó a formato libro: <em>Lean Architecture for Agile Software Development</em> lo escribió con Gertrud Bjørnvig —no con Reenskaug<sup id="fnref:24"><a href="#fn:24" class="footnote-ref" role="doc-noteref">24</a></sup>—, y es ahí donde la idea aparece desarrollada. El propio Reenskaug lo reseñó como «una lectura obligada para todos los que quieran entender la verdadera naturaleza del desarrollo de sistemas».</p>
+<p>Cuando el inventor de MVC dice, cuarenta años después, «che, esto se puede hacer mejor», uno se sienta a escuchar.</p>
+<h3 id="el-síntoma-dónde-está-el-comportamiento">El síntoma: ¿dónde está el comportamiento?</h3>
+<p>El diagnóstico de DCI es corto y es incómodo.</p>
+<p>La orientación a objetos, tal como se practica, modela muy bien <strong>lo que las cosas son</strong>. Una <code>Account</code> tiene un saldo, un titular, un CBU. Eso es estable: la cuenta va a seguir siendo una cuenta el año que viene, y ese modelo casi no cambia. Hasta ahí, todo bien.</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">classDiagram
+    direction LR
+    class Customer {
+        +name
+        +tax_id
+    }
+    class Account {
+        +holder
+        +balance
+        +debit(amount)
+        +credit(amount)
+    }
+    class LedgerEntry {
+        +date
+        +amount
+    }
+    Customer &#34;1&#34; --&gt; &#34;*&#34; Account : holds
+    Account &#34;1&#34; --&gt; &#34;*&#34; LedgerEntry : records</code></pre>
+  </div><p>Mirá ese diagrama y decime qué hace el sistema. No se puede. Está todo lo que el sistema <em>es</em> y no hay una sola pista del problema que resuelve.</p>
+<p>Porque el sistema no existe para que las cuentas sean cuentas. Existe para que alguien transfiera plata, pague un servicio, cierre un ejercicio. Eso es <strong>lo que el sistema hace</strong>, y es también la parte que cambia todo el tiempo. En OOP clásica esa parte no tiene dónde vivir. Las opciones son dos, y las dos son malas.</p>
+<p>La primera: metés el comportamiento adentro de los objetos de dominio. Entonces <code>Account</code> empieza a tener un método <code>transfer_to()</code>, y después <code>pay_bill()</code>, y después <code>apply_court_order()</code>, y a los tres años tu clase <code>Account</code> tiene mil quinientas líneas y sabe de juzgados. El objeto estable se contaminó con todos los casos de uso inestables que lo tocan.</p>
+<p>La segunda: sacás el comportamiento afuera, a una capa de servicios. Entonces <code>Account</code> queda anémica —un montón de getters y setters, una fila de la base de datos con disfraz de objetos— y toda la lógica vive en <code>TransferService</code>, que es un procedimiento con sombrero de objeto. Escribiste COBOL con llaves.</p>
+<p>Coplien tiene un nombre prestado de la arquitectura de verdad para esto: las <em><strong>shear layers</strong></em>, las capas de una construcción que evolucionan a ritmos distintos. Una casa necesita techo nuevo cada tantos años pero casi nunca necesita una pared exterior nueva, y una buena arquitectura pone interfaces limpias entre esas capas. La programación orientada a clases, dice, mete la evolución de los datos y la evolución de los métodos <strong>en la misma capa</strong>: la clase. Los datos tienden a ser estables; los métodos cambian todo el tiempo para dar servicios nuevos. Esa diferencia de ritmos es la que le hace fuerza al diseño hasta romperlo<sup id="fnref:25"><a href="#fn:25" class="footnote-ref" role="doc-noteref">25</a></sup>.</p>
+<p>DCI dice que las dos opciones de arriba son malas porque las dos parten de una pregunta equivocada. La pregunta no es «¿en qué clase pongo este método?». La pregunta es «¿por qué el caso de uso no es una cosa?».</p>
+<h3 id="las-tres-letras">Las tres letras</h3>
+<p>La propuesta de DCI es partir el sistema en tres, y darle a cada parte un criterio de cambio distinto<sup id="fnref:26"><a href="#fn:26" class="footnote-ref" role="doc-noteref">26</a></sup>.</p>
+<p><strong>Data</strong> es lo que el objeto <em>es</em>. Chiquito, tonto, estable. La <code>Account</code> sabe su saldo y sabe sumarlo y restarlo, y nada más. Es el modelo de datos, la parte que dura décadas. Coplien lo llama, sin cariño y con precisión, <em>barely smart data</em>.</p>
+<p><strong>Context</strong> es la novedad, y es la letra que hace toda la fuerza. El caso de uso deja de ser un método suelto y pasa a ser <strong>un objeto de primera clase</strong>. <code>MoneyTransferContext</code> no es un servicio: es un contexto, una cosa que existe, que se instancia cuando la transferencia empieza y que muere cuando termina. Su trabajo es uno solo: agarrar los objetos de datos que participan y asignarles los roles que van a jugar en este caso de uso puntual.</p>
+<p><strong>Interaction</strong> es el guion. Los <strong>roles</strong> —<code>SourceAccount</code>, <code>DestinationAccount</code>— no son clases, no son objetos: son comportamiento que se le pega a un objeto de datos <em>mientras dura el contexto</em>. Y la interacción es el diálogo entre roles: el origen se debita, el destino se acredita, y listo.</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">flowchart LR
+    subgraph CTX[&#34;Context: MoneyTransferContext (vive sólo durante el caso de uso)&#34;]
+        direction TB
+        R1[&#34;source&lt;br/&gt;rol SourceAccount&lt;br/&gt;&lt;i&gt;transfer(amount)&lt;/i&gt;&#34;]
+        R2[&#34;destination&lt;br/&gt;rol DestinationAccount&lt;br/&gt;&lt;i&gt;receive(amount)&lt;/i&gt;&#34;]
+        R1 == &#34;el guion: debita y pide acreditar&#34; ==&gt; R2
+    end
+    subgraph DATA[&#34;Data: objetos de dominio (viven siempre)&#34;]
+        direction TB
+        O1[&#34;account_a : Account&lt;br/&gt;balance = 1000&#34;]
+        O2[&#34;account_b : Account&lt;br/&gt;balance = 0&#34;]
+    end
+    R1 -. &#34;se liga al entrar&lt;br/&gt;se suelta al salir&#34; .-&gt; O1
+    R2 -. &#34;se liga al entrar&lt;br/&gt;se suelta al salir&#34; .-&gt; O2
+    classDef rol fill:#fde8d0,stroke:#c8792a,stroke-width:2px
+    classDef dato fill:#e6eef7,stroke:#3d6b9c,stroke-width:2px
+    class R1,R2 rol
+    class O1,O2 dato</code></pre>
+  </div><p>Los nombres de los roles no se inventan, y ese es un punto en el que Reenskaug y Coplien insistían bastante: salen del modelo mental del usuario. «Podés reconstruirlos fácilmente pidiéndole a cualquiera que tengas cerca que te describa cómo se transfiere plata entre sus cuentas, y escuchando con atención lo que dice»<sup id="fnref:27"><a href="#fn:27" class="footnote-ref" role="doc-noteref">27</a></sup>. Va a nombrar los objetos por el papel que juegan en la transacción. Eso es un rol.</p>
+<p>La clave, la que hace que valga la pena todo el aparato, es esta: en el contexto vos leés el algoritmo completo del caso de uso, de corrido, en un lugar. Y se lee como el usuario lo cuenta. «Tomás fondos del origen, los ponés en el destino.» No hay que perseguirlo por siete archivos.</p>
+<h3 id="el-ejemplo-que-todo-el-mundo-usa">El ejemplo que todo el mundo usa</h3>
+<p>El ejemplo canónico de DCI es la transferencia bancaria: es el que usan Reenskaug y Coplien en el paper de Artima, con un caso de uso de cajero automático<sup id="fnref:28"><a href="#fn:28" class="footnote-ref" role="doc-noteref">28</a></sup>, y el que desarrollan en el capítulo de arquitectura, donde dicen que «un modelo mental posible tiene <strong>tres</strong> roles»: <em>Source Account</em>, <em>Destination Account</em> y <em>Transfer Amount</em><sup id="fnref:29"><a href="#fn:29" class="footnote-ref" role="doc-noteref">29</a></sup>. Ese tercero es el interesante: el monto no es una entidad del dominio y sin embargo puede ser un rol. Un rol no tiene por qué corresponder a una tabla.</p>
+<p>Es un ejemplo bien elegido porque parece trivial y no lo es.</p>
+<p>En OOP clásica, si escribís <code>source.transfer_to(destination, amount)</code>, la <code>Account</code> origen ahora sabe qué es una transferencia. Sabe de comisiones, sabe de límites diarios, sabe de horarios de acreditación. Le cargaste un caso de uso a una entidad que existía <strong>antes</strong> de que ese caso de uso se inventara y que va a seguir existiendo cuando lo deroguen. Y ninguna de esas reglas es sobre lo que una cuenta <em>es</em>.</p>
+<p>En DCI, <code>Account</code> no sabe nada de transferencias. Sabe debitar y acreditar, punto — como un entero sabe sumarse. Ni siquiera valida que no quedes en descubierto, porque el piso del saldo no es un dato de la cuenta: en una caja de ahorro es cero, en una cuenta corriente con acuerdo de descubierto es el negativo del acuerdo, y una comisión o un embargo te dejan en rojo sin preguntar. El contexto <code>MoneyTransferContext</code> toma dos cuentas cualesquiera, le dice a una «vos, en este rato, sos la <code>SourceAccount</code>» y a la otra «vos sos la <code>DestinationAccount</code>», y ejecuta el guion. La misma cuenta que hoy es origen mañana es destino, y no le agregaste ni una línea.</p>
+<p>El detalle que a mí me parece más interesante: los roles son <strong>contextuales</strong>. Un objeto no <em>tiene</em> un rol, un objeto <em>juega</em> un rol, y sólo mientras dura la obra. Cuando el contexto termina, la cuenta vuelve a ser una cuenta. Eso es mucho más parecido a cómo funciona el mundo real que la herencia, donde una vez que sos <code>SalariedEmployee</code> lo sos hasta que destruyan el objeto.</p>
+<p>Además —esto importa para lo que viene— el objeto tiene que <strong>seguir siendo el mismo objeto</strong> mientras juega el rol. No alcanza con envolverlo en un decorador y devolver otra cosa: la identidad se conserva. Ahí es donde la idea empieza a necesitar del lenguaje funcionalidades que el lenguaje no posee, y de eso se trata <a href="/posts/dci-en-python-roles-en-runtime/">la segunda parte</a>.</p>
+<p>La tesis fuerte, entonces, es esta: <strong>el código tiene que leerse como el modelo mental del usuario</strong>, no como el diagrama de clases del arquitecto. El diagrama de clases te dice qué hay. El contexto te dice qué pasa. Los usuarios no piensan en qué hay; piensan en qué pasa. Coplien lo dice más filoso: «vendemos casos de uso, no clases, y ni siquiera objetos»<sup id="fnref:30"><a href="#fn:30" class="footnote-ref" role="doc-noteref">30</a></sup>.</p>
+<h3 id="las-críticas-serias">Las críticas serias</h3>
+<p>Conviene no presentar esto como una idea perfecta que el mundo ignoró por tonto. Las objeciones aparecieron rápido y algunas son buenas.</p>
+<p>La más citada es de Michael Feathers, y va al corazón del ejemplo: poner la responsabilidad de la transferencia en la cuenta origen <strong>es arbitrario</strong>. En el modelo mental del usuario, la transferencia no la hace ninguna de las dos cuentas; la hace el banco, o un objeto-transacción. John Zabroski propuso directamente una clase de análisis <code>TransferSlip</code> — el papelito de la transferencia — como el lugar donde vive esa lógica<sup id="fnref:31"><a href="#fn:31" class="footnote-ref" role="doc-noteref">31</a></sup>. Y es una crítica incómoda porque DCI se vende justamente por respetar el modelo mental del usuario. Si el ejemplo canónico no lo respeta, algo falla.</p>
+<p>Otros dijeron que DCI no era nada nuevo: que son <em>traits</em> con otro nombre, o la vieja idea funcional de que los algoritmos importan y deberían poder escribirse de corrido. La respuesta de Coplien es que los traits son <em>una</em> forma de implementarlo y que otros constructos sirven igual; el valor está en separar el comportamiento estable del dominio de la lógica de negocio contextual, no en el mecanismo<sup id="fnref:32"><a href="#fn:32" class="footnote-ref" role="doc-noteref">32</a></sup>. Reenskaug, por su lado, contestó algo más duro y menos tranquilizador: que entender DCI exige adoptar una abstracción adicional —el rol— y que el rol es <em>la abstracción opuesta</em> a la clase. La clase deja afuera la identidad del objeto y se concentra en su construcción interna —atributos y métodos—; el rol hace lo contrario: deja afuera la construcción interna y se concentra en la identidad. Por eso, decía, DCI le resulta tan difícil a una persona formada en clases: «tratá de explicarle la noción de color a alguien completamente daltónico; tratá de explicarle la noción de rol a alguien centrado en clases»<sup id="fnref:33"><a href="#fn:33" class="footnote-ref" role="doc-noteref">33</a></sup>.</p>
+<p>Uno puede leer eso como profundidad o como la respuesta de alguien que ya decidió que quien no entiende es porque no puede. Yo creo que hay las dos cosas.</p>
+<p>Y después está la evidencia, que es escasísima: hay <strong>un solo</strong> experimento controlado con sujetos humanos comparando DCI con OO clásica, la tesis de maestría de Hector A. Valdecantos en el RIT, de 2016, con versión de conferencia en ICPC 2017<sup id="fnref:34"><a href="#fn:34" class="footnote-ref" role="doc-noteref">34</a></sup>. El resultado es honesto y moderado: el código DCI resultó <strong>más comprensible</strong> y logró que los programadores concentraran mejor la atención en los archivos que importaban, pero el estudio <strong>no pudo mostrar con significancia estadística</strong> que se resolviera la tarea en menos tiempo. Un experimento, con estudiantes, sobre un sistema chico. Cualquiera que te diga que DCI está probado —o refutado— está hablando de más.</p>
+<h3 id="por-qué-casi-nadie-lo-usa">Por qué (casi) nadie lo usa</h3>
+<p>La respuesta tiene tres partes.</p>
+<p>La primera es que <strong>el lenguaje pelea en contra</strong>. Para que DCI funcione de verdad necesitás poder inyectar comportamiento a un objeto en tiempo de ejecución, por la duración de un contexto, sin tocar su clase y sin que el objeto cambie de identidad. Java no hace eso. C# no hace eso. Los lenguajes con traits o mixins te dejan acercarte, pero la composición suele ser estática, decidida al definir el tipo y no al armar el contexto. Ruby y Python sí te dejan hacerlo — y el precio que se paga es exactamente el tema de <a href="/posts/dci-en-python-roles-en-runtime/">la parte 2</a>. Coplien terminó escribiendo un lenguaje entero, <code>trygve</code>, precisamente para no tener que pelear; y <code>trygve</code> es un proyecto de GitHub con cien estrellas<sup id="fnref:35"><a href="#fn:35" class="footnote-ref" role="doc-noteref">35</a></sup>.</p>
+<p>La segunda es que <strong>no hay ecosistema</strong>. No hay un framework DCI con diez mil estrellas, no hay una generación de programadores que lo aprendió en la facultad, no hay ofertas de laburo que lo pidan. Y las ideas de arquitectura, guste o no, se propagan por framework y por oferta laboral, no por paper.</p>
+<p>La tercera es la más honesta: <strong>el beneficio recién se ve cuando el sistema es grande</strong>. En un CRUD de cuatro pantallas, DCI es puro overhead: te hace escribir contextos y roles para algo que se resolvía con un método. El dolor que DCI cura es el de los sistemas de diez años y cien casos de uso, y para cuando llegás a ese dolor ya tenés cien mil líneas escritas del otro modo. El costo se paga por adelantado y el retorno llega tarde. Eso, en cualquier organización, tiene una respuesta: «no lo hagas así».</p>
+<h3 id="lo-que-sí-sobrevivió">Lo que sí sobrevivió</h3>
+<p>Lo interesante de las ideas que no ganan es que casi nunca desaparecen del todo: se filtran.</p>
+<p>El diagnóstico de DCI —que el caso de uso merece ser una cosa y no un método perdido— es exactamente el mismo diagnóstico que hace Clean Architecture cuando pone los <em>use cases</em> en el centro y los convierte en objetos con nombre propio<sup id="fnref:36"><a href="#fn:36" class="footnote-ref" role="doc-noteref">36</a></sup>. La solución es distinta y bastante menos ambiciosa: los use cases de Clean Architecture son objetos comunes, no hay inyección de roles en ningún lado, nadie le cambia la clase a nada. Pero el síntoma que describe es idéntico.</p>
+<h3 id="vale-la-pena-igual">Vale la pena igual</h3>
+<p>Yo no te voy a decir que uses DCI. No lo uso, no conozco a nadie que lo use, y ya expliqué por qué la economía no cierra.</p>
+<p>Pero pensá en el arco completo. Un tipo empieza en 1963 escribiendo un sistema que corta acero para barcos. El sistema funciona tan bien que alguien lo usa para algo que no debía y se pierden trescientas toneladas de material. Él decide que la culpa es del diseño, no del que apretó el botón. Se pasa los sesenta buscando cómo hacer que los programas reflejen quién es responsable de qué. Rechaza Simula, va a PARC, inventa MVC casi de costado —tan de costado que rechazó la invitación de <em>Byte</em> a escribir sobre el tema porque le parecía obvio—, y sigue.</p>
+<p>Se jubila en 1997 y, en vez de dedicarse a cultivar el jardín, se pone a trabajar en el mismo problema que lo venía molestando desde hacía treinta años. A los 78 publica el paper que lo resume. A los 83 sigue escribiendo sobre eso. Murió el 14 de junio de 2024, una semana antes de cumplir 94, sin haber visto que la idea prendiera<sup id="fnref:37"><a href="#fn:37" class="footnote-ref" role="doc-noteref">37</a></sup>.</p>
+<p>Eso no es un fracaso. Es alguien que a los setenta y ocho años seguía tratando de arreglar lo que había ayudado a construir, en vez de disfrutar de los laureles conseguidos. La industria del software tiene mucha gente que a los cuarenta ya vive de una charla que dio a los treinta y cinco. Reenskaug hizo lo contrario.</p>
+<p>Cada vez que abro una carpeta <code>services/</code> llena de clases terminadas en <code>Service</code>, con métodos de trescientas líneas que orquestan objetos anémicos, me acuerdo de eso. No de la técnica. Del tipo.</p>
+<p>Si querés seguir, hay una tarde entera de material y está todo libre. El paper de Artima es la puerta de entrada<sup id="fnref:38"><a href="#fn:38" class="footnote-ref" role="doc-noteref">38</a></sup>. <em>The Roots of DCI</em> son nueve páginas autobiográficas que se leen como una charla de sobremesa y explican de dónde salió todo, chatarra de astillero incluida<sup id="fnref:39"><a href="#fn:39" class="footnote-ref" role="doc-noteref">39</a></sup>. El libro de Coplien y Bjørnvig es el desarrollo largo<sup id="fnref:40"><a href="#fn:40" class="footnote-ref" role="doc-noteref">40</a></sup>. Y si preferís que te lo cuenten, están las charlas de Coplien en video, incluida una conversación informal de 2023 que es lo más reciente que hay del tema<sup id="fnref:41"><a href="#fn:41" class="footnote-ref" role="doc-noteref">41</a></sup>.</p>
+<p><strong>Y si querés dejar de leer y empezar a escribir</strong>: en <a href="/posts/dci-en-python-roles-en-runtime/">la segunda parte</a> implementamos todo esto en Python, de cero y sin librerías. Lo que anda y lo que no.</p>
+<hr>
+<h3 id="apéndice-quién-es-quién">Apéndice: quién es quién</h3>
+<ul>
+<li><strong><a href="https://es.wikipedia.org/wiki/Trygve_Reenskaug">Trygve Reenskaug</a></strong> (1930-2024), noruego. Autokon, MVC, OOram, DCI. Profesor emérito de la Universidad de Oslo.</li>
+<li><strong><a href="https://en.wikipedia.org/wiki/James_O._Coplien">James O. Coplien</a></strong> («Cope»), estadounidense. Comunidad de patrones, <em>Lean Architecture</em>, el lenguaje <code>trygve</code>.</li>
+<li><strong><a href="https://es.wikipedia.org/wiki/Adele_Goldberg">Adele Goldberg</a></strong>, del grupo de Smalltalk en Xerox PARC. Con ella discutió Reenskaug el nombre de MVC.</li>
+<li><strong><a href="https://es.wikipedia.org/wiki/Alan_Kay">Alan Kay</a></strong>, Smalltalk y el Dynabook. Reenskaug suscribía su definición de orientación a objetos; sus dos reparos, anotados en <em>The Roots of DCI</em>, eran a la implementación de Smalltalk, no a la definición.</li>
+<li><strong><a href="https://es.wikipedia.org/wiki/Kristen_Nygaard">Kristen Nygaard</a></strong> y <strong><a href="https://es.wikipedia.org/wiki/Ole-Johan_Dahl">Ole-Johan Dahl</a></strong>, los autores de <a href="https://es.wikipedia.org/wiki/Simula">Simula</a>, del otro lado del patio de la oficina de Reenskaug.</li>
+<li><strong><a href="https://es.wikipedia.org/wiki/Ivar_Jacobson">Ivar Jacobson</a></strong>, los casos de uso — que en la lectura de Coplien quedaron «al lado de, pero no en el centro de» la arquitectura.</li>
+<li><strong><a href="https://es.wikipedia.org/wiki/Rebecca_Wirfs-Brock">Rebecca Wirfs-Brock</a></strong>, diseño dirigido por responsabilidades y las tarjetas CRC. Coplien cuenta que quiso rebautizarlas «RRC» —<em>Roles</em>, Responsibilities, Collaborators— y que al final dejó la sigla intacta y reemplazó <em>Class</em> por <em>Candidate</em>, «como un rol». La fuente es un correo privado de ella a Coplien, del 14 de octubre de 2009, citado en el capítulo de arquitectura<sup id="fnref:42"><a href="#fn:42" class="footnote-ref" role="doc-noteref">42</a></sup>.</li>
+<li><strong><a href="https://es.wikipedia.org/wiki/Christopher_Alexander">Christopher Alexander</a></strong>, el arquitecto (de edificios) del que salió la idea de patrones.</li>
+<li><strong>Michael Feathers</strong>, el crítico más citado de DCI.</li>
+<li><strong>Gertrud Bjørnvig</strong>, coautora de <em>Lean Architecture</em>.</li>
+</ul>
+<hr>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://folk.universitetetioslo.no/trygver/themes/mvc/mvc-index.html">Página de MVC en el sitio del propio Reenskaug</a>, que es donde está la frase: «<em>After long discussions, particularly with Adele Goldberg, we ended with the terms Model-View-Controller</em>». Conviene decirlo porque los dos papers de 1979 —enlazados más arriba— <strong>no</strong> mencionan a Goldberg: la atribución es de esta página, no de ellos.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://folk.universitetetioslo.no/trygver/">Página personal de Trygve Reenskaug</a>. El dominio histórico <code>folk.uio.no/trygver/</code> sigue respondiendo, pero redirige al host canónico nuevo de la Universidad de Oslo.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p><a href="https://fulloo.info/Documents/CoplienReenskaugASA2012.pdf">James O. Coplien &amp; Trygve Reenskaug, <em>The DCI Paradigm: Taking Object Orientation Into the Architecture World</em> (PDF, 45 pp.)</a> — capítulo de <em>Agile Software Architecture</em>, Elsevier/Morgan Kaufmann, 2014. Acá sostiene la afiliación con la que Reenskaug firmaba: «Professor Emeritus of Informatics, University of Oslo».&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p><a href="https://fulloo.info/Documents/2010DCI-Origin.pdf">Trygve Reenskaug, <em>The Roots of DCI</em>, julio de 2010 (PDF, 9 pp.)</a> — nueve páginas autobiográficas escritas como respuesta a una pregunta en la lista <code>object-composition</code>. Es la fuente de casi toda esta primera parte, y acá sostiene el retiro en 1997.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>La retrospectiva del propio Reenskaug sobre el proyecto: <a href="https://dl.ifip.org/db/conf/hinc/hinc2003/Reenskaug03.pdf"><em>Applications and Technologies for Maritime and Offshore Industries — Technological Significance of Early Norwegian Applications</em>, en <em>History of Nordic Computing</em> (HiNC1, Trondheim 2003), IFIP AICT vol. 174, Springer, 2005, pp. 369-390</a> — DOI <a href="https://doi.org/10.1007/0-387-24168-X_34"><code>10.1007/0-387-24168-X_34</code></a>. El PDF gratuito de la biblioteca de IFIP es un escaneo de 22 páginas. Ojo al citarlo: en el mismo volumen hay otro capítulo con título idéntico, de Trond Vahl, pp. 359-367, y es el que devuelven los buscadores.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p><a href="https://www.sintef.no/en/sintef-group/timeline/1960-digital-shipbuilding/">SINTEF, <em>1960: Digital shipbuilding</em></a> — la versión del instituto donde se hizo: el proyecto arrancó en el SI (Sentralinstitutt for industriell forskning) con Thomas Hysing a la cabeza, el control numérico prototipo se instaló en Aker Stord, Kongsberg Våpenfabrikk fabricó las máquinas de dibujo y los sopletes, y desde 1967 Shipping Research Services lo vendió al mundo.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>La descripción técnica contemporánea, por dos del equipo: E. Mehlum &amp; P. F. Sørensen, <em>Example of an existing system in the ship-building industry: the Autokon system</em>, <em>Proceedings of the Royal Society A</em>, vol. 321, nº 1545, 9 de febrero de 1971, pp. 219-233 — DOI <a href="https://doi.org/10.1098/rspa.1971.0028"><code>10.1098/rspa.1971.0028</code></a>. De pago, y el sitio del editor rechaza el acceso automatizado; no hay copia libre.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8">
+<p><a href="https://fulloo.info/Documents/2010DCI-Origin.pdf"><em>The Roots of DCI</em></a>, sección 1 — Autokon en producción desde 1963, las más de 300 toneladas de acero mal cortado y la diferencia entre precisión y exactitud, contadas por él.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:9">
+<p>El <a href="https://no.wikipedia.org/wiki/Norsk_Regnesentral">Norsk Regnesentral</a> se mudó a su sede actual —el <strong>Kristen Nygaards hus</strong>, Gaustadalléen 23a— recién en 1988, así que ése no es el edificio de esta historia. Qué edificio ocupaba en los años sesenta no está documentado en ninguna fuente pública que haya podido consultar.&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:10">
+<p>El patio es textual: «<em>Simula had been invented by Nygaard and Dahl at the Norwegian Computing Center across the yard from my office</em>», escribe Reenskaug en <em>The Roots of DCI</em>. Y es un patio de verdad: el SI —Sentralinstitutt for industriell forskning, donde él trabajaba— se había mudado en 1956 a un edificio nuevo en <strong>Gaustad</strong>, al lado del campus universitario de Blindern (<a href="https://no.wikipedia.org/wiki/Sentralinstitutt_for_industriell_forskning">Wikipedia en noruego</a>). Así firmaba él sus papers de la época: «Central Institute for Industrial Research, Blindern, Oslo 3».&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:11">
+<p>El panorama del problema, doce años más tarde y con el campo ya maduro: Malcolm Atkinson &amp; Ronald Morrison, <em>Orthogonally persistent object systems</em>, <em>The VLDB Journal</em>, vol. 4, nº 3, julio de 1995, pp. 319-401 — DOI <a href="https://doi.org/10.1007/BF01231642"><code>10.1007/BF01231642</code></a>.&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:12">
+<p><a href="https://fulloo.info/Documents/2010DCI-Origin.pdf"><em>The Roots of DCI</em></a>, sección 2 — el paréntesis «<em>Persistent objects were still waiting to be invented</em>».&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:13">
+<p>El paper de PS-algol, donde se acuña la idea: Malcolm Atkinson, P. J. Bailey, K. J. Chisholm, W. P. Cockshott &amp; R. Morrison, <em>An Approach to Persistent Programming</em>, <em>The Computer Journal</em>, vol. 26, nº 4, noviembre de 1983, pp. 360-365 — DOI <a href="https://doi.org/10.1093/comjnl/26.4.360"><code>10.1093/comjnl/26.4.360</code></a>.&#160;<a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:14">
+<p><a href="https://folk.universitetetioslo.no/trygver/1973/iccas/1973-08-ICCAS.pdf">Trygve Reenskaug, <em>Administrative Control in the Shipyard</em>, preprint para la conferencia ICCAS, Tokio, agosto de 1973 (PDF, 11 pp.)</a> — escaneado por el propio autor en 2003 y publicado en su sitio de la Universidad de Oslo; ficha en el repositorio <a href="https://www.duo.uio.no/handle/10852/9175">DUO</a>. La figura 1 es Autokon. De acá salen Prokon-0, los <em>Communicating Data Processes</em>, los procesos que residen en la base de datos y la tabla por proceso que resuelve qué procedimiento atiende cada mensaje. Firma como profesor del Central Institute for Industrial Research, Blindern, Oslo.&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:15">
+<p><a href="https://fulloo.info/Documents/2010DCI-Origin.pdf"><em>The Roots of DCI</em></a>, sección 2 — las dos escuelas de orientación a objetos que se distinguían en el grupo de Smalltalk, Costa Este y Costa Oeste, con las dos definiciones textuales.&#160;<a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:16">
+<p><a href="https://fulloo.info/Documents/2010DCI-Origin.pdf"><em>The Roots of DCI</em></a>, sección 2 — los dos supuestos discutibles de la implementación de Smalltalk y el remate: «<em>Classes are not independent, and a higher level construct is needed to specify the whole</em>».&#160;<a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:17">
+<p><a href="https://fulloo.info/Documents/2010DCI-Origin.pdf"><em>The Roots of DCI</em></a>, sección 2 — la primera herramienta de OOram demostrada en el primer OOPSLA, Portland, 1986.&#160;<a href="#fnref:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:18">
+<p>Trygve Reenskaug, con Per Wold y Odd Arild Lehne, <em>Working with Objects: The OOram Software Engineering Method</em>, Manning / Prentice Hall, 1996; ISBN 1-884777-10-4 (Manning) / 0-13-452930-8 (Prentice Hall), xxi + 366 pp. Fuera de imprenta. Hay dos maneras de leerlo: <strong>el libro</strong>, <a href="https://archive.org/details/workingwithobjec0000reen">en préstamo controlado en Internet Archive</a>, y <strong>el borrador</strong>, <a href="https://folk.universitetetioslo.no/trygver/1996/book/book11d.pdf">libre en el sitio de la Universidad de Oslo</a> — PDF de 466 páginas fechado el 1 de febrero de 2001, sin el paso del <em>copy editor</em> pero, dicen los autores en la portada, con el contenido del libro impreso. Ése es el link correcto: la bibliografía de <em>The Roots of DCI</em> lo da mal, apuntando a <code>1995/95Article/951010-paper.pdf</code>, que es otro paper de catorce páginas y sobre otro tema.&#160;<a href="#fnref:18" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:19">
+<p><a href="https://fulloo.info/Documents/2010DCI-Origin.pdf"><em>The Roots of DCI</em></a>, sección 4 — «<em>On the 28 August 2008, I declared that the BabyUML project had reached its goal</em>», y el rebautizo a BabyDCI.&#160;<a href="#fnref:19" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:20">
+<p><a href="https://www.artima.com/articles/the-dci-architecture-a-new-vision-of-object-oriented-programming">Trygve Reenskaug &amp; James O. Coplien, <em>The DCI Architecture: A New Vision of Object-Oriented Programming</em>, Artima, 20 de marzo de 2009</a> — el paper fundacional, y acá la fecha de publicación. Copia de respaldo en <a href="http://web.archive.org/web/20260703092833/https://www.artima.com/articles/the-dci-architecture-a-new-vision-of-object-oriented-programming">Wayback Machine</a>.&#160;<a href="#fnref:20" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:21">
+<p>Imagen de <a href="https://commons.wikimedia.org/wiki/File:SSEM_Manchester_museum.jpg">SSEM Manchester museum</a> — <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a> — Parrot of Doom, 2009. Réplica del <em>Manchester Baby</em> en el Museum of Science and Industry. Recortada a 2.5:1 para hero landscape.&#160;<a href="#fnref:21" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:22">
+<p><a href="https://fulloo.info/Documents/2010DCI-Origin.pdf"><em>The Roots of DCI</em></a>, sección 4 — los dos motivos del nombre «Baby» y la frase sobre el comienzo endeble del computador de Manchester.&#160;<a href="#fnref:22" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:23">
+<p><a href="https://fulloo.info/Documents/2010DCI-Origin.pdf"><em>The Roots of DCI</em></a>, sección 4 — «<em>Without him, DCI would have remained an obscure curio</em>» y la reseña del libro de Coplien y Bjørnvig.&#160;<a href="#fnref:23" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:24">
+<p><a href="https://books.google.com/books/about/Lean_Architecture.html?id=lpvY36MPMUwC">James O. Coplien &amp; Gertrud Bjørnvig, <em>Lean Architecture for Agile Software Development</em>, Wiley, 2010</a> — ISBN-13 978-0-470-68420-7. Acá importa por la autoría: el coautor es <strong>Gertrud Bjørnvig</strong>, no Reenskaug; la atribución a «Coplien &amp; Reenskaug» circula bastante y es incorrecta.&#160;<a href="#fnref:24" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:25">
+<p><a href="https://fulloo.info/Documents/CoplienReenskaugASA2012.pdf"><em>The DCI Paradigm</em></a>, § sobre arquitectura — el argumento de las <em>shear layers</em>: datos y métodos evolucionan a ritmos distintos y la clase los mete en la misma capa.&#160;<a href="#fnref:25" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:26">
+<p><a href="https://www.artima.com/articles/the-dci-architecture-a-new-vision-of-object-oriented-programming"><em>The DCI Architecture</em></a> — las definiciones de Data, Context e Interaction y el criterio de cambio distinto para cada una.&#160;<a href="#fnref:26" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:27">
+<p><a href="https://fulloo.info/Documents/CoplienReenskaugASA2012.pdf"><em>The DCI Paradigm</em></a> — de dónde salen los nombres de los roles: «<em>You can easily reconstruct them by asking anyone around you…</em>».&#160;<a href="#fnref:27" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:28">
+<p><a href="https://www.artima.com/articles/the-dci-architecture-a-new-vision-of-object-oriented-programming"><em>The DCI Architecture</em></a> — el ejemplo canónico: la transferencia bancaria en un caso de uso de cajero automático, con los roles <em>Source Account</em> y <em>Destination Account</em>.&#160;<a href="#fnref:28" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:29">
+<p><a href="https://fulloo.info/Documents/CoplienReenskaugASA2012.pdf"><em>The DCI Paradigm</em></a> — textual: «<em>One possible mental model has three Roles: Source Account, Destination Account, and Transfer Amount</em>». El «possible» es de ellos.&#160;<a href="#fnref:29" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:30">
+<p><a href="https://fulloo.info/Documents/CoplienReenskaugASA2012.pdf"><em>The DCI Paradigm</em></a> — «<em>We sell use cases, not classes, and not even objects</em>».&#160;<a href="#fnref:30" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:31">
+<p><a href="https://www.infoq.com/news/2009/05/dci-coplien-reenskau/">Sadek Drobi, <em>Data, Context and Interaction: A New Architectural Approach</em>, InfoQ, 8 de mayo de 2009</a> — la recopilación contemporánea del debate que siguió al paper de Artima; de ahí sale la objeción de Michael Feathers sobre lo arbitrario de poner la transferencia en la cuenta origen, y la clase <code>TransferSlip</code> que propone John Zabroski.&#160;<a href="#fnref:31" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:32">
+<p><a href="https://www.infoq.com/news/2009/05/dci-coplien-reenskau/"><em>Data, Context and Interaction</em>, InfoQ</a> — la respuesta de Coplien a quienes ven en DCI unos traits con otro nombre.&#160;<a href="#fnref:32" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:33">
+<p><a href="https://fulloo.info/Documents/2010DCI-Origin.pdf"><em>The Roots of DCI</em></a>, cierre — el rol como abstracción opuesta a la clase, y la comparación con explicarle el color a una persona daltónica.&#160;<a href="#fnref:33" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:34">
+<p><a href="https://repository.rit.edu/theses/9245/">Hector A. Valdecantos, <em>An empirical study on code comprehension: DCI compared to OO</em>, tesis de M.Sc. en Software Engineering, Rochester Institute of Technology, 2016</a>. Versión de conferencia: ICPC 2017, DOI <a href="https://doi.org/10.1109/ICPC.2017.23"><code>10.1109/ICPC.2017.23</code></a>.&#160;<a href="#fnref:34" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:35">
+<p><a href="https://github.com/jcoplien/trygve"><code>jcoplien/trygve</code></a> — el lenguaje DCI de Coplien, GPL-2.0, construido con OpenJDK 17 y Gradle. El <a href="https://github.com/jcoplien/trygve/blob/master/doc/trygve.md">manual de usuario</a>, escrito por Coplien, está fechado el 13 de agosto de 2017.&#160;<a href="#fnref:35" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:36">
+<p><a href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html">Robert C. Martin, <em>The Clean Architecture</em>, 13 de agosto de 2012</a> — el post original donde los casos de uso pasan al centro del diagrama.&#160;<a href="#fnref:36" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:37">
+<p>Trygve Mikkjel Heyerdahl Reenskaug, 21 de junio de 1930 – 14 de junio de 2024. Ver su <a href="https://es.wikipedia.org/wiki/Trygve_Reenskaug">artículo en Wikipedia</a>.&#160;<a href="#fnref:37" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:38">
+<p><a href="https://www.artima.com/articles/the-dci-architecture-a-new-vision-of-object-oriented-programming"><em>The DCI Architecture</em></a> — la puerta de entrada recomendada: si vas a leer una sola cosa sobre DCI, es ésta.&#160;<a href="#fnref:38" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:39">
+<p><a href="https://fulloo.info/Documents/2010DCI-Origin.pdf"><em>The Roots of DCI</em></a> — recomendado como lectura entera: son nueve páginas y se leen de una sentada.&#160;<a href="#fnref:39" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:40">
+<p><a href="https://books.google.com/books/about/Lean_Architecture.html?id=lpvY36MPMUwC"><em>Lean Architecture for Agile Software Development</em></a> — el desarrollo largo de DCI, el único en formato libro.&#160;<a href="#fnref:40" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:41">
+<p>Tres charlas de James Coplien sobre DCI, de más formal a más informal: la <strong>conferencia</strong>, <a href="https://www.youtube.com/watch?v=SxHqhDT9WGI"><em>The DCI Architecture: Supporting the Agile Agenda</em></a>; la <strong>conversación</strong>, <a href="https://www.youtube.com/watch?v=-3hqqdnnzHE"><em>Discussion about DCI with James Coplien</em></a>, grabada en el Code Camp de Timișoara en marzo de 2023 y lo más reciente que hay; y el <strong>curso</strong>, <a href="https://www.youtube.com/watch?v=4rgPBzR8nVg"><em>DCI Tokyo 2 — Commonality / Variability Analysis</em></a>, una serie en cuatro partes.&#160;<a href="#fnref:41" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:42">
+<p><a href="https://fulloo.info/Documents/CoplienReenskaugASA2012.pdf"><em>The DCI Paradigm</em></a>, ref. [54] del capítulo — lo de las tarjetas «RRC», atribuido a un correo personal de Rebecca Wirfs-Brock del 14 de octubre de 2009.&#160;<a href="#fnref:42" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+<ul class="pa0">
+  
+</ul><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/dci/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">DCI</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/reenskaug/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Reenskaug</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/mvc/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">MVC</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/arquitectura/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Arquitectura</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/oop/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">OOP</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/coplien/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Coplien</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/smalltalk/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Smalltalk</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/simula/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Simula</a>
+   </li>
+  
+</ul>
+
+      
+    </div></article>
+</main><footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://katra.ballardini.com.ar/" >
+    &copy;  César Ballardini 2026 
+  </a>
+    <div><div class="ananke-socials"><a href="http://linkedin.com/in/cesar-ballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      </a><a href="https://x.com/cesarballardini" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition x-twitter link dib z-999 pt3 pt0-l mr1"
+        title="follow on X - Opens in a new window"
+        aria-label="follow on X - Opens in a new window">
+      </a><a href="https://github.com/CesarBallardini/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            
+          </span></a></div>
+</div>
+  </div>
+</footer>
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  document.querySelectorAll('pre > code.language-mermaid').forEach(function (code) {
+    var div = document.createElement('div');
+    div.className = 'mermaid';
+    div.textContent = code.textContent;
+    code.parentElement.replaceWith(div);
+  });
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'neutral',
+    securityLevel: 'antiscript',
+    flowchart: { htmlLabels: true, useMaxWidth: true }
+  });
+</script>
+<style>/* ===================================================================
+   Audio player — read-aloud (speechSynthesis)
+   Injected only when frontmatter has `audio_player: true`
+   (see layouts/partials/hooks/body-end.html)
+   =================================================================== */
+
+/* Highlight of the paragraph currently being read aloud */
+.reading-now {
+  background: rgba(13, 34, 64, 0.06);
+  box-shadow: -0.6rem 0 0 rgba(13, 34, 64, 0.06);
+  border-left: 3px solid #0d2240;
+  padding-left: 0.6rem;
+  margin-left: -0.9rem;
+  border-radius: 2px;
+  transition: background 0.25s ease;
+  scroll-margin-top: 5rem;
+}
+
+/* Native range thumb styling for the progress bar */
+#katra-apProgress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #0d2240;
+  cursor: pointer;
+  border: 2px solid #fffefb;
+  box-shadow: 0 1px 3px rgba(13, 34, 64, 0.4);
+}
+#katra-apProgress::-moz-range-thumb {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #0d2240;
+  cursor: pointer;
+  border: 2px solid #fffefb;
+}
+
+/* Keep the fixed player from colliding with content on small screens */
+@media (max-width: 30em) {
+  #katra-audioPlayer {
+    bottom: 0.75rem !important;
+    left: 0.75rem !important;
+  }
+}
+</style>
+
+<div id="katra-audioPlayer" style="position:fixed;bottom:1.25rem;left:1.25rem;z-index:9999;background:rgba(255,254,251,.98);border:1px solid #ddd5c5;border-radius:18px;box-shadow:0 8px 32px rgba(13,34,64,.18);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:.7rem .85rem .75rem;display:flex;flex-direction:column;gap:.42rem;width:242px;max-width:242px;font-family:athelas,georgia,serif;box-sizing:border-box;overflow:hidden;">
+  <div style="display:flex;align-items:center;gap:.5rem;width:100%;box-sizing:border-box;">
+    <button id="katra-apMainBtn" onclick="kapToggle()" title="Reproducir / Pausar" style="width:34px;height:34px;min-width:34px;border-radius:50%;background:#0d2240;border:none;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;box-shadow:0 2px 8px rgba(13,34,64,.4);padding:0;outline:none;line-height:1;">
+      <svg id="katra-apMainIcon" viewBox="0 0 24 24" width="16" height="16" fill="white" style="display:block;margin-left:2px;"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+    </button>
+    <span id="katra-apLabel" style="font-size:.78rem;font-weight:600;color:#0d2240;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.3;">Escuchar el artículo</span>
+    <button id="katra-apCollapseBtn" onclick="kapCollapse()" title="Mostrar/ocultar controles" style="width:28px;height:28px;min-width:28px;border-radius:8px;border:1.5px solid #ddd5c5;background:#f0f4fa;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;padding:0;outline:none;line-height:1;">
+      <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="#0d2240" stroke-width="2" stroke-linecap="round" style="display:block;"><line x1="2" y1="5" x2="18" y2="5"/><line x1="2" y1="10" x2="18" y2="10"/><line x1="2" y1="15" x2="18" y2="15"/></svg>
+    </button>
+  </div>
+  <div id="katra-apBody" style="display:flex;flex-direction:column;gap:.38rem;width:100%;box-sizing:border-box;overflow:hidden;">
+    <div style="display:flex;align-items:center;justify-content:center;gap:.4rem;padding:.1rem 0;width:100%;box-sizing:border-box;">
+      <button onclick="kapPrev()" title="Párrafo anterior" style="width:30px;height:30px;min-width:30px;border-radius:50%;border:1.5px solid #ddd5c5;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;outline:none;line-height:1;">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="#0d2240" style="display:block;"><rect x="4" y="4" width="3" height="16" rx="1"/><polygon points="20 4 9 12 20 20"/></svg>
+      </button>
+      <button id="katra-apPlayBtn" onclick="kapToggle()" title="Play / Pausa" style="width:40px;height:40px;min-width:40px;border-radius:50%;background:#0d2240;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 3px 12px rgba(13,34,64,.45);padding:0;outline:none;line-height:1;">
+        <svg id="katra-apPlayIcon" viewBox="0 0 24 24" width="17" height="17" fill="white" style="display:block;margin-left:2px;"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+      </button>
+      <button onclick="kapNext()" title="Párrafo siguiente" style="width:30px;height:30px;min-width:30px;border-radius:50%;border:1.5px solid #ddd5c5;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;outline:none;line-height:1;">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="#0d2240" style="display:block;"><rect x="17" y="4" width="3" height="16" rx="1"/><polygon points="4 4 15 12 4 20"/></svg>
+      </button>
+      <button onclick="kapStop()" title="Detener" style="width:30px;height:30px;min-width:30px;border-radius:50%;border:1.5px solid #ddd5c5;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;outline:none;line-height:1;">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="#0d2240" style="display:block;"><rect x="5" y="5" width="14" height="14" rx="2"/></svg>
+      </button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:.26rem;width:100%;box-sizing:border-box;">
+      <input id="katra-apProgress" type="range" min="0" max="100" value="0" oninput="kapSeek(this.value)" style="-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:4px;background:#ddd5c5;outline:none;cursor:pointer;border:none;padding:0;margin:0;display:block;box-sizing:border-box;">
+      <div style="display:flex;justify-content:space-between;font-size:.62rem;color:#7a726a;font-variant-numeric:tabular-nums;">
+        <span id="katra-apCur">0:00</span><span id="katra-apTot">0:00</span>
+      </div>
+    </div>
+    <div style="width:100%;box-sizing:border-box;">
+      <div style="font-size:.59rem;color:#7a726a;text-align:center;margin-bottom:.22rem;letter-spacing:.04em;">VELOCIDAD</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.25rem;width:100%;box-sizing:border-box;">
+        <button class="ap-spd" onclick="kapSpeed(.8)" style="border-radius:20px;border:1px solid #ddd5c5;background:#fff;font-size:.66rem;font-weight:600;color:#7a726a;cursor:pointer;outline:none;line-height:1.5;padding:.18rem 0;text-align:center;width:100%;box-sizing:border-box;">0.8×</button>
+        <button class="ap-spd" onclick="kapSpeed(1)" style="border-radius:20px;border:1px solid #0d2240;background:#0d2240;font-size:.66rem;font-weight:600;color:#fff;cursor:pointer;outline:none;line-height:1.5;padding:.18rem 0;text-align:center;width:100%;box-sizing:border-box;">1×</button>
+        <button class="ap-spd" onclick="kapSpeed(1.25)" style="border-radius:20px;border:1px solid #ddd5c5;background:#fff;font-size:.66rem;font-weight:600;color:#7a726a;cursor:pointer;outline:none;line-height:1.5;padding:.18rem 0;text-align:center;width:100%;box-sizing:border-box;">1.25×</button>
+        <button class="ap-spd" onclick="kapSpeed(1.5)" style="border-radius:20px;border:1px solid #ddd5c5;background:#fff;font-size:.66rem;font-weight:600;color:#7a726a;cursor:pointer;outline:none;line-height:1.5;padding:.18rem 0;text-align:center;width:100%;box-sizing:border-box;">1.5×</button>
+      </div>
+    </div>
+    <div id="katra-apVoiceWrap" style="width:100%;box-sizing:border-box;display:none;">
+      <label for="katra-apVoice" style="font-size:.59rem;color:#7a726a;text-align:center;display:block;margin-bottom:.22rem;letter-spacing:.04em;">VOZ</label>
+      <select id="katra-apVoice" onchange="kapSetVoice(this.value)" style="width:100%;box-sizing:border-box;font-family:inherit;font-size:.66rem;color:#0d2240;background:#fff;border:1px solid #ddd5c5;border-radius:8px;padding:.24rem .3rem;outline:none;cursor:pointer;"></select>
+    </div>
+    <div id="katra-apStatus" style="font-size:.64rem;color:#7a726a;text-align:center;line-height:1.35;min-height:.85rem;padding:.04rem 0;width:100%;box-sizing:border-box;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Presioná ▶ para escuchar</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var player = document.getElementById('katra-audioPlayer');
+  if(!('speechSynthesis' in window)){ if(player) player.style.display='none'; return; }
+  
+  if(!document.querySelector('article .nested-copy-line-height')){ if(player) player.style.display='none'; return; }
+
+  var synth = window.speechSynthesis;
+  var paras = [], idx = 0, state = 'stopped', speed = 1;
+  var cancelIntent = false, speakToken = 0, currentEl = null, ticker = null;
+  var paraStartTime = 0, paraEstSecs = 0, totalEstSecs = 0, doneEstSecs = 0;
+
+  var ua = navigator.userAgent;
+  var isAndroid = /android/i.test(ua);
+  var nativePauseReliable = !isAndroid && !/firefox/i.test(ua);
+
+  
+  var LANG = "es";
+
+  
+  var STR = {
+    es: { listen:'Escuchar el artículo', loading:'Cargando voces…', paused:'En pausa — presioná ▶ para continuar', done:'✔ Lectura completada', press:'Presioná ▶ para escuchar', auto:'Automática', show:'Mostrar controles', hide:'Ocultar controles', para:function(a,b){ return 'Párrafo '+a+' de '+b; } },
+    en: { listen:'Listen to this article', loading:'Loading voices…', paused:'Paused — press ▶ to resume', done:'✔ Reading complete', press:'Press ▶ to listen', auto:'Automatic', show:'Show controls', hide:'Hide controls', para:function(a,b){ return 'Paragraph '+a+' of '+b; } }
+  };
+  var CFG = {
+    es: { order:['es-AR','es-MX','es-419','es-US','es-CL','es-CO','es-ES'], deflang:'es-419',
+          male:/\b(Pablo|Tom[aá]s|[AÁ]lvaro|Jorge|Juan|Diego|Carlos|Miguel|Enrique|Ra[uú]l|Andr[eé]s|Gonzalo|Lorenzo|Dar[ií]o|Mateo)\b/i },
+    en: { order:['en-US','en-GB','en-AU','en-CA','en-IE','en-IN'], deflang:'en-US',
+          male:/\b(David|Mark|Guy|Christopher|Eric|Roger|Brian|George|James|Daniel|Alex|Tom|Aaron|Fred|Ryan|Liam|Steffan|Andrew|Michael|Matthew)\b/i }
+  };
+  var T = STR[LANG] || STR.es;
+  var C = CFG[LANG] || CFG.es;
+  
+  
+  
+  if(isAndroid && LANG === 'es'){
+    C = { order:['es-US','es-AR','es-MX','es-419','es-CL','es-CO','es-ES'], deflang:'es-US', male:C.male };
+  }
+
+  
+  var VOICE_KEY = 'katra-ap-voice-' + LANG;
+  var chosenVoiceURI = '';
+  try { chosenVoiceURI = localStorage.getItem(VOICE_KEY) || ''; } catch(e){}
+
+  function $(id){ return document.getElementById(id); }
+  function fmt(s){ s=Math.max(0,Math.round(s)); var m=Math.floor(s/60),ss=s%60; return m+':'+(ss<10?'0':'')+ss; }
+
+  
+  function contentRoot(){ return document.querySelector('article .nested-copy-line-height'); }
+
+  function collectParas(){
+    paras = [];
+    var root = contentRoot();
+    if(!root) return;
+    
+    var h1 = document.querySelector('article header h1');
+    if(h1){
+      var h1t = (h1.innerText || h1.textContent || '').replace(/\s+/g,' ').trim();
+      if(h1t.length > 1) paras.push({ el: h1, text: h1t });
+    }
+    
+    var SEL = 'h2, h3, h4, p, li, blockquote';
+    root.querySelectorAll(SEL).forEach(function(el){
+      
+      if(el.closest('ul.pa0')) return;
+      if(el.closest('.footnotes')) return;
+      
+      if(el.querySelector('p, li, blockquote')) return;
+      
+      
+      var clone = el.cloneNode(true);
+      clone.querySelectorAll('sup, a.anchor, .footnote-ref').forEach(function(n){ n.remove(); });
+      var t = (clone.innerText || clone.textContent || '').replace(/\s+/g,' ').trim();
+      
+      var isHeading = /^H[2-4]$/.test(el.tagName);
+      if(t.length > (isHeading ? 1 : 8)) paras.push({ el: el, text: t });
+    });
+    recalcTotal();
+  }
+
+  function recalcTotal(){
+    totalEstSecs = paras.reduce(function(s,p){ return s + p.text.length/(14*speed); }, 0);
+    $('katra-apTot').textContent = fmt(Math.round(totalEstSecs));
+  }
+
+  
+  function langVoices(){
+    var voices = synth.getVoices();
+    var m = voices.filter(function(v){ return v.lang && v.lang.toLowerCase().indexOf(LANG) === 0; });
+    return m.length ? m : voices;
+  }
+
+  function populateVoices(){
+    var sel = $('katra-apVoice');
+    if(!sel) return;
+    var list = langVoices();
+    if(!list.length) return; 
+    var opts = '<option value="">' + T.auto + '</option>';
+    list.forEach(function(v){
+      var selAttr = (v.voiceURI === chosenVoiceURI) ? ' selected' : '';
+      var label = v.name + ' (' + v.lang + ')';
+      opts += '<option value="' + v.voiceURI.replace(/"/g,'&quot;') + '"' + selAttr + '>' + label + '</option>';
+    });
+    sel.innerHTML = opts;
+    $('katra-apVoiceWrap').style.display = 'block';
+  }
+
+  function getBestVoice(){
+    var voices = synth.getVoices();
+    if(!voices.length) return null;
+    if(chosenVoiceURI){
+      var picked = voices.find(function(v){ return v.voiceURI === chosenVoiceURI; });
+      if(picked) return picked;
+    }
+    var pool = langVoices();
+    
+    var MALE = C.male;
+    var NATURAL = /enhanced|premium|neural|natural/i;
+    var order = C.order;
+
+    
+    
+    
+    
+    
+    function inLocale(loc){
+      var v = pool.filter(function(x){ return x.lang && x.lang.toLowerCase().indexOf(loc.toLowerCase()) === 0; });
+      if(!v.length) return null;
+      return v.find(function(x){ return MALE.test(x.name) && NATURAL.test(x.name); })
+          || v.find(function(x){ return MALE.test(x.name); })
+          || v.find(function(x){ return NATURAL.test(x.name); })
+          || v.find(function(x){ return x.localService === true; })
+          || v[0];
+    }
+    for(var i=0;i<order.length;i++){
+      var hit = inLocale(order[i]);
+      if(hit) return hit;
+    }
+    return pool[0] || null;
+  }
+
+  
+  function prepararTTS(text){
+    var t = text;
+    if(LANG === 'en'){
+      t = t.replace(/\be\.g\.\s*/gi, 'for example, ');
+      t = t.replace(/\bi\.e\.\s*/gi, 'that is, ');
+      t = t.replace(/\betc\.\s*/gi, 'et cetera. ');
+    } else {
+      t = t.replace(/\bp\.\s*ej\.\s*/gi, 'por ejemplo, ');
+      t = t.replace(/\betc\.\s*/gi, 'etcétera. ');
+    }
+    t = t.replace(/[«»“”]/g, '"');
+    t = t.replace(/\s[–—]\s/g, ', ');
+    t = t.replace(/\.{3,}/g, '...');
+    t = t.replace(/\s{2,}/g, ' ');
+    return t.trim();
+  }
+
+  function speakPara(i){
+    if(i < 0) i = 0;
+    if(i >= paras.length){ finish(); return; }
+    idx = i; cancelIntent = false; speakToken++;
+    var myToken = speakToken;
+    var p = paras[i];
+    if(currentEl) currentEl.classList.remove('reading-now');
+    currentEl = p.el;
+    p.el.classList.add('reading-now');
+    p.el.scrollIntoView({ behavior:'smooth', block:'center' });
+
+    $('katra-apLabel').textContent = T.para(i+1, paras.length);
+    $('katra-apStatus').textContent = p.text.slice(0,55)+(p.text.length>55?'…':'');
+
+    var utt = new SpeechSynthesisUtterance(prepararTTS(p.text));
+    utt.lang = C.deflang;
+    utt.rate = speed;
+    var voice = getBestVoice();
+    if(voice){ utt.voice = voice; utt.lang = voice.lang; }
+
+    utt.onend = function(){
+      if(myToken !== speakToken || cancelIntent) return;
+      doneEstSecs += p.text.length/(14*speed);
+      if(state === 'playing') speakPara(i+1);
+    };
+    utt.onerror = function(){
+      if(myToken !== speakToken || cancelIntent) return;
+      if(state === 'playing') speakPara(i+1);
+    };
+
+    paraEstSecs = p.text.length/(14*speed);
+    paraStartTime = Date.now();
+    synth.cancel();
+    setTimeout(function(){ if(myToken === speakToken) synth.speak(utt); }, 40);
+    startTicker();
+  }
+
+  function startTicker(){
+    clearInterval(ticker);
+    ticker = setInterval(function(){
+      if(state !== 'playing'){ clearInterval(ticker); return; }
+      var elapsed = (Date.now()-paraStartTime)/1000;
+      var done = doneEstSecs + Math.min(elapsed, paraEstSecs);
+      var pct = totalEstSecs>0 ? Math.min(100, Math.round(done/totalEstSecs*100)) : 0;
+      $('katra-apProgress').value = pct;
+      $('katra-apCur').textContent = fmt(Math.round(done));
+    }, 400);
+  }
+
+  function finish(){
+    state = 'stopped'; clearInterval(ticker);
+    if(currentEl){ currentEl.classList.remove('reading-now'); currentEl = null; }
+    updateIcon(); idx = 0; doneEstSecs = 0;
+    $('katra-apLabel').textContent = T.listen;
+    $('katra-apStatus').textContent = T.done;
+    $('katra-apProgress').value = 100;
+  }
+
+  function updateIcon(){
+    var playing = (state === 'playing');
+    var svg = playing
+      ? '<rect x="5" y="4" width="4" height="16" rx="1"/><rect x="15" y="4" width="4" height="16" rx="1"/>'
+      : '<polygon points="6 3 20 12 6 21 6 3"/>';
+    var ml = playing ? '0' : '2px';
+    ['katra-apMainIcon','katra-apPlayIcon'].forEach(function(id){
+      var el = $(id);
+      if(el){ el.innerHTML = svg; el.style.marginLeft = ml; }
+    });
+  }
+
+  window.kapToggle = function(){
+    if(state === 'stopped'){
+      state = 'playing'; updateIcon();
+      $('katra-apStatus').textContent = T.loading;
+      var voices = synth.getVoices();
+      if(voices.length === 0){
+        var onVC = function(){
+          synth.removeEventListener('voiceschanged', onVC);
+          collectParas(); doneEstSecs = 0; speakPara(0);
+        };
+        synth.addEventListener('voiceschanged', onVC);
+        try{ var u = new SpeechSynthesisUtterance(''); synth.speak(u); synth.cancel(); }catch(e){}
+      } else {
+        collectParas(); doneEstSecs = 0; speakPara(0);
+      }
+    } else if(state === 'playing'){
+      state = 'paused'; clearInterval(ticker); updateIcon();
+      var pauseTime = Math.min((Date.now()-paraStartTime)/1000, paraEstSecs);
+      doneEstSecs += pauseTime * 0.6;
+      if(nativePauseReliable){ synth.pause(); }
+      else { cancelIntent = true; speakToken++; synth.cancel(); }
+      $('katra-apStatus').textContent = T.paused;
+    } else if(state === 'paused'){
+      state = 'playing'; updateIcon();
+      if(nativePauseReliable && synth.paused){
+        cancelIntent = false; synth.resume(); startTicker();
+        var p = paras[idx];
+        if(p) $('katra-apStatus').textContent = p.text.slice(0,55)+(p.text.length>55?'…':'');
+      } else { cancelIntent = false; speakPara(idx); }
+    }
+  };
+
+  window.kapStop = function(){
+    state = 'stopped'; cancelIntent = true; speakToken++;
+    synth.cancel(); clearInterval(ticker); idx = 0; doneEstSecs = 0;
+    if(currentEl){ currentEl.classList.remove('reading-now'); currentEl = null; }
+    updateIcon();
+    $('katra-apLabel').textContent = T.listen;
+    $('katra-apStatus').textContent = T.press;
+    $('katra-apProgress').value = 0;
+    $('katra-apCur').textContent = '0:00';
+  };
+
+  function sumTo(n){ return paras.slice(0,n).reduce(function(s,p){ return s + p.text.length/(14*speed); }, 0); }
+
+  window.kapNext = function(){
+    if(state === 'stopped') return;
+    cancelIntent = true; speakToken++; synth.cancel(); clearInterval(ticker);
+    var next = idx+1;
+    setTimeout(function(){
+      cancelIntent = false; state = 'playing'; updateIcon();
+      if(next < paras.length){ doneEstSecs = sumTo(next); speakPara(next); } else finish();
+    }, 55);
+  };
+
+  window.kapPrev = function(){
+    if(state === 'stopped') return;
+    cancelIntent = true; speakToken++; synth.cancel(); clearInterval(ticker);
+    var prev = Math.max(0, idx-1);
+    setTimeout(function(){
+      cancelIntent = false; state = 'playing'; updateIcon();
+      doneEstSecs = sumTo(prev); speakPara(prev);
+    }, 55);
+  };
+
+  window.kapSeek = function(pct){
+    if(!paras.length){ collectParas(); }
+    if(!paras.length) return;
+    var target = Math.min(Math.round(paras.length*pct/100), paras.length-1);
+    cancelIntent = true; speakToken++; synth.cancel(); clearInterval(ticker);
+    doneEstSecs = sumTo(target);
+    setTimeout(function(){ cancelIntent = false; state = 'playing'; updateIcon(); speakPara(target); }, 55);
+  };
+
+  window.kapSpeed = function(s){
+    speed = s;
+    player.querySelectorAll('.ap-spd').forEach(function(b){
+      var active = parseFloat(b.textContent) === s;
+      b.style.background = active ? '#0d2240' : '#fff';
+      b.style.borderColor = active ? '#0d2240' : '#ddd5c5';
+      b.style.color = active ? '#fff' : '#7a726a';
+    });
+    recalcTotal();
+    if(state === 'playing'){
+      var savedIdx = idx;
+      cancelIntent = true; speakToken++; synth.cancel(); clearInterval(ticker);
+      doneEstSecs = sumTo(savedIdx);
+      setTimeout(function(){ cancelIntent = false; speakPara(savedIdx); }, 60);
+    }
+  };
+
+  window.kapSetVoice = function(uri){
+    chosenVoiceURI = uri || '';
+    try {
+      if(chosenVoiceURI) localStorage.setItem(VOICE_KEY, chosenVoiceURI);
+      else localStorage.removeItem(VOICE_KEY);
+    } catch(e){}
+    
+    if(state === 'playing'){
+      var savedIdx = idx;
+      cancelIntent = true; speakToken++; synth.cancel(); clearInterval(ticker);
+      setTimeout(function(){ cancelIntent = false; speakPara(savedIdx); }, 60);
+    }
+  };
+
+  window.kapCollapse = function(){
+    var body = $('katra-apBody'), btn = $('katra-apCollapseBtn');
+    if(!body) return;
+    if(body.style.display === 'none'){
+      body.style.display = 'flex'; btn.title = T.hide;
+    } else {
+      body.style.display = 'none'; btn.title = T.show;
+    }
+  };
+
+  
+  window.addEventListener('pagehide', function(){ try{ synth.cancel(); }catch(e){} });
+
+  
+  populateVoices();
+  synth.addEventListener('voiceschanged', populateVoices);
+
+  
+  var body0 = $('katra-apBody'), btn0 = $('katra-apCollapseBtn');
+  if(body0) body0.style.display = 'none';
+  if(btn0) btn0.title = T.show;
+})();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
