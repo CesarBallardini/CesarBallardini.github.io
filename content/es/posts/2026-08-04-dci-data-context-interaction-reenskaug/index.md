@@ -176,6 +176,8 @@ Lo interesante de las ideas que no ganan es que casi nunca desaparecen del todo:
 
 El diagnóstico de DCI —que el caso de uso merece ser una cosa y no un método perdido— es exactamente el mismo diagnóstico que hace Clean Architecture cuando pone los *use cases* en el centro y los convierte en objetos con nombre propio[^clean]. La solución es distinta y bastante menos ambiciosa: los use cases de Clean Architecture son objetos comunes, no hay inyección de roles en ningún lado, nadie le cambia la clase a nada. Pero el síntoma que describe es idéntico.
 
+Y comparten algo más, que yo no esperaba y que desde acá no se ve. Al escribir [la segunda parte](/posts/dci-en-python-roles-en-runtime/) —donde esto se implementa de verdad— resultó que el mecanismo canónico de DCI, el de reasignarle la clase al objeto mientras juega su rol, **no funciona** sobre una entidad que hereda de la clase base de un ORM. No es una cuestión de estilo: el intérprete se niega. Así que la frontera que Clean Architecture y DDD te piden por razones de diseño, DCI te la cobra en tiempo de ejecución.
+
 ### Vale la pena igual
 
 Yo no te voy a decir que uses DCI. No lo uso, no conozco a nadie que lo use, y ya expliqué por qué la economía no cierra.

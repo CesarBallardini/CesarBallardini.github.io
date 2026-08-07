@@ -1,6 +1,20 @@
-/* Tighter, smaller fenced code blocks (Chroma output lives in .highlight) */
+/* Tighter, smaller fenced code blocks.
+ *
+ * Two selectors on purpose. A fence that declares a language goes through
+ * Chroma and lands inside .highlight; a fence with no language (console
+ * output, error messages) does not, and would otherwise keep the theme's
+ * 1em while the highlighted blocks shrank. .code-block is the wrapper the
+ * theme's render-codeblock hook puts around every fence, so it covers both;
+ * .highlight is kept so this still works if `ananke.copy_code = false`
+ * removes that wrapper.
+ *
+ * Inline `code` inside a paragraph is deliberately untouched: it should
+ * follow the surrounding text, and the theme sizes it separately.
+ */
 .highlight pre,
-.highlight pre code {
-  font-size: 0.78rem;
+.highlight pre code,
+.code-block pre,
+.code-block pre code {
+  font-size: 0.82rem;
   line-height: 1.3;
 }

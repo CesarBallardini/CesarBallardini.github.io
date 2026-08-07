@@ -48,7 +48,7 @@
                 />
   </url><url>
     <loc>https://katra.ballardini.com.ar/</loc>
-    <lastmod>2026-08-04T00:00:00-03:00</lastmod>
+    <lastmod>2026-08-05T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -63,27 +63,27 @@
                 />
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/arquitectura/</loc>
-    <lastmod>2026-08-04T00:00:00-03:00</lastmod>
+    <lastmod>2026-08-05T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/coplien/</loc>
-    <lastmod>2026-08-04T00:00:00-03:00</lastmod>
+    <lastmod>2026-08-05T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/dci/</loc>
-    <lastmod>2026-08-04T00:00:00-03:00</lastmod>
+    <lastmod>2026-08-05T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://katra.ballardini.com.ar/posts/dci-data-context-interaction-reenskaug/</loc>
-    <lastmod>2026-08-04T00:00:00-03:00</lastmod>
+    <loc>https://katra.ballardini.com.ar/posts/dci-en-python-roles-en-runtime/</loc>
+    <lastmod>2026-08-05T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://katra.ballardini.com.ar/posts/</loc>
-    <lastmod>2026-08-04T00:00:00-03:00</lastmod>
+    <lastmod>2026-08-05T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -97,17 +97,52 @@
                 href="https://katra.ballardini.com.ar/en/posts/"
                 />
   </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/mvc/</loc>
-    <lastmod>2026-08-04T00:00:00-03:00</lastmod>
+    <loc>https://katra.ballardini.com.ar/tags/metaprogramacion/</loc>
+    <lastmod>2026-08-05T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/oop/</loc>
-    <lastmod>2026-08-04T00:00:00-03:00</lastmod>
+    <lastmod>2026-08-05T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/python/</loc>
+    <lastmod>2026-08-05T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/reenskaug/</loc>
+    <lastmod>2026-08-05T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/roles/</loc>
+    <lastmod>2026-08-05T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/</loc>
+    <lastmod>2026-08-05T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/tags/"
+                />
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/posts/dci-data-context-interaction-reenskaug/</loc>
+    <lastmod>2026-08-04T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/mvc/</loc>
     <lastmod>2026-08-04T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -121,21 +156,6 @@
     <lastmod>2026-08-04T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/</loc>
-    <lastmod>2026-08-04T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es-AR"
-                href="https://katra.ballardini.com.ar/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://katra.ballardini.com.ar/en/tags/"
-                />
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/arduino/</loc>
     <lastmod>2026-08-03T00:00:00-03:00</lastmod>
@@ -368,11 +388,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/pytest/</loc>
-    <lastmod>2026-07-14T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/python/</loc>
     <lastmod>2026-07-14T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

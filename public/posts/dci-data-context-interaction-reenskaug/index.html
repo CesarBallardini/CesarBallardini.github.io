@@ -122,7 +122,7 @@
 	<meta itemprop="description" content="Trygve Reenskaug pasó su jubilación buscando una forma de que el código muestre lo que el sistema hace, y no sólo lo que el sistema es. La llamó DCI. Casi nadie la conoce.">
 	<meta itemprop="datePublished" content="2026-08-04T00:00:00-03:00">
 	<meta itemprop="dateModified" content="2026-08-04T00:00:00-03:00">
-	<meta itemprop="wordCount" content="5866">
+	<meta itemprop="wordCount" content="5957">
 	<meta itemprop="keywords" content="DCI,Reenskaug,MVC,Arquitectura,OOP,Coplien,Smalltalk,Simula">
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:title" content="DCI: la idea olvidada del hombre que inventó MVC">
@@ -304,7 +304,7 @@
         
         
         <span class="f6 mv4 dib tracked"> - Lectura en 28 minutos </span>
-        <span class="f6 mv4 dib tracked"> - 5866 palabras </span>
+        <span class="f6 mv4 dib tracked"> - 5957 palabras </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><p>Me pasa cada vez que abro un sistema orientado a objetos que no escribí yo. Miro las clases, entiendo perfectamente qué es cada una —<code>Account</code>, <code>Customer</code>, <code>LedgerEntry</code>, <code>Branch</code>—, y no tengo la menor idea de qué hace el sistema. El dominio está modelado con prolijidad de manual. El caso de uso, el que el usuario tenía en la cabeza cuando pidió el software, no está en ninguna parte. Está repartido en pedacitos de dos líneas dentro de once métodos de siete clases, y para reconstruirlo tengo que hacer el trabajo del compilador a mano.</p>
@@ -425,6 +425,7 @@
 <h3 id="lo-que-sí-sobrevivió">Lo que sí sobrevivió</h3>
 <p>Lo interesante de las ideas que no ganan es que casi nunca desaparecen del todo: se filtran.</p>
 <p>El diagnóstico de DCI —que el caso de uso merece ser una cosa y no un método perdido— es exactamente el mismo diagnóstico que hace Clean Architecture cuando pone los <em>use cases</em> en el centro y los convierte en objetos con nombre propio<sup id="fnref:36"><a href="#fn:36" class="footnote-ref" role="doc-noteref">36</a></sup>. La solución es distinta y bastante menos ambiciosa: los use cases de Clean Architecture son objetos comunes, no hay inyección de roles en ningún lado, nadie le cambia la clase a nada. Pero el síntoma que describe es idéntico.</p>
+<p>Y comparten algo más, que yo no esperaba y que desde acá no se ve. Al escribir <a href="/posts/dci-en-python-roles-en-runtime/">la segunda parte</a> —donde esto se implementa de verdad— resultó que el mecanismo canónico de DCI, el de reasignarle la clase al objeto mientras juega su rol, <strong>no funciona</strong> sobre una entidad que hereda de la clase base de un ORM. No es una cuestión de estilo: el intérprete se niega. Así que la frontera que Clean Architecture y DDD te piden por razones de diseño, DCI te la cobra en tiempo de ejecución.</p>
 <h3 id="vale-la-pena-igual">Vale la pena igual</h3>
 <p>Yo no te voy a decir que uses DCI. No lo uso, no conozco a nadie que lo use, y ya expliqué por qué la economía no cierra.</p>
 <p>Pero pensá en el arco completo. Un tipo empieza en 1963 escribiendo un sistema que corta acero para barcos. El sistema funciona tan bien que alguien lo usa para algo que no debía y se pierden trescientas toneladas de material. Él decide que la culpa es del diseño, no del que apretó el botón. Se pasa los sesenta buscando cómo hacer que los programas reflejen quién es responsable de qué. Rechaza Simula, va a PARC, inventa MVC casi de costado —tan de costado que rechazó la invitación de <em>Byte</em> a escribir sobre el tema porque le parecía obvio—, y sigue.</p>

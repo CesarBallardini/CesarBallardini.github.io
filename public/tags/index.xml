@@ -12,28 +12,63 @@
 			<copyright>César Ballardini</copyright>
 		
 		
-			<lastBuildDate>Tue, 04 Aug 2026 00:00:00 -0300</lastBuildDate>
+			<lastBuildDate>Wed, 05 Aug 2026 00:00:00 -0300</lastBuildDate>
 		
 			<atom:link href="https://katra.ballardini.com.ar/tags/index.xml" rel="self" type="application/rss+xml" />
 			<item>
 				<title>Arquitectura</title>
 				<link>https://katra.ballardini.com.ar/tags/arquitectura/</link>
-				<pubDate>Tue, 04 Aug 2026 00:00:00 -0300</pubDate>
+				<pubDate>Wed, 05 Aug 2026 00:00:00 -0300</pubDate>
 				<guid>https://katra.ballardini.com.ar/tags/arquitectura/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Coplien</title>
 				<link>https://katra.ballardini.com.ar/tags/coplien/</link>
-				<pubDate>Tue, 04 Aug 2026 00:00:00 -0300</pubDate>
+				<pubDate>Wed, 05 Aug 2026 00:00:00 -0300</pubDate>
 				<guid>https://katra.ballardini.com.ar/tags/coplien/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>DCI</title>
 				<link>https://katra.ballardini.com.ar/tags/dci/</link>
-				<pubDate>Tue, 04 Aug 2026 00:00:00 -0300</pubDate>
+				<pubDate>Wed, 05 Aug 2026 00:00:00 -0300</pubDate>
 				<guid>https://katra.ballardini.com.ar/tags/dci/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Metaprogramacion</title>
+				<link>https://katra.ballardini.com.ar/tags/metaprogramacion/</link>
+				<pubDate>Wed, 05 Aug 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/metaprogramacion/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>OOP</title>
+				<link>https://katra.ballardini.com.ar/tags/oop/</link>
+				<pubDate>Wed, 05 Aug 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/oop/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Python</title>
+				<link>https://katra.ballardini.com.ar/tags/python/</link>
+				<pubDate>Wed, 05 Aug 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/python/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Reenskaug</title>
+				<link>https://katra.ballardini.com.ar/tags/reenskaug/</link>
+				<pubDate>Wed, 05 Aug 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/reenskaug/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Roles</title>
+				<link>https://katra.ballardini.com.ar/tags/roles/</link>
+				<pubDate>Wed, 05 Aug 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/roles/</guid>
 				<description></description>
 			</item>
 			<item>
@@ -41,20 +76,6 @@
 				<link>https://katra.ballardini.com.ar/tags/mvc/</link>
 				<pubDate>Tue, 04 Aug 2026 00:00:00 -0300</pubDate>
 				<guid>https://katra.ballardini.com.ar/tags/mvc/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title>OOP</title>
-				<link>https://katra.ballardini.com.ar/tags/oop/</link>
-				<pubDate>Tue, 04 Aug 2026 00:00:00 -0300</pubDate>
-				<guid>https://katra.ballardini.com.ar/tags/oop/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title>Reenskaug</title>
-				<link>https://katra.ballardini.com.ar/tags/reenskaug/</link>
-				<pubDate>Tue, 04 Aug 2026 00:00:00 -0300</pubDate>
-				<guid>https://katra.ballardini.com.ar/tags/reenskaug/</guid>
 				<description></description>
 			</item>
 			<item>
@@ -335,13 +356,6 @@
 				<link>https://katra.ballardini.com.ar/tags/pytest/</link>
 				<pubDate>Tue, 14 Jul 2026 00:00:00 -0300</pubDate>
 				<guid>https://katra.ballardini.com.ar/tags/pytest/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title>Python</title>
-				<link>https://katra.ballardini.com.ar/tags/python/</link>
-				<pubDate>Tue, 14 Jul 2026 00:00:00 -0300</pubDate>
-				<guid>https://katra.ballardini.com.ar/tags/python/</guid>
 				<description></description>
 			</item>
 			<item>

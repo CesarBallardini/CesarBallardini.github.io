@@ -45,12 +45,58 @@ Because `public/` is committed, stale files from previous builds (old slugs, rem
 
 **Staging caveat:** if `hugo` is re-run after `git add`-ing `public/`, the rebuild overwrites the staged files and the commit will capture the older build. Re-stage with `git add -u public/` (and add any newly-untracked files) before committing.
 
+**Future-dated posts vanish without a word.** Hugo excludes content dated later than "now" unless `--buildFuture` is passed. Because the date comes from the bundle directory name and there is **no build step in CI**, a post dated tomorrow is simply absent from `public/` — no warning, no error, and the deploy succeeds. Run `hugo list future` before building: if it lists something you meant to publish, either build with `hugo --cleanDestinationDir --buildFuture` or rename the bundle to an earlier date. The flag is self-correcting — once the date arrives, a plain rebuild produces the same tree — but a bundle renamed to a future date after `public/` was built is the way a post silently disappears from the live site.
+
+### Publishing a post — the command sequence (César runs these; Claude never does)
+
+Claude is forbidden from running any of this (see "Git rules" above). It drafts the commands; César executes them. Order matters: **build first, stage second, never rebuild after staging.**
+
+```bash
+# 1. What is Hugo about to silently drop?  Empty output = nothing future-dated.
+hugo list future
+
+# 2. Build.  Add --buildFuture ONLY if step 1 listed something you want published now.
+hugo --cleanDestinationDir --buildFuture
+
+# 3. Verify the build is not a `hugo server` artifact.  Both must be clean:
+grep -rl "livereload" public/ | wc -l    # must be 0
+grep -rl "localhost:" public/ | wc -l    # must be 1 — the 2016 Jekyll post mentions localhost:4000
+
+# 4. Stage the content, then public/.  Adjust the content paths to the post at hand.
+git add content/es/posts/YYYY-MM-DD-slug/
+git add content/just-ideas-for-future-posts/
+git add -u public/ && git add public/
+
+# 5. Confirm nothing unrelated snuck in, then commit and push.
+git status --short
+git commit
+git push origin master
+```
+
+**Traps this sequence exists to avoid**, each of which has bitten before:
+
+- **Re-running `hugo` after `git add public/`** silently commits the *previous* build. If you must rebuild, re-run step 4.
+- **`git add -u public/` alone misses new files** (a new post's directory is untracked, not modified). That is why step 4 has both `add -u` and a plain `add`.
+- **`git add -A` from the repo root** sweeps in every unrelated modified draft in `content/just-ideas-for-future-posts/`. Stage explicit paths and read `git status --short` before committing.
+- **A future-dated bundle** is absent from `public/` with no warning and the deploy still succeeds. That is what step 1 is for.
+
 **Never commit a `hugo server` build.** `hugo server` rewrites `baseURL` to whatever localhost port it picked (e.g. `http://localhost:3131/`) and bakes that into every `<link rel="canonical">`, `og:url`, sitemap entry, RSS `<link>`, and internal nav href; it also injects a `/livereload.js?...port=NNNN` script into every page and emits a non-fingerprinted `public/ananke/css/main.min.css` alongside the fingerprinted asset that the HTML actually references. Any of those leaking to GitHub Pages breaks the RSS feed for subscribers and the canonical URL for search engines. Always do a fresh `hugo --cleanDestinationDir` (or `rm -rf public && hugo`) before staging `public/`, and verify with `grep -rl "localhost:" public/ | wc -l` returning `0`.
+
+## Pre-publish checks
+
+Run these against a build before committing a post. Each one has caught a real defect that reads as fine in the source — Hugo reports none of them as errors, because none of them are.
+
+- **`hugo list future`** — a future-dated bundle is missing from the site with no warning. See Deployment above.
+- **Internal links, resolved against the built tree.** Walk `public/**/*.html`, extract every `href="/..."`, and check the path exists as a file or a directory with an `index.html`. The recurring mistake is writing the *dated* bundle name into a link (`/posts/2026-08-03-slug/`) when the permalink strips the date, or leaving a `.md` extension on the target; both 404 silently and neither is visible in the markdown.
+- **Footnotes: definitions versus references.** Collect `id="fn:N"` and `href="#fn:N"` from the rendered HTML and compare the sets both ways. A footnote defined but never referenced is dead weight; one referenced but never defined renders as literal `[^name]` text in the middle of a paragraph. Also grep the output for a stray `[^` — if the count is not zero, a definition line got merged into its neighbour and stopped being a definition. **This is how an image's licence attribution goes missing**, which for CC BY-SA is a licence violation and not a typo.
+- **External URLs.** Check each one responds; see "Verify fragile URLs" below. Links into this repository on GitHub will 404 until the commit is pushed — expected, not a failure.
+- **`grep -rl "localhost:" public/`** — see Deployment above. Note that a legitimate hit exists: a 2016 post about Jekyll mentions `localhost:4000` in its prose.
 
 ## Content Conventions
 
 - **Post format:** all posts use **page bundles** — `content/es/posts/YYYY-MM-DD-slug/index.md` with images and assets as siblings inside the same folder. Flat `.md` files are the old format; do not create new ones.
-- **Post filename pattern:** `YYYY-MM-DD-slug-in-lowercase` — Hugo extracts the date from the directory name (`[frontmatter] date = [':filename', ':default']`)
+- **Post filename pattern:** `YYYY-MM-DD-slug-in-lowercase` — Hugo extracts the date from the directory name (`[frontmatter] date = [':filename', ':default']`). Renaming the directory therefore changes the post's date but **not** its URL; it does change any hard-coded GitHub links that point at the bundle path, so grep for the old directory name after a rename.
+- **What a page bundle publishes:** every *non-page* resource in the bundle directory is copied to the output — images, PDFs, SVGs, `.py`, `.txt`, and subdirectories with them. But `.md` files other than `index.md` are treated as **page** resources and are **not** copied, so they exist in the repository and not on the site. Link to those on GitHub, or rename them to `.txt` if they have to be downloadable from the post. Confirm what actually shipped with `find public/posts/<slug> -type f` after a build.
 - **Spanish posts go in:** `content/es/posts/`
 - **English posts go in:** `content/en/posts/`
 - **Frontmatter:** YAML (`---`) for all 2025+ posts. The full house rules — frontmatter shape, tag rules (no periods, Hugo Windows limitation), footnote style (named, never numeric), internal link rules (no `/es/` prefix in Spanish URLs), image bundles vs flat files, voice — live in [`content/just-ideas-for-future-posts/near-future-posts.md`](content/just-ideas-for-future-posts/near-future-posts.md) under "Convenciones de la casa". Read that section before writing or editing a post — it reflects the actual practice in the published posts, not what `AGENTS.md` says (they conflict; the published posts win).
@@ -59,6 +105,7 @@ Because `public/` is committed, stale files from previous builds (old slugs, rem
 - **Mermaid diagrams:** add `mermaid: true` to frontmatter to live-render ```` ```mermaid ```` fences (loaded via `layouts/partials/hooks/body-end.html`, see Architecture below). Without the flag, a mermaid fence just renders as unstyled plain code.
   - **Truncated node labels?** Add `mermaid_html_labels: true` as well. Mermaid's default `securityLevel: 'strict'` forces `htmlLabels: false`, so the library measures label width itself instead of letting the browser do it; with accents and symbols (`↔`, `á`, `í`) it under-measures and clips long labels mid-word. The flag switches that page to `securityLevel: 'antiscript'` + `htmlLabels: true` — the browser measures the real text, and `<br/>` works for manual line breaks. It is **opt-in per post on purpose**: enabling it site-wide would silently re-flow the diagrams in already-published posts. `'antiscript'` allows HTML in labels but drops `<script>`; prefer it over `'loose'`.
 - **Math formulas:** write LaTeX directly — `\( ... \)` inline, `\[ ... \]` or `$$ ... $$` for display. **Rendered at build time** by `layouts/_markup/render-passthrough.html` via `transform.ToMath` (KaTeX compiled into the Hugo binary), which emits native MathML. No JavaScript, no CDN, no stylesheet, and screen-reader friendly. No frontmatter flag is needed. Requires `[markup.goldmark.extensions.passthrough]` in `hugo.toml` — without it Goldmark mangles `_`, `\` and `{}` before the math renderer sees them (`k_B` turns into italics).
+- **Electronic schematics (KiCad):** the `/370-145` panel post keeps its schematics in `kicad/` inside the bundle — Python generators that emit `.kicad_sch` and a symbol library, plus the PDF and SVG exported with `kicad-cli`. They are *generated by script rather than drawn by hand* so a layout fix is a re-run, not an afternoon of dragging symbols. If you touch one, re-export and re-verify: `kicad-cli sch erc` for wiring, **plus `kicad-cli sch export netlist` whenever the change could move a component**. The two catch different things — ERC finds off-grid endpoints and wires that stop a fraction of a millimetre short of a pin, while only the netlist proves which pins actually share a net. A schematic can be drawn so cramped that it reads as a series chain and still be wired correctly, and it can look impeccable and be wired wrong; neither check alone tells you which.
 - **Read-aloud audio player:** a client-side text-to-speech player (browser `speechSynthesis`, no cloud TTS, no API key) is injected on every content page **by default** — it is opt-**out**, not opt-in. To suppress it on a specific post, set `audio_player: false` in frontmatter. UI language and voice follow the page language (`.Language.Lang`). Injected via `layouts/partials/hooks/body-end.html` with CSS in `assets/ananke/css/audio-player.css` (see Architecture below).
 - **Image attribution:** every public domain or CC-licensed image requires a named footnote with URL, author, and license. Example: `[^img_foo]: Imagen de [Title](URL) — CC BY-SA 4.0 — Author.` If the image was cropped or otherwise adapted for the blog, note that at the end of the footnote (e.g. "Recortada a 2.5:1 para hero landscape.").
 - **Academic paper citations:** when a paper's canonical URL (IEEE Xplore, Springer, ACM DL) is paywalled or blocks automated fetch (IEEE returns HTTP 418), the footnote should link to a **stable DOI** (`https://doi.org/10.XXXX/...`) as the canonical reference plus a **free full-text mirror** when one exists (university course pages, archive.org, the author's Wikipedia page). Always include journal name / volume / issue / year in the footnote regardless of linkability.
@@ -162,3 +209,65 @@ Sites approved for browsing when researching content for this blog:
 - **[Fundación Vía Libre](https://www.vialibre.org.ar/)** — Argentine digital rights foundation; primary source for local debates on software libre, colegiación profesional de informáticos, voto electrónico, políticas de IA en Latinoamérica, privacidad y propiedad intelectual.
 - **[EWD archive — UT Austin](https://www.cs.utexas.edu/~EWD/)** — Edsger Dijkstra's writings (EWD manuscripts), both HTML transcriptions and PDF scans of the originals. Stable.
 - **[DOI resolver](https://doi.org/)** — canonical citation URL for academic papers; use as the primary link when the publisher page is paywalled.
+
+## Work in progress — post 2 de DCI (`2026-08-05-dci-en-python-roles-en-runtime`)
+
+**Estado: NO publicado**, sincronizado con el repo de código y revisado al 2026-08-07.
+Borrar esta sección cuando el post se publique.
+
+### Las cuatro piezas
+
+| Pieza | Dónde | Para qué |
+| --- | --- | --- |
+| El post | `content/es/posts/2026-08-05-dci-en-python-roles-en-runtime/index.md` | lo que se publica |
+| El plan de la sincronización | `.../2026-08-07-plan-mejoras.md` (mismo bundle) | qué se corrigió contra el repo y por qué |
+| El plan anterior | `.../2026-08-05-draft-doc.md` (mismo bundle) | histórico; no sirve para planificar |
+| El repo de código | `C:/Users/cesar/cesar/github/CesarBallardini/dci-in-python` | **la fuente de verdad de todo el código y todas las salidas** |
+
+El repo está commiteado (`1264e87`) y publicado en `github.com/CesarBallardini/dci-in-python`, **en la rama `main`** — no `master`. Los seis enlaces del post a archivos del repo usan `blob/main/`; escribir `blob/master/` da 404.
+
+### El post hoy
+
+Diecinueve secciones, **~7850 palabras** de cuerpo, 18 notas al pie, 6 tablas, 4 diagramas mermaid, 27 bloques de código. La estructura:
+
+1. La transferencia, tres veces (con la objeción de Feathers como paréntesis)
+2. La maquinaria — el `Context` en 25 líneas, más el cuadro «De qué está hecho, exactamente» con los recursos de Python 3.14
+3. Algunos escenarios donde el modelo de objetos de Python falla — las cuatro fallas
+4. Cuatro maneras de prestar un rol — los cuatro binders y su tabla
+5. La pregunta que decide si esto se puede usar — persistencia y ORM
+6. Un paréntesis: la librería que hay (Molenaar)
+7. Cinco maneras de escribir la misma transferencia — con su tabla
+8. Y en tu código, ¿cuál? — la tabla de decisión de siete filas
+9. El veredicto
+
+### Verificado el 2026-08-07
+
+- **Build limpio**: 18 notas definidas / 18 referenciadas, cero `[^` sueltos, 6 tablas, 4 mermaid.
+- **Los 30 enlaces externos dan HTTP 200**, incluidos los seis del repo en `main` y `fulloo.info/Examples/`.
+- **`hugo list future` vacío.**
+- **Las salidas de consola** coinciden carácter por carácter con `uv run --frozen python demo/dci_demo.py`. No hay nada que repegar salvo que se toque la demo.
+- **El código simplificado del post corre**: se extrajo a un script y da la misma salida que la sección 1 de la demo.
+
+### El hallazgo que el post tiene y el repo no
+
+**Dos contextos con roles _distintos_ sobre el mismo objeto no dan error de MRO: ligan.** Medido el 2026-08-07 corriendo el repo. `Account@SourceAccount@DestinationAccount` se construye sin quejarse; el primer contexto que sale le arranca los métodos al segundo, y cuando el segundo sale deja el objeto como `Account@SourceAccount` **de manera permanente y fuera de todo contexto**. El lock lo cubre (verificado: cero errores, clase final `Account`, saldo correcto).
+
+`APPROACHES.md` y `test_limits.py` sólo cubren el caso del **mismo** rol, así que hoy el post afirma algo más preciso que su propio repositorio. **Pendiente del repo**: un test que fije el caso de roles distintos, y el ajuste al documento.
+
+### CSS
+
+El post carga `page_css: ['tables.css', 'code.css']`. `code.css` se ajustó en esta sesión: `font-size: 0.82rem` y selector ampliado a `.code-block` además de `.highlight`, porque los fences **sin lenguaje** —todas las salidas de consola— no pasan por Chroma y quedaban al tamaño del tema. **`code.css` es compartido con el post `python-tooling-backend-desde-cero`**, así que ese post también cambia de tamaño y su `public/` va a aparecer modificado sin que se lo haya tocado.
+
+### Lo que queda abierto
+
+- **La cuenta de líneas.** El post muestra un mecanismo de **veinticinco** líneas y después dice tres veces **«cincuenta líneas»** refiriéndose a lo mismo. El párrafo que explicaba la diferencia (25 mostradas contra 51 en el repo, medidas con `ast`) se borró en la pasada de estilo. Es la única inconsistencia visible que queda.
+- **La tabla de versiones de `roles`** está fechada el 4 de agosto de 2026. Es lo que primero envejece.
+- **Los dos documentos de planificación del repo** (`2026-08-06-presentation.md`, `2026-08-06-comparative-readme.md`) están **sin commitear**. No enlazarlos desde el post.
+- **La parte 1 no necesitó cambios.** Su párrafo sobre el ORM está deliberadamente hedgeado («el mecanismo canónico de DCI, el de reasignarle la clase») porque `InstanceContext` sí toma la entidad declarativa; si se edita esa sección, no perder el matiz.
+
+### Reglas que no hay que perder de vista
+
+- Nada de código ni de salidas escritas a mano: todo sale de correr el repo. Si una salida cambia, se re-corre `make demo` y se pega, sin traducir.
+- El post y el repo tienen que contar la misma historia. Cada vez que se toque uno, revisar el otro.
+- Cuando este archivo y el repo no coinciden, gana el repo.
+- **En una pasada de edición, una referencia que quedó sin destino se arregla cambiando la referencia, no reponiendo el texto borrado.** Si César borró algo, borrado está.
