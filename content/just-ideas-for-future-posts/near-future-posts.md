@@ -247,6 +247,7 @@ Cada entrada del plan vive en un archivo `draft-*.md` propio bajo la carpeta de 
 - **A1-19** — [Lua: el lenguaje brasileño que terminó embebido en cada motor de videojuegos](lenguajes/draft-lua-roberto-ierusalimschy-brasil.md) 🌱 *cosecha*
 - **A1-20** — [Java: el pragmatismo de James Gosling](lenguajes/draft-java-gosling-pragmatismo.md) 🌱 *cosecha*
 - **A1-21** — [Anders Hejlsberg: el hombre detrás de Turbo Pascal, Delphi, C# y TypeScript](lenguajes/draft-hejlsberg-delphi-csharp-typescript.md) 🌱 *cosecha*
+- **A1-22** — [El modelo de objetos de Python: `__class__`, `__dict__` y `__slots__`](lenguajes/draft-modelo-de-objetos-python-class-dict-slots.md) 🌱 *semilla con material verificado; disparado por [[C-17]]*
 
 ---
 
@@ -293,7 +294,7 @@ Cada entrada del plan vive en un archivo `draft-*.md` propio bajo la carpeta de 
 - **C-06** — [Curtis Poe sobre qué quiso decir Alan Kay con OOP](filosofia/draft-curtis-poe-on-kay-oop.md) 🌱 *cosecha*
 - **C-07** — [La explicación simple de qué quiso decir Kay con OOP (consolidación de Reddit/SE)](filosofia/draft-kay-oop-explicacion-simple.md) 🌱 *cosecha*
 - **C-08** — [Por qué MDA y Executable UML nunca cumplieron sus promesas](filosofia/draft-mda-uml-promesas-incumplidas.md) 🌱 *cosecha*
-- **C-09** — [DCI: Data, Context, Interaction — la idea olvidada de Trygve Reenskaug](filosofia/draft-dci-data-context-interaction-reenskaug.md) 🌱 *cosecha*
+- **C-09** — [DCI: la idea olvidada del hombre que inventó MVC](filosofia/draft-dci-data-context-interaction-reenskaug.md) ✍️ **escrito, pendiente de push** — parte 1 de 2 con **C-17**; bundle `2026-08-04-dci-data-context-interaction-reenskaug`
 - **C-10** — [James Gosling sobre la herencia: el inventor de Java prefiere no usarla](filosofia/draft-gosling-vs-herencia.md) 🌱 *cosecha*
 - **C-11** — [Goodhart's Law en software: cuando la métrica se vuelve el objetivo](filosofia/draft-goodhart-law-en-software.md) 🌱 *cosecha (Beck/Noda email)*
 - **C-12** — [El Bosque y el Desierto: la metáfora de Beck para hablar de calidad de vida programando](filosofia/draft-forest-and-desert-beck.md) 🌱 *cosecha (Beck/Noda)*
@@ -301,6 +302,7 @@ Cada entrada del plan vive en un archivo `draft-*.md` propio bajo la carpeta de 
 - **C-14** — [XP: valores, principios, prácticas — el framework tripartito de Kent Beck](filosofia/draft-xp-values-principles-practices.md) 🌱 *cosecha (Beck/Noda)*
 - **C-15** — ["Vender solo el dashboard es malpractice" — Beck sobre métricas sin acompañamiento](filosofia/draft-vender-dashboards-malpractice.md) 🌱 *cosecha (Beck/Noda)*
 - **C-16** — [Developer Experience vs Effectiveness: por qué Beck rechaza la palabra "experiencia"](filosofia/draft-developer-experience-vs-effectiveness.md) 🌱 *cosecha (Beck/Noda)*
+- **C-17** — [DCI en Python: roles en runtime](filosofia/draft-dci-en-python-roles-en-runtime.md) ✍️ **escrito, pendiente de push** — parte 2 de 2 con **C-09**; bundle `2026-08-05-dci-en-python-roles-en-runtime`, con `dci_demo.py` publicable
 
 ---
 
