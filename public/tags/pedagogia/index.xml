@@ -12,9 +12,16 @@
 			<copyright>César Ballardini</copyright>
 		
 		
-			<lastBuildDate>Sun, 02 Aug 2026 00:00:00 -0300</lastBuildDate>
+			<lastBuildDate>Thu, 17 Sep 2026 00:00:00 -0300</lastBuildDate>
 		
 			<atom:link href="https://katra.ballardini.com.ar/tags/pedagogia/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Sobre estudiar LLMs y plantar árboles</title>
+				<link>https://katra.ballardini.com.ar/posts/sobre-estudiar-llms-y-plantar-arboles/</link>
+				<pubDate>Thu, 17 Sep 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/posts/sobre-estudiar-llms-y-plantar-arboles/</guid>
+				<description>&lt;p&gt;Hace un tiempo leí una frase «el mejor momento para plantar un árbol fue hace veinte años; el segundo mejor momento es ahora».&lt;/p&gt;&#xA;&lt;p&gt;Hay muchas ofertas de trabajo relacionadas con la Inteligencia Artificial. ¿Cuándo es un buen momento para estudiar IA? Se parece a plantar un árbol.  Si querés disfrutar de la sombra (presentarte a las ofertas de trabajo) entonces hace años deberías haber estudiado IA. Este post es sobre un árbol que acabo de plantar: un &lt;a href=&#34;https://katra.ballardini.com.ar/llm-for-dummies-study-plan/&#34;&gt;plan de estudio para aprender cómo funcionan los modelos de lenguaje grandes&lt;/a&gt;, desde cero.&lt;/p&gt;</description>
+			</item>
 			<item>
 				<title>El termómetro de la Psicología</title>
 				<link>https://katra.ballardini.com.ar/posts/el-termometro-de-la-psicologia/</link>

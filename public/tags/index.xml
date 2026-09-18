@@ -12,9 +12,44 @@
 			<copyright>César Ballardini</copyright>
 		
 		
-			<lastBuildDate>Wed, 05 Aug 2026 00:00:00 -0300</lastBuildDate>
+			<lastBuildDate>Thu, 17 Sep 2026 00:00:00 -0300</lastBuildDate>
 		
 			<atom:link href="https://katra.ballardini.com.ar/tags/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>IA</title>
+				<link>https://katra.ballardini.com.ar/tags/ia/</link>
+				<pubDate>Thu, 17 Sep 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/ia/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Inteligencia Artificial</title>
+				<link>https://katra.ballardini.com.ar/tags/inteligencia-artificial/</link>
+				<pubDate>Thu, 17 Sep 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/inteligencia-artificial/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>LLM</title>
+				<link>https://katra.ballardini.com.ar/tags/llm/</link>
+				<pubDate>Thu, 17 Sep 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/llm/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Pedagogia</title>
+				<link>https://katra.ballardini.com.ar/tags/pedagogia/</link>
+				<pubDate>Thu, 17 Sep 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/pedagogia/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Plan De Estudio</title>
+				<link>https://katra.ballardini.com.ar/tags/plan-de-estudio/</link>
+				<pubDate>Thu, 17 Sep 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/tags/plan-de-estudio/</guid>
+				<description></description>
+			</item>
 			<item>
 				<title>Arquitectura</title>
 				<link>https://katra.ballardini.com.ar/tags/arquitectura/</link>
@@ -191,13 +226,6 @@
 				<description></description>
 			</item>
 			<item>
-				<title>IA</title>
-				<link>https://katra.ballardini.com.ar/tags/ia/</link>
-				<pubDate>Sun, 02 Aug 2026 00:00:00 -0300</pubDate>
-				<guid>https://katra.ballardini.com.ar/tags/ia/</guid>
-				<description></description>
-			</item>
-			<item>
 				<title>Metodo Cientifico</title>
 				<link>https://katra.ballardini.com.ar/tags/metodo-cientifico/</link>
 				<pubDate>Sun, 02 Aug 2026 00:00:00 -0300</pubDate>
@@ -209,13 +237,6 @@
 				<link>https://katra.ballardini.com.ar/tags/neurociencia/</link>
 				<pubDate>Sun, 02 Aug 2026 00:00:00 -0300</pubDate>
 				<guid>https://katra.ballardini.com.ar/tags/neurociencia/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title>Pedagogia</title>
-				<link>https://katra.ballardini.com.ar/tags/pedagogia/</link>
-				<pubDate>Sun, 02 Aug 2026 00:00:00 -0300</pubDate>
-				<guid>https://katra.ballardini.com.ar/tags/pedagogia/</guid>
 				<description></description>
 			</item>
 			<item>
@@ -629,13 +650,6 @@
 				<link>https://katra.ballardini.com.ar/tags/bootstrapping/</link>
 				<pubDate>Fri, 10 Apr 2026 00:00:00 -0300</pubDate>
 				<guid>https://katra.ballardini.com.ar/tags/bootstrapping/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title>Inteligencia Artificial</title>
-				<link>https://katra.ballardini.com.ar/tags/inteligencia-artificial/</link>
-				<pubDate>Fri, 10 Apr 2026 00:00:00 -0300</pubDate>
-				<guid>https://katra.ballardini.com.ar/tags/inteligencia-artificial/</guid>
 				<description></description>
 			</item>
 			<item>
