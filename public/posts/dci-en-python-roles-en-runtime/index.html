@@ -122,7 +122,7 @@
 	<meta itemprop="description" content="Implementamos DCI en Python de cero y sólo con la biblioteca estándar.">
 	<meta itemprop="datePublished" content="2026-08-05T00:00:00-03:00">
 	<meta itemprop="dateModified" content="2026-08-05T00:00:00-03:00">
-	<meta itemprop="wordCount" content="10758">
+	<meta itemprop="wordCount" content="11044">
 	<meta itemprop="keywords" content="DCI,Python,Roles,Arquitectura,OOP,Reenskaug,Coplien,Metaprogramacion">
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:title" content="DCI en Python: roles en runtime">
@@ -353,8 +353,8 @@ article tbody tr:nth-child(even) {
       
         
         
-        <span class="f6 mv4 dib tracked"> - Lectura en 51 minutos </span>
-        <span class="f6 mv4 dib tracked"> - 10758 palabras </span>
+        <span class="f6 mv4 dib tracked"> - Lectura en 53 minutos </span>
+        <span class="f6 mv4 dib tracked"> - 11044 palabras </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><p>En <a href="/posts/dci-data-context-interaction-reenskaug/">la primera parte</a> conté de dónde salió DCI: Trygve Reenskaug, el autor de MVC, pasó su jubilación buscando una forma de que el código muestre lo que el sistema <em>hace</em> y no sólo lo que el sistema <em>es</em>. La propuesta se llama <em>Data, Context, Interaction</em> y se resume en tres elementos. <strong>Data</strong>: los objetos de dominio son pequeños y apenas inteligentes — la <code>Account</code> sabe su saldo, cómo sumarlo y restarlo, nada más. <strong>Context</strong>: el caso de uso deja de ser un método suelto y pasa a ser un objeto de primera clase, que existe mientras el caso de uso está funcionando. <strong>Interaction</strong>: los roles —<code>SourceAccount</code>, <code>DestinationAccount</code>— son comportamientos que se le adosa a un objeto de datos <em>mientras dura el contexto</em>, de esa manera, el algoritmo que ejecutan entre todos reside en un solo lugar<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
@@ -371,10 +371,12 @@ article tbody tr:nth-child(even) {
 </span></span><span style="display:flex;"><span>make demo
 </span></span></code></pre></div>
   </div><p><code>make demo</code> imprime todas las salidas que van apareciendo en este post. Y <code>make test</code> corre la suite.</p>
+<p>Los ejemplos también corren en el navegador, sin instalar nada, en <a href="https://katra.ballardini.com.ar/dci-in-python/">los cuadernos de JupyterLite del repositorio</a>. Ejecutan el mismo código con Pyodide, que es CPython 3.14 compilado a WebAssembly. Cada sección de este post enlaza el cuaderno que le corresponde, y <a href="https://katra.ballardini.com.ar/dci-in-python/notebooks/index.html?path=05-run-the-tests.ipynb">el cuaderno 5</a> corre la suite de tests. No corren en el navegador los ejemplos con hilos, porque Pyodide no puede crear un hilo, ni la biblioteca <code>roles</code>, que no funciona en Python 3.14.</p>
 <p><code>make</code> sin argumentos lista el resto: linter, los dos type checkers y los escaneos de seguridad. Todo eso —qué hace cada herramienta, cómo se actualizan las dependencias, cómo se arma la rueda— está en <a href="https://github.com/CesarBallardini/dci-in-python/blob/main/TOOLING.md"><code>TOOLING.md</code></a>.</p>
 </blockquote>
 <h2 id="la-transferencia-bancaria">La transferencia bancaria</h2>
 <p>El ejemplo canónico de DCI es la transferencia bancaria — es el que usan Reenskaug y Coplien en el paper, donde el algoritmo se escribe entre dos roles, <em>Source Account</em> y <em>Destination Account</em><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. En el capítulo de arquitectura, en cambio, dicen que «un modelo mental posible tiene <strong>tres</strong> roles»: <em>Source Account</em>, <em>Destination Account</em> y <em>Transfer Amount</em><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</p>
+<p><strong>En el navegador:</strong> las tres versiones de esta sección están en <a href="https://katra.ballardini.com.ar/dci-in-python/notebooks/index.html?path=01-the-mechanism.ipynb">el cuaderno 1, <em>The mechanism</em></a>.</p>
 <h3 id="versión-1-la-cuenta-que-sabe-demasiado">Versión 1: la cuenta que sabe demasiado</h3>
 <div class="code-block">
     <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
@@ -789,7 +791,7 @@ article tbody tr:nth-child(even) {
 			</tr>
 	</tbody>
 </table>
-<p>El resultado:</p>
+<p>Las salidas 1 a 4 de la demo están en <a href="https://katra.ballardini.com.ar/dci-in-python/notebooks/index.html?path=01-the-mechanism.ipynb">el cuaderno 1</a>, sección <em>Version 3: DCI</em>. El resultado:</p>
 <div class="code-block">
     <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
       <span class="code-copy-label" aria-hidden="true">Copy</span>
@@ -838,6 +840,7 @@ article tbody tr:nth-child(even) {
 </span></span><span style="display:flex;"><span>same id outside? True</span></span></code></pre></div>
   </div><p>Hasta acá, DCI funciona en Python: cincuenta líneas, biblioteca estándar, y el caso de uso se lee de corrido en el contexto.</p>
 <h3 id="algunos-escenarios-donde-el-modelo-de-objetos-de-python-falla">Algunos escenarios donde el modelo de objetos de Python falla</h3>
+<p><strong>En el navegador:</strong> <a href="https://katra.ballardini.com.ar/dci-in-python/notebooks/index.html?path=03-where-python-says-no.ipynb">el cuaderno 3, <em>Where Python says no</em></a>, con las secciones 5, 5b y 6 de la demo.</p>
 <p><strong>Primero: no funciona con <code>__slots__</code>.</strong> Basta que la clase de dominio use <code>__slots__</code> —o sea, cualquier clase optimizada para memoria, y varias cosas que generan las bibliotecas— para que la reasignación de <code>__class__</code> sea ilegal:</p>
 <div class="code-block">
     <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
@@ -891,7 +894,8 @@ article tbody tr:nth-child(even) {
 </span></span><span style="display:flex;"><span>==============================================================
 </span></span><span style="display:flex;"><span>failure: (&#39;fast&#39;, &#39;TypeError&#39;, &#39;Cannot create a consistent method resolution order (MRO) for bases SourceAccount, Account@SourceAccount&#39;)
 </span></span><span style="display:flex;"><span>final balances: Account(&#39;Erin&#39;, 999995) Account(&#39;Frank&#39;, 5) Account(&#39;Grace&#39;, 0)</span></span></code></pre></div>
-  </div><div class="code-block">
+  </div><p>La sección 6b no corre en el navegador, porque Pyodide no puede crear un hilo. <a href="https://katra.ballardini.com.ar/dci-in-python/notebooks/index.html?path=03-where-python-says-no.ipynb">El cuaderno 3</a>, en la sección <em>The same overlap, served concurrently</em>, produce la misma superposición con dos tareas de <code>asyncio</code> en un solo hilo: alcanza con que el mismo objeto esté adentro de dos contextos vivos a la vez.</p>
+<div class="code-block">
     <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
       <span class="code-copy-label" aria-hidden="true">Copy</span>
     </button>
@@ -914,6 +918,7 @@ article tbody tr:nth-child(even) {
 <p>Ésta también se puede mejorar, aunque menos que la anterior. A la clase sintetizada se le puede poner el <code>__name__</code> de la clase de datos, y entonces los mensajes de error vuelven a decir <code>'Account' object has no attribute ...</code> en vez de <code>'Account@SourceAccount'</code>. Lo que hace el trabajo es <strong>renombrar</strong> la clase, no una metaclase. Una metaclase que devuelva otro <code>__name__</code> arregla lo que ves al pedirlo y no toca los mensajes de error, porque CPython los arma con <code>tp_name</code>, que es de nivel C. Igual, es un cambio cosmético: seguís teniendo un objeto cuyo tipo dice <code>Account</code> y que tiene un método <code>transfer</code> que <code>Account</code> no define. Se reemplaza una inconsistencia por otra, de menor alcance<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>.</p>
 <p>El type checker no tiene arreglo, pero el problema se le puede achicar a un renglón. Los roles se anotan con lo que le exigen a su actor —<code>self: AccountLike</code>, y el monto con su variable de tipo—,de esa manera no necesitaremos usar <code>cast</code>. Lo que queda es el renglón del Context donde el participante ya juega el rol: <code>playing(self.source, SourceAccountPlayer)</code>. Ahí el checker tiene que creer lo que se le dice, porque la clase que lo probaría existirá recién en tiempo de ejecución.</p>
 <h3 id="cuatro-maneras-de-prestar-un-rol">Cuatro maneras de prestar un rol</h3>
+<p><strong>En el navegador:</strong> <a href="https://katra.ballardini.com.ar/dci-in-python/notebooks/index.html?path=02-four-binders.ipynb">el cuaderno 2, <em>Four ways to bind a role</em></a>, con el tipo que informa cada binder, los mensajes de error, <code>pickle</code> y el rol que aporta un método especial.</p>
 <p>Los dos arreglos de arriba —el lock y el renombre— no son parches sueltos sobre la misma clase. Cada uno es un <code>Context</code> distinto. En el repositorio están los cuatro: <code>banking/dci/</code> es un paquete con el ciclo de vida en <code>base.py</code> y un módulo por binder. Comparten todo —el contexto reificado, el <code>ContextVar</code>, el ciclo de vida entero— y se diferencian en <strong>un solo método</strong>, el que liga: <code>_bind</code>. En el código de arriba ese ligado estaba suelto adentro del <code>__enter__</code>; en el repositorio es un método propio.</p>
 <ul>
 <li><strong><code>Context</code></strong> — reasigna la clase. Usado en todo el post, es la línea base de comparación.</li>
@@ -935,7 +940,8 @@ article tbody tr:nth-child(even) {
     <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>RuntimeError: Account already has &#39;transfer&#39;: instance binding will not
 </span></span><span style="display:flex;"><span>overwrite it. Another context is playing this role, or the object defines
 </span></span><span style="display:flex;"><span>that name itself.</span></span></code></pre></div>
-  </div><p>Los dos fallan en el momento del ligado, entonces, y ninguno de los dos permite que dos contextos le pidan <strong>el mismo papel</strong> al mismo objeto a la vez. Eso sólo lo consigue <code>SerializedContext</code>, poniéndolos en fila.</p>
+  </div><p>Este error está en <a href="https://katra.ballardini.com.ar/dci-in-python/notebooks/index.html?path=03-where-python-says-no.ipynb">el cuaderno 3</a>, sección <em>The same overlap under <code>InstanceContext</code></em>.</p>
+<p>Los dos fallan en el momento del ligado, entonces, y ninguno de los dos permite que dos contextos le pidan <strong>el mismo papel</strong> al mismo objeto a la vez. Eso sólo lo consigue <code>SerializedContext</code>, poniéndolos en fila.</p>
 <p>Y una aclaración sobre el chequeo de <code>InstanceContext</code>: <strong>es una verificación, no un lock</strong>. Revisa si el nombre está libre y después escribe, en dos pasos separados. Si dos hilos llegan justo entre uno y otro, los dos ven el nombre libre y los dos escriben. La ventana de oportunidad es corta pero existe, y por eso necesitamos el lock para cerrarla.</p>
 <p>El chequeo sirve además para otra cosa: protege al objeto de dominio que <strong>tiene un atributo propio</strong> llamado igual que un método del rol. Sin él, el <code>__exit__</code> se lo borraría para siempre, porque al salir el binder no sabría distinguir lo que prestó de lo que ya estaba.</p>
 <p>Ahora bien, todo lo anterior vale mientras los dos contextos quieran <strong>el mismo rol</strong>. Una cuenta que paga una transferencia mientras otra le deposita no necesita <code>SourceAccount</code> dos veces: necesita <code>SourceAccount</code> y <code>DestinationAccount</code>, y esos dos se apilan en una clase con un MRO perfectamente consistente. Los dos contextos ligan, las dos transferencias salen bien, los saldos quedan correctos. Lo que queda mal es lo que cada contexto <strong>devuelve</strong> al salir: la clase que se encontró al entrar. Si se solapan sin anidarse —el que abrió primero es el que cierra primero—, el último en salir le devuelve al objeto una clase que todavía tiene el rol del otro, y la cuenta queda jugando <code>SourceAccount</code> afuera de todo contexto. No se levantó ninguna excepción en ningún momento.</p>
@@ -1002,7 +1008,7 @@ article tbody tr:nth-child(even) {
 <p>Todas las cuentas que vimos hasta acá las fabricamos nosotros, en la línea de arriba, con <code>Account('Alice', Money(1000))</code>. En un sistema real, normalmente no es así. La cuenta <strong>sale de algún lado</strong>: de una consulta, de un modelo, de un payload que alguien validó. Y la clase de esa cuenta no la elegiste vos: la eligió, en buena parte, la biblioteca que se usa para dialogar con la base de datos.</p>
 <p>Así que la pregunta que importa no es si DCI anda con una clase que escribí para el ejemplo. Es si anda con la que ya tenés. La respuesta está en: <code>tests/integration/test_orm_roles.py</code>, con una base SQLite, escribiendo la fila, cerrando la sesión, y recién ahí —con el objeto cargado de disco— dándole un papel.</p>
 <p>El escenario con la base de datos real es interesante: <strong>son los mismos tres roles, sin tocarles una línea, sobre cinco clases que no comparten ningún ancestro</strong>. Se puede porque el rol nunca pidió una clase base: pide un <code>Protocol</code> estructural —<code>holder</code>, <code>balance</code>, <code>debit()</code>, <code>credit()</code>— y cualquier cosa que los tenga sirve. Es lo que decía cuando miramos <code>SourceAccount</code>: el rol no sabe de qué clase es su actor, pero sí qué protocolo entiende. Cada fila en la tabla es además una fila de ejemplo en un archivo <code>.feature</code>, igual que la tabla de los binders.</p>
-<p>Sale esto:</p>
+<p>En el navegador, este escenario está en <a href="https://katra.ballardini.com.ar/dci-in-python/notebooks/index.html?path=04-five-designs.ipynb">el cuaderno 4</a>, secciones <em>Five ways to write the domain object</em> y <em>The same five, with instance binding</em>, con SQLAlchemy sobre SQLite. Sale esto:</p>
 <div class="code-block">
     <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
       <span class="code-copy-label" aria-hidden="true">Copy</span>
@@ -1122,6 +1128,7 @@ article tbody tr:nth-child(even) {
 <p>Fuera de Python, hay actividad en TypeScript y en Ruby: hay una serie de tutoriales de DCI para TypeScript y, más interesante, un plugin de ESLint que verifica reglas DCI sobre tu código — probablemente la única herramienta de tooling DCI que existe. Del lado de Ruby está <em>Clean Ruby</em>, de Jim Gay, con un par de gemas que implementan contextos y roles<sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup>.</p>
 <h3 id="cinco-maneras-de-escribir-la-misma-transferencia">Cinco maneras de escribir la misma transferencia</h3>
 <p>Llegado este punto conviene mirarlas todas juntas. En el repositorio la misma transferencia está escrita <strong>cinco veces</strong>, y las cinco corren y están verificadas mediante los tests correspondientes.</p>
+<p><strong>En el navegador:</strong> las tres primeras están en <a href="https://katra.ballardini.com.ar/dci-in-python/notebooks/index.html?path=01-the-mechanism.ipynb">el cuaderno 1</a>; el envoltorio y el servicio, en <a href="https://katra.ballardini.com.ar/dci-in-python/notebooks/index.html?path=04-five-designs.ipynb">el cuaderno 4</a>, secciones <em>The role as a wrapper</em> y <em>The service</em>.</p>
 <p><strong>Tres ya las viste</strong>, así que las nombro y sigo. La <strong>cuenta gorda</strong> del principio (<code>FatAccount</code>, en <code>banking/alternatives/fat_account.py</code>), donde el caso de uso absorbió a la entidad. La <strong>cuenta anémica con su servicio</strong> (<code>AnemicAccount</code> + <code>TransferService</code>, en <code>anemic_service.py</code>), donde los roles simplemente no existen: «origen» y «destino» son nombres de parámetros que dejan de existir cuando la función retorna. Y <strong>DCI</strong>, lo que venimos construyendo, que es la única de las cinco donde el objeto <em>es</em> el rol, con su <code>id()</code> y su <code>isinstance</code> intactos.</p>
 <p>Faltan dos alternativas que un equipo podría elegir en la práctica.</p>
 <h4 id="cuarta-el-rol-como-envoltorio">Cuarta: el rol como envoltorio</h4>

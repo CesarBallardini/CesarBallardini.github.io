@@ -23,11 +23,15 @@ Para que DCI funcione en Python hace falta un mecanismo poco habitual: **inyecta
 >
 > `make demo` imprime todas las salidas que van apareciendo en este post. Y `make test` corre la suite.
 >
+> Los ejemplos también corren en el navegador, sin instalar nada, en <a href="https://katra.ballardini.com.ar/dci-in-python/" target="_blank" rel="noopener">los cuadernos de JupyterLite del repositorio</a>. Ejecutan el mismo código con Pyodide, que es CPython 3.14 compilado a WebAssembly. Cada sección de este post enlaza el cuaderno que le corresponde, y <a href="https://katra.ballardini.com.ar/dci-in-python/notebooks/index.html?path=05-run-the-tests.ipynb" target="_blank" rel="noopener">el cuaderno 5</a> corre la suite de tests. No corren en el navegador los ejemplos con hilos, porque Pyodide no puede crear un hilo, ni la biblioteca `roles`, que no funciona en Python 3.14.
+>
 > `make` sin argumentos lista el resto: linter, los dos type checkers y los escaneos de seguridad. Todo eso —qué hace cada herramienta, cómo se actualizan las dependencias, cómo se arma la rueda— está en [`TOOLING.md`](https://github.com/CesarBallardini/dci-in-python/blob/main/TOOLING.md).
 
 ## La transferencia bancaria
 
 El ejemplo canónico de DCI es la transferencia bancaria — es el que usan Reenskaug y Coplien en el paper, donde el algoritmo se escribe entre dos roles, *Source Account* y *Destination Account*[^dci]. En el capítulo de arquitectura, en cambio, dicen que «un modelo mental posible tiene **tres** roles»: *Source Account*, *Destination Account* y *Transfer Amount*[^asa].
+
+**En el navegador:** las tres versiones de esta sección están en <a href="https://katra.ballardini.com.ar/dci-in-python/notebooks/index.html?path=01-the-mechanism.ipynb" target="_blank" rel="noopener">el cuaderno 1, *The mechanism*</a>.
 
 ### Versión 1: la cuenta que sabe demasiado
 
@@ -423,7 +427,7 @@ Lo demás de `BaseContext` es lo que hace falta para que eso no deje basura si a
 | `typing.Self`, `ClassVar`, el `/` posicional             | que el propio mecanismo pase los type checkers sin usar supresiones                                         |
 | `functools.cache`, `weakref.finalize`, `threading.RLock` | fabricar la clase una sola vez; que el lock de cada participante desaparezca junto con el objeto            |
 
-El resultado:
+Las salidas 1 a 4 de la demo están en <a href="https://katra.ballardini.com.ar/dci-in-python/notebooks/index.html?path=01-the-mechanism.ipynb" target="_blank" rel="noopener">el cuaderno 1</a>, sección *Version 3: DCI*. El resultado:
 
 ```text
 ==============================================================
@@ -476,6 +480,8 @@ same id outside? True
 Hasta acá, DCI funciona en Python: cincuenta líneas, biblioteca estándar, y el caso de uso se lee de corrido en el contexto.
 
 ### Algunos escenarios donde el modelo de objetos de Python falla
+
+**En el navegador:** <a href="https://katra.ballardini.com.ar/dci-in-python/notebooks/index.html?path=03-where-python-says-no.ipynb" target="_blank" rel="noopener">el cuaderno 3, *Where Python says no*</a>, con las secciones 5, 5b y 6 de la demo.
 
 **Primero: no funciona con `__slots__`.** Basta que la clase de dominio use `__slots__` —o sea, cualquier clase optimizada para memoria, y varias cosas que generan las bibliotecas— para que la reasignación de `__class__` sea ilegal:
 
@@ -533,6 +539,8 @@ failure: ('fast', 'TypeError', 'Cannot create a consistent method resolution ord
 final balances: Account('Erin', 999995) Account('Frank', 5) Account('Grace', 0)
 ```
 
+La sección 6b no corre en el navegador, porque Pyodide no puede crear un hilo. <a href="https://katra.ballardini.com.ar/dci-in-python/notebooks/index.html?path=03-where-python-says-no.ipynb" target="_blank" rel="noopener">El cuaderno 3</a>, en la sección *The same overlap, served concurrently*, produce la misma superposición con dos tareas de `asyncio` en un solo hilo: alcanza con que el mismo objeto esté adentro de dos contextos vivos a la vez.
+
 ```mermaid
 sequenceDiagram
     participant H1 as Hilo 1
@@ -564,6 +572,8 @@ El type checker no tiene arreglo, pero el problema se le puede achicar a un reng
 
 ### Cuatro maneras de prestar un rol
 
+**En el navegador:** <a href="https://katra.ballardini.com.ar/dci-in-python/notebooks/index.html?path=02-four-binders.ipynb" target="_blank" rel="noopener">el cuaderno 2, *Four ways to bind a role*</a>, con el tipo que informa cada binder, los mensajes de error, `pickle` y el rol que aporta un método especial.
+
 Los dos arreglos de arriba —el lock y el renombre— no son parches sueltos sobre la misma clase. Cada uno es un `Context` distinto. En el repositorio están los cuatro: `banking/dci/` es un paquete con el ciclo de vida en `base.py` y un módulo por binder. Comparten todo —el contexto reificado, el `ContextVar`, el ciclo de vida entero— y se diferencian en **un solo método**, el que liga: `_bind`. En el código de arriba ese ligado estaba suelto adentro del `__enter__`; en el repositorio es un método propio.
 
 - **`Context`** — reasigna la clase. Usado en todo el post, es la línea base de comparación.
@@ -590,6 +600,8 @@ RuntimeError: Account already has 'transfer': instance binding will not
 overwrite it. Another context is playing this role, or the object defines
 that name itself.
 ```
+
+Este error está en <a href="https://katra.ballardini.com.ar/dci-in-python/notebooks/index.html?path=03-where-python-says-no.ipynb" target="_blank" rel="noopener">el cuaderno 3</a>, sección *The same overlap under `InstanceContext`*.
 
 Los dos fallan en el momento del ligado, entonces, y ninguno de los dos permite que dos contextos le pidan **el mismo papel** al mismo objeto a la vez. Eso sólo lo consigue `SerializedContext`, poniéndolos en fila.
 
@@ -624,7 +636,7 @@ Así que la pregunta que importa no es si DCI anda con una clase que escribí pa
 
 El escenario con la base de datos real es interesante: **son los mismos tres roles, sin tocarles una línea, sobre cinco clases que no comparten ningún ancestro**. Se puede porque el rol nunca pidió una clase base: pide un `Protocol` estructural —`holder`, `balance`, `debit()`, `credit()`— y cualquier cosa que los tenga sirve. Es lo que decía cuando miramos `SourceAccount`: el rol no sabe de qué clase es su actor, pero sí qué protocolo entiende. Cada fila en la tabla es además una fila de ejemplo en un archivo `.feature`, igual que la tabla de los binders.
 
-Sale esto:
+En el navegador, este escenario está en <a href="https://katra.ballardini.com.ar/dci-in-python/notebooks/index.html?path=04-five-designs.ipynb" target="_blank" rel="noopener">el cuaderno 4</a>, secciones *Five ways to write the domain object* y *The same five, with instance binding*, con SQLAlchemy sobre SQLite. Sale esto:
 
 ```text
 ==============================================================
@@ -714,6 +726,8 @@ Fuera de Python, hay actividad en TypeScript y en Ruby: hay una serie de tutoria
 ### Cinco maneras de escribir la misma transferencia
 
 Llegado este punto conviene mirarlas todas juntas. En el repositorio la misma transferencia está escrita **cinco veces**, y las cinco corren y están verificadas mediante los tests correspondientes.
+
+**En el navegador:** las tres primeras están en <a href="https://katra.ballardini.com.ar/dci-in-python/notebooks/index.html?path=01-the-mechanism.ipynb" target="_blank" rel="noopener">el cuaderno 1</a>; el envoltorio y el servicio, en <a href="https://katra.ballardini.com.ar/dci-in-python/notebooks/index.html?path=04-five-designs.ipynb" target="_blank" rel="noopener">el cuaderno 4</a>, secciones *The role as a wrapper* y *The service*.
 
 **Tres ya las viste**, así que las nombro y sigo. La **cuenta gorda** del principio (`FatAccount`, en `banking/alternatives/fat_account.py`), donde el caso de uso absorbió a la entidad. La **cuenta anémica con su servicio** (`AnemicAccount` + `TransferService`, en `anemic_service.py`), donde los roles simplemente no existen: «origen» y «destino» son nombres de parámetros que dejan de existir cuando la función retorna. Y **DCI**, lo que venimos construyendo, que es la única de las cinco donde el objeto *es* el rol, con su `id()` y su `isinstance` intactos.
 
