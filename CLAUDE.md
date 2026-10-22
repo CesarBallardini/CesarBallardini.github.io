@@ -79,6 +79,26 @@ git push origin master
 - **`git add -u public/` alone misses new files** (a new post's directory is untracked, not modified). That is why step 4 has both `add -u` and a plain `add`.
 - **`git add -A` from the repo root** sweeps in every unrelated modified draft in `content/just-ideas-for-future-posts/`. Stage explicit paths and read `git status --short` before committing.
 - **A future-dated bundle** is absent from `public/` with no warning and the deploy still succeeds. That is what step 1 is for.
+- **Files left staged by earlier work ride along.** A bare `git commit` takes everything in the index, not just what step 4 added. Check `git diff --cached --name-only` for paths that belong to another post, and either unstage them (`git restore --staged <paths>`, which leaves the files on disk) or commit with a pathspec (`git commit -- <bundle>/ public/`, which commits only those paths and leaves the rest staged).
+
+### Publishing one post while others are unfinished
+
+`hugo` renders everything under `content/`, so step 2 above publishes every bundle on disk, including a series still in progress and any uncommitted edit to an already-published post. To ship a single post, build from what is already committed plus that one bundle, straight into `public/`:
+
+```bash
+T=$(mktemp -d)
+git archive HEAD | tar -x -C "$T"                    # committed content only
+cp -r themes/ananke/. "$T/themes/ananke/"            # git archive leaves submodules empty
+cp -r content/es/posts/YYYY-MM-DD-slug "$T/content/es/posts/"
+hugo -s "$T" -d "$(pwd -W)/public" --cleanDestinationDir   # pwd -W: hugo.exe needs a Windows path
+grep -rl "<slug-of-an-unfinished-post>" public/ | wc -l    # must be 0
+```
+
+Then continue from step 4, committing with a pathspec. First used 2026-09-18 to publish `sobre-estudiar-llms-y-plantar-arboles` while the four cafetera posts sat in `content/`, two of them already staged.
+
+**What an honest single-post diff looks like:** the new post directory, any new tag directories, and real changes only in listing pages (home, `posts/page/N/`, RSS, sitemaps, the post's tags) and in the "related posts" block of a few older posts. If every page in `public/` shows as modified, check whether the only difference is `<meta name="generator" content="Hugo 0.x">` — that is a Hugo upgrade since the last build, not a content change. Compare with `git diff --cached -I 'name="generator"' --quiet -- <file>`.
+
+**Paths under the domain that are not this repo.** `katra.ballardini.com.ar` is this user site's custom domain, so every GitHub Pages *project* site of the account is served under it: `https://katra.ballardini.com.ar/llm-for-dummies-study-plan/` is the MkDocs book from the `llm-for-dummies-study-plan` repo. Never create content, a section or an alias at a path named like one of those repositories — both sites would claim the same URLs, and only one of them can be served there.
 
 **Never commit a `hugo server` build.** `hugo server` rewrites `baseURL` to whatever localhost port it picked (e.g. `http://localhost:3131/`) and bakes that into every `<link rel="canonical">`, `og:url`, sitemap entry, RSS `<link>`, and internal nav href; it also injects a `/livereload.js?...port=NNNN` script into every page and emits a non-fingerprinted `public/ananke/css/main.min.css` alongside the fingerprinted asset that the HTML actually references. Any of those leaking to GitHub Pages breaks the RSS feed for subscribers and the canonical URL for search engines. Always do a fresh `hugo --cleanDestinationDir` (or `rm -rf public && hugo`) before staging `public/`, and verify with `grep -rl "localhost:" public/ | wc -l` returning `0`.
 
@@ -97,18 +117,24 @@ Run these against a build before committing a post. Each one has caught a real d
 - **Post format:** all posts use **page bundles** — `content/es/posts/YYYY-MM-DD-slug/index.md` with images and assets as siblings inside the same folder. Flat `.md` files are the old format; do not create new ones.
 - **Post filename pattern:** `YYYY-MM-DD-slug-in-lowercase` — Hugo extracts the date from the directory name (`[frontmatter] date = [':filename', ':default']`). Renaming the directory therefore changes the post's date but **not** its URL; it does change any hard-coded GitHub links that point at the bundle path, so grep for the old directory name after a rename.
 - **What a page bundle publishes:** every *non-page* resource in the bundle directory is copied to the output — images, PDFs, SVGs, `.py`, `.txt`, and subdirectories with them. But `.md` files other than `index.md` are treated as **page** resources and are **not** copied, so they exist in the repository and not on the site. Link to those on GitHub, or rename them to `.txt` if they have to be downloadable from the post. Confirm what actually shipped with `find public/posts/<slug> -type f` after a build.
+  - **Subdirectories publish too, and that is how something private goes public.** A file dropped in `content/es/posts/<slug>/bibliografia/` is served from `https://katra.ballardini.com.ar/posts/<slug>/bibliografia/…`. There is no `_`-prefix or front-matter escape hatch for a non-`.md` resource: if it is in the bundle, it ships. Reference material that should stay off the public site belongs outside `content/` — the working copies live in `C:/Users/cesar/cesar/trabajo/utn/objetos/objetos-bibliografia/`, and full books kept next to the blog go in the repo-root `books/` folder, which is gitignored and outside Hugo's content tree. Run the `find` above before staging, and read what it lists.
 - **Spanish posts go in:** `content/es/posts/`
 - **English posts go in:** `content/en/posts/`
 - **Frontmatter:** YAML (`---`) for all 2025+ posts. The full house rules — frontmatter shape, tag rules (no periods, Hugo Windows limitation), footnote style (named, never numeric), internal link rules (no `/es/` prefix in Spanish URLs), image bundles vs flat files, voice — live in [`content/just-ideas-for-future-posts/near-future-posts.md`](content/just-ideas-for-future-posts/near-future-posts.md) under "Convenciones de la casa". Read that section before writing or editing a post — it reflects the actual practice in the published posts, not what `AGENTS.md` says (they conflict; the published posts win).
 - **Hero banner:** every post has `featured_image: hero-filename.jpg` in frontmatter. The image lives in the post's bundle folder. Use landscape-oriented images (2.5:1 ratio or wider); portrait photos must be cropped with Pillow before use (`uv run --with Pillow python`). `featured_image_class = "cover bg-center"` is set globally in `hugo.toml`.
-- **Per-page CSS:** add `page_css: ['tables.css']` to frontmatter for posts with markdown tables. The CSS lives at `assets/ananke/css/tables.css` and is loaded via the `layouts/partials/head-additions.html` partial.
+- **Per-page CSS:** add `page_css: ['tables.css']` to frontmatter for posts with markdown tables. The CSS lives at `assets/ananke/css/tables.css` and is loaded via the `layouts/partials/head-additions.html` partial. `code.css` (smaller code type, `font-size: 0.82rem`, selector covering both `.highlight` and `.code-block` so that language-less fences — console output, which never goes through Chroma — match) is **shared by every post that lists it**. Touching it re-renders all of them, so their `public/` shows up modified in a diff without anyone having edited those posts.
 - **Mermaid diagrams:** add `mermaid: true` to frontmatter to live-render ```` ```mermaid ```` fences (loaded via `layouts/partials/hooks/body-end.html`, see Architecture below). Without the flag, a mermaid fence just renders as unstyled plain code.
+  - **Validate a diagram before pasting it.** `curl -s -o out.svg -w "%{http_code}" "https://mermaid.ink/svg/$(base64 -w0 < d.mmd)"` — a `400`/`404` is a syntax error you would otherwise discover on the published page. To test a diagram that depends on the HTML-label config, send the JSON form instead: base64 of `{"code": "...", "mermaid": {"theme":"neutral","securityLevel":"antiscript","flowchart":{"htmlLabels":true}}}`, which is what `mermaid_html_labels: true` produces on the site. Swap `/svg/` for `/img/…?type=png&width=2400` to eyeball the result, or to generate a hero from the diagram itself.
+  - **There is no actor shape in flowcharts.** Verified against mermaid 11.16: `@{ shape: actor }`, `person` and `user` are all rejected. The stick figure only exists as the `actor` keyword in `sequenceDiagram`. For a UML use case diagram, ship an `actor.svg` in the bundle and reference it from an HTML label — `bebedor["<img src='actor.svg' width='40' height='62' alt=''/><br/>Bebedor de café"]` — plus `classDef actor fill:none,stroke:none` to drop the box that would otherwise make the actor look like another use case. Requires `mermaid_html_labels: true`. Set `width`/`height` explicitly so mermaid sizes the node without waiting for the image to load. There is a working `actor.svg` (421 bytes, five strokes) in `content/es/posts/2026-10-18-cafetera-mark-iv-enunciado-del-problema/`; copy it into any bundle that needs one, since each page bundle publishes its own resources.
   - **Truncated node labels?** Add `mermaid_html_labels: true` as well. Mermaid's default `securityLevel: 'strict'` forces `htmlLabels: false`, so the library measures label width itself instead of letting the browser do it; with accents and symbols (`↔`, `á`, `í`) it under-measures and clips long labels mid-word. The flag switches that page to `securityLevel: 'antiscript'` + `htmlLabels: true` — the browser measures the real text, and `<br/>` works for manual line breaks. It is **opt-in per post on purpose**: enabling it site-wide would silently re-flow the diagrams in already-published posts. `'antiscript'` allows HTML in labels but drops `<script>`; prefer it over `'loose'`.
 - **Math formulas:** write LaTeX directly — `\( ... \)` inline, `\[ ... \]` or `$$ ... $$` for display. **Rendered at build time** by `layouts/_markup/render-passthrough.html` via `transform.ToMath` (KaTeX compiled into the Hugo binary), which emits native MathML. No JavaScript, no CDN, no stylesheet, and screen-reader friendly. No frontmatter flag is needed. Requires `[markup.goldmark.extensions.passthrough]` in `hugo.toml` — without it Goldmark mangles `_`, `\` and `{}` before the math renderer sees them (`k_B` turns into italics).
 - **Electronic schematics (KiCad):** the `/370-145` panel post keeps its schematics in `kicad/` inside the bundle — Python generators that emit `.kicad_sch` and a symbol library, plus the PDF and SVG exported with `kicad-cli`. They are *generated by script rather than drawn by hand* so a layout fix is a re-run, not an afternoon of dragging symbols. If you touch one, re-export and re-verify: `kicad-cli sch erc` for wiring, **plus `kicad-cli sch export netlist` whenever the change could move a component**. The two catch different things — ERC finds off-grid endpoints and wires that stop a fraction of a millimetre short of a pin, while only the netlist proves which pins actually share a net. A schematic can be drawn so cramped that it reads as a series chain and still be wired correctly, and it can look impeccable and be wired wrong; neither check alone tells you which.
 - **Read-aloud audio player:** a client-side text-to-speech player (browser `speechSynthesis`, no cloud TTS, no API key) is injected on every content page **by default** — it is opt-**out**, not opt-in. To suppress it on a specific post, set `audio_player: false` in frontmatter. UI language and voice follow the page language (`.Language.Lang`). Injected via `layouts/partials/hooks/body-end.html` with CSS in `assets/ananke/css/audio-player.css` (see Architecture below).
 - **Image attribution:** every public domain or CC-licensed image requires a named footnote with URL, author, and license. Example: `[^img_foo]: Imagen de [Title](URL) — CC BY-SA 4.0 — Author.` If the image was cropped or otherwise adapted for the blog, note that at the end of the footnote (e.g. "Recortada a 2.5:1 para hero landscape.").
 - **Academic paper citations:** when a paper's canonical URL (IEEE Xplore, Springer, ACM DL) is paywalled or blocks automated fetch (IEEE returns HTTP 418), the footnote should link to a **stable DOI** (`https://doi.org/10.XXXX/...`) as the canonical reference plus a **free full-text mirror** when one exists (university course pages, archive.org, the author's Wikipedia page). Always include journal name / volume / issue / year in the footnote regardless of linkability.
+- **Book citations and archive.org lending:** an archive.org item is only *borrowable* if its `collection` includes **`inlibrary`**. An item that is only `printdisabled` is restricted to people with a print disability and **cannot be borrowed** — linking it as if it were a loan copy misleads the reader. Check with `curl -s https://archive.org/metadata/<id>` and read `collection`. To find whether a borrowable copy exists at all, Open Library beats archive.org's own search: `https://openlibrary.org/search.json?q=<title>+<author>&fields=title,ia,ebook_access`, where `ebook_access` is one of `borrowable` / `printdisabled` / `no_ebook`. When no borrowable copy exists, cite the canonical edition without a link and add a genuinely free alternative (the author's own paper, a university mirror, Wayback) — never link an unauthorized full-text upload, which is easy to spot by identifiers like `…www.ebooks-world.ir`.
+- **Verify which book a chapter is actually in.** Two books by the same author from adjacent years are easy to confuse, and a wrong attribution survives many editing passes because it *reads* right. Check the target book's table of contents before citing a chapter number. This bit once: «Heuristics and Coffee» is chapter 11 of *UML for Java Programmers* (2003), not of *Agile Software Development, PPP* (2002) — whose chapter 11 is the DIP.
+- **Extracting text from a PDF:** `pypdf` is fine for a table of contents but mangles body text into letter-spaced garbage (`T h e S i n g l e`); `pdfplumber` reads it correctly. Text set in small caps extracts as run-together capitals (`ACLASSSHOULDHAVEONLYONEREASONTOCHANGE`), so search for quotes with whitespace-insensitive matching before concluding a phrase is absent.
 - **Verify fragile URLs before publishing:** YouTube links, personal blogs, and university-course paper mirrors move or disappear. Check that each fragile URL responds before the post ships; for load-bearing sources keep a Wayback Machine backup link in the footnote.
 - **Draft ideas** live in the editorial planning system at `content/just-ideas-for-future-posts/` (outside Hugo's content tree, not rendered to the site). See [Editorial Planning System](#editorial-planning-system) below.
 - **Unsafe HTML** is enabled in Goldmark renderer (`markup.goldmark.renderer.unsafe = true`)
@@ -210,64 +236,65 @@ Sites approved for browsing when researching content for this blog:
 - **[EWD archive — UT Austin](https://www.cs.utexas.edu/~EWD/)** — Edsger Dijkstra's writings (EWD manuscripts), both HTML transcriptions and PDF scans of the originals. Stable.
 - **[DOI resolver](https://doi.org/)** — canonical citation URL for academic papers; use as the primary link when the publisher page is paywalled.
 
-## Work in progress — post 2 de DCI (`2026-08-05-dci-en-python-roles-en-runtime`)
+## Work in progress — serie de la cafetera Mark IV (cuatro posts)
 
-**Estado: NO publicado**, sincronizado con el repo de código y revisado al 2026-08-07.
-Borrar esta sección cuando el post se publique.
+**Estado al 2026-08-25: los cuatro posts escritos y verificados contra el repo. El repo de código está armado y verde, sin `git init` todavía.** Pendientes antes de publicar: (1) `git init` + commit + push del repo, sin lo cual los enlaces a GitHub dan 404; (2) ~~decidir qué se hace con los PDF de libros~~ resuelto el 2026-10-21 (ver abajo); (3) regenerar `public/`, que está desactualizado respecto de los cuatro posts.
+**Re-verificado el 2026-10-21:** el repo de código sigue verde (53 tests, `make diff` sin diferencias, `make metrics` igual que arriba), los once diagramas mermaid validan contra mermaid.ink, los cuatro posts no tienen enlaces internos rotos ni notas al pie huérfanas, y todas las URL externas responden salvo las de `coffee-maker-designs`. Ese mismo día los bundles se re-fecharon de agosto a **2026-10-18 / 19 / 20 / 21**, para que no queden debajo del post del 2026-09-17; el URL no cambia porque sale del slug. Si se publican después del 21, re-fecharlos de nuevo.
+Borrar esta sección cuando la serie esté publicada.
 
-### Las cuatro piezas
+### Las piezas
 
-| Pieza | Dónde | Para qué |
-| --- | --- | --- |
-| El post | `content/es/posts/2026-08-05-dci-en-python-roles-en-runtime/index.md` | lo que se publica |
-| El plan de la sincronización | `.../2026-08-07-plan-mejoras.md` (mismo bundle) | qué se corrigió contra el repo y por qué |
-| El plan anterior | `.../2026-08-05-draft-doc.md` (mismo bundle) | histórico; no sirve para planificar |
-| El repo de código | `C:/Users/cesar/cesar/github/CesarBallardini/dci-in-python` | **la fuente de verdad de todo el código y todas las salidas** |
+| Pieza | Dónde |
+| --- | --- |
+| El plan de la serie | `content/es/posts/2026-10-18-cafetera-mark-iv-enunciado-del-problema/plan-de-la-serie.md` — outline por post, inventario de hechos verificados, tabla de errata, decisiones abiertas |
+| Post 1 (escrito) | `2026-10-18-cafetera-mark-iv-enunciado-del-problema/` — consigna, enunciado, API, casos de uso |
+| Post 2 (escrito) | `2026-10-19-cafetera-mark-iv-particion-por-hardware/` — construye el diseño malo y lo diagnostica |
+| Post 3 (escrito) | `2026-10-20-cafetera-mark-iv-particion-por-roles/` — construye el diseño por roles y encuentra el agujero con los escenarios |
+| Post 4 (escrito) | `2026-10-21-cafetera-mark-iv-martin-y-weirich/` — compara los tres y cierra con OOverkill |
+| Bibliografía fuente | `C:/Users/cesar/cesar/trabajo/utn/objetos/objetos-bibliografia/coffe-maker/` — **fuera de `content/`, a propósito** |
+| El código | `C:/Users/cesar/cesar/github/CesarBallardini/coffee-maker-designs` — **fuera del repo del blog** |
 
-El repo está commiteado (`1264e87`) y publicado en `github.com/CesarBallardini/dci-in-python`, **en la rama `main`** — no `master`. Los seis enlaces del post a archivos del repo usan `blob/main/`; escribir `blob/master/` da 404.
+Los slugs evitan «diseño» porque la ñ afea el URL; se eligió «partición», que además es el término de Martin (*partitioning*).
 
-### El post hoy
+### Las tres decisiones de diseño (el eje de la serie)
 
-Diecinueve secciones, **~7850 palabras** de cuerpo, 18 notas al pie, 6 tablas, 4 diagramas mermaid, 27 bloques de código. La estructura:
+El enunciado deja **tres** preguntas sin contestar, y en las tres se adoptó **la lectura de Martin**, que es la publicada y la que su código de prueba exige:
 
-1. La transferencia, tres veces (con la objeción de Feathers como paréntesis)
-2. La maquinaria — el `Context` en 25 líneas, más el cuadro «De qué está hecho, exactamente» con los recursos de Python 3.14
-3. Algunos escenarios donde el modelo de objetos de Python falla — las cuatro fallas
-4. Cuatro maneras de prestar un rol — los cuatro binders y su tabla
-5. La pregunta que decide si esto se puede usar — persistencia y ORM
-6. Un paréntesis: la librería que hay (Molenaar)
-7. Cinco maneras de escribir la misma transferencia — con su tabla
-8. Y en tu código, ¿cuál? — la tabla de decisión de siete filas
-9. El veredicto
+| Pregunta | Decisión |
+| --- | --- |
+| ¿Cómo queda la válvula al terminar el ciclo? | **Cerrada** — abierta es transitorio, el estado de aliviar presión durante la pausa |
+| ¿Cuándo se apaga la luz? | Cuando vuelve la jarra **vacía** — mientras quede café, el ciclo no cerró |
+| ¿La placa calienta café que la máquina no preparó? | **No** — «sólo se enciende si hay café» es condición necesaria, no suficiente |
 
-### Verificado el 2026-08-07
+Están documentadas en el README del repo y fijadas como escenarios en `cafetera.feature`, cuyo encabezado lleva además una **tabla de trazabilidad** que mapea cada frase del enunciado a los escenarios que la verifican — con tres tests en `tests/unit/test_trazabilidad.py` que impiden que la tabla se despegue del archivo. **La tercera no se había visto** hasta que el barrido exhaustivo la encontró; la traza de nueve pasos no la tocaba.
 
-- **Build limpio**: 18 notas definidas / 18 referenciadas, cero `[^` sueltos, 6 tablas, 4 mermaid.
-- **Los 30 enlaces externos dan HTTP 200**, incluidos los seis del repo en `main` y `fulloo.info/Examples/`.
-- **`hugo list future` vacío.**
-- **Las salidas de consola** coinciden carácter por carácter con `uv run --frozen python demo/dci_demo.py`. No hay nada que repegar salvo que se toque la demo.
-- **El código simplificado del post corre**: se extrajo a un script y da la misma salida que la sección 1 de la demo.
+### Lo verificado corriendo el código (Python 3.14.4 + uv, sólo biblioteca estándar)
 
-### El hallazgo que el post tiene y el repo no
+- **Los tres diseños dan exactamente el mismo comportamiento observable**: idéntico en los nueve pasos de la traza y en las **2800 secuencias** de hasta cuatro eventos (7+49+343+2401). Tres particiones sin un criterio en común y ni una diferencia. Ése es el argumento central de la serie.
+- **`martin/` es un port fiel de los Listings 11-14 a 11-21 y no se toca.** Cuando hubo que unificar el comportamiento, se adaptaron los otros dos a su lectura, no al revés.
+- Adaptarse costó distinto en cada uno, y eso es contenido del post 4: en Martin, **cero**; en el de hardware, tres condiciones más dentro de `poll()`; en el de roles, un rol nuevo `PausableDevice` (distingue `off` = pausa de `rest` = reposo) y un `is_active` inyectado en el `PlateController`.
+- **Los escenarios encontraron dos veces lo que la traza no**: (a) el diseño por roles arrancaba el ciclo sin jarra en la placa; (b) la regla de la placa se leía distinto en cada diseño. Las dos son el mejor argumento de la serie a favor de escribir escenarios.
+- **`pytest-bdd` 8.1.0 parsea Gherkin en castellano** (`# language: es`). Catorce escenarios × tres diseños = 42 tests BDD. Con `scenarios()` autogenerando los tests, un fixture parametrizado normal falla con *«The requested fixture has no parameter defined for test»* porque la función generada no declara el fixture en su firma: la solución es `autouse=True`. **Ojo con el `autouse`**: un test que no necesita el fixture y vive en ese directorio se corre tres veces idénticas — por eso los tests de tabla van en `tests/unit/`.
+- **`gherkin-official` 29.0.0 emite un `DeprecationWarning`** (llama a `re.split()` con `maxsplit` posicional). No hay a dónde actualizar: pytest-bdd 8.1.0 —la última— lo fija en `<30.0.0` y 29.0.0 es la única 29.x. Está filtrado en `pyproject.toml` de forma acotada, con `filterwarnings = ["error", ...]` para que cualquier warning propio siga siendo un error.
 
-**Dos contextos con roles _distintos_ sobre el mismo objeto no dan error de MRO: ligan.** Medido el 2026-08-07 corriendo el repo. `Account@SourceAccount@DestinationAccount` se construye sin quejarse; el primer contexto que sale le arranca los métodos al segundo, y cuando el segundo sale deja el objeto como `Account@SourceAccount` **de manera permanente y fuera de todo contexto**. El lock lo cubre (verificado: cero errores, clase final `Account`, saldo correcto).
+### El repositorio de código
 
-`APPROACHES.md` y `test_limits.py` sólo cubren el caso del **mismo** rol, así que hoy el post afirma algo más preciso que su propio repositorio. **Pendiente del repo**: un test que fije el caso de roles distintos, y el ajuste al documento.
+Se decidió **`coffee-maker-designs`**, rama `main`: un solo repo con el scaffold de [`localenv-python`](https://github.com/CesarBallardini/localenv-python), un núcleo compartido (`api.py`, `simulator.py`, `scenarios.py`) y un subpaquete por diseño (`by_hardware/`, `by_roles/`, `martin/`), más un test que prohíbe los imports cruzados y otro que exige que los tres sigan coincidiendo. **Está armado en `C:/Users/cesar/cesar/github/CesarBallardini/coffee-maker-designs` y corre verde** — 53 tests (42 BDD + 11 unitarios), ruff, pyright, pyrefly, bandit y pip-audit sin hallazgos, y `make diff` muestra las tres trazas sin diferencias. **Falta el `git init`, el primer commit y el push, que los hace César.** Hasta que esté pusheado, los enlaces al repo desde los posts dan 404, que es lo esperado. El detalle y la justificación están en la §8 del plan.
 
-### CSS
+**Cada parte del código tiene su propio README** —los tres diseños, el núcleo compartido, `tests/` y `tools/`— explicando cómo está armada, dónde caen las tres decisiones del enunciado y qué le costó cada una. Las métricas que citan esos README están verificadas contra `make metrics`.
 
-El post carga `page_css: ['tables.css', 'code.css']`. `code.css` se ajustó en esta sesión: `font-size: 0.82rem` y selector ampliado a `.code-block` además de `.highlight`, porque los fences **sin lenguaje** —todas las salidas de consola— no pasan por Chroma y quedaban al tamaño del tema. **`code.css` es compartido con el post `python-tooling-backend-desde-cero`**, así que ese post también cambia de tamaño y su `public/` va a aparecer modificado sin que se lo haya tocado.
-
-### Lo que queda abierto
-
-- **La cuenta de líneas.** El post muestra un mecanismo de **veinticinco** líneas y después dice tres veces **«cincuenta líneas»** refiriéndose a lo mismo. El párrafo que explicaba la diferencia (25 mostradas contra 51 en el repo, medidas con `ast`) se borró en la pasada de estilo. Es la única inconsistencia visible que queda.
-- **La tabla de versiones de `roles`** está fechada el 4 de agosto de 2026. Es lo que primero envejece.
-- **Los dos documentos de planificación del repo** (`2026-08-06-presentation.md`, `2026-08-06-comparative-readme.md`) están **sin commitear**. No enlazarlos desde el post.
-- **La parte 1 no necesitó cambios.** Su párrafo sobre el ORM está deliberadamente hedgeado («el mecanismo canónico de DCI, el de reasignarle la clase») porque `InstanceContext` sí toma la entidad declarativa; si se edita esa sección, no perder el matiz.
+Dos cosas que se decidieron al armarlo y conviene no revertir sin pensarlo: (1) **no se corre `ruff format`** y hay tres reglas de lint apagadas, porque el formateo automático explota los métodos de una línea que los posts citan textualmente — está comentado en `ruff.toml`; (2) las métricas que citan los posts salen de `make metrics` (`tools/metrics.py`), no de contar a mano: **12 clases / 132 líneas** el de hardware, **25 / 261** el de roles, **7 / 155** el de Martin, contando sólo los módulos propios de cada diseño. Si se toca un diseño, se re-corre y se actualizan los posts.
 
 ### Reglas que no hay que perder de vista
 
-- Nada de código ni de salidas escritas a mano: todo sale de correr el repo. Si una salida cambia, se re-corre `make demo` y se pega, sin traducir.
+- **Los enlaces a un repo propio van con `blob/main/`, nunca `blob/master/`.** Con `master` dan 404. Ya mordió una vez en el repo de DCI.
+- Nada de código ni de salidas escritas a mano: todo sale de correr el repo. Si una salida cambia, se re-corre y se pega, sin traducir.
 - El post y el repo tienen que contar la misma historia. Cada vez que se toque uno, revisar el otro.
-- Cuando este archivo y el repo no coinciden, gana el repo.
 - **En una pasada de edición, una referencia que quedó sin destino se arregla cambiando la referencia, no reponiendo el texto borrado.** Si César borró algo, borrado está.
+- **Tres de los cuatro `.md` de `objetos-bibliografia/coffe-maker/` son texto generado por un modelo y tienen errores de hecho**: API inventada, constantes de la API invertidas, la válvula descrita al revés, y código Smalltalk atribuido a Martin y a Weirich que ninguno de los dos escribió. Sirven para estructura; como fuente, no. La tabla completa está en la §7 del plan.
+- La página OOAD de Weirich de 1999 **no sobrevive** en la web ni en el Internet Archive. La única copia es el PDF del bundle del post 1, que es una impresión de la página hecha desde Netscape sobre Solaris.
+- **«Heuristics and Coffee» es el capítulo 11 de *UML for Java Programmers* (Prentice Hall, 2003), NO de *Agile Software Development, PPP*.** Los cuatro posts lo citaron mal durante días. La confusión es fácil porque los dos son de Martin, de la misma época, y **el capítulo 11 de PPP es justamente el del DIP**. Verificado contra el índice de los dos PDF. Los cinco principios SOLID están en el capítulo 6 del mismo libro de la cafetera, páginas 64 a 82.
+- **En archive.org, lo que habilita el préstamo es la colección `inlibrary`, no `printdisabled`.** Un ítem sólo `printdisabled` está restringido a personas con discapacidad para la lectura impresa y **no se puede pedir prestado**. Comprobarlo con `curl -s https://archive.org/metadata/<id>` y mirar `collection`. De los tres libros de esta serie, dos son prestables (`umlforjavaprogra00mart`, `designingobjecto00mart`) y PPP **no tiene copia prestable** — para ése se cita el paper libre «Design Principles and Design Patterns» (2000) en el sitio de Martin vía Wayback, con el aviso de que enuncia cuatro de los cinco principios y no incluye el SRP.
+- **Para buscar si un libro se presta, Open Library es mejor que la búsqueda de archive.org**: `https://openlibrary.org/search.json?q=...&fields=title,ia,ebook_access`. El campo `ebook_access` distingue `borrowable` de `printdisabled` de `no_ebook`.
+- **Los PDF de `bibliografia/` dentro del bundle del post 1 se publican al sitio.** Dos eran libros de Pearson completos que ningún post enlaza; el 2026-10-21 se movieron a `books/` en la raíz del repo, que está en `.gitignore` y fuera de `content/`. En el bundle queda sólo el de Weirich, que los posts enlazan y que tiene argumento de preservación, porque esa página no existe en ningún otro lado.
+- **Extraer texto de un PDF con letras espaciadas:** `pypdf` devuelve `T h e S i n g l e`; `pdfplumber` sale legible. Los enunciados de los principios están en versalitas, así que se extraen como mayúsculas pegadas (`ACLASSSHOULDHAVEONLYONEREASONTOCHANGE`) y hay que buscarlos con matching insensible a espacios.

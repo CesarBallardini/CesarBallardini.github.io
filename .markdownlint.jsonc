@@ -1,0 +1,5 @@
+{
+  // Tables are aligned by display width on save; markdownlint measures
+  // characters, so any row with ⚠️ (U+26A0 U+FE0F) is reported as misaligned.
+  "MD060": false
+}
