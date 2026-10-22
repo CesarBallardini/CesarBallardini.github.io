@@ -1,0 +1,9 @@
+{
+  "name": "katra-cspell",
+  "private": true,
+  "description": "El corrector para `make spell`. VS Code no lo necesita: usa sus extensiones.",
+  "devDependencies": {
+    "@cspell/dict-es-es": "^3.0.9",
+    "cspell": "^10.4.0"
+  }
+}

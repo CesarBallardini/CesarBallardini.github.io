@@ -1,5 +1,6 @@
-+++
-date = '{{ time.Now.Format .params.dateFormat }}'
-draft = false
-title = '{{ replace .File.ContentBaseName "-" " " | title }}'
-+++
+---
+title: '{{ replaceRE `^\d{4}-\d{2}-\d{2}-` "" .File.ContentBaseName | humanize }}'
+description: ''
+tags: []
+featured_image: ''
+---

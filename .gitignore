@@ -1,3 +1,6 @@
 .hugo_build.lock
 resources/_gen/
 books/
+.check/
+.cspell/node_modules/
+local.mk
