@@ -1,0 +1,17 @@
+{
+  "version": "0.2",
+  "language": "en,es",
+  "dictionaries": ["softwareTerms", "python", "bash", "fullstack", "katra"],
+  "dictionaryDefinitions": [
+    { "name": "katra", "path": "./.cspell/katra-words.txt", "addWords": true }
+  ],
+  "ignorePaths": ["public/**", "themes/**", "resources/**", "books/**", "**/*.pdf"],
+  "patterns": [
+    { "name": "fenced_code", "pattern": "/^\\s*```[\\s\\S]*?^\\s*```/gm" },
+    { "name": "inline_code", "pattern": "/`[^`\\n]+`/g" },
+    { "name": "footnote_label", "pattern": "/\\[\\^[^\\]]+\\]/g" },
+    { "name": "hugo_shortcode", "pattern": "/\\{\\{[<%][\\s\\S]*?[%>]\\}\\}/g" },
+    { "name": "fm_tags_files", "pattern": "/^(tags|featured_image|page_css):.*$/gm" }
+  ],
+  "ignoreRegExpList": ["fenced_code", "inline_code", "footnote_label", "hugo_shortcode", "fm_tags_files"]
+}
