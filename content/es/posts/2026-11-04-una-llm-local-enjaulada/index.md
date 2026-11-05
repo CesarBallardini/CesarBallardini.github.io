@@ -1,5 +1,5 @@
 ---
-title: 'My LLM local enjaulada'
+title: 'Mi LLM local enjaulada'
 description: 'Un instalador desatendido para Windows 11 Home que deja Ollama, OpenCode y Claude Code trabajando contra un modelo local, con un proxy de salida y reglas de firewall.'
 tags: ['LLM', 'IA', 'Ollama', 'OpenCode', 'Claude', 'Python', 'Windows', 'seguridad']
 featured_image: hero-cables.jpg
