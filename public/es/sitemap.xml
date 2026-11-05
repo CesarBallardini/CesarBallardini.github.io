@@ -48,7 +48,7 @@
                 />
   </url><url>
     <loc>https://katra.ballardini.com.ar/</loc>
-    <lastmod>2026-09-17T00:00:00-03:00</lastmod>
+    <lastmod>2026-11-04T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -62,8 +62,13 @@
                 href="https://katra.ballardini.com.ar/en/"
                 />
   </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/claude/</loc>
+    <lastmod>2026-11-04T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://katra.ballardini.com.ar/posts/</loc>
-    <lastmod>2026-09-17T00:00:00-03:00</lastmod>
+    <lastmod>2026-11-04T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -78,16 +83,61 @@
                 />
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/ia/</loc>
-    <lastmod>2026-09-17T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/inteligencia-artificial/</loc>
-    <lastmod>2026-09-17T00:00:00-03:00</lastmod>
+    <lastmod>2026-11-04T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/llm/</loc>
+    <lastmod>2026-11-04T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/posts/una-llm-local-enjaulada/</loc>
+    <lastmod>2026-11-04T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/ollama/</loc>
+    <lastmod>2026-11-04T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/opencode/</loc>
+    <lastmod>2026-11-04T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/python/</loc>
+    <lastmod>2026-11-04T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/seguridad/</loc>
+    <lastmod>2026-11-04T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/</loc>
+    <lastmod>2026-11-04T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-AR"
+                href="https://katra.ballardini.com.ar/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://katra.ballardini.com.ar/en/tags/"
+                />
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/windows/</loc>
+    <lastmod>2026-11-04T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://katra.ballardini.com.ar/tags/inteligencia-artificial/</loc>
     <lastmod>2026-09-17T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -106,21 +156,6 @@
     <lastmod>2026-09-17T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/</loc>
-    <lastmod>2026-09-17T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es-AR"
-                href="https://katra.ballardini.com.ar/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://katra.ballardini.com.ar/en/tags/"
-                />
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/arquitectura/</loc>
     <lastmod>2026-08-05T00:00:00-03:00</lastmod>
@@ -148,11 +183,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/oop/</loc>
-    <lastmod>2026-08-05T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/python/</loc>
     <lastmod>2026-08-05T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -238,11 +268,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://katra.ballardini.com.ar/tags/chatgpt/</loc>
-    <lastmod>2026-08-02T00:00:00-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://katra.ballardini.com.ar/tags/claude/</loc>
     <lastmod>2026-08-02T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

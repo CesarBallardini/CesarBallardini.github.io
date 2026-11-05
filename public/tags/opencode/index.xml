@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>OpenCode on katra</title>
+		<link>https://katra.ballardini.com.ar/tags/opencode/</link>
+		<description>Recent content in OpenCode on katra</description>
+		<generator>Hugo</generator>
+		<language>es-AR</language>
+		
+		
+		
+			<copyright>César Ballardini</copyright>
+		
+		
+			<lastBuildDate>Wed, 04 Nov 2026 00:00:00 -0300</lastBuildDate>
+		
+			<atom:link href="https://katra.ballardini.com.ar/tags/opencode/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>My LLM local enjaulada</title>
+				<link>https://katra.ballardini.com.ar/posts/una-llm-local-enjaulada/</link>
+				<pubDate>Wed, 04 Nov 2026 00:00:00 -0300</pubDate>
+				<guid>https://katra.ballardini.com.ar/posts/una-llm-local-enjaulada/</guid>
+				<description>&lt;p&gt;Tengo una LLM local enjaulada. Instalé a mano Ollama, OpenCode, Claude Code y un proxy, y con reglas de firewall le armé una jaula para que no salga a Internet&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;. La idea era poder trabajar sobre código que algún NDA prohíbe mandar a una LLM en la nube. Cuando la jaula estuvo andando, me pregunté por qué no usar a Claude para escribir un instalador desatendido que la arme sola. &lt;strong&gt;&lt;a href=&#34;https://github.com/CesarBallardini/my-opencode-ollama-environment&#34;&gt;Este repositorio&lt;/a&gt;&lt;/strong&gt;&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; es el resultado: un poco inflado, pero piola igual.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

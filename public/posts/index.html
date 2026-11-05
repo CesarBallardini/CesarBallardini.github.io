@@ -7,7 +7,7 @@
     <title>Entradas | katra</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="el espíritu y la tecnología de la información">
-    <meta name="generator" content="Hugo 0.168.0">
+    <meta name="generator" content="Hugo 0.169.0">
     
     
     
@@ -116,8 +116,8 @@
 
 	<meta itemprop="name" content="Entradas">
 	<meta itemprop="description" content="el espíritu y la tecnología de la información">
-	<meta itemprop="datePublished" content="2026-09-17T00:00:00-03:00">
-	<meta itemprop="dateModified" content="2026-09-17T00:00:00-03:00">
+	<meta itemprop="datePublished" content="2026-11-04T00:00:00-03:00">
+	<meta itemprop="dateModified" content="2026-11-04T00:00:00-03:00">
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:title" content="Entradas">
 	<meta name="twitter:description" content="el espíritu y la tecnología de la información">
@@ -229,6 +229,28 @@
   <div class="mb3 pa4 gray overflow-hidden bg-white">
     <span class="f6 db">Entradas</span>
     
+      <time class="f6 db" datetime="2026-11-04T00:00:00-03:00">04 de noviembre de 2026</time>
+    
+    <h1 class="f3 near-black">
+      <a href="/posts/una-llm-local-enjaulada/" class="link black dim">
+        My LLM local enjaulada
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>Tengo una LLM local enjaulada. Instalé a mano Ollama, OpenCode, Claude Code y un proxy, y con reglas de firewall le armé una jaula para que no salga a Internet<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. La idea era poder trabajar sobre código que algún NDA prohíbe mandar a una LLM en la nube. Cuando la jaula estuvo andando, me pregunté por qué no usar a Claude para escribir un instalador desatendido que la arme sola. <strong><a href="https://github.com/CesarBallardini/my-opencode-ollama-environment">Este repositorio</a></strong><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> es el resultado: un poco inflado, pero piola igual.</p>
+    </div>
+    <a href="/posts/una-llm-local-enjaulada/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Leer más</a>
+  </div>
+</div>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+          
+<div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Entradas</span>
+    
       <time class="f6 db" datetime="2026-09-17T00:00:00-03:00">17 de septiembre de 2026</time>
     
     <h1 class="f3 near-black">
@@ -263,28 +285,6 @@
       <p>En <a href="/posts/dci-data-context-interaction-reenskaug/">la primera parte</a> conté de dónde salió DCI: Trygve Reenskaug, el autor de MVC, pasó su jubilación buscando una forma de que el código muestre lo que el sistema <em>hace</em> y no sólo lo que el sistema <em>es</em>. La propuesta se llama <em>Data, Context, Interaction</em> y se resume en tres elementos. <strong>Data</strong>: los objetos de dominio son pequeños y apenas inteligentes — la <code>Account</code> sabe su saldo, cómo sumarlo y restarlo, nada más. <strong>Context</strong>: el caso de uso deja de ser un método suelto y pasa a ser un objeto de primera clase, que existe mientras el caso de uso está funcionando. <strong>Interaction</strong>: los roles —<code>SourceAccount</code>, <code>DestinationAccount</code>— son comportamientos que se le adosa a un objeto de datos <em>mientras dura el contexto</em>, de esa manera, el algoritmo que ejecutan entre todos reside en un solo lugar<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
     </div>
     <a href="/posts/dci-en-python-roles-en-runtime/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Leer más</a>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-          
-<div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Entradas</span>
-    
-      <time class="f6 db" datetime="2026-08-04T00:00:00-03:00">04 de agosto de 2026</time>
-    
-    <h1 class="f3 near-black">
-      <a href="/posts/dci-data-context-interaction-reenskaug/" class="link black dim">
-        DCI: la idea olvidada del hombre que inventó MVC
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>Me pasa cada vez que abro un sistema orientado a objetos que no escribí yo. Miro las clases, entiendo perfectamente qué es cada una —<code>Account</code>, <code>Customer</code>, <code>LedgerEntry</code>, <code>Branch</code>—, y no tengo la menor idea de qué hace el sistema. El dominio está modelado con prolijidad de manual. El caso de uso, el que el usuario tenía en la cabeza cuando pidió el software, no está en ninguna parte. Está repartido en pedacitos de dos líneas dentro de once métodos de siete clases, y para reconstruirlo tengo que hacer el trabajo del compilador a mano.</p>
-    </div>
-    <a href="/posts/dci-data-context-interaction-reenskaug/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Leer más</a>
   </div>
 </div>
 
